@@ -1,0 +1,894 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../10.2/notes/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Appendix - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-completeness-and-the-monotone-convergence-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix A. Completeness and the Monotone Convergence Theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-limit-facts-for-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix B. Limit Facts for Sequences
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-completeness-and-the-monotone-convergence-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix A. Completeness and the Monotone Convergence Theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-limit-facts-for-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix B. Limit Facts for Sequences
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="appendix-sequences-and-infinite-series">Appendix: Sequences and Infinite Series<a class="headerlink" href="#appendix-sequences-and-infinite-series" title="Permanent link">&para;</a></h1>
+<p><a href="../appendix.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit to prove the limit facts for sequences. Nothing here is needed to <em>use</em> the facts, only to see why they are true.</p>
+</div>
+<h2 id="appendix-a-completeness-and-the-monotone-convergence-theorem">Appendix A. Completeness and the Monotone Convergence Theorem<a class="headerlink" href="#appendix-a-completeness-and-the-monotone-convergence-theorem" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition A.1: Upper bound, supremum</p>
+<p><span id="def-sup"></span></p>
+<p>Let <span class="arithmatex">\(S\)</span> be a nonempty set of real numbers. A number <span class="arithmatex">\(M\)</span> is an <em>upper bound</em> of <span class="arithmatex">\(S\)</span> if <span class="arithmatex">\(s\le M\)</span> for every <span class="arithmatex">\(s\)</span> in <span class="arithmatex">\(S\)</span>; the set <span class="arithmatex">\(S\)</span> is <em>bounded above</em> if it has an upper bound. A number <span class="arithmatex">\(M^*\)</span> is the <em>least upper bound</em> (or <em>supremum</em>) of <span class="arithmatex">\(S\)</span>, written <span class="arithmatex">\(M^*=\sup S\)</span>, if</p>
+<p><strong>(i)</strong> <span class="arithmatex">\(M^*\)</span> is an upper bound of <span class="arithmatex">\(S\)</span>, and</p>
+<p><strong>(ii)</strong> <span class="arithmatex">\(M^*\le M\)</span> for every upper bound <span class="arithmatex">\(M\)</span> of <span class="arithmatex">\(S\)</span>.</p>
+<p>Lower bounds, <em>bounded below</em> and the <em>greatest lower bound</em> <span class="arithmatex">\(\inf S\)</span> are defined in the same way with the inequalities reversed.</p>
+</div>
+<p>The supremum need not belong to the set. The set <span class="arithmatex">\(\{x : 0&lt;x&lt;1\}\)</span> has supremum <span class="arithmatex">\(1\)</span>, which is not in the set, while the set <span class="arithmatex">\(\{x : 0&lt;x\le 1\}\)</span> has supremum <span class="arithmatex">\(1\)</span>, which is.</p>
+<div class="admonition note">
+<p class="admonition-title">The Completeness Axiom</p>
+<p>Every nonempty set of real numbers that is bounded above has a least upper bound.</p>
+</div>
+<p>This is an assumption about the real numbers, not a theorem: it cannot be derived from the rules of arithmetic and order, so we take it as the starting point. It is exactly what the rational numbers lack. The set of rational numbers <span class="arithmatex">\(q\)</span> with <span class="arithmatex">\(q^2&lt;2\)</span> is bounded above by <span class="arithmatex">\(2\)</span>, but among the rational numbers it has no <em>least</em> upper bound. Every proof in this appendix, and the Monotone Convergence Theorem on which Chapter 10 relies, rests on it.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition A.2: Limit of a sequence</p>
+<p><span id="def-limit"></span></p>
+<p>A sequence <span class="arithmatex">\(\{a_n\}\)</span> <em>converges</em> to the number <span class="arithmatex">\(L\)</span>, written <span class="arithmatex">\(\lim_{n\to\infty}a_n=L\)</span>, if for every <span class="arithmatex">\(\varepsilon&gt;0\)</span> there is an integer <span class="arithmatex">\(N\)</span> such that</p>
+<div class="arithmatex">\[\abs{a_n-L}&lt;\varepsilon \quad\text{for every } n&gt;N.\]</div>
+<p>A sequence that does not converge <em>diverges</em>. We write <span class="arithmatex">\(a_n\to\infty\)</span> if for every real number <span class="arithmatex">\(K\)</span> there is an integer <span class="arithmatex">\(N\)</span> such that <span class="arithmatex">\(a_n&gt;K\)</span> for every <span class="arithmatex">\(n&gt;N\)</span> (and <span class="arithmatex">\(a_n\to-\infty\)</span> if <span class="arithmatex">\(a_n&lt;K\)</span> for every <span class="arithmatex">\(n&gt;N\)</span> in the same way); such a sequence diverges.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem A.3: Approximation property of the supremum</p>
+<p><span id="thm-approx"></span></p>
+<p>Let <span class="arithmatex">\(S\)</span> be nonempty and bounded above, and let <span class="arithmatex">\(M=\sup S\)</span>. For every <span class="arithmatex">\(\varepsilon&gt;0\)</span> there is an element <span class="arithmatex">\(s\)</span> of <span class="arithmatex">\(S\)</span> with <span class="arithmatex">\(M-\varepsilon&lt;s\le M\)</span>.</p>
+</div>
+<p><em>Proof.</em> Because <span class="arithmatex">\(M-\varepsilon&lt;M\)</span> and <span class="arithmatex">\(M\)</span> is the <em>least</em> upper bound, the number <span class="arithmatex">\(M-\varepsilon\)</span> is not an upper bound of <span class="arithmatex">\(S\)</span>. So some element <span class="arithmatex">\(s\)</span> of <span class="arithmatex">\(S\)</span> satisfies <span class="arithmatex">\(s&gt;M-\varepsilon\)</span>. Also <span class="arithmatex">\(s\le M\)</span>, because <span class="arithmatex">\(M\)</span> is an upper bound of <span class="arithmatex">\(S\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem A.4: Archimedean property</p>
+<p><span id="thm-archimedes"></span></p>
+<p>For every real number <span class="arithmatex">\(x\)</span> there is a positive integer <span class="arithmatex">\(n\)</span> with <span class="arithmatex">\(n&gt;x\)</span>. Consequently, for every <span class="arithmatex">\(\varepsilon&gt;0\)</span> there is a positive integer <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\dfrac1N&lt;\varepsilon\)</span>.</p>
+</div>
+<p><em>Proof.</em> Suppose, to the contrary, that some real number <span class="arithmatex">\(x\)</span> satisfies <span class="arithmatex">\(n\le x\)</span> for every positive integer <span class="arithmatex">\(n\)</span>. Then the set <span class="arithmatex">\(\N=\{1,2,3,\dots\}\)</span> is nonempty and bounded above (by <span class="arithmatex">\(x\)</span>), so by the Completeness Axiom it has a supremum <span class="arithmatex">\(M\)</span>. By Theorem <a href="#thm-approx">A.3</a> with <span class="arithmatex">\(\varepsilon=1\)</span> there is a positive integer <span class="arithmatex">\(n\)</span> with <span class="arithmatex">\(n&gt;M-1\)</span>. Then <span class="arithmatex">\(n+1\)</span> is a positive integer and <span class="arithmatex">\(n+1&gt;M\)</span>, which contradicts the fact that <span class="arithmatex">\(M\)</span> is an upper bound of <span class="arithmatex">\(\N\)</span>. This proves the first statement.</p>
+<p>For the second, apply the first statement to <span class="arithmatex">\(x=1/\varepsilon\)</span>: there is a positive integer <span class="arithmatex">\(N&gt;1/\varepsilon\)</span>, and then <span class="arithmatex">\(1/N&lt;\varepsilon\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem A.5: Monotone Convergence Theorem</p>
+<p><span id="thm-mct"></span></p>
+<p><strong>(a)</strong> If <span class="arithmatex">\(\{a_n\}\)</span> is nondecreasing and bounded above, then <span class="arithmatex">\(\{a_n\}\)</span> converges, and its limit is <span class="arithmatex">\(\sup\{a_n\}\)</span>.</p>
+<p><strong>(b)</strong> If <span class="arithmatex">\(\{a_n\}\)</span> is nonincreasing and bounded below, then <span class="arithmatex">\(\{a_n\}\)</span> converges, and its limit is <span class="arithmatex">\(\inf\{a_n\}\)</span>.</p>
+<p>In particular, a bounded monotonic sequence converges.</p>
+</div>
+<p><em>Proof.</em> (a) The set <span class="arithmatex">\(S=\{a_1,a_2,a_3,\dots\}\)</span> is nonempty and bounded above, so <span class="arithmatex">\(L=\sup S\)</span> exists by the Completeness Axiom. Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. By Theorem <a href="#thm-approx">A.3</a> there is an index <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(L-\varepsilon&lt;a_N\le L\)</span>. For every <span class="arithmatex">\(n&gt;N\)</span> we have <span class="arithmatex">\(a_n\ge a_N\)</span> because the sequence is nondecreasing, and <span class="arithmatex">\(a_n\le L\)</span> because <span class="arithmatex">\(L\)</span> is an upper bound. Hence</p>
+<div class="arithmatex">\[L-\varepsilon&lt;a_N\le a_n\le L, \qquad\text{so}\qquad \abs{a_n-L}&lt;\varepsilon .\]</div>
+<p>Since <span class="arithmatex">\(\varepsilon\)</span> was arbitrary, <span class="arithmatex">\(a_n\to L\)</span>.</p>
+<p>(b) The sequence <span class="arithmatex">\(b_n=-a_n\)</span> is nondecreasing, and it is bounded above by <span class="arithmatex">\(-m\)</span> if <span class="arithmatex">\(m\)</span> is a lower bound of <span class="arithmatex">\(\{a_n\}\)</span>. By part (a), <span class="arithmatex">\(b_n\to L'\)</span> with <span class="arithmatex">\(L'=\sup\{b_n\}\)</span>. Because <span class="arithmatex">\(\abs{a_n-(-L')}=\abs{b_n-L'}\)</span>, we get <span class="arithmatex">\(a_n\to-L'\)</span>. Finally <span class="arithmatex">\(-L'=\inf\{a_n\}\)</span>: every <span class="arithmatex">\(b_n\le L'\)</span> gives <span class="arithmatex">\(a_n\ge-L'\)</span>, so <span class="arithmatex">\(-L'\)</span> is a lower bound; and if <span class="arithmatex">\(m'\)</span> is any lower bound of <span class="arithmatex">\(\{a_n\}\)</span>, then <span class="arithmatex">\(-m'\)</span> is an upper bound of <span class="arithmatex">\(\{b_n\}\)</span>, so <span class="arithmatex">\(L'\le -m'\)</span>, that is <span class="arithmatex">\(m'\le -L'\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem A.6: The limit of a monotone sequence respects bounds</p>
+<p><span id="thm-mctbound"></span></p>
+<p>If <span class="arithmatex">\(\{a_n\}\)</span> is nondecreasing and <span class="arithmatex">\(a_n\le M\)</span> for every <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(\lim_{n\to\infty}a_n\le M\)</span> (and <span class="arithmatex">\(\lim a_n\ge a_1\)</span>). If <span class="arithmatex">\(\{a_n\}\)</span> is nonincreasing and <span class="arithmatex">\(a_n\ge m\)</span> for every <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(\lim_{n\to\infty}a_n\ge m\)</span>.</p>
+</div>
+<p><em>Proof.</em> In the nondecreasing case the limit is <span class="arithmatex">\(L=\sup\{a_n\}\)</span> by Theorem <a href="#thm-mct">A.5</a>. Since <span class="arithmatex">\(M\)</span> is an upper bound of <span class="arithmatex">\(\{a_n\}\)</span> and <span class="arithmatex">\(L\)</span> is the least upper bound, <span class="arithmatex">\(L\le M\)</span>; and <span class="arithmatex">\(L\ge a_1\)</span> because <span class="arithmatex">\(L\)</span> is an upper bound. The nonincreasing case is the same argument applied to <span class="arithmatex">\(-a_n\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example A.7: A supremum that is not a maximum</p>
+<p><span id="ex-supnotmax"></span></p>
+<p>Let <span class="arithmatex">\(S=\{1-\tfrac1n : n=1,2,3,\dots\}=\{0,\tfrac12,\tfrac23,\tfrac34,\dots\}\)</span>. Show that <span class="arithmatex">\(\sup S=1\)</span> and that <span class="arithmatex">\(S\)</span> has no largest element.</p>
+<p><strong>Solution.</strong> <em>Step 1: <span class="arithmatex">\(1\)</span> is an upper bound.</em> Every element is <span class="arithmatex">\(1-\frac1n\)</span> with <span class="arithmatex">\(\frac1n&gt;0\)</span>, so every element is less than <span class="arithmatex">\(1\)</span>.</p>
+<p><em>Step 2: nothing smaller is an upper bound.</em> Let <span class="arithmatex">\(M&lt;1\)</span>. We must find an element of <span class="arithmatex">\(S\)</span> bigger than <span class="arithmatex">\(M\)</span>. The number <span class="arithmatex">\(1-M\)</span> is positive, so by the Archimedean property (Theorem <a href="#thm-archimedes">A.4</a>) there is an integer <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\frac1N&lt;1-M\)</span>. Rearranging, <span class="arithmatex">\(1-\frac1N&gt;M\)</span>, so <span class="arithmatex">\(M\)</span> is not an upper bound. Hence every upper bound is at least <span class="arithmatex">\(1\)</span>, and <span class="arithmatex">\(\sup S=1\)</span>.</p>
+<p><em>Step 3: no maximum.</em> A maximum would be an element equal to <span class="arithmatex">\(\sup S=1\)</span>, but every element is strictly less than <span class="arithmatex">\(1\)</span>.</p>
+<p>As a check on the answer, the elements get closer and closer to <span class="arithmatex">\(1\)</span>: <span class="arithmatex">\(\lim_{n\to\infty}\left(1-\tfrac1n\right)=1\)</span>, so <span class="arithmatex">\(\sup S=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example A.8: Monotone Convergence in action: repeated square roots</p>
+<p><span id="ex-mctroots"></span></p>
+<p>Let <span class="arithmatex">\(a_1=\sqrt2\)</span> and <span class="arithmatex">\(a_{n+1}=\sqrt{2+a_n}\)</span>. Show that <span class="arithmatex">\(\{a_n\}\)</span> converges and find its limit.</p>
+<p><strong>Plan.</strong> The theorem needs two facts: the sequence is monotonic and it is bounded. Terms: <span class="arithmatex">\(a_1\approx1.414\)</span>, <span class="arithmatex">\(a_2\approx1.848\)</span>, <span class="arithmatex">\(a_3\approx1.962\)</span>. They increase; they seem to stay below <span class="arithmatex">\(2\)</span>.</p>
+<p><strong>Bounded above by <span class="arithmatex">\(2\)</span></strong> (induction). <span class="arithmatex">\(a_1=\sqrt2&lt;2\)</span>. If <span class="arithmatex">\(a_n&lt;2\)</span>, then <span class="arithmatex">\(a_{n+1}=\sqrt{2+a_n}&lt;\sqrt{2+2}=2\)</span>, because the square root is increasing. So <span class="arithmatex">\(a_n&lt;2\)</span> for all <span class="arithmatex">\(n\)</span>.</p>
+<p><strong>Increasing</strong> (induction). <span class="arithmatex">\(a_2&gt;a_1\)</span> since <span class="arithmatex">\(\sqrt{2+\sqrt2}&gt;\sqrt2\)</span>. If <span class="arithmatex">\(a_n&gt;a_{n-1}\)</span>, then <span class="arithmatex">\(2+a_n&gt;2+a_{n-1}\)</span>, and taking square roots, <span class="arithmatex">\(a_{n+1}&gt;a_n\)</span>. So the sequence is increasing.</p>
+<p><strong>Conclusion.</strong> By the Monotone Convergence Theorem (Theorem <a href="#thm-mct">A.5</a>) the sequence converges, say to <span class="arithmatex">\(L\)</span>. Taking the limit in the recurrence (the limit of <span class="arithmatex">\(a_{n+1}\)</span> is also <span class="arithmatex">\(L\)</span>, and the square root is continuous) gives <span class="arithmatex">\(L=\sqrt{2+L}\)</span>, so <span class="arithmatex">\(L^2-L-2=0\)</span>, that is <span class="arithmatex">\((L-2)(L+1)=0\)</span>. Because <span class="arithmatex">\(a_n&gt;0\)</span> for all <span class="arithmatex">\(n\)</span>, the limit is not <span class="arithmatex">\(-1\)</span>. Therefore <span class="arithmatex">\(L=2\)</span>, and by Theorem <a href="#thm-mctbound">A.6</a> this agrees with <span class="arithmatex">\(L\le 2\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example A.9: A nonincreasing sequence bounded below</p>
+<p><span id="ex-mctnewton"></span></p>
+<p>Let <span class="arithmatex">\(a_1=2\)</span> and <span class="arithmatex">\(a_{n+1}=\dfrac12\left(a_n+\dfrac2{a_n}\right)\)</span>. Show that <span class="arithmatex">\(\{a_n\}\)</span> converges and find its limit.</p>
+<p><strong>Terms.</strong> <span class="arithmatex">\(a_2=\frac12\left(2+1\right)=\frac32\)</span> and <span class="arithmatex">\(a_3=\frac12\left(\frac32+\frac43\right)=\frac{17}{12}\)</span>.</p>
+<p><strong>Bounded below by <span class="arithmatex">\(\sqrt2\)</span>.</strong> For <span class="arithmatex">\(a_n&gt;0\)</span>,</p>
+<div class="arithmatex">\[a_{n+1}^2-2=\frac14\left(a_n+\frac2{a_n}\right)^2-2=\frac14\left(a_n-\frac2{a_n}\right)^2\ge0 ,\]</div>
+<p>because <span class="arithmatex">\(\left(u+v\right)^2-4uv=(u-v)^2\)</span> with <span class="arithmatex">\(u=a_n\)</span>, <span class="arithmatex">\(v=2/a_n\)</span> and <span class="arithmatex">\(uv=2\)</span>. So <span class="arithmatex">\(a_{n+1}\ge\sqrt2\)</span> for every <span class="arithmatex">\(n\)</span>, and <span class="arithmatex">\(a_1=2&gt;\sqrt2\)</span> too. All terms are positive, so the argument applies at every step.</p>
+<p><strong>Nonincreasing.</strong> Since <span class="arithmatex">\(a_n\ge\sqrt2\)</span> we have <span class="arithmatex">\(a_n^2\ge2\)</span>, so <span class="arithmatex">\(\frac2{a_n}\le a_n\)</span> and</p>
+<div class="arithmatex">\[a_{n+1}-a_n=\frac12\left(\frac2{a_n}-a_n\right)\le0 .\]</div>
+<p><strong>Conclusion.</strong> By the Monotone Convergence Theorem, part (b), the sequence converges to some <span class="arithmatex">\(L\ge\sqrt2\)</span>. Taking limits in the recurrence gives <span class="arithmatex">\(L=\frac12\left(L+\frac2L\right)\)</span>, so <span class="arithmatex">\(2L=L+\frac2L\)</span>, <span class="arithmatex">\(L=\frac2L\)</span>, <span class="arithmatex">\(L^2=2\)</span>. Since <span class="arithmatex">\(L\ge\sqrt2&gt;0\)</span>, <span class="arithmatex">\(L=\sqrt2\)</span>. (This is Newton’s method for <span class="arithmatex">\(\sqrt2\)</span>.)</p>
+</div>
+<h2 id="appendix-b-limit-facts-for-sequences">Appendix B. Limit Facts for Sequences<a class="headerlink" href="#appendix-b-limit-facts-for-sequences" title="Permanent link">&para;</a></h2>
+<p>Throughout, “for large <span class="arithmatex">\(n\)</span>” means “for every <span class="arithmatex">\(n\)</span> greater than some integer <span class="arithmatex">\(N\)</span>”. We use the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition (Definition <a href="#def-limit">A.2</a>) and the triangle inequality <span class="arithmatex">\(\abs{u+v}\le\abs u+\abs v\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.1: Uniqueness of limits</p>
+<p><span id="thm-unique"></span></p>
+<p>A sequence has at most one limit.</p>
+</div>
+<p><em>Proof.</em> Suppose <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(a_n\to L'\)</span> with <span class="arithmatex">\(L\ne L'\)</span>. Let <span class="arithmatex">\(\varepsilon=\frac12\abs{L-L'}&gt;0\)</span>. There are integers <span class="arithmatex">\(N_1,N_2\)</span> with <span class="arithmatex">\(\abs{a_n-L}&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N_1\)</span> and <span class="arithmatex">\(\abs{a_n-L'}&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N_2\)</span>. For <span class="arithmatex">\(n&gt;\max\{N_1,N_2\}\)</span>,</p>
+<div class="arithmatex">\[\abs{L-L'}\le\abs{L-a_n}+\abs{a_n-L'}&lt;2\varepsilon=\abs{L-L'},\]</div>
+<p>a contradiction. So <span class="arithmatex">\(L=L'\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.2: Convergent sequences are bounded</p>
+<p><span id="thm-bounded"></span></p>
+<p>If <span class="arithmatex">\(\{a_n\}\)</span> converges, then there is a number <span class="arithmatex">\(K\)</span> with <span class="arithmatex">\(\abs{a_n}\le K\)</span> for every <span class="arithmatex">\(n\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(a_n\to L\)</span>. Taking <span class="arithmatex">\(\varepsilon=1\)</span>, there is <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{a_n-L}&lt;1\)</span> for <span class="arithmatex">\(n&gt;N\)</span>, so <span class="arithmatex">\(\abs{a_n}\le\abs L+1\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. Take <span class="arithmatex">\(K=\max\{\abs{a_1},\dots,\abs{a_N},\abs L+1\}\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.3: Tails and absolute values</p>
+<p><span id="thm-tail"></span></p>
+<p><strong>(a)</strong> If <span class="arithmatex">\(a_n=b_n\)</span> for all <span class="arithmatex">\(n&gt;M\)</span> (for some <span class="arithmatex">\(M\)</span>), then <span class="arithmatex">\(\{a_n\}\)</span> converges if and only if <span class="arithmatex">\(\{b_n\}\)</span> converges, and then the limits are equal. Likewise <span class="arithmatex">\(a_n\to L\)</span> if and only if <span class="arithmatex">\(a_{n+p}\to L\)</span> for any fixed integer <span class="arithmatex">\(p\ge0\)</span>.</p>
+<p><strong>(b)</strong> <span class="arithmatex">\(a_n\to0\)</span> if and only if <span class="arithmatex">\(\abs{a_n}\to0\)</span>.</p>
+</div>
+<p><em>Proof.</em> (a) Let <span class="arithmatex">\(b_n\to L\)</span> and <span class="arithmatex">\(\varepsilon&gt;0\)</span>. There is <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{b_n-L}&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. Then for <span class="arithmatex">\(n&gt;\max\{N,M\}\)</span> we have <span class="arithmatex">\(a_n=b_n\)</span>, so <span class="arithmatex">\(\abs{a_n-L}&lt;\varepsilon\)</span>. The converse is the same with the roles exchanged. The shifted sequence <span class="arithmatex">\(a_{n+p}\)</span> agrees, after the index change <span class="arithmatex">\(m=n+p\)</span>, with the terms <span class="arithmatex">\(a_m\)</span>, <span class="arithmatex">\(m&gt;N+p\)</span>, so the same <span class="arithmatex">\(N\)</span> works with <span class="arithmatex">\(N+p\)</span> replaced by <span class="arithmatex">\(N\)</span>.</p>
+<p>(b) The statements <span class="arithmatex">\(\abs{a_n-0}&lt;\varepsilon\)</span> and <span class="arithmatex">\(\abs{\,\abs{a_n}-0\,}&lt;\varepsilon\)</span> are the same inequality. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.4: Limit laws for sequences</p>
+<p><span id="thm-laws"></span></p>
+<p>Let <span class="arithmatex">\(a_n\to A\)</span> and <span class="arithmatex">\(b_n\to B\)</span>, and let <span class="arithmatex">\(c\)</span> be a constant. Then</p>
+<p><strong>(1)</strong> <span class="arithmatex">\(a_n\pm b_n\to A\pm B\)</span>;</p>
+<p><strong>(2)</strong> <span class="arithmatex">\(ca_n\to cA\)</span>;</p>
+<p><strong>(3)</strong> <span class="arithmatex">\(a_nb_n\to AB\)</span>;</p>
+<p><strong>(4)</strong> <span class="arithmatex">\(a_n/b_n\to A/B\)</span>, provided <span class="arithmatex">\(B\ne0\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Choose <span class="arithmatex">\(N_1,N_2\)</span> with <span class="arithmatex">\(\abs{a_n-A}&lt;\varepsilon/2\)</span> for <span class="arithmatex">\(n&gt;N_1\)</span> and <span class="arithmatex">\(\abs{b_n-B}&lt;\varepsilon/2\)</span> for <span class="arithmatex">\(n&gt;N_2\)</span>. For <span class="arithmatex">\(n&gt;\max\{N_1,N_2\}\)</span>,</p>
+<div class="arithmatex">\[\abs{(a_n\pm b_n)-(A\pm B)}\le\abs{a_n-A}+\abs{b_n-B}&lt;\varepsilon .\]</div>
+<p>(2) If <span class="arithmatex">\(c=0\)</span> the claim is trivial. Otherwise choose <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{a_n-A}&lt;\varepsilon/\abs c\)</span> for <span class="arithmatex">\(n&gt;N\)</span>; then <span class="arithmatex">\(\abs{ca_n-cA}=\abs c\,\abs{a_n-A}&lt;\varepsilon\)</span>.</p>
+<p>(3) By Theorem <a href="#thm-bounded">B.2</a> there is <span class="arithmatex">\(K&gt;0\)</span> with <span class="arithmatex">\(\abs{a_n}\le K\)</span> for all <span class="arithmatex">\(n\)</span>. Write</p>
+<div class="arithmatex">\[a_nb_n-AB=a_n(b_n-B)+B(a_n-A),\]</div>
+<p>so <span class="arithmatex">\(\abs{a_nb_n-AB}\le K\abs{b_n-B}+\abs B\,\abs{a_n-A}\)</span>. Choose <span class="arithmatex">\(N_1\)</span> with <span class="arithmatex">\(\abs{b_n-B}&lt;\frac{\varepsilon}{2K}\)</span> for <span class="arithmatex">\(n&gt;N_1\)</span> and <span class="arithmatex">\(N_2\)</span> with <span class="arithmatex">\(\abs{a_n-A}&lt;\frac{\varepsilon}{2(\abs B+1)}\)</span> for <span class="arithmatex">\(n&gt;N_2\)</span>. For <span class="arithmatex">\(n&gt;\max\{N_1,N_2\}\)</span> the right side is less than <span class="arithmatex">\(\frac\varepsilon2+\frac\varepsilon2=\varepsilon\)</span> (using <span class="arithmatex">\(\abs B&lt;\abs B+1\)</span>).</p>
+<p>(4) First we show <span class="arithmatex">\(1/b_n\to1/B\)</span>. Since <span class="arithmatex">\(B\ne0\)</span>, take <span class="arithmatex">\(\varepsilon_0=\abs B/2\)</span>: there is <span class="arithmatex">\(N_0\)</span> with <span class="arithmatex">\(\abs{b_n-B}&lt;\abs B/2\)</span> for <span class="arithmatex">\(n&gt;N_0\)</span>, hence <span class="arithmatex">\(\abs{b_n}&gt;\abs B/2\)</span> (so <span class="arithmatex">\(b_n\ne0\)</span>) for <span class="arithmatex">\(n&gt;N_0\)</span>. For such <span class="arithmatex">\(n\)</span>,</p>
+<div class="arithmatex">\[\left|\frac1{b_n}-\frac1B\right|=\frac{\abs{B-b_n}}{\abs{b_n}\,\abs B}&lt;\frac{2}{\abs B^{\,2}}\,\abs{b_n-B}.\]</div>
+<p>Given <span class="arithmatex">\(\varepsilon&gt;0\)</span>, choose <span class="arithmatex">\(N\ge N_0\)</span> with <span class="arithmatex">\(\abs{b_n-B}&lt;\frac{\varepsilon\abs B^{\,2}}2\)</span> for <span class="arithmatex">\(n&gt;N\)</span>; then the left side is less than <span class="arithmatex">\(\varepsilon\)</span>. Now <span class="arithmatex">\(a_n/b_n=a_n\cdot(1/b_n)\to A\cdot(1/B)\)</span> by part (3). ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.5: Squeeze Theorem for sequences</p>
+<p><span id="thm-squeeze"></span></p>
+<p>Suppose <span class="arithmatex">\(a_n\le b_n\le c_n\)</span> for every <span class="arithmatex">\(n\)</span> greater than some index <span class="arithmatex">\(M\)</span>. If <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(c_n\to L\)</span>, then <span class="arithmatex">\(b_n\to L\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Choose <span class="arithmatex">\(N_1\)</span> with <span class="arithmatex">\(\abs{a_n-L}&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N_1\)</span>, and <span class="arithmatex">\(N_2\)</span> with <span class="arithmatex">\(\abs{c_n-L}&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N_2\)</span>. For <span class="arithmatex">\(n&gt;\max\{M,N_1,N_2\}\)</span>,</p>
+<div class="arithmatex">\[L-\varepsilon&lt;a_n\le b_n\le c_n&lt;L+\varepsilon,\]</div>
+<p>so <span class="arithmatex">\(\abs{b_n-L}&lt;\varepsilon\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem B.6: Limits of <span class="arithmatex">\(f(a_n)\)</span> and of <span class="arithmatex">\(f(n)\)</span></p>
+<p><span id="thm-fofa"></span></p>
+<p><strong>(a)</strong> If <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(f\)</span> is defined at every <span class="arithmatex">\(a_n\)</span> and is continuous at <span class="arithmatex">\(L\)</span>, then <span class="arithmatex">\(f(a_n)\to f(L)\)</span>.</p>
+<p><strong>(b)</strong> If <span class="arithmatex">\(f(n)=a_n\)</span> for every positive integer <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\lim_{x\to\infty}f(x)=L\)</span>, where <span class="arithmatex">\(L\)</span> is a real number, <span class="arithmatex">\(\infty\)</span> or <span class="arithmatex">\(-\infty\)</span>, then <span class="arithmatex">\(\lim_{n\to\infty}a_n=L\)</span>.</p>
+</div>
+<p><em>Proof.</em> (a) Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. By continuity of <span class="arithmatex">\(f\)</span> at <span class="arithmatex">\(L\)</span> there is <span class="arithmatex">\(\delta&gt;0\)</span> such that <span class="arithmatex">\(\abs{f(y)-f(L)}&lt;\varepsilon\)</span> whenever <span class="arithmatex">\(\abs{y-L}&lt;\delta\)</span>. Since <span class="arithmatex">\(a_n\to L\)</span> there is <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{a_n-L}&lt;\delta\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. For those <span class="arithmatex">\(n\)</span> we get <span class="arithmatex">\(\abs{f(a_n)-f(L)}&lt;\varepsilon\)</span>.</p>
+<p>(b) Suppose first that <span class="arithmatex">\(L\)</span> is a real number and let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Because <span class="arithmatex">\(f(x)\to L\)</span> as <span class="arithmatex">\(x\to\infty\)</span>, there is a number <span class="arithmatex">\(X\)</span> with <span class="arithmatex">\(\abs{f(x)-L}&lt;\varepsilon\)</span> for all <span class="arithmatex">\(x&gt;X\)</span>. Let <span class="arithmatex">\(N\)</span> be an integer with <span class="arithmatex">\(N\ge X\)</span>. For every <span class="arithmatex">\(n&gt;N\)</span> we have <span class="arithmatex">\(n&gt;X\)</span>, so <span class="arithmatex">\(\abs{a_n-L}=\abs{f(n)-L}&lt;\varepsilon\)</span>. If <span class="arithmatex">\(L=\infty\)</span> and <span class="arithmatex">\(K\)</span> is any number, there is <span class="arithmatex">\(X\)</span> with <span class="arithmatex">\(f(x)&gt;K\)</span> for <span class="arithmatex">\(x&gt;X\)</span>, and again <span class="arithmatex">\(N\ge X\)</span> gives <span class="arithmatex">\(a_n=f(n)&gt;K\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. The case <span class="arithmatex">\(L=-\infty\)</span> is the same. ◻ ∎</p>
+<p>The converse of part (b) is false: if <span class="arithmatex">\(a_n=\cos(2\pi n)\)</span> then <span class="arithmatex">\(a_n\to1\)</span>, but <span class="arithmatex">\(\lim_{x\to\infty}\cos(2\pi x)\)</span> does not exist.</p>
+<div class="admonition example">
+<p class="admonition-title">Example B.7: Finding <span class="arithmatex">\(N\)</span> from <span class="arithmatex">\(\varepsilon\)</span></p>
+<p><span id="ex-findN"></span></p>
+<p>Prove that <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{2n+1}{n+3}=2\)</span>, and find an <span class="arithmatex">\(N\)</span> that works for <span class="arithmatex">\(\varepsilon=0.001\)</span>.</p>
+<p><strong>Plan.</strong> We must make <span class="arithmatex">\(\abs{a_n-2}\)</span> small, so first simplify <span class="arithmatex">\(\abs{a_n-2}\)</span> to something we can solve for <span class="arithmatex">\(n\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="arithmatex">\(n\ge1\)</span>,</p>
+<div class="arithmatex">\[\left|\frac{2n+1}{n+3}-2\right|=\left|\frac{2n+1-2n-6}{n+3}\right|=\frac{5}{n+3}.\]</div>
+<p>Now <span class="arithmatex">\(\frac5{n+3}&lt;\varepsilon\)</span> exactly when <span class="arithmatex">\(n+3&gt;\frac5\varepsilon\)</span>, that is, when <span class="arithmatex">\(n&gt;\frac5\varepsilon-3\)</span>. So given any <span class="arithmatex">\(\varepsilon&gt;0\)</span>, any integer <span class="arithmatex">\(N\ge\frac5\varepsilon-3\)</span> works: for every <span class="arithmatex">\(n&gt;N\)</span> we get <span class="arithmatex">\(n+3&gt;\frac5\varepsilon\)</span> and so <span class="arithmatex">\(\abs{a_n-2}&lt;\varepsilon\)</span>. That proves the limit is <span class="arithmatex">\(2\)</span>.</p>
+<p>For <span class="arithmatex">\(\varepsilon=0.001\)</span>: <span class="arithmatex">\(\frac5\varepsilon-3=4997\)</span>, so <span class="arithmatex">\(N=4997\)</span> works. Check at the first index covered, <span class="arithmatex">\(n=4998\)</span>: <span class="arithmatex">\(\frac{5}{5001}&lt;0.001\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example B.8: A Squeeze Theorem argument</p>
+<p><span id="ex-squeezeex"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n\sin n}{n^2+1}\)</span>.</p>
+<p><strong>Solution.</strong> The numerator oscillates, so the limit laws do not apply directly (they need <span class="arithmatex">\(\lim\sin n\)</span> to exist, and it does not). Instead bound the terms. Since <span class="arithmatex">\(-1\le\sin n\le1\)</span> and <span class="arithmatex">\(n^2+1&gt;0\)</span>,</p>
+<div class="arithmatex">\[-\frac{n}{n^2+1}\le\frac{n\sin n}{n^2+1}\le\frac{n}{n^2+1}.\]</div>
+<p>Both outer sequences tend to <span class="arithmatex">\(0\)</span> because</p>
+<div class="arithmatex">\[\lim_{n\to\infty}\frac{n}{n^2+1}=\lim_{n\to\infty}\frac{1/n}{1+1/n^2}=\frac{0}{1+0}=0\]</div>
+<p>by the limit laws (Theorem <a href="#thm-laws">B.4</a>). By the Squeeze Theorem (Theorem <a href="#thm-squeeze">B.5</a>), the limit is <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example B.9: Proving that a sequence diverges</p>
+<p><span id="ex-divproof"></span></p>
+<p>Prove directly from the definition that <span class="arithmatex">\(a_n=(-1)^n\)</span> diverges.</p>
+<p><strong>Plan.</strong> If the sequence had a limit <span class="arithmatex">\(L\)</span>, then eventually <em>all</em> terms would be within a small distance of <span class="arithmatex">\(L\)</span>, including two consecutive terms. But consecutive terms are <span class="arithmatex">\(2\)</span> apart, so they cannot both be close to one number.</p>
+<p><strong>Proof.</strong> Suppose <span class="arithmatex">\(a_n\to L\)</span>. Take <span class="arithmatex">\(\varepsilon=1\)</span>. There is <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{a_n-L}&lt;1\)</span> for all <span class="arithmatex">\(n&gt;N\)</span>. Pick any <span class="arithmatex">\(n&gt;N\)</span>; then <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(n+1\)</span> are both greater than <span class="arithmatex">\(N\)</span>, and</p>
+<div class="arithmatex">\[2=\abs{a_n-a_{n+1}}=\abs{(a_n-L)+(L-a_{n+1})}\le\abs{a_n-L}+\abs{L-a_{n+1}}&lt;1+1=2 .\]</div>
+<p>This says <span class="arithmatex">\(2&lt;2\)</span>, which is impossible. Hence no limit exists. (The same argument with <span class="arithmatex">\(\varepsilon\)</span> smaller than half the gap shows that any sequence whose terms keep jumping between two different values diverges.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example B.10: A limit of the form <span class="arithmatex">\(f(a_n)\)</span></p>
+<p><span id="ex-fofaex"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\cos\!\left(\frac{\pi n}{2n+1}\right)\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(a_n=\dfrac{n}{2n+1}\)</span>. Dividing numerator and denominator by <span class="arithmatex">\(n\)</span>, <span class="arithmatex">\(a_n=\dfrac{1}{2+1/n}\to\dfrac12\)</span> by the limit laws. The function <span class="arithmatex">\(f(y)=\cos(\pi y)\)</span> is continuous at every number, in particular at <span class="arithmatex">\(\frac12\)</span>. By Theorem <a href="#thm-fofa">B.6</a>(a),</p>
+<div class="arithmatex">\[\cos(\pi a_n)\to\cos\!\left(\frac\pi2\right)=0 .\]</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>

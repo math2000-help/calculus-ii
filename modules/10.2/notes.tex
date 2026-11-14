@@ -1,0 +1,506 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{2}{Sequences}
+\calcxdoc{10.1}
+\calcxapp
+
+\begin{document}
+
+\section{Sequences}
+
+\begin{guide}
+In Definition~\ref{10.1-def:limit} we estimated limits from tables and warned that tables prove nothing (Pause and think~\ref{10.1-think:table}). Two questions now need honest answers. First, what does ``the terms get and stay as close as we like to $L$'' mean in a sentence that can be \emph{checked}? Second, once we have that, how do we compute limits without a table: by combining limits we already know, by trapping a sequence between two others, by recognising which of two competing quantities grows faster, and, for a sequence defined by a recurrence, by deciding whether it settles down at all before we go looking for where?
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item state the $\varepsilon$--$N$ definition of a limit and use it to show that a simple sequence converges or diverges;
+  \item compute limits of sequences with the limit laws, with limits of functions as $x\to\infty$, with the Squeeze Theorem and by applying a continuous function to a limit;
+  \item find the limit of $r^n$ for every $r$ and compare the growth of $\ln^q n$, $n^p$, $b^n$, $n!$ and $n^n$;
+  \item decide whether a sequence is bounded and whether it is monotonic, and use the Monotone Convergence Theorem to prove convergence;
+  \item find the limit of a recursively defined sequence by the fixed-point rule \emph{after} showing that it converges, and solve $a_{n+1}=ra_n+d$ in closed form;
+  \item prove the main theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The definition of a limit}
+
+\begin{defn}{Limit of a sequence}{limit}
+The sequence $\{a_n\}$ \emph{converges to $L$}, written $\lim_{n\to\infty}a_n=L$, if for every $\varepsilon>0$ there is an integer $N$ such that
+\[
+|a_n-L|<\varepsilon\quad\text{for every } n>N.
+\]
+A sequence that does not converge \emph{diverges}. We write $\lim_{n\to\infty}a_n=\infty$ if for every real number $K$ there is an integer $N$ with $a_n>K$ for all $n>N$ (and $-\infty$ similarly); such a sequence diverges, and we say it \emph{diverges to infinity}.
+\end{defn}
+
+Read it as a game. Someone names a tolerance $\varepsilon$, however small. You must answer with a cutoff $N$ such that \emph{every} term after the $N$th is within $\varepsilon$ of $L$. If you can always win, the sequence converges to $L$. A smaller $\varepsilon$ usually forces a larger $N$. This is the precise form of Definition~\ref{10.1-def:limit}, and it is the definition used in Appendix~B (Definition~\ref{app-def:limit}), where all the limit facts of this section are proved from it.
+
+\begin{exmp}{Winning the game}{epsN}
+Prove that $\displaystyle\lim_{n\to\infty}\frac{n^2+1}{2n^2-1}=\frac12$ and find an $N$ that works for $\varepsilon=0.01$.
+
+\textbf{Plan.} Simplify $|a_n-L|$ to something we can make small by choosing $n$ large.
+
+\textbf{Solution.} For $n\ge1$,
+\[
+\left|\frac{n^2+1}{2n^2-1}-\frac12\right|=\left|\frac{2(n^2+1)-(2n^2-1)}{2(2n^2-1)}\right|=\frac{3}{2(2n^2-1)} .
+\]
+%@ ex-epsN1 | simplify((n**2+1)/(2*n**2-1) - Q(1,2) - 3/(2*(2*n**2-1))) == 0 | =\frac{3}{2(2n^2-1)}
+This is less than $\varepsilon$ exactly when $2n^2-1>\frac3{2\varepsilon}$. Given any $\varepsilon>0$, choose $N$ an integer with $N^2>\frac{3}{4\varepsilon}+\frac12$; then every $n>N$ has $2n^2-1>\frac3{2\varepsilon}$ and so $|a_n-\frac12|<\varepsilon$. That proves the limit.
+
+For $\varepsilon=0.01$ we need $2n^2-1>150$, so $n^2>75.5$ and $n\ge9$: $N=8$ works. Check: at $n=9$ the distance is $\frac3{2\cdot161}\approx0.0093<0.01$, while at $n=8$ it is $\frac3{2\cdot127}\approx0.0118>0.01$, so $N=7$ would not do.
+%@ ex-epsN2 | Q(3,2*161) < Q(1,100) and Q(3,2*127) > Q(1,100) and 2*9**2-1 == 161 and 2*8**2-1 == 127 | so $N=7$ would not do
+\end{exmp}
+
+Note that if $N$ works for a given $\varepsilon$, so does every larger integer, since the inequality $|a_n-L|<\varepsilon$ is required for \emph{all} $n>N$. The definition therefore asks only that \emph{some} cutoff exists, not the smallest one.
+
+\subsection*{Computing limits}
+
+\begin{thm}{Limit laws}{laws}
+Let $a_n\to A$ and $b_n\to B$, and let $c$ be a constant. Then $a_n\pm b_n\to A\pm B$, $ca_n\to cA$, $a_nb_n\to AB$, and $a_n/b_n\to A/B$ if $B\ne0$.
+\end{thm}
+\begin{proof}
+Here is the proof of the sum; the other three use the same idea and are done in full in Theorem~\ref{app-thm:laws}. Let $\varepsilon>0$ and choose $N_1,N_2$ with $|a_n-A|<\varepsilon/2$ for $n>N_1$ and $|b_n-B|<\varepsilon/2$ for $n>N_2$. For $n>\max\{N_1,N_2\}$, the triangle inequality gives $|(a_n+b_n)-(A+B)|\le|a_n-A|+|b_n-B|<\varepsilon$. For the product the new idea is the identity $a_nb_n-AB=a_n(b_n-B)+B(a_n-A)$, together with the fact that a convergent sequence is bounded (Theorem~\ref{app-thm:bounded}); for the quotient one shows first that $1/b_n\to1/B$.
+\end{proof}
+
+\begin{thm}{Limits of $f(n)$}{fn}
+If $f(n)=a_n$ for every positive integer $n$ and $\lim_{x\to\infty}f(x)=L$ (where $L$ is a number, $\infty$ or $-\infty$), then $\lim_{n\to\infty}a_n=L$.
+\end{thm}
+\begin{proof}
+Let $\varepsilon>0$. Since $f(x)\to L$ as $x\to\infty$, there is a number $X$ with $|f(x)-L|<\varepsilon$ for all $x>X$. Choose an integer $N\ge X$. For $n>N$ we have $n>X$, so $|a_n-L|=|f(n)-L|<\varepsilon$. The cases $L=\pm\infty$ are the same with ``$f(x)>K$'' or ``$f(x)<K$'' in place of ``$|f(x)-L|<\varepsilon$''.
+\end{proof}
+
+The converse is false: $a_n=\cos(2\pi n)=1$ converges although $\lim_{x\to\infty}\cos(2\pi x)$ does not exist. So this theorem lets us use Calculus~I tools (such as l'H\^opital's Rule) on a function, but a failure for the function says nothing about the sequence.
+
+\begin{thm}{Squeeze Theorem for sequences}{squeeze}
+If $a_n\le b_n\le c_n$ for all $n$ beyond some index, and $a_n\to L$ and $c_n\to L$, then $b_n\to L$.
+\end{thm}
+\begin{proof}
+Let $\varepsilon>0$ and choose $N$ so that $|a_n-L|<\varepsilon$ and $|c_n-L|<\varepsilon$ (and the inequalities $a_n\le b_n\le c_n$ hold) for $n>N$. Then $L-\varepsilon<a_n\le b_n\le c_n<L+\varepsilon$, so $|b_n-L|<\varepsilon$.
+\end{proof}
+
+\begin{thm}{A continuous function of a limit}{contfn}
+If $a_n\to L$ and $f$ is continuous at $L$ and defined at every $a_n$, then $f(a_n)\to f(L)$.
+\end{thm}
+\begin{proof}
+Let $\varepsilon>0$. By continuity there is $\delta>0$ with $|f(y)-f(L)|<\varepsilon$ whenever $|y-L|<\delta$. Choose $N$ with $|a_n-L|<\delta$ for $n>N$. Then $|f(a_n)-f(L)|<\varepsilon$ for $n>N$.
+\end{proof}
+
+A consequence used constantly: $|a_n|\to0$ if and only if $a_n\to0$ (Pause and think~\ref{think:laws} and Example~\ref{ex:b14} use related ideas), since $|a_n-0|=\big||a_n|-0\big|$.
+
+\begin{exmp}{Limit laws on a rational expression}{rational}
+Find $\displaystyle\lim_{n\to\infty}\frac{3n^2+n}{2n^2-5}$.
+
+\textbf{Solution.} Each of $3n^2+n$ and $2n^2-5$ tends to infinity, so the limit laws cannot be applied directly (``$\infty/\infty$''). Divide numerator and denominator by the highest power, $n^2$:
+\[
+\frac{3n^2+n}{2n^2-5}=\frac{3+1/n}{2-5/n^2}\ \longrightarrow\ \frac{3+0}{2-0}=\frac32,
+\]
+%@ ex-rat | limit((3*n**2+n)/(2*n**2-5), n, oo) == Q(3,2) and simplify((3*n**2+n)/(2*n**2-5) - (3+1/n)/(2-5/n**2)) == 0 | \longrightarrow\ \frac{3+0}{2-0}=\frac32,
+using $\frac1n\to0$ and $\frac5{n^2}\to0$, the sum, product and quotient laws, and $2\ne0$.
+\end{exmp}
+
+\begin{exmp}{A difference of square roots}{conj}
+Find $\displaystyle\lim_{n\to\infty}\left(\sqrt{n^2+n}-n\right)$.
+
+\textbf{Solution.} This is ``$\infty-\infty$''. Multiply and divide by the conjugate $\sqrt{n^2+n}+n$:
+\[
+\sqrt{n^2+n}-n=\frac{(n^2+n)-n^2}{\sqrt{n^2+n}+n}=\frac{n}{\sqrt{n^2+n}+n}=\frac{1}{\sqrt{1+1/n}+1}\ \longrightarrow\ \frac1{1+1}=\frac12 .
+\]
+%@ ex-conj | limit(sqrt(n**2+n)-n, n, oo) == Q(1,2) and simplify(sqrt(n**2+n)-n - 1/(sqrt(1+1/n)+1)) == 0 | \frac{1}{\sqrt{1+1/n}+1}\ \longrightarrow\ \frac1{1+1}=\frac12
+In the last step we used that the square root is continuous (Theorem~\ref{thm:contfn}) so $\sqrt{1+1/n}\to\sqrt1=1$.
+\end{exmp}
+
+\begin{exmp}{A limit of $f(n)$}{fnex}
+Find $\displaystyle\lim_{n\to\infty}n\sin\frac1n$.
+
+\textbf{Solution.} Let $f(x)=x\sin\frac1x$. Substitute $u=\frac1x$; as $x\to\infty$, $u\to0^+$, and $f(x)=\dfrac{\sin u}{u}\to1$ by the basic limit from Calculus~I. By Theorem~\ref{thm:fn}, $\lim_{n\to\infty}n\sin\frac1n=1$.
+%@ ex-fn | limit(n*sin(1/n), n, oo) == 1 and limit(sin(Symbol('u'))/Symbol('u'), Symbol('u'), 0) == 1 | \dfrac{\sin u}{u}\to1
+\end{exmp}
+
+\begin{exmp}{Squeezing an oscillation}{sq}
+Find $\displaystyle\lim_{n\to\infty}\frac{\cos n}{n^2}$.
+
+\textbf{Solution.} The numerator oscillates, so the quotient law does not apply (it needs $\lim\cos n$ to exist). Instead, $-1\le\cos n\le1$ gives
+\[
+-\frac1{n^2}\le\frac{\cos n}{n^2}\le\frac1{n^2},
+\]
+and both outer sequences tend to $0$ (Theorem~\ref{thm:fn} with $f(x)=1/x^2$). By the Squeeze Theorem the limit is $0$.
+%@ ex-sq | limit(1/n**2, n, oo) == 0 and limit(-1/n**2, n, oo) == 0 | \frac{\cos n}{n^2}\le\frac1{n^2},
+\end{exmp}
+
+\begin{kc}{Computing limits}{compute}
+Find each limit or say that it diverges: (a)~$\displaystyle\lim_{n\to\infty}\frac{4n^3-n}{2n^3+7}$; \quad (b)~$\displaystyle\lim_{n\to\infty}\left(\sqrt{n+3}-\sqrt n\right)$; \quad (c)~$\displaystyle\lim_{n\to\infty}\frac{n^2-1}{n+2}$.
+\end{kc}
+
+\begin{think}{When limit laws need hypotheses}{laws}
+(a)~Give sequences $a_n$ and $b_n$ that both diverge while $a_n+b_n$ and $a_nb_n$ both converge. (b)~If $a_n$ diverges and $a_n+b_n$ converges, must $b_n$ diverge? Prove your answer using a limit law. (c)~Why does the quotient law in Theorem~\ref{thm:laws} require $B\ne0$, and what can happen when $A=B=0$?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Geometric sequences and growth rates}
+
+\begin{thm}{The sequence $r^n$}{geom}
+Let $r$ be a real number. Then
+\[
+\lim_{n\to\infty}r^n=\begin{cases}0 & \text{if } |r|<1,\\ 1 & \text{if } r=1,\end{cases}
+\]
+$r^n\to\infty$ if $r>1$, and $\{r^n\}$ diverges if $r\le-1$.
+\end{thm}
+\begin{proof}
+We use \emph{Bernoulli's inequality}: $(1+h)^n\ge1+nh$ for every $h>0$ and every integer $n\ge1$. This is proved by induction (Example~\ref{ex:b13}).
+
+\emph{Case $r>1$.} Write $r=1+h$ with $h>0$. Then $r^n\ge1+nh$, and $1+nh\to\infty$, so $r^n\to\infty$ (given $K$, choose $N\ge K/h$; for $n>N$, $r^n\ge1+nh>K$).
+
+\emph{Case $0<|r|<1$.} Then $1/|r|>1$; write $1/|r|=1+h$ with $h>0$. Then $|r|^n=\dfrac1{(1+h)^n}\le\dfrac1{1+nh}$, so
+\[
+0\le|r^n|\le\frac1{1+nh}\to0,
+\]
+and the Squeeze Theorem gives $|r^n|\to0$, hence $r^n\to0$. For $r=0$ the sequence is $0,0,\dots$ and the claim is trivial.
+
+\emph{Case $r=1$.} The sequence is constant, equal to $1$.
+
+\emph{Case $r=-1$.} The terms alternate between $-1$ and $1$; consecutive terms differ by $2$, so no limit exists (the argument of Appendix Example~\ref{app-ex:divproof}).
+
+\emph{Case $r<-1$.} Then $|r|>1$, so $|r^n|=|r|^n\to\infty$ by the first case; a sequence with $|a_n|\to\infty$ is unbounded, but a convergent sequence is bounded (Theorem~\ref{app-thm:bounded}), so $\{r^n\}$ diverges.
+\end{proof}
+
+\begin{exmp}{Using $r^n$}{geoex}
+Find $\displaystyle\lim_{n\to\infty}\frac{3^n+2^n}{3^{n+1}}$.
+
+\textbf{Solution.} Divide each term by $3^n$ and write $3^{n+1}=3\cdot3^n$:
+\[
+\frac{3^n+2^n}{3^{n+1}}=\frac{1+(2/3)^n}{3}\ \longrightarrow\ \frac{1+0}{3}=\frac13,
+\]
+%@ ex-geo | limit((3**n+2**n)/3**(n+1), n, oo) == Q(1,3) and simplify((3**n+2**n)/3**(n+1) - (1+(Q(2,3))**n)/3) == 0 | \longrightarrow\ \frac{1+0}{3}=\frac13,
+because $|2/3|<1$, so $(2/3)^n\to0$ by Theorem~\ref{thm:geom}.
+\end{exmp}
+
+Which grows faster, $n^{10}$ or $1.01^n$? Or $2^n$ or $n!$? The next theorem ranks the standard growth rates; each statement says that the second quantity eventually dwarfs the first.
+
+\begin{thm}{Growth rates}{growth}
+Let $p>0$, $q>0$ and $b>1$. Then
+\begin{enumerate}[label=(\alph*)]
+  \item $\dfrac{(\ln n)^q}{n^p}\to0$,
+  \item $\dfrac{n^p}{b^n}\to0$,
+  \item $\dfrac{b^n}{n!}\to0$,
+  \item $\dfrac{n!}{n^n}\to0$.
+\end{enumerate}
+Consequently, for large $n$,
+\[
+(\ln n)^q\ll n^p\ll b^n\ll n!\ll n^n,
+\]
+where $u_n\ll v_n$ means $u_n/v_n\to0$.
+\end{thm}
+\begin{proof}
+(d) $\dfrac{n!}{n^n}=\dfrac1n\cdot\dfrac2n\cdots\dfrac nn\le\dfrac1n\cdot1\cdots1=\dfrac1n$, since each of the other factors is at most $1$. So $0<\frac{n!}{n^n}\le\frac1n\to0$, and the Squeeze Theorem gives the limit $0$.
+
+(c) Choose an integer $M\ge2b$. For $n>M$,
+\[
+\frac{b^n}{n!}=\frac{b^M}{M!}\cdot\frac{b}{M+1}\cdot\frac{b}{M+2}\cdots\frac bn\le\frac{b^M}{M!}\left(\frac12\right)^{n-M},
+\]
+because each of the $n-M$ factors $\frac bj$ ($j>M$) is at most $\frac b{2b}=\frac12$. The right side is a constant times $(1/2)^n$, which tends to $0$ by Theorem~\ref{thm:geom}; squeezing gives $b^n/n!\to0$.
+
+(b) Write $b=1+h$ with $h>0$ and choose an integer $m>p$. For $n\ge2m$ the binomial theorem gives, keeping only one term,
+\[
+b^n\ge\binom nm h^m=\frac{n(n-1)\cdots(n-m+1)}{m!}h^m\ge\frac{(n/2)^m}{m!}h^m ,
+\]
+since each of the $m$ factors $n-j$ ($0\le j\le m-1$) is at least $n-m+1>n/2$ when $n\ge2m$. Hence
+\[
+0<\frac{n^p}{b^n}\le\frac{2^m\,m!}{h^m}\cdot n^{p-m}\to0,
+\]
+because $p-m<0$ means $n^{p-m}=1/n^{m-p}\to0$ (Theorem~\ref{thm:fn}). The Squeeze Theorem gives (b).
+
+(a) First take $q=1$. The function $f(x)=\dfrac{\ln x}{x^p}$ has the form $\infty/\infty$ as $x\to\infty$, and by l'H\^opital's Rule
+\[
+\lim_{x\to\infty}\frac{\ln x}{x^p}=\lim_{x\to\infty}\frac{1/x}{p\,x^{p-1}}=\lim_{x\to\infty}\frac1{p\,x^{p}}=0,
+\]
+so $\frac{\ln n}{n^p}\to0$ for every $p>0$ by Theorem~\ref{thm:fn}. For general $q>0$ apply this with $p/q$ in place of $p$: $\frac{(\ln n)^q}{n^p}=\left(\frac{\ln n}{n^{p/q}}\right)^q\to0^q=0$, using Theorem~\ref{thm:contfn} with the continuous function $y\mapsto y^q$ at $0$ (continuous from the right at $0$, which is all that is needed since the terms are positive).
+
+The chain follows by combining (a)--(d): for instance $n^p/n!=\frac{n^p}{b^n}\cdot\frac{b^n}{n!}$ with $b=2$ is a product of two sequences tending to $0$.
+\end{proof}
+
+\begin{exmp}{Ranking growth rates in a quotient}{rank}
+Find $\displaystyle\lim_{n\to\infty}\frac{n!+4^n}{n!+n^4}$.
+
+\textbf{Solution.} The dominant term in both numerator and denominator is $n!$. Divide by $n!$:
+\[
+\frac{n!+4^n}{n!+n^4}=\frac{1+4^n/n!}{1+n^4/n!}\ \longrightarrow\ \frac{1+0}{1+0}=1,
+\]
+%@ ex-rank | limit((factorial(n)+4**n)/(factorial(n)+n**4), n, oo) == 1 | \longrightarrow\ \frac{1+0}{1+0}=1,
+because $4^n/n!\to0$ by Theorem~\ref{thm:growth}(c), and $n^4/n!\to0$ because $n^4/2^n\to0$ by (b) and $2^n/n!\to0$ by (c). Numerically, $4^{10}/10!\approx0.29$ and $4^{20}/20!\approx4.5\times10^{-7}$, already small.
+%@ ex-rank2 | abs(4**10/factorial(10)-0.289)<1e-3 and abs(4**20/factorial(20)-4.5e-7)<1e-8 | $4^{20}/20!\approx4.5\times10^{-7}$
+\end{exmp}
+
+\begin{kc}{Squeeze and growth}{growthkc}
+Find each limit: (a)~$\displaystyle\lim_{n\to\infty}\frac{(-1)^n\,n}{n^2+1}$; \quad (b)~$\displaystyle\lim_{n\to\infty}\frac{2^n+5^n}{5^n+1}$; \quad (c)~$\displaystyle\lim_{n\to\infty}\frac{n^{20}}{1.5^n}$ and say what a table of the first $50$ terms would show.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Monotone sequences and boundedness}
+
+\begin{defn}{Monotone and bounded sequences}{monotone}
+A sequence $\{a_n\}$ is \emph{nondecreasing} if $a_{n+1}\ge a_n$ for all $n$, \emph{increasing} if $a_{n+1}>a_n$, and \emph{nonincreasing} or \emph{decreasing} if the inequalities are reversed; it is \emph{monotonic} if it is of one of these kinds. It is \emph{bounded above} if there is $M$ with $a_n\le M$ for all $n$, \emph{bounded below} if $a_n\ge m$ for all $n$, and \emph{bounded} if both hold.
+\end{defn}
+
+To show a sequence is monotonic, compare $a_{n+1}$ with $a_n$ directly (by subtraction, by a ratio of positive terms, or, for $a_n=f(n)$, from the sign of $f'$), or use induction on a recurrence. Bounds are usually proved by induction or by an inequality.
+
+\begin{thm}{Monotone Convergence Theorem}{mct}
+A nondecreasing sequence that is bounded above converges, to its least upper bound. A nonincreasing sequence that is bounded below converges, to its greatest lower bound. In particular a bounded monotonic sequence converges.
+\end{thm}
+\begin{proof}
+Let $\{a_n\}$ be nondecreasing and bounded above. By the completeness of the real numbers (the least upper bound property; see the beginning of Appendix~A) the set $\{a_1,a_2,\dots\}$ has a least upper bound $L$. Let $\varepsilon>0$. Since $L-\varepsilon$ is not an upper bound, some $a_N>L-\varepsilon$. For $n>N$ we have $a_n\ge a_N>L-\varepsilon$ because the sequence is nondecreasing, and $a_n\le L$ because $L$ is an upper bound. So $|a_n-L|<\varepsilon$. The nonincreasing case follows by applying this to $-a_n$. The complete argument is Theorem~\ref{app-thm:mct}.
+\end{proof}
+
+The theorem does not tell us the limit; it tells us there is one. For a recurrence, there is a good way to \emph{find} it once existence is known.
+
+\begin{thm}{Fixed-point rule}{fixed}
+Suppose $a_{n+1}=f(a_n)$ for all $n$, the function $f$ is continuous, and $a_n\to L$. Then $f(L)=L$.
+\end{thm}
+\begin{proof}
+The sequence $a_2,a_3,\dots$ also converges to $L$ (it is the same sequence with the first term removed; Theorem~\ref{app-thm:tail}). On the other hand $a_{n+1}=f(a_n)\to f(L)$ by Theorem~\ref{thm:contfn}. A sequence has only one limit (Theorem~\ref{app-thm:unique}), so $f(L)=L$.
+\end{proof}
+
+\begin{warn}[The rule assumes the limit exists]
+The fixed-point rule says \emph{if} the sequence converges \emph{then} the limit solves $f(L)=L$. It never says that the sequence converges. The sequence $a_1=1$, $a_{n+1}=2a_n+1$ gives $L=2L+1$, so $L=-1$, yet the terms $1,3,7,15,\dots$ grow without bound: there is no limit at all (Pause and think~\ref{think:fixed}). Prove convergence (monotone and bounded) first, then solve for $L$.
+\end{warn}
+
+\begin{exmp}{Monotone and bounded: repeated square roots}{sqrt6}
+In Example~\ref{10.1-ex:b4} we guessed that $a_1=1$, $a_{n+1}=\sqrt{6+a_n}$ tends to $3$. Prove it.
+
+\textbf{Bounded above by $3$.} $a_1=1<3$. If $a_n<3$ then $a_{n+1}=\sqrt{6+a_n}<\sqrt{9}=3$. So $a_n<3$ for all $n$ (induction).
+
+\textbf{Increasing.} Compare squares: $a_{n+1}^2-a_n^2=6+a_n-a_n^2=(3-a_n)(2+a_n)>0$, because $a_n<3$ and $a_n>0$. Hence $a_{n+1}>a_n$ for every $n$ (all terms are positive).
+%@ ex-sqrt6a | expand((3-a)*(2+a) - (6+a-a**2)) == 0 | a_{n+1}^2-a_n^2=6+a_n-a_n^2=(3-a_n)(2+a_n)>0
+
+\textbf{Limit.} By the Monotone Convergence Theorem the sequence converges, say to $L$, and $L\le3$. By the fixed-point rule with $f(x)=\sqrt{6+x}$, $L=\sqrt{6+L}$, so $L^2-L-6=(L-3)(L+2)=0$; since $L>0$, $L=3$.
+%@ ex-sqrt6b | solve(Symbol('L')**2-Symbol('L')-6, Symbol('L')) == [-2, 3] | $L^2-L-6=(L-3)(L+2)=0$
+\end{exmp}
+
+\begin{think}{Which hypothesis does the work?}{mct}
+The Monotone Convergence Theorem has two hypotheses: ``monotonic'' and ``bounded''. Give an example of (a)~a monotonic sequence that is not bounded and diverges, and (b)~a bounded sequence that is not monotonic and diverges. Then say, in words, why each hypothesis cannot be dropped.
+\end{think}
+
+\subsection*{Recurrences $a_{n+1}=ra_n+d$}
+
+\begin{thm}{Linear recurrences of first order}{affine}
+Let $a_{n+1}=ra_n+d$ for all $n\ge1$, with $r\ne1$, and let $L=\dfrac d{1-r}$. Then
+\[
+a_n=L+(a_1-L)\,r^{\,n-1}\quad\text{for every } n\ge1 .
+\]
+Consequently the sequence converges if $|r|<1$ (to $L$) or if $a_1=L$ (it is constant), and otherwise it diverges.
+\end{thm}
+\begin{proof}
+Note that $L$ satisfies $L=rL+d$, because $L(1-r)=d$. By induction: for $n=1$ the formula says $a_1=L+(a_1-L)=a_1$. If $a_n=L+(a_1-L)r^{n-1}$, then
+\[
+a_{n+1}=ra_n+d=rL+(a_1-L)r^{n}+d=\big(rL+d\big)+(a_1-L)r^n=L+(a_1-L)r^{n},
+\]
+which is the formula for $n+1$. For the consequence, if $|r|<1$ then $r^{n-1}\to0$ by Theorem~\ref{thm:geom}, so $a_n\to L$. If $a_1=L$ the formula gives $a_n=L$ for all $n$. If $|r|\ge1$ and $a_1\ne L$, the sequence $(a_1-L)r^{n-1}$ diverges by Theorem~\ref{thm:geom} (for $r=-1$ it alternates; for $|r|>1$ it is unbounded; $r=1$ is excluded), so $a_n=L+(a_1-L)r^{n-1}$ diverges (if $a_n$ converged then so would $a_n-L$).
+\end{proof}
+
+\begin{exmp}{Solving a linear recurrence}{affineex}
+In Example~\ref{10.1-ex:b10} the amount of a drug just after the $n$th dose satisfied $D_1=100$, $D_{n+1}=0.8D_n+100$. Find $\lim D_n$.
+
+\textbf{Solution.} Here $r=0.8$, $d=100$, so $L=\dfrac{100}{1-0.8}=500$ and by Theorem~\ref{thm:affine}
+\[
+D_n=500+(100-500)(0.8)^{n-1}=500-400(0.8)^{n-1}.
+\]
+%@ ex-aff1 | simplify(500-400*Q(4,5)**(n-1) - 500*(1-Q(4,5)**n)) == 0 | =500-400(0.8)^{n-1}
+This agrees with the closed form $500(1-0.8^n)$ found earlier (since $400\cdot0.8^{n-1}=500\cdot0.8^n$). Because $|0.8|<1$, $D_n\to500$.
+\end{exmp}
+
+\begin{kc}{A first-order recurrence}{affinekc}
+Let $a_1=1$ and $a_{n+1}=\dfrac{a_n+3}{2}$. (a)~Find $L=\dfrac d{1-r}$ and the closed form of $a_n$. (b)~Find $\lim a_n$. (c)~For the recurrence $b_1=2$, $b_{n+1}=-2b_n+3$, find $L$, the closed form, and say whether $b_n$ converges.
+\end{kc}
+
+\begin{think}{Why does the fixed-point rule give a false answer here?}{fixed}
+Apply the fixed-point rule to $a_1=1$, $a_{n+1}=2a_n+1$ and find $L$. All the terms are positive. What does that say? Use Theorem~\ref{thm:affine} to decide what really happens, and say which hypothesis of the rule was false.
+\end{think}
+
+\begin{exmp}{Newton's method for $\sqrt5$}{newton}
+Let $a_1=3$ and $a_{n+1}=\dfrac12\left(a_n+\dfrac5{a_n}\right)$. Show that $\{a_n\}$ converges and find its limit.
+
+\textbf{Bounded below by $\sqrt5$.} For $a_n>0$, $a_{n+1}-\sqrt5=\dfrac{(a_n-\sqrt5)^2}{2a_n}\ge0$. [To check: $\frac12\left(a+\frac5a\right)-\sqrt5=\frac{a^2-2\sqrt5a+5}{2a}$.]
+%@ ex-newt1 | simplify((a+5/a)/2 - sqrt(5) - (a-sqrt(5))**2/(2*a)) == 0 | a_{n+1}-\sqrt5=\dfrac{(a_n-\sqrt5)^2}{2a_n}\ge0
+So $a_n\ge\sqrt5$ for all $n\ge2$, and $a_1=3>\sqrt5$ too.
+
+\textbf{Nonincreasing.} Since $a_n^2\ge5$, we have $\dfrac5{a_n}\le a_n$, so $a_{n+1}-a_n=\dfrac12\left(\dfrac5{a_n}-a_n\right)\le0$.
+%@ ex-newt2 | simplify(((a+5/a)/2 - a) - (5/a - a)/2) == 0 | a_{n+1}-a_n=\dfrac12\left(\dfrac5{a_n}-a_n\right)\le0
+
+\textbf{Limit.} By the Monotone Convergence Theorem, $a_n\to L\ge\sqrt5$. The fixed-point rule with $f(x)=\frac12(x+5/x)$ (continuous for $x>0$) gives $L=\frac12(L+\frac5L)$, so $L^2=5$ and $L=\sqrt5\approx2.2360680$. The first terms $3,\ \frac73\approx2.3333,\ \frac{47}{21}\approx2.2381$ converge very quickly.
+%@ ex-newt3 | (Q(3)+Q(5,3))/2 == Q(7,3) and (Q(7,3)+5/Q(7,3))/2 == Q(47,21) and abs(float(Q(47,21))-2.2381)<1e-4 | \frac{47}{21}\approx2.2381
+\end{exmp}
+
+\begin{remark}[Limits and inequalities]
+If $a_n\to L$ and $a_n\ge m$ for all $n$, then $L\ge m$. (Suppose instead $L<m$ and take $\varepsilon=m-L>0$; for large $n$, $a_n<L+\varepsilon=m$, a contradiction.) But strict inequalities are not preserved: $a_n=\frac1n>0$ for all $n$, yet $\lim a_n=0$, which is not greater than $0$.
+\end{remark}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Limit laws and algebra} (Examples~\ref{ex:b1}--\ref{ex:b2}).
+  \item \emph{Limits of $f(n)$ and the Squeeze Theorem} (Examples~\ref{ex:b3}--\ref{ex:b4}).
+  \item \emph{Geometric sequences and growth rates} (Examples~\ref{ex:b5}--\ref{ex:b6}).
+  \item \emph{Recurrences $a_{n+1}=ra_n+d$} (Examples~\ref{ex:b7}--\ref{ex:b8}).
+  \item \emph{Monotone and bounded} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{The $\varepsilon$--$N$ definition} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Limit laws and algebra}
+
+\begin{exmp}{A rational expression with a lower-order tail}{b1}
+Find $\displaystyle\lim_{n\to\infty}\frac{5n^2-3}{n^2+4n}$.
+
+\textbf{Solution.} Divide the numerator and the denominator by $n^2$, the highest power in the denominator: $\dfrac{5-3/n^2}{1+4/n}$. Since $\frac3{n^2}\to0$ and $\frac4n\to0$, the limit laws give $\dfrac{5-0}{1+0}=5$. Check: $a_{1000}=\dfrac{5\cdot10^6-3}{10^6+4000}\approx4.9801$, below $5$, as expected since the $4n$ in the denominator pulls the value down.
+%@ bank-1 | limit((5*n**2-3)/(n**2+4*n), n, oo) == 5 and abs(float(Q(5*10**6-3,10**6+4000))-4.9801)<1e-4 | a_{1000}=\dfrac{5\cdot10^6-3}{10^6+4000}\approx4.9801
+\end{exmp}
+
+\begin{exmp}{A hidden conjugate}{b2}
+Find $\displaystyle\lim_{n\to\infty}\left(\sqrt{n^2+3n}-n\right)$.
+
+\textbf{Solution.} Each term tends to infinity, so we use the conjugate: $\sqrt{n^2+3n}-n=\dfrac{3n}{\sqrt{n^2+3n}+n}=\dfrac3{\sqrt{1+3/n}+1}\to\dfrac3{1+1}=\dfrac32$. Check: at $n=10^4$, $\sqrt{10^8+3\cdot10^4}-10^4\approx1.4999$.
+%@ bank-2 | limit(sqrt(n**2+3*n)-n, n, oo) == Q(3,2) and abs(float(sqrt(10**8+3*10**4)-10**4)-1.4999)<1e-4 | \dfrac3{\sqrt{1+3/n}+1}\to\dfrac3{1+1}=\dfrac32
+\end{exmp}
+
+\subsection*{Group 2: Limits of $f(n)$ and the Squeeze Theorem}
+
+\begin{exmp}{A derivative in disguise}{b3}
+Find $\displaystyle\lim_{n\to\infty}n\left(e^{1/n}-1\right)$.
+
+\textbf{Solution.} Let $f(x)=x\left(e^{1/x}-1\right)=\dfrac{e^{u}-1}{u}$ with $u=\frac1x\to0^+$. This is the difference quotient of $e^u$ at $u=0$, whose limit is the derivative $\frac{d}{du}e^u\big|_{u=0}=1$. By Theorem~\ref{thm:fn}, the sequence tends to $1$. Check: at $n=1000$, $1000\left(e^{0.001}-1\right)\approx1.0005$.
+%@ bank-3 | limit(n*(exp(1/n)-1), n, oo) == 1 and abs(1000*(exp(Q(1,1000))-1).evalf()-1.0005)<1e-4 | $1000\left(e^{0.001}-1\right)\approx1.0005$
+\end{exmp}
+
+\begin{exmp}{Squeezing with a bounded oscillation}{b4}
+Find $\displaystyle\lim_{n\to\infty}\frac{n+\sin n}{n+2}$.
+
+\textbf{Solution.} Because $-1\le\sin n\le1$, $\dfrac{n-1}{n+2}\le\dfrac{n+\sin n}{n+2}\le\dfrac{n+1}{n+2}$. Both bounds tend to $1$ (divide by $n$: $\frac{1-1/n}{1+2/n}$ and $\frac{1+1/n}{1+2/n}$). By the Squeeze Theorem the limit is $1$.
+%@ bank-4 | limit((n-1)/(n+2), n, oo) == 1 and limit((n+1)/(n+2), n, oo) == 1 | $\dfrac{n-1}{n+2}\le\dfrac{n+\sin n}{n+2}\le\dfrac{n+1}{n+2}$
+Notice that we could not split the fraction as $\frac{n}{n+2}+\frac{\sin n}{n+2}$ and apply the sum law unless we knew each piece converges; here they do ($\frac{\sin n}{n+2}\to0$ by squeezing), but the squeeze above avoids the extra step.
+\end{exmp}
+
+\subsection*{Group 3: Geometric sequences and growth rates}
+
+\begin{exmp}{Dominant exponentials}{b5}
+Find $\displaystyle\lim_{n\to\infty}\frac{3^n-2^n}{3^n+2^n}$.
+
+\textbf{Solution.} Divide by $3^n$: $\dfrac{1-(2/3)^n}{1+(2/3)^n}$. Since $(2/3)^n\to0$ (Theorem~\ref{thm:geom}), the limit is $\dfrac{1-0}{1+0}=1$. Check at $n=10$: $\frac{3^{10}-2^{10}}{3^{10}+2^{10}}=\frac{58025}{60073}\approx0.966$.
+%@ bank-5 | limit((3**n-2**n)/(3**n+2**n), n, oo) == 1 and Q(3**10-2**10, 3**10+2**10) == Q(58025,60073) and abs(float(Q(58025,60073))-0.966)<1e-3 | $\frac{3^{10}-2^{10}}{3^{10}+2^{10}}=\frac{58025}{60073}\approx0.966$
+\end{exmp}
+
+\begin{exmp}{Factorials win eventually}{b6}
+(a) Show that $\dfrac{n^{10}}{1.01^n}\to0$. (b) Find where $a_n=\dfrac{100^n}{n!}$ stops increasing, and explain why $a_n\to0$ anyway.
+
+\textbf{Solution.} (a) This is Theorem~\ref{thm:growth}(b) with $p=10$ and $b=1.01$: any exponential beats any power, however small the base excess. (It takes a very large $n$: $\frac{n^{10}}{1.01^n}$ is still huge at $n=1000$, so a table of moderate size would suggest the opposite. Compare Pause and think~\ref{10.1-think:table}.)
+%@ bank-6a | 1000**10/1.01**1000 > 1e20 and 20000**10/1.01**20000 < 1e-10 | $\frac{n^{10}}{1.01^n}$ is still huge at $n=1000$
+
+(b) The ratio of consecutive terms is $\dfrac{a_{n+1}}{a_n}=\dfrac{100^{n+1}/(n+1)!}{100^n/n!}=\dfrac{100}{n+1}$, which is greater than $1$ while $n+1<100$, equal to $1$ at $n=99$, and less than $1$ afterwards. So the terms increase up to $a_{99}$, with $a_{100}=a_{99}$, and then decrease. Indeed $\frac{100^{100}}{100!}=\frac{100^{99}}{99!}\cdot\frac{100}{100}$.
+%@ bank-6b | Q(100**100,factorial(100)) == Q(100**99,factorial(99)) | $\frac{100^{100}}{100!}=\frac{100^{99}}{99!}\cdot\frac{100}{100}$
+The maximum is astronomically large ($a_{99}\approx10^{42}$), yet by Theorem~\ref{thm:growth}(c) with $b=100$ the sequence tends to $0$. The theorem is about the long run only.
+%@ bank-6c | 40 < log(Q(100**99,factorial(99)),10).evalf() < 43 | $a_{99}\approx10^{42}$
+\end{exmp}
+
+\subsection*{Group 4: Recurrences $a_{n+1}=ra_n+d$}
+
+\begin{exmp}{A convergent linear recurrence}{b7}
+Let $a_1=10$ and $a_{n+1}=\frac12a_n+4$. Find $a_n$ in closed form and its limit.
+
+\textbf{Solution.} Here $r=\frac12$, $d=4$, $L=\dfrac4{1-1/2}=8$, so Theorem~\ref{thm:affine} gives $a_n=8+(10-8)\left(\frac12\right)^{n-1}=8+2\left(\frac12\right)^{n-1}$. Check: $a_2=8+1=9$ and directly $\frac12(10)+4=9$; $a_3=8+\frac12=8.5$ and directly $\frac12(9)+4=8.5$. As $n\to\infty$, $\left(\frac12\right)^{n-1}\to0$ and $a_n\to8$, decreasing from above.
+%@ bank-7 | Q(4,1-Q(1,2)) == 8 and 8+2*Q(1,2)**1 == 9 and Q(1,2)*10+4 == 9 and 8+2*Q(1,2)**2 == Q(17,2) and Q(1,2)*9+4 == Q(17,2) | and directly $\frac12(9)+4=8.5$
+\end{exmp}
+
+\begin{exmp}{When $|r|>1$}{b8}
+Let $a_{n+1}=-2a_n+3$. For which starting values $a_1$ does $\{a_n\}$ converge? Find the limit.
+
+\textbf{Solution.} $r=-2$, $d=3$, $L=\dfrac3{1-(-2)}=1$, so $a_n=1+(a_1-1)(-2)^{n-1}$. Since $|r|>1$, the term $(a_1-1)(-2)^{n-1}$ diverges unless $a_1-1=0$. So the sequence converges only if $a_1=1$, when it is constant $1,1,1,\dots$ with limit $1$. For example $a_1=2$ gives $2,\,-1,\,5,\,-7,\,17,\dots$ with $a_n=1+(-2)^{n-1}$: the terms alternate in sign and grow. Check: $a_2=-4+3=-1$, formula $1+(-2)=-1$; $a_3=2+3=5$, formula $1+4=5$.
+%@ bank-8 | Q(3,1-(-2)) == 1 and [1+(-2)**(i-1) for i in range(1,5)] == [2,-1,5,-7] and -2*2+3 == -1 and -2*(-1)+3 == 5 | $a_n=1+(-2)^{n-1}$
+So the fixed point $L=1$ is \emph{repelling}: a start anywhere else is pushed away (compare the warning about the fixed-point rule).
+\end{exmp}
+
+\subsection*{Group 5: Monotone and bounded}
+
+\begin{exmp}{A series-like sequence bounded by a geometric sum}{b9}
+Let $a_n=1+1+\frac1{2!}+\frac1{3!}+\cdots+\frac1{n!}=\sum_{k=0}^n\frac1{k!}$. Show that $\{a_n\}$ converges.
+
+\textbf{Solution.} \emph{Increasing:} $a_{n+1}-a_n=\frac1{(n+1)!}>0$. \emph{Bounded:} for $k\ge1$, $k!=1\cdot2\cdot3\cdots k\ge2^{k-1}$ (each factor from $2$ on is at least $2$), so $\frac1{k!}\le\frac1{2^{k-1}}$ and
+\[
+a_n\le1+\left(1+\frac12+\frac14+\cdots+\frac1{2^{n-1}}\right)=1+\frac{1-2^{-n}}{1-\frac12}<1+2=3 ,
+\]
+using the finite geometric sum (Theorem~\ref{10.1-thm:geosum}). By the Monotone Convergence Theorem the sequence converges, to a number between $a_3=\frac{8}{3}\approx2.667$ and $3$. (It converges to $e$.)
+%@ bank-9 | Q(1)+1+Q(1,2)+Q(1,6) == Q(8,3) and all(factorial(i) >= 2**(i-1) for i in range(1,12)) and (1-Q(1,2)**5)/(1-Q(1,2)) < 2 | a_3=\frac{8}{3}\approx2.667
+\end{exmp}
+
+\begin{exmp}{A bounded sum by comparison with a telescoping sum}{b10}
+Let $s_n=1+\dfrac1{2^2}+\dfrac1{3^2}+\cdots+\dfrac1{n^2}$. Show that $\{s_n\}$ converges.
+
+\textbf{Solution.} The sequence is increasing since each added term is positive. To bound it, compare each term with a telescoping one: for $k\ge2$, $\dfrac1{k^2}<\dfrac1{k(k-1)}=\dfrac1{k-1}-\dfrac1k$. Therefore
+\[
+s_n<1+\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+\left(\frac1{n-1}-\frac1n\right)=2-\frac1n<2 .
+\]
+%@ bank-10a | simplify(1/(k*(k-1)) - (1/(k-1) - 1/k)) == 0 and simplify(1+summation(1/(k*(k-1)),(k,2,n)) - (2-1/n)) == 0 | =2-\frac1n<2
+So $\{s_n\}$ is increasing and bounded above by $2$, hence convergent by the Monotone Convergence Theorem. The terms are $1,\ 1.25,\ 1.3611,\ 1.4236,\dots$, and the limit is in fact $\frac{\pi^2}6\approx1.6449$, a fact we cannot get from this argument alone.
+%@ bank-10b | abs(float(1+Q(1,4))-1.25)<1e-12 and abs(float(1+Q(1,4)+Q(1,9))-1.3611)<1e-4 and abs(float(1+Q(1,4)+Q(1,9)+Q(1,16))-1.4236)<1e-4 | The terms are $1,\ 1.25,\ 1.3611,\ 1.4236,\dots$
+\end{exmp}
+
+\subsection*{Group 6: The $\varepsilon$--$N$ definition}
+
+\begin{exmp}{Finding $N$ for a rational sequence}{b11}
+Prove that $\dfrac{3n}{n+1}\to3$ and find $N$ for $\varepsilon=0.01$.
+
+\textbf{Solution.} $\left|\dfrac{3n}{n+1}-3\right|=\left|\dfrac{3n-3n-3}{n+1}\right|=\dfrac3{n+1}$. This is less than $\varepsilon$ when $n+1>\frac3\varepsilon$, that is $n>\frac3\varepsilon-1$. So for every $\varepsilon>0$ any integer $N\ge\frac3\varepsilon-1$ works. For $\varepsilon=0.01$: $\frac3\varepsilon-1=299$, so $N=299$. Check at $n=300$: $\frac3{301}<0.01$.
+%@ bank-11 | simplify(3*n/(n+1) - 3 + 3/(n+1)) == 0 and Q(3,1)/Q(1,100) - 1 == 299 and Q(3,301) < Q(1,100) | Check at $n=300$: $\frac3{301}<0.01$
+\end{exmp}
+
+\begin{exmp}{An alternating sequence}{b12}
+Prove that $\dfrac{(-1)^n}{n}\to0$ and find $N$ for $\varepsilon=0.001$.
+
+\textbf{Solution.} The signs do not affect the distance: $\left|\dfrac{(-1)^n}n-0\right|=\dfrac1n$. We need $\frac1n<\varepsilon$, that is $n>\frac1\varepsilon$. Given $\varepsilon>0$, take any integer $N\ge\frac1\varepsilon$; then $n>N$ gives $\frac1n<\varepsilon$. For $\varepsilon=0.001$, $N=1000$. Check: for $n=1001$ the distance is $\frac1{1001}<0.001$, but at $n=1000$ it is exactly $0.001$, which is not less than $\varepsilon$, so the cutoff $N=999$ would fail: the definition requires strict inequality for \emph{every} $n>N$.
+%@ bank-12 | Q(1,1001) < Q(1,1000) and not (Q(1,1000) < Q(1,1000)) and Q(1,Q(1,1000)) == 1000 | the cutoff $N=999$ would fail
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Bernoulli's inequality}{b13}
+Prove that $(1+h)^n\ge1+nh$ for every real $h>0$ and every integer $n\ge1$.
+
+\begin{proof}
+\emph{Base case} $n=1$: $(1+h)^1=1+h\ge1+1\cdot h$.
+
+\emph{Inductive step.} Assume $(1+h)^n\ge1+nh$. Multiply both sides by $1+h>0$ (this keeps the inequality):
+\[
+(1+h)^{n+1}\ge(1+nh)(1+h)=1+(n+1)h+nh^2\ge1+(n+1)h,
+\]
+because $nh^2\ge0$. This is the statement for $n+1$, so by induction it holds for all $n\ge1$.
+\end{proof}
+%@ bank-13 | expand((1+n*a)*(1+a) - (1+(n+1)*a + n*a**2)) == 0 | (1+nh)(1+h)=1+(n+1)h+nh^2
+The inequality is the key to Theorem~\ref{thm:geom}: it says that $(1+h)^n$ grows at least linearly in $n$.
+\end{exmp}
+
+\begin{exmp}{Absolute values and limits}{b14}
+Prove that if $a_n\to L$, then $|a_n|\to|L|$. Is the converse true?
+
+\begin{proof}
+By the reverse triangle inequality $\big||a_n|-|L|\big|\le|a_n-L|$. (To see it, write $|a_n|=|(a_n-L)+L|\le|a_n-L|+|L|$, so $|a_n|-|L|\le|a_n-L|$; exchange the roles of $a_n$ and $L$ to get $|L|-|a_n|\le|a_n-L|$.) Let $\varepsilon>0$ and choose $N$ with $|a_n-L|<\varepsilon$ for $n>N$. Then $\big||a_n|-|L|\big|<\varepsilon$ for $n>N$, which is the claim. (Alternatively, apply Theorem~\ref{thm:contfn} with $f(x)=|x|$, which is continuous.)
+\end{proof}
+%@ bank-14 | all(abs(abs(p)-abs(q)) <= abs(p-q) for p in range(-5,6) for q in range(-5,6)) | $\big||a_n|-|L|\big|\le|a_n-L|$
+The converse is false: $a_n=(-1)^n$ has $|a_n|=1\to1$, but $\{a_n\}$ diverges. The converse \emph{does} hold when the limit is zero: $|a_n|\to0\Rightarrow a_n\to0$, as in the remark after Theorem~\ref{thm:contfn}.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:compute}.] (a) Divide by $n^3$: $\frac{4-1/n^2}{2+7/n^3}\to\frac42=2$. (b) Conjugate: $\sqrt{n+3}-\sqrt n=\frac{3}{\sqrt{n+3}+\sqrt n}\to0$ since the denominator tends to infinity. (c) $\frac{n^2-1}{n+2}=\frac{n-1/n}{1+2/n}\to\infty$ (the numerator tends to infinity and the denominator to $1$); the sequence diverges to infinity. Equivalently $\frac{n^2-1}{n+2}=n-2+\frac3{n+2}$ by division.
+%@ ans-compute | limit((4*n**3-n)/(2*n**3+7),n,oo)==2 and limit(sqrt(n+3)-sqrt(n),n,oo)==0 and limit((n**2-1)/(n+2),n,oo)==oo and simplify((n**2-1)/(n+2)-(n-2+3/(n+2)))==0 | $\frac{n^2-1}{n+2}=n-2+\frac3{n+2}$ by division
+  \item[Knowledge Check \ref{kc:growthkc}.] (a) $\left|\frac{(-1)^nn}{n^2+1}\right|\le\frac n{n^2+1}\to0$, so by squeezing the limit is $0$. (b) Divide by $5^n$: $\frac{(2/5)^n+1}{1+5^{-n}}\to\frac{0+1}{1+0}=1$. (c) $n^{20}/1.5^n\to0$ by Theorem~\ref{thm:growth}(b), but the first $50$ terms are large: for example $50^{20}/1.5^{50}\approx1.5\times10^{25}$, so a table of $50$ terms would show huge, growing values and mislead; the decrease begins only much later.
+%@ ans-growthkc | limit(n/(n**2+1),n,oo)==0 and limit((2**n+5**n)/(5**n+1),n,oo)==1 and 10**25 < 50**20/Q(3,2)**50 < 2*10**25 | $50^{20}/1.5^{50}\approx1.5\times10^{25}$
+  \item[Knowledge Check \ref{kc:affinekc}.] (a) $r=\frac12$, $d=\frac32$, $L=\frac{3/2}{1/2}=3$, $a_n=3+(1-3)\left(\frac12\right)^{n-1}=3-2\left(\frac12\right)^{n-1}$. Check $a_2=\frac{1+3}2=2$ and the formula $3-1=2$. (b) $|r|<1$, so $a_n\to3$. (c) $r=-2$, $d=3$, $L=1$, $b_n=1+(2-1)(-2)^{n-1}=1+(-2)^{n-1}$; since $|r|>1$ and $b_1\ne L$, $b_n$ diverges.
+%@ ans-affinekc | Q(Q(3,2),1-Q(1,2)) == 3 and 3-2*Q(1,2)**1 == (1+3)/Q(2) and Q(3,1-(-2)) == 1 and [1+(-2)**(i-1) for i in range(1,5)] == [2,-1,5,-7] | $b_n=1+(2-1)(-2)^{n-1}=1+(-2)^{n-1}$
+  \item[Pause and think \ref{think:laws}.] (a) $a_n=(-1)^n$ and $b_n=-(-1)^n$: both diverge, $a_n+b_n=0$ converges, and with $b_n=(-1)^n$ the product $a_nb_n=1$ converges. (b) Yes. If $b_n$ converged, then $a_n=(a_n+b_n)-b_n$ would converge by the difference law, contradicting the assumption. (c) The quotient law needs $B\ne0$ since division by $0$ is undefined and $b_n$ may be $0$ or tiny; when $A=B=0$ the quotient can do anything: $\frac1n\big/\frac1n\to1$, $\frac1{n^2}\big/\frac1n\to0$, $\frac1n\big/\frac1{n^2}\to\infty$. (This is the ``$0/0$'' form.)
+  \item[Pause and think \ref{think:mct}.] (a) $a_n=n$: increasing, unbounded, diverges to infinity. (b) $a_n=(-1)^n$: bounded, not monotonic, diverges. The monotonic hypothesis prevents oscillation between two values; the bounded hypothesis prevents escape to infinity. The theorem needs both: \emph{monotone} says the terms can only move one way, and \emph{bounded} says they cannot move forever.
+  \item[Pause and think \ref{think:fixed}.] The rule gives $L=2L+1$, so $L=-1$. But all terms are positive, and a limit of positive numbers cannot be negative (see the remark on limits and inequalities), so something is wrong. Here $r=2$, $d=1$, $L=\frac1{1-2}=-1$, and $a_n=-1+(1-(-1))2^{n-1}=-1+2^n$, which tends to infinity. The hypothesis that failed is that $a_n$ converges. The equation $L=f(L)$ only locates the possible limits.
+%@ ans-fixed | Q(1,1-2) == -1 and [-1+2**i for i in range(1,5)] == [1,3,7,15] and [2*1+1, 2*3+1, 2*7+1] == [3,7,15] | and $a_n=-1+(1-(-1))2^{n-1}=-1+2^n$
+\end{description}
+
+\end{document}

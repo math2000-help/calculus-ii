@@ -1,0 +1,23 @@
+# course_map.yaml -- single source of truth for module order, status and dependencies.
+# Drives: (1) the printed course map (tools/build_course_map.py -> course_map.tex/pdf)
+#         (2) the site navigation (site/mkdocs.yml generated from this file by tools/build_site.py)
+# Edit this file, not the generated outputs.
+course:
+  title: Calculus II
+  textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
+  project: "Chapter 10, Sequences and Infinite Series (Chapter 11 is a later project)"
+  dropped_on_purpose: []
+appendix:
+  file: appendix/appendix.tex
+  sections:
+    - {id: A, title: "Completeness and the Monotone Convergence Theorem", status: done}
+    - {id: B, title: "Limit Facts for Sequences", status: done}
+modules:
+  - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
+  - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
+  - {id: "10.3", chapter: 10, title: "Infinite Series", prereqs: ["10.2"], status: todo}
+  - {id: "10.4", chapter: 10, title: "The Divergence and Integral Tests", prereqs: ["10.3"], status: todo}
+  - {id: "10.5", chapter: 10, title: "Comparison Tests", prereqs: ["10.4"], status: todo}
+  - {id: "10.6", chapter: 10, title: "Alternating Series", prereqs: ["10.5"], status: todo}
+  - {id: "10.7", chapter: 10, title: "The Ratio and Root Tests", prereqs: ["10.6"], status: todo}
+  - {id: "10.8", chapter: 10, title: "Choosing a Convergence Test", prereqs: ["10.7"], status: todo}

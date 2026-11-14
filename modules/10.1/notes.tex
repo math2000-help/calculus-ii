@@ -1,0 +1,446 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{1}{An Overview}
+\calcxapp
+
+\begin{document}
+
+\section{An Overview}
+
+\begin{guide}
+Zeno argued that you can never walk across a room: first you must cover half the distance, then half of what remains, then half of that, and so on, with infinitely many steps. Yet the sum $\frac12+\frac14+\frac18+\cdots$ of those step lengths seems to be $1$, the width of the room. Can an endless list of positive numbers have a finite total? What would ``total'' even mean for infinitely many terms? The answer in this chapter is to stop adding forever and to look instead at a \emph{list of running totals} and where it is heading. That turns the question about an infinite sum into a question about a \emph{sequence}, so we begin with sequences.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item write out terms of a sequence given by an explicit formula or by a recurrence, and find a formula that fits a pattern (and say why a pattern never \emph{proves} a formula);
+  \item recognise arithmetic and geometric sequences and use their closed forms;
+  \item estimate the limit of a sequence from a table or a graph, and explain why such an estimate is evidence and not proof;
+  \item define the partial sums of a series and use them to decide, in simple cases, what a series adds up to;
+  \item recover the terms of a series from its partial sums, and use the finite geometric sum formula;
+  \item write a short induction proof.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Sequences: lists of numbers}
+
+\begin{defn}{Sequence}{seq}
+A \emph{sequence} is an ordered list of real numbers
+\[
+a_1,\ a_2,\ a_3,\ \dots,\ a_n,\ \dots
+\]
+with one number $a_n$ (the \emph{$n$th term}) for each positive integer $n$. We write the sequence as $\{a_n\}$, or $\{a_n\}_{n=1}^{\infty}$ when we want to show where it starts. Equivalently, a sequence is a function whose inputs are the positive integers: $n\mapsto a_n$. Sometimes it is convenient to start at $n=0$ or at another integer.
+\end{defn}
+
+\begin{defn}{Explicit and recursive definitions}{defs}
+A sequence is defined \emph{explicitly} when a formula gives $a_n$ directly from $n$, for example $a_n=n^2$. It is defined \emph{recursively} (or by a \emph{recurrence}) when the first term or terms are given and a rule gives each later term from the ones before it, for example $a_1=1$ and $a_{n+1}=2a_n+1$.
+\end{defn}
+
+An explicit formula lets you jump straight to the thousandth term. A recurrence makes you walk there one step at a time, but it is often the more natural description: ``each year the balance grows by $3\%$'' is a recurrence long before it is a formula.
+
+\begin{exmp}{Terms from an explicit formula}{explicit}
+List the first five terms of $a_n=\dfrac{2n-1}{n+2}$.
+
+\textbf{Solution.} Substitute $n=1,2,3,4,5$:
+\[
+a_1=\frac13,\quad a_2=\frac34,\quad a_3=\frac55=1,\quad a_4=\frac76,\quad a_5=\frac97 .
+\]
+%@ ex-explicit | [(2*i-1)/Q(i+2) for i in range(1,6)] == [Q(1,3),Q(3,4),1,Q(7,6),Q(9,7)] | a_1=\frac13,\quad a_2=\frac34,\quad a_3=\frac55=1,\quad a_4=\frac76,\quad a_5=\frac97
+Notice that the terms seem to creep upward without passing $2$; the numerator is nearly twice the denominator when $n$ is large. We return to this kind of question below.
+\end{exmp}
+
+\begin{exmp}{Terms from a recurrence}{recur}
+A sequence has $a_1=2$ and $a_{n+1}=3a_n-1$. List the first five terms.
+
+\textbf{Solution.} The rule says: to get the next term, triple the current one and subtract $1$. Starting from $a_1=2$:
+\[
+a_2=3(2)-1=5,\quad a_3=3(5)-1=14,\quad a_4=3(14)-1=41,\quad a_5=3(41)-1=122 .
+\]
+%@ ex-recur | [3*2-1, 3*(3*2-1)-1, 3*(3*(3*2-1)-1)-1, 3*(3*(3*(3*2-1)-1)-1)-1] == [5,14,41,122] | a_2=3(2)-1=5,\quad a_3=3(5)-1=14,\quad a_4=3(14)-1=41,\quad a_5=3(41)-1=122
+Each term uses the one just before it, so we cannot find $a_5$ without computing $a_2$, $a_3$ and $a_4$ first. A recurrence is useless without its starting value: with $a_1=0$ the same rule gives $-1,-4,-13,\dots$
+\end{exmp}
+
+\begin{exmp}{A recurrence that uses two earlier terms}{fib}
+Let $a_1=1$, $a_2=3$ and $a_{n+2}=a_{n+1}+a_n$. List the first six terms.
+
+\textbf{Solution.} Two starting values are needed because each term uses the previous two:
+\[
+a_3=3+1=4,\quad a_4=4+3=7,\quad a_5=7+4=11,\quad a_6=11+7=18 .
+\]
+%@ ex-fib | [3+1, 4+3, 7+4, 11+7] == [4,7,11,18] | a_3=3+1=4,\quad a_4=4+3=7,\quad a_5=7+4=11,\quad a_6=11+7=18
+With starting values $1,1$ the same rule produces the Fibonacci numbers $1,1,2,3,5,8,\dots$
+\end{exmp}
+
+\subsection*{Finding a formula from a pattern}
+
+Given a few terms, we often want a rule that produces them. This is guesswork informed by experience: look for a common difference, a common ratio, squares, factorials, alternating signs.
+
+\begin{exmp}{Four patterns}{pattern}
+Find an explicit formula $a_n$ ($n=1,2,3,\dots$) that fits each list.
+
+(a)~$5,\ 8,\ 11,\ 14,\ 17,\dots$ \quad (b)~$3,\ 6,\ 12,\ 24,\dots$ \quad (c)~$\frac12,\ -\frac14,\ \frac18,\ -\frac1{16},\dots$ \quad (d)~$2,\ 6,\ 12,\ 20,\ 30,\dots$
+
+\textbf{Solution.} (a) Each term is $3$ more than the one before, so $a_n=5+3(n-1)=3n+2$. (b) Each term is twice the one before, starting at $3$: $a_n=3\cdot2^{n-1}$. (c) The denominators are $2^n$ and the signs alternate, starting positive at $n=1$: $a_n=\dfrac{(-1)^{n+1}}{2^n}$. (d) The differences $4,6,8,10$ increase by $2$ each time, which suggests a quadratic; comparing with $n^2$ ($1,4,9,16,25$) shows each term is $n$ more than $n^2$, so $a_n=n^2+n=n(n+1)$.
+%@ ex-pat | [3*i+2 for i in range(1,6)] == [5,8,11,14,17] and [3*2**(i-1) for i in range(1,5)] == [3,6,12,24] and [Q((-1)**(i+1),2**i) for i in range(1,5)] == [Q(1,2),-Q(1,4),Q(1,8),-Q(1,16)] and [i*(i+1) for i in range(1,6)] == [2,6,12,20,30] | a_n=n^2+n=n(n+1)
+Always substitute $n=1,2,3,\dots$ back into your formula to check that it reproduces the list.
+\end{exmp}
+
+\begin{think}{Does a list determine a sequence?}{pattern}
+The list $1,2,4,8,16,\dots$ looks like $a_n=2^{n-1}$. The number of regions into which $n$ points on a circle, joined in all possible ways, cut the disk is $1,2,4,8,16$ for $n=1,\dots,5$. What do you predict for $n=6$? Then check the formula $r_n=\dfrac{n^4-6n^3+23n^2-18n+24}{24}$ at $n=1,\dots,6$. What does this say about guessing a formula from a finite list?
+\end{think}
+
+\subsection*{Arithmetic and geometric sequences}
+
+\begin{defn}{Arithmetic and geometric sequences}{arigeo}
+A sequence is \emph{arithmetic} if $a_{n+1}=a_n+d$ for a constant \emph{common difference} $d$, and \emph{geometric} if $a_{n+1}=r\,a_n$ for a constant \emph{common ratio} $r$.
+\end{defn}
+
+\begin{thm}{Closed forms}{closed}
+\begin{enumerate}[label=(\alph*)]
+  \item If $a_{n+1}=a_n+d$ for all $n\ge1$, then $a_n=a_1+(n-1)d$ for all $n\ge1$.
+  \item If $a_{n+1}=r\,a_n$ for all $n\ge1$, then $a_n=a_1\,r^{\,n-1}$ for all $n\ge1$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Both are proved by induction on $n$.
+
+(a) \emph{Base case.} For $n=1$ the formula says $a_1=a_1+0\cdot d$, which is true. \emph{Inductive step.} Suppose $a_n=a_1+(n-1)d$ for some $n\ge1$. Then
+\[
+a_{n+1}=a_n+d=a_1+(n-1)d+d=a_1+n\,d=a_1+\big((n+1)-1\big)d,
+\]
+which is the formula for $n+1$. By induction the formula holds for every $n\ge1$.
+
+(b) \emph{Base case.} For $n=1$ the formula says $a_1=a_1r^0$, which is true. \emph{Inductive step.} Suppose $a_n=a_1r^{n-1}$. Then $a_{n+1}=r\,a_n=r\cdot a_1r^{n-1}=a_1r^{n}=a_1r^{(n+1)-1}$, which is the formula for $n+1$. By induction it holds for every $n\ge1$.
+\end{proof}
+
+\begin{exmp}{Using the closed forms}{closedex}
+(a) An arithmetic sequence has $a_1=7$ and $d=-4$. Find $a_{20}$. (b) A geometric sequence has $a_1=5$ and $r=\frac12$. Find $a_8$. (c) A geometric sequence has $a_4=24$ and $a_7=192$. Find $a_1$ and $r$.
+
+\textbf{Solution.} (a) By Theorem~\ref{thm:closed}(a), $a_{20}=7+19(-4)=-69$. (b) By part (b) of the theorem, $a_8=5\left(\frac12\right)^7=\frac5{128}$. (c) Write the two given terms with the closed form: $a_4=a_1r^3=24$ and $a_7=a_1r^6=192$. Dividing the second equation by the first, $r^3=8$, so $r=2$ (the real cube root). Then $a_1=24/2^3=3$. Check: $3\cdot2^6=192$.
+%@ ex-closed | 7+19*(-4) == -69 and 5*Q(1,2)**7 == Q(5,128) and Q(192,24) == 8 and 24/Q(2)**3 == 3 and 3*2**6 == 192 | Check: $3\cdot2^6=192$
+\end{exmp}
+
+\begin{kc}{Terms and formulas}{terms}
+(a) A sequence has $b_1=4$ and $b_{n+1}=2b_n-3$. List $b_1,\dots,b_4$. (b) Find a formula for $10,7,4,1,\dots$ (c) A geometric sequence has $a_1=64$ and $r=\frac12$. Find $a_7$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Limits of sequences: what happens for large $n$?}
+
+The question that drives this chapter is about the \emph{long run}: as $n$ grows, do the terms settle down to a single number?
+
+\begin{defn}{Limit of a sequence (informal)}{limit}
+If the terms $a_n$ get and stay as close as we like to a number $L$ once $n$ is large enough, we say the sequence \emph{converges} to $L$ and write $\lim_{n\to\infty}a_n=L$. A sequence that does not converge to any number \emph{diverges}. The precise version, with $\varepsilon$ and $N$, is Definition~\ref{app-def:limit} in the appendix and is the basis of Section~10.2.
+\end{defn}
+
+\begin{exmp}{Estimating a limit from a table}{table}
+Estimate $\lim_{n\to\infty}\dfrac{3n+1}{n+4}$.
+
+\textbf{Solution.} Compute some terms: $a_{10}=\frac{31}{14}\approx2.2143$, $a_{100}=\frac{301}{104}\approx2.8942$, $a_{1000}=\frac{3001}{1004}\approx2.9890$. The terms increase toward $3$. That is no accident: for large $n$ the $+1$ and the $+4$ hardly matter, and the ratio is close to $\frac{3n}{n}=3$.
+%@ ex-table | abs(float(Q(31,14))-2.2143)<1e-4 and abs(float(Q(301,104))-2.8942)<1e-4 and abs(float(Q(3001,1004))-2.9890)<1e-4 | a_{1000}=\frac{3001}{1004}\approx2.9890
+We estimate that the limit is $3$. This is evidence, not proof; Section~10.2 shows how to prove it with limit laws.
+\end{exmp}
+
+\begin{exmp}{A famous limit}{e}
+Estimate $\lim_{n\to\infty}\left(1+\dfrac1n\right)^n$.
+
+\textbf{Solution.} The base tends to $1$ and the exponent tends to infinity, so it is not clear what happens. Tabulate: $a_1=2$, $a_{10}\approx2.5937$, $a_{100}\approx2.7048$, $a_{1000}\approx2.7169$, $a_{10^6}\approx2.71828$.
+%@ ex-e | abs((1+1/10)**10-2.5937)<1e-4 and abs((1+1/100)**100-2.7048)<1e-4 and abs((1+1/1000)**1000-2.7169)<1e-4 and abs((1+1/10**6)**(10**6)-2.71828)<1e-5 | a_{10^6}\approx2.71828
+The terms increase and appear to level off near $2.718\ldots$, the number $e$. The limit is indeed $e$; proving that needs more than a table (a bounded, increasing sequence converges, by the Monotone Convergence Theorem~\ref{app-thm:mct} of the appendix, but identifying the limit as $e$ comes with the calculus of logarithms). Notice what the table does \emph{not} tell us: neither factor alone, $1+\frac1n\to1$ or exponent $\to\infty$, gives the answer. The two effects compete and the compromise is $e$.
+\end{exmp}
+
+\begin{warn}[A table is not a proof]
+A table can suggest a limit and can never prove one. Terms that agree with a number to six decimal places for $n\le10^6$ may still wander off later (Pause and think~\ref{think:table}). Treat tables and graphs as a way to form a conjecture and to catch errors, and use limit laws, the Squeeze Theorem and the theory of Section~10.2 to prove it.
+\end{warn}
+
+\begin{kc}{Estimating limits}{limits}
+(a) Compute $a_{10}$, $a_{100}$ and $a_{1000}$ for $a_n=\dfrac{4n-1}{n+5}$ and estimate the limit. (b) Why can the estimate in part~(a) not be called a proof? (c) Decide, by looking at the even- and odd-numbered terms, whether $c_n=(-1)^n\dfrac{n}{n+1}$ converges.
+\end{kc}
+
+\begin{think}{How far can a table be trusted?}{table}
+Suppose $a_n=5+\dfrac{n}{10^{10}}$. Compute $a_n$ for $n=10,\ 10^3$ and $10^6$ and describe what a table of those values suggests. What does the sequence actually do as $n\to\infty$?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Infinite series and partial sums}
+
+\begin{defn}{Series and partial sums}{series}
+Given a sequence $\{a_k\}_{k=1}^{\infty}$, the \emph{infinite series} $\sum_{k=1}^{\infty}a_k=a_1+a_2+a_3+\cdots$ is the formal sum of all its terms. Its $n$th \emph{partial sum} is the sum of the first $n$ terms,
+\[
+S_n=\sum_{k=1}^{n}a_k=a_1+a_2+\cdots+a_n .
+\]
+The numbers $S_1,S_2,S_3,\dots$ form the \emph{sequence of partial sums} $\{S_n\}$. If $S_n\to S$ we say the series \emph{converges}, call $S$ its \emph{sum} and write $\sum_{k=1}^\infty a_k=S$; otherwise the series \emph{diverges}.
+\end{defn}
+
+This is exactly how the guiding question gets answered: ``what is an infinite sum?'' means ``what is the limit of the finite sums?''. Section~10.3 makes this the official definition and develops it; here we explore with simple cases.
+
+\begin{thm}{Terms and partial sums}{partial}
+Let $S_n=a_1+\cdots+a_n$ be the partial sums of the series $\sum a_k$. Then $a_1=S_1$ and $a_n=S_n-S_{n-1}$ for $n\ge2$. If every $a_k>0$, then $S_1<S_2<S_3<\cdots$, that is, the partial sums are increasing.
+\end{thm}
+\begin{proof}
+$S_1=a_1$ by definition. For $n\ge2$,
+\[
+S_n-S_{n-1}=(a_1+\cdots+a_{n-1}+a_n)-(a_1+\cdots+a_{n-1})=a_n .
+\]
+If all $a_k>0$, then $S_n-S_{n-1}=a_n>0$, so $S_n>S_{n-1}$ for every $n\ge2$.
+\end{proof}
+
+\begin{thm}{Finite geometric sum}{geosum}
+For every real number $r\ne1$ and every integer $n\ge1$,
+\[
+1+r+r^2+\cdots+r^{n-1}=\frac{1-r^n}{1-r}.
+\]
+\end{thm}
+\begin{proof}
+Let $G=1+r+\cdots+r^{n-1}$. Multiply by $1-r$ and let the terms cancel in pairs:
+\[
+(1-r)G=(1+r+\cdots+r^{n-1})-(r+r^2+\cdots+r^{n})=1-r^n ,
+\]
+because every power $r^1,\dots,r^{n-1}$ appears once with each sign. Since $r\ne1$ we may divide by $1-r$.
+\end{proof}
+
+Consequently the partial sums of the geometric series $\sum_{k=1}^n a r^{k-1}$ are $S_n=a\,\dfrac{1-r^n}{1-r}$ when $r\ne1$.
+
+\begin{exmp}{Zeno's series}{zeno}
+Find the partial sums of $\frac12+\frac14+\frac18+\cdots=\sum_{k=1}^\infty\left(\frac12\right)^k$ and decide what the series adds up to.
+
+\textbf{Solution.} The first partial sums are $S_1=\frac12$, $S_2=\frac34$, $S_3=\frac78$: each time we fill half of the remaining gap to $1$. This suggests $S_n=1-\frac1{2^n}$. To prove it, use the finite geometric sum with first term $a=\frac12$ and ratio $r=\frac12$:
+\[
+S_n=\frac12\cdot\frac{1-(1/2)^n}{1-1/2}=1-\frac1{2^n}.
+\]
+%@ ex-zeno | simplify(Q(1,2)*(1-Q(1,2)**n)/(1-Q(1,2)) - (1 - 1/2**n)) == 0 | S_n=\frac12\cdot\frac{1-(1/2)^n}{1-1/2}=1-\frac1{2^n}.
+As $n\to\infty$, $\frac1{2^n}\to0$, so $S_n\to1$ and the series converges to $1$, in agreement with Zeno's room.
+\end{exmp}
+
+\begin{exmp}{A telescoping series}{tele}
+Find a formula for $S_n=\sum_{k=1}^{n}\dfrac1{k(k+1)}$ and the sum of the series.
+
+\textbf{Solution.} The key is the partial fraction identity $\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$, which holds because $\dfrac1k-\dfrac1{k+1}=\dfrac{(k+1)-k}{k(k+1)}$. Then the sum collapses:
+\[
+S_n=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+\left(\frac1n-\frac1{n+1}\right)=1-\frac1{n+1}=\frac n{n+1}.
+\]
+%@ ex-tele1 | simplify(1/(k*(k+1)) - (1/k - 1/(k+1))) == 0 | \dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}
+%@ ex-tele2 | simplify(summation(1/(k*(k+1)), (k, 1, n)) - n/(n+1)) == 0 | =1-\frac1{n+1}=\frac n{n+1}.
+Every term except the first and the last cancels with a neighbour. Since $\frac n{n+1}=1-\frac1{n+1}\to1$, the series converges to $1$.
+\end{exmp}
+
+\begin{exmp}{A repeating decimal as a series}{decimal}
+Write $0.333\ldots$ as a series and find its sum.
+
+\textbf{Solution.} $0.333\ldots=\frac3{10}+\frac3{100}+\frac3{1000}+\cdots$, a geometric series with $a=\frac3{10}$ and $r=\frac1{10}$. By the finite geometric sum,
+\[
+S_n=\frac3{10}\cdot\frac{1-10^{-n}}{1-\frac1{10}}=\frac{1-10^{-n}}{3}.
+\]
+%@ ex-dec | simplify(Q(3,10)*(1-Q(1,10)**n)/(1-Q(1,10)) - (1-Q(1,10)**n)/3) == 0 | S_n=\frac3{10}\cdot\frac{1-10^{-n}}{1-\frac1{10}}=\frac{1-10^{-n}}{3}.
+Since $10^{-n}\to0$, $S_n\to\frac13$. So ``$0.333\ldots=\frac13$'' is a true statement about the limit of the partial sums $0.3,\ 0.33,\ 0.333,\dots$
+\end{exmp}
+
+\begin{exmp}{From partial sums back to terms}{backsum}
+A series has partial sums $S_n=2n^2+n$. Find its terms $a_n$ and decide whether the series converges.
+
+\textbf{Solution.} By Theorem~\ref{thm:partial}, $a_1=S_1=3$ and, for $n\ge2$,
+\[
+a_n=S_n-S_{n-1}=(2n^2+n)-\big(2(n-1)^2+(n-1)\big)=4n-1 .
+\]
+%@ ex-back1 | expand((2*n**2+n) - (2*(n-1)**2+(n-1)) - (4*n-1)) == 0 | =(2n^2+n)-\big(2(n-1)^2+(n-1)\big)=4n-1
+The formula $4n-1$ also gives $a_1=3$, so it works for every $n\ge1$: the series is $3+7+11+15+\cdots$. The partial sums $2n^2+n$ grow without bound, so the series diverges. Check: $3+7+11=21=S_3=2(9)+3$.
+%@ ex-back2 | 3+7+11 == 2*3**2+3 | $3+7+11=21=S_3=2(9)+3$
+\end{exmp}
+
+\begin{kc}{Partial sums}{psums}
+(a) Use the finite geometric sum to find $S_n$ for $\sum_{k=1}^{n}3\left(\frac14\right)^{k-1}$ and compute $S_3$ both from the formula and directly. (b) A series has $S_n=n^2+2n$. Find $a_n$. (c) Is the series $1+2+3+\cdots$ (whose partial sums are $S_n=\frac{n(n+1)}2$) convergent?
+\end{kc}
+
+\begin{think}{Is $0.999\ldots$ equal to $1$?}{nines}
+Write $0.999\ldots$ as a series $\sum_{k=1}^\infty\frac9{10^k}$, find a formula for its partial sums, and say what the series equals. Then explain, in your own words, why this is not a contradiction of the feeling that $0.999\ldots$ is ``just below'' $1$.
+\end{think}
+
+\subsection*{Looking ahead}
+
+Everything in the rest of the chapter grows out of these two ideas. Section 10.2 develops the limit of a sequence rigorously, including a theorem that decides many questions at once: a bounded, increasing sequence converges (Theorem~\ref{app-thm:mct}). Since the partial sums of a series with positive terms are increasing (Theorem~\ref{thm:partial}), the same theorem will say that such a series converges exactly when its partial sums stay bounded. Later sections build tests that decide convergence without finding a formula for $S_n$, and Chapter 11 turns series into the road to power series: infinite sums of powers of $x$ that represent functions.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Explicit formulas} (Examples~\ref{ex:b1}--\ref{ex:b2}): terms, and solving $a_n=$ a given value.
+  \item \emph{Recurrences} (Examples~\ref{ex:b3}--\ref{ex:b4}): exact and numerical terms, and a first look at a limit.
+  \item \emph{Formulas from patterns} (Examples~\ref{ex:b5}--\ref{ex:b6}): quadratic, exponential and mixed patterns.
+  \item \emph{Limits from tables and graphs} (Examples~\ref{ex:b7}--\ref{ex:b8}): a convergent and a divergent sequence.
+  \item \emph{Models} (Examples~\ref{ex:b9}--\ref{ex:b10}): compound growth and a repeated drug dose.
+  \item \emph{Partial sums} (Examples~\ref{ex:b11}--\ref{ex:b12}): a telescoping and a geometric series.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}): induction proofs, one for a sum and one for a recurrence.
+\end{enumerate}
+
+\subsection*{Group 1: Explicit formulas}
+
+\begin{exmp}{Terms and a target value}{b1}
+For $a_n=n^2-3n$, list $a_1,\dots,a_5$ and find the $n$ for which $a_n=130$.
+
+\textbf{Solution.} Substituting, $a_1=-2$, $a_2=-2$, $a_3=0$, $a_4=4$, $a_5=10$; the sequence dips below zero at the start because $3n$ beats $n^2$ for $n=1,2$.
+%@ bank-1a | [i**2-3*i for i in range(1,6)] == [-2,-2,0,4,10] | a_1=-2$, $a_2=-2$, $a_3=0$, $a_4=4$, $a_5=10$
+To solve $n^2-3n=130$, move everything to one side: $n^2-3n-130=0$, which factors as $(n-13)(n+10)=0$. The root $n=-10$ is not a positive integer, so it is rejected, and $n=13$. Check: $13^2-39=169-39=130$.
+%@ bank-1b | solve(Symbol('y')**2-3*Symbol('y')-130) == [-10, 13] and 13**2-3*13 == 130 | Check: $13^2-39=169-39=130$
+\end{exmp}
+
+\begin{exmp}{Alternating signs and factorials}{b2}
+List the first four terms of $a_n=\dfrac{(-1)^n2^n}{n!}$ and say what happens to the size of the terms.
+
+\textbf{Solution.} The factor $(-1)^n$ gives the sign: negative for odd $n$, positive for even $n$. The size is $2^n/n!$. So
+\[
+a_1=-\frac21=-2,\quad a_2=\frac42=2,\quad a_3=-\frac86=-\frac43,\quad a_4=\frac{16}{24}=\frac23 .
+\]
+%@ bank-2a | [Q((-1)**i*2**i, factorial(i)) for i in range(1,5)] == [-2,2,-Q(4,3),Q(2,3)] | a_4=\frac{16}{24}=\frac23
+The size at first grows (from $2$ to $2$) and then shrinks, because each step multiplies the size by $\frac2{n+1}$: the ratio $\frac{2^{n+1}/(n+1)!}{2^n/n!}=\frac{2}{n+1}$ is less than $1$ once $n\ge2$. For example $\frac{2^6}{6!}=\frac{64}{720}=\frac4{45}$. The factorial eventually beats any power.
+%@ bank-2b | Q(2**6, factorial(6)) == Q(4,45) | \frac{2^6}{6!}=\frac{64}{720}=\frac4{45}
+\end{exmp}
+
+\subsection*{Group 2: Recurrences}
+
+\begin{exmp}{A recurrence with a surprise}{b3}
+Let $a_1=1$ and $a_{n+1}=\dfrac{a_n}{1+a_n}$. Find $a_2,a_3,a_4$ and guess a formula.
+
+\textbf{Solution.} $a_2=\dfrac{1}{1+1}=\dfrac12$. Then $a_3=\dfrac{1/2}{1+1/2}=\dfrac{1/2}{3/2}=\dfrac13$ and $a_4=\dfrac{1/3}{4/3}=\dfrac14$.
+%@ bank-3 | [Q(1,2), Q(1,2)/(1+Q(1,2)), Q(1,3)/(1+Q(1,3))] == [Q(1,2), Q(1,3), Q(1,4)] | $a_3=\dfrac{1/2}{1+1/2}=\dfrac{1/2}{3/2}=\dfrac13$ and $a_4=\dfrac{1/3}{4/3}=\dfrac14$.
+The pattern suggests $a_n=\dfrac1n$. This is only a guess from four terms (compare Pause and think~\ref{think:pattern}); we can prove it by induction: if $a_n=\frac1n$ then $a_{n+1}=\dfrac{1/n}{1+1/n}=\dfrac{1}{n+1}$. The guess is therefore correct.
+\end{exmp}
+
+\begin{exmp}{Repeated square roots}{b4}
+Let $a_1=1$ and $a_{n+1}=\sqrt{6+a_n}$. Compute $a_2,a_3,a_4,a_5$ to four decimals and guess the limit.
+
+\textbf{Solution.} Use a calculator at each step: $a_2=\sqrt7\approx2.6458$, $a_3=\sqrt{6+2.6458}\approx2.9404$, $a_4\approx2.9900$, $a_5\approx2.9983$.
+%@ bank-4 | abs(7**.5-2.6458)<1e-4 and abs((6+7**.5)**.5-2.9404)<1e-4 and abs((6+(6+7**.5)**.5)**.5-2.9901)<1e-4 | a_4\approx2.9900$, $a_5\approx2.9983$
+The terms increase and approach $3$. A reason for the guess: if $a_n\to L$ then also $a_{n+1}\to L$, so $L=\sqrt{6+L}$; squaring, $L^2-L-6=0$, that is $(L-3)(L+2)=0$. Since all terms are positive, $L=3$. (This argument assumes the limit exists; Section~10.2 shows when that is justified.)
+%@ bank-4b | expand((Symbol('L')-3)*(Symbol('L')+2)) == Symbol('L')**2 - Symbol('L') - 6 | $L^2-L-6=0$, that is $(L-3)(L+2)=0$
+\end{exmp}
+
+\subsection*{Group 3: Formulas from patterns}
+
+\begin{exmp}{A quadratic pattern}{b5}
+Find a formula for $2,\ 5,\ 10,\ 17,\ 26,\dots$
+
+\textbf{Solution.} The differences are $3,5,7,9$, increasing by $2$ each time, so the pattern is quadratic with leading term $n^2$. Comparing with $1,4,9,16,25$, each term is exactly $1$ larger: $a_n=n^2+1$. Check: $a_5=26$.
+%@ bank-5 | [i**2+1 for i in range(1,6)] == [2,5,10,17,26] | a_n=n^2+1$. Check: $a_5=26$
+\end{exmp}
+
+\begin{exmp}{Powers in the denominator and a shift}{b6}
+Find formulas for (a) $\frac13,\ \frac29,\ \frac3{27},\ \frac4{81},\dots$ and (b) $\frac32,\ \frac54,\ \frac98,\ \frac{17}{16},\dots$
+
+\textbf{Solution.} (a) Numerators $1,2,3,4$ and denominators $3,9,27,81=3^n$: $a_n=\dfrac n{3^n}$. (b) The denominators are $2^n$; the numerators $3,5,9,17$ are $2^n+1$ (that is, $2+1,4+1,8+1,16+1$). So $b_n=\dfrac{2^n+1}{2^n}=1+\dfrac1{2^n}$, which also shows the terms decrease toward $1$.
+%@ bank-6 | [Q(i,3**i) for i in range(1,5)] == [Q(1,3),Q(2,9),Q(1,9),Q(4,81)] and [1+Q(1,2**i) for i in range(1,5)] == [Q(3,2),Q(5,4),Q(9,8),Q(17,16)] | b_n=\dfrac{2^n+1}{2^n}=1+\dfrac1{2^n}
+\end{exmp}
+
+\subsection*{Group 4: Limits from tables and graphs}
+
+\begin{exmp}{A convergent sequence from a table}{b7}
+Estimate $\lim_{n\to\infty}\dfrac{5n}{2n+3}$.
+
+\textbf{Solution.} $a_{10}=\frac{50}{23}\approx2.1739$, $a_{100}=\frac{500}{203}\approx2.4631$, $a_{1000}=\frac{5000}{2003}\approx2.4963$. The terms increase toward $2.5$. Dividing numerator and denominator by $n$ gives $\dfrac{5}{2+3/n}$, and $\frac3n\to0$, so the limit is $\frac52$, which matches the table.
+%@ bank-7 | abs(float(Q(50,23))-2.1739)<1e-4 and abs(float(Q(500,203))-2.4631)<1e-4 and abs(float(Q(5000,2003))-2.4963)<1e-4 and limit(5*n/(2*n+3), n, oo) == Q(5,2) | a_{1000}=\frac{5000}{2003}\approx2.4963
+\end{exmp}
+
+\begin{exmp}{A divergent sequence}{b8}
+Examine $a_n=(-1)^n+\dfrac1n$ for large $n$.
+
+\textbf{Solution.} $a_2=1.5$, $a_3\approx-0.6667$, $a_{100}=1.01$, $a_{101}\approx-0.9901$. The even-numbered terms are near $1$ and the odd-numbered terms are near $-1$, so the terms do not settle down to one number: the sequence diverges. A graph shows two strings of dots, one hugging the line $y=1$ and one hugging $y=-1$. (If a limit $L$ existed, all large terms would be near $L$, and no number is within $\frac12$ of both $1$ and $-1$; this is made precise in Appendix~\ref{app-ex:divproof}.)
+%@ bank-8 | (-1)**100+1/100 == 1.01 and abs((-1)**101+1/101+0.9901)<1e-4 | $a_{100}=1.01$, $a_{101}\approx-0.9901$
+\end{exmp}
+
+\subsection*{Group 5: Models}
+
+\begin{exmp}{Compound growth}{b9}
+An account holds \$2000 and earns $3\%$ per year. Write the balance as a sequence and find when it first exceeds \$3000.
+
+\textbf{Solution.} Let $A_n$ be the balance after $n$ years. Each year the balance is multiplied by $1.03$, so $A_{n+1}=1.03A_n$ with $A_0=2000$: a geometric sequence, $A_n=2000(1.03)^n$. We need $2000(1.03)^n>3000$, that is $(1.03)^n>1.5$. Trying values, $A_{13}\approx2937.07<3000$ and $A_{14}\approx3025.18>3000$. So the balance first exceeds \$3000 after $14$ years. (Taking logarithms, $n>\ln1.5/\ln1.03\approx13.72$.)
+%@ bank-9 | abs(2000*1.03**13-2937.07)<0.01 and abs(2000*1.03**14-3025.18)<0.01 and abs(log(1.5)/log(1.03)-13.72)<0.01 | A_{13}\approx2937.07<3000$ and $A_{14}\approx3025.18>3000$
+\end{exmp}
+
+\begin{exmp}{A repeated dose}{b10}
+A patient takes 100 mg of a drug each morning, and each day the body removes $20\%$ of the drug present. Let $D_n$ be the amount just after the $n$th dose. Find $D_1,\dots,D_4$, and check that $D_n=500(1-0.8^n)$ fits.
+
+\textbf{Solution.} $D_1=100$. Each day $80\%$ remains, then $100$ mg is added: $D_{n+1}=0.8D_n+100$. So $D_2=0.8(100)+100=180$, $D_3=0.8(180)+100=244$, $D_4=0.8(244)+100=295.2$. The formula gives $500(1-0.8)=100$, $500(1-0.64)=180$, $500(1-0.512)=244$, $500(1-0.4096)=295.2$, all matching. As $n$ grows, $0.8^n\to0$, so the amounts approach $500$ mg: the dose never builds up without limit, because the body removes more each day as the level rises. (Proof that the formula is correct for all $n$: Example~\ref{ex:b14}.)
+%@ bank-10 | [100, 0.8*100+100, 0.8*(0.8*100+100)+100] == [100, 180, 244] and abs(0.8*244+100-295.2)<1e-9 and all(abs(500*(1-0.8**i)-v)<1e-9 for i,v in [(1,100),(2,180),(3,244),(4,295.2)]) | $500(1-0.4096)=295.2$, all matching
+\end{exmp}
+
+\subsection*{Group 6: Partial sums}
+
+\begin{exmp}{A telescoping series with step $2$}{b11}
+Find $S_n=\sum_{k=1}^n\dfrac1{(2k-1)(2k+1)}$ and the sum of the series.
+
+\textbf{Solution.} Partial fractions: $\dfrac1{(2k-1)(2k+1)}=\dfrac12\left(\dfrac1{2k-1}-\dfrac1{2k+1}\right)$, since the bracket equals $\dfrac{(2k+1)-(2k-1)}{(2k-1)(2k+1)}=\dfrac2{(2k-1)(2k+1)}$. The sum telescopes:
+\[
+S_n=\frac12\left[\left(1-\frac13\right)+\left(\frac13-\frac15\right)+\cdots+\left(\frac1{2n-1}-\frac1{2n+1}\right)\right]=\frac12\left(1-\frac1{2n+1}\right)=\frac n{2n+1}.
+\]
+%@ bank-11 | simplify(summation(1/((2*k-1)*(2*k+1)), (k, 1, n)) - n/(2*n+1)) == 0 and simplify(1/((2*k-1)*(2*k+1)) - (1/(2*k-1) - 1/(2*k+1))/2) == 0 | =\frac12\left(1-\frac1{2n+1}\right)=\frac n{2n+1}
+Check with $n=3$: $\frac11\!\cdot\!\frac13+\frac13\!\cdot\!\frac15+\frac15\!\cdot\!\frac17=\frac13+\frac1{15}+\frac1{35}=\frac37$, and $\frac3{2\cdot3+1}=\frac37$. Since $\frac n{2n+1}\to\frac12$, the series converges to $\frac12$.
+%@ bank-11b | Q(1,3)+Q(1,15)+Q(1,35) == Q(3,7) and limit(n/(2*n+1), n, oo) == Q(1,2) | \frac13+\frac1{15}+\frac1{35}=\frac37
+\end{exmp}
+
+\begin{exmp}{A geometric series}{b12}
+Find $S_n$ for $\sum_{k=1}^n5\left(\frac23\right)^{k-1}$, check $S_4$, and decide what the series adds up to.
+
+\textbf{Solution.} With $a=5$ and $r=\frac23$ the finite geometric sum gives
+\[
+S_n=5\cdot\frac{1-(2/3)^n}{1-2/3}=15\left(1-\left(\frac23\right)^n\right).
+\]
+%@ bank-12a | simplify(5*(1-Q(2,3)**n)/(1-Q(2,3)) - 15*(1-Q(2,3)**n)) == 0 | S_n=5\cdot\frac{1-(2/3)^n}{1-2/3}=15\left(1-\left(\frac23\right)^n\right).
+Directly, $S_4=5\left(1+\frac23+\frac49+\frac8{27}\right)=5\cdot\frac{65}{27}=\frac{325}{27}$, and the formula gives $15\left(1-\frac{16}{81}\right)=15\cdot\frac{65}{81}=\frac{325}{27}$. \ $\checkmark$
+%@ bank-12b | 5*(1+Q(2,3)+Q(4,9)+Q(8,27)) == Q(325,27) and 15*(1-Q(16,81)) == Q(325,27) | $15\left(1-\frac{16}{81}\right)=15\cdot\frac{65}{81}=\frac{325}{27}$
+Because $(2/3)^n\to0$, $S_n\to15$, so the series converges and its sum is $15$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Induction: the sum of the first $n$ odd numbers}{b13}
+Prove that $1+3+5+\cdots+(2n-1)=n^2$ for every integer $n\ge1$.
+
+\begin{proof}
+\emph{Base case} $n=1$: the left side is $1$ and the right side is $1^2=1$.
+
+\emph{Inductive step.} Assume the formula holds for some $n\ge1$, that is $1+3+\cdots+(2n-1)=n^2$. The next term is $2(n+1)-1=2n+1$. Adding it to both sides,
+\[
+1+3+\cdots+(2n-1)+(2n+1)=n^2+2n+1=(n+1)^2 ,
+\]
+which is the formula for $n+1$. By induction the formula holds for all $n\ge1$.
+\end{proof}
+%@ bank-13 | expand(n**2 + (2*n+1) - (n+1)**2) == 0 and summation(2*k-1,(k,1,n)) == n**2 | n^2+2n+1=(n+1)^2
+In terms of partial sums, this says the series $1+3+5+\cdots$ has $S_n=n^2$, and then Theorem~\ref{thm:partial} recovers $a_n=n^2-(n-1)^2=2n-1$.
+\end{exmp}
+
+\begin{exmp}{Induction on a recurrence}{b14}
+Prove that if $D_1=100$ and $D_{n+1}=0.8D_n+100$, then $D_n=500(1-0.8^n)$ for all $n\ge1$.
+
+\begin{proof}
+\emph{Base case} $n=1$: $500(1-0.8)=500(0.2)=100=D_1$.
+
+\emph{Inductive step.} Assume $D_n=500(1-0.8^n)$. Then
+\begin{align*}
+D_{n+1}&=0.8D_n+100=0.8\cdot500(1-0.8^n)+100\\
+&=400-500(0.8^{n+1})+100=500-500(0.8^{n+1})=500\left(1-0.8^{n+1}\right),
+\end{align*}
+using $0.8\cdot0.8^n=0.8^{n+1}$ and $0.8\cdot500=400$. This is the formula for $n+1$, so by induction it holds for all $n\ge1$.
+\end{proof}
+%@ bank-14 | simplify(Q(8,10)*500*(1-Q(8,10)**n) + 100 - 500*(1-Q(8,10)**(n+1))) == 0 | =500-500(0.8^{n+1})=500\left(1-0.8^{n+1}\right)
+This is the formula guessed in Example~\ref{ex:b10}; the proof shows that it was not an accident of the first four terms. A general formula of this type is proved in Section~10.2.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:terms}.] (a) $b_2=2(4)-3=5$, $b_3=2(5)-3=7$, $b_4=2(7)-3=11$, so $4,5,7,11$. (b) The common difference is $-3$ and the first term is $10$, so $a_n=10-3(n-1)=13-3n$; check $n=4$: $13-12=1$. (c) By Theorem~\ref{thm:closed}(b), $a_7=64\left(\frac12\right)^6=1$.
+%@ ans-terms | [2*4-3, 2*5-3, 2*7-3]==[5,7,11] and 13-3*4==1 and 64*Q(1,2)**6==1 | a_7=64\left(\frac12\right)^6=1
+  \item[Knowledge Check \ref{kc:limits}.] (a) $a_{10}=\frac{39}{15}=2.6$, $a_{100}=\frac{399}{105}\approx3.8$, $a_{1000}=\frac{3999}{1005}\approx3.979$; the estimate is $4$ (dividing top and bottom by $n$ gives $\frac{4-1/n}{1+5/n}\to4$). (b) A finite table shows only finitely many terms, and the behaviour for larger $n$ could differ (Pause and think~\ref{think:table}). (c) The even-numbered terms are close to $+1$ ($c_{100}=\frac{100}{101}$) and the odd-numbered ones close to $-1$, so no single number attracts all large terms: $\{c_n\}$ diverges.
+%@ ans-limits | Q(39,15)==Q(13,5) and abs(float(Q(399,105))-3.8)<1e-9 and abs(float(Q(3999,1005))-3.979)<1e-3 and limit((4*n-1)/(n+5),n,oo)==4 | a_{1000}=\frac{3999}{1005}\approx3.979
+  \item[Knowledge Check \ref{kc:psums}.] (a) With $a=3$, $r=\frac14$: $S_n=3\cdot\frac{1-(1/4)^n}{3/4}=4\left(1-4^{-n}\right)$. Formula: $S_3=4\left(1-\frac1{64}\right)=\frac{63}{16}$. Direct: $3+\frac34+\frac3{16}=\frac{48+12+3}{16}=\frac{63}{16}$. (b) $a_1=S_1=3$ and, for $n\ge2$, $a_n=(n^2+2n)-\big((n-1)^2+2(n-1)\big)=2n+1$; this also gives $a_1=3$, so $a_n=2n+1$ for all $n$. (c) No: $S_n=\frac{n(n+1)}2\to\infty$, so the partial sums have no finite limit and the series diverges.
+%@ ans-psums | 4*(1-Q(1,64))==Q(63,16) and 3+Q(3,4)+Q(3,16)==Q(63,16) and simplify((n**2+2*n)-((n-1)**2+2*(n-1))-(2*n+1))==0 | 3+\frac34+\frac3{16}=\frac{48+12+3}{16}
+  \item[Pause and think \ref{think:pattern}.] The doubling pattern predicts $32$ for $n=6$. The formula gives $1,2,4,8,16$ at $n=1,\dots,5$, and at $n=6$ it gives $\frac{744}{24}=31$ (the numerator is $1296-1296+828-108+24$). So two different rules agree on five terms and disagree on the sixth: finitely many terms never determine a sequence. A pattern is a conjecture to be proved, for instance by induction, as in Example~\ref{ex:b3}.
+%@ ans-pattern | all(Q(i**4-6*i**3+23*i**2-18*i+24,24)==2**(i-1) for i in range(1,6)) and Q(6**4-6*6**3+23*36-18*6+24,24)==31 | at $n=6$ it gives $\frac{744}{24}=31$
+  \item[Pause and think \ref{think:table}.] $a_{10}=5.000000001$, $a_{1000}=5.0000001$ and $a_{10^6}=5.0001$. A table of these values suggests the limit $5$. But $a_n=5+\frac n{10^{10}}$ grows without bound: once $n>10^{11}$ the term exceeds $15$. So the sequence diverges, and a table that stops at $10^6$ cannot see it.
+%@ ans-table | abs((5+10/10**10)-5.000000001)<1e-12 and abs((5+10**6/10**10)-5.0001)<1e-12 and 5+10**11/10**10==15 | a_{10^6}=5.0001
+  \item[Pause and think \ref{think:nines}.] The partial sums are $S_n=9\left(\frac1{10}+\cdots+\frac1{10^n}\right)=\frac9{10}\cdot\frac{1-10^{-n}}{1-\frac1{10}}=1-10^{-n}$, and $1-10^{-n}\to1$, so the series equals $1$. Each partial sum ($0.9,\ 0.99,\ 0.999,\dots$) is below $1$, and that is the source of the feeling; but the series is not any partial sum. Its value is the limit of the partial sums, and the limit of numbers that creep up to $1$, getting and staying as close to it as we like, is $1$. Nothing sits strictly between $0.999\ldots$ and $1$.
+%@ ans-nines | simplify(Q(9,10)*(1-Q(1,10)**n)/(1-Q(1,10)) - (1-Q(1,10)**n))==0 and limit(1-Q(1,10)**n,n,oo)==1 | \frac9{10}\cdot\frac{1-10^{-n}}{1-\frac1{10}}
+\end{description}
+
+\end{document}
