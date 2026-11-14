@@ -10,7 +10,7 @@
       
       
       
-        <link rel="prev" href="../../10.6/notes/">
+        <link rel="prev" href="../../10.7/notes/">
       
       
       
@@ -788,6 +788,90 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -916,6 +1000,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix-e-limits-of-n-th-roots" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix E. Limits of <span class="arithmatex">\(n\)</span>-th Roots
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1019,6 +1114,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix-e-limits-of-n-th-roots" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix E. Limits of <span class="arithmatex">\(n\)</span>-th Roots
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1040,7 +1146,7 @@
 <p><a href="../appendix.pdf">Download the PDF version</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Guiding question</p>
-<p>Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Nothing here is needed to <em>use</em> the facts, only to see why they are true.</p>
+<p>Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of <span class="arithmatex">\(n\)</span>-th roots (such as <span class="arithmatex">\(n^{1/n}\to1\)</span>) that the Root Test needs. Nothing here is needed to <em>use</em> the facts, only to see why they are true.</p>
 </div>
 <h2 id="appendix-a-completeness-and-the-monotone-convergence-theorem">Appendix A. Completeness and the Monotone Convergence Theorem<a class="headerlink" href="#appendix-a-completeness-and-the-monotone-convergence-theorem" title="Permanent link">&para;</a></h2>
 <div class="admonition definition">
@@ -1326,6 +1432,46 @@
 <p><span id="ex-aim"></span></p>
 <p>Follow the sketch for the alternating harmonic series with the target <span class="arithmatex">\(A=\frac32\)</span>, and list the first stages.</p>
 <p><strong>Solution.</strong> The positive terms are <span class="arithmatex">\(1,\frac13,\frac15,\dots\)</span> and the negative terms are <span class="arithmatex">\(-\frac12,-\frac14,\dots\)</span> Add positive terms until the total exceeds <span class="arithmatex">\(\frac32\)</span>: <span class="arithmatex">\(1+\frac13=\frac43&lt;\frac32\)</span>, and <span class="arithmatex">\(\frac43+\frac15=\frac{23}{15}\approx1.533&gt;\frac32\)</span>. Now add negative terms until the total drops below <span class="arithmatex">\(\frac32\)</span>: already the first one does, <span class="arithmatex">\(\frac{23}{15}-\frac12=\frac{31}{30}\approx1.033&lt;\frac32\)</span>. Add positive terms again: <span class="arithmatex">\(\frac{31}{30}+\frac17+\frac19+\frac1{11}+\frac1{13}\approx1.4551&lt;\frac32\)</span>, and one more, <span class="arithmatex">\(\frac1{15}\)</span>, gives <span class="arithmatex">\(\approx1.5218&gt;\frac32\)</span>. The series begins <span class="arithmatex">\(1+\frac13+\frac15-\frac12+\frac17+\frac19+\frac1{11}+\frac1{13}+\frac1{15}-\frac14+\cdots\)</span>, and its totals swing around <span class="arithmatex">\(\frac32\)</span> by smaller and smaller amounts (a computer run of <span class="arithmatex">\(10^5\)</span> terms ends within <span class="arithmatex">\(10^{-4}\)</span> of <span class="arithmatex">\(\frac32\)</span>).</p>
+</div>
+<h2 id="appendix-e-limits-of-n-th-roots">Appendix E. Limits of <span class="arithmatex">\(n\)</span>-th Roots<a class="headerlink" href="#appendix-e-limits-of-n-th-roots" title="Permanent link">&para;</a></h2>
+<p>The Root Test asks for the limit of <span class="arithmatex">\(\abs{a_k}^{1/k}\)</span>, and for the common terms of series (powers of <span class="arithmatex">\(k\)</span> times a constant, or a rational function of <span class="arithmatex">\(k\)</span>) that limit is <span class="arithmatex">\(\lim n^{1/n}\)</span> or one very close to it. This section proves the limits that are needed, using only the Squeeze Theorem (Theorem <a href="#thm-squeeze">B.5</a>), the limit laws (Theorem <a href="#thm-laws">B.4</a>), limits of <span class="arithmatex">\(f(a_n)\)</span> (Theorem <a href="#thm-fofa">B.6</a>) and the binomial theorem. One further limit is used in the section on the Ratio and Root Tests and is <em>not</em> proved here: <span class="arithmatex">\(\left(1+\frac1n\right)^n\to e\)</span>, which is how the number <span class="arithmatex">\(e\)</span> is defined in Calculus I.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem E.1: The limit of <span class="arithmatex">\(n^{1/n}\)</span></p>
+<p><span id="thm-nthroot"></span></p>
+<p><span class="arithmatex">\(\displaystyle\lim_{n\to\infty}n^{1/n}=1\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(n\ge2\)</span> and write <span class="arithmatex">\(n^{1/n}=1+h_n\)</span>. Since <span class="arithmatex">\(n\ge1\)</span>, we have <span class="arithmatex">\(n^{1/n}\ge1\)</span>, so <span class="arithmatex">\(h_n\ge0\)</span>. By the binomial theorem, all of whose terms are nonnegative here,</p>
+<div class="arithmatex">\[n=(1+h_n)^n=1+nh_n+\binom n2h_n^2+\cdots\ \ge\ \binom n2h_n^2=\frac{n(n-1)}2\,h_n^2 .\]</div>
+<p>Dividing by <span class="arithmatex">\(\frac{n(n-1)}2&gt;0\)</span> gives <span class="arithmatex">\(h_n^2\le\frac2{n-1}\)</span>, so <span class="arithmatex">\(0\le h_n\le\sqrt{2/(n-1)}\)</span>, that is,</p>
+<div class="arithmatex">\[1\le n^{1/n}\le1+\sqrt{\frac2{n-1}} .\]</div>
+<p>The right side tends to <span class="arithmatex">\(1\)</span> (limit laws, and Theorem <a href="#thm-fofa">B.6</a>(a) for the square root, which is continuous at <span class="arithmatex">\(0\)</span>). By the Squeeze Theorem, <span class="arithmatex">\(n^{1/n}\to1\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem E.2: Roots of constants</p>
+<p><span id="thm-croot"></span></p>
+<p>If <span class="arithmatex">\(c&gt;0\)</span>, then <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}c^{1/n}=1\)</span>.</p>
+</div>
+<p><em>Proof.</em> Suppose first that <span class="arithmatex">\(c\ge1\)</span>. For every <span class="arithmatex">\(n\ge c\)</span> we have <span class="arithmatex">\(1\le c\le n\)</span>, and <span class="arithmatex">\(t\mapsto t^{1/n}\)</span> is increasing, so <span class="arithmatex">\(1\le c^{1/n}\le n^{1/n}\)</span>. Both outer sequences tend to <span class="arithmatex">\(1\)</span> (Theorem <a href="#thm-nthroot">E.1</a>), so <span class="arithmatex">\(c^{1/n}\to1\)</span> by the Squeeze Theorem. Now suppose <span class="arithmatex">\(0&lt;c&lt;1\)</span>. Then <span class="arithmatex">\(\frac1c&gt;1\)</span>, so <span class="arithmatex">\(\left(\frac1c\right)^{1/n}\to1\)</span> by the first case, and</p>
+<div class="arithmatex">\[c^{1/n}=\frac1{(1/c)^{1/n}}\to\frac11=1\]</div>
+<p>by the limit laws. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem E.3: Roots of powers times a positive limit</p>
+<p><span id="thm-posroot"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be a real number and let <span class="arithmatex">\(c_n&gt;0\)</span> with <span class="arithmatex">\(c_n\to L\)</span>, where <span class="arithmatex">\(L&gt;0\)</span>. Then <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(n^pc_n\right)^{1/n}=1\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>The factor <span class="arithmatex">\(c_n\)</span>.</em> Take <span class="arithmatex">\(\varepsilon=\frac L2\)</span> in the definition of the limit: there is <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\frac L2&lt;c_n&lt;\frac{3L}2\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. Raising to the power <span class="arithmatex">\(\frac1n\)</span> (an increasing operation), <span class="arithmatex">\(\left(\frac L2\right)^{1/n}&lt;c_n^{1/n}&lt;\left(\frac{3L}2\right)^{1/n}\)</span>. Both outer sequences tend to <span class="arithmatex">\(1\)</span> (Theorem <a href="#thm-croot">E.2</a>), so <span class="arithmatex">\(c_n^{1/n}\to1\)</span> by the Squeeze Theorem.</p>
+<p><em>The factor <span class="arithmatex">\(n^p\)</span>.</em> <span class="arithmatex">\((n^p)^{1/n}=\left(n^{1/n}\right)^p\to1^p=1\)</span>, by Theorem <a href="#thm-nthroot">E.1</a> and Theorem <a href="#thm-fofa">B.6</a>(a) applied to <span class="arithmatex">\(y\mapsto y^p\)</span>, which is continuous at <span class="arithmatex">\(1\)</span>.</p>
+<p><em>Product.</em> For positive numbers <span class="arithmatex">\((xy)^{1/n}=x^{1/n}y^{1/n}\)</span>, so <span class="arithmatex">\(\left(n^pc_n\right)^{1/n}=\left(n^{1/n}\right)^p\,c_n^{1/n}\to1\cdot1=1\)</span> by the product law. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example E.4: How slowly <span class="arithmatex">\(n^{1/n}\)</span> approaches <span class="arithmatex">\(1\)</span></p>
+<p><span id="ex-nrtable"></span></p>
+<p>Compute <span class="arithmatex">\(n^{1/n}\)</span> for <span class="arithmatex">\(n=2,3,10,100,1000\)</span> and compare with the bound in the proof.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(2^{1/2}\approx1.4142\)</span>, <span class="arithmatex">\(3^{1/3}\approx1.4423\)</span>, <span class="arithmatex">\(10^{1/10}\approx1.2589\)</span>, <span class="arithmatex">\(100^{1/100}\approx1.0471\)</span>, <span class="arithmatex">\(1000^{1/1000}\approx1.0069\)</span>. The sequence first <em>rises</em> (to its largest value at <span class="arithmatex">\(n=3\)</span>, because <span class="arithmatex">\(\frac{\ln x}x\)</span> has its maximum at <span class="arithmatex">\(x=e\)</span>) and only then falls to <span class="arithmatex">\(1\)</span>, and it falls slowly. The bound <span class="arithmatex">\(1+\sqrt{2/(n-1)}\)</span> is valid but crude: at <span class="arithmatex">\(n=1000\)</span> it is <span class="arithmatex">\(\approx1.0447\)</span>, while the true value is <span class="arithmatex">\(1.0069\)</span>. So the limit is a statement about very large <span class="arithmatex">\(n\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example E.5: Roots of rational expressions</p>
+<p><span id="ex-nrex"></span></p>
+<p>Find (a) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(\frac{3n^2+1}{n^2+5}\right)^{1/n}\)</span>, (b) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(7n^{10}\right)^{1/n}\)</span>, (c) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(\frac{5n+1}{n^4}\right)^{1/n}\)</span>.</p>
+<p><strong>Solution.</strong> (a) The fraction tends to <span class="arithmatex">\(3&gt;0\)</span>, so with <span class="arithmatex">\(p=0\)</span> Theorem <a href="#thm-posroot">E.3</a> gives <span class="arithmatex">\(1\)</span>. (b) Take <span class="arithmatex">\(p=10\)</span> and <span class="arithmatex">\(c_n=7\)</span>: the limit is <span class="arithmatex">\(1\)</span>. (c) Write <span class="arithmatex">\(\frac{5n+1}{n^4}=n^{-3}\left(5+\frac1n\right)\)</span>: here <span class="arithmatex">\(p=-3\)</span> and <span class="arithmatex">\(c_n=5+\frac1n\to5&gt;0\)</span>, so the limit is <span class="arithmatex">\(1\)</span>. In every case the root of a quantity that is only polynomial in <span class="arithmatex">\(n\)</span> is <span class="arithmatex">\(1\)</span> in the limit, and only a genuinely exponential factor (<span class="arithmatex">\(2^n\)</span>, <span class="arithmatex">\(\left(1+\frac1n\right)^{n^2}\)</span>, …) changes the answer.</p>
 </div>
 
 

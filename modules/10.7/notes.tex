@@ -1,0 +1,448 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{7}{The Ratio and Root Tests}
+\calcxdoc{10.6}
+\calcxdoc{10.5}
+\calcxdoc{10.4}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+\calcxapp
+
+\begin{document}
+
+\section{The Ratio and Root Tests}
+
+\begin{guide}
+Try the Integral Test on $\sum\frac{7^k}{k!}$: there is no antiderivative of $\frac1{k!}$ in sight. Try a comparison test: which simple series should $\frac{7^k}{k!}$ be compared with? The Ratio and Root Tests avoid both questions. They build the comparison series, a geometric series, out of the series itself. If each term is about a fixed fraction $r<1$ of the one before, the series behaves like $\sum r^k$ and converges; if the terms grow, it diverges. Both tests work with absolute values, so they apply to terms of any sign, and what they prove is \emph{absolute} convergence. They are the standard tools for factorials, exponentials and $k$-th powers, and the chapter on power series is built on them.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item apply the Ratio Test and the Root Test, including the algebra of factorials and the limits $\left(1+\frac1k\right)^k\to e$ and $k^{1/k}\to1$;
+  \item prove both tests by comparison with a geometric series, and say exactly what each case proves;
+  \item explain why $r=1$ is inconclusive and why neither test can prove conditional convergence;
+  \item choose between the two tests, and between these tests and the earlier ones;
+  \item describe how the tests will give the radius of convergence of a power series.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The idea: successive terms and a geometric series}
+
+In the geometric series $\sum ar^k$ every term is $r$ times the one before: $\abs{a_{k+1}/a_k}=\abs r$ for all $k$. The series converges exactly when $\abs r<1$. Now take $\sum\frac{7^k}{k!}$. The ratio of successive terms is $\frac{7^{k+1}}{(k+1)!}\cdot\frac{k!}{7^k}=\frac7{k+1}$, which is $\frac72,\frac73,\frac74,\dots$ and keeps shrinking: from $k=13$ on it is below $\frac12$. So from there on each term is less than half the previous one, and the tail is smaller than a geometric series with ratio $\frac12$. That observation is the whole proof. The theorem makes it precise.
+
+\begin{remark}[Factorial arithmetic]
+$k!=k(k-1)\cdots2\cdot1$ and $0!=1$. Since $(k+1)!=(k+1)\,k!$, we get $\frac{(k+1)!}{k!}=k+1$, $\ \frac{(k+2)!}{k!}=(k+2)(k+1)$, $\ \frac{k!}{(k+1)!}=\frac1{k+1}$ and $\frac{(2k+2)!}{(2k)!}=(2k+2)(2k+1)$. Be careful: $(2k)!\ne2\,k!$ and $(k!)^2\ne(2k)!$; for $k=2$, $2!\,2!=4$ but $4!=24$. For powers, $\frac{(k+1)^{k+1}}{k^k}=(k+1)\left(1+\frac1k\right)^k$, and $\left(1+\frac1k\right)^k\to e$ (the Calculus I definition of $e$).
+%@ fa-a | all(factorial(j+2)/factorial(j) == (j+2)*(j+1) and factorial(2*j+2)/factorial(2*j) == (2*j+2)*(2*j+1) and Q((j+1)**(j+1),j**j) == (j+1)*Q(j+1,j)**j for j in range(1,15)) and factorial(2)*factorial(2) == 4 and factorial(4) == 24 | but $4!=24$
+\end{remark}
+
+\begin{thm}{Ratio Test}{ratio}
+Let $\sum a_k$ be a series with $a_k\ne0$ for all $k$, and suppose that
+\[
+r=\lim_{k\to\infty}\abs{\frac{a_{k+1}}{a_k}}
+\]
+exists (or is $\infty$).
+\begin{enumerate}
+  \item If $r<1$, the series converges absolutely, and therefore it converges.
+  \item If $r>1$ (including $r=\infty$), the series diverges.
+  \item If $r=1$, the test is inconclusive: the series may converge or diverge.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\emph{Case 1} ($r<1$). Choose a number $\rho$ with $r<\rho<1$, for example $\rho=\frac{1+r}2$. Because $\abs{a_{k+1}/a_k}\to r<\rho$, there is an index $K$ such that $\abs{a_{k+1}}<\rho\abs{a_k}$ for all $k\ge K$. Then $\abs{a_{K+j}}\le\rho^j\abs{a_K}$ for $j=0,1,2,\dots$: this is true for $j=0$, and if it is true for $j$ then $\abs{a_{K+j+1}}<\rho\abs{a_{K+j}}\le\rho^{j+1}\abs{a_K}$. The series $\sum_{j=0}^\infty\abs{a_K}\rho^j$ is geometric with $0<\rho<1$, so it converges (Theorem~\ref{10.3-thm:geoseries}). By the Comparison Test (Theorem~\ref{10.5-thm:comp}), $\sum_{j=0}^\infty\abs{a_{K+j}}$ converges. Adding the finitely many terms $\abs{a_1},\dots,\abs{a_{K-1}}$ does not change convergence (Theorem~\ref{10.3-thm:props}(5)), so $\sum\abs{a_k}$ converges. That is absolute convergence, and absolute convergence implies convergence (Theorem~\ref{10.6-thm:absconv}).
+
+\emph{Case 2} ($r>1$, including $r=\infty$). Because the ratios tend to a limit larger than $1$ (or to $\infty$), there is $K$ with $\abs{a_{k+1}/a_k}>1$ for all $k\ge K$. Then $\abs{a_{k+1}}>\abs{a_k}$ for $k\ge K$, so $\abs{a_k}\ge\abs{a_K}>0$ for every $k\ge K$. The terms do not tend to $0$, and the series diverges by the Divergence Test (Theorem~\ref{10.4-thm:divtest}).
+
+\emph{Case 3} ($r=1$). We show that $r=1$ occurs both for a divergent and for a convergent series, so $r=1$ decides nothing. For $\sum\frac1k$, $\abs{a_{k+1}/a_k}=\frac k{k+1}\to1$, and the series diverges (harmonic series). For $\sum\frac1{k^2}$, $\abs{a_{k+1}/a_k}=\left(\frac k{k+1}\right)^2\to1$, and the series converges (Theorem~\ref{10.4-thm:pseries}, $p=2$).
+%@ ratio-3 | limit(Q(1,1)*k/(k+1),k,oo) == 1 and limit((k/(k+1))**2,k,oo) == 1 | \left(\frac k{k+1}\right)^2\to1
+\end{proof}
+
+The proof uses a number $\rho$ \emph{strictly between} $r$ and $1$: the ratios are eventually below $\rho$, and a geometric series with ratio $\rho$ is available. When $r=1$ there is no room for such a $\rho$, which is why the case fails.
+
+\begin{think}{Below one is not enough}{strict}
+The ratios $\frac k{k+1}$ of the harmonic series are below $1$ for \emph{every} $k$, yet the series diverges. Where does the proof of Case~1 need $r<1$ rather than ``every ratio is below $1$''?
+\end{think}
+
+\begin{exmp}{The Ratio Test with factorials}{ratfact}
+Decide whether each series converges: (a)~$\displaystyle\sum_{k=1}^\infty\frac{7^k}{k!}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{k!}{100^k}$.
+
+\textbf{Solution.} (a) The terms are positive, and
+\[
+\frac{a_{k+1}}{a_k}=\frac{7^{k+1}}{(k+1)!}\cdot\frac{k!}{7^k}=\frac7{k+1}\to0=r .
+\]
+%@ ex1a | all(Q(7**(j+1),factorial(j+1))/Q(7**j,factorial(j)) == Q(7,j+1) for j in range(1,30)) and limit(Q(7,1)/(k+1),k,oo) == 0 | \frac7{k+1}\to0=r
+Since $r=0<1$, the series converges absolutely. (The terms grow at first, $a_6=a_7=\frac{117649}{720}\approx163.4$, and then collapse. The Ratio Test only looks at the tail.)
+%@ ex1a2 | abs(float(Q(117649,720))-163.4)<0.1 and Q(7**7,factorial(7)) == Q(117649,720) and Q(7**6,factorial(6)) == Q(117649,720) | $a_6=a_7=\frac{117649}{720}\approx163.4$
+(b) Now
+\[
+\frac{a_{k+1}}{a_k}=\frac{(k+1)!}{100^{k+1}}\cdot\frac{100^k}{k!}=\frac{k+1}{100}\to\infty .
+\]
+%@ ex1b | all(Q(factorial(j+1),100**(j+1))/Q(factorial(j),100**j) == Q(j+1,100) for j in range(1,30)) and Q(1,100)*(99+1) == 1 | \frac{k+1}{100}\to\infty
+So $r=\infty>1$ and the series diverges. The first hundred terms shrink, to about $9.3\times10^{-43}$ at $k=100$, but then they grow without bound: $a_{300}\approx3.1\times10^{14}$.
+%@ ex1b2 | abs(float(factorial(100)/Integer(100)**100)/9.3e-43-1)<0.01 and abs(float(factorial(300)/Integer(100)**300)/3.1e14-1)<0.02 and Q(100,100) == 1 | $a_{300}\approx3.1\times10^{14}$
+\end{exmp}
+
+\begin{exmp}{Powers against exponentials}{ratpow}
+Decide whether each series converges: (a)~$\displaystyle\sum_{k=1}^\infty\frac{k^3}{2^k}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac{5^k}{k^4+1}$.
+
+\textbf{Solution.} (a) The ratio is
+\[
+\frac{(k+1)^3}{2^{k+1}}\cdot\frac{2^k}{k^3}=\frac12\left(1+\frac1k\right)^3\to\frac12 .
+\]
+%@ ex2a | all(Q((j+1)**3,2**(j+1))/Q(j**3,2**j) == Q(1,2)*Q(j+1,j)**3 for j in range(1,30)) and limit(Q(1,2)*(1+1/k)**3,k,oo) == Q(1,2) | \to\frac12 .
+Since $r=\frac12<1$ the series converges absolutely. The test does not give the sum; the partial sums approach $26$ (numerically).
+%@ ex2a2 | abs(float(sum(Q(j**3,2**j) for j in range(1,200)))-26)<1e-6 and Q(52,2) == 26 | the partial sums approach $26$
+(b) Use the absolute values $\abs{a_k}=\frac{5^k}{k^4+1}$:
+\[
+\abs{\frac{a_{k+1}}{a_k}}=\frac{5^{k+1}}{(k+1)^4+1}\cdot\frac{k^4+1}{5^k}=5\cdot\frac{k^4+1}{(k+1)^4+1}\to5 .
+\]
+%@ ex2b | all(Q(5**(j+1),(j+1)**4+1)/Q(5**j,j**4+1) == 5*Q(j**4+1,(j+1)**4+1) for j in range(1,30)) and limit(5*(k**4+1)/((k+1)**4+1),k,oo) == 5 | \cdot\frac{k^4+1}{(k+1)^4+1}\to5
+Since $r=5>1$, the series diverges. The alternating signs do not help: $\abs{a_k}\to\infty$, so the terms do not tend to $0$.
+\end{exmp}
+
+\begin{exmp}{A factorial against $k^k$}{ratkk}
+For which of $c=2$ and $c=3$ does $\displaystyle\sum_{k=1}^\infty\frac{c^k\,k!}{k^k}$ converge?
+
+\textbf{Solution.} With $a_k=\frac{c^kk!}{k^k}$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{c^{k+1}(k+1)!}{(k+1)^{k+1}}\cdot\frac{k^k}{c^kk!}=c\,\frac{(k+1)\,k^k}{(k+1)^{k+1}}=c\left(\frac k{k+1}\right)^k=\frac c{(1+1/k)^k}\to\frac ce .
+\]
+%@ ex3 | all(Q(2**(j+1)*factorial(j+1),(j+1)**(j+1))/Q(2**j*factorial(j),j**j) == 2*Q(j,j+1)**j for j in range(1,20)) and limit(2*(k/(k+1))**k,k,oo) == 2*exp(-1) | \to\frac ce
+Here $\left(1+\frac1k\right)^k\to e\approx2.718$. For $c=2$, $r=\frac2e\approx0.736<1$: the series converges absolutely. For $c=3$, $r=\frac3e\approx1.104>1$: the series diverges. (For $c=e$ the test gives $r=1$ and says nothing.)
+%@ ex3b | abs(float(2/E)-0.736)<1e-3 and abs(float(3/E)-1.104)<1e-3 and limit(3*(k/(k+1))**k,k,oo) == 3*exp(-1) | $r=\frac3e\approx1.104>1$
+\end{exmp}
+
+\begin{kc}{Factorials and the Ratio Test}{factkc}
+(a)~Simplify $\dfrac{(k+2)!}{k!}$ and $\dfrac{(2k+2)!}{(2k)!}$. (b)~Use the Ratio Test on $\displaystyle\sum_{k=1}^\infty\frac{k!}{(k+2)!\,2^k}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The Root Test}
+
+When the terms are $k$-th powers, the $k$-th root removes the power at once, and $\abs{a_k}^{1/k}$ is easier to find than the ratio. The idea is the same: if $\abs{a_k}^{1/k}$ is near $r$ then $\abs{a_k}$ is near $r^k$.
+
+\begin{thm}{Root Test}{root}
+Let $\sum a_k$ be a series and suppose that
+\[
+r=\lim_{k\to\infty}\abs{a_k}^{1/k}
+\]
+exists (or is $\infty$).
+\begin{enumerate}
+  \item If $r<1$, the series converges absolutely, and therefore it converges.
+  \item If $r>1$ (including $r=\infty$), the series diverges.
+  \item If $r=1$, the test is inconclusive.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\emph{Case 1} ($r<1$). Choose $\rho$ with $r<\rho<1$. Since $\abs{a_k}^{1/k}\to r<\rho$, there is $K$ with $\abs{a_k}^{1/k}<\rho$ for all $k\ge K$. Raising both sides to the $k$-th power (which preserves inequalities between nonnegative numbers) gives $\abs{a_k}<\rho^k$ for $k\ge K$. The geometric series $\sum\rho^k$ converges, so $\sum_{k\ge K}\abs{a_k}$ converges by the Comparison Test, hence $\sum\abs{a_k}$ converges (Theorem~\ref{10.3-thm:props}(5)). Absolute convergence implies convergence (Theorem~\ref{10.6-thm:absconv}).
+
+\emph{Case 2} ($r>1$, including $r=\infty$). There is $K$ with $\abs{a_k}^{1/k}>1$ for all $k\ge K$, so $\abs{a_k}>1$ for $k\ge K$. The terms do not tend to $0$, and the series diverges by the Divergence Test.
+
+\emph{Case 3} ($r=1$). For $\sum\frac1k$, $\abs{a_k}^{1/k}=\frac1{k^{1/k}}\to1$ by Theorem~\ref{app-thm:nthroot}, and the series diverges. For $\sum\frac1{k^2}$, $\abs{a_k}^{1/k}=\left(\frac1{k^{1/k}}\right)^2\to1$, and the series converges. So $r=1$ occurs for both kinds of series.
+%@ root-3 | limit(Q(1,1)/k**(Q(1,1)/k),k,oo) == 1 and limit((1/k**(Q(1,1)/k))**2,k,oo) == 1 | \left(\frac1{k^{1/k}}\right)^2\to1
+\end{proof}
+
+\begin{exmp}{The Root Test}{rootbasic}
+Decide whether each series converges: (a)~$\displaystyle\sum_{k=1}^\infty(-1)^k\left(\frac{2k+1}{3k+5}\right)^k$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\left(1+\frac1{2k}\right)^{k^2}$.
+
+\textbf{Solution.} (a) $\abs{a_k}^{1/k}=\frac{2k+1}{3k+5}\to\frac23<1$. The series converges absolutely. (The $k$-th root cancels the $k$-th power exactly, and that is why the Root Test suits such terms.)
+%@ ex4a | limit((2*k+1)/(3*k+5),k,oo) == Q(2,3) | \frac{2k+1}{3k+5}\to\frac23<1
+(b) The terms are positive and $a_k^{1/k}=\left(1+\frac1{2k}\right)^k=\left[\left(1+\frac1{2k}\right)^{2k}\right]^{1/2}\to e^{1/2}\approx1.649>1$, because $\left(1+\frac1{2k}\right)^{2k}\to e$ and the square root is continuous. The series diverges. (The Ratio Test would be messy here.)
+%@ ex4b | abs(float(sqrt(E))-1.6487)<1e-4 and limit((1+1/(2*k))**k,k,oo) == sqrt(E) | \to e^{1/2}\approx1.649>1
+\end{exmp}
+
+\begin{exmp}{Roots of powers of $k$}{rootpoly}
+Decide whether each series converges: (a)~$\displaystyle\sum_{k=1}^\infty\frac{k^7}{5^k}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{4^k}{k^2+1}$.
+
+\textbf{Solution.} (a) $\abs{a_k}^{1/k}=\dfrac{\left(k^{1/k}\right)^7}5\to\dfrac15$, because $k^{1/k}\to1$ (Theorem~\ref{app-thm:nthroot}). So $r=\frac15<1$ and the series converges absolutely. The Ratio Test gives the same value, $\frac{(k+1)^7}{5k^7}\to\frac15$. The approach to the limit is slow: at $k=1000$ the root is still $0.2099$.
+%@ ex5a | abs(float(Q(1000,1)**Q(7,1000)/5)-0.2099)<1e-4 and limit(Q(1,5)*(1+1/k)**7,k,oo) == Q(1,5) | at $k=1000$ the root is still $0.2099$
+(b) $\abs{a_k}^{1/k}=\dfrac4{(k^2+1)^{1/k}}\to\dfrac41=4$, since $(k^2+1)^{1/k}\to1$ (Theorem~\ref{app-thm:posroot} with $p=2$ and $c_k=1+\frac1{k^2}\to1$). So $r=4>1$ and the series diverges.
+%@ ex5b | limit(1+1/k**2,k,oo) == 1 and limit(Q(4,1)/1,k,oo) == 4 | \dfrac4{(k^2+1)^{1/k}}\to\dfrac41=4
+\end{exmp}
+
+\begin{kc}{The Root Test}{rootkc}
+Find $r$ and decide: (a)~$\displaystyle\sum_{k=1}^\infty\left(\frac{3k+1}{4k+7}\right)^k$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{6^k}{k^3}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\left(1+\frac1k\right)^{k^2}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The two tests compared}
+
+Both tests compare with a geometric series, and they are closely linked. If the ratios settle down to $r$, so do the roots.
+
+\begin{thm}{Ratio limit and root limit}{ratroot}
+Let $a_k\ne0$ for all $k$. If $\abs{a_{k+1}/a_k}\to r$, where $r$ is a number $\ge0$ or $\infty$, then $\abs{a_k}^{1/k}\to r$ as well.
+\end{thm}
+\begin{proof}
+Write $\rho_k=\abs{a_{k+1}/a_k}$. \emph{Case $r<\infty$.} Let $\varepsilon>0$ and choose $K$ with $r-\varepsilon<\rho_k<r+\varepsilon$ for all $k\ge K$. Applying the right inequality repeatedly, $\abs{a_k}<\abs{a_K}\,(r+\varepsilon)^{k-K}=C(r+\varepsilon)^k$ for $k>K$, with the constant $C=\abs{a_K}(r+\varepsilon)^{-K}>0$. Taking $k$-th roots, $\abs{a_k}^{1/k}<C^{1/k}(r+\varepsilon)$. Since $C^{1/k}\to1$ (Theorem~\ref{app-thm:croot}), $C^{1/k}<1+\frac\varepsilon{r+\varepsilon}$ for large $k$, and then $\abs{a_k}^{1/k}<(r+\varepsilon)+\varepsilon=r+2\varepsilon$. If $r=0$ this finishes the proof, since $\abs{a_k}^{1/k}\ge0$. If $r>0$, take $\varepsilon<r$: the left inequality gives $\abs{a_k}>C'(r-\varepsilon)^k$ with $C'=\abs{a_K}(r-\varepsilon)^{-K}>0$, so $\abs{a_k}^{1/k}>C'^{1/k}(r-\varepsilon)>(r-\varepsilon)\left(1-\frac\varepsilon{r-\varepsilon}\right)=r-2\varepsilon$ for large $k$, because $C'^{1/k}\to1$. Thus $r-2\varepsilon<\abs{a_k}^{1/k}<r+2\varepsilon$ for all large $k$, and $\abs{a_k}^{1/k}\to r$.
+
+\emph{Case $r=\infty$.} Let $M>1$. There is $K$ with $\rho_k>M$ for $k\ge K$, so $\abs{a_k}>\abs{a_K}M^{k-K}=C''M^k$ for $k>K$, with $C''=\abs{a_K}M^{-K}>0$, and $\abs{a_k}^{1/k}>C''^{1/k}M$. Since $C''^{1/k}\to1$, we have $C''^{1/k}>\frac12$ for large $k$, so $\abs{a_k}^{1/k}>\frac M2$ for large $k$. As $M$ is arbitrary, $\abs{a_k}^{1/k}\to\infty$.
+\end{proof}
+
+So whenever the Ratio Test is conclusive, the Root Test is conclusive with the same $r$; the Ratio Test is never stronger. The Root Test can be stronger, because the roots can have a limit when the ratios do not (the next example). The Ratio Test is often \emph{easier}: for a factorial, the ratio simplifies at once, while $(k!)^{1/k}$ has no simple form.
+
+\begin{exmp}{The ratios oscillate but the roots settle}{ratfail}
+Show that $\displaystyle\sum_{k=1}^\infty\frac{2+(-1)^k}{2^k}$ converges, and find its sum.
+
+\textbf{Solution.} The first terms are $a_1=\frac12$, $a_2=\frac34$, $a_3=\frac18$, $a_4=\frac3{16}$, and the ratios $\frac{a_{k+1}}{a_k}$ are $\frac32,\frac16,\frac32,\frac16,\dots$ alternately. They have no limit, so the Ratio Test cannot be used. (Ratios above $1$ every other time do not prove divergence either: Case~2 needs the \emph{limit} to exceed $1$.)
+%@ ex7a | [Q(2+(-1)**j,2**j) for j in range(1,5)] == [Q(1,2),Q(3,4),Q(1,8),Q(3,16)] and [Q(2+(-1)**(j+1),2**(j+1))/Q(2+(-1)**j,2**j) for j in range(1,5)] == [Q(3,2),Q(1,6),Q(3,2),Q(1,6)] | $\frac32,\frac16,\frac32,\frac16,\dots$
+For the Root Test, $1\le2+(-1)^k\le3$ gives $1\le\left(2+(-1)^k\right)^{1/k}\le3^{1/k}$, and $3^{1/k}\to1$ (Theorem~\ref{app-thm:croot}). By the Squeeze Theorem $\left(2+(-1)^k\right)^{1/k}\to1$, so $\abs{a_k}^{1/k}\to\frac12<1$. The series converges absolutely. Its sum can be found by splitting it into two geometric series: $\sum_{k\ge1}\frac2{2^k}=2$ and $\sum_{k\ge1}\left(-\frac12\right)^k=\frac{-1/2}{1+1/2}=-\frac13$, so the sum is $2-\frac13=\frac53$.
+%@ ex7b | summation(2/Integer(2)**k,(k,1,oo)) == 2 and summation(Q(-1,2)**k,(k,1,oo)) == Q(-1,3) and summation((2+(-1)**k)/Integer(2)**k,(k,1,oo)) == Q(5,3) | so the sum is $2-\frac13=\frac53$
+\end{exmp}
+
+\begin{exmp}{A series for the Ratio Test}{ratwins}
+Decide whether each series converges: (a)~$\displaystyle\sum_{k=1}^\infty\frac{(k!)^2}{(2k)!}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{(2k)!}{3^k\,(k!)^2}$.
+
+\textbf{Solution.} (a) Using $(k+1)!=(k+1)k!$ and $(2k+2)!=(2k+2)(2k+1)(2k)!$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{\left((k+1)!\right)^2}{(2k+2)!}\cdot\frac{(2k)!}{(k!)^2}=\frac{(k+1)^2}{(2k+2)(2k+1)}=\frac{k+1}{2(2k+1)}\to\frac14 .
+\]
+%@ ex8a | all(Q(factorial(j+1)**2,factorial(2*j+2))/Q(factorial(j)**2,factorial(2*j)) == Q(j+1,2*(2*j+1)) for j in range(1,25)) and [Q(factorial(j)**2,factorial(2*j)) for j in range(1,5)] == [Q(1,2),Q(1,6),Q(1,20),Q(1,70)] and limit((k+1)/(2*(2*k+1)),k,oo) == Q(1,4) | \frac{k+1}{2(2k+1)}\to\frac14
+So $r=\frac14<1$ and the series converges (the terms are $\frac12,\frac16,\frac1{20},\frac1{70},\dots$).
+
+(b) In the same way
+\[
+\frac{a_{k+1}}{a_k}=\frac{(2k+2)(2k+1)}{3\,(k+1)^2}=\frac{2(2k+1)}{3(k+1)}\to\frac43 .
+\]
+%@ ex8b | all(Q(factorial(2*j+2),3**(j+1)*factorial(j+1)**2)/Q(factorial(2*j),3**j*factorial(j)**2) == Q(2*(2*j+1),3*(j+1)) for j in range(1,25)) and limit(2*(2*k+1)/(3*(k+1)),k,oo) == Q(4,3) | \frac{2(2k+1)}{3(k+1)}\to\frac43
+So $r=\frac43>1$ and the series diverges. The Root Test would need $\left((k!)^2/(2k)!\right)^{1/k}$, which has no elementary form, and that is the usual situation with factorials: use the Ratio Test.
+\end{exmp}
+
+\begin{think}{The $k$-th root of $k!$}{kfact}
+The ratios of $\sum\frac1{k!}$ tend to $0$. What does Theorem~\ref{thm:ratroot} say about $\left(\frac1{k!}\right)^{1/k}$, and hence about $(k!)^{1/k}$? Check with $k=10$ and $k=100$.
+\end{think}
+
+\begin{proc}{Choosing between the tests}{choose}
+\begin{enumerate}[nosep]
+  \item \textbf{Factorials}, or products such as $(2k)!$, or terms where the ratio simplifies: use the \emph{Ratio Test}.
+  \item \textbf{A $k$-th power} $(\cdots)^k$, or $c^k$ times powers of $k$: use the \emph{Root Test} (the ratio also works for $c^kk^p$).
+  \item \textbf{Only powers of $k$, rational functions, logarithms}: both tests give $r=1$ and are useless. Use comparison, Limit Comparison, the Integral Test or the Alternating Series Test.
+  \item \textbf{The ratios have no limit:} the Ratio Test does not apply; try the Root Test or a comparison.
+  \item If $r\ne1$ you are done. If $r=1$, go back to the earlier tests. A conclusion $r<1$ means absolute convergence; $r>1$ means the terms do not tend to $0$.
+\end{enumerate}
+The next section collects all the tests of the chapter into one strategy; this procedure is its Ratio-and-Root part.
+\end{proc}
+
+% ---------------------------------------------------------------------
+\subsection*{What the tests do not say: $r=1$ and absolute convergence}
+
+\begin{exmp}{Three series with $r=1$}{rone}
+Compute the Ratio Test limit and decide: (a)~$\displaystyle\sum_{k=1}^\infty\frac1k$; (b)~$\displaystyle\sum_{k=1}^\infty\frac1{k^2}$; (c)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}k$; (d)~$\displaystyle\sum_{k=1}^\infty\frac{3k+1}{k^3+5}$.
+
+\textbf{Solution.} In (a), (b), (c), $\abs{a_{k+1}/a_k}$ equals $\frac k{k+1}$, $\left(\frac k{k+1}\right)^2$, $\frac k{k+1}$ and tends to $1$ each time. In (d) the ratio is $\frac{(3k+4)(k^3+5)}{(3k+1)\left((k+1)^3+5\right)}$, and dividing numerator and denominator by $k^4$ shows that it also tends to $1$. The Root Test gives $r=1$ as well (Theorem~\ref{app-thm:posroot}). So both tests say nothing. The answers, from earlier sections, are: (a) diverges (harmonic series); (b) converges absolutely ($p=2$); (c) converges, but only conditionally (Alternating Series Test, with $\sum\frac1k$ divergent); (d) converges, by the Limit Comparison Test with $\sum\frac1{k^2}$, since $k^2a_k=\frac{3k^3+k^2}{k^3+5}\to3$.
+%@ ex6 | limit((3*k+4)*(k**3+5)/((3*k+1)*((k+1)**3+5)),k,oo) == 1 and limit((3*k+1)/(k**3+5)*k**2,k,oo) == 3 | $k^2a_k=\frac{3k^3+k^2}{k^3+5}\to3$
+The same happens for \emph{every} nonzero rational function of $k$: the leading terms of $a_{k+1}$ and $a_k$ agree in the limit, so $r=1$. The Ratio and Root Tests are never useful for rational terms.
+\end{exmp}
+
+The series (c) shows something else. It converges, yet the tests cannot detect it, and the reason is general.
+
+\begin{thm}{Conditional convergence forces $r=1$}{condr}
+Suppose $\sum a_k$ converges conditionally. If $\lim\abs{a_{k+1}/a_k}$ exists, it equals $1$. If $\lim\abs{a_k}^{1/k}$ exists, it equals $1$.
+\end{thm}
+\begin{proof}
+Let $r$ be the limit of either quantity. If $r<1$, the series converges absolutely (Ratio or Root Test), which contradicts conditional convergence. If $r>1$, the series diverges, which also contradicts it. So $r=1$.
+\end{proof}
+
+In words: the Ratio and Root Tests are tests for \emph{absolute} convergence. They look only at $\abs{a_k}$, so the signs play no role. A conditionally convergent series, whose convergence depends on the signs, always leaves them with $r=1$. When $r<1$ you learn more than convergence (absolute convergence, so the terms can be reordered, see Section~10.6); when $r>1$ you learn divergence, even for alternating series.
+
+\begin{think}{Why absolute convergence?}{abswhy}
+A series has $r=\frac12$ in the Ratio Test. Could it converge only conditionally? Could $r=1$ occur for a conditionally convergent series? For one that converges absolutely?
+\end{think}
+
+\begin{exmp}{Absolute, conditional or divergent}{classify}
+Classify: (a)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{3^k}{k!}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+3}{k+1}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{\sqrt{k+1}}$.
+
+\textbf{Solution.} (a) $\abs{a_{k+1}/a_k}=\frac3{k+1}\to0<1$: absolutely convergent. (b) The ratio tends to $1$: inconclusive. But $\abs{a_k}=\frac{k+3}{k+1}\to1\ne0$, so the series diverges (Divergence Test). (c) The ratio $\sqrt{\frac{k+1}{k+2}}\to1$: inconclusive. The terms $\frac1{\sqrt{k+1}}$ decrease to $0$, so the series converges (Alternating Series Test). Absolute values: $\frac{1/\sqrt{k+1}}{1/\sqrt k}=\sqrt{\frac k{k+1}}\to1$, and $\sum\frac1{\sqrt k}$ diverges ($p=\frac12$), so $\sum\abs{a_k}$ diverges (Limit Comparison Test). The series converges conditionally.
+%@ ex9 | limit(Q(3,1)/(k+1),k,oo) == 0 and limit((k+3)/(k+1),k,oo) == 1 and limit(sqrt(k/(k+1)),k,oo) == 1 | \sqrt{\frac k{k+1}}\to1
+\end{exmp}
+
+\begin{kc}{What does $r=1$ tell you?}{rkc}
+For each series compute the Ratio Test limit and say whether it settles the question; if not, name a test that does. (a)~$\displaystyle\sum_{k=1}^\infty\frac1{k^2+3}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{\sqrt k}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{3^k}{k^2}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead: the radius of convergence}
+
+\begin{exmp}{For which $x$ does the series converge?}{powerpre}
+For each series, find all numbers $x$ for which it converges (here $x$ is a fixed number, and the limit is taken as $k\to\infty$): (a)~$\displaystyle\sum_{k=1}^\infty\frac{x^k}{k\,3^k}$; \quad (b)~$\displaystyle\sum_{k=0}^\infty\frac{x^k}{k!}$; \quad (c)~$\displaystyle\sum_{k=0}^\infty k!\,x^k$.
+
+\textbf{Solution.} (a) $\abs{\frac{a_{k+1}}{a_k}}=\frac{\abs x^{k+1}}{(k+1)3^{k+1}}\cdot\frac{k\,3^k}{\abs x^k}=\frac{\abs x}3\cdot\frac k{k+1}\to\frac{\abs x}3$. So $r<1$ when $\abs x<3$: absolute convergence. For $\abs x>3$, $r>1$: divergence. The tests say nothing at $x=\pm3$, where $r=1$; these are checked separately: at $x=3$ the series is $\sum\frac1k$, which diverges; at $x=-3$ it is $\sum\frac{(-1)^k}k$, which converges (conditionally). The series converges exactly for $-3\le x<3$.
+%@ ex10a | all(Q(3**j,j*3**j) == Q(1,j) and Q((-3)**j,j*3**j) == Q((-1)**j,j) for j in range(1,20)) and limit(Q(1,3)*k/(k+1),k,oo) == Q(1,3) | \frac{\abs x}3\cdot\frac k{k+1}\to\frac{\abs x}3
+(b) $\abs{\frac{a_{k+1}}{a_k}}=\frac{\abs x}{k+1}\to0$ for every $x$: the series converges absolutely for all $x$. (c) $\abs{\frac{a_{k+1}}{a_k}}=(k+1)\abs x\to\infty$ for every $x\ne0$: it diverges for all $x\ne0$, and at $x=0$ it is just $0+0+\cdots$.
+%@ ex10b | all(Q(1,factorial(j+1))/Q(1,factorial(j)) == Q(1,j+1) and Q(factorial(j+1),1)/Q(factorial(j),1) == j+1 for j in range(0,20)) and limit(Q(1,1)/(k+1),k,oo) == 0 | \frac{\abs x}{k+1}\to0
+In each case the set of $x$ is an interval centred at $0$: half-length $3$ in (a), unbounded in (b), zero in (c). This half-length is the \emph{radius of convergence}.
+\end{exmp}
+
+\begin{remark}[Looking ahead]
+A power series is a series $\sum c_kx^k$ whose terms contain powers of a variable $x$. Applying the Ratio Test with $x$ held fixed gives $r=\abs x\cdot L$, where $L=\lim\abs{c_{k+1}/c_k}$ (when it exists). The series converges absolutely when $\abs x<\frac1L$ and diverges when $\abs x>\frac1L$, so the radius of convergence is $\frac1L$ (infinite if $L=0$, zero if $L=\infty$). The endpoints, where $r=1$, are decided by other tests, as in Example~\ref{ex:powerpre}(a). The chapter on power series is built on this idea, and the Root Test gives the same radius by the same argument.
+\end{remark}
+
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{The Ratio Test} (Examples~\ref{ex:b1}--\ref{ex:b2}): factorials with shifts and with triples.
+  \item \emph{The Root Test} (Examples~\ref{ex:b3}--\ref{ex:b4}): $k$-th powers of fractions and of inverse trigonometric functions.
+  \item \emph{Mixed terms and choosing a test} (Examples~\ref{ex:b5}--\ref{ex:b6}): a mixture of power, exponential and factorial; a series where only the Root Test works.
+  \item \emph{When $r=1$} (Examples~\ref{ex:b7}--\ref{ex:b8}): falling back on comparison and on the Integral Test.
+  \item \emph{Absolute, conditional or divergent} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{Applications: an interval and an error bound} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: The Ratio Test}
+
+\begin{exmp}{A shifted factorial}{b1}
+Does $\displaystyle\sum_{k=0}^\infty\frac{4^k}{(k+2)!}$ converge?
+
+\textbf{Solution.} Because $(k+3)!=(k+3)(k+2)!$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{4^{k+1}}{(k+3)!}\cdot\frac{(k+2)!}{4^k}=\frac4{k+3}\to0 .
+\]
+%@ bank-1 | all(Q(4**(j+1),factorial(j+3))/Q(4**j,factorial(j+2)) == Q(4,j+3) for j in range(0,30)) and limit(Q(4,1)/(k+3),k,oo) == 0 | \frac4{k+3}\to0
+So $r=0<1$, and the series converges absolutely.
+\end{exmp}
+
+\begin{exmp}{Three factorials}{b2}
+Does $\displaystyle\sum_{k=1}^\infty\frac{(3k)!}{(k!)^3\,30^k}$ converge?
+
+\textbf{Solution.} Use $(3k+3)!=(3k+3)(3k+2)(3k+1)(3k)!$ and $\left((k+1)!\right)^3=(k+1)^3(k!)^3$:
+\[
+\frac{a_{k+1}}{a_k}=\frac{(3k+3)(3k+2)(3k+1)}{(k+1)^3\cdot30}=\frac{(3k+2)(3k+1)}{10\,(k+1)^2}\to\frac9{10}.
+\]
+%@ bank-2 | all(Q(factorial(3*j+3),factorial(j+1)**3*30**(j+1))/Q(factorial(3*j),factorial(j)**3*30**j) == Q((3*j+2)*(3*j+1),10*(j+1)**2) for j in range(1,20)) and limit((3*k+2)*(3*k+1)/(9*(k+1)**2),k,oo) == 1 and limit((3*k+2)*(3*k+1)/(10*(k+1)**2),k,oo) == Q(9,10) | \frac{(3k+2)(3k+1)}{10\,(k+1)^2}\to\frac9{10}
+Since $r=\frac9{10}<1$ the series converges. (With $27^k$ in place of $30^k$ the limit would be exactly $1$ and the test would say nothing.)
+\end{exmp}
+
+\subsection*{Group 2: The Root Test}
+
+\begin{exmp}{A fraction to the $k$-th power}{b3}
+Does $\displaystyle\sum_{k=1}^\infty(-1)^k\left(\frac{3k^2+1}{2k^2+7}\right)^k$ converge?
+
+\textbf{Solution.} $\abs{a_k}^{1/k}=\dfrac{3k^2+1}{2k^2+7}\to\dfrac32>1$. By the Root Test the series diverges. (Indeed $\abs{a_k}>1$ as soon as $3k^2+1>2k^2+7$, that is $k\ge3$, so the terms do not tend to $0$.)
+%@ bank-3 | limit((3*k**2+1)/(2*k**2+7),k,oo) == Q(3,2) | \dfrac{3k^2+1}{2k^2+7}\to\dfrac32>1
+\end{exmp}
+
+\begin{exmp}{An inverse tangent to the $k$-th power}{b4}
+Does $\displaystyle\sum_{k=1}^\infty\left(\frac{\tan^{-1}k}3\right)^k$ converge?
+
+\textbf{Solution.} The terms are positive and $a_k^{1/k}=\frac{\tan^{-1}k}3\to\frac{\pi/2}3=\frac\pi6\approx0.524<1$, because $\tan^{-1}k\to\frac\pi2$. By the Root Test the series converges. (Note that $\tan^{-1}k<\frac\pi2<3$ for every $k$, so even the cruder comparison with $\sum\left(\frac\pi6\right)^k$ works.)
+%@ bank-4 | abs(float(pi/6)-0.524)<1e-3 and all(atan(j)/3 < pi/6 for j in range(1,100)) and limit(atan(k)/3,k,oo) == pi/6 | \frac{\pi/2}3=\frac\pi6\approx0.524<1
+\end{exmp}
+
+\subsection*{Group 3: Mixed terms and choosing a test}
+
+\begin{exmp}{Power, exponential and factorial together}{b5}
+Does $\displaystyle\sum_{k=1}^\infty\frac{k^2\,2^k}{(k+1)!}$ converge?
+
+\textbf{Solution.} With $(k+2)!=(k+2)(k+1)!$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{(k+1)^2\,2^{k+1}}{(k+2)!}\cdot\frac{(k+1)!}{k^2\,2^k}=\frac{2\,(k+1)^2}{(k+2)\,k^2}\to0 .
+\]
+%@ bank-5 | all(Q((j+1)**2*2**(j+1),factorial(j+2))/Q(j**2*2**j,factorial(j+1)) == Q(2*(j+1)**2,(j+2)*j**2) for j in range(1,30)) and limit(2*(k+1)**2/((k+2)*k**2),k,oo) == 0 | \frac{2\,(k+1)^2}{(k+2)\,k^2}\to0
+So $r=0<1$ and the series converges. The factorial dominates the power and the exponential, as in the growth rates of Section~10.2.
+\end{exmp}
+
+\begin{exmp}{Repeated terms: only the Root Test works}{b6}
+Let $a_k=2^{-\lfloor k/2\rfloor}$, so the series is $1+\frac12+\frac12+\frac14+\frac14+\frac18+\frac18+\cdots$. Does it converge?
+
+\textbf{Solution.} The ratios are $\frac12,1,\frac12,1,\dots$ (each term is followed by a repeat). They have no limit, so the Ratio Test does not apply. For the Root Test, $\frac{k-1}2\le\lfloor k/2\rfloor\le\frac k2$, so the exponent $-\frac{\lfloor k/2\rfloor}k$ lies between $-\frac12$ and $-\frac{k-1}{2k}$, which tends to $-\frac12$. By the Squeeze Theorem $a_k^{1/k}=2^{-\lfloor k/2\rfloor/k}\to2^{-1/2}\approx0.707<1$, and the series converges. Its sum is $1+2\left(\frac12+\frac14+\cdots\right)=3$.
+%@ bank-6 | [Q(1,2**(j//2)) for j in range(1,8)] == [1,Q(1,2),Q(1,2),Q(1,4),Q(1,4),Q(1,8),Q(1,8)] and all(Q(j-1,2*j) <= Q(j//2,j) and Q(j//2,j) <= Q(1,2) for j in range(1,60)) and abs(float(2**Q(-1,2))-0.707)<1e-3 and 1+2*summation(Q(1,2)**k,(k,1,oo)) == 3 | \to2^{-1/2}\approx0.707<1
+\end{exmp}
+
+\subsection*{Group 4: When $r=1$}
+
+\begin{exmp}{A rational function}{b7}
+Does $\displaystyle\sum_{k=1}^\infty\frac{2k+3}{k^3+4k}$ converge?
+
+\textbf{Solution.} The ratio of successive terms tends to $1$, as it does for every rational function, so the Ratio Test is useless. Compare with $b_k=\frac1{k^2}$: $\frac{a_k}{b_k}=\frac{2k^3+3k^2}{k^3+4k}\to2$, and $\sum\frac1{k^2}$ converges, so the series converges by the Limit Comparison Test.
+%@ bank-7 | limit((2*k+5)*(k**3+4*k)/((2*k+3)*((k+1)**3+4*(k+1))),k,oo) == 1 and limit((2*k**3+3*k**2)/(k**3+4*k),k,oo) == 2 | \frac{a_k}{b_k}=\frac{2k^3+3k^2}{k^3+4k}\to2
+\end{exmp}
+
+\begin{exmp}{A logarithm: the Integral Test}{b8}
+Does $\displaystyle\sum_{k=2}^\infty\frac1{k\ln k}$ converge?
+
+\textbf{Solution.} The ratio is $\frac{k\ln k}{(k+1)\ln(k+1)}\to1$ (since $\frac{\ln(k+1)}{\ln k}\to1$), so the Ratio Test fails. The function $f(x)=\frac1{x\ln x}$ is positive, continuous and decreasing on $[2,\infty)$, and $\int_2^bf(x)\,dx=\ln\ln b-\ln\ln2\to\infty$. By the Integral Test the series diverges. Compare $\sum\frac1{k(\ln k)^2}$: it also has $r=1$, but $\int_2^\infty\frac{dx}{x(\ln x)^2}=\frac1{\ln2}$ is finite, so that series converges. The same value $r=1$ goes with both answers.
+%@ bank-8 | limit(k*log(k)/((k+1)*log(k+1)),k,oo) == 1 and simplify(diff(log(log(x)),x)-1/(x*log(x))) == 0 and integrate(1/(x*log(x)**2),(x,2,oo)) == 1/log(2) | \int_2^\infty\frac{dx}{x(\ln x)^2}=\frac1{\ln2}
+\end{exmp}
+
+\subsection*{Group 5: Absolute, conditional or divergent}
+
+\begin{exmp}{Powers of $\frac34$}{b9}
+Classify $\displaystyle\sum_{k=1}^\infty(-1)^kk\left(\frac34\right)^k$.
+
+\textbf{Solution.} $\abs{\frac{a_{k+1}}{a_k}}=\frac{k+1}k\cdot\frac34\to\frac34<1$. The series converges absolutely.
+%@ bank-9 | all(Q((j+1)*3**(j+1),4**(j+1))/Q(j*3**j,4**j) == Q(j+1,j)*Q(3,4) for j in range(1,30)) and limit((k+1)/k*Q(3,4),k,oo) == Q(3,4) | \frac{k+1}k\cdot\frac34\to\frac34<1
+\end{exmp}
+
+\begin{exmp}{Conditional convergence with $r=1$}{b10}
+Classify $\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+2}{k^2+k}$.
+
+\textbf{Solution.} The ratio tends to $1$, so the tests of this section do not decide. \emph{Absolute values:} compare $\frac{k+2}{k^2+k}$ with $\frac1k$: the quotient $\frac{k^2+2k}{k^2+k}\to1$ and $\sum\frac1k$ diverges, so $\sum\abs{a_k}$ diverges (Limit Comparison Test). \emph{The series itself:} $a_k=\frac{k+2}{k^2+k}\to0$, and $f(x)=\frac{x+2}{x^2+x}$ has $f'(x)=-\frac{x^2+4x+2}{(x^2+x)^2}<0$ for $x>0$, so the terms decrease, and the Alternating Series Test shows convergence. The series converges conditionally.
+%@ bank-10 | simplify(diff((x+2)/(x**2+x),x) + (x**2+4*x+2)/(x**2+x)**2) == 0 and limit((k**2+2*k)/(k**2+k),k,oo) == 1 and limit((k+2)/(k**2+k),k,oo) == 0 | f'(x)=-\frac{x^2+4x+2}{(x^2+x)^2}<0
+\end{exmp}
+
+\subsection*{Group 6: Applications}
+
+\begin{exmp}{An interval of convergence}{b11}
+For which $x$ does $\displaystyle\sum_{k=0}^\infty\frac{(x-1)^k}{k^2+1}$ converge?
+
+\textbf{Solution.} $\abs{\frac{a_{k+1}}{a_k}}=\abs{x-1}\,\frac{k^2+1}{(k+1)^2+1}\to\abs{x-1}$. So the series converges absolutely if $\abs{x-1}<1$, that is $0<x<2$, and diverges if $\abs{x-1}>1$. At $x=2$ the series is $\sum\frac1{k^2+1}$, which converges (compare with $\sum\frac1{k^2}$); at $x=0$ it is $\sum\frac{(-1)^k}{k^2+1}$, which converges absolutely for the same reason. So the series converges exactly for $0\le x\le2$: centre $1$, radius $1$, both endpoints included.
+%@ bank-11 | limit((k**2+1)/((k+1)**2+1),k,oo) == 1 and all(Q(1,j**2+1) < Q(1,j**2) for j in range(1,40)) | \abs{\frac{a_{k+1}}{a_k}}=\abs{x-1}\,\frac{k^2+1}{(k+1)^2+1}\to\abs{x-1}
+\end{exmp}
+
+\begin{exmp}{Estimating $e$ with a geometric bound}{b12}
+Taking for granted that $\sum_{k=0}^\infty\frac1{k!}=e$, bound the error of $s_8=\sum_{k=0}^8\frac1{k!}$.
+
+\textbf{Solution.} The error is $e-s_8=\sum_{k\ge9}\frac1{k!}$. For $k\ge9$ the ratio is $\frac{a_{k+1}}{a_k}=\frac1{k+1}\le\frac1{10}$, so $a_{9+j}\le\frac{a_9}{10^j}$ and the tail is at most the geometric series
+\[
+\frac1{9!}\left(1+\frac1{10}+\frac1{10^2}+\cdots\right)=\frac1{9!}\cdot\frac{10}9=\frac{10}{9\cdot9!}\approx3.06\times10^{-6}.
+\]
+%@ bank-12a | Q(1,factorial(9))*Q(10,9) == Q(10,9*factorial(9)) and abs(float(Q(10,9*factorial(9)))-3.06e-6)<1e-8 and Q(1,factorial(9))*summation(Q(1,10)**k,(k,0,oo)) == Q(10,9*factorial(9)) | \frac{10}{9\cdot9!}\approx3.06\times10^{-6}
+Here $s_8=\frac{109601}{40320}\approx2.7182788$, so $2.7182788\le e\le2.7182788+0.0000031=2.7182819$. (The true value is $2.7182818\ldots$ and the actual error is $3.059\times10^{-6}$, just below the bound.)
+%@ bank-12b | sum(Q(1,factorial(j)) for j in range(0,9)) == Q(109601,40320) and abs(float(Q(109601,40320))-2.7182788)<1e-7 and abs(float(E-Q(109601,40320))-3.059e-6)<1e-9 and E - Q(109601,40320) < Q(10,9*factorial(9)) | $s_8=\frac{109601}{40320}\approx2.7182788$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Ratios that stay at least $1$}{b13}
+Prove: if $a_K\ne0$ and $\abs{a_{k+1}}\ge\abs{a_k}$ for all $k\ge K$, then $\sum a_k$ diverges.
+
+\textbf{Plan.} Show that the terms cannot tend to $0$, and use the Divergence Test.
+
+\begin{proof}
+By induction, $\abs{a_k}\ge\abs{a_K}$ for all $k\ge K$: this is true for $k=K$, and if $\abs{a_k}\ge\abs{a_K}$ then $\abs{a_{k+1}}\ge\abs{a_k}\ge\abs{a_K}$. Since $\abs{a_K}>0$, the terms do not tend to $0$, and $\sum a_k$ diverges by the Divergence Test.
+\end{proof}
+%@ bank-13 | all(Q(j,j+1) < 1 for j in range(1,60)) and all(Q(3,2)**j >= 1 for j in range(0,30)) | $\abs{a_{k+1}}\ge\abs{a_k}\ge\abs{a_K}$
+A common mistake is to use ``every ratio is below $1$'' as a reason for convergence. The harmonic series has $\frac{a_{k+1}}{a_k}=\frac k{k+1}<1$ for every $k$, and it diverges. The Ratio Test needs the \emph{limit} to be below $1$.
+\end{exmp}
+
+\begin{exmp}{Polynomial factors do not change $r$}{b14}
+Prove: if $r=\lim\abs{a_{k+1}/a_k}<1$ (with every $a_k\ne0$), then $\sum k^pa_k$ converges absolutely for every real $p$.
+
+\textbf{Plan.} Compute the Ratio Test limit for $b_k=k^pa_k$.
+
+\begin{proof}
+Since $b_k\ne0$, we may form $\abs{\frac{b_{k+1}}{b_k}}=\left(\frac{k+1}k\right)^p\abs{\frac{a_{k+1}}{a_k}}=\left(1+\frac1k\right)^p\abs{\frac{a_{k+1}}{a_k}}$. As $k\to\infty$, $1+\frac1k\to1$, and $y\mapsto y^p$ is continuous at $1$, so $\left(1+\frac1k\right)^p\to1$ (Theorem~\ref{10.2-thm:contfn}). By the product law the ratio tends to $1\cdot r=r<1$, and $\sum b_k$ converges absolutely by the Ratio Test.
+\end{proof}
+%@ bank-14 | limit(Q(1,2)*(1+1/k)**3,k,oo) == Q(1,2) | \left(1+\frac1k\right)^p\to1
+For example, $\sum\frac{k^{100}}{2^k}$ converges at once ($a_k=2^{-k}$, $r=\frac12$). The result fails if $r=1$: for $a_k=\frac1{k^2}$, $\sum k^pa_k=\sum k^{p-2}$ converges for $p<1$ and diverges for $p\ge1$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:factkc}.] (a) $\frac{(k+2)!}{k!}=(k+2)(k+1)$ and $\frac{(2k+2)!}{(2k)!}=(2k+2)(2k+1)$. (b) $a_k=\frac{k!}{(k+2)!\,2^k}=\frac1{(k+1)(k+2)\,2^k}$, and $\frac{a_{k+1}}{a_k}=\frac{(k+1)(k+2)\,2^k}{(k+2)(k+3)\,2^{k+1}}=\frac{k+1}{2(k+3)}\to\frac12$. Since $r=\frac12<1$, the series converges absolutely.
+%@ ans-factkc | all(Q(factorial(j+2),factorial(j)) == (j+2)*(j+1) for j in range(1,10)) and all(Q(factorial(j+1),factorial(j+3)*2**(j+1))/Q(factorial(j),factorial(j+2)*2**j) == Q(j+1,2*(j+3)) for j in range(1,20)) and limit((k+1)/(2*(k+3)),k,oo) == Q(1,2) | \frac{k+1}{2(k+3)}\to\frac12
+  \item[Knowledge Check \ref{kc:rootkc}.] (a) $\abs{a_k}^{1/k}=\frac{3k+1}{4k+7}\to\frac34<1$: converges absolutely. (b) $\abs{a_k}^{1/k}=\frac6{(k^{1/k})^3}\to6>1$: diverges. (c) $a_k^{1/k}=\left(1+\frac1k\right)^k\to e>1$: diverges.
+%@ ans-rootkc | limit((3*k+1)/(4*k+7),k,oo) == Q(3,4) and limit((1+1/k)**k,k,oo) == E | $a_k^{1/k}=\left(1+\frac1k\right)^k\to e>1$
+  \item[Knowledge Check \ref{kc:rkc}.] (a) The ratio is $\frac{k^2+3}{(k+1)^2+3}\to1$: inconclusive; compare with $\sum\frac1{k^2}$ (Comparison Test, since $\frac1{k^2+3}<\frac1{k^2}$): converges. (b) $\abs{\frac{a_{k+1}}{a_k}}=\sqrt{\frac k{k+1}}\to1$: inconclusive; the Alternating Series Test gives convergence, and since $\sum\frac1{\sqrt k}$ diverges, the convergence is conditional. (c) The ratio is $3\left(\frac k{k+1}\right)^2\to3>1$: it settles the question, and the series diverges.
+%@ ans-rkc | limit((k**2+3)/((k+1)**2+3),k,oo) == 1 and limit(sqrt(k/(k+1)),k,oo) == 1 and limit(3*(k/(k+1))**2,k,oo) == 3 | \left(\frac k{k+1}\right)^2\to3>1
+  \item[Pause and think \ref{think:strict}.] The proof needs one fixed number $\rho<1$ that is larger than \emph{all} the ratios from some index on, so that every term is at most $\rho$ times the previous one and the tail is dominated by $\sum\rho^k$. If the ratios tend to $r<1$, such a $\rho$ exists (any number between $r$ and $1$). If the ratios are below $1$ but tend to $1$, as $\frac k{k+1}$ does, no such $\rho$ exists: for every $\rho<1$ the ratios eventually exceed $\rho$. The terms shrink, but not geometrically.
+  \item[Pause and think \ref{think:kfact}.] Since $\abs{a_{k+1}/a_k}=\frac1{k+1}\to0$, Theorem~\ref{thm:ratroot} gives $\left(\frac1{k!}\right)^{1/k}\to0$, so $(k!)^{1/k}\to\infty$: $(k!)^{1/k}$ grows without bound. Numerically $(10!)^{1/10}\approx4.53$ and $(100!)^{1/100}\approx38.0$. It grows roughly like $k/e$ ($10/e\approx3.7$, $100/e\approx36.8$), but this needs more than we have here. It is the reason that the Root Test is hard to use for factorials.
+%@ ans-kfact | abs(float(factorial(10))**0.1-4.53)<0.01 and abs(float(factorial(100))**0.01-38.0)<0.05 and abs(float(10/E)-3.7)<0.05 and abs(float(100/E)-36.8)<0.05 and limit(1/(k+1),k,oo) == 0 | $(10!)^{1/10}\approx4.53$ and $(100!)^{1/100}\approx38.0$
+  \item[Pause and think \ref{think:abswhy}.] If $r=\frac12<1$, the series converges \emph{absolutely}, so it cannot be conditionally convergent (Theorem~\ref{thm:condr}). A conditionally convergent series, whose limit $r$ exists, must have $r=1$. But $r=1$ does not mean the series is conditionally convergent: $\sum\frac1k$ diverges and $\sum\frac1{k^2}$ converges absolutely, both with $r=1$ (Example~\ref{ex:rone}). So $r<1$ rules out conditional convergence, $r>1$ rules out convergence, and $r=1$ rules out nothing.
+\end{description}
+
+\end{document}

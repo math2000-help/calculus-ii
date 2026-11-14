@@ -14,6 +14,7 @@ appendix:
     - {id: B, title: "Limit Facts for Sequences", status: done}
     - {id: C, title: "Limits, Inequalities and Monotone Functions", status: done}
     - {id: D, title: "Splitting Sequences, Sign Parts and Rearranging Series", status: done}
+    - {id: E, title: "Limits of n-th Roots", status: done}
 modules:
   - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
   - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
@@ -21,5 +22,5 @@ modules:
   - {id: "10.4", chapter: 10, title: "The Divergence and Integral Tests", prereqs: ["10.3"], status: done}
   - {id: "10.5", chapter: 10, title: "Comparison Tests", prereqs: ["10.4"], status: done}
   - {id: "10.6", chapter: 10, title: "Alternating Series", prereqs: ["10.5"], status: done}
-  - {id: "10.7", chapter: 10, title: "The Ratio and Root Tests", prereqs: ["10.6"], status: todo}
+  - {id: "10.7", chapter: 10, title: "The Ratio and Root Tests", prereqs: ["10.6"], status: done}
   - {id: "10.8", chapter: 10, title: "Choosing a Convergence Test", prereqs: ["10.7"], status: todo}

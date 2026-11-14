@@ -5,7 +5,7 @@
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -428,6 +428,63 @@ Follow the sketch for the alternating harmonic series with the target $A=\frac32
 \textbf{Solution.} The positive terms are $1,\frac13,\frac15,\dots$ and the negative terms are $-\frac12,-\frac14,\dots$ Add positive terms until the total exceeds $\frac32$: $1+\frac13=\frac43<\frac32$, and $\frac43+\frac15=\frac{23}{15}\approx1.533>\frac32$. Now add negative terms until the total drops below $\frac32$: already the first one does, $\frac{23}{15}-\frac12=\frac{31}{30}\approx1.033<\frac32$. Add positive terms again: $\frac{31}{30}+\frac17+\frac19+\frac1{11}+\frac1{13}\approx1.4551<\frac32$, and one more, $\frac1{15}$, gives $\approx1.5218>\frac32$. The series begins $1+\frac13+\frac15-\frac12+\frac17+\frac19+\frac1{11}+\frac1{13}+\frac1{15}-\frac14+\cdots$, and its totals swing around $\frac32$ by smaller and smaller amounts (a computer run of $10^5$ terms ends within $10^{-4}$ of $\frac32$).
 %@ D-aim1 | Q(4,3) < Q(3,2) and Q(4,3)+Q(1,5) == Q(23,15) and Q(23,15) > Q(3,2) and Q(23,15)-Q(1,2) == Q(31,30) and Q(31,30) < Q(3,2) | $1+\frac13=\frac43<\frac32$, and $\frac43+\frac15=\frac{23}{15}\approx1.533>\frac32$
 %@ D-aim2 | abs(float(Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13))-1.4551)<1e-4 and Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13) < Q(3,2) and abs(float(Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13)+Q(1,15))-1.5218)<1e-4 | $\frac{31}{30}+\frac17+\frac19+\frac1{11}+\frac1{13}\approx1.4551<\frac32$
+\end{exmp}
+
+% =====================================================================
+\section{Limits of $n$-th Roots}
+
+The Root Test asks for the limit of $\abs{a_k}^{1/k}$, and for the common terms of series (powers of $k$ times a constant, or a rational function of $k$) that limit is $\lim n^{1/n}$ or one very close to it. This section proves the limits that are needed, using only the Squeeze Theorem (Theorem~\ref{thm:squeeze}), the limit laws (Theorem~\ref{thm:laws}), limits of $f(a_n)$ (Theorem~\ref{thm:fofa}) and the binomial theorem. One further limit is used in the section on the Ratio and Root Tests and is \emph{not} proved here: $\left(1+\frac1n\right)^n\to e$, which is how the number $e$ is defined in Calculus I.
+
+\begin{thm}{The limit of $n^{1/n}$}{nthroot}
+$\displaystyle\lim_{n\to\infty}n^{1/n}=1$.
+\end{thm}
+\begin{proof}
+Let $n\ge2$ and write $n^{1/n}=1+h_n$. Since $n\ge1$, we have $n^{1/n}\ge1$, so $h_n\ge0$. By the binomial theorem, all of whose terms are nonnegative here,
+\[
+n=(1+h_n)^n=1+nh_n+\binom n2h_n^2+\cdots\ \ge\ \binom n2h_n^2=\frac{n(n-1)}2\,h_n^2 .
+\]
+Dividing by $\frac{n(n-1)}2>0$ gives $h_n^2\le\frac2{n-1}$, so $0\le h_n\le\sqrt{2/(n-1)}$, that is,
+\[
+1\le n^{1/n}\le1+\sqrt{\frac2{n-1}} .
+\]
+%@ E-nr | all(float(n_)**(1/float(n_)) >= 1 and float(n_)**(1/float(n_)) <= 1+(2/(n_-1))**0.5 and n_ >= Q(n_*(n_-1),2)*(float(n_)**(1/float(n_))-1)**2 - 1e-9 for n_ in range(2,300)) | 1\le n^{1/n}\le1+\sqrt{\frac2{n-1}} .
+The right side tends to $1$ (limit laws, and Theorem~\ref{thm:fofa}(a) for the square root, which is continuous at $0$). By the Squeeze Theorem, $n^{1/n}\to1$.
+\end{proof}
+
+\begin{thm}{Roots of constants}{croot}
+If $c>0$, then $\displaystyle\lim_{n\to\infty}c^{1/n}=1$.
+\end{thm}
+\begin{proof}
+Suppose first that $c\ge1$. For every $n\ge c$ we have $1\le c\le n$, and $t\mapsto t^{1/n}$ is increasing, so $1\le c^{1/n}\le n^{1/n}$. Both outer sequences tend to $1$ (Theorem~\ref{thm:nthroot}), so $c^{1/n}\to1$ by the Squeeze Theorem. Now suppose $0<c<1$. Then $\frac1c>1$, so $\left(\frac1c\right)^{1/n}\to1$ by the first case, and
+\[
+c^{1/n}=\frac1{(1/c)^{1/n}}\to\frac11=1
+\]
+by the limit laws.
+\end{proof}
+
+\begin{thm}{Roots of powers times a positive limit}{posroot}
+Let $p$ be a real number and let $c_n>0$ with $c_n\to L$, where $L>0$. Then $\displaystyle\lim_{n\to\infty}\left(n^pc_n\right)^{1/n}=1$.
+\end{thm}
+\begin{proof}
+\emph{The factor $c_n$.} Take $\varepsilon=\frac L2$ in the definition of the limit: there is $N$ with $\frac L2<c_n<\frac{3L}2$ for $n>N$. Raising to the power $\frac1n$ (an increasing operation), $\left(\frac L2\right)^{1/n}<c_n^{1/n}<\left(\frac{3L}2\right)^{1/n}$. Both outer sequences tend to $1$ (Theorem~\ref{thm:croot}), so $c_n^{1/n}\to1$ by the Squeeze Theorem.
+
+\emph{The factor $n^p$.} $(n^p)^{1/n}=\left(n^{1/n}\right)^p\to1^p=1$, by Theorem~\ref{thm:nthroot} and Theorem~\ref{thm:fofa}(a) applied to $y\mapsto y^p$, which is continuous at $1$.
+
+\emph{Product.} For positive numbers $(xy)^{1/n}=x^{1/n}y^{1/n}$, so $\left(n^pc_n\right)^{1/n}=\left(n^{1/n}\right)^p\,c_n^{1/n}\to1\cdot1=1$ by the product law.
+\end{proof}
+
+\begin{exmp}{How slowly $n^{1/n}$ approaches $1$}{nrtable}
+Compute $n^{1/n}$ for $n=2,3,10,100,1000$ and compare with the bound in the proof.
+
+\textbf{Solution.} $2^{1/2}\approx1.4142$, $3^{1/3}\approx1.4423$, $10^{1/10}\approx1.2589$, $100^{1/100}\approx1.0471$, $1000^{1/1000}\approx1.0069$. The sequence first \emph{rises} (to its largest value at $n=3$, because $\frac{\ln x}x$ has its maximum at $x=e$) and only then falls to $1$, and it falls slowly. The bound $1+\sqrt{2/(n-1)}$ is valid but crude: at $n=1000$ it is $\approx1.0447$, while the true value is $1.0069$. So the limit is a statement about very large $n$.
+%@ E-ex1 | abs(float(2)**0.5-1.4142)<1e-4 and abs(3**(1/3)-1.4423)<1e-4 and abs(10**0.1-1.2589)<1e-4 and abs(100**0.01-1.0471)<1e-4 and abs(1000**0.001-1.0069)<1e-4 and all(3**(1/3) >= j**(1/j) for j in range(1,500)) and abs(1+(2/999)**0.5-1.0447)<1e-4 | $10^{1/10}\approx1.2589$
+\end{exmp}
+
+\begin{exmp}{Roots of rational expressions}{nrex}
+Find (a)~$\displaystyle\lim_{n\to\infty}\left(\frac{3n^2+1}{n^2+5}\right)^{1/n}$, (b)~$\displaystyle\lim_{n\to\infty}\left(7n^{10}\right)^{1/n}$, (c)~$\displaystyle\lim_{n\to\infty}\left(\frac{5n+1}{n^4}\right)^{1/n}$.
+
+\textbf{Solution.} (a) The fraction tends to $3>0$, so with $p=0$ Theorem~\ref{thm:posroot} gives $1$. (b) Take $p=10$ and $c_n=7$: the limit is $1$. (c) Write $\frac{5n+1}{n^4}=n^{-3}\left(5+\frac1n\right)$: here $p=-3$ and $c_n=5+\frac1n\to5>0$, so the limit is $1$. In every case the root of a quantity that is only polynomial in $n$ is $1$ in the limit, and only a genuinely exponential factor ($2^n$, $\left(1+\frac1n\right)^{n^2}$, \dots) changes the answer.
+%@ E-ex2 | abs(float(((3*1000**2+1)/(1000**2+5))**(1/1000))-1.0011)<1e-4 and abs(float((7*1000**10)**(1/1000))-1.0736)<1e-3 and limit(5+1/n,n,oo) == 5 and simplify((5*n+1)/n**4 - n**(-3)*(5+1/n)) == 0 and limit((3*n**2+1)/(n**2+5),n,oo) == 3 | \frac{5n+1}{n^4}=n^{-3}\left(5+\frac1n\right)
 \end{exmp}
 
 \end{document}
