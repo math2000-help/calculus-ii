@@ -1,0 +1,469 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{3}{Infinite Series}
+\calcxdoc{10.2}
+\calcxdoc{10.1}
+\calcxapp
+
+\begin{document}
+
+\section{Infinite Series}
+
+\begin{guide}
+A ball is dropped from two metres and bounces again and again, each rebound reaching $\frac35$ of the previous height. It bounces infinitely often, yet it comes to rest, so the total distance it travels ought to be finite. How far does it go? In Section~10.1 an infinite sum was defined as the limit of its partial sums. That tells us what a series \emph{means}, but not how to \emph{evaluate} one: for most series nobody can find a formula for $S_n$. This section treats the two families where it can be done, geometric series and telescoping series, and then proves the rules that let us add, scale and shift convergent series. It ends with the fact on which the next sections rest: for a series of nonnegative terms, convergence is the same as boundedness of the partial sums.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item write the $n$th partial sum of a series with any starting index and say what convergence means;
+  \item recognise a geometric series, find its first term and ratio, decide whether it converges, find its value and estimate the error of a partial sum;
+  \item write a repeating decimal as a geometric series and as a fraction;
+  \item evaluate a telescoping series (using partial fractions or logarithm rules) and recognise when it diverges;
+  \item use the properties of convergent series, including changing the starting index, and say when they do \emph{not} apply;
+  \item show that a series of nonnegative terms converges by bounding its partial sums;
+  \item prove the main theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Series and convergence}
+
+\begin{defn}{Convergence of a series}{conv}
+Let $\{a_k\}_{k=M}^\infty$ be a sequence, where $M$ is an integer. The $n$th \emph{partial sum} of the series $\sum_{k=M}^\infty a_k$ is the sum of its first $n$ terms,
+\[
+S_n=a_M+a_{M+1}+\cdots+a_{M+n-1}=\sum_{k=M}^{M+n-1}a_k .
+\]
+If $S_n\to S$ the series \emph{converges}, and $S$ is its \emph{sum} or \emph{value}: $\sum_{k=M}^\infty a_k=S$. If $\{S_n\}$ diverges (including the cases $S_n\to\infty$ and $S_n\to-\infty$), the series \emph{diverges} and has no value.
+\end{defn}
+
+For $M=1$ this is Definition~\ref{10.1-def:series}. The only new point is the starting index. For $\sum_{k=3}^\infty a_k$ the $n$th partial sum is $a_3+a_4+\cdots+a_{n+2}$, the sum of the first $n$ \emph{terms}, which is not the same as the sum up to $a_n$. When the starting index does not matter we write simply $\sum a_k$.
+
+To evaluate a series we find a formula for $S_n$ and take its limit. Only a few families allow this; we meet the two most important ones now.
+
+% ---------------------------------------------------------------------
+\subsection*{Geometric series}
+
+\begin{defn}{Geometric series}{geodef}
+A \emph{geometric series} is a series in which every term is the same constant multiple of the term before it. If the first term is $t\ne0$ and the \emph{ratio} is $r$, the series is $t+tr+tr^2+tr^3+\cdots$.
+\end{defn}
+
+The series $\sum_{k=0}^\infty ar^k$ has first term $a$ and ratio $r$. The series $\sum_{k=2}^\infty3\left(-\frac12\right)^k$ has ratio $-\frac12$ but first term $3\left(-\frac12\right)^2=\frac34$, not $3$. Always compute the first term from the actual starting index. The $n$th partial sum of a geometric series is a finite geometric sum (Theorem~\ref{10.1-thm:geosum}), and that gives a complete answer.
+
+\begin{thm}{Geometric series}{geoseries}
+Let $t\ne0$ and let $\sum$ be the geometric series with first term $t$ and ratio $r$. Its partial sums are
+\[
+S_n=t\,\frac{1-r^n}{1-r}\quad(r\ne1),\qquad S_n=nt\quad(r=1).
+\]
+\begin{enumerate}[label=(\alph*)]
+  \item If $|r|<1$, the series converges and its value is $\dfrac{t}{1-r}$ (first term over one minus the ratio).
+  \item If $|r|\ge1$, the series diverges.
+  \item If $|r|<1$ and $S$ is the value, the error in using $S_n$ is $S-S_n=\dfrac{t\,r^n}{1-r}$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+The first $n$ terms are $t,tr,\dots,tr^{n-1}$, so $S_n=t(1+r+\cdots+r^{n-1})$. If $r=1$ this is $nt$; if $r\ne1$ it equals $t\frac{1-r^n}{1-r}$ by the finite geometric sum.
+
+(a) If $|r|<1$ then $r^n\to0$ (Theorem~\ref{10.2-thm:geom}), so by the limit laws $S_n=\frac{t}{1-r}\,(1-r^n)\to\frac t{1-r}$.
+
+(b) Let $r=1$. Then $|S_n|=n|t|$ is unbounded, but a convergent sequence is bounded (Theorem~\ref{app-thm:bounded}), so the series diverges. Now let $|r|\ge1$ and $r\ne1$, and suppose $S_n\to S$. Solving $S_n=t\frac{1-r^n}{1-r}$ for $r^n$ gives $r^n=1-\frac{1-r}tS_n$, and by the limit laws the right side converges (to $1-\frac{1-r}tS$). So $\{r^n\}$ would converge. But for $r>1$ we have $r^n\to\infty$, and for $r\le-1$ the sequence $\{r^n\}$ diverges (Theorem~\ref{10.2-thm:geom}). This contradiction shows that $\{S_n\}$ diverges.
+
+(c) $S-S_n=\dfrac t{1-r}-\dfrac{t(1-r^n)}{1-r}=\dfrac{t\,r^n}{1-r}$.
+\end{proof}
+
+\begin{exmp}{Geometric series: value or divergence}{geoval}
+Evaluate each series or say that it diverges. (a)~$\displaystyle\sum_{k=0}^\infty6\left(\frac23\right)^k$; \quad (b)~$\displaystyle\sum_{k=2}^\infty5\left(-\frac34\right)^k$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{3^{k+1}}{5^k}$; \quad (d)~$\displaystyle\sum_{k=0}^\infty1.07^k$.
+
+\textbf{Solution.} In each case find the first term $t$ and the ratio $r$.
+
+(a) The first term (at $k=0$) is $t=6$ and $r=\frac23$, with $|r|<1$. The value is $\dfrac{6}{1-2/3}=18$.
+%@ geo-a | Q(6)/(1-Q(2,3)) == 18 and summation(6*Q(2,3)**k,(k,0,oo)) == 18 | $\dfrac{6}{1-2/3}=18$
+
+(b) The series starts at $k=2$, so $t=5\left(-\frac34\right)^2=\frac{45}{16}$ (not $5$), and $r=-\frac34$. The value is $\dfrac{45/16}{1+3/4}=\dfrac{45}{28}$.
+%@ geo-b | Q(45,16)/(1+Q(3,4)) == Q(45,28) and 5*Q(-3,4)**2 == Q(45,16) | The value is $\dfrac{45/16}{1+3/4}=\dfrac{45}{28}$.
+
+(c) Rewrite $\dfrac{3^{k+1}}{5^k}=3\left(\dfrac35\right)^k$. At $k=1$ the first term is $t=\frac95$, and $r=\frac35$. The value is $\dfrac{9/5}{1-3/5}=\dfrac92$.
+%@ geo-c | Q(9,5)/(1-Q(3,5)) == Q(9,2) and Q(3**2,5) == Q(9,5) | The value is $\dfrac{9/5}{1-3/5}=\dfrac92$.
+
+(d) Here $r=1.07>1$, so the series diverges. Its partial sums $S_n=\dfrac{1.07^n-1}{0.07}$ grow without bound, like a bank balance with $7\%$ compound interest.
+%@ geo-d | Q(107,100) > 1 and limit((Q(107,100)**n-1)/Q(7,100), n, oo) == oo and Q(107,100)**2-1 == Q(1449,10000) | $S_n=\dfrac{1.07^n-1}{0.07}$
+\end{exmp}
+
+A repeating decimal is a geometric series in disguise.
+
+\begin{exmp}{A repeating decimal as a fraction}{decimal}
+Write $0.1\overline{27}=0.1272727\ldots$ as a fraction.
+
+\textbf{Solution.} Split off the part that does not repeat: $0.1272727\ldots=0.1+0.0272727\ldots$ The repeating part is the series $0.027+0.00027+0.0000027+\cdots$. Each term is $\frac1{100}$ of the one before, so it is geometric with $t=0.027$ and $r=0.01$:
+\[
+0.027+0.00027+\cdots=\frac{0.027}{1-0.01}=\frac{27}{990}=\frac3{110}.
+\]
+%@ dec-a | Q(27,1000)/(1-Q(1,100)) == Q(3,110) | =\frac{27}{990}=\frac3{110}.
+Hence $0.1\overline{27}=\dfrac1{10}+\dfrac3{110}=\dfrac{11+3}{110}=\dfrac7{55}$. Check by long division: $\frac7{55}=0.127272\ldots$
+%@ dec-b | Q(1,10)+Q(3,110) == Q(7,55) and abs(float(Q(7,55))-0.12727272)<1e-7 | =\dfrac{11+3}{110}=\dfrac7{55}$
+\end{exmp}
+
+\begin{exmp}{A bouncing ball}{bounce}
+A ball is dropped from a height of $2$ m. Each time it hits the floor it rebounds to $\frac35$ of the height from which it fell. What total distance does it travel?
+
+\textbf{Solution.} The ball first falls $2$ m. After that, each bounce consists of a rise and an equal fall. The first rebound height is $2\cdot\frac35=\frac65$ m, so bounce $1$ adds $\frac{12}5$ m; the second rebound height is $2\left(\frac35\right)^2$, so bounce $2$ adds $4\left(\frac35\right)^2$ m; in general bounce $j$ adds $4\left(\frac35\right)^j$ m. The total distance is
+\[
+2+\sum_{j=1}^\infty4\left(\frac35\right)^j .
+\]
+The series is geometric with first term $\frac{12}5$ and ratio $\frac35$, so its value is
+\[
+\sum_{j=1}^\infty4\left(\frac35\right)^j=\frac{12/5}{1-3/5}=6 ,
+\]
+%@ bounce-a | Q(12,5)/(1-Q(3,5)) == 6 and summation(4*Q(3,5)**k,(k,1,oo)) == 6 | =\frac{12/5}{1-3/5}=6 ,
+and the ball travels $2+6=8$ m in all. As a check, after three bounces the distance is $2+2.4+1.44+0.864=6.704$ m, and the partial-sum formula $2+6\left(1-0.6^3\right)$ gives the same number.
+%@ bounce-b | Q(2)+Q(12,5)+Q(36,25)+Q(108,125) == Q(6704,1000) and 2+6*(1-Q(3,5)**3) == Q(6704,1000) | $2+2.4+1.44+0.864=6.704$ m
+\end{exmp}
+
+\begin{exmp}{How many terms are enough?}{remainder}
+How many terms of $\displaystyle\sum_{k=0}^\infty3(0.7)^k$ must be added so that the partial sum is within $10^{-4}$ of the value?
+
+\textbf{Solution.} The value is $S=\dfrac{3}{1-0.7}=10$. By Theorem~\ref{thm:geoseries}(c) the error after $n$ terms is $S-S_n=\dfrac{3(0.7)^n}{0.3}=10(0.7)^n$. We need $10(0.7)^n<10^{-4}$, that is, $0.7^n<10^{-5}$, so $n>\dfrac{5\ln10}{\ln(1/0.7)}\approx32.3$. The smallest such integer is $n=33$. Check: the error is $10(0.7)^{32}\approx1.1\times10^{-4}$ (too big) and $10(0.7)^{33}\approx7.7\times10^{-5}$ (small enough).
+%@ rem-a | 10*Q(7,10)**32 > Q(1,10**4) and 10*Q(7,10)**33 < Q(1,10**4) and Q(3)/(1-Q(7,10)) == 10 | $S=\dfrac{3}{1-0.7}=10$
+%@ rem-b | abs(float(10*Q(7,10)**32)-1.1e-4)<5e-6 and abs(float(10*Q(7,10)**33)-7.7e-5)<5e-6 and abs(float(5*log(10)/log(Q(10,7)))-32.3)<0.05 | \approx32.3$
+\end{exmp}
+
+\begin{kc}{Geometric series}{geokc}
+Find the first term and the ratio, decide whether the series converges, and find its value if it does: (a)~$\displaystyle\sum_{k=0}^\infty2\left(\frac15\right)^k$; \quad (b)~$\displaystyle\sum_{k=3}^\infty\left(-\frac12\right)^k$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{4^k}{3^{k+1}}$.
+\end{kc}
+
+\begin{think}{Why the condition $|r|<1$?}{geor}
+A student writes: ``Let $S=1+2+4+8+\cdots$. Then $S=1+2(1+2+4+\cdots)=1+2S$, so $S=-1$.'' Find the mistake by looking at the partial sums. Then explain why the same manipulation $S=1+rS$, which gives $S=\frac1{1-r}$, \emph{is} legitimate when $|r|<1$.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Telescoping series}
+
+In a telescoping series each term is a difference, and when the partial sum is written out almost everything cancels, like the sections of a collapsing telescope.
+
+\begin{thm}{Telescoping series}{tele}
+Let $\{b_k\}_{k=M}^\infty$ be a sequence. For every $j\ge1$,
+\[
+\sum_{k=M}^{M+j-1}\left(b_k-b_{k+1}\right)=b_M-b_{M+j}.
+\]
+Consequently $\sum_{k=M}^\infty(b_k-b_{k+1})$ converges if and only if $\{b_k\}$ converges, and then its value is $b_M-\lim_{k\to\infty}b_k$. More generally, if $m\ge1$ is an integer and $b_k\to L$, then
+\[
+\sum_{k=M}^\infty\left(b_k-b_{k+m}\right)=\left(b_M+b_{M+1}+\cdots+b_{M+m-1}\right)-mL .
+\]
+\end{thm}
+\begin{proof}
+The formula for the finite sum is proved by induction on $j$. For $j=1$ it says $b_M-b_{M+1}=b_M-b_{M+1}$. If it holds for $j$, add the next term $b_{M+j}-b_{M+j+1}$: the sum of $j+1$ terms is $b_M-b_{M+j}+b_{M+j}-b_{M+j+1}=b_M-b_{M+j+1}$.
+
+Hence the partial sum is $S_j=b_M-b_{M+j}$. If $b_k\to L$, then $b_{M+j}\to L$ (Theorem~\ref{app-thm:tail}) and $S_j\to b_M-L$. Conversely, if $S_j\to S$ then $b_{M+j}=b_M-S_j\to b_M-S$, and so $b_k$ converges, again by Theorem~\ref{app-thm:tail}. This proves the first two statements.
+
+For the last statement, each difference splits into $m$ one-step differences,
+\[
+b_k-b_{k+m}=\sum_{i=0}^{m-1}\left(b_{k+i}-b_{k+i+1}\right).
+\]
+Add this over $k=M,\dots,M+j-1$ and exchange the two finite sums. The inner sum over $k$ telescopes by the finite formula (for the sequence starting at $M+i$) to $b_{M+i}-b_{M+i+j}$, so
+\[
+S_j=\left(b_M+\cdots+b_{M+m-1}\right)-\left(b_{M+j}+b_{M+j+1}+\cdots+b_{M+j+m-1}\right).
+\]
+Each of the $m$ sequences $b_{M+j+i}$ tends to $L$ as $j\to\infty$, so $S_j\to(b_M+\cdots+b_{M+m-1})-mL$ by the limit laws.
+\end{proof}
+
+To use the theorem we must \emph{write a term as a difference}; partial fractions (from the chapter on integration techniques) and logarithm rules are the usual tools. The theorem also says what goes wrong when it fails: the series converges only if $\{b_k\}$ converges.
+
+\begin{exmp}{A telescoping series with partial fractions}{teleex}
+Evaluate $\displaystyle\sum_{k=1}^\infty\frac6{(k+1)(k+3)}$.
+
+\textbf{Solution.} Partial fractions give $\dfrac6{(k+1)(k+3)}=3\left(\dfrac1{k+1}-\dfrac1{k+3}\right)$, because $\dfrac1{k+1}-\dfrac1{k+3}=\dfrac2{(k+1)(k+3)}$.
+%@ tele-a | simplify(6/((k+1)*(k+3)) - 3*(1/(k+1) - 1/(k+3))) == 0 and simplify(1/(k+1)-1/(k+3) - 2/((k+1)*(k+3))) == 0 | $\dfrac6{(k+1)(k+3)}=3\left(\dfrac1{k+1}-\dfrac1{k+3}\right)$
+With $b_k=\frac1{k+1}$ this is $3(b_k-b_{k+2})$, a step of $m=2$, and $b_k\to0$. Writing out the partial sum, the terms $\frac14,\frac15,\dots$ cancel and only the first two positive and last two negative terms survive:
+\[
+S_n=3\left(\frac12+\frac13-\frac1{n+2}-\frac1{n+3}\right).
+\]
+%@ tele-b | simplify(summation(6/((k+1)*(k+3)),(k,1,n)) - 3*(Q(1,2)+Q(1,3)-1/(n+2)-1/(n+3))) == 0 | S_n=3\left(\frac12+\frac13-\frac1{n+2}-\frac1{n+3}\right).
+Since $\frac1{n+2}\to0$ and $\frac1{n+3}\to0$, the value is $3\left(\frac12+\frac13\right)=\frac52$.
+%@ tele-c | 3*(Q(1,2)+Q(1,3)) == Q(5,2) and limit(3*(Q(1,2)+Q(1,3)-1/(n+2)-1/(n+3)), n, oo) == Q(5,2) | the value is $3\left(\frac12+\frac13\right)=\frac52$.
+\end{exmp}
+
+\begin{exmp}{Telescoping with logarithms: one series diverges, one converges}{telelog}
+Decide whether each series converges, and find its value if it does: (a)~$\displaystyle\sum_{k=1}^\infty\ln\left(1+\frac1k\right)$; \quad (b)~$\displaystyle\sum_{k=2}^\infty\ln\left(1-\frac1{k^2}\right)$.
+
+\textbf{Solution.} (a) Since $\ln\left(1+\frac1k\right)=\ln\frac{k+1}k=\ln(k+1)-\ln k$, the term is $b_k-b_{k+1}$ with $b_k=-\ln k$. Then $S_n=\ln(n+1)-\ln1=\ln(n+1)\to\infty$. The series diverges, which also follows from the theorem because $b_k=-\ln k$ does not converge. Notice that the \emph{terms} $\ln(1+\frac1k)$ tend to $0$, and still the series diverges.
+%@ tl-a | all(abs((sum(log(Q(i+1,i)) for i in range(1,j+1)) - log(j+1)).evalf())<1e-12 for j in range(1,8)) and limit(log(n+1), n, oo) == oo and limit(log(1+1/n), n, oo) == 0 | $S_n=\ln(n+1)-\ln1=\ln(n+1)\to\infty$.
+
+(b) Factor $1-\frac1{k^2}=\frac{(k-1)(k+1)}{k^2}=\frac{k-1}k\cdot\frac{k+1}k$, so
+\[
+\ln\left(1-\frac1{k^2}\right)=\ln\frac{k+1}k-\ln\frac k{k-1}=u_{k+1}-u_k\qquad\text{with }u_k=\ln\frac k{k-1}.
+\]
+Therefore the partial sum from $k=2$ to $k=n$ is $u_{n+1}-u_2=\ln\dfrac{n+1}n-\ln2=\ln\dfrac{n+1}{2n}$ (a finite telescoping sum). Because $\frac{n+1}{2n}\to\frac12$ and $\ln$ is continuous, $S_n\to\ln\frac12$, so
+\[
+\sum_{k=2}^\infty\ln\left(1-\frac1{k^2}\right)=-\ln2\approx-0.693 .
+\]
+%@ tl-b | all(prod([1-Q(1,i**2) for i in range(2,j+1)]) == Q(j+1,2*j) for j in range(2,12)) and limit(log(Q(1,2)*(n+1)/n), n, oo) == -log(2) and abs(float(-log(2))+0.693147)<1e-6 | =-\ln2\approx-0.693 .
+The product form explains the answer: $\prod_{k=2}^n\left(1-\frac1{k^2}\right)=\frac{n+1}{2n}$, and the logarithm turns the product into a sum.
+\end{exmp}
+
+\begin{kc}{Telescoping series}{telekc}
+Evaluate each series or say that it diverges: (a)~$\displaystyle\sum_{k=1}^\infty\left(\frac1{2k}-\frac1{2k+2}\right)$; \quad (b)~$\displaystyle\sum_{k=2}^\infty\frac2{k^2-1}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\left(\sqrt k-\sqrt{k+1}\right)$.
+\end{kc}
+
+\begin{think}{Parentheses in an infinite sum}{grandi}
+Group $1-1+1-1+1-1+\cdots$ in two ways: $(1-1)+(1-1)+(1-1)+\cdots$ and $1+(-1+1)+(-1+1)+\cdots$. What does each grouping suggest the sum is? What do the \emph{partial sums} of the original series do, and what does the definition of convergence say about it? How are the partial sums of the grouped series related to those of the original?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Properties of convergent series}
+
+\begin{thm}{Properties of convergent series}{props}
+Let $c$ be a real number.
+\begin{enumerate}[label=(\arabic*)]
+  \item If $\sum a_k$ converges to $A$, then $\sum ca_k$ converges to $cA$.
+  \item If $\sum a_k$ diverges and $c\ne0$, then $\sum ca_k$ diverges.
+  \item If $\sum a_k$ converges to $A$ and $\sum b_k$ converges to $B$, then $\sum(a_k\pm b_k)$ converges to $A\pm B$.
+  \item If $\sum a_k$ diverges and $\sum b_k$ converges, then $\sum(a_k\pm b_k)$ diverges.
+  \item Let $M$ be a positive integer. The series $\sum_{k=1}^\infty a_k$ and $\sum_{k=M}^\infty a_k$ either both converge or both diverge, and if they converge, $\sum_{k=1}^\infty a_k=(a_1+\cdots+a_{M-1})+\sum_{k=M}^\infty a_k$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Throughout, $S_n$ and $T_n$ are the partial sums of $\sum a_k$ and $\sum b_k$, taken from the same starting index.
+
+(1) The $n$th partial sum of $\sum ca_k$ is $\sum_{k}ca_k=c\sum_ka_k=cS_n$ (a property of finite sums). Since $S_n\to A$, we get $cS_n\to cA$ by the limit laws (Theorem~\ref{app-thm:laws}).
+
+(2) Suppose $\sum ca_k$ converged. Then by part (1), with $\frac1c$ in place of $c$, the series $\sum\frac1c(ca_k)=\sum a_k$ would converge, contrary to hypothesis.
+
+(3) The $n$th partial sum of $\sum(a_k\pm b_k)$ is $S_n\pm T_n$, which tends to $A\pm B$ by the limit laws.
+
+(4) Suppose $\sum(a_k+b_k)$ converged. Since $a_k=(a_k+b_k)-b_k$, part (3) would make $\sum a_k$ converge, a contradiction. The case $a_k-b_k$ is the same with $a_k=(a_k-b_k)+b_k$.
+
+(5) Let $S_n$ be the partial sums of $\sum_{k=1}^\infty a_k$ and $T_n$ those of $\sum_{k=M}^\infty a_k$. The first $M-1+n$ terms of the first series are the $M-1$ leading terms followed by the first $n$ terms of the second, so $S_{n+M-1}=(a_1+\cdots+a_{M-1})+T_n$, that is, $T_n=S_{n+M-1}-S_{M-1}$. If $S_n$ converges, so does $S_{n+M-1}$ (Theorem~\ref{app-thm:tail}), and $T_n$ converges, to $S-S_{M-1}$. Conversely, if $T_n$ converges, then $S_{n+M-1}=T_n+S_{M-1}$ converges, and so does $S_n$, by Theorem~\ref{app-thm:tail} again. In the convergent case $S=S_{M-1}+T$, which is the stated formula.
+\end{proof}
+
+\begin{warn}[Split a sum only when both pieces converge]
+Properties (3) and (4) do not cover two divergent series: $\sum1$ and $\sum(-1)$ both diverge, yet $\sum(1-1)=0+0+\cdots=0$ converges (Pause and think~\ref{think:twodiv}). So never split a convergent series into two series unless you know that \emph{both} pieces converge. There is also no rule for products: $\sum_{k=0}^\infty\left(\frac12\right)^k\left(\frac13\right)^k=\sum_{k=0}^\infty\left(\frac16\right)^k=\frac65$, while $\left(\sum\left(\frac12\right)^k\right)\left(\sum\left(\frac13\right)^k\right)=2\cdot\frac32=3$.
+%@ warn-prod | Q(1,1-Q(1,6)) == Q(6,5) and Q(1,1-Q(1,2))*Q(1,1-Q(1,3)) == 3 | =\frac65$, while
+\end{warn}
+
+\begin{exmp}{Using the properties}{propsex}
+(a) Evaluate $\displaystyle\sum_{k=0}^\infty\left[\frac3{4^k}-2\left(-\frac13\right)^k\right]$. (b) Decide whether $\displaystyle\sum_{k=1}^\infty\frac{4^k+7^k}{6^k}$ converges. (c) Find $\displaystyle\sum_{k=4}^\infty\frac5{3^k}$ in two ways.
+
+\textbf{Solution.} (a) Both $\sum3\left(\frac14\right)^k$ and $\sum2\left(-\frac13\right)^k$ are geometric with $|r|<1$, so they converge: their values are $\dfrac3{1-1/4}=4$ and $\dfrac2{1+1/3}=\dfrac32$. By property (3) the combined series converges and its value is $4-\dfrac32=\dfrac52$.
+%@ props-a | Q(3)/(1-Q(1,4)) == 4 and Q(2)/(1+Q(1,3)) == Q(3,2) and 4-Q(3,2) == Q(5,2) | its value is $4-\dfrac32=\dfrac52$.
+
+
+(b) Divide each term: $\dfrac{4^k+7^k}{6^k}=\left(\dfrac23\right)^k+\left(\dfrac76\right)^k$. The first series is geometric with $r=\frac23$ and converges (to $\frac{2/3}{1/3}=2$). The second is geometric with $r=\frac76>1$ and diverges. By property (4) the series diverges. (It would be a mistake to say ``the first part converges, so the series converges''.)
+%@ props-b | Q(2,3)/(1-Q(2,3)) == 2 and Q(7,6) > 1 and simplify((4**k+7**k)/6**k - (Q(2,3)**k + Q(7,6)**k)) == 0 | $\dfrac{4^k+7^k}{6^k}=\left(\dfrac23\right)^k+\left(\dfrac76\right)^k$
+
+(c) \emph{Way 1 (the formula).} The first term is $t=\frac5{3^4}=\frac5{81}$ and $r=\frac13$, so the value is $\dfrac{5/81}{2/3}=\dfrac5{54}$. \emph{Way 2 (property 5).} The whole series $\sum_{k=0}^\infty\frac5{3^k}$ has value $\frac5{2/3}=\frac{15}2$; remove the first four terms $5+\frac53+\frac59+\frac5{27}=\frac{200}{27}$ to get $\frac{15}2-\frac{200}{27}=\frac5{54}$. The two answers agree.
+%@ props-c | Q(5,81)/(1-Q(1,3)) == Q(5,54) and Q(15,2)-(5+Q(5,3)+Q(5,9)+Q(5,27)) == Q(5,54) and 5+Q(5,3)+Q(5,9)+Q(5,27) == Q(200,27) | to get $\frac{15}2-\frac{200}{27}=\frac5{54}$
+\end{exmp}
+
+\begin{kc}{Properties of series}{propskc}
+(a) Evaluate $\displaystyle\sum_{k=0}^\infty\left[2\left(\frac13\right)^k+5\left(\frac1{10}\right)^k\right]$. (b) Does $\displaystyle\sum_{k=0}^\infty\left[\left(\frac9{10}\right)^k-2\left(\frac{11}{10}\right)^k\right]$ converge? Name the property you use. (c) Find $\displaystyle\sum_{k=5}^\infty\left(\frac12\right)^k$.
+\end{kc}
+
+\begin{think}{Two divergent series, one convergent sum}{twodiv}
+(a) Give two divergent series $\sum a_k$ and $\sum b_k$ for which $\sum(a_k+b_k)$ converges. (b) Give two divergent series for which $\sum(a_k+b_k)$ diverges. (c) Which of properties (3) and (4) of Theorem~\ref{thm:props} cannot be strengthened to cover ``both series diverge'', and why?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Series with nonnegative terms}
+
+Most series have no formula for $S_n$. For a series of nonnegative terms we can still decide convergence, because the partial sums can only move in one direction.
+
+\begin{thm}{Series with nonnegative terms}{posterms}
+Let $a_k\ge0$ for all $k$, with partial sums $S_n$. Then $\{S_n\}$ is nondecreasing, and
+\begin{enumerate}[label=(\alph*)]
+  \item the series converges if and only if $\{S_n\}$ is bounded above; in that case its value is $\sup\{S_n\}$, so $S_n\le\sum a_k$ for every $n$;
+  \item if $\{S_n\}$ is not bounded above, then $S_n\to\infty$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+$S_{n+1}-S_n$ is the next term, which is $\ge0$, so $\{S_n\}$ is nondecreasing. (a) If $\{S_n\}$ is bounded above, it converges to $\sup\{S_n\}$ by the Monotone Convergence Theorem (Theorem~\ref{app-thm:mct}). If the series converges, then $\{S_n\}$ converges and is therefore bounded (Theorem~\ref{app-thm:bounded}). (b) Let $K$ be any number. Since $K$ is not an upper bound, some $S_N>K$, and then $S_n\ge S_N>K$ for all $n\ge N$ because the partial sums are nondecreasing.
+\end{proof}
+
+The theorem changes the question from ``what is the limit?'' to ``do the partial sums stay bounded?'', and bounding is often easy. For example, Example~\ref{10.2-ex:b10} showed that the partial sums of $\sum\frac1{k^2}$ stay below $2$, so that series converges (we cannot yet say to what). The value, which is $\frac{\pi^2}6$, is much harder.
+
+\begin{exmp}{Convergence by bounding the partial sums}{posex}
+Show that $\displaystyle\sum_{k=1}^\infty\frac1{k\,2^k}$ converges, and locate its value.
+
+\textbf{Solution.} All terms are positive. For $k\ge1$ we have $k\,2^k\ge2^k$, so $\dfrac1{k\,2^k}\le\dfrac1{2^k}$, and
+\[
+S_n\le\sum_{k=1}^n\frac1{2^k}=1-\frac1{2^n}<1
+\]
+for every $n$ (a finite geometric sum). So the partial sums are bounded above by $1$, and the series converges by Theorem~\ref{thm:posterms}. The first three partial sums are $\frac12,\ \frac58,\ \frac23$, so the value is between $\frac23$ and $1$. (It is in fact $\ln2\approx0.6931$, a fact that comes from the power series of the natural logarithm, a topic of the next chapter.)
+%@ pos-a | simplify(summation(Q(1,2)**k,(k,1,n)) - (1-Q(1,2)**n)) == 0 and all(k_*2**k_ >= 2**k_ for k_ in range(1,20)) | S_n\le\sum_{k=1}^n\frac1{2^k}=1-\frac1{2^n}<1
+%@ pos-b | Q(1,2) == Q(1,1*2**1) and Q(1,2)+Q(1,8) == Q(5,8) and Q(1,2)+Q(1,8)+Q(1,24) == Q(2,3) and abs(float(summation(1/(k*2**k),(k,1,oo)))-0.693147)<1e-6 | $\frac12,\ \frac58,\ \frac23$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead: series with a variable}
+
+If the ratio of a geometric series involves a variable $x$, the value of the series is a \emph{function} of $x$, defined for those $x$ where the series converges. This is the first step on the road to power series, the subject of a later chapter, where series of this kind are used to write functions such as $\ln x$, $e^x$ and $\sin x$ as ``infinite polynomials''.
+
+\begin{exmp}{A geometric series with a variable}{geox}
+For which real numbers $x$ does $\displaystyle\sum_{k=0}^\infty\left(\frac{x+1}4\right)^k$ converge, and what is its value?
+
+\textbf{Solution.} For each fixed $x$ this is a geometric series with $t=1$ and $r=\frac{x+1}4$. By Theorem~\ref{thm:geoseries} it converges exactly when $\left|\frac{x+1}4\right|<1$, that is, $|x+1|<4$, or $-5<x<3$, and then
+\[
+\sum_{k=0}^\infty\left(\frac{x+1}4\right)^k=\frac1{1-\frac{x+1}4}=\frac4{3-x}.
+\]
+%@ geox-a | simplify(1/(1-(x+1)/4) - 4/(3-x)) == 0 | =\frac1{1-\frac{x+1}4}=\frac4{3-x}.
+For example, $x=1$ gives $r=\frac12$ and the value $\frac42=2$, the sum of $1+\frac12+\frac14+\cdots$. At $x=3$ the ratio is $1$, and at $x=-5$ it is $-1$; the series diverges there, and for every $x\ge3$ and every $x\le-5$.
+%@ geox-b | 4/(3-1) == 2 and Q(1,1-Q(1,2)) == 2 and Q(3+1,4) == 1 and Q(-5+1,4) == -1 | At $x=3$ the ratio is $1$, and at $x=-5$ it is $-1$;
+\end{exmp}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Geometric series}: first term, ratio and value (Examples~\ref{ex:b1}--\ref{ex:b2}).
+  \item \emph{Decimals and applications of geometric series} (Examples~\ref{ex:b3}--\ref{ex:b4}).
+  \item \emph{Telescoping series} (Examples~\ref{ex:b5}--\ref{ex:b6}).
+  \item \emph{Combining and decomposing series} (Examples~\ref{ex:b7}--\ref{ex:b8}).
+  \item \emph{Partial sums and remainders} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{Series with a variable, and positive terms} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Geometric series}
+
+\begin{exmp}{A first term that is not the coefficient}{b1}
+Evaluate $\displaystyle\sum_{k=1}^\infty\frac5{4^k}$.
+
+\textbf{Solution.} Write $\dfrac5{4^k}=5\left(\dfrac14\right)^k$. The ratio is $\frac14$, and since $|r|<1$ the series converges. The series starts at $k=1$, so the first term is $t=\frac54$, not $5$. The value is $\dfrac{5/4}{1-1/4}=\dfrac53$. Check: $S_3=\frac54+\frac5{16}+\frac5{64}=\frac{105}{64}\approx1.64$, which is below $\frac53\approx1.67$, as it must be for positive terms.
+%@ bank-1 | Q(5,4)/(1-Q(1,4)) == Q(5,3) and Q(5,4)+Q(5,16)+Q(5,64) == Q(105,64) and Q(105,64) < Q(5,3) | =\frac{105}{64}\approx1.64$
+\end{exmp}
+
+\begin{exmp}{Finding the ratio from the terms}{b2}
+Evaluate $\displaystyle\sum_{k=2}^\infty\frac{3^{k+1}}{(-5)^{k-1}}$.
+
+\textbf{Solution.} The ratio of consecutive terms is constant: $\dfrac{a_{k+1}}{a_k}=\dfrac{3^{k+2}/(-5)^k}{3^{k+1}/(-5)^{k-1}}=\dfrac3{-5}=-\dfrac35$, so the series is geometric with $|r|<1$. The first term is the one at $k=2$: $t=\dfrac{3^3}{(-5)^1}=-\dfrac{27}5$. The value is $\dfrac{-27/5}{1+3/5}=-\dfrac{27}8=-3.375$. Check: the partial sums $-5.4,\ -2.16,\ -4.104,\ \dots$ alternate around the value, as they should when $r<0$.
+%@ bank-2 | Q(-27,5)/(1+Q(3,5)) == Q(-27,8) and Q(3**3,(-5)**1) == Q(-27,5) and Q(-27,5)+Q(81,25) == Q(-54,25) and abs(float(sum(Q(3**(i+1),(-5)**(i-1)) for i in range(2,60)))+3.375)<1e-9 | $-5.4,\ -2.16,\ -4.104,\ \dots$
+\end{exmp}
+
+\subsection*{Group 2: Decimals and applications of geometric series}
+
+\begin{exmp}{A repeating block of three digits}{b3}
+Write $4.\overline{036}=4.036036036\ldots$ as a fraction.
+
+\textbf{Solution.} The whole-number part is $4$. The rest, $0.036036\ldots=0.036+0.000036+\cdots$, is geometric: each term is $\frac1{1000}$ of the one before (the block has three digits), so $t=0.036$ and $r=0.001$. Its value is $\dfrac{0.036}{1-0.001}=\dfrac{36}{999}=\dfrac4{111}$. So $4.\overline{036}=4+\dfrac4{111}=\dfrac{448}{111}$. Check: $448\div111=4.036036\ldots$
+%@ bank-3 | Q(36,1000)/(1-Q(1,1000)) == Q(4,111) and 4+Q(4,111) == Q(448,111) and abs(float(Q(448,111))-4.036036036)<1e-8 | $4.\overline{036}=4+\dfrac4{111}=\dfrac{448}{111}$
+\end{exmp}
+
+\begin{exmp}{A perpetuity}{b4}
+A fund pays $\$1000$ at the end of every year forever, and money earns $4\%$ interest per year. What lump sum today has the same value as all the payments? How much of it is needed to cover the first $30$ payments?
+
+\textbf{Solution.} A payment made $k$ years from now is worth $\dfrac{1000}{1.04^k}$ today. The lump sum is the series $\sum_{k=1}^\infty\dfrac{1000}{1.04^k}$, geometric with $t=\dfrac{1000}{1.04}=\dfrac{25000}{26}$ and $r=\dfrac1{1.04}=\dfrac{25}{26}<1$. Its value is $\dfrac{25000/26}{1-25/26}=25000$ dollars. The first $30$ payments are worth the partial sum $S_{30}=25000\left(1-\left(\frac{25}{26}\right)^{30}\right)\approx17292.03$ (by Theorem~\ref{thm:geoseries}, $S_n=t\frac{1-r^n}{1-r}$ with $\frac t{1-r}=25000$). The rest, about $7708$ dollars, pays for payments $31, 32,\dots$ and is the remainder $\frac{tr^{30}}{1-r}=25000\,r^{30}$ of part (c) of the theorem.
+%@ bank-4 | Q(25000,26)/(1-Q(25,26)) == 25000 and Q(1000)/Q(104,100) == Q(25000,26) and abs(float(25000*(1-Q(25,26)**30))-17292.03)<0.01 and abs(float(25000*Q(25,26)**30)-7707.97)<0.01 | $S_{30}=25000\left(1-\left(\frac{25}{26}\right)^{30}\right)\approx17292.03$
+\end{exmp}
+
+\subsection*{Group 3: Telescoping series}
+
+\begin{exmp}{A step of three}{b5}
+Evaluate $\displaystyle\sum_{k=1}^\infty\frac2{k(k+3)}$.
+
+\textbf{Solution.} Since $\dfrac1k-\dfrac1{k+3}=\dfrac3{k(k+3)}$, we have $\dfrac2{k(k+3)}=\dfrac23\left(\dfrac1k-\dfrac1{k+3}\right)$. With $b_k=\frac1k\to0$ this is a telescoping series with step $m=3$, so the value is $\dfrac23\left(b_1+b_2+b_3-3\cdot0\right)=\dfrac23\left(1+\dfrac12+\dfrac13\right)=\dfrac23\cdot\dfrac{11}6=\dfrac{11}9$. Check with the partial sum: $S_n=\dfrac23\left(\dfrac{11}6-\dfrac1{n+1}-\dfrac1{n+2}-\dfrac1{n+3}\right)$, and at $n=1$ this gives $\frac23\left(\frac{11}6-\frac12-\frac13-\frac14\right)=\frac12$, the first term.
+%@ bank-5 | simplify(1/k - 1/(k+3) - 3/(k*(k+3))) == 0 and Q(2,3)*Q(11,6) == Q(11,9) and simplify(summation(2/(k*(k+3)),(k,1,n)) - Q(2,3)*(Q(11,6)-1/(n+1)-1/(n+2)-1/(n+3))) == 0 and Q(2,3)*(Q(11,6)-Q(1,2)-Q(1,3)-Q(1,4)) == Q(1,2) | $\frac23\left(\frac{11}6-\frac12-\frac13-\frac14\right)=\frac12$
+\end{exmp}
+
+\begin{exmp}{A telescoping series with square roots}{b6}
+Does $\displaystyle\sum_{k=1}^\infty\frac1{\sqrt k+\sqrt{k+1}}$ converge?
+
+\textbf{Solution.} Rationalise the denominator by multiplying by $\sqrt{k+1}-\sqrt k$: $\dfrac1{\sqrt k+\sqrt{k+1}}=\dfrac{\sqrt{k+1}-\sqrt k}{(k+1)-k}=\sqrt{k+1}-\sqrt k$. This is $b_k-b_{k+1}$ with $b_k=-\sqrt k$, and the partial sum is $S_n=\sqrt{n+1}-\sqrt1=\sqrt{n+1}-1$, which tends to $\infty$. So the series diverges, although its terms tend to $0$ (they behave like $\frac1{2\sqrt k}$). The theorem agrees: $b_k=-\sqrt k$ does not converge.
+%@ bank-6 | simplify(1/(sqrt(k)+sqrt(k+1)) - (sqrt(k+1)-sqrt(k))) == 0 and limit(sqrt(n+1)-1, n, oo) == oo and limit(1/(sqrt(n)+sqrt(n+1)), n, oo) == 0 and abs(float(summation(1/(sqrt(k)+sqrt(k+1)),(k,1,8)))-(sqrt(9)-1))<1e-12 | $S_n=\sqrt{n+1}-\sqrt1=\sqrt{n+1}-1$
+\end{exmp}
+
+\subsection*{Group 4: Combining and decomposing series}
+
+\begin{exmp}{Properties with given sums}{b7}
+Suppose $\sum_{k=1}^\infty a_k=5$ and $\sum_{k=1}^\infty b_k=-2$, and $a_1=1$, $a_2=\frac12$. Find (a)~$\sum_{k=1}^\infty(3a_k-4b_k)$; (b)~$\sum_{k=3}^\infty a_k$; (c)~decide whether $\sum_{k=1}^\infty(a_k+2)$ converges.
+
+\textbf{Solution.} (a) Both series converge, so properties (1) and (3) apply: $\sum(3a_k-4b_k)=3\cdot5-4\cdot(-2)=23$. (b) By property (5), $\sum_{k=1}^\infty a_k=a_1+a_2+\sum_{k=3}^\infty a_k$, so $\sum_{k=3}^\infty a_k=5-1-\frac12=\frac72$. (c) The series $\sum2=2+2+2+\cdots$ is geometric with $r=1$ and diverges, while $\sum a_k$ converges, so by property (4) the series $\sum(a_k+2)$ diverges.
+%@ bank-7 | 3*5-4*(-2) == 23 and 5-1-Q(1,2) == Q(7,2) and Q(2)/(1) == 2 | $\sum_{k=3}^\infty a_k=5-1-\frac12=\frac72$
+\end{exmp}
+
+\begin{exmp}{Working backwards from the value}{b8}
+The geometric series $\sum_{k=0}^\infty3r^k$ has value $12$. Find $r$, and then find $\sum_{k=0}^\infty3r^{2k}$.
+
+\textbf{Solution.} A value is only possible if $|r|<1$, and then $\dfrac3{1-r}=12$. So $1-r=\frac14$ and $r=\frac34$, which does satisfy $|r|<1$. The second series is $\sum3\left(r^2\right)^k$, geometric with ratio $r^2=\frac9{16}$ and first term $3$, so its value is $\dfrac3{1-9/16}=\dfrac{48}7$. Check: $\frac{48}7\approx6.86$ is smaller than $12$, which makes sense because $r^2<r$ makes the terms smaller.
+%@ bank-8 | solve(3/(1-r)-12, r) == [Q(3,4)] and Q(3)/(1-Q(9,16)) == Q(48,7) and Q(48,7) < 12 | $\dfrac3{1-9/16}=\dfrac{48}7$
+\end{exmp}
+
+\subsection*{Group 5: Partial sums and remainders}
+
+\begin{exmp}{Recovering the series from its partial sums}{b9}
+A series has partial sums $S_n=\dfrac{3n}{n+2}$. Find its terms and its value.
+
+\textbf{Solution.} By Theorem~\ref{10.1-thm:partial}, $a_1=S_1=1$ and for $n\ge2$
+\[
+a_n=S_n-S_{n-1}=\frac{3n}{n+2}-\frac{3(n-1)}{n+1}=\frac{3\left[n(n+1)-(n-1)(n+2)\right]}{(n+1)(n+2)}=\frac6{(n+1)(n+2)}.
+\]
+%@ bank-9a | simplify(3*n/(n+2) - 3*(n-1)/(n+1) - 6/((n+1)*(n+2))) == 0 and expand(n*(n+1)-(n-1)*(n+2)) == 2 | =\frac{3\left[n(n+1)-(n-1)(n+2)\right]}{(n+1)(n+2)}=\frac6{(n+1)(n+2)}.
+The formula also gives $a_1=\frac6{2\cdot3}=1$, so it holds for every $n\ge1$. The value is $\lim S_n=\lim\dfrac{3}{1+2/n}=3$. Check: $a_2=S_2-S_1=\frac32-1=\frac12=\frac6{3\cdot4}$.
+%@ bank-9b | Q(6,2*3) == 1 and Q(3*2,4)-1 == Q(1,2) and Q(6,3*4) == Q(1,2) and limit(3*n/(n+2), n, oo) == 3 | Check: $a_2=S_2-S_1=\frac32-1=\frac12=\frac6{3\cdot4}$.
+\end{exmp}
+
+\begin{exmp}{A remainder with alternating signs}{b10}
+How many terms of $\displaystyle\sum_{k=0}^\infty5\left(-\frac45\right)^k$ are needed so that the partial sum is within $0.001$ of the value?
+
+\textbf{Solution.} Here $t=5$, $r=-\frac45$, and the value is $S=\dfrac5{1+4/5}=\dfrac{25}9$. By Theorem~\ref{thm:geoseries}(c), $S-S_n=\dfrac{5(-4/5)^n}{9/5}=\dfrac{25}9\left(-\dfrac45\right)^n$. Its absolute value is $\frac{25}9\left(\frac45\right)^n$, and we need this to be less than $0.001$: $\left(\frac45\right)^n<0.00036$, so $n>\dfrac{\ln0.00036}{\ln0.8}\approx35.5$. The smallest integer is $n=36$. (The sign of the error alternates with $n$, but only its size matters here.) Check: $\frac{25}9(0.8)^{35}\approx0.0011$ and $\frac{25}9(0.8)^{36}\approx0.00088$.
+%@ bank-10 | Q(5)/(1+Q(4,5)) == Q(25,9) and Q(25,9)*Q(4,5)**35 > Q(1,1000) and Q(25,9)*Q(4,5)**36 < Q(1,1000) and abs(float(log(Q(36,100000))/log(Q(4,5)))-35.5)<0.05 | $n>\dfrac{\ln0.00036}{\ln0.8}\approx35.5$
+\end{exmp}
+
+\subsection*{Group 6: Series with a variable, and positive terms}
+
+\begin{exmp}{A ratio that is a fraction in $x$}{b11}
+For which $x$ does $\displaystyle\sum_{k=0}^\infty\left(\frac2{x-1}\right)^k$ converge? Find its value there.
+
+\textbf{Solution.} This is geometric with $t=1$ and $r=\dfrac2{x-1}$ ($x\ne1$). It converges exactly when $\left|\dfrac2{x-1}\right|<1$, that is $|x-1|>2$, so $x<-1$ or $x>3$. The value is $\dfrac1{1-\frac2{x-1}}=\dfrac{x-1}{x-3}$. Check: at $x=5$ the ratio is $\frac12$ and the value is $2=\frac{4}{2}$; at $x=-3$ the ratio is $-\frac12$ and the value is $\frac23=\frac{-4}{-6}$.
+%@ bank-11 | simplify(1/(1-2/(x-1)) - (x-1)/(x-3)) == 0 and Q(1,1-Q(1,2)) == 2 and Q(5-1,5-3) == 2 and Q(1,1+Q(1,2)) == Q(2,3) and Q(-3-1,-3-3) == Q(2,3) | at $x=-3$ the ratio is $-\frac12$ and the value is $\frac23=\frac{-4}{-6}$
+\end{exmp}
+
+\begin{exmp}{Positive terms, bounded partial sums}{b12}
+Show that $\displaystyle\sum_{k=1}^\infty\frac1{2^k+k}$ converges, and find an interval that contains its value.
+
+\textbf{Solution.} The terms are positive, and $2^k+k>2^k$, so $\dfrac1{2^k+k}<\dfrac1{2^k}$. Hence $S_n<\sum_{k=1}^n2^{-k}=1-2^{-n}<1$ for all $n$: the partial sums are bounded above by $1$ and the series converges (Theorem~\ref{thm:posterms}). By part (a) of that theorem the value is at least every partial sum; $S_3=\frac13+\frac16+\frac1{11}=\frac{13}{22}\approx0.59$. So the value lies between $\frac{13}{22}$ and $1$.
+%@ bank-12 | Q(1,3)+Q(1,6)+Q(1,11) == Q(13,22) and all(2**i+i > 2**i for i in range(1,30)) and abs(float(Q(13,22))-0.5909)<1e-4 and float(summation(1/(2**k+k),(k,1,200))) < 1 | $S_3=\frac13+\frac16+\frac1{11}=\frac{13}{22}\approx0.59$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{A series that diverges by the definition}{b13}
+Prove that $\displaystyle\sum_{k=1}^\infty(-1)^{k+1}k=1-2+3-4+\cdots$ diverges.
+
+\textbf{Plan.} Find a formula for the partial sums and show that they are unbounded; a convergent sequence is bounded (Theorem~\ref{app-thm:bounded}).
+
+\begin{proof}
+Claim: $S_{2j-1}=j$ and $S_{2j}=-j$ for every $j\ge1$. For $j=1$: $S_1=1$ and $S_2=1-2=-1$. If the claim holds for $j$, then $S_{2j+1}=S_{2j}+(2j+1)=-j+2j+1=j+1$ and $S_{2j+2}=S_{2j+1}-(2j+2)=j+1-2j-2=-(j+1)$, which is the claim for $j+1$. By induction it holds for all $j$. Therefore $|S_n|\ge\frac n2$ for every $n$, so $\{S_n\}$ is unbounded, hence divergent.
+\end{proof}
+%@ bank-13 | [sum((-1)**(i+1)*i for i in range(1,2*j)) for j in range(1,7)] == [1,2,3,4,5,6] and [sum((-1)**(i+1)*i for i in range(1,2*j+1)) for j in range(1,7)] == [-1,-2,-3,-4,-5,-6] and expand((-m)+(2*m+1)-(m+1)) == 0 | $S_{2j+1}=S_{2j}+(2j+1)=-j+2j+1=j+1$
+A common mistake is to say ``the signs alternate, so the series converges''. Alternating signs alone guarantee nothing: here the terms grow, and the partial sums swing ever more widely.
+\end{exmp}
+
+\begin{exmp}{Using the properties of series in a proof}{b14}
+Prove that if $\sum_{k=1}^\infty a_k$ converges to $A$, then $\sum_{k=1}^\infty(a_k+a_{k+1})$ converges to $2A-a_1$.
+
+\textbf{Plan.} The series $\sum_{k=1}^\infty a_{k+1}$ has the terms $a_2,a_3,\dots$, which is the tail of $\sum a_k$. Use property (5) for the tail and property (3) to add.
+
+\begin{proof}
+By property (5) with $M=2$, $\sum_{k=2}^\infty a_k$ converges and equals $A-a_1$. The series $\sum_{k=1}^\infty a_{k+1}$ has the same terms in the same order ($a_2,a_3,\dots$), hence the same partial sums, so it converges to $A-a_1$. By property (3) the series $\sum_{k=1}^\infty(a_k+a_{k+1})$ converges to $A+(A-a_1)=2A-a_1$.
+\end{proof}
+%@ bank-14 | Q(1,1-Q(1,2))*Q(1,2) == 1 and 2*1-Q(1,2) == Q(3,2) and (Q(1,2)+Q(1,4))/(1-Q(1,2)) == Q(3,2) | $A+(A-a_1)=2A-a_1$
+A common mistake is to answer $2A$, forgetting that $\sum a_{k+1}$ is missing the first term $a_1$. A check: for $a_k=\left(\frac12\right)^k$ we have $A=1$, $a_1=\frac12$, and $\sum\left(\frac1{2^k}+\frac1{2^{k+1}}\right)=\sum\frac3{2^{k+1}}=\frac32=2\cdot1-\frac12$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:geokc}.] (a) $t=2$, $r=\frac15$, converges, value $\frac2{4/5}=\frac52$. (b) The first term is at $k=3$: $t=\left(-\frac12\right)^3=-\frac18$, $r=-\frac12$, converges, value $\frac{-1/8}{3/2}=-\frac1{12}$. (c) $\frac{4^k}{3^{k+1}}=\frac13\left(\frac43\right)^k$, so $r=\frac43>1$ and the series diverges.
+%@ ans-geokc | Q(2)/(1-Q(1,5)) == Q(5,2) and Q(-1,8)/(1+Q(1,2)) == Q(-1,12) and Q(4,3) > 1 and simplify(4**k/3**(k+1) - Q(1,3)*Q(4,3)**k) == 0 | value $\frac{-1/8}{3/2}=-\frac1{12}$
+  \item[Knowledge Check \ref{kc:telekc}.] (a) With $b_k=\frac1{2k}\to0$ the term is $b_k-b_{k+1}$, so the value is $b_1=\frac12$. (b) $\frac2{k^2-1}=\frac1{k-1}-\frac1{k+1}$; with $b_k=\frac1{k-1}\to0$ and step $2$ starting at $k=2$, the value is $b_2+b_3=1+\frac12=\frac32$. (c) $S_n=\sqrt1-\sqrt{n+1}=1-\sqrt{n+1}\to-\infty$, so the series diverges.
+%@ ans-telekc | simplify(2/(k**2-1) - (1/(k-1)-1/(k+1))) == 0 and limit(1-sqrt(n+1), n, oo) == -oo and Q(1,2) + 0 == Q(1,2) and 1+Q(1,2) == Q(3,2) | $S_n=\sqrt1-\sqrt{n+1}=1-\sqrt{n+1}\to-\infty$
+  \item[Knowledge Check \ref{kc:propskc}.] (a) Both series are geometric with $|r|<1$: $\frac2{1-1/3}=3$ and $\frac5{1-1/10}=\frac{50}9$, so the value is $3+\frac{50}9=\frac{77}9$. (b) $\sum\left(\frac9{10}\right)^k$ converges (value $10$), while $\sum2\left(\frac{11}{10}\right)^k$ diverges ($r=1.1$), so $\sum-2\left(\frac{11}{10}\right)^k$ diverges by property (2); by property (4) the combined series diverges. (c) $t=\frac1{32}$, $r=\frac12$, value $\frac{1/32}{1/2}=\frac1{16}$; or $2-\left(1+\frac12+\frac14+\frac18+\frac1{16}\right)=\frac1{16}$ by property (5).
+%@ ans-propskc | Q(2)/(1-Q(1,3)) + Q(5)/(1-Q(1,10)) == Q(77,9) and Q(1,32)/(1-Q(1,2)) == Q(1,16) and 2-(1+Q(1,2)+Q(1,4)+Q(1,8)+Q(1,16)) == Q(1,16) | $2-\left(1+\frac12+\frac14+\frac18+\frac1{16}\right)=\frac1{16}$
+  \item[Pause and think \ref{think:geor}.] The partial sums are $S_n=1+2+\cdots+2^{n-1}=2^n-1$, which tend to $\infty$: the series diverges and there is no number $S$. The manipulation assumed that $S$ is a number and then solved for it; the result $-1$ is nonsense (a sum of positive terms cannot be negative). For $|r|<1$ the series does converge by Theorem~\ref{thm:geoseries}, so $S$ is a number, the rearrangement $S=1+rS$ is a valid use of properties (1) and (5), and solving gives $S=\frac1{1-r}$, in agreement with the theorem.
+%@ ans-geor | [sum(2**i for i in range(0,j)) for j in range(1,8)] == [2**j-1 for j in range(1,8)] and Q(1,1-Q(1,2)) == 2 | $S_n=1+2+\cdots+2^{n-1}=2^n-1$
+  \item[Pause and think \ref{think:grandi}.] The first grouping suggests $0+0+\cdots=0$, the second $1+0+0+\cdots=1$: two different answers for the same series, so grouping cannot always be allowed. The partial sums of $1-1+1-1+\cdots$ are $1,0,1,0,\dots$; the sequence has two subsequences with different limits ($1$ and $0$), so by Theorem~\ref{app-thm:subseq} (see Appendix Example~\ref{app-ex:subseqex}) it diverges, and the original series has no sum. The grouped series have as partial sums a \emph{subsequence} of the original ones: $S_2,S_4,S_6,\dots$ (all $0$) for the first grouping and $S_1,S_3,S_5,\dots$ (all $1$) for the second. For a \emph{convergent} series, any subsequence of the partial sums has the same limit (Theorem~\ref{app-thm:subseq}), so inserting parentheses never changes the value; for a divergent series it can create the appearance of a value.
+%@ ans-grandi | [sum((-1)**(i+1) for i in range(1,j+1)) for j in range(1,9)] == [1,0,1,0,1,0,1,0] | The partial sums of $1-1+1-1+\cdots$ are $1,0,1,0,\dots$;
+  \item[Pause and think \ref{think:twodiv}.] (a) $a_k=1$ and $b_k=-1$: both diverge ($r=1$ geometric, and property (2) with $c=-1$), while $a_k+b_k=0$ gives a series with every partial sum $0$. (b) $a_k=b_k=1$: the sum $\sum2$ diverges. (c) Neither property can be extended: property (3) needs both series to converge, since (a) shows that two divergent series can give a convergent sum, and property (4) is about exactly one divergent series, since (b) and (a) show that with two divergent series the sum can either converge or diverge, so no conclusion is possible.
+%@ ans-twodiv | [1+(-1) for i in range(5)] == [0]*5 and [1+1 for i in range(5)] == [2]*5 | $a_k=1$ and $b_k=-1$: both diverge
+\end{description}
+
+\end{document}

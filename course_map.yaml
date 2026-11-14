@@ -12,11 +12,12 @@ appendix:
   sections:
     - {id: A, title: "Completeness and the Monotone Convergence Theorem", status: done}
     - {id: B, title: "Limit Facts for Sequences", status: done}
+    - {id: C, title: "Limits, Inequalities and Monotone Functions", status: done}
 modules:
   - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
   - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
-  - {id: "10.3", chapter: 10, title: "Infinite Series", prereqs: ["10.2"], status: todo}
-  - {id: "10.4", chapter: 10, title: "The Divergence and Integral Tests", prereqs: ["10.3"], status: todo}
+  - {id: "10.3", chapter: 10, title: "Infinite Series", prereqs: ["10.2"], status: done}
+  - {id: "10.4", chapter: 10, title: "The Divergence and Integral Tests", prereqs: ["10.3"], status: done}
   - {id: "10.5", chapter: 10, title: "Comparison Tests", prereqs: ["10.4"], status: todo}
   - {id: "10.6", chapter: 10, title: "Alternating Series", prereqs: ["10.5"], status: todo}
   - {id: "10.7", chapter: 10, title: "The Ratio and Root Tests", prereqs: ["10.6"], status: todo}

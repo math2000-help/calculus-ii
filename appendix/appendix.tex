@@ -5,7 +5,7 @@
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -273,6 +273,71 @@ The function $f(y)=\cos(\pi y)$ is continuous at every number, in particular at 
 \cos(\pi a_n)\to\cos\!\left(\frac\pi2\right)=0 .
 \]
 %@ B-ex4b | limit(cos(pi*n/(2*n+1)), n, oo) == 0 | \cos\!\left(\frac\pi2\right)=0
+\end{exmp}
+
+% =====================================================================
+\section{Limits, Inequalities and Monotone Functions}
+
+This section supports the study of series. It uses Definition~\ref{def:limit}, the supremum facts of Section~A and the limit facts of Section~B.
+
+\begin{thm}{Limits preserve non-strict inequalities}{ineq}
+Suppose $a_n\to A$, $b_n\to B$, and $a_n\le b_n$ for every $n$ greater than some index $M$. Then $A\le B$. In particular, if $a_n\ge m$ for large $n$ and $a_n\to A$, then $A\ge m$.
+\end{thm}
+\begin{proof}
+Suppose, to the contrary, that $A>B$, and let $\varepsilon=\frac12(A-B)>0$. There is $N$ with $a_n>A-\varepsilon=\frac{A+B}2$ and $b_n<B+\varepsilon=\frac{A+B}2$ for all $n>N$. For $n>\max\{M,N\}$ this gives $b_n<\frac{A+B}2<a_n$, contradicting $a_n\le b_n$. So $A\le B$. For the second statement take the constant sequence $b_n=m$, applied with the roles of the two sequences exchanged: $m\le a_n$ gives $m\le A$.
+\end{proof}
+
+Strict inequalities are not preserved: $\frac1{n^2}<\frac1n$ for every $n\ge2$, yet both sequences tend to $0$.
+
+\begin{thm}{Subsequences}{subseq}
+Let $S_n\to S$ and let $n_1<n_2<n_3<\cdots$ be positive integers. Then $S_{n_j}\to S$ as $j\to\infty$. Consequently, if two subsequences of $\{S_n\}$ have different limits, then $\{S_n\}$ diverges.
+\end{thm}
+\begin{proof}
+First, $n_j\ge j$ for every $j$: $n_1\ge1$, and if $n_j\ge j$ then $n_{j+1}>n_j\ge j$, so $n_{j+1}\ge j+1$. Let $\varepsilon>0$ and choose $N$ with $\abs{S_n-S}<\varepsilon$ for $n>N$. For $j>N$ we have $n_j\ge j>N$, so $\abs{S_{n_j}-S}<\varepsilon$. The second statement is the contrapositive combined with uniqueness of limits (Theorem~\ref{thm:unique}): if $S_n\to S$, every subsequence tends to the same $S$.
+\end{proof}
+
+We use the definition of the limit of a \emph{function} at infinity from Calculus~I: $\lim_{x\to\infty}g(x)=L$ means that for every $\varepsilon>0$ there is a number $X$ such that $\abs{g(x)-L}<\varepsilon$ for all $x>X$; and $\lim_{x\to\infty}g(x)=\infty$ means that for every $K$ there is $X$ with $g(x)>K$ for all $x>X$.
+
+\begin{thm}{A monotone function has a limit at infinity}{monofn}
+Let $g$ be defined on $[a,\infty)$ and nondecreasing, that is, $g(x)\le g(y)$ whenever $a\le x<y$.
+\begin{enumerate}[label=(\alph*)]
+  \item If $g$ is bounded above, then $\lim_{x\to\infty}g(x)$ exists and equals $\sup\{g(x):x\ge a\}$.
+  \item If $g$ is not bounded above, then $g(x)\to\infty$ as $x\to\infty$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(a) The set $\{g(x):x\ge a\}$ is nonempty and bounded above, so $M=\sup\{g(x):x\ge a\}$ exists by the Completeness Axiom. Let $\varepsilon>0$. By Theorem~\ref{thm:approx} there is $x_0\ge a$ with $M-\varepsilon<g(x_0)\le M$. For every $x>x_0$, monotonicity gives $M-\varepsilon<g(x_0)\le g(x)\le M$, so $\abs{g(x)-M}<\varepsilon$. Hence $g(x)\to M$.
+
+(b) Let $K$ be a number. Since $K$ is not an upper bound of $g$, there is $x_0$ with $g(x_0)>K$, and then $g(x)\ge g(x_0)>K$ for all $x>x_0$.
+\end{proof}
+
+\begin{thm}{Improper integrals of nonnegative functions}{posint}
+Let $f$ be continuous on $[a,\infty)$ with $f(x)\ge0$, and let $F(b)=\int_a^bf(x)\,dx$ for $b\ge a$. Then $F$ is nondecreasing, and:
+\begin{enumerate}[label=(\alph*)]
+  \item the improper integral $\int_a^\infty f(x)\,dx=\lim_{b\to\infty}F(b)$ converges if and only if $F$ is bounded above, and then $F(b)\le\int_a^\infty f(x)\,dx$ for every $b$;
+  \item $F$ is bounded above if and only if the numbers $F(n)$, for integers $n\ge a$, are bounded above;
+  \item if $F$ is not bounded above, then $\int_a^\infty f(x)\,dx=\infty$ (the integral diverges).
+\end{enumerate}
+\end{thm}
+\begin{proof}
+If $a\le b<c$ then $F(c)-F(b)=\int_b^cf(x)\,dx\ge0$ because $f\ge0$, so $F$ is nondecreasing. Parts (a) and (c) follow from Theorem~\ref{thm:monofn}. If $F$ is bounded above, the limit exists and equals $\sup F$, which is at least every $F(b)$. If $F$ is not bounded above, then $F(b)\to\infty$, so the improper integral does not converge; this proves (c) and shows that a convergent integral forces $F$ to be bounded above. For (b), one direction is trivial. Conversely, suppose $F(n)\le K$ for all integers $n\ge a$. Given any $b\ge a$, choose an integer $n\ge b$; then $F(b)\le F(n)\le K$.
+\end{proof}
+
+\begin{exmp}{Bounded or unbounded integrals}{posintex}
+Decide whether $\int_1^\infty e^{-x}\,dx$ and $\int_1^\infty\frac1x\,dx$ converge, using Theorem~\ref{thm:posint}.
+
+\textbf{Solution.} Both integrands are positive and continuous on $[1,\infty)$. For $F(b)=\int_1^be^{-x}\,dx=e^{-1}-e^{-b}$ we have $F(b)<e^{-1}$ for every $b$, so $F$ is bounded above and the integral converges, to $e^{-1}\approx0.368$.
+%@ C-ex1a | simplify(integrate(exp(-x),(x,1,b)) - (exp(-1)-exp(-b))) == 0 and limit(exp(-1)-exp(-b), b, oo) == exp(-1) | F(b)=\int_1^be^{-x}\,dx=e^{-1}-e^{-b}
+For $G(b)=\int_1^b\frac1x\,dx=\ln b$, the values $G(e^m)=m$ for $m=1,2,3,\dots$ are not bounded above, so by part (b) $G$ is not bounded above and the integral diverges. Notice that the integrand $\frac1x$ tends to $0$ and still the integral is infinite: ``small integrand'' does not mean ``finite integral'', exactly as ``small terms'' does not mean ``finite sum''.
+%@ C-ex1b | integrate(1/x,(x,1,b)) == log(b) and limit(log(b), b, oo) == oo and [log(exp(i)) for i in range(1,5)] == [1,2,3,4] | $G(e^m)=m$ for $m=1,2,3,\dots$
+\end{exmp}
+
+\begin{exmp}{Subsequences settle a question about divergence}{subseqex}
+Show that the sequence $S_n=\frac{1+(-1)^n}2$ (that is, $0,1,0,1,\dots$) diverges, and that $S_n=\frac{1-(-1)^n}2$ has the same property.
+
+\textbf{Solution.} The even-numbered terms are $S_{2j}=\frac{1+1}2=1$ for every $j$, a constant sequence with limit $1$. The odd-numbered terms are $S_{2j-1}=\frac{1-1}2=0$, a constant sequence with limit $0$. These are two subsequences with different limits, so by Theorem~\ref{thm:subseq} the sequence diverges.
+%@ C-ex2 | [(1+(-1)**(2*i))/Integer(2) for i in range(1,5)] == [1,1,1,1] and [(1+(-1)**(2*i-1))/Integer(2) for i in range(1,5)] == [0,0,0,0] | $S_{2j-1}=\frac{1-1}2=0$
+The second sequence is the first one shifted by one place, with the roles of $0$ and $1$ swapped, and the same argument applies.
 \end{exmp}
 
 \end{document}

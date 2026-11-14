@@ -1,0 +1,486 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{4}{The Divergence and Integral Tests}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+\calcxdoc{10.1}
+\calcxapp
+
+\begin{document}
+
+\section{The Divergence and Integral Tests}
+
+\begin{guide}
+The terms of $1+\frac12+\frac13+\frac14+\cdots$ shrink to $0$, and the sum of the first million of them is only about $14.4$. Does the series settle down at some number like $15$, or does it grow without bound? Nothing in the last section can say: there is no formula for $S_n$, and the terms are positive, so convergence is equivalent to boundedness (Theorem~\ref{10.3-thm:posterms}) but we do not yet know whether the partial sums are bounded. This section gives two tools. The first is a one-line test that catches many divergent series. The second compares a series with an improper integral, which settles the harmonic series and every series $\sum1/k^p$, and also tells us how far a partial sum can be from the full sum.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item apply the Divergence Test, and explain why it can prove divergence but never convergence;
+  \item prove that the harmonic series diverges, and say how slowly its partial sums grow;
+  \item apply the Integral Test: check that the function is positive, continuous and decreasing, evaluate the improper integral, and state the conclusion;
+  \item decide convergence of every $p$-series and use $p$-series as a yardstick;
+  \item bound the sum of a convergent series and the error of a partial sum, and find how many terms are enough;
+  \item prove the main theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The Divergence Test}
+
+\begin{thm}{Divergence Test}{divtest}
+If $\sum a_k$ converges, then $\lim_{k\to\infty}a_k=0$. Equivalently, if $\lim_{k\to\infty}a_k$ does not exist or is not $0$, then $\sum a_k$ diverges.
+\end{thm}
+\begin{proof}
+Let $S_n=a_M+\cdots+a_{M+n-1}$ be the partial sums and suppose $S_n\to S$. Then $S_{n+1}\to S$ as well (Theorem~\ref{app-thm:tail}), and the next term is the difference of two consecutive partial sums, $a_{M+n}=S_{n+1}-S_n$. By the limit laws,
+\[
+a_{M+n}=S_{n+1}-S_n\ \longrightarrow\ S-S=0 .
+\]
+So the sequence $a_{M+n}$, which is $\{a_k\}$ with its first $M$ terms dropped, tends to $0$, and therefore $a_k\to0$ (Theorem~\ref{app-thm:tail}). The second sentence is the contrapositive of the first.
+\end{proof}
+
+In words: if the terms do not tend to zero, the partial sums cannot settle down, because each new term moves the sum by a definite amount. Be careful about which way the theorem points. It lets us \emph{reject} a series; it can never be used to \emph{accept} one.
+
+\begin{exmp}{Using the Divergence Test}{divex}
+Decide which of these series the Divergence Test shows to diverge, and which it cannot decide. (a)~$\displaystyle\sum_{k=1}^\infty\frac{2k^2+1}{k^2+3k}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+2}{k}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty k\sin\frac1k$; \quad (d)~$\displaystyle\sum_{k=1}^\infty\frac1{k^2}$ and $\displaystyle\sum_{k=1}^\infty\frac1k$.
+
+\textbf{Solution.} In each case look at $\lim a_k$.
+
+(a) Dividing by $k^2$, $a_k=\dfrac{2+1/k^2}{1+3/k}\to2\ne0$. The series diverges.
+%@ div-a | limit((2*k**2+1)/(k**2+3*k),k,oo) == 2 | $a_k=\dfrac{2+1/k^2}{1+3/k}\to2\ne0$.
+
+(b) $|a_k|=\dfrac{k+2}k\to1$, so the terms are close to $+1$ for even $k$ and close to $-1$ for odd $k$. Two subsequences have different limits, so $\lim a_k$ does not exist (Theorem~\ref{app-thm:subseq}), in particular it is not $0$. The series diverges.
+%@ div-b | limit((k+2)/k,k,oo) == 1 | $|a_k|=\dfrac{k+2}k\to1$
+
+(c) By the limit of $f(n)$ (Example~\ref{10.2-ex:fnex}), $k\sin\frac1k\to1\ne0$. The series diverges.
+%@ div-c | limit(k*sin(1/k),k,oo) == 1 | $k\sin\frac1k\to1\ne0$.
+
+(d) Here $\frac1{k^2}\to0$ and $\frac1k\to0$. The test says \emph{nothing}: the terms tend to $0$ but that does not decide convergence.
+%@ div-d | limit(1/k**2,k,oo) == 0 and limit(1/k,k,oo) == 0 | $\frac1{k^2}\to0$ and $\frac1k\to0$
+\end{exmp}
+
+\begin{exmp}{Limits from the previous section feed the test}{divex2}
+Apply the Divergence Test where it can be applied: (a)~$\displaystyle\sum_{k=1}^\infty\left(1+\frac2k\right)^k$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{k!}{10^k}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{10^k}{k!}$.
+
+\textbf{Solution.} (a) Take logarithms: $\ln a_k=k\ln\left(1+\frac2k\right)=\dfrac{\ln(1+2/x)}{1/x}$ at $x=k$. By l'H\^opital's Rule, $\dfrac{\frac{-2/x^2}{1+2/x}}{-1/x^2}=\dfrac2{1+2/x}\to2$, so $\ln a_k\to2$, and since the exponential function is continuous (Theorem~\ref{10.2-thm:contfn}), $a_k\to e^2\approx7.39\ne0$. The series diverges.
+%@ div2-a | limit((1+2/k)**k,k,oo) == exp(2) and limit(2/(1+2/k),k,oo) == 2 | $a_k\to e^2\approx7.39\ne0$.
+
+(b) By Theorem~\ref{10.2-thm:growth}(c), $\frac{10^k}{k!}\to0$ through positive values, so the reciprocal $\frac{k!}{10^k}\to\infty$. The terms do not tend to $0$ and the series diverges. (The terms first exceed $1$ at $k=25$: $\frac{25!}{10^{25}}\approx1.55$.)
+%@ div2-b | limit(factorial(k)/10**k,k,oo) == oo and factorial(25)/Integer(10)**25 > 1 and factorial(24)/Integer(10)**24 < 1 and abs(float(factorial(25)/Integer(10)**25)-1.55)<0.01 | $\frac{25!}{10^{25}}\approx1.55$
+
+(c) Now $\frac{10^k}{k!}\to0$ by the same theorem. The test is inconclusive. (This series does converge, as a later test will show; the Divergence Test cannot tell.)
+%@ div2-c | limit(10**k/factorial(k),k,oo) == 0 | $\frac{10^k}{k!}\to0$ by the same theorem
+\end{exmp}
+
+\begin{kc}{The Divergence Test}{divkc}
+For each series, say whether the Divergence Test shows divergence or is inconclusive, and why: (a)~$\displaystyle\sum_{k=1}^\infty\frac{3k+1}{2k+5}$; \quad (b)~$\displaystyle\sum_{k=0}^\infty(-1)^k$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac1{k+10}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The harmonic series}
+
+\begin{thm}{The harmonic series}{harm}
+The harmonic series $\displaystyle\sum_{k=1}^\infty\frac1k$ diverges, although its terms tend to $0$. More precisely, $H_{2^m}\ge1+\dfrac m2$ for every integer $m\ge0$, where $H_n=1+\frac12+\cdots+\frac1n$.
+\end{thm}
+\begin{proof}
+We show by induction that $H_{2^m}\ge1+\frac m2$. For $m=0$: $H_1=1$. For the inductive step, the terms added between $H_{2^m}$ and $H_{2^{m+1}}$ are $\frac1{2^m+1},\dots,\frac1{2^{m+1}}$, which are $2^m$ numbers, each at least the smallest of them, $\frac1{2^{m+1}}$. So
+\[
+H_{2^{m+1}}-H_{2^m}\ge2^m\cdot\frac1{2^{m+1}}=\frac12 ,
+\]
+and the inductive hypothesis gives $H_{2^{m+1}}\ge1+\frac m2+\frac12=1+\frac{m+1}2$.
+%@ harm-a | all(harmonic(2**j) >= 1+Q(j,2) for j in range(0,11)) and all(harmonic(2**(j+1))-harmonic(2**j) >= Q(1,2) for j in range(0,10)) | H_{2^{m+1}}-H_{2^m}\ge2^m\cdot\frac1{2^{m+1}}=\frac12 ,
+
+The partial sums $H_n$ are increasing (the terms are positive) and the subsequence $H_{2^m}\ge1+\frac m2$ is not bounded above, so $\{H_n\}$ is not bounded above. By Theorem~\ref{10.3-thm:posterms}(b), $H_n\to\infty$.
+\end{proof}
+
+\begin{exmp}{How slowly does the harmonic series diverge?}{harmex}
+How many terms are needed for the partial sums $H_n$ to exceed $10$?
+
+\textbf{Solution.} The theorem gives $H_{2^m}\ge1+\frac m2$, which reaches $10$ when $m=18$. So $2^{18}=262144$ terms are enough. That is generous: in fact $H_n$ first exceeds $10$ at $n=12367$ ($H_{12366}\approx9.99996$ and $H_{12367}\approx10.00004$). Even so, adding a million terms gives only $H_{10^6}\approx14.39$.
+%@ harm-b | 1+Q(18,2) == 10 and 2**18 == 262144 and sum(1.0/i for i in range(1,12368)) > 10 and sum(1.0/i for i in range(1,12367)) < 10 | $H_{12366}\approx9.99996$ and $H_{12367}\approx10.00004$
+%@ harm-c | abs(float(log(10**6)+EulerGamma+Q(1,2*10**6))-14.3927)<1e-3 | $H_{10^6}\approx14.39$
+A series whose partial sums need more than $10^{4}$ terms to reach $10$ is a vivid reminder that a table of values cannot decide convergence (compare Pause and think~\ref{10.1-think:table}).
+\end{exmp}
+
+\begin{warn}[The converse of the Divergence Test is false]
+The harmonic series has $a_k=\frac1k\to0$, yet it diverges. So ``$a_k\to0$'' is \emph{necessary} for convergence but not \emph{sufficient}. Whenever $a_k\to0$, some other test must decide.
+\end{warn}
+
+\begin{think}{Two series with terms tending to zero}{twoterms}
+Both $\sum\frac1k$ and $\sum\frac1{k^2}$ have terms tending to $0$. Compare how many terms lie between $2^m$ and $2^{m+1}$ and how big each of those terms is for each series. What does this suggest about the \emph{rate} at which the terms must shrink for a series of positive terms to converge?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{The Integral Test}
+
+An integral is a limit of sums, and a series is a sum, so it is natural to compare them. The picture below shows $f(x)=\frac1x$ on $[1,6]$. On the left, rectangles of height $f(k)$ over $[k,k+1]$ lie \emph{above} the curve; on the right, rectangles of height $f(k+1)$ lie \emph{below} it.
+
+\begin{center}
+\begin{tikzpicture}[x=0.75cm,y=2.6cm]
+  \foreach \k in {1,...,5} {\draw[fill=blue!15] (\k,0) rectangle (\k+1,{1/\k});}
+  \draw[thick,domain=1:6,samples=60,variable=\x] plot ({\x},{1/\x});
+  \draw[->] (0.6,0) -- (6.5,0) node[right] {$x$};
+  \node[below] at (1,0) {$1$};
+  \node[below] at (6,0) {$6$};
+  \node[above] at (3.5,1) {above the curve};
+  \begin{scope}[xshift=8.5cm]
+    \foreach \k in {1,...,5} {\draw[fill=red!15] (\k,0) rectangle (\k+1,{1/(\k+1)});}
+    \draw[thick,domain=1:6,samples=60,variable=\x] plot ({\x},{1/\x});
+    \draw[->] (0.6,0) -- (6.5,0) node[right] {$x$};
+    \node[below] at (1,0) {$1$};
+    \node[below] at (6,0) {$6$};
+    \node[above] at (3.5,1) {below the curve};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The left rectangles have total area $f(1)+\cdots+f(5)$, which is at least $\int_1^6f$; the right ones have total area $f(2)+\cdots+f(6)$, which is at most $\int_1^6f$. Squeezing the integral between two sums of the series is exactly what the proof does. For a function that is decreasing, each rectangle comparison goes the same way, so we need that hypothesis.
+
+A function $f$ is \emph{decreasing} on an interval if $f(x)>f(y)$ whenever $x<y$ in the interval.
+
+\begin{thm}{Integral Test}{inttest}
+Let $N$ be a positive integer. Let $f$ be continuous, positive and decreasing on $[N,\infty)$, and let $a_k=f(k)$ for $k=N,N+1,\dots$ Then:
+\begin{enumerate}[label=(\alph*)]
+  \item $\displaystyle\sum_{k=N}^\infty a_k$ and $\displaystyle\int_N^\infty f(x)\,dx$ either both converge or both diverge.
+  \item If they converge, with $S=\sum_{k=N}^\infty a_k$ and $I=\int_N^\infty f(x)\,dx$, then $I<S<a_N+I$. In particular $S\ne I$.
+  \item For every $n\ge N$ the partial sum $s_n=\sum_{k=N}^na_k$ satisfies $\displaystyle\int_N^{n+1}f(x)\,dx<s_n$, and for every $n\ge N+1$ also $s_n<a_N+\displaystyle\int_N^nf(x)\,dx$. (These hold whether or not the series converges.)
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Write $F(b)=\int_N^bf(x)\,dx$ and $s_n=\sum_{k=N}^na_k$.
+
+\emph{Step 1: one rectangle at a time.} For every $k\ge N$,
+\[
+a_{k+1}<\int_k^{k+1}f(x)\,dx<a_k .
+\]
+Indeed, $f(k+1)\le f(x)\le f(k)$ for $k\le x\le k+1$. The functions $f(x)-f(k+1)$ and $f(k)-f(x)$ are continuous, are $\ge0$ on $[k,k+1]$, and are positive at the midpoint $x=k+\frac12$ (because $f$ is decreasing). A continuous nonnegative function that is positive at some point has a positive integral, so both inequalities are strict (the interval has length $1$).
+
+\emph{Step 2: add up.} Adding the inequalities of Step 1 for $k=N,\dots,n$ gives
+\[
+s_{n+1}-a_N<F(n+1)<s_n\qquad(n\ge N).\tag{$*$}
+\]
+The right inequality is the first claim of (c); replacing $n$ by $n-1$ in the left one gives $s_n<a_N+F(n)$ for $n\ge N+1$, the second claim.
+
+\emph{Step 3: part (a).} Suppose $\sum a_k$ converges to $S$. The terms are positive, so $s_n\le S$ for every $n$ (Theorem~\ref{10.3-thm:posterms}(a)), and by $(*)$, $F(n+1)<S$ for every integer $n\ge N$. The function $F$ is nondecreasing, so by Theorem~\ref{app-thm:posint}(b) it is bounded above, and by part (a) of that theorem the improper integral converges. Conversely, suppose $\int_N^\infty f$ converges to $I$. Theorem~\ref{app-thm:posint}(a) gives $F(b)\le I$ for all $b$, so by $(*)$, $s_{n+1}<a_N+F(n+1)\le a_N+I$: the partial sums of the positive series are bounded above, so the series converges by Theorem~\ref{10.3-thm:posterms}. Each of the two statements implies the other, so if one diverges, so does the other.
+
+\emph{Step 4: part (b).} Now let both converge. For $k\ge N$ put $p_k=a_k-\int_k^{k+1}f$ and $q_k=\int_k^{k+1}f-a_{k+1}$; both are positive by Step 1. Adding up,
+\[
+\sum_{k=N}^np_k=s_n-F(n+1),\qquad\sum_{k=N}^nq_k=a_N+F(n+1)-s_{n+1}.
+\]
+As $n\to\infty$, $s_n\to S$ and $F(n+1)\to I$ (Theorem~\ref{app-thm:fofa}(b)), so the two sums on the left converge to $S-I$ and $a_N+I-S$ by the limit laws. Each is the value of a series of positive terms, hence at least its first term (Theorem~\ref{10.3-thm:posterms}(a)): $S-I\ge p_N>0$ and $a_N+I-S\ge q_N>0$. This is (b).
+\end{proof}
+
+If $f$ is only nonincreasing, the same proof works with $\le$ in Step 1, and (a) still holds; the inequalities in (b) and (c) then become non-strict. Note what the theorem does \emph{not} say: the value of the integral is not the value of the series.
+
+\begin{proc}{Using the Integral Test}{intproc}
+\begin{enumerate}[nosep]
+  \item Write $a_k=f(k)$ for a function $f$ defined on $[N,\infty)$.
+  \item Check that $f$ is continuous, positive and decreasing on $[N,\infty)$ (usually by showing $f'(x)<0$ there). Choose $N$ so that this holds.
+  \item Compute $\int_N^\infty f(x)\,dx=\lim_{b\to\infty}\int_N^bf(x)\,dx$.
+  \item Conclude: the series converges if and only if the integral converges. If it converges, the sum lies between $I$ and $a_N+I$.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Convergence with bounds on the sum}{intex}
+Show that $\displaystyle\sum_{k=1}^\infty ke^{-k^2}$ converges and trap its sum between two numbers.
+
+\textbf{Solution.} Let $f(x)=xe^{-x^2}$. It is continuous and positive. Its derivative is $f'(x)=(1-2x^2)e^{-x^2}$, which is negative for $x\ge1$, so $f$ is decreasing on $[1,\infty)$ and $N=1$ works. The integral is
+\[
+\int_1^\infty xe^{-x^2}\,dx=\lim_{b\to\infty}\left[-\frac12e^{-x^2}\right]_1^b=\frac1{2e}\approx0.184 .
+\]
+%@ int-a | simplify(diff(x*exp(-x**2),x) - (1-2*x**2)*exp(-x**2)) == 0 and integrate(x*exp(-x**2),(x,1,oo)) == exp(-1)/2 | =\frac1{2e}\approx0.184 .
+It converges, so the series converges, by the Integral Test. By part (b), $\dfrac1{2e}<S<a_1+\dfrac1{2e}=\dfrac3{2e}$, that is, $0.184<S<0.552$. (The sum is in fact about $0.405$.)
+%@ int-b | abs(float(exp(-1)/2)-0.1839)<1e-4 and abs(float(3*exp(-1)/2)-0.5518)<1e-4 and 0.1839 < sum(float(j*exp(-j**2)) for j in range(1,30)) < 0.5518 | $0.184<S<0.552$
+\end{exmp}
+
+\begin{exmp}{Logarithms in the denominator}{lnex}
+Decide whether (a)~$\displaystyle\sum_{k=2}^\infty\frac1{k\ln k}$ and (b)~$\displaystyle\sum_{k=2}^\infty\frac1{k(\ln k)^2}$ converge.
+
+\textbf{Solution.} Both functions are positive and continuous on $[2,\infty)$, and both are decreasing there because their denominators ($x\ln x$ and $x(\ln x)^2$) are positive and increasing. Use $N=2$.
+
+(a) Since $\frac d{dx}\ln(\ln x)=\frac1{x\ln x}$, $\displaystyle\int_2^b\frac{dx}{x\ln x}=\ln(\ln b)-\ln(\ln2)\to\infty$ as $b\to\infty$. The integral diverges, so the series diverges (extremely slowly).
+%@ ln-a | limit(log(log(b)),b,oo) == oo and simplify(diff(log(log(x)),x) - 1/(x*log(x))) == 0 | $\displaystyle\int_2^b\frac{dx}{x\ln x}=\ln(\ln b)-\ln(\ln2)\to\infty$
+
+(b) Since $\frac d{dx}\left(-\frac1{\ln x}\right)=\frac1{x(\ln x)^2}$, $\displaystyle\int_2^b\frac{dx}{x(\ln x)^2}=\frac1{\ln2}-\frac1{\ln b}\to\frac1{\ln2}\approx1.443$. The integral converges, so the series converges, with $1.443<S<\frac1{2(\ln2)^2}+1.443$.
+%@ ln-b | simplify(diff(-1/log(x),x) - 1/(x*log(x)**2)) == 0 and limit(1/log(2)-1/log(b),b,oo) == 1/log(2) and abs(float(1/log(2))-1.4427)<1e-4 | \to\frac1{\ln2}\approx1.443
+\end{exmp}
+
+\begin{exmp}{A function that decreases only eventually}{evdec}
+Show that $\displaystyle\sum_{k=1}^\infty k^2e^{-k}$ converges.
+
+\textbf{Solution.} Let $f(x)=x^2e^{-x}$. Then $f'(x)=x(2-x)e^{-x}$, which is positive on $(0,2)$ and negative for $x>2$. So $f$ is \emph{not} decreasing on $[1,\infty)$: indeed $a_1=e^{-1}\approx0.368<a_2=4e^{-2}\approx0.541$. But $f$ is decreasing on $[2,\infty)$, so the Integral Test applies with $N=2$:
+\[
+\int_2^\infty x^2e^{-x}\,dx=\lim_{b\to\infty}\Big[-(x^2+2x+2)e^{-x}\Big]_2^b=10e^{-2}\approx1.35 .
+\]
+%@ ev-a | simplify(diff(x*(2-x)*exp(-x) - diff(x**2*exp(-x),x),x)) == 0 and (exp(-1) < 4*exp(-2)) == True and integrate(x**2*exp(-x),(x,2,oo)) == 10*exp(-2) | =10e^{-2}\approx1.35 .
+So $\sum_{k=2}^\infty k^2e^{-k}$ converges. Adding the single term $a_1$ does not change convergence (Theorem~\ref{10.3-thm:props}(5)), so $\sum_{k=1}^\infty k^2e^{-k}$ converges too. The moral: the test needs ``decreasing'' only from some point on, and removing finitely many terms is harmless.
+\end{exmp}
+
+\begin{kc}{The Integral Test}{intkc}
+Use the Integral Test to decide: (a)~$\displaystyle\sum_{k=1}^\infty\frac1{3k+2}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{2k}{(k^2+1)^2}$. For each, state the function, check the three hypotheses, and give the value of the improper integral.
+\end{kc}
+
+\begin{think}{Why ``decreasing''?}{whydec}
+Let $f(x)=\sin^2(\pi x)$. Find $a_k=f(k)$ and decide whether $\sum a_k$ converges. Then decide whether $\int_1^\infty f(x)\,dx$ converges (use $\sin^2u=\frac{1-\cos2u}2$). Which hypothesis of the Integral Test fails, and where does the proof use it?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{$p$-series}
+
+\begin{thm}{Convergence of the $p$-series}{pseries}
+The $p$-series $\displaystyle\sum_{k=1}^\infty\frac1{k^p}$ converges if $p>1$ and diverges if $p\le1$. If $p>1$ its sum $S$ satisfies $\dfrac1{p-1}<S<\dfrac p{p-1}$.
+\end{thm}
+\begin{proof}
+\emph{Case $p\le0$.} Then $\frac1{k^p}=k^{-p}\ge1$ for all $k$, so the terms do not tend to $0$ and the series diverges by the Divergence Test.
+
+\emph{Case $p>0$.} The function $f(x)=x^{-p}$ is continuous and positive on $[1,\infty)$, and $f'(x)=-px^{-p-1}<0$, so it is decreasing. For $b>1$,
+\[
+\int_1^bx^{-p}\,dx=\begin{cases}\ln b & p=1,\\[2pt] \dfrac{b^{1-p}-1}{1-p} & p\ne1.\end{cases}
+\]
+If $p=1$, $\ln b\to\infty$. If $0<p<1$, $1-p>0$ and $b^{1-p}\to\infty$, so the integral diverges. If $p>1$, $b^{1-p}\to0$ and the integral converges to $\frac1{p-1}$. By the Integral Test (part (a)) the series diverges for $0<p\le1$ and converges for $p>1$. In the convergent case part (b) of the Integral Test with $a_1=1$ gives $\frac1{p-1}<S<1+\frac1{p-1}=\frac p{p-1}$.
+%@ ps-a | all(simplify(integrate(x**(-p_),(x,1,b)) - (b**(1-p_)-1)/(1-p_)) == 0 for p_ in (Q(1,2),Q(3,2),2,3)) and Q(1,2-1)+1 == Q(2,2-1) and Q(1,3-1)+1 == Q(3,3-1) | $\frac1{p-1}<S<1+\frac1{p-1}=\frac p{p-1}$
+\end{proof}
+
+For $p=1$ the theorem contains the harmonic series again, now as a one-line consequence of the Integral Test. The $p$-series and the geometric series are the two yardsticks of this chapter: later sections compare other series with them. For example, $p=2$ gives $1<\sum\frac1{k^2}<2$, in agreement with the bound found in Example~\ref{10.2-ex:b10}.
+
+\begin{exmp}{Recognising $p$-series}{pex}
+Decide whether each series converges. (a)~$\displaystyle\sum_{k=1}^\infty\frac1{k^{1.01}}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac1{\sqrt[3]{k^2}}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac4{k^3}$; \quad (d)~$\displaystyle\sum_{k=3}^\infty\frac1{k\sqrt k}$.
+
+\textbf{Solution.} (a) $p=1.01>1$, so it converges. By the theorem its sum is between $\frac1{0.01}=100$ and $101$: a convergent series with a huge sum.
+%@ pex-a | Q(1,Q(101,100)-1) == 100 and Q(101,100)/(Q(101,100)-1) == 101 | between $\frac1{0.01}=100$ and $101$
+
+(b) $\frac1{\sqrt[3]{k^2}}=k^{-2/3}$, so $p=\frac23\le1$: it diverges.
+%@ pex-b | simplify(1/k**Q(2,3) - k**(-Q(2,3))) == 0 and Q(2,3) <= 1 | $\frac1{\sqrt[3]{k^2}}=k^{-2/3}$, so $p=\frac23\le1$: it diverges.
+
+(c) $\sum\frac1{k^3}$ converges ($p=3$), so by property (1) of Theorem~\ref{10.3-thm:props} the series $\sum\frac4{k^3}$ converges, with $4\cdot\frac12<S<4\cdot\frac32$.
+%@ pex-c | Q(1,3-1) == Q(1,2) and Q(3,3-1) == Q(3,2) and 4*Q(1,2) == 2 and 4*Q(3,2) == 6 | with $4\cdot\frac12<S<4\cdot\frac32$.
+
+(d) $\frac1{k\sqrt k}=k^{-3/2}$, so $p=\frac32>1$ and $\sum_{k=1}^\infty k^{-3/2}$ converges. The series in (d) starts at $k=3$; by property (5) removing the first two terms does not affect convergence, so it converges as well.
+%@ pex-d | simplify(1/(k*sqrt(k)) - k**(-Q(3,2))) == 0 and Q(3,2) > 1 | $\frac1{k\sqrt k}=k^{-3/2}$, so $p=\frac32>1$
+\end{exmp}
+
+\begin{kc}{$p$-series and bounds}{pkc}
+(a) For which $p$ does $\displaystyle\sum_{k=1}^\infty\frac5{k^{p}}$ converge? (b) Show that the sum of $\displaystyle\sum_{k=1}^\infty\frac1{k^3}$ lies between $\frac12$ and $\frac32$. (c) Does $\displaystyle\sum_{k=1}^\infty\frac1{\sqrt{k^3}}$ converge?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Estimating a series: remainders and bounds}
+
+When a series converges we often want a number. The sum $S$ is the limit of the partial sums $s_n$, and the \emph{remainder} $R_n=S-s_n=\sum_{k=n+1}^\infty a_k$ is the error of $s_n$ (Theorem~\ref{10.3-thm:props}(5)). The Integral Test also controls $R_n$.
+
+\begin{thm}{Estimating a series with positive terms}{estimate}
+Let $f$ be continuous, positive and decreasing on $[N,\infty)$, let $a_k=f(k)$, and suppose $S=\sum_{k=N}^\infty a_k$ converges. Let $s_n=\sum_{k=N}^na_k$ and $R_n=S-s_n$. Then for every $n\ge N$,
+\[
+\int_{n+1}^\infty f(x)\,dx<R_n<\int_n^\infty f(x)\,dx,
+\]
+and therefore the sum is trapped between
+\[
+L_n=s_n+\int_{n+1}^\infty f(x)\,dx\ <\ S\ <\ s_n+\int_n^\infty f(x)\,dx=U_n .
+\]
+Moreover $U_n-L_n=\displaystyle\int_n^{n+1}f(x)\,dx<a_n$, so the midpoint $\frac12(L_n+U_n)$ differs from $S$ by less than $\frac12\displaystyle\int_n^{n+1}f(x)\,dx$.
+\end{thm}
+\begin{proof}
+The series $\sum_{k=n+1}^\infty a_k$ converges (to $R_n$, by Theorem~\ref{10.3-thm:props}(5)), and $f$ is positive, continuous and decreasing on $[n+1,\infty)$, so the Integral Test with $N$ replaced by $n+1$ applies: the integral $\int_{n+1}^\infty f$ converges, and part (b) gives
+\[
+\int_{n+1}^\infty f(x)\,dx<R_n<a_{n+1}+\int_{n+1}^\infty f(x)\,dx .
+\]
+This is the lower bound. For the upper bound, Step 1 of the proof of the Integral Test gives $a_{n+1}<\int_n^{n+1}f$, so $R_n<\int_n^{n+1}f+\int_{n+1}^\infty f=\int_n^\infty f$. Adding $s_n$ to each side gives the bounds $L_n<S<U_n$. Finally $U_n-L_n=\int_n^\infty f-\int_{n+1}^\infty f=\int_n^{n+1}f<a_n$ by Step 1, and the midpoint of an interval of length $U_n-L_n$ that contains $S$ is within half that length of $S$.
+\end{proof}
+
+\begin{exmp}{How many terms are enough?}{howmany}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac1{k^3}$ guarantee an error less than $0.001$?
+
+\textbf{Solution.} With $f(x)=x^{-3}$, $\displaystyle\int_n^\infty x^{-3}\,dx=\frac1{2n^2}$. The theorem gives $\dfrac1{2(n+1)^2}<R_n<\dfrac1{2n^2}$. For a \emph{guarantee} use the upper bound: $\frac1{2n^2}<0.001$ when $n^2>500$, that is $n\ge23$ (since $22^2=484<500<529=23^2$). So $23$ terms suffice. Can fewer do? The lower bound says $R_{21}>\frac1{2\cdot22^2}\approx0.00103>0.001$, so $21$ terms do not. For $n=22$ the bounds $0.000945<R_{22}<0.001033$ straddle $0.001$ and cannot decide; the true remainder is $R_{22}\approx0.000987$, so $22$ terms happen to be enough.
+%@ how-a | 22**2 == 484 and 23**2 == 529 and Q(1,2*22**2) > Q(1,1000) and Q(1,2*23**2) < Q(1,1000) and Q(1,2*22**2) == Q(1,968) | $\frac1{2n^2}<0.001$ when $n^2>500$
+%@ how-b | abs(float(Q(1,2*23**2))-0.000945)<1e-6 and abs(float(Q(1,2*22**2))-0.001033)<1e-6 and abs(float(zeta(3).evalf(20)-sum(Q(1,j**3) for j in range(1,23)))-0.000987)<1e-6 and float(zeta(3).evalf(20)-sum(Q(1,j**3) for j in range(1,22))) > 0.001 | $0.000945<R_{22}<0.001033$
+\end{exmp}
+
+\begin{exmp}{Estimating $\sum1/k^2$ from ten terms}{midpoint}
+Use $n=10$ to bracket $\displaystyle\sum_{k=1}^\infty\frac1{k^2}$ and estimate it by the midpoint.
+
+\textbf{Solution.} The partial sum is $s_{10}=\sum_{k=1}^{10}\frac1{k^2}\approx1.549768$. With $f(x)=x^{-2}$, $\int_{11}^\infty f=\frac1{11}$ and $\int_{10}^\infty f=\frac1{10}$, so
+\[
+1.640677\approx L_{10}=s_{10}+\frac1{11}<S<s_{10}+\frac1{10}=U_{10}\approx1.649768 .
+\]
+%@ mid-a | sum(Q(1,j**2) for j in range(1,11)) == Q(1968329,1270080) and abs(float(Q(1968329,1270080)+Q(1,11))-1.640677)<1e-6 and abs(float(Q(1968329,1270080)+Q(1,10))-1.649768)<1e-6 | 1.640677\approx L_{10}=s_{10}+\frac1{11}<S<s_{10}+\frac1{10}=U_{10}\approx1.649768 .
+The midpoint is $\approx1.645222$, and the error is less than $\frac12(U_{10}-L_{10})=\frac12\cdot\frac1{110}=\frac1{220}\approx0.0045$. (The exact sum is $\frac{\pi^2}6\approx1.644934$, so the actual error is about $0.0003$.)
+%@ mid-b | abs(float(Q(1968329,1270080)+(Q(1,11)+Q(1,10))/2)-1.645222)<1e-6 and Q(1,10)-Q(1,11) == Q(1,110) and Q(1,110)/2 == Q(1,220) and abs(float(pi**2/6)-1.644934)<1e-6 and (Q(1968329,1270080)+Q(1,11) < pi**2/6) == True and (pi**2/6 < Q(1968329,1270080)+Q(1,10)) == True | $\frac12(U_{10}-L_{10})=\frac12\cdot\frac1{110}=\frac1{220}\approx0.0045$
+\end{exmp}
+
+\begin{think}{The integral is not the sum}{notsum}
+The series $\sum_{k=1}^\infty\frac1{2^k}$ has sum $1$. Compute $\int_1^\infty2^{-x}\,dx$, check the inequality $I<S<a_1+I$, and explain why the integral can never equal the sum of the series.
+\end{think}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{The Divergence Test} (Examples~\ref{ex:b1}--\ref{ex:b2}).
+  \item \emph{The Integral Test} (Examples~\ref{ex:b3}--\ref{ex:b4}).
+  \item \emph{$p$-series and combinations} (Examples~\ref{ex:b5}--\ref{ex:b6}).
+  \item \emph{Hypotheses and the starting index} (Examples~\ref{ex:b7}--\ref{ex:b8}).
+  \item \emph{Estimates and remainders} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{Applications: harmonic bounds and slow convergence} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: The Divergence Test}
+
+\begin{exmp}{A rational term}{b1}
+Does $\displaystyle\sum_{k=1}^\infty\frac{5k^2-2}{3k^2+k}$ converge?
+
+\textbf{Solution.} Divide numerator and denominator by $k^2$: $a_k=\dfrac{5-2/k^2}{3+1/k}\to\dfrac53\ne0$. By the Divergence Test the series diverges. Check: $a_{1000}=\dfrac{4999998}{3001000}\approx1.666$, already close to $\frac53$, far from $0$.
+%@ bank-1 | limit((5*k**2-2)/(3*k**2+k),k,oo) == Q(5,3) and abs(float(Q(5*10**6-2,3*10**6+1000))-1.666)<1e-3 | $a_{1000}=\dfrac{4999998}{3001000}\approx1.666$
+\end{exmp}
+
+\begin{exmp}{A term that tends to $e^{-1}$}{b2}
+Does $\displaystyle\sum_{k=1}^\infty\left(\frac k{k+1}\right)^k$ converge?
+
+\textbf{Solution.} Take logarithms: $\ln a_k=k\ln\dfrac k{k+1}=-k\ln\left(1+\dfrac1k\right)=-\dfrac{\ln(1+u)}{u}$ with $u=\frac1k\to0$. Since $\frac{\ln(1+u)}u\to1$ (l'H\^opital, or the derivative of $\ln$ at $1$), $\ln a_k\to-1$, so $a_k\to e^{-1}\approx0.368\ne0$ by continuity of the exponential. The series diverges. Check: $a_{100}=\left(\frac{100}{101}\right)^{100}\approx0.3697$.
+%@ bank-2 | limit((k/(k+1))**k,k,oo) == exp(-1) and limit(log(1+u_)/u_,u_,0) == 1 if False else limit(log(1+x)/x,x,0) == 1 and abs(float((Q(100,101))**100)-0.3697)<1e-4 | $a_{100}=\left(\frac{100}{101}\right)^{100}\approx0.3697$
+\end{exmp}
+
+\subsection*{Group 2: The Integral Test}
+
+\begin{exmp}{A linear denominator}{b3}
+Does $\displaystyle\sum_{k=1}^\infty\frac1{2k+3}$ converge?
+
+\textbf{Solution.} Let $f(x)=\dfrac1{2x+3}$: positive, continuous, and decreasing on $[1,\infty)$ because $f'(x)=-\dfrac2{(2x+3)^2}<0$. Then $\displaystyle\int_1^b\frac{dx}{2x+3}=\frac12\ln(2b+3)-\frac12\ln5\to\infty$. The integral diverges, so the series diverges. (It behaves like half of the harmonic series.)
+%@ bank-3 | limit(log(2*b+3)/2-log(5)/2,b,oo) == oo and simplify(diff(1/(2*x+3),x) + 2/(2*x+3)**2) == 0 and simplify(integrate(1/(2*x+3),(x,1,b)) - (log(2*b+3)/2 - log(5)/2)) == 0 | $\displaystyle\int_1^b\frac{dx}{2x+3}=\frac12\ln(2b+3)-\frac12\ln5\to\infty$
+\end{exmp}
+
+\begin{exmp}{An arctangent integral, with bounds}{b4}
+Show that $\displaystyle\sum_{k=1}^\infty\frac1{k^2+4}$ converges and trap its sum.
+
+\textbf{Solution.} $f(x)=\dfrac1{x^2+4}$ is positive and continuous, and $f'(x)=-\dfrac{2x}{(x^2+4)^2}<0$ for $x>0$, so it is decreasing on $[1,\infty)$. Then
+\[
+\int_1^\infty\frac{dx}{x^2+4}=\lim_{b\to\infty}\frac12\arctan\frac b2-\frac12\arctan\frac12=\frac12\left(\frac\pi2-\arctan\frac12\right)\approx0.5536 ,
+\]
+%@ bank-4a | simplify(diff(atan(x/2)/2,x) - 1/(x**2+4)) == 0 and abs(float(Q(1,2)*(pi/2-atan(Q(1,2))))-0.5536)<1e-4 | =\frac12\left(\frac\pi2-\arctan\frac12\right)\approx0.5536 ,
+so the series converges. By part (b), $0.5536<S<a_1+0.5536=\frac15+0.5536=0.7536$.
+%@ bank-4b | abs(float(Q(1,5)+Q(1,2)*(pi/2-atan(Q(1,2))))-0.7536)<1e-4 and 0.5536 < sum(1.0/(j*j+4) for j in range(1,5000)) < 0.7536 | \frac15+0.5536=0.7536
+\end{exmp}
+
+\subsection*{Group 3: $p$-series and combinations}
+
+\begin{exmp}{Reading off $p$}{b5}
+Which of these converge? (a)~$\displaystyle\sum_{k=1}^\infty\frac3{k^{1.5}}$; (b)~$\displaystyle\sum_{k=1}^\infty k^{-0.8}$; (c)~$\displaystyle\sum_{k=1}^\infty\frac1{k\sqrt[4]{k}}$; (d)~$\displaystyle\sum_{k=1}^\infty\frac{1}{\sqrt{k}}$.
+
+\textbf{Solution.} Write each as a multiple of $k^{-p}$ and compare $p$ with $1$. (a) $p=1.5>1$: converges (a constant multiple of a convergent series converges). (b) $p=0.8\le1$: diverges. (c) $k\sqrt[4]k=k^{5/4}$, so $p=1.25>1$: converges. (d) $p=\frac12\le1$: diverges.
+%@ bank-5 | Q(3,2) > 1 and Q(8,10) <= 1 and 1+Q(1,4) == Q(5,4) and Q(5,4) > 1 and Q(1,2) <= 1 | $k\sqrt[4]k=k^{5/4}$, so $p=1.25>1$: converges.
+\end{exmp}
+
+\begin{exmp}{Combining $p$-series with other series}{b6}
+Decide (a)~$\displaystyle\sum_{k=1}^\infty\left[\frac4{k^3}+\left(\frac23\right)^k\right]$ and (b)~$\displaystyle\sum_{k=1}^\infty\left[\frac7{\sqrt k}-\frac1{k^2}\right]$.
+
+\textbf{Solution.} (a) $\sum\frac4{k^3}$ converges ($p=3$) and $\sum\left(\frac23\right)^k$ converges (geometric, $|r|<1$, value $2$), so the sum of the two converges by property (3) of Theorem~\ref{10.3-thm:props}. (b) $\sum\frac7{\sqrt k}$ diverges (property (2) applied to the divergent $p$-series with $p=\frac12$), while $\sum\frac1{k^2}$ converges ($p=2$); by property (4) the difference diverges. Note that (b) is \emph{not} an $\infty-\infty$ problem: exactly one of the two pieces diverges.
+%@ bank-6 | Q(2,3)/(1-Q(2,3)) == 2 and Q(1,2) <= 1 and 2 > 1 and 3 > 1 | $\sum\frac1{k^2}$ converges ($p=2$)
+\end{exmp}
+
+\subsection*{Group 4: Hypotheses and the starting index}
+
+\begin{exmp}{Decreasing from $x=2$ on}{b7}
+Show that $\displaystyle\sum_{k=1}^\infty\frac{\ln k}{k^2}$ converges.
+
+\textbf{Solution.} Let $f(x)=\dfrac{\ln x}{x^2}$. Then $f'(x)=\dfrac{1-2\ln x}{x^3}$, which is negative when $\ln x>\frac12$, that is $x>e^{1/2}\approx1.65$. So $f$ is positive on $(1,\infty)$ and decreasing on $[2,\infty)$, and we use $N=2$. Integrating by parts,
+\[
+\int_2^\infty\frac{\ln x}{x^2}\,dx=\lim_{b\to\infty}\Big[-\frac{\ln x+1}x\Big]_2^b=\frac{\ln2+1}2\approx0.847 .
+\]
+%@ bank-7 | simplify(diff(log(x)/x**2,x) - (1-2*log(x))/x**3) == 0 and simplify(diff(-(log(x)+1)/x,x) - log(x)/x**2) == 0 and integrate(log(x)/x**2,(x,2,oo)) == (log(2)+1)/2 and abs(float((log(2)+1)/2)-0.8466)<1e-4 | =\frac{\ln2+1}2\approx0.847 .
+So $\sum_{k=2}^\infty\frac{\ln k}{k^2}$ converges. The term at $k=1$ is $\ln1=0$ and does not matter in any case, so the original series converges.
+\end{exmp}
+
+\begin{exmp}{A longer wait for monotonicity}{b8}
+Show that $\displaystyle\sum_{k=1}^\infty ke^{-k/3}$ converges.
+
+\textbf{Solution.} Let $f(x)=xe^{-x/3}$. Then $f'(x)=\left(1-\dfrac x3\right)e^{-x/3}$, positive for $x<3$ and negative for $x>3$. So $f$ increases up to $x=3$ and decreases afterwards: the terms are $a_1\approx0.72$, $a_2\approx1.03$, $a_3\approx1.10$, $a_4\approx1.05,\dots$. We use $N=3$. Then
+\[
+\int_3^\infty xe^{-x/3}\,dx=\lim_{b\to\infty}\Big[-(3x+9)e^{-x/3}\Big]_3^b=\frac{18}e\approx6.62 ,
+\]
+%@ bank-8a | simplify(diff(x*exp(-x/3),x) - (1-x/3)*exp(-x/3)) == 0 and simplify(diff(-(3*x+9)*exp(-x/3),x) - x*exp(-x/3)) == 0 and integrate(x*exp(-x/3),(x,3,oo)) == 18*exp(-1) | =\frac{18}e\approx6.62 ,
+so $\sum_{k=3}^\infty ke^{-k/3}$ converges, hence the series from $k=1$ converges (property (5)). The first term that is larger than its successor is $a_3$: this is why $N=1$ or $N=2$ would be wrong.
+%@ bank-8b | abs(float(exp(Q(-1,3)))-0.7165)<1e-4 and abs(float(2*exp(Q(-2,3)))-1.0268)<1e-4 and abs(float(3*exp(-1))-1.1036)<1e-4 and abs(float(4*exp(Q(-4,3)))-1.0544)<1e-4 and abs(float(18*exp(-1))-6.6218)<1e-4 | $a_1\approx0.72$, $a_2\approx1.03$, $a_3\approx1.10$, $a_4\approx1.05,\dots$
+\end{exmp}
+
+\subsection*{Group 5: Estimates and remainders}
+
+\begin{exmp}{Bracketing $\sum1/k^4$}{b9}
+Bracket $\displaystyle\sum_{k=1}^\infty\frac1{k^4}$ using $n=5$.
+
+\textbf{Solution.} $s_5=1+\frac1{16}+\frac1{81}+\frac1{256}+\frac1{625}\approx1.080352$. With $f(x)=x^{-4}$, $\int_n^\infty f=\frac1{3n^3}$, so $\int_6^\infty f=\frac1{648}\approx0.001543$ and $\int_5^\infty f=\frac1{375}\approx0.002667$. Hence
+\[
+1.081895\approx s_5+\frac1{648}<S<s_5+\frac1{375}\approx1.083019 .
+\]
+%@ bank-9a | sum(Q(1,j**4) for j in range(1,6)) == Q(14001361,12960000) and Q(1,3*6**3) == Q(1,648) and Q(1,3*5**3) == Q(1,375) and abs(float(Q(14001361,12960000)+Q(1,648))-1.081895)<1e-6 and abs(float(Q(14001361,12960000)+Q(1,375))-1.083019)<1e-6 | 1.081895\approx s_5+\frac1{648}<S<s_5+\frac1{375}\approx1.083019 .
+The exact sum is $\frac{\pi^4}{90}\approx1.082323$, inside the bracket, as the theorem promises, and the bracket is only $0.0011$ wide after five terms.
+%@ bank-9b | abs(float(pi**4/90)-1.082323)<1e-6 and (Q(14001361,12960000)+Q(1,648) < pi**4/90) == True and (pi**4/90 < Q(14001361,12960000)+Q(1,375)) == True and abs(float(Q(1,375)-Q(1,648))-0.001124)<1e-6 | the bracket is only $0.0011$ wide after five terms.
+\end{exmp}
+
+\begin{exmp}{Terms needed for six decimal places}{b10}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac1{k^3}$ guarantee an error less than $10^{-6}$?
+
+\textbf{Solution.} Use the upper bound $R_n<\int_n^\infty x^{-3}\,dx=\frac1{2n^2}$. We need $\frac1{2n^2}\le10^{-6}$, that is $n^2\ge500000$, so $n\ge\sqrt{500000}\approx707.1$ and $n=708$ is the smallest integer that the bound guarantees. Check: $\frac1{2\cdot708^2}\approx9.97\times10^{-7}<10^{-6}$, while $\frac1{2\cdot707^2}\approx1.0004\times10^{-6}>10^{-6}$. Compare with the geometric series: there six decimal places needed a few dozen terms; here $700$ terms are needed because the terms shrink only like $\frac1{k^3}$.
+%@ bank-10 | 708**2 == 501264 and 707**2 == 499849 and Q(1,2*708**2) < Q(1,10**6) and Q(1,2*707**2) > Q(1,10**6) and abs(float(sqrt(Q(500000)))-707.1)<0.01 | $\frac1{2\cdot707^2}\approx1.0004\times10^{-6}>10^{-6}$
+\end{exmp}
+
+\subsection*{Group 6: Applications: harmonic bounds and slow convergence}
+
+\begin{exmp}{Bounding the harmonic numbers}{b11}
+Show that $\ln(n+1)<H_n<1+\ln n$ for $n\ge2$, and use this to say roughly how many terms make $H_n$ exceed $20$.
+
+\textbf{Solution.} Apply part (c) of the Integral Test to $f(x)=\frac1x$ with $N=1$: $\int_1^{n+1}\frac{dx}x<H_n<1+\int_1^n\frac{dx}x$, that is $\ln(n+1)<H_n<1+\ln n$. For instance $n=1000$: $6.909<H_{1000}\approx7.485<7.908$. For $H_n>20$ it is \emph{sufficient} that $\ln(n+1)\ge20$, i.e. $n\ge e^{20}-1\approx4.9\times10^8$, and it is \emph{necessary} that $1+\ln n>20$, i.e. $n>e^{19}\approx1.8\times10^8$. So about $10^8$ to $10^9$ terms are needed (the true value is near $2.7\times10^8$): a computer could do it, but no table by hand would.
+%@ bank-11 | abs(float(log(1001))-6.909)<1e-3 and abs(sum(1.0/i for i in range(1,1001))-7.4855)<1e-4 and abs(float(1+log(1000))-7.908)<1e-3 and abs(float(exp(19))-1.785e8)<1e5 and abs(float(exp(20)-1)-4.85e8)<1e6 | For instance $n=1000$: $6.909<H_{1000}\approx7.485<7.908$.
+\end{exmp}
+
+\begin{exmp}{A convergent series that no table can sum}{b12}
+Show that $\displaystyle\sum_{k=1}^\infty\frac1{k^{1.1}}$ converges and explain why partial sums approximate it badly.
+
+\textbf{Solution.} It is a $p$-series with $p=1.1>1$, so it converges, and by Theorem~\ref{thm:pseries} its sum lies between $\frac1{0.1}=10$ and $11$ (it is about $10.58$). The remainder satisfies $R_n<\int_n^\infty x^{-1.1}\,dx=10\,n^{-0.1}$. After a million terms the bound is $10\cdot(10^6)^{-0.1}=10\cdot10^{-0.6}\approx2.5$, so the first million terms may still be about $2.5$ short of the sum (in fact $s_{10^6}\approx8.07$). To guarantee $R_n<0.01$ we would need $10\,n^{-0.1}<0.01$, that is $n^{0.1}>1000$ and $n>10^{30}$. Convergence is a statement about the infinite tail, and for $p$ close to $1$ the tail is enormous.
+%@ bank-12 | Q(1,Q(11,10)-1) == 10 and abs(float(10*Integer(10)**(-0.6))-2.512)<1e-3 and abs(float(zeta(Q(11,10)).evalf(20))-10.5844)<1e-3 and abs(float(zeta(Q(11,10)).evalf(20))-10*float(Integer(10)**(-0.6))*1.0-8.07)<0.02 | and $n>10^{30}$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Using the harmonic series in a proof}{b13}
+Prove that $\displaystyle\sum_{k=1}^\infty\frac1{2k}$ diverges.
+
+\textbf{Plan.} Suppose it converged; use property (1) to make the harmonic series converge, which is false.
+
+\begin{proof}
+Suppose $\sum_{k=1}^\infty\frac1{2k}$ converged, to $A$. By property (1) of Theorem~\ref{10.3-thm:props} with $c=2$, the series $\sum_{k=1}^\infty2\cdot\frac1{2k}=\sum_{k=1}^\infty\frac1k$ would converge (to $2A$). But the harmonic series diverges (Theorem~\ref{thm:harm}). This contradiction shows that $\sum\frac1{2k}$ diverges.
+\end{proof}
+%@ bank-13 | 2*Q(1,2*7) == Q(1,7) and all(2*sum(Q(1,2*i) for i in range(1,j+1)) == harmonic(j) for j in range(1,12)) | the series $\sum_{k=1}^\infty2\cdot\frac1{2k}=\sum_{k=1}^\infty\frac1k$ would converge
+A common mistake is to say ``the terms tend to $0$, so it converges'', which is the reverse of the Divergence Test.
+\end{exmp}
+
+\begin{exmp}{Bounds for every $p$-series}{b14}
+Prove that for $p>1$, $\ \dfrac1{p-1}<\displaystyle\sum_{k=1}^\infty\dfrac1{k^p}<\dfrac p{p-1}$, and use it to bound $\sum\frac1{k^{3/2}}$.
+
+\textbf{Plan.} Apply part (b) of the Integral Test to $f(x)=x^{-p}$ with $N=1$.
+
+\begin{proof}
+For $p>1$ the function $f(x)=x^{-p}$ is continuous, positive and decreasing on $[1,\infty)$ (because $f'(x)=-px^{-p-1}<0$), and $a_k=f(k)=k^{-p}$. The improper integral is $\int_1^\infty x^{-p}\,dx=\lim_{b\to\infty}\frac{b^{1-p}-1}{1-p}=\frac1{p-1}$, since $b^{1-p}\to0$. By the Integral Test (b), $I<S<a_1+I$ with $I=\frac1{p-1}$ and $a_1=1$, so $\frac1{p-1}<S<1+\frac1{p-1}=\frac p{p-1}$.
+\end{proof}
+%@ bank-14 | simplify(1+1/(p_-1) - p_/(p_-1)) == 0 if False else simplify(1+1/(a-1) - a/(a-1)) == 0 and Q(1,Q(3,2)-1) == 2 and Q(3,2)/(Q(3,2)-1) == 3 and 2 < float(zeta(Q(3,2)).evalf(20)) < 3 | $\frac1{p-1}<S<1+\frac1{p-1}=\frac p{p-1}$
+For $p=\frac32$ this gives $2<\sum\frac1{k^{3/2}}<3$ (the true value is about $2.612$). A common mistake is to forget that part (b) has \emph{strict} inequalities and the upper bound contains the first term $a_1$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:divkc}.] (a) $a_k=\frac{3k+1}{2k+5}\to\frac32\ne0$: the series diverges. (b) $a_k=(-1)^k$ has no limit (it alternates between $1$ and $-1$), so it does not tend to $0$: the series diverges. (c) $\frac1{k+10}\to0$: the test is inconclusive (and in fact the series diverges, since it is the harmonic series with the first ten terms missing, by property (5) of series; but the Divergence Test cannot show that).
+%@ ans-divkc | limit((3*k+1)/(2*k+5),k,oo) == Q(3,2) and limit(1/(k+10),k,oo) == 0 and [(-1)**i for i in range(6)] == [1,-1,1,-1,1,-1] | $a_k=\frac{3k+1}{2k+5}\to\frac32\ne0$
+  \item[Knowledge Check \ref{kc:intkc}.] (a) $f(x)=\frac1{3x+2}$ is positive, continuous and decreasing on $[1,\infty)$; $\int_1^b\frac{dx}{3x+2}=\frac13\ln(3b+2)-\frac13\ln5\to\infty$, so the series diverges. (b) $f(x)=\frac{2x}{(x^2+1)^2}$ is positive and continuous, and $f'(x)=\frac{2(1-3x^2)}{(x^2+1)^3}<0$ for $x\ge1$; $\int_1^\infty f=\lim_{b\to\infty}\left[-\frac1{x^2+1}\right]_1^b=\frac12$, so the series converges, and its sum is between $\frac12$ and $\frac12+a_1=\frac12+\frac12=1$.
+%@ ans-intkc | simplify(integrate(1/(3*x+2),(x,1,b)) - (log(3*b+2)/3-log(5)/3)) == 0 and simplify(diff(2*x/(x**2+1)**2,x) - 2*(1-3*x**2)/(x**2+1)**3) == 0 and integrate(2*x/(x**2+1)**2,(x,1,oo)) == Q(1,2) | $\int_1^\infty f=\lim_{b\to\infty}\left[-\frac1{x^2+1}\right]_1^b=\frac12$
+  \item[Knowledge Check \ref{kc:pkc}.] (a) By property (1) the series converges exactly when $\sum k^{-p}$ does, that is, when $p>1$. (b) Theorem~\ref{thm:pseries} with $p=3$ gives $\frac1{3-1}<S<\frac3{3-1}$, that is $\frac12<S<\frac32$. (c) $\frac1{\sqrt{k^3}}=k^{-3/2}$, so $p=\frac32>1$ and it converges.
+%@ ans-pkc | Q(1,3-1) == Q(1,2) and Q(3,3-1) == Q(3,2) and simplify(1/sqrt(k**3) - k**(-Q(3,2))) == 0 and Q(3,2) > 1 | $\frac1{3-1}<S<\frac3{3-1}$
+  \item[Pause and think \ref{think:twoterms}.] Between $2^m$ and $2^{m+1}$ there are $2^m$ terms. For $\sum\frac1k$ each of them is at least $\frac1{2^{m+1}}$, so the block contributes at least $\frac12$, and every block does, so the total is infinite. For $\sum\frac1{k^2}$ each term in the block is at most $\frac1{4^m}$, so the block contributes at most $2^m\cdot\frac1{4^m}=\frac1{2^m}$, and these block sums form a convergent geometric series. The rate matters: for a series of positive terms to converge the terms must shrink faster than $\frac1k$ (the $p$-series theorem says exactly that the borderline is $p=1$).
+%@ ans-twoterms | all(2**j*Q(1,4**j) == Q(1,2**j) for j in range(0,8)) and all(2**j*Q(1,2**(j+1)) == Q(1,2) for j in range(0,8)) | each term in the block is at most $\frac1{4^m}$
+  \item[Pause and think \ref{think:whydec}.] $a_k=\sin^2(\pi k)=0$ for every integer $k$, so $\sum a_k=0+0+\cdots=0$ converges. But $\int_1^b\sin^2(\pi x)\,dx=\frac{b-1}2-\frac{\sin(2\pi b)}{4\pi}\to\infty$ (each unit interval contributes $\frac12$), so the integral diverges. The function is continuous and nonnegative (it is $0$ at the integers, so ``positive'' fails there too) but it is \emph{not decreasing}: it oscillates. Step 1 of the proof needs $f(k+1)\le f(x)\le f(k)$ on each interval; here the integral over $[k,k+1]$ is $\frac12$ although $f(k)=f(k+1)=0$.
+%@ ans-whydec | simplify(integrate(sin(pi*x)**2,(x,1,b)) - ((b-1)/2 - sin(2*pi*b)/(4*pi))) == 0 and integrate(sin(pi*x)**2,(x,1,2)) == Q(1,2) and [sin(pi*j) for j in range(1,6)] == [0]*5 | $\int_1^b\sin^2(\pi x)\,dx=\frac{b-1}2-\frac{\sin(2\pi b)}{4\pi}\to\infty$
+  \item[Pause and think \ref{think:notsum}.] $\int_1^\infty2^{-x}\,dx=\left[-\frac{2^{-x}}{\ln2}\right]_1^\infty=\frac1{2\ln2}\approx0.721$. Then $0.721<S=1<a_1+I=\frac12+0.721=1.221$, so the inequality holds. The integral is always strictly less than the sum because each rectangle of height $a_k$ over $[k,k+1]$ sticks out strictly above the curve (Step 1 of the proof): the sum is the total area of rectangles above the curve, the integral is the area under it, and the difference $\sum p_k$ is a positive number. Also the sum is strictly less than $a_N+I$ because the rectangles on the right lie strictly below it.
+%@ ans-notsum | simplify(integrate(2**(-x),(x,1,oo)) - 1/(2*log(2))) == 0 and abs(float(1/(2*log(2)))-0.7213)<1e-4 and abs(float(Q(1,2)+1/(2*log(2)))-1.2213)<1e-4 | \frac1{2\ln2}\approx0.721
+\end{description}
+
+\end{document}
