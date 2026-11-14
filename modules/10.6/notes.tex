@@ -37,12 +37,12 @@ The partial sums of $\sum\frac{(-1)^{k+1}}k$ are $s_1=1$, $s_2=\frac12$, $s_3=\f
 \begin{center}
 \begin{tikzpicture}[x=11cm]
   \draw[->] (0.45,0) -- (1.05,0);
-  \foreach \v/\n/\p in {1/1/above, 0.5/2/below, 0.8333/3/above, 0.5833/4/below, 0.7833/5/above, 0.6167/6/below} {
+  \foreach \v/\n/\p/\y in {1/1/above/0.08, 0.5/2/below/-0.12, 0.8333/3/above/0.08, 0.5833/4/below/-0.12, 0.7833/5/above/0.08, 0.6167/6/below/-0.12} {
     \fill (\v,0) circle (1.6pt);
-    \node[\p] at (\v,0.08) {$s_\n$};
+    \node[\p] at (\v,\y) {$s_\n$};
   }
-  \draw[blue!60!black] (0.6167,-0.22) -- (0.7833,-0.22);
-  \node[blue!60!black,below] at (0.70,-0.22) {the sum lies here};
+  \draw[blue!60!black] (0.6167,-0.75) -- (0.7833,-0.75);
+  \node[blue!60!black,below] at (0.70,-0.75) {the sum lies here};
 \end{tikzpicture}
 \end{center}
 
