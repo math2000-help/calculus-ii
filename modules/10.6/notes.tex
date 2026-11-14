@@ -1,0 +1,389 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{6}{Alternating Series}
+\calcxdoc{10.5}
+\calcxdoc{10.4}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+\calcxdoc{10.1}
+\calcxapp
+
+\begin{document}
+
+\section{Alternating Series}
+
+\begin{guide}
+The harmonic series $1+\frac12+\frac13+\cdots$ diverges. Change every second sign and you get $1-\frac12+\frac13-\frac14+\cdots$, whose partial sums $1,\ \frac12,\ \frac56,\ \frac7{12},\dots$ hop back and forth and seem to settle near $0.69$. The tests of the last two sections need nonnegative terms, so none of them applies. This section handles the simplest and most important sign pattern: terms that strictly alternate. The test is short, the error is easy to control (it is smaller than the first term you leave out), and the result raises a new question: when does a series converge \emph{because of} its signs, and when would it converge anyway? The answer leads to absolute and conditional convergence, which are the vocabulary of the next chapter.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item apply the Alternating Series Test, checking both conditions, and recognise when it fails or does not apply;
+  \item bound the error of a partial sum of an alternating series and find how many terms give a required accuracy;
+  \item define absolute and conditional convergence and classify a series;
+  \item decide convergence of every alternating $p$-series;
+  \item prove the main theorems of this section, and say why the order of terms matters for some series.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Alternating series and the Alternating Series Test}
+
+\begin{defn}{Alternating series}{alt}
+An \emph{alternating series} is a series whose terms alternate in sign, that is, a series of the form $\sum_{k=1}^\infty(-1)^{k+1}a_k$ or $\sum_{k=1}^\infty(-1)^ka_k$ with all $a_k>0$ (or all $a_k\ge0$).
+\end{defn}
+
+The partial sums of $\sum\frac{(-1)^{k+1}}k$ are $s_1=1$, $s_2=\frac12$, $s_3=\frac56$, $s_4=\frac7{12}$, $s_5=\frac{47}{60}$, $s_6=\frac{37}{60}$. Odd partial sums lie above and even partial sums below, and each new pair closes in on the value.
+
+\begin{center}
+\begin{tikzpicture}[x=11cm]
+  \draw[->] (0.45,0) -- (1.05,0);
+  \foreach \v/\n/\p in {1/1/above, 0.5/2/below, 0.8333/3/above, 0.5833/4/below, 0.7833/5/above, 0.6167/6/below} {
+    \fill (\v,0) circle (1.6pt);
+    \node[\p] at (\v,0.08) {$s_\n$};
+  }
+  \draw[blue!60!black] (0.6167,-0.22) -- (0.7833,-0.22);
+  \node[blue!60!black,below] at (0.70,-0.22) {the sum lies here};
+\end{tikzpicture}
+\end{center}
+
+This is the pattern the proof makes precise: the even partial sums increase, the odd ones decrease, and the sum is trapped between them.
+
+\begin{thm}{Alternating Series Test}{ast}
+Let $a_1\ge a_2\ge a_3\ge\cdots$ and $\lim_{k\to\infty}a_k=0$. Then $\displaystyle\sum_{k=1}^\infty(-1)^{k+1}a_k$ converges. Moreover, if $s_n$ is the $n$th partial sum and $S$ the sum, then
+\[
+s_2\le s_4\le s_6\le\cdots\le S\le\cdots\le s_5\le s_3\le s_1 ,
+\]
+that is, $s_{2m}\le S\le s_{2m+1}$ for every $m\ge1$.
+\end{thm}
+\begin{proof}
+First, $a_k\ge0$ for all $k$: if some $a_j<0$, then $a_k\le a_j<0$ for all $k\ge j$ and the limit would be at most $a_j<0$, not $0$.
+
+\emph{Even partial sums.} Since $s_{2m}=s_{2m-2}+(a_{2m-1}-a_{2m})$ and $a_{2m-1}\ge a_{2m}$ (with $s_0=0$), $\{s_{2m}\}$ is nondecreasing. It is bounded above by $a_1$, because
+\[
+s_{2m}=a_1-(a_2-a_3)-(a_4-a_5)-\cdots-(a_{2m-2}-a_{2m-1})-a_{2m}\le a_1 ,
+\]
+every bracket and $a_{2m}$ being $\ge0$. By the Monotone Convergence Theorem (Theorem~\ref{app-thm:mct}) $s_{2m}\to L$ for some number $L$.
+
+\emph{Odd partial sums.} $s_{2m+1}=s_{2m}+a_{2m+1}$, and $a_{2m+1}\to0$ (a subsequence of a sequence tending to $0$, Theorem~\ref{app-thm:subseq}). By the limit laws, $s_{2m+1}\to L+0=L$.
+
+\emph{All partial sums.} The even-indexed and the odd-indexed partial sums both tend to $L$, so $s_n\to L$ by Theorem~\ref{app-thm:split}. Thus the series converges, with sum $S=L$.
+
+\emph{The sandwich.} $\{s_{2m}\}$ is nondecreasing with limit $S$, so $s_{2m}\le S$ (Theorem~\ref{app-thm:mctbound}). The odd sums are nonincreasing: $s_{2m+1}=s_{2m-1}-(a_{2m}-a_{2m+1})\le s_{2m-1}$, and they tend to $S$, so by the nonincreasing case of the Monotone Convergence Theorem $S=\inf\{s_{2m+1}\}\le s_{2m+1}$.
+\end{proof}
+
+The two conditions are both needed: $a_k$ must tend to $0$, and $a_k$ must not increase. If $a_k$ is nonincreasing only from some index $N$ on, apply the theorem to the tail $\sum_{k=N}^\infty$ and add the finitely many first terms (Theorem~\ref{10.3-thm:props}(5)); a series written as $\sum(-1)^ka_k$ is $-1$ times the series $\sum(-1)^{k+1}a_k$ (Theorem~\ref{10.3-thm:props}(1)). In particular \emph{the alternating harmonic series} $\sum\frac{(-1)^{k+1}}k$ converges, although $\sum\frac1k$ diverges. Its value is $\ln2\approx0.693$, as the chapter on power series will show.
+
+\begin{exmp}{Using the Alternating Series Test}{astex}
+Decide whether each series converges. (a)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{3k+1}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{k^2+3}$; \quad (c)~$\displaystyle\sum_{k=2}^\infty(-1)^k\frac{\ln k}{\sqrt k}$.
+
+\textbf{Solution.} (a) $a_k=\frac1{3k+1}$ decreases because the denominator increases, and $a_k\to0$. The series converges.
+
+(b) Here $a_k=\frac k{k^2+3}\to0$. Is it nonincreasing? The first values are $a_1=\frac14$, $a_2=\frac27$, $a_3=\frac14$: not nonincreasing at the start, so look at $f(x)=\frac x{x^2+3}$, with $f'(x)=\frac{3-x^2}{(x^2+3)^2}<0$ for $x>\sqrt3\approx1.73$. So $a_k$ decreases from $k=2$ on, and the test applies to the tail from $k=2$: the series converges.
+%@ ast-b | simplify(diff(x/(x**2+3),x) - (3-x**2)/(x**2+3)**2) == 0 and [Q(j,j*j+3) for j in (1,2,3)] == [Q(1,4),Q(2,7),Q(1,4)] and limit(k/(k**2+3),k,oo) == 0 | $a_1=\frac14$, $a_2=\frac27$, $a_3=\frac14$
+
+(c) $a_k=\frac{\ln k}{\sqrt k}\to0$ (a logarithm grows more slowly than any power, Theorem~\ref{10.2-thm:growth}). For $f(x)=\frac{\ln x}{\sqrt x}$, $f'(x)=\frac{2-\ln x}{2x^{3/2}}<0$ when $\ln x>2$, that is $x>e^2\approx7.39$. So $a_k$ decreases for $k\ge8$, and the series converges. (The terms first rise, to about $0.735$ near $k=7$, before they fall.)
+%@ ast-c | simplify(diff(log(x)/sqrt(x),x) - (2-log(x))/(2*x**Q(3,2))) == 0 and abs(float(exp(2))-7.389)<1e-3 and limit(log(k)/sqrt(k),k,oo) == 0 and all(log(j)/sqrt(j) > log(j+1)/sqrt(j+1) for j in range(8,50)) and abs(float(log(7)/sqrt(7))-0.7355)<1e-4 | e^2\approx7.39
+\end{exmp}
+
+\begin{exmp}{When the Alternating Series Test fails}{astfail}
+Show that (a)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{2k+1}{k+3}$ and (b)~$\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\left(1+\frac1k\right)^k$ diverge, and show that (c)~$1-\frac14+\frac13-\frac1{16}+\frac15-\frac1{36}+\cdots$ diverges although its terms tend to $0$.
+
+\textbf{Solution.} (a) $\abs{a_k}=\frac{2k+1}{k+3}\to2\ne0$, so the terms do not tend to $0$ and the series diverges by the Divergence Test (Theorem~\ref{10.4-thm:divtest}). (b) $\abs{a_k}=\left(1+\frac1k\right)^k\to e\ne0$: diverges by the Divergence Test.
+%@ af-ab | limit((2*k+1)/(k+3),k,oo) == 2 and limit((1+1/k)**k,k,oo) == E | $\abs{a_k}=\left(1+\frac1k\right)^k\to e\ne0$
+
+(c) The terms alternate in sign and tend to $0$, but $a_k=\frac1k$ for odd $k$ and $a_k=\frac1{k^2}$ for even $k$, so $a_2=\frac14<a_3=\frac13$: the sequence $\{a_k\}$ is not nonincreasing, and the test does not apply. In fact the series diverges. The even partial sums are
+\[
+s_{2n}=\sum_{j=1}^n\frac1{2j-1}-\sum_{j=1}^n\frac1{(2j)^2}\ \ge\ \frac12H_n-\frac12 ,
+\]
+because $\frac1{2j-1}>\frac1{2j}$ and $\sum_{j=1}^n\frac1{4j^2}<\frac14\cdot2=\frac12$ (Theorem~\ref{10.4-thm:pseries} gives $\sum\frac1{j^2}<2$). Since $H_n\to\infty$, $\{s_{2n}\}$ is unbounded, so $\{s_n\}$ is not bounded and cannot converge (Theorem~\ref{app-thm:bounded}). The sign pattern alone does not rescue a series whose positive terms are large enough.
+%@ af-c | all(sum(Q(1,2*j-1)-Q(1,4*j*j) for j in range(1,n_+1)) >= harmonic(n_)/2-Q(1,2) for n_ in range(1,40)) and Q(1,4) < Q(1,3) and all(sum(Q(1,4*j*j) for j in range(1,n_+1)) < Q(1,2) for n_ in range(1,40)) | \ \ge\ \frac12H_n-\frac12 ,
+\end{exmp}
+
+\begin{kc}{The Alternating Series Test}{astkc}
+Decide whether each series converges, and name the condition that fails if it does not: (a)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{2k+7}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+1}k$; \quad (c)~$\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{k^2+1}$.
+\end{kc}
+
+\begin{think}{Where is ``nonincreasing'' used?}{conds}
+Write $s_6$ as $a_1-(a_2-a_3)-(a_4-a_5)-a_6$. Why does this show $s_6\le a_1$ when the terms are nonincreasing and tend to $0$? What goes wrong with this argument if $a_3>a_2$?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{The error in an alternating series}
+
+The sandwich in the theorem gives the error at once. If we stop after $n$ terms, the sum is on one side of $s_n$, between $s_n$ and the next partial sum $s_{n+1}=s_n\pm a_{n+1}$.
+
+\begin{thm}{Remainder in an alternating series}{remainder}
+Under the hypotheses of the Alternating Series Test, let $R_n=S-s_n$. Then $R_n$ has the same sign as the first neglected term $(-1)^{n+2}a_{n+1}$ (or is $0$), and
+\[
+\abs{R_n}\le a_{n+1}\qquad(n\ge1).
+\]
+Equivalently, $S$ lies between $s_n$ and $s_{n+1}$.
+\end{thm}
+\begin{proof}
+If $n=2m$ is even, the theorem above gives $s_{2m}\le S\le s_{2m+1}$, so $0\le S-s_{2m}\le s_{2m+1}-s_{2m}=a_{2m+1}$. The first neglected term is $+a_{2m+1}$, so the sign is right. If $n=2m+1$ is odd, then $s_{2m+2}\le S\le s_{2m+1}$, so $0\le s_{2m+1}-S\le s_{2m+1}-s_{2m+2}=a_{2m+2}$, that is $-a_{2m+2}\le R_n\le0$, and the first neglected term is $-a_{2m+2}$.
+\end{proof}
+
+If the terms are nonincreasing only from index $N$ on, the same bound holds for every $n\ge N$, since the remainder is the same series started later (Theorem~\ref{10.3-thm:props}(5)).
+
+\begin{exmp}{How many terms are enough?}{howmany}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^3}$ guarantee an error less than $10^{-4}$?
+
+\textbf{Solution.} The terms $\frac1{k^3}$ decrease to $0$. By the remainder theorem $\abs{R_n}\le\frac1{(n+1)^3}$, and $\frac1{(n+1)^3}<10^{-4}$ when $(n+1)^3>10^4$. Since $21^3=9261<10^4<10648=22^3$, we need $n+1\ge22$: $n=21$ terms. Then $s_{21}\approx0.901593$ and the true value is $S\approx0.901543$, an error of $5\times10^{-5}$, below the guaranteed bound $\frac1{22^3}\approx9.4\times10^{-5}$. For comparison, the positive series $\sum\frac1{k^3}$ needs $n=71$ terms for the same guarantee from the Integral Test bound $R_n<\frac1{2n^2}$ (Section~10.4), so the alternating signs help a great deal.
+%@ hm-a | 21**3 == 9261 and 22**3 == 10648 and 9261 < 10**4 and 10648 > 10**4 and abs(float(sum(Q((-1)**(j+1),j**3) for j in range(1,22)))-0.901593)<1e-6 and abs(float(3*zeta(3)/4)-0.901543)<1e-6 and abs(float(Q(1,22**3))-9.4e-5)<1e-6 and Q(1,2*71**2) < Q(1,10**4) and Q(1,2*70**2) > Q(1,10**4) | $s_{21}\approx0.901593$
+\end{exmp}
+
+\begin{exmp}{Trapping the value between two partial sums}{bracket}
+Estimate $S=\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{2^k(k+1)}=1-\frac14+\frac1{12}-\frac1{32}+\frac1{80}-\cdots$ and say how far off the estimate can be.
+
+\textbf{Solution.} The terms $a_k=\frac1{2^k(k+1)}$ decrease to $0$. Using the first four terms, $s_4=1-\frac14+\frac1{12}-\frac1{32}=\frac{77}{96}\approx0.8021$; the next term is $+\frac1{80}$, so $s_5=\frac{391}{480}\approx0.8146$. By the theorem, $S$ lies between them: $0.8021<S<0.8146$. The remainder $R_4$ is positive (the first neglected term is positive) and at most $\frac1{80}=0.0125$. Taking the midpoint $0.8083$ as the estimate leaves an error of at most $0.0063$. (The exact value is $2\ln\frac32\approx0.8109$.)
+%@ br-a | sum(Q((-1)**j,2**j*(j+1)) for j in range(0,4)) == Q(77,96) and sum(Q((-1)**j,2**j*(j+1)) for j in range(0,5)) == Q(391,480) and abs(float(Q(77,96))-0.8021)<1e-4 and abs(float(Q(391,480))-0.8146)<1e-4 and abs(float(2*log(Q(3,2)))-0.8109)<1e-4 | $0.8021<S<0.8146$
+%@ br-b | abs(float((Q(77,96)+Q(391,480))/2)-0.8083)<1e-4 and abs(float(Q(1,160))-0.00625)<1e-6 | leaves an error of at most $0.0063$
+\end{exmp}
+
+\begin{kc}{Remainders}{remkc}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2}$ guarantee an error less than $0.01$?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Absolute and conditional convergence}
+
+The alternating harmonic series converges, but only because of its signs: with all signs positive it diverges. The series $\sum\frac{(-1)^{k+1}}{k^2}$ converges too, and would converge with all signs positive. This difference matters. Now $\sum a_k$ denotes \emph{any} series, with terms of any signs.
+
+\begin{defn}{Absolute and conditional convergence}{abscond}
+The series $\sum a_k$ \emph{converges absolutely} if $\sum\abs{a_k}$ converges. It \emph{converges conditionally} if $\sum a_k$ converges but $\sum\abs{a_k}$ diverges.
+\end{defn}
+
+\begin{thm}{Absolute convergence implies convergence}{absconv}
+If $\sum\abs{a_k}$ converges, then $\sum a_k$ converges, and $\abs{\sum a_k}\le\sum\abs{a_k}$. Equivalently, if $\sum a_k$ diverges, then $\sum\abs{a_k}$ diverges.
+\end{thm}
+\begin{proof}
+For every $k$, $-\abs{a_k}\le a_k\le\abs{a_k}$, so $0\le a_k+\abs{a_k}\le2\abs{a_k}$. The series $\sum2\abs{a_k}$ converges (Theorem~\ref{10.3-thm:props}(1)), so $\sum(a_k+\abs{a_k})$ converges by the Comparison Test (Theorem~\ref{10.5-thm:comp}). Since $a_k=(a_k+\abs{a_k})-\abs{a_k}$, the series $\sum a_k$ is a difference of two convergent series and converges (Theorem~\ref{10.3-thm:props}(3)). For the inequality, let $s_n$ and $A_n$ be the partial sums of $\sum a_k$ and $\sum\abs{a_k}$. By the triangle inequality $\abs{s_n}\le A_n\le A=\sum\abs{a_k}$ (Theorem~\ref{10.3-thm:posterms}(a)). As $n\to\infty$, $\abs{s_n}\to\abs S$, and limits preserve non-strict inequalities (Theorem~\ref{app-thm:ineq}), so $\abs S\le A$. The second statement is the contrapositive.
+\end{proof}
+
+Consequences: if all terms are $\ge0$, convergence is absolute convergence, so ``conditional'' only concerns series with mixed signs. To test absolute convergence, apply the tests for nonnegative terms (Divergence, Integral, Comparison, Limit Comparison) to $\sum\abs{a_k}$. Series divide into three classes: absolutely convergent, conditionally convergent, divergent.
+
+\begin{thm}{Alternating $p$-series}{altp}
+The series $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^p}$ converges absolutely if $p>1$, converges conditionally if $0<p\le1$, and diverges if $p\le0$.
+\end{thm}
+\begin{proof}
+The series of absolute values is the $p$-series $\sum\frac1{k^p}$, which converges if and only if $p>1$ (Theorem~\ref{10.4-thm:pseries}); this gives absolute convergence for $p>1$ and the failure of absolute convergence for $p\le1$. If $0<p\le1$, then $a_k=k^{-p}$ is decreasing and tends to $0$, so the series converges by the Alternating Series Test: it converges conditionally. If $p\le0$, then $\abs{a_k}=k^{-p}\ge1$ does not tend to $0$, and the series diverges by the Divergence Test.
+\end{proof}
+
+\begin{exmp}{Classifying series}{classify}
+Classify as absolutely convergent, conditionally convergent or divergent: (a)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^{2/3}}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^2+1}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty\frac{\cos k}{k^{3/2}+1}$; \quad (d)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac k{2k+1}$; \quad (e)~$\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac{2+(-1)^k}{k^2}$.
+
+\textbf{Solution.} (a) Alternating $p$-series with $p=\frac23\in(0,1]$: conditionally convergent. (b) $\frac1{k^2+1}<\frac1{k^2}$, so the series of absolute values converges by the Comparison Test: absolutely convergent. (c) The signs of $\cos k$ do not alternate regularly, so the Alternating Series Test does not apply, but $\abs{\cos k}\le1$ gives $\frac{\abs{\cos k}}{k^{3/2}+1}<\frac1{k^{3/2}}$, a convergent $p$-series: absolutely convergent. (d) $\abs{a_k}=\frac k{2k+1}\to\frac12\ne0$: diverges.
+%@ cl-d | limit(k/(2*k+1),k,oo) == Q(1,2) and all(Q(1,j*j+1) < Q(1,j*j) for j in range(1,30)) and all(abs(cos(j))/(j**Q(3,2)+1) < 1/j**Q(3,2) for j in range(1,40)) | $\abs{a_k}=\frac k{2k+1}\to\frac12\ne0$: diverges
+
+(e) The terms are $+\frac1{k^2}$ for odd $k$ and $-\frac3{k^2}$ for even $k$: they alternate, but $a_k=\frac{2+(-1)^k}{k^2}$ is not nonincreasing ($a_3=\frac19<a_4=\frac3{16}$), so the Alternating Series Test is not available. It is not needed: $\abs{a_k}\le\frac3{k^2}$, so the series converges absolutely.
+%@ cl-e | [Q(2+(-1)**j,j*j) for j in range(1,5)] == [1,Q(3,4),Q(1,9),Q(3,16)] and all(Q(2+(-1)**j,j*j) <= Q(3,j*j) for j in range(1,40)) | $a_3=\frac19<a_4=\frac3{16}$
+\end{exmp}
+
+\begin{exmp}{A parameter}{pparam}
+For which $p$ is $\displaystyle\sum_{k=1}^\infty(-1)^k\frac k{k^p+1}$ absolutely convergent, conditionally convergent, divergent?
+
+\textbf{Solution.} Write $a_k=\frac k{k^p+1}$. \emph{Divergent:} if $p\le1$ then $a_k\ge\frac k{k+1}\ge\frac12$ (for $p<1$, $k^p\le k$; for $p=1$ equal), so $a_k\not\to0$ and the series diverges. \emph{Convergent:} if $p>1$, $a_k\to0$ (the denominator grows faster than $k$), and $f(x)=\frac x{x^p+1}$ has $f'(x)=\frac{1-(p-1)x^p}{(x^p+1)^2}<0$ once $x^p>\frac1{p-1}$, so $a_k$ is eventually decreasing and the Alternating Series Test shows convergence. \emph{Absolute:} $\abs{a_k}\sim k^{1-p}$; by the Limit Comparison Test with $\frac1{k^{p-1}}$ (the ratio $\frac{k^p}{k^p+1}\to1$), $\sum\abs{a_k}$ converges if and only if $p-1>1$. So: absolutely convergent for $p>2$, conditionally convergent for $1<p\le2$, divergent for $p\le1$.
+%@ pp-a | simplify(diff(x/(x**Q(3,2)+1),x) - (1-(Q(3,2)-1)*x**Q(3,2))/(x**Q(3,2)+1)**2) == 0 and limit(k**Q(5,2)/(k**Q(5,2)+1),k,oo) == 1 and limit(k/(k**Q(3,2)+1),k,oo) == 0 and all(Q(j,j+1) >= Q(1,2) for j in range(1,40)) | $f'(x)=\frac{1-(p-1)x^p}{(x^p+1)^2}<0$
+\end{exmp}
+
+\begin{exmp}{Signs that do not alternate}{sinexp}
+Show that $S=\displaystyle\sum_{k=1}^\infty\frac{\sin k}{2^k}$ converges, and bound $S$ using three terms.
+
+\textbf{Solution.} The signs of $\sin k$ follow no simple pattern, so the Alternating Series Test is of no use. But $\abs{\frac{\sin k}{2^k}}\le\frac1{2^k}$, and $\sum\frac1{2^k}=1$ converges, so the series converges absolutely, hence converges, and $\abs S\le\sum\frac1{2^k}=1$ (Theorem~\ref{thm:absconv}). The same argument applied to the tail gives $\abs{S-s_3}\le\sum_{k>3}\frac1{2^k}=\frac18$. With $s_3=\frac{\sin1}2+\frac{\sin2}4+\frac{\sin3}8\approx0.6657$ this gives $0.5407\le S\le0.7907$. (The true value is about $0.5928$.)
+%@ se-a | summation(Q(1,2)**k,(k,1,oo)) == 1 and summation(Q(1,2)**k,(k,4,oo)) == Q(1,8) and abs(float(sin(1)/2+sin(2)/4+sin(3)/8)-0.6657)<1e-4 and abs(float(sin(1)/2+sin(2)/4+sin(3)/8-Q(1,8))-0.5407)<1e-4 and abs(float(sin(1)/2+sin(2)/4+sin(3)/8+Q(1,8))-0.7907)<1e-4 and abs(sum(float(sin(j)/2**j) for j in range(1,80))-0.5928)<1e-4 | $0.5407\le S\le0.7907$
+\end{exmp}
+
+\begin{exmp}{A value from the $p$-series}{known}
+Given $\displaystyle\sum_{k=1}^\infty\frac1{k^6}=\frac{\pi^6}{945}$, find $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^6}$.
+
+\textbf{Solution.} The alternating series converges absolutely (Theorem~\ref{thm:altp}, $p=6$). Its partial sum $s_{2n}$ is the sum of all $\frac1{k^6}$ for $k\le2n$ minus twice the sum over the even $k\le2n$, since each even term has the wrong sign:
+\[
+s_{2n}=\sum_{k=1}^{2n}\frac1{k^6}-2\sum_{j=1}^n\frac1{(2j)^6}=\sum_{k=1}^{2n}\frac1{k^6}-\frac2{64}\sum_{j=1}^n\frac1{j^6}.
+\]
+%@ kn-a | all(sum(Q((-1)**(i+1),i**6) for i in range(1,2*n_+1)) == sum(Q(1,i**6) for i in range(1,2*n_+1)) - Q(2,64)*sum(Q(1,j**6) for j in range(1,n_+1)) for n_ in range(1,8)) | =\sum_{k=1}^{2n}\frac1{k^6}-\frac2{64}\sum_{j=1}^n\frac1{j^6}.
+Let $n\to\infty$: both sums tend to $\frac{\pi^6}{945}$, and $s_{2n}\to S$ because the series converges. So $S=\frac{\pi^6}{945}\left(1-\frac1{32}\right)=\frac{31}{32}\cdot\frac{\pi^6}{945}=\frac{31\pi^6}{30240}\approx0.98555$.
+%@ kn-b | Q(31,32)*pi**6/945 == 31*pi**6/30240 and abs(float(31*pi**6/30240)-0.98555)<1e-5 and abs(sum(float(Q((-1)**(i+1),i**6)) for i in range(1,100))-0.98555)<1e-5 | $S=\frac{\pi^6}{945}\left(1-\frac1{32}\right)=\frac{31}{32}\cdot\frac{\pi^6}{945}=\frac{31\pi^6}{30240}\approx0.98555$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Does the order of the terms matter?}
+
+For a finite sum, no. For an infinite sum, it depends on how the series converges.
+
+\begin{remark}[Rearranging a series]
+\textbf{Absolutely convergent series} can be summed in any order: every rearrangement converges to the same sum (Theorem~\ref{app-thm:rearrabs}). \textbf{Conditionally convergent series cannot}: the positive terms add to $+\infty$ and the negative terms to $-\infty$ (Theorem~\ref{app-thm:parts}), and by Riemann's theorem a suitable order gives \emph{any} sum you like (Theorem~\ref{app-thm:riemann}). The two theorems are stated in the appendix with a sketch; \textbf{their full proofs are omitted}. The appendix does prove everything for one concrete rearrangement (Example~\ref{app-ex:rearr}), which is the next example.
+\end{remark}
+
+\begin{exmp}{Same terms, half the sum}{rearr}
+Let $S=\sum\frac{(-1)^{k+1}}k$. Compare $s_6$ with the partial sum of the rearranged series $1-\frac12-\frac14+\frac13-\frac16-\frac18+\cdots$ over the first nine terms.
+
+\textbf{Solution.} $s_6=1-\frac12+\frac13-\frac14+\frac15-\frac16=\frac{37}{60}\approx0.617$. The first nine terms of the rearranged series are $(1-\frac12-\frac14)+(\frac13-\frac16-\frac18)+(\frac15-\frac1{10}-\frac1{12})=\frac{37}{120}\approx0.308$, exactly half of $s_6$. By Example~\ref{app-ex:rearr} this is no accident: the rearranged series converges to $\frac12S$, not to $S$. For an absolutely convergent series such as $\sum\frac{(-1)^{k+1}}{k^2}$ this cannot happen.
+%@ re-a | sum(Q((-1)**(j+1),j) for j in range(1,7)) == Q(37,60) and sum(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j) for j in range(1,4)) == Q(37,120) and Q(37,120)*2 == Q(37,60) | \frac{37}{120}\approx0.308
+\end{exmp}
+
+\begin{think}{Positive terms alone}{posalone}
+For the alternating harmonic series, what do the positive terms $1+\frac13+\frac15+\cdots$ add up to? What about the negative terms? Why does this make it plausible that the order in which we add can change the answer?
+\end{think}
+
+\begin{think}{Is the monotone condition needed for the error bound?}{needmono}
+For $\sum(-1)^{k+1}\frac{2+(-1)^k}{k^2}$ (Example~\ref{ex:classify}(e)) the sum is exactly $0$. Compute $s_2$ and compare $\abs{S-s_2}$ with the next term $a_3$. What does this say about the bound $\abs{R_n}\le a_{n+1}$ when the terms are not nonincreasing?
+\end{think}
+
+\begin{kc}{Absolute and conditional convergence}{abskc}
+Classify: (a)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{1.5}}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{\sqrt k}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+1}k$.
+\end{kc}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{The Alternating Series Test} (Examples~\ref{ex:b1}--\ref{ex:b2}).
+  \item \emph{When the test fails} (Examples~\ref{ex:b3}--\ref{ex:b4}).
+  \item \emph{Remainders and error bounds} (Examples~\ref{ex:b5}--\ref{ex:b6}).
+  \item \emph{Absolute and conditional convergence} (Examples~\ref{ex:b7}--\ref{ex:b8}).
+  \item \emph{Alternating $p$-series and sums from known values} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{Applications: a parameter and a numerical value} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: The Alternating Series Test}
+
+\begin{exmp}{A decreasing denominator}{b1}
+Does $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2+2k}$ converge?
+
+\textbf{Solution.} The series alternates, $a_k=\frac1{k^2+2k}>0$. The denominator $k^2+2k$ increases with $k$, so $a_k$ decreases, and $a_k\to0$. Both conditions hold, so the series converges. Check: $a_1=\frac13>a_2=\frac18>a_3=\frac1{15}$.
+%@ bank-1 | all(Q(1,j*j+2*j) > Q(1,(j+1)**2+2*(j+1)) for j in range(1,50)) and limit(1/(k**2+2*k),k,oo) == 0 and [Q(1,j*j+2*j) for j in (1,2,3)] == [Q(1,3),Q(1,8),Q(1,15)] | $a_1=\frac13>a_2=\frac18>a_3=\frac1{15}$
+\end{exmp}
+
+\begin{exmp}{Monotone only from $k=3$}{b2}
+Does $\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k^2}{k^3+10}$ converge?
+
+\textbf{Solution.} $a_k=\frac{k^2}{k^3+10}\to0$. For $f(x)=\frac{x^2}{x^3+10}$, $f'(x)=\frac{2x(x^3+10)-3x^4}{(x^3+10)^2}=\frac{x(20-x^3)}{(x^3+10)^2}$, which is negative for $x^3>20$, i.e. $x>2.71$. So $a_k$ decreases for $k\ge3$; the first values are $a_1\approx0.091$, $a_2\approx0.222$, $a_3\approx0.243$, $a_4\approx0.216$: the sequence rises until $k=3$. The test applies to the tail from $k=3$ (the first terms do not affect convergence), so the series converges.
+%@ bank-2 | simplify(diff(x**2/(x**3+10),x) - x*(20-x**3)/(x**3+10)**2) == 0 and abs(float(Q(20)**Q(1,3))-2.714)<1e-3 and limit(k**2/(k**3+10),k,oo) == 0 and [round(float(Q(j*j,j**3+10)),3) for j in range(1,5)] == [0.091,0.222,0.243,0.216] | $a_1\approx0.091$, $a_2\approx0.222$, $a_3\approx0.243$, $a_4\approx0.216$
+\end{exmp}
+
+\subsection*{Group 2: When the test fails}
+
+\begin{exmp}{Terms that do not tend to zero}{b3}
+Does $\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{\sqrt{k^2+1}}$ converge?
+
+\textbf{Solution.} $a_k=\frac k{\sqrt{k^2+1}}=\frac1{\sqrt{1+1/k^2}}\to1\ne0$. The second condition fails, and so the terms do not tend to $0$: by the Divergence Test the series diverges. The partial sums keep oscillating: $s_{2n}$ and $s_{2n+1}$ stay about $1$ apart. Note that $a_k$ is increasing here, so the first condition fails as well, but it is the limit that decides.
+%@ bank-3 | limit(k/sqrt(k**2+1),k,oo) == 1 and all(j/sqrt(j*j+1) < (j+1)/sqrt((j+1)**2+1) for j in range(1,40)) | $a_k=\frac k{\sqrt{k^2+1}}=\frac1{\sqrt{1+1/k^2}}\to1\ne0$
+\end{exmp}
+
+\begin{exmp}{Not decreasing, and divergent}{b4}
+Let $a_k=\frac1{\sqrt k}$ for odd $k$ and $a_k=\frac1{k^2}$ for even $k$. Does $\displaystyle\sum_{k=1}^\infty(-1)^{k+1}a_k$ converge?
+
+\textbf{Solution.} The terms alternate and tend to $0$, but $a_2=\frac14<a_3=\frac1{\sqrt3}$, so the test does not apply. The even partial sums are $s_{2n}=\sum_{j=1}^n\frac1{\sqrt{2j-1}}-\sum_{j=1}^n\frac1{4j^2}$. The second sum is less than $\frac12$ (as $\sum\frac1{j^2}<2$), and $\frac1{\sqrt{2j-1}}\ge\frac1{\sqrt{2j}}$, so $s_{2n}\ge\frac1{\sqrt2}\sum_{j=1}^n\frac1{\sqrt j}-\frac12$. The sum $\sum\frac1{\sqrt j}$ diverges ($p=\frac12$), so $\{s_{2n}\}$ is unbounded and the series diverges.
+%@ bank-4 | all(sum(1/sqrt(2*j-1)-Q(1,4*j*j) for j in range(1,n_+1)) >= sum(1/sqrt(j) for j in range(1,n_+1))/sqrt(2)-Q(1,2) for n_ in range(1,30)) and Q(1,4) < 1/sqrt(3) | $s_{2n}\ge\frac1{\sqrt2}\sum_{j=1}^n\frac1{\sqrt j}-\frac12$
+\end{exmp}
+
+\subsection*{Group 3: Remainders and error bounds}
+
+\begin{exmp}{Terms for a given accuracy}{b5}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2+1}$ guarantee an error less than $0.005$?
+
+\textbf{Solution.} $\abs{R_n}\le a_{n+1}=\frac1{(n+1)^2+1}$, and we need $(n+1)^2+1>200$, i.e. $(n+1)^2>199$. Since $14^2=196<199<225=15^2$, $n+1\ge15$, so $n=14$. Check: for $n=14$ the bound is $\frac1{226}\approx0.00442<0.005$, and for $n=13$ it is $\frac1{197}\approx0.00508>0.005$. Indeed $s_{14}\approx0.36163$ and $S\approx0.36399$, an error of $0.0024$.
+%@ bank-5 | 14**2 == 196 and 15**2 == 225 and abs(float(Q(1,226))-0.00442)<1e-5 and abs(float(Q(1,197))-0.00508)<1e-5 and abs(float(sum(Q((-1)**(j+1),j*j+1) for j in range(1,15)))-0.36163)<1e-5 and abs(sum(float(Q((-1)**(j+1),j*j+1)) for j in range(1,6000))-0.36399)<1e-4 | $s_{14}\approx0.36163$ and $S\approx0.36399$
+\end{exmp}
+
+\begin{exmp}{The sign of the error}{b6}
+Let $S=\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k\,3^k}$. Bracket $S$ using $s_3$, and say on which side of $s_3$ the value $S$ lies.
+
+\textbf{Solution.} The terms $a_k=\frac1{k3^k}$ decrease to $0$. Here the first term is negative: $s_3=-\frac13+\frac1{18}-\frac1{81}=-\frac{47}{162}\approx-0.2901$. The first neglected term is $+\frac1{4\cdot81}=\frac1{324}$, so $R_3$ is positive and at most $\frac1{324}\approx0.0031$: $S$ lies above $s_3$, $-0.2901<S<-0.2870$. (The value is $-\ln\frac43\approx-0.2877$, as the next chapter will show.)
+%@ bank-6 | sum(Q((-1)**j,j*3**j) for j in range(1,4)) == Q(-47,162) and abs(float(Q(-47,162))+0.2901)<1e-4 and abs(float(Q(-47,162)+Q(1,324))+0.2870)<1e-4 and abs(float(-log(Q(4,3)))+0.2877)<1e-4 and Q(-47,162) < -log(Q(4,3)) and -log(Q(4,3)) < Q(-47,162)+Q(1,324) | $-0.2901<S<-0.2870$
+\end{exmp}
+
+\subsection*{Group 4: Absolute and conditional convergence}
+
+\begin{exmp}{Absolute convergence by comparison}{b7}
+Classify $\displaystyle\sum_{k=1}^\infty(-1)^k\frac{2k+1}{k^3+4}$.
+
+\textbf{Solution.} Look at the absolute values: $\frac{2k+1}{k^3+4}\le\frac{3k}{k^3}=\frac3{k^2}$ (since $2k+1\le3k$ for $k\ge1$ and $k^3+4>k^3$). The series $\sum\frac3{k^2}$ converges, so $\sum\abs{a_k}$ converges by the Comparison Test: the series converges absolutely (and so converges, Theorem~\ref{thm:absconv}).
+%@ bank-7 | all(Q(2*j+1,j**3+4) <= Q(3,j**2) for j in range(1,60)) | $\frac{2k+1}{k^3+4}\le\frac{3k}{k^3}=\frac3{k^2}$
+\end{exmp}
+
+\begin{exmp}{Conditional convergence with a logarithm}{b8}
+Classify $\displaystyle\sum_{k=2}^\infty\frac{(-1)^k}{\sqrt k\,\ln k}$.
+
+\textbf{Solution.} \emph{Absolute values:} $\frac1{\sqrt k\ln k}$. Compare with $b_k=\frac1k$: $\frac{a_k}{b_k}=\frac{\sqrt k}{\ln k}\to\infty$ and $\sum\frac1k$ diverges, so $\sum\abs{a_k}$ diverges (Limit Comparison Test, case 3): not absolutely convergent. \emph{Alternating series:} $\sqrt k\ln k$ increases for $k\ge2$ (a product of positive increasing functions), so $a_k$ decreases, and $a_k\to0$. The Alternating Series Test shows that the series converges. Hence it converges conditionally.
+%@ bank-8 | limit(sqrt(k)/log(k),k,oo) == oo and all(1/(sqrt(j)*log(j)) > 1/(sqrt(j+1)*log(j+1)) for j in range(2,60)) and limit(1/(sqrt(k)*log(k)),k,oo) == 0 | $\frac{a_k}{b_k}=\frac{\sqrt k}{\ln k}\to\infty$
+\end{exmp}
+
+\subsection*{Group 5: Alternating $p$-series and known sums}
+
+\begin{exmp}{Reading off the type}{b9}
+Classify $\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{0.9}}$, $\ \displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{1.2}}$ and $\ \displaystyle\sum_{k=1}^\infty(-1)^kk^{0.1}$.
+
+\textbf{Solution.} By Theorem~\ref{thm:altp} (the factor $(-1)^k$ instead of $(-1)^{k+1}$ only changes the overall sign): $p=0.9\in(0,1]$ gives conditional convergence; $p=1.2>1$ gives absolute convergence; the third series has $p=-0.1\le0$, and its terms $k^{0.1}\ge1$ do not tend to $0$: it diverges.
+%@ bank-9 | limit(k**Q(1,10),k,oo) == oo and Q(9,10) > 0 and Q(9,10) <= 1 and Q(12,10) == Q(6,5) | $p=1.2>1$ gives absolute convergence
+\end{exmp}
+
+\begin{exmp}{The odd reciprocals squared}{b10}
+Given $\sum_{k=1}^\infty\frac1{k^2}=\frac{\pi^2}6$, find $\displaystyle\sum_{k=1}^\infty\frac1{(2k-1)^2}=1+\frac19+\frac1{25}+\cdots$.
+
+\textbf{Solution.} Let $o_n=\sum_{k=1}^n\frac1{(2k-1)^2}$. The first $2n$ terms of $\sum\frac1{k^2}$ consist of the odd-indexed terms and the even-indexed ones, $\sum_{k=1}^{2n}\frac1{k^2}=o_n+\sum_{k=1}^n\frac1{(2k)^2}=o_n+\frac14\sum_{k=1}^n\frac1{k^2}$. Letting $n\to\infty$, the left side and the last sum tend to $\frac{\pi^2}6$, so $o_n\to\frac{\pi^2}6-\frac14\cdot\frac{\pi^2}6=\frac{\pi^2}8\approx1.2337$.
+%@ bank-10 | all(sum(Q(1,i**2) for i in range(1,2*n_+1)) == sum(Q(1,(2*j-1)**2) for j in range(1,n_+1)) + Q(1,4)*sum(Q(1,j**2) for j in range(1,n_+1)) for n_ in range(1,8)) and simplify(pi**2/6 - pi**2/24 - pi**2/8) == 0 and abs(float(pi**2/8)-1.2337)<1e-4 | $o_n\to\frac{\pi^2}6-\frac14\cdot\frac{\pi^2}6=\frac{\pi^2}8\approx1.2337$
+\end{exmp}
+
+\subsection*{Group 6: Applications}
+
+\begin{exmp}{Which $x$ work?}{b11}
+For which $x\ge0$ does $\displaystyle\sum_{k=1}^\infty\frac{(-1)^kx^k}k$ converge absolutely, conditionally, or not at all?
+
+\textbf{Solution.} The absolute values are $\frac{x^k}k$. If $0\le x<1$, $\frac{x^k}k\le x^k$ and $\sum x^k$ converges (geometric), so the series converges absolutely. If $x=1$, the series is $\sum\frac{(-1)^k}k$, the negative of the alternating harmonic series: it converges conditionally. If $x>1$, $\frac{x^k}k\to\infty$ (exponentials beat powers), so the terms do not tend to $0$ and the series diverges. So the series converges exactly for $0\le x\le1$, absolutely for $x<1$ and conditionally at the end point $x=1$. (Series like this, with powers of $x$, are the subject of the next chapter.)
+%@ bank-11 | all(Q(1,2)**j/j <= Q(1,2)**j for j in range(1,30)) and limit(2**k/k,k,oo) == oo and limit(Q(11,10)**k/k,k,oo) == oo and limit(Q(1,2)**k/k,k,oo) == 0 | $\frac{x^k}k\to\infty$
+\end{exmp}
+
+\begin{exmp}{Six decimal places}{b12}
+Estimate $S=\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)!}=1-\frac1{3!}+\frac1{5!}-\frac1{7!}+\cdots$ with an error less than $10^{-6}$.
+
+\textbf{Solution.} The terms $a_k=\frac1{(2k+1)!}$ decrease to $0$. After $n$ terms ($k=0,\dots,n-1$) the first neglected term is $\frac1{(2n+1)!}$ and $\abs{R_n}\le\frac1{(2n+1)!}$. For $n=4$ this is $\frac1{9!}\approx2.8\times10^{-6}$, too big; for $n=5$ it is $\frac1{11!}\approx2.5\times10^{-8}<10^{-6}$. So five terms suffice: $s_5=1-\frac16+\frac1{120}-\frac1{5040}+\frac1{362880}\approx0.8414710$. (The sum is $\sin1\approx0.8414710$; the next chapter explains why.)
+%@ bank-12 | abs(float(Q(1,factorial(9)))-2.76e-6)<1e-8 and abs(float(Q(1,factorial(11)))-2.5e-8)<1e-9 and Q(1,factorial(9)) > Q(1,10**6) and Q(1,factorial(11)) < Q(1,10**6) and abs(float(sum(Q((-1)**j,factorial(2*j+1)) for j in range(0,5)))-0.8414710)<1e-7 and abs(float(sin(1))-0.8414710)<1e-7 | $s_5=1-\frac16+\frac1{120}-\frac1{5040}+\frac1{362880}\approx0.8414710$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Multiplying by a bounded sequence}{b13}
+Let $\sum a_k$ converge absolutely and let $\abs{b_k}\le M$ for all $k$. Prove that $\sum a_kb_k$ converges absolutely.
+
+\textbf{Plan.} Bound $\abs{a_kb_k}$ by a multiple of $\abs{a_k}$ and use the Comparison Test.
+
+\begin{proof}
+$\abs{a_kb_k}=\abs{a_k}\abs{b_k}\le M\abs{a_k}$. The series $\sum M\abs{a_k}$ converges (Theorem~\ref{10.3-thm:props}(1)), so $\sum\abs{a_kb_k}$ converges by the Comparison Test. That is the definition of absolute convergence of $\sum a_kb_k$.
+\end{proof}
+%@ bank-13 | all(abs(Q(1,j**2)*Q((-1)**j,1)) <= Q(1,j**2) for j in range(1,30)) and all(Q((-1)**j,j)*Q((-1)**j,1) == Q(1,j) for j in range(1,30)) | $\abs{a_kb_k}=\abs{a_k}\abs{b_k}\le M\abs{a_k}$
+A common mistake is to assume only that $\sum a_k$ \emph{converges}: with $a_k=\frac{(-1)^k}k$ (conditionally convergent) and the bounded sequence $b_k=(-1)^k$, the product is $\frac1k$ and $\sum a_kb_k$ diverges.
+\end{exmp}
+
+\begin{exmp}{Squares of an absolutely convergent series}{b14}
+Prove that if $\sum a_k$ converges absolutely then $\sum a_k^2$ converges.
+
+\textbf{Plan.} The terms $a_k$ tend to $0$, so eventually $a_k^2\le\abs{a_k}$.
+
+\begin{proof}
+Since $\sum\abs{a_k}$ converges, $\abs{a_k}\to0$ (Divergence Test, Theorem~\ref{10.4-thm:divtest}), so there is $K$ with $\abs{a_k}\le1$ for $k\ge K$. For these $k$, $a_k^2=\abs{a_k}\cdot\abs{a_k}\le\abs{a_k}$. The series $\sum_{k\ge K}\abs{a_k}$ converges, so $\sum_{k\ge K}a_k^2$ converges by the Comparison Test, and then so does $\sum_{k\ge1}a_k^2$ (Theorem~\ref{10.3-thm:props}(5)).
+\end{proof}
+%@ bank-14 | all(Q(i,j)**2 <= abs(Q(i,j)) for i in range(-3,4) for j in range(4,9)) | $a_k^2=\abs{a_k}\cdot\abs{a_k}\le\abs{a_k}$
+Absolute convergence is essential. The series $\sum\frac{(-1)^k}{\sqrt k}$ converges (alternating $p$-series, $p=\frac12$), but $\sum\left(\frac{(-1)^k}{\sqrt k}\right)^2=\sum\frac1k$ diverges.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:astkc}.] (a) $a_k=\frac1{2k+7}$ decreases to $0$: converges. (b) $\abs{a_k}=\frac{k+1}k=1+\frac1k\to1\ne0$: the second condition fails, and the series diverges by the Divergence Test. (c) $a_k=\frac k{k^2+1}\to0$ and $f(x)=\frac x{x^2+1}$ has $f'(x)=\frac{1-x^2}{(x^2+1)^2}<0$ for $x>1$, so $a_k$ decreases: converges.
+%@ ans-astkc | limit((k+1)/k,k,oo) == 1 and simplify(diff(x/(x**2+1),x) - (1-x**2)/(x**2+1)**2) == 0 and limit(k/(k**2+1),k,oo) == 0 | $\abs{a_k}=\frac{k+1}k=1+\frac1k\to1\ne0$
+  \item[Knowledge Check \ref{kc:remkc}.] $\abs{R_n}\le\frac1{(n+1)^2}<0.01$ when $(n+1)^2>100$, i.e. $n+1\ge11$, so $n=10$ terms. (For $n=9$ the bound is exactly $\frac1{100}=0.01$, which is not less than $0.01$; so $9$ terms are not guaranteed.)
+%@ ans-remkc | 11**2 == 121 and Q(1,11**2) < Q(1,100) and Q(1,10**2) == Q(1,100) | $\abs{R_n}\le\frac1{(n+1)^2}<0.01$ when $(n+1)^2>100$
+  \item[Knowledge Check \ref{kc:abskc}.] (a) $p=1.5>1$: absolutely convergent. (b) $p=\frac12\in(0,1]$: conditionally convergent. (c) $\abs{a_k}=\frac{k+1}k\to1$: divergent.
+%@ ans-abskc | Q(3,2) > 1 and Q(1,2) <= 1 and limit((k+1)/k,k,oo) == 1 | $p=\frac12\in(0,1]$: conditionally convergent
+  \item[Pause and think \ref{think:conds}.] Because each bracket $a_2-a_3$, $a_4-a_5$ is $\ge0$ when the terms are nonincreasing, and $a_6\ge0$, we subtract nonnegative quantities from $a_1$, so $s_6\le a_1$; in general $s_{2m}\le a_1$, which makes the even partial sums bounded and lets the Monotone Convergence Theorem apply. If $a_3>a_2$, the bracket $a_2-a_3$ is negative and we would be \emph{adding} a positive amount; the bound by $a_1$ is lost, and this is exactly how the divergent series of Example~\ref{ex:astfail}(c) escapes.
+  \item[Pause and think \ref{think:posalone}.] The positive terms $1+\frac13+\frac15+\cdots$ exceed $\frac12\left(1+\frac12+\frac13+\cdots\right)$ term by term, so they add up to $+\infty$ (Appendix, Theorem~\ref{app-thm:parts}); the negative terms $-\frac12-\frac14-\cdots=-\frac12H_n$ go to $-\infty$. The sum converges only because the two infinities are cancelled in a particular order: one positive, one negative, one positive, \dots{} Change the proportion (one positive, two negative) and the cancellation is different, so a different answer is plausible, and the appendix shows it happens (half the sum).
+%@ ans-posalone | all(sum(Q(1,2*j-1) for j in range(1,n_+1)) > harmonic(n_)/2 for n_ in range(1,30)) | $1+\frac13+\frac15+\cdots$ exceed
+  \item[Pause and think \ref{think:needmono}.] $s_2=1-\frac34=\frac14$, and $S=0$: splitting the absolutely convergent series into its odd and even parts, the odd terms add to $\sum\frac1{(2k-1)^2}=\frac{\pi^2}8$ (Example~\ref{ex:b10}) and the even terms to $-3\sum\frac1{(2k)^2}=-\frac34\cdot\frac{\pi^2}6=-\frac{\pi^2}8$, so $S=\frac{\pi^2}8-\frac{\pi^2}8=0$. Then $\abs{S-s_2}=\frac14>\frac19=a_3$: the bound $\abs{R_n}\le a_{n+1}$ \emph{fails}. The monotonicity of the terms is used in the proof (the sandwich $s_{2m}\le S\le s_{2m+1}$), so it cannot be dropped from the remainder theorem.
+%@ ans-needmono | Q(1)-Q(3,4) == Q(1,4) and Q(1,4) > Q(1,9) and simplify(pi**2/8 - Q(3,4)*pi**2/6) == 0 and abs(sum(float(Q(2+(-1)**j,j*j)*(-1)**(j+1)) for j in range(1,6000))) < 1e-3 | $s_2=1-\frac34=\frac14$
+\end{description}
+
+\end{document}

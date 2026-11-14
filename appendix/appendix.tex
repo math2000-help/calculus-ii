@@ -340,4 +340,94 @@ Show that the sequence $S_n=\frac{1+(-1)^n}2$ (that is, $0,1,0,1,\dots$) diverge
 The second sequence is the first one shifted by one place, with the roles of $0$ and $1$ swapped, and the same argument applies.
 \end{exmp}
 
+% =====================================================================
+\section{Splitting Sequences, Sign Parts and Rearranging Series}
+
+This section supports the sections on alternating series and on absolute and conditional convergence. The first two results are proved in full. Rearranging series is different: the two main theorems are \emph{stated and sketched, but their full proofs are omitted} here (they need more room than a reference appendix has). One rearrangement is worked out completely, because it shows why the theorems are needed.
+
+\begin{thm}{Splitting a sequence into residue classes}{split}
+Let $q\ge2$ be an integer and $\{S_n\}$ a sequence. If, for each $r=0,1,\dots,q-1$, the subsequence $S_{qj+r}$ (the terms whose index leaves remainder $r$ on division by $q$) tends to the same number $L$ as $j\to\infty$, then $S_n\to L$. In particular (take $q=2$): if $S_{2j}\to L$ and $S_{2j-1}\to L$, then $S_n\to L$.
+\end{thm}
+\begin{proof}
+Let $\varepsilon>0$. For each $r$ there is a number $J_r$ with $\abs{S_{qj+r}-L}<\varepsilon$ for all $j>J_r$. Put $J=\max\{J_0,\dots,J_{q-1}\}$ and $N=q(J+1)$. Let $n>N$ and write $n=qj+r$ with $0\le r<q$. Then $qj+r>q(J+1)$ gives $j>J+1-\frac rq>J$ (because $r<q$), so $j>J\ge J_r$ and $\abs{S_n-L}<\varepsilon$. Hence $S_n\to L$. For $q=2$ the odd terms are $S_{2j-1}=S_{2(j-1)+1}$, a shift of the class $r=1$, and a shifted sequence has the same limit (Theorem~\ref{thm:tail}).
+\end{proof}
+
+\begin{exmp}{Even terms and odd terms}{splitex}
+The sequence $S_n=\dfrac{n+(-1)^n}{n}$ has $S_{2j}=1+\dfrac1{2j}\to1$ and $S_{2j-1}=1-\dfrac1{2j-1}\to1$. Conclude that $S_n\to1$, and explain why one class alone would not be enough.
+
+\textbf{Solution.} Both classes tend to $1$, so $S_n\to1$ by Theorem~\ref{thm:split} (here also $S_n=1+\frac{(-1)^n}n$ and the Squeeze Theorem gives the same result). One class alone is not enough: for $T_n=1+(-1)^n$, the even terms are all $2$, so $T_{2j}\to2$, but the odd terms are all $0$, so $T_n$ has no limit. Theorem~\ref{thm:split} needs \emph{every} class to have the \emph{same} limit.
+%@ D-ex1 | all(simplify((2*j+(-1)**(2*j))/(2*j) - (1+Q(1,2*j))) == 0 for j in range(1,8)) and limit(1+1/(2*n),n,oo) == 1 and limit(1-1/(2*n-1),n,oo) == 1 and [1+(-1)**i for i in range(1,7)] == [0,2,0,2,0,2] | $T_{2j}\to2$
+\end{exmp}
+
+For a series $\sum a_k$ write $a_k^+=\max\{a_k,0\}$ (the positive part) and $a_k^-=\max\{-a_k,0\}$ (the negative part). Both are $\ge0$, and
+\[
+a_k=a_k^+-a_k^-,\qquad \abs{a_k}=a_k^++a_k^- ,\qquad a_k^+=\frac{\abs{a_k}+a_k}2,\qquad a_k^-=\frac{\abs{a_k}-a_k}2 .
+\]
+
+\begin{thm}{Positive and negative parts}{parts}
+\begin{enumerate}[label=(\alph*)]
+  \item If $\sum\abs{a_k}$ converges, then $\sum a_k^+$ and $\sum a_k^-$ both converge.
+  \item If $\sum a_k$ converges but $\sum\abs{a_k}$ diverges, then $\sum a_k^+$ and $\sum a_k^-$ both diverge: their partial sums are not bounded above.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Let $P_n=\sum_{k=1}^na_k^+$, $M_n=\sum_{k=1}^na_k^-$, $A_n=\sum_{k=1}^n\abs{a_k}=P_n+M_n$ and $S_n=\sum_{k=1}^na_k=P_n-M_n$.
+
+(a) The sequences $\{P_n\}$ and $\{M_n\}$ are nondecreasing (their terms are $\ge0$) and $P_n\le A_n\le A$, $M_n\le A_n\le A$, where $A=\sum\abs{a_k}$ is the limit of the nondecreasing sequence $\{A_n\}$ (Theorem~\ref{thm:mctbound}). By the Monotone Convergence Theorem both converge.
+
+(b) Suppose $\{P_n\}$ converged, to $P$. Then $M_n=P_n-S_n\to P-S$, so $A_n=P_n+M_n$ would converge, contradicting the divergence of $\sum\abs{a_k}$. The same argument with the roles of $P_n$ and $M_n$ exchanged (use $P_n=M_n+S_n$) shows that $\{M_n\}$ does not converge either. A nondecreasing sequence that does not converge is not bounded above, by the Monotone Convergence Theorem.
+\end{proof}
+
+\begin{exmp}{The parts of the alternating harmonic series}{partsex}
+For $a_k=\dfrac{(-1)^{k+1}}k$ find $a_k^+$ and $a_k^-$ and describe their partial sums.
+
+\textbf{Solution.} $a_k^+=\frac1k$ for odd $k$ and $0$ for even $k$; $a_k^-=\frac1k$ for even $k$ and $0$ for odd $k$. So $\sum a_k^+=1+\frac13+\frac15+\cdots$ and $\sum a_k^-=\frac12+\frac14+\frac16+\cdots$. Since the alternating harmonic series converges but $\sum\frac1k$ diverges, Theorem~\ref{thm:parts}(b) says both of these diverge. This can also be seen directly: $\sum_{j=1}^m\frac1{2j-1}>\sum_{j=1}^m\frac1{2j}=\frac12H_m\to\infty$.
+%@ D-ex2 | all(sum(Q(1,2*j-1) for j in range(1,m_+1)) > sum(Q(1,2*j) for j in range(1,m_+1)) for m_ in range(1,9)) and all(sum(Q(1,2*j) for j in range(1,m_+1)) == harmonic(m_)/2 for m_ in range(1,9)) | $\sum_{j=1}^m\frac1{2j-1}>\sum_{j=1}^m\frac1{2j}=\frac12H_m\to\infty$
+\end{exmp}
+
+\subsection*{Rearranging a series}
+
+A \emph{rearrangement} of $\sum a_k$ is a series $\sum a_{\sigma(k)}$ that has the same terms in a different order ($\sigma$ is a one-to-one correspondence of the positive integers with themselves). For finite sums the order never matters. For infinite sums it can.
+
+\begin{exmp}{Reordering the alternating harmonic series halves its sum}{rearr}
+Let $S=1-\frac12+\frac13-\frac14+\cdots$ be the alternating harmonic series (it converges, by the Alternating Series Test treated in the section on alternating series; its value is $\ln2\approx0.693$, as the chapter on power series will show). Take its terms in this order: one positive term, then two negative terms,
+\[
+R=1-\frac12-\frac14+\frac13-\frac16-\frac18+\frac15-\frac1{10}-\frac1{12}+\cdots,
+\]
+so group $j$ is $\dfrac1{2j-1}-\dfrac1{4j-2}-\dfrac1{4j}$. Every term of $S$ appears exactly once in $R$: the positive terms $\frac1{2j-1}$ in order; the negative terms $-\frac1{4j-2}=-\frac1{2(2j-1)}$ and $-\frac1{4j}$ are the terms $-\frac1m$ with $m\equiv2$ and $m\equiv0\pmod4$, that is all the even $m$. Show that $R=\frac12S$. In particular $R\ne S$.
+
+\textbf{Solution.} Let $R_n$ be the partial sums of $R$ and $S_n$ those of $S$. Since $\frac1{4j-2}=\frac12\cdot\frac1{2j-1}$, group $j$ equals
+\[
+\frac1{2j-1}-\frac1{2(2j-1)}-\frac1{4j}=\frac12\cdot\frac1{2j-1}-\frac12\cdot\frac1{2j}=\frac12\left(\frac1{2j-1}-\frac1{2j}\right).
+\]
+%@ D-rearr1 | all(simplify(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j) - Q(1,2)*(Q(1,2*j-1)-Q(1,2*j))) == 0 for j in range(1,10)) | \frac12\cdot\frac1{2j-1}-\frac12\cdot\frac1{2j}=\frac12\left(\frac1{2j-1}-\frac1{2j}\right).
+Adding $j=1,\dots,m$ gives $R_{3m}=\frac12S_{2m}$. Because $S_{2m}\to S$, $R_{3m}\to\frac12S$. The other two classes differ from $R_{3m}$ by the next terms: $R_{3m+1}=R_{3m}+\frac1{2m+1}$ and $R_{3m+2}=R_{3m}+\frac1{2m+1}-\frac1{4m+2}$, and both added amounts tend to $0$. So all three subsequences $R_{3m}$, $R_{3m+1}$, $R_{3m+2}$ tend to $\frac12S$, and $R_n\to\frac12S$ by Theorem~\ref{thm:split}. Finally $S>0$: the partial sums $S_{2m}$ are nondecreasing (each step adds $\frac1{2m-1}-\frac1{2m}>0$), so $S\ge S_2=\frac12$ by Theorem~\ref{thm:mctbound}, and $R=\frac12S\ne S$.
+%@ D-rearr2 | all(sum(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j) for j in range(1,m_+1)) == Q(1,2)*sum(Q(-1,i)*(-1)**i for i in range(1,2*m_+1)) for m_ in range(1,10)) | Adding $j=1,\dots,m$ gives $R_{3m}=\frac12S_{2m}$.
+%@ D-rearr3 | all(sum(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j) for j in range(1,m_+1)) + Q(1,2*m_+1) - Q(1,4*m_+2) == sum(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j) for j in range(1,m_+2)) + Q(1,4*m_+4) for m_ in range(1,8)) | $R_{3m+2}=R_{3m}+\frac1{2m+1}-\frac1{4m+2}$
+%@ D-rearr4 | abs(float(Q(1,2)*log(2))-0.3466)<1e-4 and abs(sum(float(Q(1,2*j-1)-Q(1,4*j-2)-Q(1,4*j)) for j in range(1,20001))-float(log(2)/2))<1e-4 and abs(sum(float(Q(1,i))*(-1)**(i+1) for i in range(1,20001))-float(log(2)))<1e-4 | $S\ge S_2=\frac12$
+The same terms, in a different order, have a different sum.
+\end{exmp}
+
+Two theorems describe exactly what can happen. \textbf{The proofs below are omitted}; only a sketch is given.
+
+\begin{thm}{Rearranging an absolutely convergent series}{rearrabs}
+If $\sum\abs{a_k}$ converges, then every rearrangement of $\sum a_k$ converges, and to the same sum as $\sum a_k$.
+\end{thm}
+%%@omitted rearrabs
+\emph{Proof omitted. Sketch.} Let $S$ be the sum and $\varepsilon>0$. Choose $N$ with $\sum_{k>N}\abs{a_k}<\varepsilon$. In the rearranged series, wait until the terms $a_1,\dots,a_N$ have all appeared, say by position $M$. For $n\ge M$ the partial sum of the rearrangement is $a_1+\cdots+a_N$ plus some terms $a_k$ with $k>N$, while the true partial sum $S_N$ is $a_1+\cdots+a_N$ alone. So the rearranged partial sum differs from $S_N$ by at most $\sum_{k>N}\abs{a_k}<\varepsilon$, and $S_N$ differs from $S$ by at most the same amount. The step that needs care is that $\abs{\sum_{k>N}a_k}\le\sum_{k>N}\abs{a_k}$ for the infinite tail.
+
+\begin{thm}{Rearranging a conditionally convergent series (Riemann)}{riemann}
+If $\sum a_k$ converges but $\sum\abs{a_k}$ diverges, then for every real number $A$ there is a rearrangement of $\sum a_k$ whose sum is $A$. There are also rearrangements whose partial sums tend to $\infty$, and rearrangements that have no limit.
+\end{thm}
+%%@omitted riemann
+\emph{Proof omitted. Sketch.} By Theorem~\ref{thm:parts}(b) the positive terms add to $+\infty$ and the negative terms to $-\infty$, while $a_k\to0$. To aim at $A$: add positive terms, in their original order, until the running total first exceeds $A$; then add negative terms until it first drops below $A$; then positive terms again; and so on. This uses every term exactly once, because each stage needs only finitely many terms (the supply of each sign is unlimited). After the first crossing of $A$, the running total never misses $A$ by more than the size of the last term used, and the terms tend to $0$, so the running totals tend to $A$. The details of ``never misses by more than'' and of showing that every term is used are what the full proof supplies.
+
+\begin{exmp}{Aiming at $\frac32$}{aim}
+Follow the sketch for the alternating harmonic series with the target $A=\frac32$, and list the first stages.
+
+\textbf{Solution.} The positive terms are $1,\frac13,\frac15,\dots$ and the negative terms are $-\frac12,-\frac14,\dots$ Add positive terms until the total exceeds $\frac32$: $1+\frac13=\frac43<\frac32$, and $\frac43+\frac15=\frac{23}{15}\approx1.533>\frac32$. Now add negative terms until the total drops below $\frac32$: already the first one does, $\frac{23}{15}-\frac12=\frac{31}{30}\approx1.033<\frac32$. Add positive terms again: $\frac{31}{30}+\frac17+\frac19+\frac1{11}+\frac1{13}\approx1.4551<\frac32$, and one more, $\frac1{15}$, gives $\approx1.5218>\frac32$. The series begins $1+\frac13+\frac15-\frac12+\frac17+\frac19+\frac1{11}+\frac1{13}+\frac1{15}-\frac14+\cdots$, and its totals swing around $\frac32$ by smaller and smaller amounts (a computer run of $10^5$ terms ends within $10^{-4}$ of $\frac32$).
+%@ D-aim1 | Q(4,3) < Q(3,2) and Q(4,3)+Q(1,5) == Q(23,15) and Q(23,15) > Q(3,2) and Q(23,15)-Q(1,2) == Q(31,30) and Q(31,30) < Q(3,2) | $1+\frac13=\frac43<\frac32$, and $\frac43+\frac15=\frac{23}{15}\approx1.533>\frac32$
+%@ D-aim2 | abs(float(Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13))-1.4551)<1e-4 and Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13) < Q(3,2) and abs(float(Q(31,30)+Q(1,7)+Q(1,9)+Q(1,11)+Q(1,13)+Q(1,15))-1.5218)<1e-4 | $\frac{31}{30}+\frac17+\frac19+\frac1{11}+\frac1{13}\approx1.4551<\frac32$
+\end{exmp}
+
 \end{document}

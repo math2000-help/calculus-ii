@@ -1,0 +1,384 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{5}{Comparison Tests}
+\calcxdoc{10.4}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+\calcxdoc{10.1}
+\calcxapp
+
+\begin{document}
+
+\section{Comparison Tests}
+
+\begin{guide}
+The Integral Test settles $\sum\frac1{k^2+4}$ in two lines, but try it on $\sum\frac{5k^4-2k^2+3}{2k^6-k+5}$: the antiderivative is a nightmare, and the function is not obviously decreasing. Yet to the eye this series is just $\sum\frac5{2k^2}$ in disguise: for large $k$ the lower-order terms hardly matter. This section turns that impression into theorems. If the terms of a series are smaller than the terms of a series that converges, the smaller series converges too; and if the terms of two series have a positive ratio in the long run, the two series behave alike. The yardsticks are the two families we can already decide completely: geometric series and $p$-series.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item state and prove the Comparison Test and the Limit Comparison Test (all cases);
+  \item choose a comparison series from the dominant behaviour of the terms, using geometric series and $p$-series as yardsticks;
+  \item say why an inequality that points the wrong way proves nothing, and repair it;
+  \item explain which cases of the Limit Comparison Test are conclusive;
+  \item use a comparison to bound a sum and to find how many terms give a given accuracy.
+\end{itemize}
+Throughout, the series have terms $\ge0$ (positive terms, in the language of the tests); the next section deals with series whose terms change sign.
+
+% ---------------------------------------------------------------------
+\subsection*{The Comparison Test}
+
+Convergence depends only on the tail of a series (Theorem~\ref{10.3-thm:props}(5)), so an inequality between terms is needed only from some index $N$ on.
+
+\begin{thm}{Comparison Test}{comp}
+Let $\sum a_k$ and $\sum b_k$ be series and let $N$ be an integer with $0\le a_k\le b_k$ for all $k\ge N$.
+\begin{enumerate}[label=(\arabic*)]
+  \item If $\sum b_k$ converges, then $\sum a_k$ converges, and $\sum_{k=N}^\infty a_k\le\sum_{k=N}^\infty b_k$.
+  \item If $\sum a_k$ diverges, then $\sum b_k$ diverges.
+  \item If $\sum b_k$ converges, then for every $n\ge N$ the remainders satisfy $0\le\sum_{k=n+1}^\infty a_k\le\sum_{k=n+1}^\infty b_k$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+By Theorem~\ref{10.3-thm:props}(5) we may drop the terms before index $N$ from both series without changing whether they converge, so assume both start at $k=N$. Let $s_n=\sum_{k=N}^{N+n-1}a_k$ and $t_n=\sum_{k=N}^{N+n-1}b_k$ be the partial sums. Because $a_k\le b_k$, adding the first $n$ inequalities gives $0\le s_n\le t_n$ for every $n$.
+
+(1) Let $B=\sum_{k=N}^\infty b_k$. The terms of $\sum b_k$ are $\ge0$, so $t_n\le B$ by Theorem~\ref{10.3-thm:posterms}(a). Hence $s_n\le t_n\le B$ for all $n$: the partial sums of $\sum a_k$ are bounded above. The terms $a_k$ are $\ge0$, so by Theorem~\ref{10.3-thm:posterms}(a) the series converges, to a number $A$. Finally $s_n\le t_n$ for all $n$ and limits preserve non-strict inequalities (Theorem~\ref{app-thm:ineq}), so $A\le B$.
+
+(2) This is the contrapositive of (1): if $\sum b_k$ converged, then $\sum a_k$ would converge.
+
+(3) Suppose $\sum b_k$ converges and $n\ge N$. The tail $\sum_{k=n+1}^\infty b_k$ converges by Theorem~\ref{10.3-thm:props}(5), and $0\le a_k\le b_k$ for $k\ge n+1$. Apply (1) with $N$ replaced by $n+1$.
+\end{proof}
+
+Read part (2) as: if the \emph{smaller} series diverges, so does the \emph{larger} one. Part (1) says the same for convergence in the other direction. The two remaining combinations say nothing, and we return to that below. Because a constant factor $c>0$ does not change convergence (Theorem~\ref{10.3-thm:props}), the test also works with $a_k\le cb_k$ for some constant $c>0$.
+
+\begin{remark}[The yardsticks]
+Every comparison needs a series whose behaviour we already know. We have two families. The geometric series $\sum r^k$ converges if and only if $\abs r<1$ (Theorem~\ref{10.3-thm:geoseries}); the $p$-series $\sum\frac1{k^p}$ converges if and only if $p>1$ (Theorem~\ref{10.4-thm:pseries}). Constant multiples and finitely many changed terms do not matter.
+\end{remark}
+
+\begin{exmp}{Comparing with a geometric or a $p$-series}{dirconv}
+Decide whether (a)~$\displaystyle\sum_{k=1}^\infty\frac1{3^k+k}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac k{k^4+2}$ converge.
+
+\textbf{Solution.} (a) Make the denominator smaller to make the fraction larger: $3^k+k>3^k$, so $\frac1{3^k+k}<\left(\frac13\right)^k$. The geometric series with $r=\frac13$ converges, so $\sum\frac1{3^k+k}$ converges by the Comparison Test, and its sum is less than $\sum_{k=1}^\infty\left(\frac13\right)^k=\frac{1/3}{1-1/3}=\frac12$. (Its value is about $0.392$.)
+%@ dir-a | all(Q(1,3**j+j) < Q(1,3**j) for j in range(1,30)) and summation(Q(1,3)**k,(k,1,oo)) == Q(1,2) and abs(sum(float(Q(1,3**j+j)) for j in range(1,60))-0.3921)<1e-4 | =\frac{1/3}{1-1/3}=\frac12
+(b) Here $k^4+2>k^4$, so $\frac k{k^4+2}<\frac k{k^4}=\frac1{k^3}$. The $p$-series with $p=3$ converges, so the series converges.
+%@ dir-b | all(Q(j,j**4+2) < Q(1,j**3) for j in range(1,60)) and Q(3,1) > 1 | $\frac k{k^4+2}<\frac k{k^4}=\frac1{k^3}$
+\end{exmp}
+
+\begin{exmp}{Comparison for divergence}{divcomp}
+Show that (a)~$\displaystyle\sum_{k=2}^\infty\frac1{\sqrt k-1}$ and (b)~$\displaystyle\sum_{k=3}^\infty\frac{\ln k}k$ diverge.
+
+\textbf{Solution.} Now the comparison series must be the \emph{smaller} one, and it must diverge. (a) For $k\ge2$, $0<\sqrt k-1<\sqrt k$, so $\frac1{\sqrt k-1}>\frac1{\sqrt k}$. Since $\sum\frac1{\sqrt k}$ is a $p$-series with $p=\frac12\le1$, it diverges, and so does the larger series.
+%@ dc-a | all(1/(sqrt(j)-1) > 1/sqrt(j) for j in range(2,60)) and Q(1,2) <= 1 | $\frac1{\sqrt k-1}>\frac1{\sqrt k}$
+(b) For $k\ge3$ we have $\ln k\ge\ln3\approx1.0986>1$, so $\frac{\ln k}k>\frac1k$. The harmonic series diverges, so $\sum_{k=3}^\infty\frac{\ln k}k$ diverges. (The inequality fails at $k=2$, since $\ln2\approx0.693<1$; the Comparison Test only needs it from some $N$ on.)
+%@ dc-b | log(3) > 1 and abs(float(log(3))-1.0986)<1e-4 and log(2) < 1 and all(log(j)/j > Q(1,j) for j in range(3,60)) | $\frac{\ln k}k>\frac1k$
+\end{exmp}
+
+\begin{remark}[What each inequality can and cannot say]
+Let $0\le a_k\le b_k$. If $\sum b_k$ converges, so does $\sum a_k$. If $\sum a_k$ diverges, so does $\sum b_k$. But if $\sum b_k$ diverges, or if $\sum a_k$ converges, the Comparison Test gives \emph{no conclusion}: a series can be smaller than a divergent one and still converge ($\frac1{k^2}\le\frac1k$) or diverge ($\frac1{2k}\le\frac1k$). In short, a convergent series can only be used as an upper bound and a divergent series only as a lower bound.
+\end{remark}
+
+\begin{exmp}{An inequality that points the wrong way}{wrongway}
+Decide whether (a)~$\displaystyle\sum_{k=2}^\infty\frac1{k^2-1}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac1{k+1}$ converge.
+
+\textbf{Solution.} (a) The tempting comparison is with $\sum\frac1{k^2}$, which converges. But $k^2-1<k^2$ gives $\frac1{k^2-1}>\frac1{k^2}$: our series is \emph{larger} than a convergent one, and that says nothing. Repair: we need a convergent series that is larger. For $k\ge2$, $k^2-1\ge\frac{k^2}2$ (this is $k^2\ge2$), so $\frac1{k^2-1}\le\frac2{k^2}$, and $\sum\frac2{k^2}$ converges. So the series converges. (In fact it telescopes, $\frac1{k^2-1}=\frac12\left(\frac1{k-1}-\frac1{k+1}\right)$, with sum $\frac34$, so the comparison led to the right answer.)
+%@ ww-a | all(Q(1,j*j-1) > Q(1,j*j) for j in range(2,40)) and all(Q(1,j*j-1) <= Q(2,j*j) for j in range(2,40)) and all(Q(1,j*j-1) == Q(1,2)*(Q(1,j-1)-Q(1,j+1)) for j in range(2,40)) and abs(sum(float(Q(1,j*j-1)) for j in range(2,5000))-0.75)<1e-3 | $\frac1{k^2-1}\le\frac2{k^2}$
+(b) Compare with $\sum\frac1k$, which diverges: $\frac1{k+1}<\frac1k$ is a \emph{smaller} series than a divergent one, so again nothing follows. Repair: $k+1\le2k$ for $k\ge1$, so $\frac1{k+1}\ge\frac1{2k}$, and $\sum\frac1{2k}$ diverges (Theorem~\ref{10.3-thm:props}(2)). So the series diverges.
+%@ ww-b | all(Q(1,j+1) < Q(1,j) for j in range(1,30)) and all(Q(1,j+1) >= Q(1,2*j) for j in range(1,30)) | $k+1\le2k$ for $k\ge1$, so $\frac1{k+1}\ge\frac1{2k}$
+\end{exmp}
+
+\begin{kc}{Choosing a comparison}{compkc}
+For each series, name a comparison series and say whether the inequality should make the given series smaller or larger than it: (a)~$\displaystyle\sum_{k=1}^\infty\frac1{4^k+k}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac1{k^2+9}$; \quad (c)~$\displaystyle\sum_{k=2}^\infty\frac1{k-1}$.
+\end{kc}
+
+\begin{think}{Why nonnegative terms?}{nonneg}
+Let $a_k=-1$ and $b_k=\frac1{k^2}$. Then $a_k\le b_k$ for every $k$ and $\sum b_k$ converges. Does $\sum a_k$ converge? Which line of the proof of the Comparison Test fails?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{The Limit Comparison Test}
+
+Inequalities can be fiddly. The series $\sum\frac1{3^k-k}$ lies \emph{above} $\sum3^{-k}$, so the easy comparison goes the wrong way, even though the two series plainly behave alike. The Limit Comparison Test compares the terms by their \emph{ratio}.
+
+\begin{thm}{Limit Comparison Test}{lct}
+Let $a_k>0$ and $b_k>0$ for all $k$ from some index on, and let $L=\displaystyle\lim_{k\to\infty}\frac{a_k}{b_k}$.
+\begin{enumerate}[label=(\arabic*)]
+  \item If $0<L<\infty$, then $\sum a_k$ and $\sum b_k$ either both converge or both diverge.
+  \item If $L=0$ and $\sum b_k$ converges, then $\sum a_k$ converges.
+  \item If $L=\infty$ and $\sum b_k$ diverges, then $\sum a_k$ diverges.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Take $\varepsilon=\frac L2>0$ in the definition of the limit: there is $K$ such that $\abs{\frac{a_k}{b_k}-L}<\frac L2$ for $k>K$, that is, $\frac L2<\frac{a_k}{b_k}<\frac{3L}2$. Multiplying by $b_k>0$,
+\[
+\frac L2\,b_k<a_k<\frac{3L}2\,b_k\qquad(k>K).
+\]
+If $\sum b_k$ converges, then $\sum\frac{3L}2b_k$ converges (Theorem~\ref{10.3-thm:props}(1)), and $0<a_k<\frac{3L}2b_k$, so $\sum a_k$ converges by the Comparison Test (1). If $\sum b_k$ diverges, then $\sum\frac L2b_k$ diverges (Theorem~\ref{10.3-thm:props}(2), since $\frac L2\ne0$), and $0<\frac L2b_k<a_k$, so $\sum a_k$ diverges by the Comparison Test (2). So $\sum b_k$ converges $\Rightarrow$ $\sum a_k$ converges, and $\sum b_k$ diverges $\Rightarrow$ $\sum a_k$ diverges; the second statement is equivalent to ``$\sum a_k$ converges $\Rightarrow$ $\sum b_k$ converges'', so the two series converge or diverge together.
+
+(2) Take $\varepsilon=1$: there is $K$ with $0<\frac{a_k}{b_k}<1$, so $0<a_k<b_k$ for $k>K$. If $\sum b_k$ converges, so does $\sum a_k$, by the Comparison Test (1).
+
+(3) $L=\infty$ means that for every number $M$ there is $K$ with $\frac{a_k}{b_k}>M$ for $k>K$. Take $M=1$: $a_k>b_k>0$ for $k>K$. If $\sum b_k$ diverges, the larger series $\sum a_k$ diverges by the Comparison Test (2).
+\end{proof}
+
+Cases (2) and (3) are \emph{one-sided}: they are conclusive only when the comparison series behaves in the stated way. If $L=0$ and $\sum b_k$ diverges, or $L=\infty$ and $\sum b_k$ converges, the test says nothing (Example~\ref{ex:logtrap}).
+
+\begin{proc}{Choosing a comparison series}{choose}
+\begin{enumerate}[nosep]
+  \item Check the Divergence Test first: if $a_k\not\to0$, the series diverges and no comparison is needed.
+  \item Find what $a_k$ is like for large $k$: keep the highest power in a rational expression, the largest exponential, and discard the rest.
+  \item Take $b_k$ to be that simplified term without its constant factor: a $p$-series or a geometric series.
+  \item Try the Comparison Test if the inequality is easy and points the right way (smaller than a convergent series, or larger than a divergent one); otherwise compute $L=\lim\frac{a_k}{b_k}$.
+  \item If $L$ is $0$ or $\infty$, check that it is a conclusive case; if not, change $b_k$.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Rational terms}{lctrat}
+Decide whether (a)~$\displaystyle\sum_{k=1}^\infty\frac{k+3}{k^3-k+2}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac{4k^2-k}{k^3+7}$ converge.
+
+\textbf{Solution.} (a) The terms are positive, and for large $k$ they behave like $\frac k{k^3}=\frac1{k^2}$. Take $b_k=\frac1{k^2}$ (convergent). Then
+\[
+L=\lim_{k\to\infty}\frac{k^2(k+3)}{k^3-k+2}=\lim_{k\to\infty}\frac{1+3/k}{1-1/k^2+2/k^3}=1 .
+\]
+%@ lr-a | limit(k**2*(k+3)/(k**3-k+2),k,oo) == 1 and all(j**3-j+2 > 0 for j in range(1,50)) | =\lim_{k\to\infty}\frac{1+3/k}{1-1/k^2+2/k^3}=1 .
+Since $0<L<\infty$, the series converges.
+
+(b) The terms behave like $\frac{4k^2}{k^3}=\frac4k$. Take $b_k=\frac1k$ (divergent). Then $L=\lim\frac{k(4k^2-k)}{k^3+7}=\lim\frac{4-1/k}{1+7/k^3}=4$, so the series diverges.
+%@ lr-b | limit(k*(4*k**2-k)/(k**3+7),k,oo) == 4 and all(4*j*j-j > 0 for j in range(1,50)) | $L=\lim\frac{k(4k^2-k)}{k^3+7}=\lim\frac{4-1/k}{1+7/k^3}=4$
+\end{exmp}
+
+\begin{exmp}{Roots in the terms}{lctroot}
+Decide whether (a)~$\displaystyle\sum_{k=1}^\infty\frac{\sqrt{k+1}}{k^2+3}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac{3\sqrt k+2}{k+5}$ converge.
+
+\textbf{Solution.} (a) For large $k$, $\frac{\sqrt{k+1}}{k^2+3}\approx\frac{k^{1/2}}{k^2}=\frac1{k^{3/2}}$, a convergent $p$-series ($p=\frac32$). Then $L=\lim\frac{k^{3/2}\sqrt{k+1}}{k^2+3}=\lim\frac{k^2\sqrt{1+1/k}}{k^2+3}=1$, so the series converges.
+%@ lroot-a | limit(k**Q(3,2)*sqrt(k+1)/(k**2+3),k,oo) == 1 and Q(3,2) > 1 | $L=\lim\frac{k^{3/2}\sqrt{k+1}}{k^2+3}=\lim\frac{k^2\sqrt{1+1/k}}{k^2+3}=1$
+(b) The terms behave like $\frac{3\sqrt k}k=\frac3{\sqrt k}$. Take $b_k=\frac1{\sqrt k}$ (divergent, $p=\frac12$): $L=\lim\frac{\sqrt k\,(3\sqrt k+2)}{k+5}=\lim\frac{3k+2\sqrt k}{k+5}=3$, so the series diverges.
+%@ lroot-b | limit(sqrt(k)*(3*sqrt(k)+2)/(k+5),k,oo) == 3 and Q(1,2) <= 1 | $L=\lim\frac{\sqrt k\,(3\sqrt k+2)}{k+5}=\lim\frac{3k+2\sqrt k}{k+5}=3$
+\end{exmp}
+
+\begin{exmp}{A logarithm between two $p$-series}{logtrap}
+Decide whether $\displaystyle\sum_{k=2}^\infty\frac{\ln k}{k^{3/2}}$ converges.
+
+\textbf{Solution.} Since $\ln k$ grows, the terms are a little larger than $\frac1{k^{3/2}}$ and much smaller than $\frac1k$. Try both: with $b_k=\frac1{k^{3/2}}$ (convergent), $L=\lim\ln k=\infty$, which is the inconclusive case; with $b_k=\frac1k$ (divergent), $L=\lim\frac{\ln k}{\sqrt k}=0$, again inconclusive. So choose a $p$-series between them, $b_k=\frac1{k^{5/4}}$ (convergent, $p=\frac54>1$):
+\[
+L=\lim_{k\to\infty}\frac{\ln k/k^{3/2}}{1/k^{5/4}}=\lim_{k\to\infty}\frac{\ln k}{k^{1/4}}=0 ,
+\]
+%@ lt-a | limit(log(k),k,oo) == oo and limit(log(k)/sqrt(k),k,oo) == 0 and limit(log(k)/k**Q(1,4),k,oo) == 0 and Q(5,4) > 1 | \frac{\ln k}{k^{1/4}}=0 ,
+by l'H\^opital's Rule (the quotient of derivatives is $\frac4{k^{1/4}}\to0$). This is a conclusive case, so the series converges.
+%@ lt-b | simplify((1/x)/(Q(1,4)*x**Q(-3,4)) - 4/x**Q(1,4)) == 0 | the quotient of derivatives is $\frac4{k^{1/4}}\to0$
+\end{exmp}
+
+\begin{exmp}{Exponentials, and checking the Divergence Test first}{expon}
+Decide whether (a)~$\displaystyle\sum_{k=1}^\infty\frac{2^k+k}{3^k-1}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac{3\cdot2^k-1}{2^k+7}$ converge.
+
+\textbf{Solution.} (a) The dominant terms give $\frac{2^k}{3^k}$, so take $b_k=\left(\frac23\right)^k$, a convergent geometric series. Then $L=\lim\frac{(2^k+k)\,3^k}{(3^k-1)\,2^k}=\lim\frac{1+k/2^k}{1-3^{-k}}=1$ (because $\frac k{2^k}\to0$). The series converges.
+%@ ex-a | limit((2**k+k)/(3**k-1)*Q(3,2)**k,k,oo) == 1 and limit(k/2**k,k,oo) == 0 | $L=\lim\frac{(2^k+k)\,3^k}{(3^k-1)\,2^k}=\lim\frac{1+k/2^k}{1-3^{-k}}=1$
+(b) No comparison is needed: $a_k=\frac{3-2^{-k}}{1+7\cdot2^{-k}}\to3\ne0$, so the series diverges by the Divergence Test. Comparing first would have wasted effort.
+%@ ex-b | limit((3*2**k-1)/(2**k+7),k,oo) == 3 | $a_k=\frac{3-2^{-k}}{1+7\cdot2^{-k}}\to3\ne0$
+\end{exmp}
+
+\begin{kc}{The Limit Comparison Test}{lctkc}
+In each case $a_k,b_k>0$. Say whether the Limit Comparison Test is conclusive, and what it concludes. (a)~$a_k=\frac1{k^2}$, $b_k=\frac1{k^{3/2}}$. (b)~$a_k=\frac1k$, $b_k=\frac1{k^2}$. (c)~$a_k=\frac{2k+1}{k^2}$, $b_k=\frac1k$.
+\end{kc}
+
+\begin{think}{Both sides of the ratio}{twoways}
+Find two series $\sum a_k$ with $\lim\frac{a_k}{1/k}=0$, one convergent and one divergent. (Use Theorem~\ref{10.4-thm:pseries} and the series of Example~\ref{10.4-ex:lnex}.) What does this say about the case $L=0$ with a divergent comparison series?
+\end{think}
+
+\begin{exmp}{Bounded oscillation in the numerator}{trigbound}
+Decide whether (a)~$\displaystyle\sum_{k=1}^\infty\frac{2+\sin k}{k^2+1}$ and (b)~$\displaystyle\sum_{k=1}^\infty\frac{2+\cos k}{\sqrt k}$ converge.
+
+\textbf{Solution.} The numerators oscillate but stay between $1$ and $3$, since $-1\le\sin k,\cos k\le1$; so all terms are positive. (a) $\frac{2+\sin k}{k^2+1}\le\frac3{k^2+1}<\frac3{k^2}$, and $\sum\frac3{k^2}$ converges: the series converges. (b) $\frac{2+\cos k}{\sqrt k}\ge\frac1{\sqrt k}$, and $\sum\frac1{\sqrt k}$ diverges ($p=\frac12$): the series diverges. The limit $\lim\frac{2+\sin k}{k^2+1}\cdot k^2$ does not exist, so the Limit Comparison Test would not help here; the Comparison Test does.
+%@ tb-a | all(1 <= 2+sin(j) and 2+sin(j) <= 3 for j in range(1,40)) and all((2+sin(j))/(j**2+1) < 3/Integer(j)**2 for j in range(1,40)) and all((2+cos(j))/sqrt(j) >= 1/sqrt(j) for j in range(1,40)) | $\frac{2+\sin k}{k^2+1}\le\frac3{k^2+1}<\frac3{k^2}$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Estimating a sum by comparison}
+
+Part (3) of the Comparison Test turns a comparison into a numerical method: a series that is smaller than a series we can sum or bound has a sum that is smaller, and so does every remainder.
+
+\begin{exmp}{Bounds for a sum, and a remainder}{estimate}
+Let $S=\displaystyle\sum_{k=1}^\infty\frac1{2^k+k}$. (a)~Trap $S$ between two simple numbers. (b)~Use $s_4=\sum_{k=1}^4\frac1{2^k+k}$ and a remainder bound to find a shorter interval.
+
+\textbf{Solution.} (a) Since $k<2^k$, $2^k<2^k+k<2\cdot2^k$, so $\frac1{2}\cdot2^{-k}<a_k<2^{-k}$. Sum from $k=1$: $\sum2^{-k}=1$ and $\sum\frac12\cdot2^{-k}=\frac12$, so by the Comparison Test (1) $\frac12\le S\le1$. (In fact $S\approx0.697$.)
+%@ est-a | all(2**j < 2**j+j and 2**j+j < 2*2**j for j in range(1,40)) and summation(Q(1,2)**k,(k,1,oo)) == 1 and abs(sum(float(Q(1,2**j+j)) for j in range(1,200))-0.6973)<1e-4 | so by the Comparison Test (1) $\frac12\le S\le1$
+(b) The first four terms are $\frac13,\frac16,\frac1{11},\frac1{20}$, so $s_4=\frac{141}{220}\approx0.6409$. For the remainder use part (3) with $b_k=2^{-k}$: $0\le R_4=\sum_{k=5}^\infty a_k\le\sum_{k=5}^\infty2^{-k}=\frac1{16}$. Therefore $0.6409<S<0.6409+0.0625=0.7034$. The interval is about $0.06$ wide and contains $0.697$.
+%@ est-b | sum(Q(1,2**j+j) for j in range(1,5)) == Q(141,220) and abs(float(Q(141,220))-0.6409)<1e-4 and summation(Q(1,2)**k,(k,5,oo)) == Q(1,16) and abs(float(Q(141,220)+Q(1,16))-0.7034)<1e-4 and (Q(141,220) < sum(Q(1,2**j+j) for j in range(1,200))) == True | $0.6409<S<0.6409+0.0625=0.7034$
+\end{exmp}
+
+\begin{kc}{Estimating by comparison}{estkc}
+Let $S=\displaystyle\sum_{k=1}^\infty\frac1{4^k+1}$. Use the Comparison Test twice to show that $\frac16\le S<\frac13$.
+\end{kc}
+
+\begin{think}{Does comparison give the value?}{notvalue}
+If $0<a_k<b_k$ for every $k$ and both series converge, must $\sum a_k<\sum b_k$ strictly, or could the sums be equal? (Look at the series $\sum(b_k-a_k)$.)
+\end{think}
+
+\begin{exmp}{A power of a logarithm}{powlog}
+Show that $\displaystyle\sum_{k=2}^\infty\frac1{(\ln k)^k}$ converges.
+
+\textbf{Solution.} The terms start large ($a_2\approx2.08$) but fall quickly. Since $e^2\approx7.39<8$, for $k\ge8$ we have $\ln k\ge\ln8\approx2.079>2$, so $(\ln k)^k>2^k$ and $\frac1{(\ln k)^k}<\left(\frac12\right)^k$. The geometric series with $r=\frac12$ converges, so by the Comparison Test (with $N=8$) the series converges. The first six terms do not matter for convergence.
+%@ pl-a | exp(2) < 8 and abs(float(exp(2))-7.389)<1e-3 and log(8) > 2 and abs(float(log(8))-2.0794)<1e-4 and abs(float(1/log(2)**2)-2.0814)<1e-4 and all(1/log(j)**j < Q(1,2)**j for j in range(8,40)) | $\frac1{(\ln k)^k}<\left(\frac12\right)^k$
+\end{exmp}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Direct comparison with a geometric or a $p$-series} (Examples~\ref{ex:b1}--\ref{ex:b2}).
+  \item \emph{Inequalities that point the wrong way, and repairs} (Examples~\ref{ex:b3}--\ref{ex:b4}).
+  \item \emph{The Limit Comparison Test} (Examples~\ref{ex:b5}--\ref{ex:b6}).
+  \item \emph{Logarithms} (Examples~\ref{ex:b7}--\ref{ex:b8}).
+  \item \emph{Estimating sums by comparison} (Examples~\ref{ex:b9}--\ref{ex:b10}).
+  \item \emph{Applications: a parameter and a trigonometric term} (Examples~\ref{ex:b11}--\ref{ex:b12}).
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Direct comparison}
+
+\begin{exmp}{A geometric upper bound}{b1}
+Does $\displaystyle\sum_{k=1}^\infty\frac3{2^k+k^2}$ converge?
+
+\textbf{Solution.} Since $k^2>0$, $2^k+k^2>2^k$, so $\frac3{2^k+k^2}<\frac3{2^k}=3\left(\frac12\right)^k$. The series $\sum3\left(\frac12\right)^k$ is a convergent geometric series ($r=\frac12$) times $3$, so the given series converges by the Comparison Test. Check: the first terms are $\frac34,\frac37,\frac3{17},\dots$, each smaller than $\frac3{2^k}=\frac32,\frac34,\frac38,\dots$
+%@ bank-1 | all(Q(3,2**j+j*j) < Q(3,2**j) for j in range(1,40)) and Q(3,2+1) == 1 and Q(3,4+4) == Q(3,8) and Q(3,8+9) == Q(3,17) | $\frac34,\frac37,\frac3{17},\dots$
+\end{exmp}
+
+\begin{exmp}{Bounding the numerator as well}{b2}
+Does $\displaystyle\sum_{k=1}^\infty\frac{k+1}{k^3+2}$ converge?
+
+\textbf{Solution.} Make the fraction larger in two steps: the numerator satisfies $k+1\le2k$ for $k\ge1$, and the denominator $k^3+2>k^3$. Hence $\frac{k+1}{k^3+2}\le\frac{2k}{k^3}=\frac2{k^2}$. The $p$-series with $p=2$ converges, so the series converges. Check at $k=1$: $\frac23\le2$; at $k=10$: $\frac{11}{1002}\approx0.011\le0.02$.
+%@ bank-2 | all(Q(j+1,j**3+2) <= Q(2,j**2) for j in range(1,60)) and Q(2,3) <= 2 and abs(float(Q(11,1002))-0.011)<1e-3 and Q(11,1002) <= Q(2,100) | $\frac{11}{1002}\approx0.011\le0.02$
+\end{exmp}
+
+\subsection*{Group 2: Wrong-way inequalities}
+
+\begin{exmp}{Repairing a convergence comparison}{b3}
+Does $\displaystyle\sum_{k=1}^\infty\frac1{k^2-3k+3}$ converge?
+
+\textbf{Solution.} The denominator is positive for all $k$ (its discriminant is $9-12<0$). For $k\ge2$, $k^2-3k+3<k^2$, so the terms are \emph{larger} than $\frac1{k^2}$: no conclusion from that. We need a lower bound for the denominator of the form $ck^2$. Completing the square, $k^2-3k+3=\frac{k^2}4+\frac34(k-2)^2\ge\frac{k^2}4$, so $\frac1{k^2-3k+3}\le\frac4{k^2}$ for every $k\ge1$. The series $\sum\frac4{k^2}$ converges, so the given series converges.
+%@ bank-3 | simplify(k**2-3*k+3 - (k**2/4 + Q(3,4)*(k-2)**2)) == 0 and all(Q(1,j*j-3*j+3) <= Q(4,j*j) for j in range(1,60)) and 9-12 < 0 | $k^2-3k+3=\frac{k^2}4+\frac34(k-2)^2\ge\frac{k^2}4$
+\end{exmp}
+
+\begin{exmp}{Repairing a divergence comparison}{b4}
+Does $\displaystyle\sum_{k=1}^\infty\frac1{\sqrt k+3}$ converge?
+
+\textbf{Solution.} Comparing with $\frac1{\sqrt k}$ gives $\frac1{\sqrt k+3}<\frac1{\sqrt k}$: the given series is \emph{smaller} than a divergent one, which proves nothing. Instead find a divergent series below it: for $k\ge1$, $3\le3\sqrt k$, so $\sqrt k+3\le4\sqrt k$ and $\frac1{\sqrt k+3}\ge\frac1{4\sqrt k}$. Since $\sum\frac1{4\sqrt k}$ diverges ($p=\frac12$, constant factor $\frac14$), the series diverges.
+%@ bank-4 | all(1/(sqrt(j)+3) < 1/sqrt(j) for j in range(1,40)) and all(1/(sqrt(j)+3) >= 1/(4*sqrt(j)) for j in range(1,40)) and Q(1,2) <= 1 | $\sqrt k+3\le4\sqrt k$ and $\frac1{\sqrt k+3}\ge\frac1{4\sqrt k}$
+\end{exmp}
+
+\subsection*{Group 3: The Limit Comparison Test}
+
+\begin{exmp}{A rational function with a quartic denominator}{b5}
+Does $\displaystyle\sum_{k=1}^\infty\frac{2k^2+5}{k^4-3k+9}$ converge?
+
+\textbf{Solution.} The denominator is positive ($k^4-3k+9=7,19,81,253,\dots$ for $k=1,2,3,4$ and increasing), so the terms are positive. They behave like $\frac{2k^2}{k^4}=\frac2{k^2}$; take $b_k=\frac1{k^2}$. Then $L=\lim\frac{k^2(2k^2+5)}{k^4-3k+9}=\lim\frac{2+5/k^2}{1-3/k^3+9/k^4}=2$. Since $0<L<\infty$ and $\sum\frac1{k^2}$ converges, the series converges.
+%@ bank-5 | [j**4-3*j+9 for j in range(1,5)] == [7,19,81,253] and limit(k**2*(2*k**2+5)/(k**4-3*k+9),k,oo) == 2 | $L=\lim\frac{k^2(2k^2+5)}{k^4-3k+9}=\lim\frac{2+5/k^2}{1-3/k^3+9/k^4}=2$
+\end{exmp}
+
+\begin{exmp}{A square root in the denominator}{b6}
+Does $\displaystyle\sum_{k=1}^\infty\frac k{\sqrt{k^5+3}}$ converge?
+
+\textbf{Solution.} For large $k$, $\sqrt{k^5+3}\approx k^{5/2}$, so the terms behave like $\frac k{k^{5/2}}=\frac1{k^{3/2}}$. With $b_k=\frac1{k^{3/2}}$ (convergent),
+\[
+L=\lim_{k\to\infty}\frac{k\cdot k^{3/2}}{\sqrt{k^5+3}}=\lim_{k\to\infty}\frac{k^{5/2}}{\sqrt{k^5+3}}=\lim_{k\to\infty}\frac1{\sqrt{1+3/k^5}}=1 .
+\]
+%@ bank-6 | limit(k**Q(5,2)/sqrt(k**5+3),k,oo) == 1 and limit(1/sqrt(1+3/k**5),k,oo) == 1 | =\lim_{k\to\infty}\frac{k^{5/2}}{\sqrt{k^5+3}}=\lim_{k\to\infty}\frac1{\sqrt{1+3/k^5}}=1 .
+Since $0<L<\infty$, the series converges.
+\end{exmp}
+
+\subsection*{Group 4: Logarithms}
+
+\begin{exmp}{One over the logarithm}{b7}
+Does $\displaystyle\sum_{k=2}^\infty\frac1{\ln k}$ converge?
+
+\textbf{Solution.} The terms tend to $0$, but slowly. Since $\ln k<k$ for every $k\ge2$ (the function $x-\ln x$ has derivative $1-\frac1x>0$ for $x>1$ and equals $1>0$ at $x=1$), we get $\frac1{\ln k}>\frac1k$. The harmonic series diverges, so the larger series diverges.
+%@ bank-7 | all(log(j) < j for j in range(2,60)) and simplify(diff(x-log(x),x) - (1-1/x)) == 0 and 1-log(1) == 1 | the function $x-\ln x$ has derivative $1-\frac1x>0$ for $x>1$ and equals $1>0$ at $x=1$
+\end{exmp}
+
+\begin{exmp}{A squared logarithm}{b8}
+Does $\displaystyle\sum_{k=2}^\infty\frac{(\ln k)^2}{k^3}$ converge?
+
+\textbf{Solution.} Try $b_k=\frac1{k^3}$ (convergent): $L=\lim(\ln k)^2=\infty$, inconclusive. Take the larger $p$-series $b_k=\frac1{k^{5/2}}$ (convergent, $p=\frac52>1$): $L=\lim\frac{(\ln k)^2}{k^{1/2}}$. Apply l'H\^opital's Rule twice: $\frac{2\ln x/x}{\frac12x^{-1/2}}=\frac{4\ln x}{x^{1/2}}$, and then $\frac{4/x}{\frac12x^{-1/2}}=\frac8{x^{1/2}}\to0$. So $L=0$ with a convergent $\sum b_k$, which is conclusive: the series converges.
+%@ bank-8 | limit(log(k)**2/sqrt(k),k,oo) == 0 and simplify(2*log(x)/x/(Q(1,2)*x**Q(-1,2)) - 4*log(x)/sqrt(x)) == 0 and simplify((4/x)/(Q(1,2)*x**Q(-1,2)) - 8/sqrt(x)) == 0 and Q(5,2) > 1 | So $L=0$ with a convergent $\sum b_k$
+\end{exmp}
+
+\subsection*{Group 5: Estimating sums by comparison}
+
+\begin{exmp}{Two-sided bounds for a $p$-series relative}{b9}
+Let $S=\displaystyle\sum_{k=1}^\infty\frac1{k^2+3}$. Bound $S$, then sharpen the bound with ten terms.
+
+\textbf{Solution.} For $k\ge1$, $k^2<k^2+3\le4k^2$, so $\frac1{4k^2}\le\frac1{k^2+3}<\frac1{k^2}$. Using $\sum\frac1{k^2}=\frac{\pi^2}6\approx1.645$ (the value stated in Section~10.3), $\frac{\pi^2}{24}\le S<\frac{\pi^2}6$, that is $0.411\le S<1.645$. To sharpen, take $s_{10}=\sum_{k=1}^{10}\frac1{k^2+3}\approx0.6459$ and bound the tail by comparison with $\sum_{k>10}\frac1{k^2}<\int_{10}^\infty\frac{dx}{x^2}=\frac1{10}$ (Theorem~\ref{10.4-thm:estimate}): $0.6459<S<0.7459$. The true value is $\approx0.7403$, near the top, because the terms $\frac1{k^2+3}$ are close to $\frac1{k^2}$ for large $k$.
+%@ bank-9a | abs(float(pi**2/24)-0.4112)<1e-4 and abs(float(pi**2/6)-1.6449)<1e-4 and all(Q(1,4*j*j) <= Q(1,j*j+3) and Q(1,j*j+3) < Q(1,j*j) for j in range(1,60)) | $0.411\le S<1.645$
+%@ bank-9b | abs(float(sum(Q(1,j*j+3) for j in range(1,11)))-0.6459)<1e-4 and abs(float(sum(Q(1,j*j+3) for j in range(1,11)))+0.1-0.7459)<1e-4 and 0.6459 < sum(float(Q(1,j*j+3)) for j in range(1,40000)) < 0.7459 and abs(sum(float(Q(1,j*j+3)) for j in range(1,40000))-0.7403)<1e-3 | $0.6459<S<0.7459$
+\end{exmp}
+
+\begin{exmp}{Accuracy $10^{-4}$ from a geometric tail}{b10}
+How many terms of $\displaystyle\sum_{k=1}^\infty\frac1{3^k+k}$ guarantee an error less than $10^{-4}$, and what is the resulting estimate?
+
+\textbf{Solution.} Since $\frac1{3^k+k}<3^{-k}$, part (3) of the Comparison Test gives $0<R_n<\sum_{k>n}3^{-k}=\frac{3^{-n}}2$ (geometric series with first term $3^{-(n+1)}$ and $r=\frac13$). We need $\frac{3^{-n}}2<10^{-4}$, i.e. $3^n>5000$. Now $3^7=2187<5000<6561=3^8$, so $n=8$ terms are enough; with $n=7$ the bound is $\frac1{2\cdot2187}\approx2.3\times10^{-4}$, too large to guarantee anything. With $n=8$: $s_8\approx0.392008$ and the error is in $(0,7.7\times10^{-5})$, so $S\approx0.39201$ to four decimals (the true value is $0.392084$).
+%@ bank-10 | 3**7 == 2187 and 3**8 == 6561 and 2187 < 5000 and 6561 > 5000 and summation(Q(1,3)**k,(k,9,oo)) == Q(1,2*3**8) and abs(float(Q(1,2*3**7))-2.29e-4)<1e-6 and abs(float(Q(1,2*3**8))-7.62e-5)<1e-6 and abs(float(sum(Q(1,3**j+j) for j in range(1,9)))-0.392008)<1e-6 and abs(sum(float(Q(1,3**j+j)) for j in range(1,100))-0.392084)<1e-6 | $s_8\approx0.392008$
+\end{exmp}
+
+\subsection*{Group 6: Applications}
+
+\begin{exmp}{A parameter}{b11}
+For which $p>0$ does $\displaystyle\sum_{k=1}^\infty\frac1{k^p+k}$ converge?
+
+\textbf{Solution.} The dominant term of the denominator depends on $p$. If $p>1$, $k^p$ dominates: compare with $b_k=\frac1{k^p}$: $\frac{a_k}{b_k}=\frac{k^p}{k^p+k}=\frac1{1+k^{1-p}}\to1$ because $1-p<0$. By the Limit Comparison Test the series behaves like the $p$-series: it converges. If $0<p\le1$, $k$ dominates (for $p=1$ the denominator is exactly $2k$): compare with $b_k=\frac1k$: $\frac{a_k}{b_k}=\frac1{1+k^{p-1}}\to1$ if $p<1$ (as $p-1<0$) and equals $\frac12$ if $p=1$. Either way $0<L<\infty$ and the harmonic series diverges, so the series diverges. Answer: it converges if and only if $p>1$.
+%@ bank-11 | limit(1/(1+k**(1-Q(3,2))),k,oo) == 1 and limit(1/(1+k**(Q(1,2)-1)),k,oo) == 1 and Q(1,1+1) == Q(1,2) | the series behaves like the $p$-series: it converges
+\end{exmp}
+
+\begin{exmp}{A trigonometric term}{b12}
+Does $\displaystyle\sum_{k=1}^\infty\left(1-\cos\frac1k\right)$ converge?
+
+\textbf{Solution.} All terms are positive ($\cos\frac1k<1$), and they tend to $0$, so the Divergence Test is silent. For large $k$, $\frac1k$ is small and $1-\cos u\approx\frac{u^2}2$, which suggests $b_k=\frac1{k^2}$. With $u=\frac1k\to0^+$,
+\[
+L=\lim_{k\to\infty}\frac{1-\cos(1/k)}{1/k^2}=\lim_{u\to0^+}\frac{1-\cos u}{u^2}=\lim_{u\to0^+}\frac{\sin u}{2u}=\frac12 ,
+\]
+%@ bank-12 | limit((1-cos(1/k))*k**2,k,oo) == Q(1,2) and limit((1-cos(x))/x**2,x,0) == Q(1,2) and abs(float(1-cos(Q(1,10)))-0.0049958)<1e-6 | =\lim_{u\to0^+}\frac{\sin u}{2u}=\frac12 ,
+by l'H\^opital's Rule and the basic limit $\frac{\sin u}u\to1$. As $0<L<\infty$ and $\sum\frac1{k^2}$ converges, the series converges. Check at $k=10$: $1-\cos0.1\approx0.0049958$ versus $\frac1{2\cdot100}=0.005$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Geometric mean of two convergent series}{b13}
+Let $a_k>0$, $b_k>0$ and suppose $\sum a_k$ and $\sum b_k$ both converge. Prove that $\sum\sqrt{a_kb_k}$ converges.
+
+\textbf{Plan.} Bound $\sqrt{a_kb_k}$ above by something whose series we know converges.
+
+\begin{proof}
+For positive numbers $x,y$ we have $(\sqrt x-\sqrt y)^2\ge0$, so $x+y\ge2\sqrt{xy}$, that is $\sqrt{xy}\le\frac{x+y}2$. With $x=a_k$ and $y=b_k$, $0<\sqrt{a_kb_k}\le\frac12(a_k+b_k)$. The series $\sum\frac12(a_k+b_k)$ converges by Theorem~\ref{10.3-thm:props}(1) and (3). By the Comparison Test, $\sum\sqrt{a_kb_k}$ converges.
+\end{proof}
+%@ bank-13 | simplify(expand((sqrt(n)-sqrt(k))**2) - (n+k-2*sqrt(n*k))) == 0 and all(sqrt(Q(i,1)*Q(j,1)) <= (i+j)/Integer(2) for i in range(1,8) for j in range(1,8)) | $x+y\ge2\sqrt{xy}$, that is $\sqrt{xy}\le\frac{x+y}2$
+A common mistake is to run the argument backwards: $\sum\sqrt{a_kb_k}$ can converge while $\sum a_k$ diverges (take $a_k=1$ and $b_k=\frac1{k^4}$, so $\sqrt{a_kb_k}=\frac1{k^2}$).
+\end{exmp}
+
+\begin{exmp}{A series and its ``compressed'' version}{b14}
+Let $a_k>0$ and $c_k=\dfrac{a_k}{1+a_k}$. Prove that $\sum a_k$ converges if and only if $\sum c_k$ converges.
+
+\textbf{Plan.} One direction is a direct comparison. For the other, show first that $a_k\to0$, so that $c_k$ and $a_k$ are nearly equal.
+
+\begin{proof}
+($\Rightarrow$) Since $1+a_k>1$, $0<c_k<a_k$. If $\sum a_k$ converges, so does $\sum c_k$ by the Comparison Test.
+
+($\Leftarrow$) Suppose $\sum c_k$ converges. Then $c_k\to0$ (Divergence Test), so there is $K$ with $c_k<\frac12$ for $k\ge K$. Solving $c_k=\frac{a_k}{1+a_k}$ for $a_k$ gives $a_k=\frac{c_k}{1-c_k}$ (note $0<c_k<1$). For $k\ge K$ we have $1-c_k>\frac12$, so $a_k<2c_k$. The series $\sum2c_k$ converges (Theorem~\ref{10.3-thm:props}(1)), so $\sum a_k$ converges by the Comparison Test.
+\end{proof}
+%@ bank-14 | simplify((a/(1+a))/(1-a/(1+a)) - a) == 0 and all(Q(j,1)/(1+Q(j,1)) < Q(j,1) for j in range(1,30)) | $a_k=\frac{c_k}{1-c_k}$
+A common mistake is to skip showing that $a_k\to0$: without it, $c_k\approx a_k$ fails (if $a_k$ is large, $c_k\approx1$ and no comparison with $a_k$ is possible).
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:compkc}.] (a) Compare with the geometric series $\sum\left(\frac14\right)^k$: $4^k+k>4^k$, so the given series is smaller than a convergent series, and converges. (b) Compare with $\sum\frac1{k^2}$: $k^2+9>k^2$, smaller than a convergent series, so it converges. (c) Compare with the harmonic series: $k-1<k$ gives $\frac1{k-1}>\frac1k$, larger than a divergent series, so $\sum_{k=2}^\infty\frac1{k-1}$ diverges (indeed it is the harmonic series shifted by one).
+%@ ans-compkc | all(4**j+j > 4**j for j in range(1,20)) and all(Q(1,j-1) > Q(1,j) for j in range(2,20)) | $k-1<k$ gives $\frac1{k-1}>\frac1k$
+  \item[Knowledge Check \ref{kc:lctkc}.] (a) $\frac{a_k}{b_k}=\frac{k^{3/2}}{k^2}=k^{-1/2}\to0$ and $\sum b_k$ converges ($p=\frac32$): conclusive, $\sum a_k$ converges (it is also a convergent $p$-series). (b) $\frac{a_k}{b_k}=k\to\infty$, but $\sum b_k$ converges: inconclusive (and indeed $\sum\frac1k$ diverges). (c) $\frac{a_k}{b_k}=\frac{2k+1}k\to2\in(0,\infty)$: conclusive, both series diverge.
+%@ ans-lctkc | limit((1/k**2)/(1/k**Q(3,2)),k,oo) == 0 and limit((1/k)/(1/k**2),k,oo) == oo and limit(((2*k+1)/k**2)/(1/k),k,oo) == 2 | $\frac{a_k}{b_k}=\frac{2k+1}k\to2\in(0,\infty)$
+  \item[Knowledge Check \ref{kc:estkc}.] Since $4^k<4^k+1\le2\cdot4^k$, we get $\frac12\cdot4^{-k}\le\frac1{4^k+1}<4^{-k}$. The geometric series give $\sum_{k=1}^\infty4^{-k}=\frac{1/4}{1-1/4}=\frac13$ and $\sum\frac12\cdot4^{-k}=\frac16$, so by the Comparison Test (1) $\frac16\le S\le\frac13$, and the upper inequality is strict because $a_1=\frac15<\frac14=b_1$ (Pause and think~\ref{think:notvalue}). The true value is $S\approx0.2794$.
+%@ ans-estkc | all(Q(1,2)*Q(1,4**j) <= Q(1,4**j+1) and Q(1,4**j+1) < Q(1,4**j) for j in range(1,20)) and summation(Q(1,4)**k,(k,1,oo)) == Q(1,3) and abs(sum(float(Q(1,4**j+1)) for j in range(1,60))-0.2794)<1e-4 | $\sum_{k=1}^\infty4^{-k}=\frac{1/4}{1-1/4}=\frac13$
+  \item[Pause and think \ref{think:nonneg}.] $\sum a_k=-1-1-1-\cdots$ diverges (to $-\infty$). The proof breaks at the first claim: ``$s_n\le t_n\le B$ gives bounded \emph{above}, so converges'' relies on the partial sums being nondecreasing, which needs $a_k\ge0$. Here the partial sums decrease without bound; being bounded above does not help. Nonnegativity is what turns ``bounded above'' into ``convergent''.
+  \item[Pause and think \ref{think:twoways}.] $a_k=\frac1{k^2}$: $\frac{a_k}{1/k}=\frac1k\to0$ and $\sum a_k$ converges. $a_k=\frac1{k\ln k}$ (from $k=2$): $\frac{a_k}{1/k}=\frac1{\ln k}\to0$ and $\sum a_k$ diverges (Example~\ref{10.4-ex:lnex}). So $L=0$ with a divergent $\sum b_k$ can go either way: the test is inconclusive.
+%@ ans-twoways | limit((1/k**2)/(1/k),k,oo) == 0 and limit((1/(k*log(k)))/(1/k),k,oo) == 0 | $\frac{a_k}{1/k}=\frac1{\ln k}\to0$
+  \item[Pause and think \ref{think:notvalue}.] The sums cannot be equal. The series $\sum(b_k-a_k)$ has positive terms and converges (Theorem~\ref{10.3-thm:props}(3)) to $\sum b_k-\sum a_k$. A convergent series of positive terms has a value at least its first term (Theorem~\ref{10.3-thm:posterms}), so $\sum b_k-\sum a_k\ge b_1-a_1>0$. The comparison gives bounds, never the value.
+\end{description}
+
+\end{document}
