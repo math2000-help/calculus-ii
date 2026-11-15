@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 10, Sequences and Infinite Series (done), and Chapter 11, Power Series (in progress)"
+  project: "Chapter 10, Sequences and Infinite Series (done), and Chapter 11, Power Series (done)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -17,6 +17,7 @@ appendix:
     - {id: E, title: "Limits of n-th Roots", status: done}
     - {id: F, title: "Power Series: the Radius of Convergence and Term-by-Term Calculus", status: done}
     - {id: G, title: "Abel's Theorem and the Binomial Series at the Endpoints", status: done}
+    - {id: H, title: "Multiplying and Dividing Power Series", status: done}
 modules:
   - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
   - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
@@ -29,4 +30,4 @@ modules:
   - {id: "11.1", chapter: 11, title: "Approximating Functions with Polynomials", prereqs: ["10.8"], status: done}
   - {id: "11.2", chapter: 11, title: "Properties of Power Series", prereqs: ["11.1"], status: done}
   - {id: "11.3", chapter: 11, title: "Taylor Series", prereqs: ["11.2"], status: done}
-  - {id: "11.4", chapter: 11, title: "Working with Taylor Series", prereqs: ["11.3"], status: todo}
+  - {id: "11.4", chapter: 11, title: "Working with Taylor Series", prereqs: ["11.3"], status: done}

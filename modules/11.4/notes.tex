@@ -1,0 +1,636 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{11}{4}{Working with Taylor Series}
+\calcxdoc{11.1}
+\calcxdoc{11.2}
+\calcxdoc{11.3}
+\calcxdoc{10.2}
+\calcxdoc{10.3}
+\calcxdoc{10.4}
+\calcxdoc{10.5}
+\calcxdoc{10.6}
+\calcxdoc{10.7}
+\calcxapp
+
+\begin{document}
+
+\section{Working with Taylor Series}
+
+\begin{guide}
+Sections 11.1 to 11.3 built the theory: Taylor polynomials and their remainders, power series and their intervals of convergence, and the Taylor series of the standard functions. This final section of the chapter puts that theory to work. It shows six uses of a Taylor series, each with its justification: approximating a number with a \emph{guaranteed} error; evaluating limits that would need several uses of l'H\^opital's Rule; differentiating a series and solving differential equations with it; integrating functions that have no elementary antiderivative; summing numerical series; and recognizing the function behind a power series. A seventh tool, multiplying and dividing series, completes the list. Behind every step that looks like ``the dots do not matter'' there is a theorem that says why, and this section proves it.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item approximate a value of a function with a Taylor polynomial and state a proven bound on the error, using the Lagrange remainder, the Alternating Series Remainder Theorem or a geometric tail estimate;
+  \item evaluate a limit of a quotient by expanding numerator and denominator, and explain why the neglected terms cannot matter;
+  \item differentiate and integrate Taylor series, read derivatives off a series, and solve a differential equation by a power series;
+  \item approximate a definite integral that has no elementary antiderivative, with an error bound;
+  \item find the exact sum of a numerical series by recognizing it as a power series evaluated at a point, and identify the function that a power series represents, together with the interval on which they agree;
+  \item multiply and divide Taylor series.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Approximating a value with a guaranteed error}
+
+A Taylor polynomial $p_n(x)$ is useful only if we know how far it can be from $f(x)$. Three bounds are available. The first two are results of earlier sections; the third is proved here.
+\begin{itemize}
+  \item \emph{Lagrange.} If $\abs{f^{(n+1)}(c)}\le M$ for all $c$ between $a$ and $x$, then $\abs{f(x)-p_n(x)}\le\dfrac{M\abs{x-a}^{n+1}}{(n+1)!}$ (Theorem~\ref{11.1-thm:estimate}, Procedure~\ref{11.1-proc:bound}). It always applies, but needs a bound $M$ on a derivative.
+  \item \emph{Alternating series.} If the series for $f(x)$ alternates and its terms decrease to $0$ in size, the error after a partial sum is at most the \emph{first omitted term}, and the sum lies between consecutive partial sums (Theorem~\ref{10.6-thm:remainder}). No derivatives are needed.
+  \item \emph{Geometric tail.} If the terms of a series do not alternate but each is at most $\rho$ times the previous one, with $\rho<1$, the tail is at most a geometric series (Theorem~\ref{thm:tail}).
+\end{itemize}
+
+\begin{thm}{A geometric bound for the tail}{tail}
+Let $\sum_{k}a_k$ be a series. Suppose there are an integer $n\ge0$ and a number $\rho$ with $0\le\rho<1$ such that $\abs{a_{k+1}}\le\rho\abs{a_k}$ for every $k>n$. Then the series converges absolutely, and the tail satisfies
+\[
+\abs{\sum_{k=n+1}^\infty a_k}\le\frac{\abs{a_{n+1}}}{1-\rho}.
+\]
+\end{thm}
+\begin{proof}
+By induction on $j$, $\abs{a_{n+1+j}}\le\rho^j\abs{a_{n+1}}$: it is true for $j=0$, and if it holds for $j$ then $\abs{a_{n+2+j}}\le\rho\abs{a_{n+1+j}}\le\rho^{j+1}\abs{a_{n+1}}$. The geometric series $\sum_{j\ge0}\rho^j$ converges to $\frac1{1-\rho}$ (Theorem~\ref{10.3-thm:geoseries}), so $\sum_{k>n}\abs{a_k}$ converges by the Comparison Test (Theorem~\ref{10.5-thm:comp}) and is at most $\abs{a_{n+1}}\sum_j\rho^j=\frac{\abs{a_{n+1}}}{1-\rho}$. Adding the finitely many terms $a_0,\dots,a_n$ does not change convergence, and $\abs{\sum_{k>n}a_k}\le\sum_{k>n}\abs{a_k}$ because the same inequality holds for every partial sum and limits preserve inequalities (Theorem~\ref{app-thm:ineq}).
+\end{proof}
+
+\begin{proc}{Approximating $f(x)$ within a tolerance}{approx}
+\begin{enumerate}[nosep]
+  \item Choose a center $a$ near $x$ at which the Taylor series of $f$ is known, with $x$ in the set where the series equals $f$ (Section 11.3).
+  \item Choose the bound. If the series at $x$ alternates with terms decreasing in size, use the alternating series bound. If the ratio of consecutive terms is at most $\rho<1$ beyond some point, use Theorem~\ref{thm:tail}. Otherwise use Lagrange, which needs a bound $M$ for $f^{(n+1)}$.
+  \item Find the smallest $n$ for which the bound is at most the tolerance, and compute $p_n(x)$.
+  \item Report $p_n(x)$ together with the bound: the true value lies within the bound of $p_n(x)$.
+\end{enumerate}
+\end{proc}
+
+\begin{warn}[Small terms are not a small tail]
+``The next term is tiny'' is not a bound. The terms of $\sum\frac1{k^2}$ are below $10^{-4}$ from $k=100$ on, yet the tail after $100$ terms is about $0.01$. A theorem must say that the tail is controlled by the next term: the alternating series bound and Theorem~\ref{thm:tail} do, and so does Lagrange.
+%@ warn-tail | abs(float(zeta(2)-sum(Q(1,j**2) for j in range(1,101)))-0.00995)<1e-5 and Q(1,100**2) == Q(1,10000) | tail after $100$ terms is about $0.01$
+\end{warn}
+
+\begin{kc}{How many terms?}{costerms}
+How many terms of the Maclaurin series of $\cos x$ guarantee an approximation of $\cos0.5$ within $10^{-4}$? Which bound do you use?
+\end{kc}
+
+\begin{exmp}{$e^{-0.6}$ and $e^{0.6}$ within $10^{-3}$}{expapprox}
+Approximate $e^{-0.6}$ and $e^{0.6}$ from the Maclaurin series of $e^x$ with an error of at most $10^{-3}$, and compare the bounds.
+
+\textbf{Solution.} \emph{(a) $x=-0.6$.} The series $\sum\frac{(-0.6)^k}{k!}$ alternates and the sizes $\frac{0.6^k}{k!}$ decrease (the ratio is $\frac{0.6}{k+1}<1$). By the alternating series bound the error is at most the first omitted term. The sizes of the terms for $k=4,5$ are $\frac{0.6^4}{4!}=0.0054$ and $\frac{0.6^5}{5!}=6.48\times10^{-4}$. Stopping after $k=4$ makes the first omitted term $6.48\times10^{-4}<10^{-3}$, so
+\[
+e^{-0.6}\approx1-0.6+0.18-0.036+0.0054=0.5494,\qquad\text{error}\le6.48\times10^{-4}.
+\]
+%@ exp1 | 1-Q(3,5)+Q(9,50)-Q(9,250)+Q(27,5000) == Q(2747,5000) and abs(float(Q(2747,5000))-0.5494)<1e-9 and float(Q(3,5)**4/24) == 0.0054 and abs(float(Q(3,5)**5/120)-6.48e-4)<1e-9 and abs(float(exp(-Q(3,5))-Q(2747,5000)))<6.48e-4 | error}\le6.48\times10^{-4}
+\emph{(b) $x=+0.6$.} Now all terms are positive. Lagrange: $f^{(n+1)}(c)=e^c\le e^{0.6}$ for $c\in[0,0.6]$, and $e^{0.6}=\sum\frac{0.6^k}{k!}<\sum0.6^k=\frac52$, so $M=\frac52$ works. The bound $\frac52\cdot\frac{0.6^{n+1}}{(n+1)!}$ is $1.62\times10^{-3}$ for $n=4$ (too large) and $1.62\times10^{-4}$ for $n=5$. So $n=5$: $e^{0.6}\approx1+0.6+0.18+0.036+0.0054+0.000648=1.822048$, error at most $1.62\times10^{-4}$. Theorem~\ref{thm:tail} does better: for $k>4$ the ratio is $\frac{0.6}{k+1}\le0.1=\rho$, so with $n=4$ the tail is at most $\frac{0.6^5/5!}{1-0.1}=7.2\times10^{-4}$, below $10^{-3}$: $e^{0.6}\approx1.8214$ already suffices.
+%@ exp2 | Q(5,2)*Q(3,5)**5/factorial(5) == Q(81,50000) and abs(float(Q(5,2)*Q(3,5)**5/factorial(5))-1.62e-3)<1e-6 and abs(float(Q(5,2)*Q(3,5)**6/factorial(6))-1.62e-4)<1e-7 and abs(float(sum(Q(3,5)**j/factorial(j) for j in range(6)))-1.822048)<1e-9 and abs(float(Q(3,5)**5/factorial(5)/Q(9,10))-7.2e-4)<1e-9 and float(exp(Q(3,5))) < float(Q(5,2)) | error at most $1.62\times10^{-4}$
+The true values are $e^{-0.6}=0.548812$ and $e^{0.6}=1.822119$, inside both guarantees. The two bounds differ because the three tools use different information: the alternating bound uses only the next term, Theorem~\ref{thm:tail} uses the next term and the ratio, Lagrange uses the size of a derivative.
+%@ exp3 | abs(float(exp(-Q(3,5)))-0.548812)<1e-6 and abs(float(exp(Q(3,5)))-1.822119)<1e-6 and abs(float(sum(Q(3,5)**j/factorial(j) for j in range(5)))-1.8214)<1e-9 and float(exp(Q(3,5))-sum(Q(3,5)**j/factorial(j) for j in range(5))) < 7.2e-4 | $e^{0.6}=1.822119$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Limits by Taylor series}
+
+To evaluate $\lim_{x\to a}\frac{f(x)}{g(x)}$ when both $f$ and $g$ tend to $0$, replace each by its Taylor series at $a$, cancel the common power of $x-a$ and let $x\to a$. This often takes one expansion where l'H\^opital's Rule would take several differentiations. The calculation is usually written with dots standing for ``higher powers of $x-a$'', and the question is why those can be ignored. The next theorem answers it. It says that the \emph{first nonzero term} of each series decides the limit.
+
+\begin{thm}{Limits of quotients of power series}{leading}
+Let $f(x)=\sum_{k=0}^\infty c_k(x-a)^k$ and $g(x)=\sum_{k=0}^\infty d_k(x-a)^k$ converge for $\abs{x-a}<R$, where $R>0$. Suppose that not all the $c_k$ are $0$ and not all the $d_k$ are $0$, and let $m$ and $n$ be the smallest indices with $c_m\ne0$ and $d_n\ne0$. Then, as $x\to a$:
+\begin{enumerate}
+  \item if $m>n$, then $\dfrac{f(x)}{g(x)}\to0$;
+  \item if $m=n$, then $\dfrac{f(x)}{g(x)}\to\dfrac{c_m}{d_n}$;
+  \item if $m<n$, then $\abs{\dfrac{f(x)}{g(x)}}\to\infty$, so there is no finite limit.
+\end{enumerate}
+In each case $g(x)\ne0$ for $x\ne a$ close to $a$.
+\end{thm}
+\begin{proof}
+Put $F(x)=\sum_{j=0}^\infty c_{m+j}(x-a)^j$. For $x\ne a$ with $\abs{x-a}<R$, $(x-a)^mF(x)=\sum_{j\ge0}c_{m+j}(x-a)^{m+j}=\sum_{k\ge m}c_k(x-a)^k=f(x)$, because the terms with $k<m$ are $0$; by Theorem~\ref{11.2-thm:comb}(2) this also shows that $F$ converges at every such $x$ (and trivially at $x=a$). So $F$ is a power series with radius of convergence at least $R$, and $f(x)=(x-a)^mF(x)$. By Theorem~\ref{11.2-thm:diffint}(1), $F$ is differentiable, hence continuous, at $a$, and $F(a)=c_m\ne0$. In the same way $g(x)=(x-a)^nG(x)$ with $G$ continuous at $a$ and $G(a)=d_n\ne0$. Since $G(a)\ne0$ and $G$ is continuous, $G(x)\ne0$ for $x$ near $a$, so $g(x)\ne0$ for $x\ne a$ near $a$, and
+\[
+\frac{f(x)}{g(x)}=(x-a)^{m-n}\,\frac{F(x)}{G(x)},\qquad\frac{F(x)}{G(x)}\to\frac{c_m}{d_n}\ne0 .
+\]
+If $m=n$ the factor $(x-a)^{m-n}$ is $1$ and the limit is $\frac{c_m}{d_n}$. If $m>n$ the factor $(x-a)^{m-n}\to0$ and the product tends to $0\cdot\frac{c_m}{d_n}=0$. If $m<n$, $\abs{x-a}^{m-n}\to\infty$ while $\abs{F/G}\to\abs{c_m/d_n}>0$, so the product's absolute value tends to $\infty$.
+\end{proof}
+
+The theorem is the justification for the dots: if the series of numerator and denominator are written out until each shows its first nonzero term, the remaining terms are $(x-a)^m$ (respectively $(x-a)^n$) times a function that is continuous at $a$ and vanishes there, and they cannot affect the limit. The danger is the opposite one, \emph{stopping too early}: if the leading terms cancel, they were not the first \emph{nonzero} terms.
+
+\begin{proc}{Evaluating a limit with Taylor series}{limit}
+\begin{enumerate}[nosep]
+  \item Write the expression as a quotient $\frac{f(x)}{g(x)}$ that is $\frac00$ as $x\to a$. For $x\to\infty$, put $x=\frac1t$ and let $t\to0^+$: $\lim_{x\to\infty}h(x)=\lim_{t\to0^+}h\left(\frac1t\right)$.
+  \item Replace $f$ and $g$ by their Taylor series centered at $a$ (the standard series of Section 11.3, with substitutions) and expand each until its first nonzero term has appeared.
+  \item Read off $m$, $n$, $c_m$, $d_n$ and apply Theorem~\ref{thm:leading}.
+\end{enumerate}
+\end{proc}
+
+\begin{kc}{First nonzero terms}{limkc}
+Use series to find $\displaystyle\lim_{x\to0}\frac{e^x-1}x$ and $\displaystyle\lim_{x\to0}\frac{e^x-1-x}{x^2}$. In each case, what are $m$ and $n$?
+\end{kc}
+
+\begin{exmp}{A limit that needs three terms}{lim1}
+Evaluate $\displaystyle\lim_{x\to0}\frac{2\sin x-\sin2x}{x^3}$.
+
+\textbf{Solution.} Both numerator and denominator tend to $0$. Substitute the sine series (Theorem~\ref{11.3-thm:esc}) for $\sin x$ and, with $x\to2x$, for $\sin2x$:
+\[
+2\sin x=2x-\frac{x^3}3+\frac{x^5}{60}-\cdots,\qquad\sin2x=2x-\frac{4x^3}3+\frac{4x^5}{15}-\cdots .
+\]
+%@ lim1a | Tay(2*sin(x),0,5) == 2*x-x**3/3+x**5/60 and Tay(sin(2*x),0,5) == 2*x-4*x**3/3+4*x**5/15 and 2*Q(1,6) == Q(1,3) and 8*Q(1,6) == Q(4,3) and 32*Q(1,120) == Q(4,15) | \sin2x=2x-\frac{4x^3}3+\frac{4x^5}{15}-\cdots
+The linear terms cancel, and the $x^3$ term of the difference is $-\frac13+\frac43=1$. So $2\sin x-\sin2x=x^3-\frac{x^5}4+\cdots$, whose first nonzero term is $1\cdot x^3$, and the denominator is $x^3$. Here $m=n=3$ and $c_3=d_3=1$, so by Theorem~\ref{thm:leading} the limit is $1$.
+%@ lim1b | Tay(2*sin(x)-sin(2*x),0,5) == x**3-x**5/4 and -Q(1,3)+Q(4,3) == 1 and limit((2*sin(x)-sin(2*x))/x**3,x,0) == 1 | =x^3-\frac{x^5}4+\cdots$
+(L'H\^opital's Rule would need three differentiations here.)
+\end{exmp}
+
+\begin{think}{Stopping too early}{early}
+In Example~\ref{ex:lim1}, suppose you keep only the first term of each sine series, $\sin x\approx x$ and $\sin2x\approx2x$. What do you get for the limit, and what went wrong? How do you know in general how many terms to keep?
+\end{think}
+
+\begin{exmp}{A limit at infinity}{lim2}
+Evaluate $\displaystyle\lim_{x\to\infty}\left(x-x^2\ln\left(1+\frac1x\right)\right)$.
+
+\textbf{Solution.} Put $x=\frac1t$ with $t\to0^+$. The expression becomes $\frac1t-\frac1{t^2}\ln(1+t)=\frac{t-\ln(1+t)}{t^2}$. By Theorem~\ref{11.3-thm:logatan}(1), $\ln(1+t)=t-\frac{t^2}2+\frac{t^3}3-\cdots$ for $\abs t<1$, so $t-\ln(1+t)=\frac{t^2}2-\frac{t^3}3+\cdots$. The numerator has first nonzero term $\frac12t^2$ and the denominator is $t^2$: $m=n=2$, and the limit is $\frac12$.
+%@ lim2 | limit(x-x**2*log(1+1/x),x,oo) == Q(1,2) and Tay(x-log(1+x),0,3) == x**2/2-x**3/3 and limit((t-log(1+t))/t**2,t,0) == Q(1,2) | =\frac{t^2}2-\frac{t^3}3+\cdots$
+\end{exmp}
+
+\begin{exmp}{An exponent that tends to infinity}{lim3}
+Evaluate $\displaystyle\lim_{x\to0}\left(\frac{\sin x}x\right)^{1/x^2}$.
+
+\textbf{Solution.} The base tends to $1$ and the exponent to $\infty$, so we work with the logarithm. For $0<\abs x<\pi$ the base is positive, and $\left(\frac{\sin x}x\right)^{1/x^2}=\exp\left(\frac{\ln(\sin x/x)}{x^2}\right)$. Put $u(x)=\frac{\sin x}x-1=-\frac{x^2}6+\frac{x^4}{120}-\cdots$ (Theorem~\ref{11.2-thm:comb}(2) divides the sine series by $x$). Then $u\to0$ and $\frac{u(x)}{x^2}=-\frac16+\frac{x^2}{120}-\cdots\to-\frac16$ by Theorem~\ref{thm:leading}. Next, $\ln(1+u)=u\,L(u)$ with $L(u)=\sum_{k=1}^\infty\frac{(-1)^{k+1}u^{k-1}}k=1-\frac u2+\frac{u^2}3-\cdots$ for $\abs u<1$ (also at $u=0$, where both sides are $0$). $L$ is a power series, so it is continuous at $u=0$ (Theorem~\ref{11.2-thm:diffint}), and $L(0)=1$. Since $u(x)\to0$, $L(u(x))\to1$. Therefore
+\[
+\frac{\ln(\sin x/x)}{x^2}=\frac{u(x)}{x^2}\,L\bigl(u(x)\bigr)\longrightarrow-\frac16\cdot1=-\frac16,
+\]
+%@ lim3a | series(sin(x)/x-1,x,0,6).removeO() == -x**2/6+x**4/120 and series(log(sin(x)/x),x,0,6).removeO() == -x**2/6-x**4/180 and limit(log(sin(x)/x)/x**2,x,0) == -Q(1,6) | \longrightarrow-\frac16\cdot1=-\frac16,
+and since $\exp$ is continuous, the limit of the original expression is $e^{-1/6}\approx0.846$.
+%@ lim3b | limit((sin(x)/x)**(1/x**2),x,0) == exp(-Q(1,6)) and abs(float(exp(-Q(1,6)))-0.846)<1e-3 | $e^{-1/6}\approx0.846$
+This is how a series inside another series is handled without a new theorem: expand the inner one, then use continuity of the outer one at the single point $u=0$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Differentiating Taylor series, and differential equations}
+
+Section 11.2 showed that a power series can be differentiated and integrated term by term inside its interval of convergence, and Section 11.3 that a power series equal to $f$ \emph{is} the Taylor series of $f$. Together they give the following.
+
+\begin{thm}{Taylor series of derivatives and antiderivatives}{diffseries}
+Let $f(x)=\sum_{k=0}^\infty c_k(x-a)^k$ for $\abs{x-a}<R$, where $R>0$. Then:
+\begin{enumerate}
+  \item $f'(x)=\sum_{k=1}^\infty kc_k(x-a)^{k-1}$ for $\abs{x-a}<R$, and this is the Taylor series of $f'$ centered at $a$;
+  \item $f^{(j)}(a)=j!\,c_j$ for every $j\ge0$ (\emph{the derivative trick}: read derivatives off the coefficients);
+  \item $F(x)=\int_a^xf(t)\,dt=\sum_{k=0}^\infty\frac{c_k}{k+1}(x-a)^{k+1}$ for $\abs{x-a}<R$, and this is the Taylor series of $F$ centered at $a$.
+\end{enumerate}
+The two new series have radius $R$; their behavior at the endpoints $a\pm R$ may differ from that of the original.
+\end{thm}
+\begin{proof}
+(1)~By Theorem~\ref{11.2-thm:diffint}(1), $f'$ is the sum of the differentiated series, which is a power series with radius $R$ (part~3 of the same theorem). By Theorem~\ref{11.3-thm:uniq}, a power series that converges to a function on an interval about $a$ is its Taylor series. (2)~is Theorem~\ref{11.3-thm:uniq} applied to $f$. (3)~By Theorem~\ref{11.2-thm:diffint}(2), $f$ has the antiderivative $C+\sum\frac{c_k}{k+1}(x-a)^{k+1}$ on $(a-R,a+R)$; the Fundamental Theorem of Calculus gives $\int_a^xf=G(x)-G(a)$ for any antiderivative $G$, and for this one $G(a)=C$, so $\int_a^xf(t)\,dt=\sum\frac{c_k}{k+1}(x-a)^{k+1}$. It is a power series with radius $R$, so by Theorem~\ref{11.3-thm:uniq} it is the Taylor series of its sum $F$.
+\end{proof}
+
+\begin{exmp}{Differentiating a series, and reading derivatives off a series}{diffex}
+(a)~Differentiate the Maclaurin series of $\ln(1+x)$ and compare the intervals of convergence. (b)~Find $f^{(10)}(0)$ and $f^{(9)}(0)$ for $f(x)=\dfrac{x^2}{1+x^2}$, and $g^{(7)}(0)$ for $g(x)=xe^{x^2}$, without differentiating.
+
+\textbf{Solution.} (a) $\ln(1+x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k$ converges exactly for $-1<x\le1$ (Theorem~\ref{11.3-thm:logatan}). By Theorem~\ref{thm:diffseries}(1), its derivative is
+\[
+\frac1{1+x}=\sum_{k=1}^\infty(-1)^{k+1}x^{k-1}=1-x+x^2-x^3+\cdots\qquad(\abs x<1),
+\]
+%@ diff1a | Tay(log(1+x),0,6) == x-x**2/2+x**3/3-x**4/4+x**5/5-x**6/6 and expand(diff(Tay(log(1+x),0,6),x)-Tay(1/(1+x),0,5)) == 0 | =1-x+x^2-x^3+\cdots\qquad(\abs x<1),
+the geometric series. The radius is the same ($1$), but at $x=1$ the differentiated series $1-1+1-\cdots$ diverges (Divergence Test, Theorem~\ref{10.4-thm:divtest}), although the original converges there: the interval of convergence changed from $(-1,1]$ to $(-1,1)$.
+
+(b) $f(x)=x^2\sum_{k\ge0}(-1)^kx^{2k}=x^2-x^4+x^6-x^8+x^{10}-\cdots$ for $\abs x<1$ (Theorem~\ref{11.2-thm:comb}(2),(3)). The coefficient of $x^{10}$ is $+1$ and that of $x^9$ is $0$, so by Theorem~\ref{thm:diffseries}(2), $f^{(10)}(0)=10!\cdot1=3628800$ and $f^{(9)}(0)=0$. For $g$: $xe^{x^2}=\sum_{k\ge0}\frac{x^{2k+1}}{k!}$ (all $x$), and $x^7$ is the term $k=3$, with coefficient $\frac1{3!}$, so $g^{(7)}(0)=\frac{7!}{3!}=840$.
+%@ diff1b | Tay(x**2/(1+x**2),0,10) == x**2-x**4+x**6-x**8+x**10 and diff(x**2/(1+x**2),x,10).subs(x,0) == factorial(10) and factorial(10) == 3628800 and diff(x**2/(1+x**2),x,9).subs(x,0) == 0 and diff(x*exp(x**2),x,7).subs(x,0) == 840 and factorial(7)/factorial(3) == 840 | $g^{(7)}(0)=\frac{7!}{3!}=840$
+\end{exmp}
+
+\begin{think}{A series that converges at an endpoint}{endpt}
+The Maclaurin series of $\ln(1+x)$ converges at $x=1$, but its term-by-term derivative does not. Does this contradict ``a power series can be differentiated term by term''? Which part of Theorem~\ref{thm:diffseries} is relevant?
+\end{think}
+
+\subsection*{Differential equations}
+
+A differential equation asks for a function from an equation that involves its derivatives. When the solution is a power series $y(t)=\sum c_kt^k$, differentiating term by term and comparing coefficients turns the equation into a recurrence for $c_k$. We first prove the method works for the simplest equation, and then use it where the answer is not elementary.
+
+\begin{thm}{The equation $y'=\alpha y+\beta$}{ode1}
+Let $\alpha,\beta,y_0$ be constants. Then
+\[
+y(t)=y_0+\sum_{k=1}^\infty\frac{\alpha^{k-1}(\alpha y_0+\beta)}{k!}\,t^k
+\]
+converges for every $t$ and is a solution of $y'=\alpha y+\beta$ with $y(0)=y_0$. It is the only differentiable solution on $\R$ with $y(0)=y_0$. If $\alpha\ne0$ it equals $-\frac\beta\alpha+\left(y_0+\frac\beta\alpha\right)e^{\alpha t}$.
+\end{thm}
+\begin{proof}
+\emph{Convergence and the equation.} Put $A=\alpha y_0+\beta$. The coefficients of $t^k$ ($k\ge1$) are $\frac{\alpha^{k-1}A}{k!}$, with ratio $\frac{\abs\alpha}{k+1}\to0$, so the radius is $\infty$ (Theorem~\ref{11.2-thm:radiusrule}). By Theorem~\ref{11.2-thm:diffint}, $y'(t)=\sum_{k\ge1}\frac{\alpha^{k-1}A}{(k-1)!}t^{k-1}=A\sum_{j\ge0}\frac{(\alpha t)^j}{j!}=Ae^{\alpha t}$ (Theorem~\ref{11.3-thm:esc}). On the other side, $\alpha y+\beta=\alpha y_0+\beta+\sum_{k\ge1}\frac{\alpha^kA}{k!}t^k=A\left(1+\sum_{k\ge1}\frac{(\alpha t)^k}{k!}\right)=Ae^{\alpha t}$. The two are equal, and $y(0)=y_0$.
+
+\emph{The closed form.} If $\alpha\ne0$, $y(t)=y_0+\frac A\alpha\sum_{k\ge1}\frac{(\alpha t)^k}{k!}=y_0+\frac A\alpha(e^{\alpha t}-1)$, and $y_0-\frac A\alpha=-\frac\beta\alpha$, which is the stated form.
+
+\emph{Uniqueness.} Let $z$ be another differentiable solution with $z(0)=y_0$ and put $h(t)=(z(t)-y(t))e^{-\alpha t}$. Then $h'=\bigl((z-y)'-\alpha(z-y)\bigr)e^{-\alpha t}=0$, because $(z-y)'=\alpha(z-y)$. A function with derivative $0$ on an interval is constant (Mean Value Theorem), and $h(0)=0$, so $h\equiv0$ and $z=y$.
+\end{proof}
+
+\begin{exmp}{A first-order equation}{ode1ex}
+Solve $y'=-2y+8$, $y(0)=1$ by a power series and identify the function.
+
+\textbf{Solution.} Here $\alpha=-2$, $\beta=8$, $y_0=1$, so $A=\alpha y_0+\beta=6$ and Theorem~\ref{thm:ode1} gives
+\[
+y(t)=1+6t-6t^2+4t^3-2t^4+\frac45t^5-\cdots=1+\sum_{k=1}^\infty\frac{6\,(-2)^{k-1}}{k!}t^k .
+\]
+%@ ode1a | Tay(4-3*exp(-2*x),0,5) == 1+6*x-6*x**2+4*x**3-2*x**4+Q(4,5)*x**5 and all(6*(-2)**(j-1)/factorial(j) == Tay(4-3*exp(-2*x),0,8).coeff(x,j) for j in range(1,9)) and -2*1+8 == 6 | =1+\sum_{k=1}^\infty\frac{6\,(-2)^{k-1}}{k!}t^k
+Recognize the exponential: $y(t)=4-3e^{-2t}$ (the closed form with $-\frac\beta\alpha=4$ and $y_0+\frac\beta\alpha=1-4=-3$). Check: $y'=6e^{-2t}$ and $-2y+8=-8+6e^{-2t}+8=6e^{-2t}$, and $y(0)=4-3=1$. By uniqueness this is the only solution.
+%@ ode1b | simplify(diff(4-3*exp(-2*t),t)-(-2*(4-3*exp(-2*t))+8)) == 0 and (4-3*exp(-2*t)).subs(t,0) == 1 and -Q(8,-2) == 4 and 1+Q(8,-2) == -3 | $y(0)=4-3=1$
+\end{exmp}
+
+The same four steps work for equations with variable coefficients and for higher-order equations, where the answer need not be an elementary function.
+
+\begin{proc}{Solving a differential equation by a power series}{odeproc}
+\begin{enumerate}[nosep]
+  \item Write $y=\sum_{k\ge0}c_kt^k$, so that $y'=\sum_{k\ge1}kc_kt^{k-1}$ and $y''=\sum_{k\ge2}k(k-1)c_kt^{k-2}$ inside the radius (Theorem~\ref{11.2-thm:diffint}), with $c_0=y(0)$ and $c_1=y'(0)$.
+  \item Substitute into the equation and shift indices so that every sum has the form $\sum(\cdots)t^j$. A power series that is $0$ on an interval has all coefficients $0$ (Theorem~\ref{11.3-thm:uniq}), so the coefficient of each $t^j$ must vanish. This gives a recurrence for the $c_k$.
+  \item Solve the recurrence from the initial values.
+  \item Find the radius of the resulting series (Ratio Test). If it is positive, the series is a solution on that interval: steps 1 and~2 can be read backward.
+\end{enumerate}
+\end{proc}
+
+Steps 1 and 2 show that \emph{if} a power series solution exists, its coefficients are the ones the recurrence produces; step 4 shows that the series so produced really converges and solves the equation. (Finding $c_k=y^{(k)}(0)/k!$ by differentiating the equation repeatedly, as is often done, silently assumes that the solution is equal to its Taylor series; the recurrence avoids that assumption.)
+
+\begin{exmp}{A solution that is not elementary}{airy}
+Find the power series solution of $y''=ty$ with $y(0)=1$ and $y'(0)=0$, and its radius of convergence.
+
+\textbf{Solution.} With $y=\sum c_kt^k$: $y''=\sum_{k\ge2}k(k-1)c_kt^{k-2}=\sum_{j\ge0}(j+2)(j+1)c_{j+2}t^j$ and $ty=\sum_{j\ge1}c_{j-1}t^j$. The coefficient of $t^0$ on the left is $2c_2$ and on the right $0$, so $c_2=0$. For $j\ge1$ the coefficients must agree: $(j+2)(j+1)c_{j+2}=c_{j-1}$, that is
+\[
+c_{k+3}=\frac{c_k}{(k+3)(k+2)}\qquad(k\ge0),\qquad c_0=1,\ c_1=0,\ c_2=0 .
+\]
+%@ airy1 | Q(1,6) == Q(1,3*2) and Q(1,180) == Q(1,3*2)/(6*5) and Q(1,12960) == Q(1,3*2)/(6*5)/(9*8) and Q(1,3*2)/(6*5)/(9*8)/(12*11) == Q(1,1710720) | c_0=1,\ c_1=0,\ c_2=0 .
+Only the coefficients $c_{3j}$ are nonzero: $c_3=\frac{1}{3\cdot2}=\frac16$, $c_6=\frac{c_3}{6\cdot5}=\frac1{180}$, $c_9=\frac{c_6}{9\cdot8}=\frac1{12960}$, so
+\[
+y(t)=1+\frac{t^3}6+\frac{t^6}{180}+\frac{t^9}{12960}+\cdots,\qquad c_{3j}=\prod_{i=1}^{j}\frac1{3i\,(3i-1)}.
+\]
+%@ airy2 | Q(1,3*2) == Q(1,6) and Q(1,6)/(6*5) == Q(1,180) and Q(1,180)/(9*8) == Q(1,12960) and all(prod([Q(1,3*i*(3*i-1)) for i in range(1,jj+1)]) == [1,Q(1,6),Q(1,180),Q(1,12960)][jj] for jj in range(4)) | c_{3j}=\prod_{i=1}^{j}\frac1{3i\,(3i-1)}.
+For the radius, apply the Ratio Test to the terms $a_j=c_{3j}t^{3j}$: $\abs{\frac{a_{j+1}}{a_j}}=\frac{\abs t^3}{(3j+3)(3j+2)}\to0$ for every $t$, so the series converges for all $t$ and $R=\infty$. By step~4 it solves $y''=ty$ on all of $\R$. Substituting into the equation: the coefficient of $t^{3j+1}$ in $y''$ is $(3j+3)(3j+2)c_{3j+3}=c_{3j}$, the coefficient of $t^{3j+1}$ in $ty$.
+%@ airy3 | all(Tay(1+x**3/6+x**6/180+x**9/12960,0,9).coeff(x,3*j) == [1,Q(1,6),Q(1,180),Q(1,12960)][j] for j in range(4)) and all(expand(diff(1+x**3/6+x**6/180+x**9/12960,x,2)).coeff(x,3*j+1) == expand(x*(1+x**3/6+x**6/180+x**9/12960)).coeff(x,3*j+1) for j in range(3)) and limit(1/((3*k+3)*(3*k+2)),k,oo) == 0 | the coefficient of $t^{3j+1}$ in $ty$.
+This equation (the Airy equation) has no solution in terms of the elementary functions, so a series is the natural way to write it. By contrast, the sine and cosine are the series solutions of $y''=-y$ (compare Bank Example~\ref{ex:b12}).
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Integrals that have no elementary antiderivative}
+
+The integrals $\int e^{-x^2}dx$, $\int\sin x^2\,dx$ and $\int\frac{\sin x}x\,dx$ cannot be written with the elementary functions (this can be proved, but it is beyond this course), yet each integrand has a power series, and power series can be integrated term by term. The method gives the integral as a numerical series, and the tools of the first subsection bound its error.
+
+\begin{thm}{Definite integrals of power series}{defint}
+Let $f(x)=\sum_{k=0}^\infty c_kx^k$ for $\abs x<R$, and let $\abs b<R$. Then
+\[
+\int_0^bf(x)\,dx=\sum_{k=0}^\infty\frac{c_k\,b^{k+1}}{k+1},
+\]
+and the series on the right converges absolutely.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:diffseries}(3) the series $F(x)=\sum\frac{c_k}{k+1}x^{k+1}$ has radius $R$ and satisfies $F(x)=\int_0^xf(t)\,dt$ for $\abs x<R$. Take $x=b$; the series converges absolutely at $b$ because $\abs b$ is inside the radius (Theorem~\ref{app-thm:radius}).
+\end{proof}
+
+If $b=R$ is an endpoint at which the series for $F$ converges, the formula still holds: $\int_0^bf\to\int_0^Rf$ as $b\to R^-$ because $f$ is continuous on $[0,R]$, and the series converges to $\lim_{b\to R^-}F(b)$ by Abel's theorem (Theorem~\ref{app-thm:abellimit}). This is how $\int_0^1\frac{dx}{1+x^2}=\frac\pi4$ gives the Gregory series.
+
+\begin{exmp}{The integral $\int_0^1e^{-x^2}dx$}{gauss}
+Approximate $\displaystyle\int_0^1e^{-x^2}dx$ with an error of at most $10^{-3}$. (This integral is central in probability: it is related to the normal distribution.)
+
+\textbf{Solution.} Substituting $-x^2$ in the series of $e^x$ (Theorem~\ref{11.2-thm:comb}(3)): $e^{-x^2}=\sum_{k\ge0}\frac{(-1)^kx^{2k}}{k!}$ for all $x$. By Theorem~\ref{thm:defint} with $R=\infty$ and $b=1$,
+\[
+\int_0^1e^{-x^2}dx=\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)\,k!}=1-\frac13+\frac1{10}-\frac1{42}+\frac1{216}-\frac1{1320}+\cdots .
+\]
+%@ gauss1 | integrate(series(exp(-x**2),x,0,14).removeO(),(x,0,1)).expand() == 1-Q(1,3)+Q(1,10)-Q(1,42)+Q(1,216)-Q(1,1320)+Q(1,9360) and [(2*j+1)*factorial(j) for j in range(6)] == [1,3,10,42,216,1320] | 1-\frac13+\frac1{10}-\frac1{42}+\frac1{216}-\frac1{1320}+\cdots
+The sizes $\frac1{(2k+1)k!}$ decrease to $0$, so the series alternates and the alternating series bound applies. The sizes for $k=4$ and $k=5$ are $\frac1{216}=0.0046$ and $\frac1{1320}=7.6\times10^{-4}$. Stopping after $k=4$ leaves a first omitted term $\frac1{1320}<10^{-3}$:
+\[
+\int_0^1e^{-x^2}dx\approx1-\frac13+\frac1{10}-\frac1{42}+\frac1{216}=\frac{5651}{7560}\approx0.7475,\qquad\text{error}\le\frac1{1320}\approx7.6\times10^{-4}.
+\]
+%@ gauss2 | 1-Q(1,3)+Q(1,10)-Q(1,42)+Q(1,216) == Q(5651,7560) and abs(float(Q(5651,7560))-0.7475)<1e-4 and abs(float(Q(1,1320))-7.6e-4)<1e-5 and abs(float(Integral(exp(-x**2),(x,0,1)).evalf(15)-Q(5651,7560)))<float(Q(1,1320)) | \text{error}\le\frac1{1320}\approx7.6\times10^{-4}.
+The integral lies in $(0.7467,\,0.7483)$; its true value is $0.74682$. Lagrange would have required a bound for the ninth derivative of $e^{-x^2}$, which is awkward; the series and the alternating bound give the guarantee with arithmetic only.
+%@ gauss3 | abs(float(Integral(exp(-x**2),(x,0,1)).evalf(15))-0.74682)<1e-5 and float(Q(5651,7560)-Q(1,1320)) > 0.7467 and float(Q(5651,7560)+Q(1,1320)) < 0.7483 | its true value is $0.74682$
+\end{exmp}
+
+\begin{exmp}{A function defined by an integral: the Fresnel integral}{fresnel}
+The Fresnel function $S(x)=\displaystyle\int_0^x\sin t^2\,dt$ arises in optics. Find its Maclaurin series and radius, approximate $S(0.5)$ with an error below $10^{-5}$, and find $S^{(3)}(0)$ and $S^{(7)}(0)$.
+
+\textbf{Solution.} $\sin t^2=\sum_{k\ge0}\frac{(-1)^kt^{4k+2}}{(2k+1)!}$ for all $t$ (substitute $t^2$ in the sine series), so by Theorem~\ref{thm:diffseries}(3), for all $x$,
+\[
+S(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{4k+3}}{(4k+3)\,(2k+1)!}=\frac{x^3}3-\frac{x^7}{42}+\frac{x^{11}}{1320}-\cdots,\qquad R=\infty .
+\]
+%@ fres1 | series(integrate(series(sin(x**2),x,0,14).removeO(),x),x,0,12).removeO() == x**3/3-x**7/42+x**11/1320 and [(4*j+3)*factorial(2*j+1) for j in range(3)] == [3,42,1320] | \frac{x^3}3-\frac{x^7}{42}+\frac{x^{11}}{1320}-\cdots,\qquad R=\infty .
+At $x=0.5$ the terms $\frac{0.5^{4k+3}}{(4k+3)(2k+1)!}$ decrease and alternate. The first is $\frac{0.5^3}3=0.041667$, the second $\frac{0.5^7}{42}=1.86\times10^{-4}$, the third $\frac{0.5^{11}}{1320}=3.7\times10^{-7}<10^{-5}$. So two terms suffice: $S(0.5)\approx0.041667-0.000186=0.041481$, with error at most $3.7\times10^{-7}$. The derivative trick (Theorem~\ref{thm:diffseries}(2)): $S^{(3)}(0)=3!\cdot\frac13=2$ and $S^{(7)}(0)=7!\cdot\left(-\frac1{42}\right)=-120$.
+%@ fres2 | abs(float(Q(1,2)**3/3)-0.041667)<1e-6 and abs(float(Q(1,2)**7/42)-1.86e-4)<1e-6 and abs(float(Q(1,2)**11/1320)-3.7e-7)<1e-8 and abs(float(Q(1,2)**3/3-Q(1,2)**7/42)-0.041481)<1e-6 and abs(float(Integral(sin(x**2),(x,0,Q(1,2))).evalf(15)-(Q(1,2)**3/3-Q(1,2)**7/42)))<float(Q(1,2)**11/1320) and diff(integrate(series(sin(x**2),x,0,14).removeO(),x),x,3).subs(x,0) == 2 and diff(integrate(series(sin(x**2),x,0,14).removeO(),x),x,7).subs(x,0) == -120 and factorial(7)/42 == 120 | and $S^{(7)}(0)=7!\cdot\left(-\frac1{42}\right)=-120$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Numbers as sums}
+
+When $x$ is a number in the interval where a series converges to its function, the series is a \emph{series representation of the number} $f(x)$. We use this in both directions: to compute a number from a series, and to find the exact sum of a numerical series by recognizing it. The series of $e^x$, $\sin x$, $\cos x$, $\ln(1+x)$, $\tan^{-1}x$ and $(1+x)^p$ and their intervals are in the list at the end of Section 11.3. We add two results.
+
+\begin{thm}{Sums with a factor $k$}{ksum}
+For $\abs x<1$,
+\[
+\sum_{k=1}^\infty kx^k=\frac x{(1-x)^2},\qquad\sum_{k=1}^\infty k^2x^k=\frac{x(1+x)}{(1-x)^3}.
+\]
+\end{thm}
+\begin{proof}
+Differentiate the geometric series $\sum_{k\ge0}x^k=\frac1{1-x}$ term by term (Theorem~\ref{11.2-thm:diffint}; the radius stays $1$): $\sum_{k\ge1}kx^{k-1}=\frac1{(1-x)^2}$. Multiplying by $x$ (Theorem~\ref{11.2-thm:comb}(2)) gives the first formula. Differentiate the first formula, $\sum_{k\ge1}kx^k=\frac x{(1-x)^2}$, term by term: $\sum_{k\ge1}k^2x^{k-1}=\frac d{dx}\frac x{(1-x)^2}=\frac{(1-x)^2+2x(1-x)}{(1-x)^4}=\frac{1+x}{(1-x)^3}$. Multiplying by $x$ gives the second formula.
+\end{proof}
+
+\begin{kc}{A sum with a factor $k$}{ksumkc}
+Use Theorem~\ref{thm:ksum} to find $\displaystyle\sum_{k=1}^\infty\frac k{3^k}$.
+\end{kc}
+
+Machin's formula gives $\pi$ from the arctangent series at two small numbers. The series $\tan^{-1}x$ at $x=1$ converges too slowly (the error after $n$ terms can be about $\frac1n$), but at $x=\frac15$ the terms shrink like $5^{-2k}$.
+
+\begin{thm}{Machin's formula}{machin}
+$\displaystyle\frac\pi4=4\tan^{-1}\frac15-\tan^{-1}\frac1{239}$.
+\end{thm}
+\begin{proof}
+Let $\theta=\tan^{-1}\frac15$, so $0<\theta<\frac\pi4$. The double-angle formula $\tan2\phi=\frac{2\tan\phi}{1-\tan^2\phi}$ gives $\tan2\theta=\frac{2/5}{1-1/25}=\frac5{12}$ and $\tan4\theta=\frac{2\cdot5/12}{1-25/144}=\frac{120}{119}$. Since $0<4\theta<\pi$ and $\tan4\theta>0$, we have $4\theta<\frac\pi2$, so $4\theta-\frac\pi4\in\left(-\frac\pi2,\frac\pi2\right)$. By the subtraction formula $\tan(\phi-\psi)=\frac{\tan\phi-\tan\psi}{1+\tan\phi\tan\psi}$,
+\[
+\tan\left(4\theta-\frac\pi4\right)=\frac{\frac{120}{119}-1}{1+\frac{120}{119}}=\frac{1/119}{239/119}=\frac1{239}.
+\]
+%@ machin | (2*Q(1,5))/(1-Q(1,5)**2) == Q(5,12) and (2*Q(5,12))/(1-Q(5,12)**2) == Q(120,119) and (Q(120,119)-1)/(1+Q(120,119)) == Q(1,239) and abs(float(4*atan(Q(1,5))-atan(Q(1,239))-pi/4))<1e-15 | =\frac{1/119}{239/119}=\frac1{239}.
+Because $\tan$ is one-to-one on $\left(-\frac\pi2,\frac\pi2\right)$ with inverse $\tan^{-1}$, $4\theta-\frac\pi4=\tan^{-1}\frac1{239}$, which is the formula.
+\end{proof}
+
+\begin{exmp}{Computing $\pi$, and an expected value}{pi}
+(a)~Use Machin's formula and the series of $\tan^{-1}$ to compute $\pi$ with a guaranteed error. (b)~A fair coin is tossed until the first head. Find the expected number of tosses, $\sum_{k=1}^\infty k\left(\frac12\right)^k$, and the answer for a coin with probability $p$ of heads.
+
+\textbf{Solution.} (a) Theorem~\ref{11.3-thm:logatan}(2) gives $\tan^{-1}x=\sum\frac{(-1)^kx^{2k+1}}{2k+1}$ for $\abs x\le1$, so $\pi=16\tan^{-1}\frac15-4\tan^{-1}\frac1{239}$. Both series alternate with decreasing terms. Take the terms $k=0,1,2,3$ for $x=\frac15$ and $k=0$ for $x=\frac1{239}$:
+\[
+\pi\approx16\left(\frac15-\frac1{3\cdot5^3}+\frac1{5\cdot5^5}-\frac1{7\cdot5^7}\right)-\frac4{239}=3.1415917\ldots .
+\]
+%@ pi1 | abs(float(16*(Q(1,5)-Q(1,3*5**3)+Q(1,5*5**5)-Q(1,7*5**7))-Q(4,239))-3.1415917)<1e-7 and 3*5**3 == 375 and 5*5**5 == 15625 and 7*5**7 == 546875 | -\frac4{239}=3.1415917\ldots .
+The first omitted terms are $\frac1{9\cdot5^9}$ for the first series and $\frac1{3\cdot239^3}$ for the second, so by the alternating series bound the error is at most $\frac{16}{9\cdot5^9}+\frac4{3\cdot239^3}=9.1\times10^{-7}+9.8\times10^{-8}\approx1.01\times10^{-6}$. Hence $3.14159\le\pi\le3.14160$ is guaranteed. (The actual error is $9.8\times10^{-7}$.) Compare the series for $\tan^{-1}1$ with $100$ terms (Example~\ref{11.3-ex:endsums}): error $10^{-2}$.
+%@ pi2 | abs(float(Q(16,9*5**9)+Q(4,3*239**3))-1.01e-6)<1e-8 and abs(float(Q(16,9*5**9))-9.1e-7)<1e-8 and abs(float(Q(4,3*239**3))-9.8e-8)<1e-9 and abs(float(pi-(16*(Q(1,5)-Q(1,3*5**3)+Q(1,5*5**5)-Q(1,7*5**7))-Q(4,239))))<float(Q(16,9*5**9)+Q(4,3*239**3)) and float(Q(314159,100000)) < float(16*(Q(1,5)-Q(1,3*5**3)+Q(1,5*5**5)-Q(1,7*5**7))-Q(4,239)-Q(16,9*5**9)-Q(4,3*239**3)) and float(16*(Q(1,5)-Q(1,3*5**3)+Q(1,5*5**5)-Q(1,7*5**7))-Q(4,239)+Q(16,9*5**9)+Q(4,3*239**3)) < 3.1416 | =9.1\times10^{-7}+9.8\times10^{-8}\approx1.01\times10^{-6}$
+(b) By Theorem~\ref{thm:ksum} with $x=\frac12$: $\sum k\left(\frac12\right)^k=\frac{1/2}{(1/2)^2}=2$. For a coin with $P(\text{head})=p$ and $q=1-p$, the probability that the first head is on toss $k$ is $q^{k-1}p$, so the expected number of tosses is $p\sum kq^{k-1}=\frac p{(1-q)^2}=\frac1p$ (the derivative series in the proof of Theorem~\ref{thm:ksum}). For $p=\frac12$ again $2$.
+%@ pi3 | summation(k*Q(1,2)**k,(k,1,oo)) == 2 and Q(1,2)/(1-Q(1,2))**2 == 2 and simplify(x/(1-(1-x))**2-1/x) == 0 | $\sum k\left(\frac12\right)^k=\frac{1/2}{(1/2)^2}=2$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Identifying the function behind a series}
+
+Given a power series, we want a formula for its sum. The strategy reverses the constructions of Section 11.2: transform the series by substitution, by multiplying or dividing by a power of $x$, and by differentiating or integrating term by term, until it is a geometric series or one of the standard series; then undo the transformations on the sum.
+
+\begin{proc}{Identifying a power series}{identify}
+\begin{enumerate}[nosep]
+  \item Find the radius and the interval of convergence (Ratio or Root Test, then the endpoint tests of Chapter 10).
+  \item Transform the series into a known one: factor out powers of $x$, substitute, differentiate or integrate (the series with the factor $k$ come from differentiating a geometric series, the series with a $\frac1k$ from integrating one).
+  \item Sum the known series, then undo the transformations \emph{in reverse order} (integrate what you differentiated, and so on).
+  \item State the function \emph{and} the interval: the series equals the formula only where it converges, which may be smaller than the domain of the formula.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A mystery series}{mystery}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{(-1)^kk\,x^{2k}}{3^k}$ and the function it represents.
+
+\textbf{Solution.} \emph{Interval.} The terms are $k\,u^k$ with $u=-\frac{x^2}3$. The Ratio Test gives $\abs{\frac{a_{k+1}}{a_k}}=\frac{k+1}k\cdot\frac{x^2}3\to\frac{x^2}3$, which is below $1$ if $\abs x<\sqrt3$. At $x=\pm\sqrt3$ the terms are $(-1)^kk$, which do not tend to $0$, so the series diverges (Theorem~\ref{10.4-thm:divtest}). The interval of convergence is $(-\sqrt3,\sqrt3)$.
+
+\emph{Function.} The series is $\sum_{k\ge1}ku^k$ with $u=-\frac{x^2}3$, and $\abs u<1$ exactly when $\abs x<\sqrt3$. By Theorem~\ref{thm:ksum}, $\sum ku^k=\frac u{(1-u)^2}$, so
+\[
+\sum_{k=1}^\infty\frac{(-1)^kk\,x^{2k}}{3^k}=\frac{-x^2/3}{(1+x^2/3)^2}=-\frac{3x^2}{(3+x^2)^2}\qquad(\abs x<\sqrt3).
+\]
+%@ myst | series(-3*x**2/(3+x**2)**2,x,0,10).removeO() == sum((-1)**j*j*x**(2*j)/Integer(3)**j for j in range(1,5)) and simplify((-x**2/3)/(1+x**2/3)**2+3*x**2/(3+x**2)**2) == 0 and limit((k+1)/k,k,oo) == 1 | -\frac{3x^2}{(3+x^2)^2}\qquad(\abs x<\sqrt3).
+The formula $-\frac{3x^2}{(3+x^2)^2}$ is defined for every real $x$, but the power series equals it only on $(-\sqrt3,\sqrt3)$: outside, the series diverges. The radius $\sqrt3$ is again not visible on the real line; it is the distance from $0$ to the points $\pm i\sqrt3$ where the denominator vanishes (a fact for a later course on complex numbers).
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Multiplying and dividing Taylor series}
+
+The functions $e^x\sin x$ and $\tan x=\frac{\sin x}{\cos x}$ have Taylor series, but not by substituting into a standard series. Their series come from the series of the factors. Multiplying two series term by term would give the wrong answer ($e^x\cdot\sin x$ is not $\sum\frac{x^k}{k!}\cdot\frac{(-1)^kx^{2k+1}}{(2k+1)!}$); the correct rule collects, for each power $n$, all products of a coefficient of $f$ and a coefficient of $g$ whose indices add to $n$.
+
+\begin{thm}{Products and quotients of Taylor series}{prodquot}
+Let $f(x)=\sum a_k(x-a)^k$ and $g(x)=\sum b_k(x-a)^k$ converge for $\abs{x-a}<R$, where $R>0$.
+\begin{enumerate}
+  \item \emph{Product.} $f(x)g(x)=\sum_{n=0}^\infty c_n(x-a)^n$ for $\abs{x-a}<R$, where $c_n=\sum_{j=0}^na_jb_{n-j}=a_0b_n+a_1b_{n-1}+\cdots+a_nb_0$.
+  \item \emph{Quotient.} If $b_0\ne0$, then $\dfrac{f(x)}{g(x)}=\sum_{n=0}^\infty q_n(x-a)^n$ on some interval about $a$, where $q_0=\frac{a_0}{b_0}$ and, for $n\ge1$, $q_n=\frac1{b_0}\Bigl(a_n-\sum_{j=1}^nb_jq_{n-j}\Bigr)$ (that is, $a_n=\sum_{j=0}^nb_jq_{n-j}$ for every $n\ge0$).
+\end{enumerate}
+\end{thm}
+%%@omitted prodquot  (sketched here; the complete proofs are Theorems H.2 and H.4 in Appendix H)
+\textbf{The proof is in Appendix~H, not in this section.} It needs absolute convergence and a growth estimate for coefficients, which take a page each; it is complete and uses only results of Chapters 10 and 11 (Theorems~\ref{app-thm:cauchy}, \ref{app-thm:psprod}, \ref{app-thm:recip} and~\ref{app-thm:quot}). The idea, in two steps. \emph{Products:} inside the radius the series converge absolutely, so $\left(\sum_{i\le N}u_i\right)\left(\sum_{j\le N}v_j\right)$ and $\sum_{i+j\le N}u_iv_j$ differ only by products with $i>\frac N2$ or $j>\frac N2$, which are tails of absolutely convergent series and tend to $0$. \emph{Quotients:} the recurrence for the coefficients of $\frac1g$ gives $\abs{r_n}\le C\theta^{-n}$ for some $\theta>0$, so $\sum r_n(x-a)^n$ has positive radius, and by the product rule $g\cdot\sum r_n(x-a)^n=1$ near $a$; the quotient is $f$ times this. Two cautions. The product series has radius at least $R$, but the quotient's radius is not $R$ in general (the radius of $\tan x$ is $\frac\pi2$, which this method does not reveal), and the quotient needs $b_0\ne0$.
+
+\begin{think}{Why $b_0\ne0$?}{b0}
+What goes wrong if $g(a)=0$? Can $\frac{1}{x}$ or $\frac{\sin x}{x^3}$ be written as a power series centered at $0$? And why is $\frac{\sin x}x$ one?
+\end{think}
+
+\begin{exmp}{Products, quotients and a limit}{prodex}
+(a)~Find the Maclaurin series of $e^x\sin x$ through $x^5$. (b)~Find the first four nonzero terms of $\tan x$. (c)~Evaluate $\displaystyle\lim_{x\to0}\frac{\tan x-\sin x}{x^3}$.
+
+\textbf{Solution.} (a) With $a_j=\frac1{j!}$ for $e^x$ and $b_1=1$, $b_3=-\frac16$, $b_5=\frac1{120}$ (others $0$) for $\sin x$, Theorem~\ref{thm:prodquot}(1) gives $c_n=\sum_jb_j a_{n-j}$ (the order of the factors does not matter): $c_1=1$, $c_2=b_1a_1=1$, $c_3=b_1a_2+b_3a_0=\frac12-\frac16=\frac13$, $c_4=b_1a_3+b_3a_1=\frac16-\frac16=0$, $c_5=b_1a_4+b_3a_2+b_5a_0=\frac1{24}-\frac1{12}+\frac1{120}=-\frac1{30}$. So
+\[
+e^x\sin x=x+x^2+\frac{x^3}3-\frac{x^5}{30}-\cdots\qquad(\text{all }x).
+\]
+%@ prod1 | Tay(exp(x)*sin(x),0,5) == x+x**2+x**3/3-x**5/30 and Q(1,2)-Q(1,6) == Q(1,3) and Q(1,6)-Q(1,6) == 0 and Q(1,24)-Q(1,12)+Q(1,120) == -Q(1,30) | e^x\sin x=x+x^2+\frac{x^3}3-\frac{x^5}{30}-\cdots\qquad(\text{all }x).
+(b) By Appendix H (Example~\ref{app-ex:tanex}, with the quotient rule of Theorem~\ref{thm:prodquot}(2)), $\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\frac{17x^7}{315}+\cdots$ on an interval about $0$. (c) $\tan x-\sin x=\left(x+\frac{x^3}3+\cdots\right)-\left(x-\frac{x^3}6+\cdots\right)=\frac{x^3}2+\cdots$, so $m=n=3$ with $c_3=\frac12$ and $d_3=1$, and by Theorem~\ref{thm:leading} the limit is $\frac12$.
+%@ prod2 | Tay(tan(x),0,7) == x+x**3/3+2*x**5/15+17*x**7/315 and Tay(tan(x)-sin(x),0,5) == x**3/2+x**5/8 and Q(1,3)+Q(1,6) == Q(1,2) and limit((tan(x)-sin(x))/x**3,x,0) == Q(1,2) | the limit is $\frac12$.
+\end{exmp}
+
+\emph{Looking ahead.} This section ends Chapter 11. Everything here has a larger version in later courses: series solutions of differential equations (Bessel and Airy functions, among others) are a standard tool of a differential equations course; the expansion of functions in series of sines and cosines (Fourier series) and in power series of a \emph{complex} variable, where the radius of convergence acquires the meaning hinted at in Example~\ref{ex:mystery}, belong to later courses; and numerical analysis studies how fast and how reliably series and their relatives compute functions on a machine.
+
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Limits by series} (Examples~\ref{ex:b1}--\ref{ex:b3}): a difference of exponentials; a limit with parameters; a limit that does not exist.
+  \item \emph{Error bounds and approximations} (Examples~\ref{ex:b4}--\ref{ex:b6}): $\ln1.2$ by the alternating bound; $\sinh0.5$ by a geometric tail; $e$ to six decimals by Lagrange.
+  \item \emph{Integrals with no elementary antiderivative} (Examples~\ref{ex:b7}--\ref{ex:b9}): $\int\cos x^2$; $\int e^{x^2}$ with positive terms; a binomial-series integral.
+  \item \emph{Differentiation and differential equations} (Examples~\ref{ex:b10}--\ref{ex:b12}): how the interval changes; $y'=2ty$; $y''+4y=0$.
+  \item \emph{Numbers as sums} (Examples~\ref{ex:b13}--\ref{ex:b15}): an arctangent value; $\sum\frac{k^2}{2^k}$; a partial-fractions sum.
+  \item \emph{Identifying series} (Examples~\ref{ex:b16}--\ref{ex:b18}): a series in $x+1$; a logarithm by substitution; a function by integrating twice, with endpoints.
+  \item \emph{Proofs} (Examples~\ref{ex:b19}--\ref{ex:b20}).
+\end{enumerate}
+
+\subsection*{Group 1: Limits by series}
+
+\begin{exmp}{A difference of exponentials}{b1}
+Evaluate $\displaystyle\lim_{x\to0}\frac{e^x-e^{-x}-2x}{x^3}$.
+
+\textbf{Solution.} By Theorem~\ref{11.2-thm:comb}(1) the series of $e^x-e^{-x}$ doubles the odd terms of the series of $e^x$ and cancels the even ones: $e^x-e^{-x}=2x+\frac{x^3}3+\frac{x^5}{60}+\cdots$. Subtracting $2x$ leaves $\frac{x^3}3+\frac{x^5}{60}+\cdots$, whose first nonzero term is $\frac13x^3$. The denominator is $x^3$, so $m=n=3$ and, by Theorem~\ref{thm:leading}, the limit is $\frac13$.
+%@ bank-1 | Tay(exp(x)-exp(-x)-2*x,0,5) == x**3/3+x**5/60 and 2*Q(1,6) == Q(1,3) and 2*Q(1,120) == Q(1,60) and limit((exp(x)-exp(-x)-2*x)/x**3,x,0) == Q(1,3) | the limit is $\frac13$.
+\end{exmp}
+
+\begin{exmp}{A limit with parameters}{b2}
+Let $a$ and $b\ne0$ be constants. Evaluate $\displaystyle\lim_{x\to0}\frac{1-\cos ax}{x\sin bx}$, and give the value for $a=3$, $b=2$.
+
+\textbf{Solution.} Substitute $ax$ and $bx$ in the series of Section 11.3: $1-\cos ax=\frac{a^2x^2}2-\frac{a^4x^4}{24}+\cdots$ and $x\sin bx=bx^2-\frac{b^3x^4}6+\cdots$. The first nonzero terms are $\frac{a^2}2x^2$ (if $a\ne0$) and $bx^2$, so $m=n=2$ and the limit is $\frac{a^2/2}b=\frac{a^2}{2b}$. (If $a=0$ the numerator is $0$ and so is the limit, which the formula also gives.) For $a=3$, $b=2$: $\frac94$.
+%@ bank-2 | Tay(1-cos(a*x),0,4) == a**2*x**2/2-a**4*x**4/24 and Tay(x*sin(b*x),0,4) == b*x**2-b**3*x**4/6 and limit((1-cos(3*x))/(x*sin(2*x)),x,0) == Q(9,4) and Q(9,2)/2 == Q(9,4) | For $a=3$, $b=2$: $\frac94$.
+\end{exmp}
+
+\begin{exmp}{A limit that does not exist}{b3}
+Does $\displaystyle\lim_{x\to0}\frac{1-\cos x}{x-\sin x}$ exist?
+
+\textbf{Solution.} $1-\cos x=\frac{x^2}2-\frac{x^4}{24}+\cdots$ has $m=2$, and $x-\sin x=\frac{x^3}6-\frac{x^5}{120}+\cdots$ has $n=3$. Since $m<n$, Theorem~\ref{thm:leading}(3) says $\abs{\frac{1-\cos x}{x-\sin x}}\to\infty$. More precisely, $\frac{1-\cos x}{x-\sin x}=\frac1x\cdot\frac{1/2-x^2/24+\cdots}{1/6-x^4/120+\cdots}$, and the second factor tends to $3$, so the quotient behaves like $\frac3x$: it tends to $+\infty$ as $x\to0^+$ and to $-\infty$ as $x\to0^-$. The two-sided limit does not exist, not even as an infinite limit.
+%@ bank-3 | Tay(1-cos(x),0,4) == x**2/2-x**4/24 and Tay(x-sin(x),0,5) == x**3/6-x**5/120 and limit((1-cos(x))/(x-sin(x)),x,0,'+') == oo and limit((1-cos(x))/(x-sin(x)),x,0,'-') == -oo and limit(x*(1-cos(x))/(x-sin(x)),x,0) == 3 | the quotient behaves like $\frac3x$
+\end{exmp}
+
+\subsection*{Group 2: Error bounds and approximations}
+
+\begin{exmp}{$\ln1.2$ by the alternating bound}{b4}
+Approximate $\ln1.2$ with an error below $10^{-4}$.
+
+\textbf{Solution.} $\ln(1+x)=\sum_{k\ge1}\frac{(-1)^{k+1}x^k}k$ for $-1<x\le1$, so $x=0.2$ is allowed. The terms alternate and their sizes $\frac{0.2^k}k$ decrease. The sizes are $0.2,\ 0.02,\ 0.00267,\ 0.0004,\ 0.000064$ for $k=1,\dots,5$; the first below $10^{-4}$ is $k=5$, $6.4\times10^{-5}$. So stop after $k=4$:
+\[
+\ln1.2\approx0.2-0.02+0.002667-0.0004=0.182267,\qquad\text{error}\le6.4\times10^{-5}.
+\]
+%@ bank-4 | sum(Integer(-1)**(j+1)*Q(1,5)**j/j for j in range(1,5)) == Q(1367,7500) and abs(float(Q(1367,7500))-0.182267)<1e-6 and abs(float(Q(1,5)**5/5)-6.4e-5)<1e-9 and abs(float(log(Q(6,5))-Q(1367,7500)))<float(Q(1,5)**5/5) | \text{error}\le6.4\times10^{-5}.
+The true value is $0.182322$, at distance $5.5\times10^{-5}$, within the bound.
+\end{exmp}
+
+\begin{exmp}{$\sinh0.5$ by a geometric tail}{b5}
+Approximate $\sinh0.5$ with an error below $10^{-5}$ and justify the bound.
+
+\textbf{Solution.} $\sinh x=\sum_{k\ge0}\frac{x^{2k+1}}{(2k+1)!}$ for all $x$ (Section 11.3). At $x=\frac12$ every term is positive, so the alternating bound does not apply. The ratio of consecutive terms is $\frac{x^2}{(2k+2)(2k+3)}=\frac{1/4}{(2k+2)(2k+3)}\le\frac1{24}$ for $k\ge0$ (the denominator is at least $6$). By Theorem~\ref{thm:tail} with $\rho=\frac1{24}$, the tail after the terms $k=0,1,2$ is at most $\frac{a_3}{1-1/24}=\frac{24}{23}\cdot\frac{(1/2)^7}{7!}=1.6\times10^{-6}<10^{-5}$ (the term $k=2$ alone would leave $a_3$ out; the term $k=1$, with next term $a_2=2.6\times10^{-4}$, is too coarse). So
+\[
+\sinh0.5\approx\frac12+\frac{(1/2)^3}{3!}+\frac{(1/2)^5}{5!}=\frac{667}{1280}=0.521094,\qquad\text{error}\le1.6\times10^{-6}.
+\]
+%@ bank-5 | sum(Q(1,2)**(2*j+1)/factorial(2*j+1) for j in range(3)) == Q(667,1280) and abs(float(Q(667,1280))-0.521094)<1e-6 and abs(float(Q(24,23)*Q(1,2)**7/factorial(7))-1.6e-6)<1e-7 and all(Q(1,4)/((2*j+2)*(2*j+3)) <= Q(1,24) for j in range(50)) and abs(float(sinh(Q(1,2))-Q(667,1280)))<float(Q(24,23)*Q(1,2)**7/factorial(7)) | \text{error}\le1.6\times10^{-6}.
+The true value is $\sinh0.5=0.521095$.
+\end{exmp}
+
+\begin{exmp}{$e$ to six decimal places}{b6}
+How many terms of $e=\sum\frac1{k!}$ guarantee an error below $10^{-6}$? Use the Lagrange remainder.
+
+\textbf{Solution.} Take $f(x)=e^x$, $a=0$, $x=1$. Every derivative is $e^c\le e^1$ on $[0,1]$, and we need a number $M\ge e$. Since $k!\ge2^{k-1}$, $e=\sum_{k\ge0}\frac1{k!}\le1+\sum_{k\ge1}\frac1{2^{k-1}}=1+2=3$, so $M=3$. Then $\abs{R_n(1)}\le\frac3{(n+1)!}$. This is $\frac3{9!}=8.3\times10^{-6}$ for $n=8$ and $\frac3{10!}=8.3\times10^{-7}<10^{-6}$ for $n=9$. So the polynomial $p_9(1)=\sum_{k=0}^9\frac1{k!}=\frac{98641}{36288}=2.718281526\ldots$ is within $8.3\times10^{-7}$ of $e$: $e=2.71828\ldots$ to five decimals, and the sixth is $e\approx2.718282$ (to within the bound, $2.7182807\le e\le2.7182824$).
+%@ bank-6 | sum(Q(1,factorial(j)) for j in range(10)) == Q(98641,36288) and abs(float(Q(3,factorial(9)))-8.3e-6)<1e-7 and abs(float(Q(3,factorial(10)))-8.27e-7)<1e-8 and all(factorial(j) >= 2**(j-1) for j in range(1,30)) and float(E-Q(98641,36288)) < float(Q(3,factorial(10))) | $e\approx2.718282$ (to within the bound, $2.7182807\le e\le2.7182824$).
+\end{exmp}
+
+\subsection*{Group 3: Integrals with no elementary antiderivative}
+
+\begin{exmp}{$\int_0^{0.6}\cos x^2\,dx$}{b7}
+Approximate $\displaystyle\int_0^{0.6}\cos x^2\,dx$ with an error below $10^{-5}$.
+
+\textbf{Solution.} $\cos x^2=\sum_{k\ge0}\frac{(-1)^kx^{4k}}{(2k)!}$ for all $x$, so by Theorem~\ref{thm:defint}, $\int_0^{0.6}\cos x^2\,dx=\sum_{k\ge0}\frac{(-1)^k(0.6)^{4k+1}}{(4k+1)(2k)!}$. The sizes of the terms are $0.6$, $\frac{0.6^5}{5\cdot2}=7.776\times10^{-3}$, $\frac{0.6^9}{9\cdot24}=4.67\times10^{-5}$, $\frac{0.6^{13}}{13\cdot720}=1.4\times10^{-7}$; they alternate and decrease. The first omitted term is below $10^{-5}$ after $k=2$, so
+\[
+\int_0^{0.6}\cos x^2\,dx\approx0.6-0.007776+0.0000467=0.592271,\qquad\text{error}\le1.4\times10^{-7}.
+\]
+%@ bank-7 | abs(float(sum(Integer(-1)**j*Q(3,5)**(4*j+1)/((4*j+1)*factorial(2*j)) for j in range(3)))-0.592271)<1e-6 and abs(float(Q(3,5)**13/(13*720))-1.4e-7)<1e-8 and abs(float(Q(3,5)**9/(9*24))-4.67e-5)<1e-7 and abs(float(Integral(cos(x**2),(x,0,Q(3,5))).evalf(15)-sum(Integer(-1)**j*Q(3,5)**(4*j+1)/((4*j+1)*factorial(2*j)) for j in range(3))))<float(Q(3,5)**13/(13*720)) | \text{error}\le1.4\times10^{-7}.
+\end{exmp}
+
+\begin{exmp}{$\int_0^{0.3}e^{x^2}dx$: positive terms}{b8}
+Approximate $\displaystyle\int_0^{0.3}e^{x^2}dx$ with an error below $10^{-5}$.
+
+\textbf{Solution.} $e^{x^2}=\sum\frac{x^{2k}}{k!}$, so $\int_0^{0.3}e^{x^2}dx=\sum_{k\ge0}a_k$ with $a_k=\frac{0.3^{2k+1}}{(2k+1)\,k!}$ (Theorem~\ref{thm:defint}). All terms are positive, so we use Theorem~\ref{thm:tail}. The ratio is $\frac{a_{k+1}}{a_k}=0.09\cdot\frac{2k+1}{(2k+3)(k+1)}\le0.09\cdot\frac13=0.03$ for $k\ge0$ (the fraction $\frac{2k+1}{(2k+3)(k+1)}$ is at most $\frac13$). The terms are $a_0=0.3$, $a_1=0.009$, $a_2=2.43\times10^{-4}$, $a_3=5.2\times10^{-6}$. After $k=2$ the tail is at most $\frac{a_3}{1-0.03}=5.4\times10^{-6}<10^{-5}$. So
+\[
+\int_0^{0.3}e^{x^2}dx\approx0.3+0.009+0.000243=0.309243,\qquad\text{error}\le5.4\times10^{-6}.
+\]
+%@ bank-8 | sum(Q(3,10)**(2*j+1)/((2*j+1)*factorial(j)) for j in range(3)) == Q(309243,1000000) and abs(float(Q(3,10)**7/(7*6))-5.2e-6)<1e-7 and all(Q(9,100)*Q(2*j+1,(2*j+3)*(j+1)) <= Q(3,100) for j in range(60)) and abs(float(Q(3,10)**7/(7*6)/Q(97,100))-5.4e-6)<1e-7 and abs(float(Integral(exp(x**2),(x,0,Q(3,10))).evalf(15)-Q(309243,1000000)))<float(Q(3,10)**7/(7*6)/Q(97,100)) | \text{error}\le5.4\times10^{-6}.
+\end{exmp}
+
+\begin{exmp}{An integral from the binomial series}{b9}
+Approximate $\displaystyle\int_0^{1/2}\frac{dx}{\sqrt{1+x^3}}$ with an error below $10^{-4}$.
+
+\textbf{Solution.} For $\abs u<1$, $(1+u)^{-1/2}=\sum_k\binom{-1/2}ku^k$ (Theorem~\ref{11.3-thm:binom}); with $u=x^3$ this is valid for $\abs x<1$, which includes $[0,\frac12]$. By Theorem~\ref{thm:defint}, $\int_0^{1/2}\frac{dx}{\sqrt{1+x^3}}=\sum_k\binom{-1/2}k\frac{(1/2)^{3k+1}}{3k+1}$. The terms alternate in sign (the coefficients $\binom{-1/2}k$ do), and their sizes decrease, because $\abs{\binom{-1/2}{k+1}}=\frac{2k+1}{2k+2}\abs{\binom{-1/2}k}$ and the factors $\frac{(1/2)^{3k+1}}{3k+1}$ decrease. The sizes are $0.5$, $\frac12\cdot\frac{(1/2)^4}4=7.8\times10^{-3}$, $\frac38\cdot\frac{(1/2)^7}7=4.19\times10^{-4}$, $\frac5{16}\cdot\frac{(1/2)^{10}}{10}=3.05\times10^{-5}$. The first below $10^{-4}$ is the fourth, so we stop after $k=2$:
+\[
+\int_0^{1/2}\frac{dx}{\sqrt{1+x^3}}\approx0.5-0.0078125+0.0004185=0.492606,\qquad\text{error}\le3.1\times10^{-5}.
+\]
+%@ bank-9 | abs(float(sum(binomial(Q(-1,2),j)*Q(1,2)**(3*j+1)/(3*j+1) for j in range(3)))-0.492606)<1e-6 and abs(float(binomial(Q(-1,2),3)*Q(1,2)**10/10)+3.05e-5)<1e-7 and abs(float(binomial(Q(-1,2),1)*Q(1,2)**4/4)+0.0078125)<1e-9 and abs(float(Integral(1/sqrt(1+x**3),(x,0,Q(1,2))).evalf(15)-sum(binomial(Q(-1,2),j)*Q(1,2)**(3*j+1)/(3*j+1) for j in range(3))))<3.1e-5 | \text{error}\le3.1\times10^{-5}.
+\end{exmp}
+
+\subsection*{Group 4: Differentiation and differential equations}
+
+\begin{exmp}{Differentiating $\sqrt{1+x}$: the interval changes}{b10}
+The binomial series of $\sqrt{1+x}$ converges on $[-1,1]$ (Theorem~\ref{11.3-thm:binomend}, $p=\frac12>0$). Differentiate it, identify the result, and find its interval of convergence.
+
+\textbf{Solution.} By Theorem~\ref{thm:diffseries}(1), $\frac d{dx}\sqrt{1+x}=\sum_{k\ge1}k\binom{1/2}kx^{k-1}$ for $\abs x<1$. Now $k\binom{1/2}k=\frac{\frac12(\frac12-1)\cdots(\frac12-k+1)}{(k-1)!}=\frac12\cdot\frac{(-\frac12)(-\frac32)\cdots(-\frac12-(k-2))}{(k-1)!}=\frac12\binom{-1/2}{k-1}$ (the factors $\frac12-j$ for $j\ge1$ equal $-\frac12-(j-1)$). So the differentiated series is $\frac12\sum_{j\ge0}\binom{-1/2}jx^j=\frac12(1+x)^{-1/2}=\frac1{2\sqrt{1+x}}$, the binomial series with $p=-\frac12$. By Theorem~\ref{11.3-thm:binomend} its interval of convergence is $(-1,1]$, so differentiating changed $[-1,1]$ into $(-1,1]$: the endpoint $x=-1$ is lost. This matches the graph: $\sqrt{1+x}$ has a vertical tangent at $x=-1$, where $f'$ is unbounded. At $x=1$ the differentiated series has the sum $\frac1{2\sqrt2}=f'(1)$.
+%@ bank-10 | all(j*binomial(Q(1,2),j) == Q(1,2)*binomial(Q(-1,2),j-1) for j in range(1,15)) and Tay(diff(sqrt(1+x),x),0,4) == Tay(1/(2*sqrt(1+x)),0,4) and diff(sqrt(1+x),x).subs(x,1) == 1/(2*sqrt(2)) | the sum $\frac1{2\sqrt2}=f'(1)$.
+\end{exmp}
+
+\begin{exmp}{$y'=2ty$ by the recurrence}{b11}
+Solve $y'=2ty$, $y(0)=3$ by a power series, and identify the function.
+
+\textbf{Solution.} With $y=\sum c_kt^k$: $y'=\sum_{k\ge0}(k+1)c_{k+1}t^k$ and $2ty=\sum_{k\ge1}2c_{k-1}t^k$. The coefficient of $t^0$ gives $c_1=0$, and for $k\ge1$, $(k+1)c_{k+1}=2c_{k-1}$. With $c_0=3$ and $c_1=0$: all odd coefficients are $0$, and $c_2=\frac{2c_0}2=3$, $c_4=\frac{2c_2}4=\frac32$, $c_6=\frac{2c_4}6=\frac12$; in general $c_{2j}=\frac3{j!}$ (indeed $c_{2j+2}=\frac{2c_{2j}}{2j+2}=\frac{c_{2j}}{j+1}$). So
+\[
+y(t)=3\sum_{j=0}^\infty\frac{t^{2j}}{j!}=3+3t^2+\frac32t^4+\frac12t^6+\cdots=3e^{t^2},
+\]
+%@ bank-11 | Tay(3*exp(x**2),0,6) == 3+3*x**2+Q(3,2)*x**4+Q(1,2)*x**6 and [Integer(3), 2*Integer(3)/2, 2*(2*Integer(3)/2)/4, 2*(2*(2*Integer(3)/2)/4)/6] == [3,3,Q(3,2),Q(1,2)] and all(Q(2,2*j+2)*Q(3,factorial(j)) == Q(3,factorial(j+1)) for j in range(20)) | =3+3t^2+\frac32t^4+\frac12t^6+\cdots=3e^{t^2},
+using Theorem~\ref{11.3-thm:esc} with $x=t^2$. The ratio of consecutive terms is $\frac{t^2}{j+1}\to0$, so the series converges for all $t$ and is a solution on $\R$. It is the only differentiable solution: if $z'=2tz$ then $\left(ze^{-t^2}\right)'=0$ (as in the proof of Theorem~\ref{thm:ode1}), so $z=z(0)e^{t^2}$.
+\end{exmp}
+
+\begin{exmp}{$y''+4y=0$ gives the sine}{b12}
+Find the power series solution of $y''+4y=0$ with $y(0)=0$ and $y'(0)=2$.
+
+\textbf{Solution.} With $y=\sum c_kt^k$, $y''=\sum_{k\ge0}(k+2)(k+1)c_{k+2}t^k$ and the equation gives $(k+2)(k+1)c_{k+2}=-4c_k$ for all $k\ge0$. The initial values are $c_0=y(0)=0$ and $c_1=y'(0)=2$. So all even coefficients vanish, and $c_3=\frac{-4c_1}{3\cdot2}=-\frac43$, $c_5=\frac{-4c_3}{5\cdot4}=\frac4{15}$, $c_7=\frac{-4c_5}{7\cdot6}=-\frac8{315}$. So
+\[
+y(t)=2t-\frac43t^3+\frac4{15}t^5-\frac8{315}t^7+\cdots=\sum_{j=0}^\infty\frac{(-1)^j(2t)^{2j+1}}{(2j+1)!}=\sin2t .
+\]
+%@ bank-12 | Tay(sin(2*x),0,7) == 2*x-Q(4,3)*x**3+Q(4,15)*x**5-Q(8,315)*x**7 and [-4*Integer(2)/(3*2), -4*(-Q(4,3))/(5*4), -4*Q(4,15)/(7*6)] == [-Q(4,3),Q(4,15),-Q(8,315)] and simplify(diff(sin(2*t),t,2)+4*sin(2*t)) == 0 | =\sum_{j=0}^\infty\frac{(-1)^j(2t)^{2j+1}}{(2j+1)!}=\sin2t .
+The series converges for all $t$ (it is the sine series with $x=2t$), and $\sin2t$ satisfies $y''+4y=0$, $y(0)=0$, $y'(0)=2$. Without the series the answer would have to be guessed.
+\end{exmp}
+
+\subsection*{Group 5: Numbers as sums}
+
+\begin{exmp}{An arctangent at $\frac1{\sqrt3}$}{b13}
+Find the exact value of $\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)\,3^k}$.
+
+\textbf{Solution.} The series $\tan^{-1}x=\sum\frac{(-1)^kx^{2k+1}}{2k+1}$ holds for $\abs x\le1$ (Theorem~\ref{11.3-thm:logatan}). Put $x=\frac1{\sqrt3}$: $x^{2k+1}=\frac1{\sqrt3}\cdot\frac1{3^k}$, so $\tan^{-1}\frac1{\sqrt3}=\frac1{\sqrt3}\sum\frac{(-1)^k}{(2k+1)3^k}$. Since $\tan\frac\pi6=\frac1{\sqrt3}$, $\tan^{-1}\frac1{\sqrt3}=\frac\pi6$, and the sum is $\sqrt3\cdot\frac\pi6=\frac\pi{2\sqrt3}\approx0.9069$. The terms shrink like $3^{-k}$, so this series gives $\pi$ much faster than the Gregory series: $\pi=2\sqrt3\sum\frac{(-1)^k}{(2k+1)3^k}$.
+%@ bank-13 | abs(float(sum(Integer(-1)**j/((2*j+1)*3**j) for j in range(40)))-0.9069)<1e-4 and abs(float(pi/(2*sqrt(3)))-0.9069)<1e-4 and sqrt(3)*pi/6 == pi/(2*sqrt(3)) and atan(1/sqrt(3)) == pi/6 | so this series gives $\pi$ much faster than the Gregory series: $\pi=2\sqrt3\sum\frac{(-1)^k}{(2k+1)3^k}$.
+\end{exmp}
+
+\begin{exmp}{$\sum k^2/2^k$}{b14}
+Find $\displaystyle\sum_{k=1}^\infty\frac{k^2}{2^k}$.
+
+\textbf{Solution.} This is $\sum k^2x^k$ at $x=\frac12$, which lies in $(-1,1)$. By Theorem~\ref{thm:ksum} the sum is $\frac{x(1+x)}{(1-x)^3}=\frac{\frac12\cdot\frac32}{\frac18}=6$. The partial sums confirm it slowly: the first ten terms add to $5.86$ and the terms decrease like $\frac{k^2}{2^k}$.
+%@ bank-14 | summation(k**2/2**k,(k,1,oo)) == 6 and Q(1,2)*Q(3,2)/Q(1,8) == 6 and abs(float(sum(Q(j**2,2**j) for j in range(1,11)))-5.86)<1e-2 and sum(Q(j**2,2**j) for j in range(1,11)) < 6 and 6-6 == 0 | the first ten terms add to $5.86$
+\end{exmp}
+
+\begin{exmp}{A partial-fractions sum}{b15}
+Find $\displaystyle\sum_{k=1}^\infty\frac1{k(k+1)\,2^k}$.
+
+\textbf{Solution.} Write $\frac1{k(k+1)}=\frac1k-\frac1{k+1}$. Both $\sum\frac{(1/2)^k}k$ and $\sum\frac{(1/2)^k}{k+1}$ converge, so the sum is the difference of their sums (Theorem~\ref{10.3-thm:props}). The first is the series of $-\ln(1-x)=\sum_{k\ge1}\frac{x^k}k$ at $x=\frac12$ (Section 11.3, standard series): it equals $\ln2$. For the second, $\sum_{k\ge1}\frac{x^k}{k+1}=\frac1x\sum_{j\ge2}\frac{x^j}j=\frac1x\bigl(-\ln(1-x)-x\bigr)$, and at $x=\frac12$ this is $2\left(\ln2-\frac12\right)=2\ln2-1$. Therefore the sum is $\ln2-(2\ln2-1)=1-\ln2\approx0.3069$.
+%@ bank-15 | summation(1/(k*(k+1)*2**k),(k,1,oo)) == 1-log(2) and abs(float(1-log(2))-0.3069)<1e-4 and simplify(log(2)-(2*log(2)-1)-(1-log(2))) == 0 and abs(float(sum(Q(1,j*(j+1)*2**j) for j in range(1,60)))-0.30685)<1e-5 | Therefore the sum is $\ln2-(2\ln2-1)=1-\ln2\approx0.3069$.
+\end{exmp}
+
+\subsection*{Group 6: Identifying series}
+
+\begin{exmp}{A series in $x+1$}{b16}
+Identify $\displaystyle\sum_{k=0}^\infty\frac{2^k(x+1)^k}{k!}$ and give its interval of convergence. What are its first four terms in powers of $x+1$?
+
+\textbf{Solution.} The series is $\sum\frac{u^k}{k!}$ with $u=2(x+1)$, the exponential series (Theorem~\ref{11.3-thm:esc}), which converges for all $u$. Hence the series converges for every $x$, to $e^{2(x+1)}=e^{2x+2}$. By Theorem~\ref{11.3-thm:uniq} it is the Taylor series of $e^{2x+2}$ centered at $-1$; its first terms are $1+2(x+1)+2(x+1)^2+\frac43(x+1)^3+\cdots$.
+%@ bank-16 | Tay(exp(2*x+2),-1,3) == 1+2*(x+1)+2*(x+1)**2+Q(4,3)*(x+1)**3 and Q(8,6) == Q(4,3) and Q(4,2) == 2 | $1+2(x+1)+2(x+1)^2+\frac43(x+1)^3+\cdots$.
+\end{exmp}
+
+\begin{exmp}{A logarithm by substitution}{b17}
+Identify $\displaystyle\sum_{k=1}^\infty\frac{x^{2k}}{k\,4^k}$ and find its interval of convergence.
+
+\textbf{Solution.} The series is $\sum_{k\ge1}\frac{u^k}k$ with $u=\frac{x^2}4$. That is the series of $-\ln(1-u)$, which converges for $-1\le u<1$ (Section 11.3). Since $u=\frac{x^2}4\ge0$, the condition is $0\le\frac{x^2}4<1$, that is $\abs x<2$. At $x=\pm2$, $u=1$ and the series is the harmonic series, which diverges. So the interval is $(-2,2)$ and the sum is $-\ln\left(1-\frac{x^2}4\right)=\ln\frac4{4-x^2}$ there. As $x\to\pm2$ the function tends to $+\infty$, in agreement with the divergence.
+%@ bank-17 | series(-log(1-x**2/4),x,0,8).removeO() == sum(x**(2*j)/(j*Integer(4)**j) for j in range(1,4)) and abs(float((-log(1-x**2/4)).subs(x,1)-log(Q(4,3))))<1e-12 and abs(float((-log(1-x**2/4)).subs(x,Q(3,2))-log(Q(16,7))))<1e-12 and solveset(Abs(x**2/4) < 1, x, S.Reals) == Interval.open(-2,2) | the function tends to $+\infty$
+\end{exmp}
+
+\begin{exmp}{A function by integrating twice}{b18}
+Find the interval of convergence of $h(x)=\displaystyle\sum_{k=2}^\infty\frac{x^k}{k(k-1)}$, identify $h$, and deduce $\displaystyle\sum_{k=2}^\infty\frac1{k(k-1)}$ and $\displaystyle\sum_{k=2}^\infty\frac{(-1)^k}{k(k-1)}$.
+
+\textbf{Solution.} \emph{Interval.} $\abs{\frac{a_{k+1}}{a_k}}=\abs x\frac{k-1}{k+1}\to\abs x$, so $R=1$. At $x=\pm1$ the series converges absolutely, since $\frac1{k(k-1)}\le\frac2{k^2}$ for $k\ge2$ (Comparison Test with a $p$-series, $p=2$). The interval is $[-1,1]$.
+
+\emph{Function.} For $\abs x<1$, differentiating twice (Theorem~\ref{thm:diffseries}(1)) gives $h'(x)=\sum_{k\ge2}\frac{x^{k-1}}{k-1}=\sum_{j\ge1}\frac{x^j}j=-\ln(1-x)$ and $h''(x)=\sum_{k\ge2}x^{k-2}=\frac1{1-x}$ (consistent: $\frac d{dx}(-\ln(1-x))=\frac1{1-x}$). Since $h(0)=0$, $h(x)=\int_0^x-\ln(1-t)\,dt=\bigl[(1-t)\ln(1-t)+t\bigr]_0^x$, so $h(x)=x+(1-x)\ln(1-x)$ for $\abs x<1$.
+\[
+h(x)=x+(1-x)\ln(1-x)=\frac{x^2}2+\frac{x^3}6+\frac{x^4}{12}+\frac{x^5}{20}+\cdots\qquad(\abs x<1).
+\]
+%@ bank-18a | Tay(x+(1-x)*log(1-x),0,5) == x**2/2+x**3/6+x**4/12+x**5/20 and simplify(diff((1-x)*log(1-x)+x,x)+log(1-x)) == 0 and [k_*(k_-1) for k_ in range(2,6)] == [2,6,12,20] | \frac{x^2}2+\frac{x^3}6+\frac{x^4}{12}+\frac{x^5}{20}+\cdots\qquad(\abs x<1).
+\emph{Endpoints.} The formula is continuous on $[-1,1]$ (at $x=1$, $(1-x)\ln(1-x)\to0$), so by Abel's theorem (Theorem~\ref{app-thm:abellimit}) the series equals it at both endpoints: $h(1)=1$, and $h(-1)=-1+2\ln2$. Therefore $\sum_{k\ge2}\frac1{k(k-1)}=1$ (this one is also a telescoping series, $\frac1{k-1}-\frac1k$) and $\sum_{k\ge2}\frac{(-1)^k}{k(k-1)}=2\ln2-1\approx0.3863$.
+%@ bank-18b | limit((1-x)*log(1-x),x,1,'-') == 0 and summation(1/(k*(k-1)),(k,2,oo)) == 1 and abs(float(sum(Integer(-1)**j*Q(1,j*(j-1)) for j in range(2,4000)))-0.386294)<1e-5 and abs(float(2*log(2)-1)-0.3863)<1e-4 and (-1)+2*log(2) == 2*log(2)-1 | \approx0.3863$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{$e^xe^y=e^{x+y}$ from the series}{b19}
+Prove, using the series $e^x=\sum\frac{x^j}{j!}$ (Theorem~\ref{11.3-thm:esc}), that $e^xe^y=e^{x+y}$ for all real $x,y$.
+
+\textbf{Plan.} The product of two series is their Cauchy product (Theorem~\ref{thm:prodquot}, proved in Appendix H); the binomial theorem turns each coefficient into $\frac{(x+y)^n}{n!}$.
+
+\begin{proof}
+Fix $x$ and $y$. Both series $\sum\frac{x^j}{j!}$ and $\sum\frac{y^k}{k!}$ converge absolutely (the Ratio Test applied to the absolute values gives the limit $0$). By Theorem~\ref{app-thm:cauchy}, $e^xe^y=\sum_{n=0}^\infty w_n$ with $w_n=\sum_{j=0}^n\frac{x^j}{j!}\cdot\frac{y^{n-j}}{(n-j)!}$. Now $\frac1{j!(n-j)!}=\frac1{n!}\binom nj$, so by the binomial theorem $w_n=\frac1{n!}\sum_{j=0}^n\binom njx^jy^{n-j}=\frac{(x+y)^n}{n!}$. Hence $e^xe^y=\sum_{n=0}^\infty\frac{(x+y)^n}{n!}=e^{x+y}$.
+\end{proof}
+%@ bank-19 | all(expand(sum(x**j*t**(n_-j)/(factorial(j)*factorial(n_-j)) for j in range(n_+1))-(x+t)**n_/factorial(n_)) == 0 for n_ in range(1,9)) and Tay(exp(x),0,5).coeff(x,3) == Q(1,6) and factorial(2)*factorial(3) == 12 | $w_n=\frac1{n!}\sum_{j=0}^n\binom njx^jy^{n-j}=\frac{(x+y)^n}{n!}$.
+A common mistake is to multiply the two series term by term, $\sum\frac{x^jy^j}{j!\,j!}$; that is not the product (the product has all the mixed terms $x^jy^{n-j}$).
+\end{exmp}
+
+\begin{exmp}{The zeros of a power series are isolated}{b20}
+Prove: if $f(x)=\sum_{k\ge0}c_kx^k$ for $\abs x<R$ and not all $c_k$ are $0$, then there is $\delta>0$ such that $f(x)\ne0$ for $0<\abs x<\delta$.
+
+\textbf{Plan.} Factor out the first nonzero term, as in the proof of Theorem~\ref{thm:leading}.
+
+\begin{proof}
+Let $m$ be the smallest index with $c_m\ne0$ and $F(x)=\sum_{j\ge0}c_{m+j}x^j$. As in the proof of Theorem~\ref{thm:leading}, $F$ is a power series with radius at least $R$, $f(x)=x^mF(x)$ for $\abs x<R$, $F$ is continuous at $0$, and $F(0)=c_m\ne0$. By continuity there is $\delta>0$ with $\abs{F(x)-c_m}<\abs{c_m}$ for $\abs x<\delta$, so $F(x)\ne0$ there. For $0<\abs x<\delta$, $f(x)=x^mF(x)$ is a product of two nonzero numbers, so $f(x)\ne0$.
+\end{proof}
+%@ bank-20 | series((sin(x)-x+x**3/6)/x**5,x,0,4).removeO() == Q(1,120)-x**2/5040 and limit((sin(x)-x+x**3/6)/x**5,x,0) == Q(1,120) and Abs(Q(1,120)-Q(1,120)) < Abs(Q(1,120)) | so $F(x)\ne0$ there.
+A common mistake is to think the statement is true of every smooth function. It is not: $f(x)=x^2\sin\frac1x$ (with $f(0)=0$) is differentiable at $0$ and vanishes at $x=\frac1{n\pi}$ for every integer $n\ge1$, points that accumulate at $0$. By this result $f$ is not equal to any power series about $0$ (it is not identically zero, so such a series would have isolated zeros).
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:costerms}.] The series $1-\frac{x^2}2+\frac{x^4}{24}-\cdots$ at $x=0.5$ alternates, with decreasing sizes $\frac{0.5^{2k}}{(2k)!}$, so use the alternating series bound. The sizes are $0.125$ for $k=1$, $2.6\times10^{-3}$ for $k=2$ and $2.17\times10^{-5}$ for $k=3$. The first one below $10^{-4}$ is $k=3$, so keep $k=0,1,2$: three terms, $\cos0.5\approx1-\frac18+\frac1{384}=0.877604$, with error at most $2.2\times10^{-5}$.
+%@ ans-cos | 1-Q(1,8)+Q(1,384) == Q(337,384) and abs(float(Q(337,384))-0.877604)<1e-6 and abs(float(Q(1,2)**6/720)-2.17e-5)<1e-7 and abs(float(Q(1,2)**4/24)-2.6e-3)<1e-4 and float(cos(Q(1,2))-Q(337,384)) < float(Q(1,2)**6/720) | with error at most $2.2\times10^{-5}$.
+  \item[Knowledge Check \ref{kc:limkc}.] $e^x-1=x+\frac{x^2}2+\cdots$ has $m=1$ and the denominator $x$ has $n=1$, so the first limit is $\frac11=1$. $e^x-1-x=\frac{x^2}2+\frac{x^3}6+\cdots$ has $m=2$, the denominator $x^2$ has $n=2$, and the limit is $\frac12$.
+%@ ans-lim | limit((exp(x)-1)/x,x,0) == 1 and Tay(exp(x)-1-x,0,3) == x**2/2+x**3/6 and limit((exp(x)-1-x)/x**2,x,0) == Q(1,2) | and the limit is $\frac12$.
+  \item[Knowledge Check \ref{kc:ksumkc}.] $\sum k\,x^k=\frac x{(1-x)^2}$ at $x=\frac13$ (inside $(-1,1)$): $\frac{1/3}{(2/3)^2}=\frac34$.
+%@ ans-ksum | summation(k/3**k,(k,1,oo)) == Q(3,4) and Q(1,3)/Q(2,3)**2 == Q(3,4) | $\frac{1/3}{(2/3)^2}=\frac34$.
+  \item[Pause and think \ref{think:early}.] With $\sin x\approx x$ and $\sin2x\approx2x$, the numerator is $2x-2x=0$ and the limit comes out as $0$. This is wrong: the true limit is $1$ (Example~\ref{ex:lim1}). The dropped terms of order $x^3$ are exactly what is left after the cancellation, so they decide the limit. The rule is Theorem~\ref{thm:leading}: keep terms until the first \emph{nonzero} term of the numerator and of the denominator have both appeared. A result of $0$ from a cancellation is a signal that the leading terms cancelled and more are needed.
+  \item[Pause and think \ref{think:endpt}.] No contradiction. Theorem~\ref{thm:diffseries} (and Theorem~\ref{11.2-thm:diffint}) say that the differentiated series converges to $f'$ at every point \emph{inside} the radius, and that the new series has the \emph{same radius}. The behavior at the endpoints is not covered: the last sentence of Theorem~\ref{thm:diffseries} warns that it may differ. Here the radius is $1$ for both series; at $x=1$ the original converges (Alternating Series Test) and the derived series $1-1+1-\cdots$ diverges (Divergence Test).
+  \item[Pause and think \ref{think:b0}.] If $g(a)=0$ then $g(x)=(x-a)^nG(x)$ with $n\ge1$ and $G(a)\ne0$ (proof of Theorem~\ref{thm:leading}), so $\frac fg=(x-a)^{-n}\frac fG$ contains a negative power of $x-a$ unless $f$ also vanishes at $a$. A function like $\frac1x$ or $\frac{\sin x}{x^3}=x^{-2}\left(1-\frac{x^2}6+\cdots\right)$ is unbounded near $0$, but every power series is continuous at its center (Theorem~\ref{11.2-thm:diffint}), so it cannot be a power series. In contrast $\frac{\sin x}x=1-\frac{x^2}6+\cdots$ is a power series: the common factor $x$ cancels (Theorem~\ref{11.2-thm:comb}(2)), and the quotient is then continuous with value $1$ at $0$. In general $\frac fg$ is a power series about $a$ exactly when the order of $f$ at $a$ is at least that of $g$ (Theorem~\ref{thm:leading}), after cancelling the common power.
+\end{description}
+
+\end{document}

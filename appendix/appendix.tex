@@ -5,7 +5,7 @@
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel's theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at $x=\pm1$. Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel's theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at $x=\pm1$. Section H, written for Section 11.4, proves that power series can be multiplied and divided by the rules used to compute the series of $e^x\sin x$ and $\tan x$. Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -680,6 +680,88 @@ Check it for $n=9$ and say what it shows about $\sum_{k=1}^\infty\abs{\binom{1/2
 
 \textbf{Solution.} The absolute values of the coefficients are $u_1=\frac12$, $u_2=\frac18$, $u_3=\frac1{16}$, $u_4=\frac5{128}$, $u_5=\frac7{256}$, $u_6=\frac{21}{1024}$, $u_7=\frac{33}{2048}$, $u_8=\frac{429}{32768}$, $u_9=\frac{715}{65536}$, $u_{10}=\frac{2431}{262144}$. Their sum for $k=1,\dots,9$ is $\frac{53381}{65536}\approx0.81453$, and the right side is $1-20\cdot\frac{2431}{262144}=\frac{53381}{65536}$: equal. The partial sums increase and are at most $1$, so they converge to some $L\le1$, and then $(n+1)u_{n+1}=\frac{1-S_n}2\to\frac{1-L}2$. If this limit were positive, $u_n\ge\frac cn$ for large $n$ and $\sum u_k$ would diverge by comparison with the harmonic series, contradicting Theorem~\ref{thm:binomsize}(3). So the limit is $0$, $L=1$, and $\sum_{k=1}^\infty\abs{\binom{1/2}k}=1$. Since $(-1)^k\binom{1/2}k=-u_k$ for $k\ge1$, this says that $\sum_{k=0}^\infty\binom{1/2}k(-1)^k=1-1=0=\sqrt{1+(-1)}$.
 %@ G-binomsum | [abs(binomial(Q(1,2),j)) for j in range(1,11)] == [Q(1,2),Q(1,8),Q(1,16),Q(5,128),Q(7,256),Q(21,1024),Q(33,2048),Q(429,32768),Q(715,65536),Q(2431,262144)] and sum(abs(binomial(Q(1,2),j)) for j in range(1,10)) == Q(53381,65536) and 1-20*Q(2431,262144) == Q(53381,65536) and abs(float(Q(53381,65536))-0.81453)<1e-5 and all(sum(abs(binomial(Q(1,2),j)) for j in range(1,nn+1)) == 1-2*(nn+1)*abs(binomial(Q(1,2),nn+1)) for nn in range(1,25)) | $\frac{53381}{65536}\approx0.81453$
+\end{exmp}
+
+% =====================================================================
+\section{Multiplying and Dividing Power Series}
+
+Section 11.4 multiplies and divides Taylor series to find the first terms of functions such as $e^x\sin x$ and $\tan x$, and uses the product of two series to prove that $e^xe^y=e^{x+y}$. The product of two sums is \emph{not} the sum of the products of corresponding terms, so this needs a proof: the rule is the Cauchy product, in which the coefficient of $(x-a)^n$ collects every product $a_jb_k$ with $j+k=n$. This section proves that the rule is correct (Theorems~\ref{thm:cauchy} and~\ref{thm:psprod}), that a power series with nonzero constant term has a reciprocal that is again a power series (Theorem~\ref{thm:recip}), and hence that quotients work too (Theorem~\ref{thm:quot}). Everything is proved in full. It uses the Monotone Convergence Theorem (Section~A), the existence of the radius of convergence (Section~F) and the uniqueness of power series coefficients (Theorem~\ref{thm:allderiv}).
+
+\begin{thm}{Products of absolutely convergent series}{cauchy}
+Let $\sum_{j=0}^\infty u_j$ and $\sum_{j=0}^\infty v_j$ be absolutely convergent series with sums $U$ and $V$, and let $w_n=\sum_{j=0}^nu_jv_{n-j}$. Then $\sum_{n=0}^\infty w_n$ converges absolutely and its sum is $UV$.
+\end{thm}
+\begin{proof}
+Put $\mu=\sum\abs{u_j}$, $\nu=\sum\abs{v_j}$, $U_N=\sum_{i=0}^Nu_i$, $V_N=\sum_{j=0}^Nv_j$ and $S_N=\sum_{n=0}^Nw_n$. Then $S_N$ is the sum of $u_iv_j$ over the pairs of integers $i,j\ge0$ with $i+j\le N$, and $U_NV_N$ is the sum over the pairs with $i,j\le N$.
+
+\emph{Absolute convergence.} The pairs with $i+j\le N$ all have $i,j\le N$, so
+\[
+\sum_{n=0}^N\abs{w_n}\le\sum_{i+j\le N}\abs{u_i}\abs{v_j}\le\Bigl(\sum_{i=0}^N\abs{u_i}\Bigr)\Bigl(\sum_{j=0}^N\abs{v_j}\Bigr)\le\mu\nu .
+\]
+The partial sums of $\sum\abs{w_n}$ are nondecreasing and bounded above by $\mu\nu$, so the series converges (Theorem~\ref{thm:mct}).
+
+\emph{The sum.} The difference $U_NV_N-S_N$ is the sum of $u_iv_j$ over the pairs with $i,j\le N$ and $i+j>N$. If both $i\le N/2$ and $j\le N/2$ then $i+j\le N$, so in each such pair $i>N/2$ or $j>N/2$. Let $M=\lfloor N/2\rfloor$ and let $\mu_M=\sum_{i>M}\abs{u_i}$ and $\nu_M=\sum_{j>M}\abs{v_j}$ be the tails; they tend to $0$ as $N\to\infty$ (a tail is $\mu$ minus a partial sum that tends to $\mu$). Splitting the pairs according to which of $i>M$ and $j>M$ holds (a pair for which both hold is counted twice, which only enlarges the bound),
+\[
+\abs{U_NV_N-S_N}\le\sum_{i>M}\abs{u_i}\sum_{j\ge0}\abs{v_j}+\sum_{i\ge0}\abs{u_i}\sum_{j>M}\abs{v_j}\le\mu_M\,\nu+\mu\,\nu_M\longrightarrow0 .
+\]
+Since $U_NV_N\to UV$ (Theorem~\ref{thm:laws}), $S_N=U_NV_N-(U_NV_N-S_N)\to UV$.
+\end{proof}
+
+\begin{thm}{Products of power series}{psprod}
+Let $f(x)=\sum_{k=0}^\infty a_k(x-a)^k$ and $g(x)=\sum_{k=0}^\infty b_k(x-a)^k$ for all $x$ with $\abs{x-a}<R$, where $R>0$, and put $c_n=\sum_{j=0}^na_jb_{n-j}$. Then $\sum_{n=0}^\infty c_n(x-a)^n$ converges to $f(x)g(x)$ for every $x$ with $\abs{x-a}<R$.
+\end{thm}
+\begin{proof}
+Let $\abs{x-a}<R$ and choose $x_1$ with $\abs{x-a}<\abs{x_1-a}<R$. Both series converge at $x_1$, so by Theorem~\ref{thm:abel} both converge absolutely at $x$. Apply Theorem~\ref{thm:cauchy} to $u_j=a_j(x-a)^j$ and $v_j=b_j(x-a)^j$: then $w_n=\sum_{j=0}^na_jb_{n-j}(x-a)^{j}(x-a)^{n-j}=c_n(x-a)^n$, and the theorem gives $\sum c_n(x-a)^n=f(x)g(x)$.
+\end{proof}
+
+\begin{thm}{The reciprocal of a power series}{recip}
+Let $f(x)=\sum_{k=0}^\infty a_k(x-a)^k$ for $\abs{x-a}<R$, where $R>0$ and $a_0\ne0$. Define $b_0=\frac1{a_0}$ and $b_n=-\frac1{a_0}\sum_{j=1}^na_jb_{n-j}$ for $n\ge1$. Then there is $\rho>0$ such that for $\abs{x-a}<\rho$ the series $\sum b_n(x-a)^n$ converges, $f(x)\ne0$ and $\dfrac1{f(x)}=\sum_{n=0}^\infty b_n(x-a)^n$.
+\end{thm}
+\begin{proof}
+\emph{The coefficients do not grow fast.} Choose $s$ with $0<s<R$. The series $\sum a_ks^k$ converges, so its terms tend to $0$ and are bounded: $\abs{a_k}s^k\le B$ for every $k$, where we may take $B\ge\abs{a_0}$. Put $L=B/\abs{a_0}$ and $d_i=s^i\abs{b_i}$, so $d_0=\frac1{\abs{a_0}}$. For $n\ge1$ the definition of $b_n$ gives
+\[
+\abs{b_n}\le\frac1{\abs{a_0}}\sum_{j=1}^n\abs{a_j}\abs{b_{n-j}}\le L\sum_{j=1}^ns^{-j}\abs{b_{n-j}},\qquad\text{so}\qquad d_n\le L\sum_{i=0}^{n-1}d_i .
+\]
+We claim $d_n\le d_0(1+L)^n$ for all $n$. It is true for $n=0$; if it holds for all indices below $n\ge1$, then $d_n\le L\,d_0\sum_{i=0}^{n-1}(1+L)^i=d_0\bigl((1+L)^n-1\bigr)\le d_0(1+L)^n$. Hence $\abs{b_n}\le d_0\left(\frac{1+L}s\right)^n$.
+
+\emph{Convergence.} Let $\rho=\frac s{1+L}$ (so $\rho<s<R$) and $\abs{x-a}<\rho$. Then $\abs{b_n(x-a)^n}\le d_0\theta^n$ with $\theta=\frac{(1+L)\abs{x-a}}s<1$, so $\sum b_n(x-a)^n$ converges (comparison with a geometric series); call its sum $g(x)$.
+
+\emph{The product is $1$.} By Theorem~\ref{thm:psprod} (with $\rho$ in place of $R$), $f(x)g(x)=\sum c_n(x-a)^n$ with $c_n=\sum_{j=0}^na_jb_{n-j}$. Here $c_0=a_0b_0=1$, and for $n\ge1$, $c_n=a_0b_n+\sum_{j=1}^na_jb_{n-j}=0$ by the definition of $b_n$. So $f(x)g(x)=1$ for $\abs{x-a}<\rho$; therefore $f(x)\ne0$ and $g(x)=\frac1{f(x)}$.
+\end{proof}
+
+\begin{thm}{Quotients of power series}{quot}
+Let $f(x)=\sum a_k(x-a)^k$ and $g(x)=\sum b_k(x-a)^k$ for $\abs{x-a}<R$, with $R>0$ and $b_0\ne0$. Then there is $\rho>0$ such that $\dfrac{f(x)}{g(x)}=\sum_{n=0}^\infty q_n(x-a)^n$ for $\abs{x-a}<\rho$, where the coefficients are determined one after another by
+\[
+q_n=\frac1{b_0}\Bigl(a_n-\sum_{j=1}^nb_jq_{n-j}\Bigr),\qquad\text{equivalently}\qquad a_n=\sum_{j=0}^nb_jq_{n-j}.
+\]
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:recip}, $\frac1g=\sum r_n(x-a)^n$ for $\abs{x-a}<\rho_1$, for some $\rho_1>0$ and coefficients $r_n$. Then $\frac fg=f\cdot\frac1g=\sum q_n(x-a)^n$ on $\abs{x-a}<\min(\rho_1,R)=:\rho$ by Theorem~\ref{thm:psprod}, where $q_n=\sum_{j=0}^na_jr_{n-j}$. Apply Theorem~\ref{thm:psprod} again to $g$ and $\sum q_n(x-a)^n$: for $\abs{x-a}<\rho$,
+\[
+f(x)=g(x)\cdot\frac{f(x)}{g(x)}=\sum_{n=0}^\infty\Bigl(\sum_{j=0}^nb_jq_{n-j}\Bigr)(x-a)^n .
+\]
+Both sides are power series in $(x-a)$ equal on an interval, so their coefficients agree (by Theorem~\ref{thm:allderiv}, the coefficient of $(x-a)^n$ in a power series is $\frac{1}{n!}$ times the $n$-th derivative of its sum at $a$). Hence $a_n=\sum_{j=0}^nb_jq_{n-j}$; solving for $q_n$ (the term $j=0$ is $b_0q_n$) gives the formula.
+\end{proof}
+
+\begin{exmp}{The product $e^x\cdot\frac1{1-x}$}{prodex}
+Find the first terms of the Maclaurin series of $\dfrac{e^x}{1-x}$, and the limit of its coefficients.
+
+\textbf{Solution.} With $a_j=\frac1{j!}$ (valid for all $x$) and $b_k=1$ (valid for $\abs x<1$), Theorem~\ref{thm:psprod} with $R=1$ gives $c_n=\sum_{j=0}^n\frac1{j!}\cdot1$, the partial sums of the series for $e$:
+\[
+\frac{e^x}{1-x}=1+2x+\frac52x^2+\frac83x^3+\frac{65}{24}x^4+\frac{163}{60}x^5+\cdots\qquad(\abs x<1).
+\]
+%@ H-prod | Tay(exp(x)/(1-x),0,5) == 1+2*x+Q(5,2)*x**2+Q(8,3)*x**3+Q(65,24)*x**4+Q(163,60)*x**5 and [sum(Q(1,factorial(j)) for j in range(nn+1)) for nn in range(6)] == [1,2,Q(5,2),Q(8,3),Q(65,24),Q(163,60)] | +\frac{65}{24}x^4+\frac{163}{60}x^5+\cdots
+The coefficients increase to $e=2.71828\dots$, because $c_n=\sum_{j\le n}\frac1{j!}\to e$.
+\end{exmp}
+
+\begin{exmp}{The first terms of $\tan x$}{tanex}
+Use Theorem~\ref{thm:quot} with $f=\sin x$ and $g=\cos x$ to find the first four nonzero terms of the series of $\tan x$.
+
+\textbf{Solution.} $f$ has $a_1=1$, $a_3=-\frac16$, $a_5=\frac1{120}$, $a_7=-\frac1{5040}$ and zero for the other indices up to $7$; $g$ has $b_0=1$, $b_2=-\frac12$, $b_4=\frac1{24}$, $b_6=-\frac1{720}$ and zero for odd indices. By the formula $q_n=a_n-\sum_{j=1}^nb_jq_{n-j}$ (here $b_0=1$): $q_0=0$; $q_1=a_1=1$; $q_2=-b_2q_0=0$; $q_3=a_3-b_2q_1=-\frac16+\frac12=\frac13$; $q_4=0$; $q_5=a_5-b_2q_3-b_4q_1=\frac1{120}+\frac16-\frac1{24}=\frac2{15}$; $q_7=a_7-b_2q_5-b_4q_3-b_6q_1=-\frac1{5040}+\frac1{15}-\frac1{72}+\frac1{720}=\frac{17}{315}$. So
+\[
+\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\frac{17x^7}{315}+\cdots
+\]
+on some interval about $0$ (Theorem~\ref{thm:quot} guarantees one; its length is not found by this method).
+%@ H-tan | Tay(tan(x),0,7) == x+x**3/3+2*x**5/15+17*x**7/315 and -Q(1,6)+Q(1,2) == Q(1,3) and Q(1,120)+Q(1,6)-Q(1,24) == Q(2,15) and -Q(1,5040)+Q(1,15)-Q(1,72)+Q(1,720) == Q(17,315) | x+\frac{x^3}3+\frac{2x^5}{15}+\frac{17x^7}{315}+\cdots
 \end{exmp}
 
 
