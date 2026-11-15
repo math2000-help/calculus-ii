@@ -33,6 +33,6 @@ modules:
   - {id: "11.3", chapter: 11, title: "Taylor Series", prereqs: ["11.2"], status: done}
   - {id: "11.4", chapter: 11, title: "Working with Taylor Series", prereqs: ["11.3"], status: done}
   - {id: "12.1", chapter: 12, title: "Parametric Equations", prereqs: ["11.4"], status: done}
-  - {id: "12.2", chapter: 12, title: "Polar Coordinates", prereqs: ["12.1"], status: planned}
+  - {id: "12.2", chapter: 12, title: "Polar Coordinates", prereqs: ["12.1"], status: done}
   - {id: "12.3", chapter: 12, title: "Calculus in Polar Coordinates", prereqs: ["12.2"], status: planned}
   - {id: "12.4", chapter: 12, title: "Conic Sections", prereqs: ["12.3"], status: planned}

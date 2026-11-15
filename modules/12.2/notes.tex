@@ -1,0 +1,1023 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{12}{2}{Polar Coordinates}
+\calcxdoc{12.1}
+
+\begin{document}
+
+\section{Polar Coordinates}
+
+\begin{guide}
+A Cartesian grid is made of two families of straight lines. Many problems are better described by \emph{circles and rays}: the heat shield of a space vehicle, a radar screen, the orbit of a planet, the sound field around a loudspeaker. For these, the natural address of a point is its \emph{distance} from a fixed point and the \emph{direction} in which it lies. That is a polar coordinate system. It has one price: a point no longer has a unique address, and that fact, which looks harmless, decides how we find symmetry, how we find complete curves, and above all how we find where two curves meet. This section builds the system, proves the formulas for converting and for lines and circles, graphs the standard families of polar curves (circles, cardioids and limaçons, roses, lemniscates, spirals), and develops the tests for symmetry, for the complete curve and for intersection points, all proved in full. The calculus of polar curves comes in the next section.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item plot a point given in polar coordinates, give all of its polar representations, including those with a negative radial coordinate, and convert between polar and Cartesian coordinates choosing the angle in the correct quadrant;
+  \item convert equations between polar and Cartesian form, and write polar equations of lines and circles;
+  \item graph $r=f(\theta)$ by tables and by the Cartesian-to-polar method, recognize circles, limaçons, roses, lemniscates and spirals, and state the interval of $\theta$ that traces each curve once;
+  \item test a polar equation for symmetry, and find the period of a polar curve;
+  \item find \emph{all} intersection points of two polar curves, including the points reached at different angles and the origin;
+  \item prove each of these statements.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Polar coordinates and their representations}
+
+Fix a point $O$, the \emph{pole} (the origin), and a ray from $O$, the \emph{polar axis}, which we draw along the positive $x$-axis. Angles are measured counterclockwise from the polar axis, and the \emph{ray at angle $\theta$} is the ray from $O$ through the point $(\cos\theta,\sin\theta)$.
+
+\begin{defn}{Polar coordinates}{polar}
+Let $r$ and $\theta$ be real numbers. The point $P(r,\theta)$ is defined as follows.
+\begin{itemize}[nosep]
+  \item If $r>0$: the point on the ray at angle $\theta$ whose distance from $O$ is $r$.
+  \item If $r<0$: the point on the ray at angle $\theta+\pi$ (the ray \emph{opposite} to the ray at angle $\theta$) whose distance from $O$ is $\abs r$.
+  \item If $r=0$: the point $O$.
+\end{itemize}
+We call $(r,\theta)$ a \emph{polar representation} (or a pair of polar coordinates) of $P(r,\theta)$. The number $r$ is the \emph{radial coordinate}, a signed distance, and $\theta$ is the \emph{angular coordinate}.
+\end{defn}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \draw[->] (-3.2,0) -- (3.7,0) node[right] {$x$};
+  \draw[->] (0,-2.2) -- (0,2.4) node[above] {$y$};
+  \draw[gray,dashed] (-2.9,-1.675) -- (2.9,1.675);
+  \draw[very thick,blue!70!black] (0,0) -- (2.0785,1.2);
+  \draw[very thick,red!70!black] (0,0) -- (-2.0785,-1.2);
+  \draw (0.9,0) arc (0:30:0.9);
+  \node at (1.25,0.22) {$\theta$};
+  \fill (2.0785,1.2) circle (0.07) node[above right] {$P(r,\theta)$, $r>0$};
+%@ g-def-P | abs(float(2.4*cos(pi/6))-2.0785)<1e-4 and abs(float(2.4*sin(pi/6))-1.2)<1e-4 | (2.0785,1.2) circle
+  \fill (-2.0785,-1.2) circle (0.07) node[below left] {$P^*(-r,\theta)$};
+%@ g-def-Pstar | abs(float(-2.4*cos(pi/6))+2.0785)<1e-4 and abs(float(-2.4*sin(pi/6))+1.2)<1e-4 | (-2.0785,-1.2) circle
+  \fill (0,0) circle (0.05) node[below right] {$O$};
+  \node[blue!70!black] at (0.75,1.0) {$r$};
+  \node[red!70!black] at (-1.2,-1.0) {$|r|$};
+\end{tikzpicture}
+\end{center}
+
+The picture is drawn for $r=2.4$ and $\theta=\frac\pi6$: $P^*(-r,\theta)$ is the reflection of $P(r,\theta)$ through the origin. Polar coordinates \emph{agree} with Cartesian coordinates in the following precise sense.
+
+\begin{thm}{Conversion between polar and Cartesian coordinates}{conv}
+The point $P(r,\theta)$, for \emph{every} real $r$ (positive, negative or zero), has Cartesian coordinates
+\[
+x=r\cos\theta,\qquad y=r\sin\theta.
+\]
+Consequently $x^2+y^2=r^2$, and $\tan\theta=\frac yx$ if $x\ne0$.
+\end{thm}
+\begin{proof}
+\emph{Case $r>0$.} The ray at angle $\theta$ passes through the point $(\cos\theta,\sin\theta)$, which is at distance $\sqrt{\cos^2\theta+\sin^2\theta}=1$ from $O$. The point on this ray at distance $r$ is $r$ times this point: $(r\cos\theta,r\sin\theta)$.
+\emph{Case $r<0$.} By definition the point is on the ray at angle $\theta+\pi$, at distance $\abs r=-r$. By the case just proved it is $\bigl(\abs r\cos(\theta+\pi),\abs r\sin(\theta+\pi)\bigr)$. Since $\cos(\theta+\pi)=-\cos\theta$ and $\sin(\theta+\pi)=-\sin\theta$, and $\abs r=-r$, this is $(-r\cdot(-\cos\theta),\,-r\cdot(-\sin\theta))=(r\cos\theta,r\sin\theta)$.
+%@ conv-neg | (lambda q: simplify(Abs(q)*cos(t+pi)-q*cos(t)) == 0 and simplify(Abs(q)*sin(t+pi)-q*sin(t)) == 0)(Symbol('q',negative=True)) | this is $(-r\cdot(-\cos\theta),\,-r\cdot(-\sin\theta))=(r\cos\theta,r\sin\theta)$.
+\emph{Case $r=0$.} Both sides are $(0,0)$.
+\emph{The consequences.} $x^2+y^2=r^2\cos^2\theta+r^2\sin^2\theta=r^2(\cos^2\theta+\sin^2\theta)=r^2$. If $x\ne0$ then $r\ne0$ and $\cos\theta\ne0$, and $\frac yx=\frac{r\sin\theta}{r\cos\theta}=\tan\theta$.
+%@ conv-sq | simplify((r*cos(t))**2+(r*sin(t))**2-r**2) == 0 and simplify((r*sin(t))/(r*cos(t))-tan(t)) == 0 | $x^2+y^2=r^2\cos^2\theta+r^2\sin^2\theta=r^2(\cos^2\theta+\sin^2\theta)=r^2$.
+\end{proof}
+
+A single point has \emph{many} representations: we can add a full turn to $\theta$, and we can replace $(r,\theta)$ by $(-r,\theta+\pi)$. The next theorem says that these are the only changes.
+
+\begin{thm}{All the representations of a point}{reps}
+\begin{enumerate}[nosep]
+  \item The origin $O$ has the representations $(0,\theta)$, for every real $\theta$, and no others.
+  \item Let $P\ne O$ have Cartesian coordinates $(x,y)$ and put $\rho=\sqrt{x^2+y^2}>0$. Then there is an angle $\theta_0$ with $\cos\theta_0=\frac x\rho$ and $\sin\theta_0=\frac y\rho$, and the representations of $P$ are exactly
+  \[
+  (\rho,\ \theta_0+2\pi k)\quad\text{and}\quad(-\rho,\ \theta_0+\pi+2\pi k),\qquad k=0,\pm1,\pm2,\dots
+  \]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:conv}, $(r,\theta)$ represents the point $(x,y)$ exactly when $r\cos\theta=x$ and $r\sin\theta=y$.
+(1) For $(x,y)=(0,0)$ these equations say $r\cos\theta=0=r\sin\theta$. Since $\cos\theta$ and $\sin\theta$ are never both $0$ (because $\cos^2\theta+\sin^2\theta=1$), this forces $r=0$, and then any $\theta$ works.
+(2) \emph{Existence of $\theta_0$.} Put $u=\frac x\rho$ and $v=\frac y\rho$, so $u^2+v^2=1$ and $\abs u\le1$. Let $\theta_0=\arccos u$ if $v\ge0$ and $\theta_0=-\arccos u$ if $v<0$. Then $\cos\theta_0=u$ in both cases (cosine is even). Also $\sin(\arccos u)=\sqrt{1-u^2}=\abs v$. If $v\ge0$, $\sin\theta_0=\abs v=v$; if $v<0$, $\sin\theta_0=-\abs v=v$.
+%@ reps-exist | (lambda u: simplify(sin(acos(u))-sqrt(1-u**2)) == 0 and simplify(cos(-acos(u))-u) == 0)(Symbol('u')) | If $v\ge0$, $\sin\theta_0=\abs v=v$; if $v<0$, $\sin\theta_0=-\abs v=v$.
+\emph{All the representations.} Let $(r,\theta)$ represent $P$. Squaring the two equations and adding, $r^2=x^2+y^2=\rho^2$, so $r=\rho$ or $r=-\rho$.
+If $r=\rho$, then $\cos\theta=\frac x\rho=\cos\theta_0$ and $\sin\theta=\sin\theta_0$. By the subtraction formula,
+\[
+\cos(\theta-\theta_0)=\cos\theta\cos\theta_0+\sin\theta\sin\theta_0=\cos^2\theta_0+\sin^2\theta_0=1,
+\]
+%@ reps-sub | simplify(cos(a)*cos(b)+sin(a)*sin(b)-cos(a-b)) == 0 and simplify(cos(a)**2+sin(a)**2-1) == 0 | \cos(\theta-\theta_0)=\cos\theta\cos\theta_0+\sin\theta\sin\theta_0=\cos^2\theta_0+\sin^2\theta_0=1,
+and the cosine equals $1$ only at the multiples of $2\pi$, so $\theta=\theta_0+2\pi k$.
+If $r=-\rho$, then $\cos\theta=-\frac x\rho=\cos(\theta_0+\pi)$ and $\sin\theta=-\frac y\rho=\sin(\theta_0+\pi)$, and the same argument with $\theta_0+\pi$ in place of $\theta_0$ gives $\theta=\theta_0+\pi+2\pi k$.
+Conversely, each pair in the list satisfies $r\cos\theta=x$ and $r\sin\theta=y$, because sine and cosine have period $2\pi$ and $\cos(\theta_0+\pi)=-\cos\theta_0$, $\sin(\theta_0+\pi)=-\sin\theta_0$.
+\end{proof}
+
+\begin{proc}{From Cartesian to polar coordinates}{topolar}
+Given $(x,y)\ne(0,0)$:
+\begin{enumerate}[nosep]
+  \item Compute $\rho=\sqrt{x^2+y^2}$.
+  \item Find an angle $\theta_0$ with $\cos\theta_0=\frac x\rho$ \emph{and} $\sin\theta_0=\frac y\rho$. Decide the quadrant from the signs of $x$ and $y$ first; use a reference angle ($\arctan\frac{\abs y}{\abs x}$) and place it in that quadrant.
+  \item The representations are $(\rho,\theta_0+2\pi k)$ and $(-\rho,\theta_0+\pi+2\pi k)$.
+  \item Check by converting back: $\rho\cos\theta_0=x$ and $\rho\sin\theta_0=y$.
+\end{enumerate}
+The origin is $(0,\theta)$ for any $\theta$.
+\end{proc}
+
+\begin{warn}[The tangent relation alone is not enough]
+$\tan\theta=\frac yx$ has solutions in two opposite quadrants, and a calculator's $\arctan\frac yx$ always returns an angle between $-\frac\pi2$ and $\frac\pi2$, which is correct only when $x>0$. For $(-1,1)$ the value $\arctan(-1)=-\frac\pi4$ points into the \emph{fourth} quadrant, but the point is in the second: $\theta_0=\frac{3\pi}4$. Always look at the signs of $x$ and $y$.
+\end{warn}
+
+\begin{exmp}{Points in polar coordinates}{points}
+Plot the points $A\left(2,\frac{7\pi}6\right)$, $B\left(-3,\frac\pi4\right)$ and $C\left(-2,-\frac{2\pi}3\right)$. For each, give its Cartesian coordinates and two other polar representations.
+
+\textbf{Solution.} \emph{Locating the points.} $A$: $r=2>0$, so $A$ is on the ray at angle $\frac{7\pi}6=210^\circ$ (in the third quadrant, $30^\circ$ past the negative $x$-axis) at distance $2$. $B$: $r=-3<0$, so first find the ray at angle $\frac\pi4$, then go to the \emph{opposite} ray (angle $\frac\pi4+\pi=\frac{5\pi}4$), at distance $3$; $B$ is in the third quadrant. $C$: $r=-2<0$ and $\theta=-\frac{2\pi}3$ is $120^\circ$ clockwise; the opposite ray has angle $-\frac{2\pi}3+\pi=\frac\pi3$, so $C$ is on the ray at $60^\circ$, at distance $2$, in the first quadrant (Figure below).
+
+\emph{Cartesian coordinates} (Theorem~\ref{thm:conv}). For $A$: $\cos\frac{7\pi}6=-\frac{\sqrt3}2$ and $\sin\frac{7\pi}6=-\frac12$, so $A=\left(2\cdot\left(-\frac{\sqrt3}2\right),\,2\cdot\left(-\frac12\right)\right)=(-\sqrt3,-1)$. For $B$: $\cos\frac\pi4=\sin\frac\pi4=\frac{\sqrt2}2$, so $B=\left(-3\cdot\frac{\sqrt2}2,\,-3\cdot\frac{\sqrt2}2\right)=\left(-\frac{3\sqrt2}2,-\frac{3\sqrt2}2\right)\approx(-2.12,-2.12)$. For $C$: $\cos\left(-\frac{2\pi}3\right)=-\frac12$ and $\sin\left(-\frac{2\pi}3\right)=-\frac{\sqrt3}2$, so $C=\left(-2\cdot\left(-\frac12\right),\,-2\cdot\left(-\frac{\sqrt3}2\right)\right)=(1,\sqrt3)$.
+%@ pts-cart | (2*cos(7*pi/6), 2*sin(7*pi/6)) == (-sqrt(3),-1) and (-3*cos(pi/4), -3*sin(pi/4)) == (-3*sqrt(2)/2, -3*sqrt(2)/2) and (-2*cos(-2*pi/3), -2*sin(-2*pi/3)) == (1,sqrt(3)) and abs(float(3*sqrt(2)/2)-2.12)<5e-3 | $C=\left(-2\cdot\left(-\frac12\right),\,-2\cdot\left(-\frac{\sqrt3}2\right)\right)=(1,\sqrt3)$.
+
+\emph{Other representations} (Theorem~\ref{thm:reps}: subtract $2\pi$, or change the sign of $r$ and add or subtract $\pi$). $A$: $\left(2,\frac{7\pi}6-2\pi\right)=\left(2,-\frac{5\pi}6\right)$ and $\left(-2,\frac{7\pi}6-\pi\right)=\left(-2,\frac\pi6\right)$. $B$: $\left(3,\frac\pi4+\pi\right)=\left(3,\frac{5\pi}4\right)$ and $\left(-3,\frac\pi4-2\pi\right)=\left(-3,-\frac{7\pi}4\right)$. $C$: $\left(2,-\frac{2\pi}3+\pi\right)=\left(2,\frac\pi3\right)$ and $\left(-2,-\frac{2\pi}3+2\pi\right)=\left(-2,\frac{4\pi}3\right)$.
+\emph{Check.} Convert $\left(-2,\frac\pi6\right)$: $\left(-2\cdot\frac{\sqrt3}2,-2\cdot\frac12\right)=(-\sqrt3,-1)=A$; and $\left(2,\frac\pi3\right)$: $\left(2\cdot\frac12,2\cdot\frac{\sqrt3}2\right)=(1,\sqrt3)=C$.
+%@ pts-rep | (-2*cos(pi/6), -2*sin(pi/6)) == (-sqrt(3),-1) and (2*cos(pi/3), 2*sin(pi/3)) == (1,sqrt(3)) and (3*cos(5*pi/4), 3*sin(5*pi/4)) == (-3*sqrt(2)/2, -3*sqrt(2)/2) and (-3*cos(-7*pi/4), -3*sin(-7*pi/4)) == (-3*sqrt(2)/2, -3*sqrt(2)/2) and (-2*cos(4*pi/3), -2*sin(4*pi/3)) == (1,sqrt(3)) and (2*cos(-5*pi/6), 2*sin(-5*pi/6)) == (-sqrt(3),-1) | $\left(2\cdot\frac12,2\cdot\frac{\sqrt3}2\right)=(1,\sqrt3)=C$.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.15cm]
+  \foreach \rad in {1,2,3} {\draw[gray!55] (0,0) circle (\rad);}
+  \foreach \ang in {0,30,...,330} {\draw[gray!35] (0,0) -- (\ang:3.3);}
+  \draw[->] (-3.5,0) -- (3.7,0) node[right] {$x$};
+  \draw[->] (0,-3.5) -- (0,3.6) node[above] {$y$};
+  \foreach \u in {1,2,3} {\node[font=\scriptsize,below right] at (\u,0) {\u};}
+  \draw[dashed,red!70!black] (0,0) -- (2.1213,2.1213);
+  \draw[dashed,red!70!black] (0,0) -- (-1,-1.7321);
+  \fill[blue!70!black] (-1.7321,-1) circle (0.07) node[left] {$A\,(2,7\pi/6)$};
+%@ g-pts-A | (2*cos(7*pi/6), 2*sin(7*pi/6)) == (-sqrt(3),-1) and abs(float(sqrt(3))-1.7321)<1e-4 | (-1.7321,-1) circle
+  \fill[blue!70!black] (-2.1213,-2.1213) circle (0.07) node[below left] {$B\,(-3,\pi/4)$};
+%@ g-pts-B | abs(float(-3*cos(pi/4))+2.1213)<1e-4 and abs(float(-3*sin(pi/4))+2.1213)<1e-4 | (-2.1213,-2.1213) circle
+  \fill[blue!70!black] (1,1.7321) circle (0.07) node[above right] {$C\,(-2,-2\pi/3)$};
+%@ g-pts-C | (-2*cos(-2*pi/3), -2*sin(-2*pi/3)) == (1,sqrt(3)) and abs(float(sqrt(3))-1.7321)<1e-4 | (1,1.7321) circle
+  \node[red!70!black,font=\scriptsize] at (2.45,2.45) {ray $\theta=\pi/4$};
+  \node[red!70!black,font=\scriptsize] at (-1.0,-2.05) {ray $\theta=-2\pi/3$};
+\end{tikzpicture}
+\end{center}
+
+The dashed rays show the angle that was \emph{given} for $B$ and for $C$; because $r<0$, the point is on the opposite ray.
+
+\begin{exmp}{Converting coordinates}{convert}
+(a) Convert the polar points $P\left(-4,\frac{2\pi}3\right)$ and $Q\left(6,-\frac{5\pi}4\right)$ to Cartesian coordinates. (b) Convert the Cartesian points $(-3,-3\sqrt3)$, $(-2,1)$ and $(0,-5)$ to polar coordinates, giving one representation with $r>0$ and one with $r<0$.
+
+\textbf{Solution.} (a) \emph{$P$.} $\cos\frac{2\pi}3=-\frac12$ and $\sin\frac{2\pi}3=\frac{\sqrt3}2$, so $x=-4\cdot\left(-\frac12\right)=2$ and $y=-4\cdot\frac{\sqrt3}2=-2\sqrt3$: $P=(2,-2\sqrt3)\approx(2,-3.46)$. \emph{$Q$.} $\cos\left(-\frac{5\pi}4\right)=\cos\frac{5\pi}4=-\frac{\sqrt2}2$ and $\sin\left(-\frac{5\pi}4\right)=-\sin\frac{5\pi}4=\frac{\sqrt2}2$, so $Q=\left(6\cdot\left(-\frac{\sqrt2}2\right),\,6\cdot\frac{\sqrt2}2\right)=\left(-3\sqrt2,3\sqrt2\right)$.
+%@ conv-a | (-4*cos(2*pi/3), -4*sin(2*pi/3)) == (2,-2*sqrt(3)) and (6*cos(-5*pi/4), 6*sin(-5*pi/4)) == (-3*sqrt(2), 3*sqrt(2)) and abs(float(2*sqrt(3))-3.46)<5e-3 | $Q=\left(6\cdot\left(-\frac{\sqrt2}2\right),\,6\cdot\frac{\sqrt2}2\right)=\left(-3\sqrt2,3\sqrt2\right)$.
+(b) \emph{$(-3,-3\sqrt3)$.} $\rho=\sqrt{9+27}=\sqrt{36}=6$. Both coordinates are negative, so the point is in the third quadrant. $\cos\theta_0=\frac{-3}6=-\frac12$ and $\sin\theta_0=\frac{-3\sqrt3}6=-\frac{\sqrt3}2$: the reference angle is $\frac\pi3$, so $\theta_0=\pi+\frac\pi3=\frac{4\pi}3$. Representations: $\left(6,\frac{4\pi}3\right)$ and $\left(-6,\frac{4\pi}3-\pi\right)=\left(-6,\frac\pi3\right)$. \emph{Check:} $6\cos\frac{4\pi}3=-3$, $6\sin\frac{4\pi}3=-3\sqrt3$.
+%@ conv-b1 | sqrt(9+27) == 6 and (6*cos(4*pi/3), 6*sin(4*pi/3)) == (-3,-3*sqrt(3)) and (-6*cos(pi/3), -6*sin(pi/3)) == (-3,-3*sqrt(3)) | \emph{Check:} $6\cos\frac{4\pi}3=-3$, $6\sin\frac{4\pi}3=-3\sqrt3$.
+\emph{$(-2,1)$.} $\rho=\sqrt{4+1}=\sqrt5$. The point is in the second quadrant ($x<0$, $y>0$), with $\tan\theta=-\frac12$. The calculator value $\arctan\left(-\frac12\right)\approx-0.4636$ is in the fourth quadrant, so we must add $\pi$: $\theta_0=\pi-\arctan\frac12\approx3.1416-0.4636=2.6779$. Representations: $\left(\sqrt5,\,\pi-\arctan\tfrac12\right)$ and $\left(-\sqrt5,\,-\arctan\tfrac12\right)$ (subtract $\pi$ from $\theta_0$). \emph{Check:} $\sqrt5\cos(2.6779)\approx-2.000$ and $\sqrt5\sin(2.6779)\approx1.000$.
+%@ conv-b2 | simplify(sqrt(5)*cos(pi-atan(Q(1,2)))+2) == 0 and simplify(sqrt(5)*sin(pi-atan(Q(1,2)))-1) == 0 and abs(float(pi-atan(Q(1,2)))-2.6779)<1e-4 and abs(float(atan(Q(1,2)))-0.4636)<1e-4 and simplify(-sqrt(5)*cos(-atan(Q(1,2)))+2) == 0 and simplify(-sqrt(5)*sin(-atan(Q(1,2)))-1) == 0 | \emph{Check:} $\sqrt5\cos(2.6779)\approx-2.000$ and $\sqrt5\sin(2.6779)\approx1.000$.
+\emph{$(0,-5)$.} $\rho=5$, and $\frac y\rho=-1$, $\frac x\rho=0$, so $\theta_0=-\frac\pi2$ ($\tan\theta$ is undefined here; the signs and the unit vector $(0,-1)$ decide). Representations: $\left(5,-\frac\pi2\right)$ and $\left(-5,\frac\pi2\right)$.
+%@ conv-b3 | (5*cos(-pi/2), 5*sin(-pi/2)) == (0,-5) and (-5*cos(pi/2), -5*sin(pi/2)) == (0,-5) | and $\left(-5,\frac\pi2\right)$.
+\end{exmp}
+
+\begin{kc}{Same point or not}{samekc}
+Which of the pairs $\left(2,\frac\pi3\right)$, $\left(-2,\frac{4\pi}3\right)$, $\left(2,\frac{7\pi}3\right)$, $\left(-2,-\frac\pi3\right)$ represent the same point as $\left(2,\frac\pi3\right)$?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Distance, equations, lines and circles}
+
+\begin{thm}{The distance formula in polar coordinates}{dist}
+For any real $r_1,r_2,\theta_1,\theta_2$, the distance $d$ between $P_1(r_1,\theta_1)$ and $P_2(r_2,\theta_2)$ satisfies
+\[
+d^2=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2).
+\]
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:conv}, $P_1=(r_1\cos\theta_1,r_1\sin\theta_1)$ and $P_2=(r_2\cos\theta_2,r_2\sin\theta_2)$. The distance formula gives
+\begin{align*}
+d^2&=(r_1\cos\theta_1-r_2\cos\theta_2)^2+(r_1\sin\theta_1-r_2\sin\theta_2)^2\\
+&=r_1^2\cos^2\theta_1-2r_1r_2\cos\theta_1\cos\theta_2+r_2^2\cos^2\theta_2+r_1^2\sin^2\theta_1-2r_1r_2\sin\theta_1\sin\theta_2+r_2^2\sin^2\theta_2\\
+&=r_1^2\left(\cos^2\theta_1+\sin^2\theta_1\right)+r_2^2\left(\cos^2\theta_2+\sin^2\theta_2\right)-2r_1r_2\left(\cos\theta_1\cos\theta_2+\sin\theta_1\sin\theta_2\right)\\
+&=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2),
+\end{align*}
+where the last step uses $\cos^2+\sin^2=1$ and the subtraction formula for the cosine. (This is the law of cosines.)
+%@ dist-proof | simplify((a*cos(t)-b*cos(c))**2+(a*sin(t)-b*sin(c))**2-(a**2+b**2-2*a*b*cos(t-c))) == 0 | &=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2),
+\end{proof}
+
+\begin{defn}{The graph of a polar equation}{pgraph}
+The \emph{graph} of a polar equation $E(r,\theta)=0$ (for example $r=f(\theta)$) is the set of all points $P$ for which \emph{at least one} polar representation $(r,\theta)$ of $P$ satisfies the equation.
+\end{defn}
+
+Because a point has infinitely many representations, a point can be on the graph even though the representation you happened to write down does not satisfy the equation. For instance $\left(-1,\frac{3\pi}2\right)$ does not satisfy $r=1+\cos\theta$ (the right side is $1+0=1$), yet it represents the same point as $\left(1,\frac\pi2\right)$, which does: the point $(0,-1)$ is on the graph of $r=1+\cos\theta$. The next theorem tells when an equation can be converted without such surprises.
+
+\begin{thm}{Converting equations}{eqconv}
+\begin{enumerate}[nosep]
+  \item Let $F(x,y)=0$ be a Cartesian equation and $E(r,\theta)=F(r\cos\theta,r\sin\theta)$. A point is on the graph of $E(r,\theta)=0$ exactly when it satisfies $F(x,y)=0$, and then \emph{every} representation of the point satisfies $E=0$.
+  \item The graph of $r\,E(r,\theta)=0$ is the graph of $E(r,\theta)=0$ together with the origin.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Let $(r,\theta)$ be any representation of the point $P=(x,y)$. By Theorem~\ref{thm:conv}, $E(r,\theta)=F(r\cos\theta,r\sin\theta)=F(x,y)$, which does not depend on which representation we chose. So $E=0$ holds for one representation if and only if $F(x,y)=0$, if and only if it holds for all.
+(2) A pair $(r,\theta)$ satisfies $rE(r,\theta)=0$ exactly when $r=0$ or $E(r,\theta)=0$. The pairs with $r=0$ represent the origin, so the origin is on the graph of $rE=0$. A point $P\ne O$ has only representations with $r\ne0$ (Theorem~\ref{thm:reps}), so it is on the graph of $rE=0$ exactly when some representation satisfies $E=0$, that is, when it is on the graph of $E=0$.
+\end{proof}
+
+So multiplying by $r$ can add only the origin, and it adds nothing when the origin is already on the graph. Dividing by $r$ can lose only the origin, and it loses nothing when the origin is on the graph of the new equation.
+
+\begin{thm}{Lines in polar coordinates}{plines}
+\begin{enumerate}[nosep]
+  \item The graph of $\theta=\alpha$ is the line through $O$ that contains the ray at angle $\alpha$ (slope $\tan\alpha$, or the $y$-axis if $\cos\alpha=0$).
+  \item The vertical line $x=h$ has the polar equation $r\cos\theta=h$ and the horizontal line $y=k$ has $r\sin\theta=k$.
+  \item \emph{Normal form.} Let $p>0$. The line whose point nearest to $O$ is $P(p,\alpha)$ is the graph of $r\cos(\theta-\alpha)=p$.
+  \item If $b\ne0$, the line $y=mx+b$ is the graph of $r=\dfrac{b}{\sin\theta-m\cos\theta}$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) The graph is the set of points $P(r,\alpha)$, $r$ real. By Theorem~\ref{thm:conv} this is $\{r(\cos\alpha,\sin\alpha)\}$, the line through $O$ with direction vector $(\cos\alpha,\sin\alpha)$.
+(2) Apply Theorem~\ref{thm:eqconv}(1) to $x-h=0$ and $y-k=0$.
+(3) Let $\mathbf n=(\cos\alpha,\sin\alpha)$, a unit vector. The foot of the perpendicular from $O$ is $p\,\mathbf n=(p\cos\alpha,p\sin\alpha)=P(p,\alpha)$, and the line through it perpendicular to $\mathbf n$ is $\{X:\ \mathbf n\cdot(X-p\mathbf n)=0\}=\{X:\ \mathbf n\cdot X=p\}$, because $\mathbf n\cdot\mathbf n=1$. In coordinates this is $x\cos\alpha+y\sin\alpha=p$. Now put $x=r\cos\theta$, $y=r\sin\theta$:
+\[
+x\cos\alpha+y\sin\alpha=r\cos\theta\cos\alpha+r\sin\theta\sin\alpha=r\cos(\theta-\alpha).
+\]
+%@ lines-norm | simplify(r*cos(t)*cos(a)+r*sin(t)*sin(a)-r*cos(t-a)) == 0 | x\cos\alpha+y\sin\alpha=r\cos\theta\cos\alpha+r\sin\theta\sin\alpha=r\cos(\theta-\alpha).
+By Theorem~\ref{thm:eqconv}(1) the line is the graph of $r\cos(\theta-\alpha)=p$.
+(4) By Theorem~\ref{thm:eqconv}(1), $y=mx+b$ becomes $r\sin\theta=mr\cos\theta+b$, that is $r(\sin\theta-m\cos\theta)=b$. If $\sin\theta=m\cos\theta$ this reads $0=b$, which is false, so no point has such an angle; for every other $\theta$ the equation is $r=\frac b{\sin\theta-m\cos\theta}$.
+\end{proof}
+
+\begin{thm}{Circles in polar coordinates}{pcircles}
+\begin{enumerate}[nosep]
+  \item For $a\ne0$, the graph of $r=a$ is the circle of radius $\abs a$ centered at $O$.
+  \item The circle of radius $R$ whose center is $C(\rho_0,\theta_0)$ is the graph of
+  \[
+  r^2-2\rho_0\,r\cos(\theta-\theta_0)=R^2-\rho_0^2 .
+  \]
+  If the center is the Cartesian point $(a,b)$, this reads $r^2-2r(a\cos\theta+b\sin\theta)=R^2-a^2-b^2$.
+  \item If $(a,b)\ne(0,0)$, the graph of $r=2a\cos\theta+2b\sin\theta$ is the \emph{whole} circle of radius $\sqrt{a^2+b^2}$ centered at $(a,b)$, which passes through the origin. In particular $r=2a\cos\theta$ is the circle with center $(a,0)$ and radius $\abs a$, and $r=2b\sin\theta$ is the circle with center $(0,b)$ and radius $\abs b$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) A point is on the graph if some representation has $r=a$; its distance from $O$ is then $\abs a$. Conversely, a point at distance $\abs a$ from $O$ has the representations $(\abs a,\theta_0)$ and $(-\abs a,\theta_0+\pi)$ (Theorem~\ref{thm:reps}), and one of them has radial coordinate $a$.
+(2) The point $P(r,\theta)$ is on the circle exactly when $\abs{PC}^2=R^2$. By Theorem~\ref{thm:dist}, $\abs{PC}^2=r^2+\rho_0^2-2r\rho_0\cos(\theta-\theta_0)$, so the condition is $r^2-2\rho_0r\cos(\theta-\theta_0)=R^2-\rho_0^2$. The distance does not depend on the representation chosen, so the equation holds for one representation of $P$ exactly when it holds for all. If $C=(a,b)$ then $a=\rho_0\cos\theta_0$ and $b=\rho_0\sin\theta_0$, and $\rho_0\cos(\theta-\theta_0)=\rho_0\cos\theta\cos\theta_0+\rho_0\sin\theta\sin\theta_0=a\cos\theta+b\sin\theta$.
+%@ circ-gen | simplify(c*cos(t)*cos(a)+c*sin(t)*sin(a)-c*cos(t-a)) == 0 and simplify((a**2+b**2)-(sqrt(a**2+b**2))**2) == 0 | and $\rho_0\cos(\theta-\theta_0)=\rho_0\cos\theta\cos\theta_0+\rho_0\sin\theta\sin\theta_0=a\cos\theta+b\sin\theta$.
+(3) Here $R^2=a^2+b^2$, so the right side of the equation in (2) is $0$ and the equation is $r\bigl(r-2a\cos\theta-2b\sin\theta\bigr)=0$. By Theorem~\ref{thm:eqconv}(2), the graph of $r=2a\cos\theta+2b\sin\theta$ is the circle, \emph{provided} the origin is on the graph of $r=2a\cos\theta+2b\sin\theta$. It is: $2a\cos\theta+2b\sin\theta=0$ when $(\cos\theta,\sin\theta)=\frac1{\sqrt{a^2+b^2}}(-b,a)$, an angle that exists because this is a unit vector, and then $r=0$. (Equivalently, the circle passes through $O$ because $\abs{OC}=R$.)
+\end{proof}
+
+\begin{exmp}{Converting equations}{eqs}
+Convert to the other coordinate system and identify the graph: (a)~$r=6\cos\theta-8\sin\theta$; (b)~$r^2\cos2\theta=8$; (c)~$y=2x^2$; (d)~$3x-4y=12$.
+
+\textbf{Solution.} (a) Multiply by $r$ (see Theorem~\ref{thm:eqconv}(2)): $r^2=6r\cos\theta-8r\sin\theta$. Substitute $r^2=x^2+y^2$, $r\cos\theta=x$, $r\sin\theta=y$: $x^2+y^2=6x-8y$. Collect and complete the squares:
+\[
+x^2-6x+9+y^2+8y+16=9+16\quad\Longrightarrow\quad(x-3)^2+(y+4)^2=25.
+\]
+%@ eq-a | expand((x-3)**2+(c+4)**2-25) == x**2-6*x+c**2+8*c and (3,-4) == (6/2,-8/2) and 9+16 == 25 | (x-3)^2+(y+4)^2=25.
+This is the circle with center $(3,-4)$ and radius $5$, which agrees with Theorem~\ref{thm:pcircles}(3) for $2a=6$, $2b=-8$. Multiplying by $r$ could have added the origin, but the origin is already on the graph of the original equation, since $6\cos\theta-8\sin\theta=0$ at $\theta=\arctan\frac34$. So the equation $r=6\cos\theta-8\sin\theta$ describes the whole circle. \emph{Check.} $\theta=0$: $r=6$, the point $(6,0)$, and $(6-3)^2+(0+4)^2=9+16=25$. $\theta=\frac\pi2$: $r=-8$, the point $P\left(-8,\frac\pi2\right)=(0,-8)$, and $(0-3)^2+(-8+4)^2=9+16=25$.
+%@ eq-a2 | 6*cos(atan(Q(3,4)))-8*sin(atan(Q(3,4))) == 0 and (6*cos(0)-3)**2+(0+4)**2 == 25 and (-8*cos(pi/2), -8*sin(pi/2)) == (0,-8) and (0-3)**2+(-8+4)**2 == 25 | $(0-3)^2+(-8+4)^2=9+16=25$.
+(b) Use $\cos2\theta=\cos^2\theta-\sin^2\theta$: $r^2\cos^2\theta-r^2\sin^2\theta=8$, that is $x^2-y^2=8$, a hyperbola with vertices $(\pm2\sqrt2,0)$ and asymptotes $y=\pm x$. No multiplication was needed, so Theorem~\ref{thm:eqconv}(1) shows that the graphs agree.
+%@ eq-b | simplify(cos(2*t)-(cos(t)**2-sin(t)**2)) == 0 and solve(x**2-8,x) == [-2*sqrt(2),2*sqrt(2)] | the graphs agree.
+(c) $y=2x^2$ becomes $r\sin\theta=2r^2\cos^2\theta$, that is $r\left(\sin\theta-2r\cos^2\theta\right)=0$. So $r=0$ or $r=\dfrac{\sin\theta}{2\cos^2\theta}=\dfrac12\tan\theta\sec\theta$. The origin is on the graph of the second equation ($\theta=0$ gives $r=0$), so the single equation $r=\frac12\tan\theta\sec\theta$ describes the whole parabola. \emph{Check.} $\theta=\frac\pi4$: $r=\frac{\sqrt2/2}{2\cdot\frac12}=\frac{\sqrt2}2$, the point $\left(\frac{\sqrt2}2\cos\frac\pi4,\frac{\sqrt2}2\sin\frac\pi4\right)=\left(\frac12,\frac12\right)$, and $2\left(\frac12\right)^2=\frac12$.
+%@ eq-c | simplify(sin(pi/4)/(2*cos(pi/4)**2)-sqrt(2)/2) == 0 and (sqrt(2)/2*cos(pi/4), sqrt(2)/2*sin(pi/4)) == (Q(1,2),Q(1,2)) and 2*Q(1,2)**2 == Q(1,2) | and $2\left(\frac12\right)^2=\frac12$.
+(d) Substitute $x=r\cos\theta$, $y=r\sin\theta$: $r(3\cos\theta-4\sin\theta)=12$. Divide by $\sqrt{3^2+4^2}=5$: $r\left(\frac35\cos\theta-\frac45\sin\theta\right)=\frac{12}5$. The numbers $\frac35,-\frac45$ satisfy $\frac9{25}+\frac{16}{25}=1$, so $\cos\alpha=\frac35$, $\sin\alpha=-\frac45$ for an angle $\alpha=-\arctan\frac43\approx-0.9273$, and the left side is $r\cos(\theta-\alpha)$. By Theorem~\ref{thm:plines}(3):
+\[
+r\cos(\theta-\alpha)=\frac{12}5,
+\]
+the line whose nearest point to $O$ is $P\left(\frac{12}5,\alpha\right)=\left(\frac{36}{25},-\frac{48}{25}\right)$. \emph{Check.} $3\cdot\frac{36}{25}-4\cdot\left(-\frac{48}{25}\right)=\frac{108+192}{25}=12$, and the distance from $O$ to $3x-4y=12$ is $\frac{12}{\sqrt{9+16}}=\frac{12}5$.
+%@ eq-d | Q(9,25)+Q(16,25) == 1 and abs(float(-atan(Q(4,3)))+0.9273)<1e-4 and (Q(12,5)*Q(3,5), Q(12,5)*(-Q(4,5))) == (Q(36,25),-Q(48,25)) and 3*Q(36,25)-4*(-Q(48,25)) == 12 and Q(12,sqrt(9+16)) == Q(12,5) | and the distance from $O$ to $3x-4y=12$ is $\frac{12}{\sqrt{9+16}}=\frac{12}5$.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=0.52cm,y=0.52cm]
+  \draw[->] (-3.2,0) -- (9.2,0) node[right] {$x$};
+  \draw[->] (0,-9.6) -- (0,2.4) node[above] {$y$};
+  \foreach \u in {-2,2,4,6,8} {\draw (\u,0.12) -- (\u,-0.12);}
+  \foreach \v in {-8,-6,-4,-2} {\draw (0.12,\v) -- (-0.12,\v);}
+  \draw[very thick,blue!70!black] (3,-4) circle (5);
+  \draw[red!70!black,thick] (-1,-3.75) -- (7,2.25);
+  \draw[dashed] (0,0) -- (1.44,-1.92);
+  \fill (3,-4) circle (0.12) node[above left] {$(3,-4)$};
+  \fill (0,0) circle (0.12) node[above left] {$O$};
+  \fill (6,0) circle (0.12) node[above right] {$(6,0)$};
+%@ g-eqs-x | (6*cos(0), 6*sin(0)) == (6,0) and (6-3)**2+(0+4)**2 == 25 | (6,0) circle
+  \fill (0,-8) circle (0.12) node[below right] {$(0,-8)$};
+%@ g-eqs-y | (-8*cos(pi/2), -8*sin(pi/2)) == (0,-8) and (0-3)**2+(-8+4)**2 == 25 | (0,-8) circle
+  \fill[red!70!black] (1.44,-1.92) circle (0.12) node[below right] {$(1.44,\,-1.92)$};
+%@ g-eqs-foot | abs(float(Q(36,25))-1.44)<1e-9 and abs(float(Q(48,25))-1.92)<1e-9 and 3*Q(36,25)-4*(-Q(48,25)) == 12 | (1.44,-1.92) circle
+  \node[blue!70!black] at (7.4,-6.4) {radius $5$};
+  \node[red!70!black] at (7.8,3.0) {$3x-4y=12$};
+\end{tikzpicture}
+\end{center}
+
+\begin{kc}{A circle from its equation}{circkc}
+Describe the graph of $r=-3\sin\theta$: give its center and radius.
+\end{kc}
+
+\begin{think}{Multiplying by $r$}{timesr}
+In Example~\ref{ex:eqs}(a) we multiplied the equation by $r$, and Theorem~\ref{thm:eqconv}(2) says that this may add the origin. No point was added there. Give an equation whose graph does \emph{not} contain the origin, and show that multiplying it by $r$ does add the origin.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{A polar curve is a parametric curve}
+
+A polar equation $r=f(\theta)$ describes a curve in the plane, and Section~12.1 gave us the language for curves: parameter, orientation, tangent line. The two descriptions are connected by one theorem.
+
+\begin{thm}{A polar curve is a parametric curve}{polpar}
+Let $f$ be defined on an interval $I$ (possibly all of $\R$). The points $P(f(\theta),\theta)$, $\theta$ in $I$, form the parametric curve (Definition~\ref{12.1-def:param})
+\[
+x=f(\theta)\cos\theta,\qquad y=f(\theta)\sin\theta,\qquad\theta\in I,
+\]
+with $\theta$ as the parameter; its positive orientation is the direction of increasing $\theta$. If $f$ is differentiable, then
+\[
+x'(\theta)=f'(\theta)\cos\theta-f(\theta)\sin\theta,\qquad y'(\theta)=f'(\theta)\sin\theta+f(\theta)\cos\theta,
+\]
+and $x'(\theta)^2+y'(\theta)^2=f(\theta)^2+f'(\theta)^2$. If $f(\theta_0)=0$ and $f'(\theta_0)\ne0$, the curve passes through the origin at $\theta=\theta_0$ and its tangent line there is the line $\theta=\theta_0$.
+\end{thm}
+\begin{proof}
+The coordinates are those of Theorem~\ref{thm:conv} with $r=f(\theta)$. By the Product Rule, $x'=f'\cos\theta-f\sin\theta$ and $y'=f'\sin\theta+f\cos\theta$. Squaring and adding,
+\begin{align*}
+x'^2+y'^2&=f'^2\cos^2\theta-2ff'\sin\theta\cos\theta+f^2\sin^2\theta+f'^2\sin^2\theta+2ff'\sin\theta\cos\theta+f^2\cos^2\theta\\
+&=f'^2\left(\cos^2\theta+\sin^2\theta\right)+f^2\left(\sin^2\theta+\cos^2\theta\right)=f'^2+f^2,
+\end{align*}
+since the two cross terms cancel.
+%@ polpar-d | (lambda F: simplify(diff(F*cos(t),t)-(diff(F,t)*cos(t)-F*sin(t))) == 0 and simplify(diff(F*sin(t),t)-(diff(F,t)*sin(t)+F*cos(t))) == 0 and simplify((diff(F,t)*cos(t)-F*sin(t))**2+(diff(F,t)*sin(t)+F*cos(t))**2-(F**2+diff(F,t)**2)) == 0)(Function('F')(t)) | &=f'^2\left(\cos^2\theta+\sin^2\theta\right)+f^2\left(\sin^2\theta+\cos^2\theta\right)=f'^2+f^2,
+Now let $f(\theta_0)=0$ and $f'(\theta_0)\ne0$. Then $x(\theta_0)=y(\theta_0)=0$, so the curve is at $O$, and the velocity is $\bigl(x'(\theta_0),y'(\theta_0)\bigr)=f'(\theta_0)\,(\cos\theta_0,\sin\theta_0)\ne(0,0)$. By Theorem~\ref{12.1-thm:slope}, if $x'(\theta_0)\ne0$ (that is, $\cos\theta_0\ne0$) the tangent line has slope $\frac{y'}{x'}=\frac{\sin\theta_0}{\cos\theta_0}=\tan\theta_0$ and passes through $O$; if $x'(\theta_0)=0$ the tangent line is vertical through $O$. In both cases it is the line through $O$ at angle $\theta_0$, the graph of $\theta=\theta_0$ (Theorem~\ref{thm:plines}(1)).
+\end{proof}
+
+When $f(\theta_0)=0=f'(\theta_0)$ the velocity vanishes and the theorem says nothing; the cardioid of the next pages has such a point. The identity $x'^2+y'^2=f^2+f'^2$ will matter when we measure lengths of polar curves; for now we use only the last statement, which tells us in which direction a curve leaves the origin.
+
+\begin{proc}{The Cartesian-to-polar method for graphing $r=f(\theta)$}{c2p}
+\begin{enumerate}[nosep]
+  \item Graph $r=f(\theta)$ in an ordinary $\theta r$-plane over an interval of $\theta$ that traces the whole curve (see Theorem~\ref{thm:period} for how long such an interval must be).
+  \item Mark the zeros of $f$ (the curve passes through the origin; by Theorem~\ref{thm:polpar} it is tangent to the line $\theta=\theta_0$ if $f'(\theta_0)\ne0$) and the extreme values of $\abs f$ (the farthest points).
+  \item Where $r>0$ the point is on the ray at angle $\theta$. Where $r<0$ it is on the \emph{opposite} ray, at distance $\abs r$.
+  \item Where $\abs r$ increases the curve moves away from the origin; where it decreases, towards it. Follow the curve in the order of increasing $\theta$, and draw the arrows.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A limaçon with an inner loop}{limacon1}
+Graph $r=1+2\cos\theta$ for $0\le\theta\le2\pi$ with the Cartesian-to-polar method. Find where it meets the origin, the tangent lines there, and any symmetry.
+
+\textbf{Solution.} \emph{The $\theta r$-graph.} $f(\theta)=1+2\cos\theta$ is a cosine curve with amplitude $2$, shifted up $1$: $f(0)=3$ is the maximum and $f(\pi)=-1$ the minimum. \emph{Zeros.} $1+2\cos\theta=0$ gives $\cos\theta=-\frac12$, so $\theta=\frac{2\pi}3$ and $\theta=\frac{4\pi}3$ in $[0,2\pi]$. \emph{Sign.} $f>0$ for $0\le\theta<\frac{2\pi}3$ and for $\frac{4\pi}3<\theta\le2\pi$, and $f<0$ for $\frac{2\pi}3<\theta<\frac{4\pi}3$.
+\emph{Table.}
+\[
+\begin{array}{c|ccccccccc}
+\theta&0&\frac\pi3&\frac\pi2&\frac{2\pi}3&\pi&\frac{4\pi}3&\frac{3\pi}2&\frac{5\pi}3&2\pi\\\hline
+r&3&2&1&0&-1&0&1&2&3\\
+\text{point}&A&B&C&D&E&F&G&H&A
+\end{array}
+\]
+%@ lim1-table | [1+2*cos(s) for s in (0,pi/3,pi/2,2*pi/3,pi,4*pi/3,3*pi/2,5*pi/3,2*pi)] == [3,2,1,0,-1,0,1,2,3] | \text{point}&A&B&C&D&E&F&G&H&A
+\emph{Transfer to the polar plane.} For $0\le\theta<\frac{2\pi}3$, $r>0$ decreases from $3$ to $0$: the curve starts at $A=(3,0)$, passes $B=2\left(\cos\frac\pi3,\sin\frac\pi3\right)=(1,\sqrt3)$ and $C=(0,1)$, and reaches the origin at $D$ along the ray $\theta=\frac{2\pi}3$. For $\frac{2\pi}3<\theta<\frac{4\pi}3$ we have $r<0$, so the points are on the \emph{opposite} rays, with angles between $\frac{2\pi}3+\pi=\frac{5\pi}3$ and $\frac{4\pi}3+\pi=\frac{7\pi}3\equiv\frac\pi3$, which is to the right of the origin. The distance $\abs r$ grows from $0$ to $1$ at $\theta=\pi$ and shrinks back to $0$: the farthest point of this \emph{inner loop} is $E=P(-1,\pi)=(-1\cdot\cos\pi,-1\cdot\sin\pi)=(1,0)$. At $F$ the curve is again at the origin. For $\frac{4\pi}3<\theta\le2\pi$ we have $r>0$, increasing from $0$ to $3$: through $G=(0,-1)$ and $H=2\left(\cos\frac{5\pi}3,\sin\frac{5\pi}3\right)=(1,-\sqrt3)$ back to $A$.
+%@ lim1-pts | [(f*cos(s), f*sin(s)) for (f,s) in ((3,0),(2,pi/3),(1,pi/2),(-1,pi),(1,3*pi/2),(2,5*pi/3))] == [(3,0),(1,sqrt(3)),(0,1),(1,0),(0,-1),(1,-sqrt(3))] and [(1+2*cos(s))*cos(s) for s in (2*pi/3,4*pi/3)] == [0,0] | back to $A$.
+\emph{Tangents at the origin.} $f'(\theta)=-2\sin\theta$, and $f'\left(\frac{2\pi}3\right)=-\sqrt3\ne0$, $f'\left(\frac{4\pi}3\right)=\sqrt3\ne0$. By Theorem~\ref{thm:polpar} the tangent lines at $O$ are $\theta=\frac{2\pi}3$ (slope $\tan\frac{2\pi}3=-\sqrt3$) and $\theta=\frac{4\pi}3$ (slope $\tan\frac{4\pi}3=\sqrt3$). \emph{Symmetry.} $f(-\theta)=f(\theta)$, so the curve is symmetric about the $x$-axis (Theorem~\ref{thm:sym} below), which agrees with the picture.
+%@ lim1-tan | [diff(1+2*cos(t),t).subs(t,s) for s in (2*pi/3,4*pi/3)] == [-sqrt(3),sqrt(3)] and [tan(s) for s in (2*pi/3,4*pi/3)] == [-sqrt(3),sqrt(3)] and solveset(1+2*cos(t),t,Interval(0,2*pi)) == FiniteSet(2*pi/3,4*pi/3) | (slope $\tan\frac{4\pi}3=\sqrt3$). \emph{Symmetry.}
+
+\textbf{Answer.} A limaçon with an inner loop: an outer loop through $(3,0)$, $(0,\pm1)$ and the origin, and an inner loop from the origin to $(1,0)$ and back, traced for $\frac{2\pi}3\le\theta\le\frac{4\pi}3$ (Figure below).
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=0.75cm]
+  \draw[->] (-0.3,0) -- (6.9,0) node[right] {$\theta$};
+  \draw[->] (0,-1.5) -- (0,3.6) node[above] {$r$};
+  \draw (3.1416,0.08) -- (3.1416,-0.08) node[below] {$\pi$};
+  \draw (6.2832,0.08) -- (6.2832,-0.08) node[below] {$2\pi$};
+  \draw (0.08,1) -- (-0.08,1) node[left] {$1$};
+  \draw (0.08,3) -- (-0.08,3) node[left] {$3$};
+  \draw[very thick,blue!70!black,domain=0:2.0944,samples=40,variable=\t] plot ({\t},{1+2*cos(\t r)});
+  \draw[very thick,red!70!black,domain=2.0944:4.1888,samples=40,variable=\t] plot ({\t},{1+2*cos(\t r)});
+  \draw[very thick,blue!70!black,domain=4.1888:6.2832,samples=40,variable=\t] plot ({\t},{1+2*cos(\t r)});
+  \fill (0,3) circle (0.09) node[above right] {$A$};
+  \fill (1.0472,2) circle (0.09) node[above right] {$B$};
+%@ g-l1-B | abs(float(pi/3)-1.0472)<1e-4 and 1+2*cos(pi/3) == 2 | (1.0472,2) circle
+  \fill (1.5708,1) circle (0.09) node[above right] {$C$};
+  \fill (2.0944,0) circle (0.09) node[above right] {$D$};
+%@ g-l1-D | abs(float(2*pi/3)-2.0944)<1e-4 and 1+2*cos(2*pi/3) == 0 | (2.0944,0) circle
+  \fill (3.1416,-1) circle (0.09) node[below right] {$E$};
+  \fill (4.1888,0) circle (0.09) node[above left] {$F$};
+%@ g-l1-F | abs(float(4*pi/3)-4.1888)<1e-4 and 1+2*cos(4*pi/3) == 0 | (4.1888,0) circle
+  \fill (4.7124,1) circle (0.09) node[above right] {$G$};
+  \fill (5.2360,2) circle (0.09) node[above right] {$H$};
+%@ g-l1-H | abs(float(5*pi/3)-5.2360)<1e-4 and 1+2*cos(5*pi/3) == 2 | (5.2360,2) circle
+  \begin{scope}[xshift=7.6cm,x=0.9cm,y=0.9cm]
+    \draw[->] (-0.6,0) -- (3.7,0) node[right] {$x$};
+    \draw[->] (0,-2.1) -- (0,2.2) node[above] {$y$};
+    \draw[very thick,blue!70!black,domain=0:2.0944,samples=40,variable=\t] plot ({(1+2*cos(\t r))*cos(\t r)},{(1+2*cos(\t r))*sin(\t r)});
+    \draw[very thick,red!70!black,domain=2.0944:4.1888,samples=40,variable=\t] plot ({(1+2*cos(\t r))*cos(\t r)},{(1+2*cos(\t r))*sin(\t r)});
+    \draw[very thick,blue!70!black,domain=4.1888:6.2832,samples=40,variable=\t] plot ({(1+2*cos(\t r))*cos(\t r)},{(1+2*cos(\t r))*sin(\t r)});
+    \draw[dashed,gray] (-0.6,1.0392) -- (0.6,-1.0392);
+    \draw[dashed,gray] (-0.6,-1.0392) -- (0.6,1.0392);
+    \fill (3,0) circle (0.07) node[above right] {$A$};
+    \fill (1,1.7321) circle (0.07) node[above right] {$B$};
+%@ g-l1-pB | (2*cos(pi/3), 2*sin(pi/3)) == (1,sqrt(3)) and abs(float(sqrt(3))-1.7321)<1e-4 | (1,1.7321) circle
+    \fill (0,1) circle (0.07) node[above left] {$C$};
+    \fill (0,0) circle (0.07) node[below left] {$D,F$};
+    \fill (1,0) circle (0.07) node[below right] {$E$};
+%@ g-l1-pE | (-1*cos(pi), -1*sin(pi)) == (1,0) | (1,0) circle
+    \fill (0,-1) circle (0.07) node[below left] {$G$};
+    \fill (1,-1.7321) circle (0.07) node[below right] {$H$};
+%@ g-l1-pH | (2*cos(5*pi/3), 2*sin(5*pi/3)) == (1,-sqrt(3)) and abs(float(sqrt(3))-1.7321)<1e-4 | (1,-1.7321) circle
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The tangent lines at the origin, $\theta=\frac{2\pi}3$ and $\theta=\frac{4\pi}3$, are the dashed lines. The left graph and the right curve are the same information: the red part of the $\theta r$-graph, where $r<0$, becomes the inner loop.
+
+\begin{think}{An inner loop on the right}{innerloop}
+The inner loop of $r=1+2\cos\theta$ is traced for $\frac{2\pi}3\le\theta\le\frac{4\pi}3$, angles that point into the \emph{left} half-plane. Why does the loop lie in the \emph{right} half-plane?
+\end{think}
+
+\subsection*{The limaçon family}
+
+\begin{thm}{Limaçons}{lima}
+Let $a>0$, $b>0$ and consider the curve $r=a+b\cos\theta$ (the curve $r=a+b\sin\theta$ is this one rotated through $\frac\pi2$). It is symmetric about the $x$-axis, and its shape depends on $\frac ab$:
+\begin{enumerate}[nosep]
+  \item $a<b$: \emph{inner loop}. $r$ changes sign, so the curve passes through $O$ at $\cos\theta=-\frac ab$ and has an inner loop traced where $r<0$.
+  \item $a=b$: \emph{cardioid}. $r\ge0$ and $r=0$ only at $\theta=\pi$, where the velocity is zero: a cusp at $O$.
+  \item $b<a<2b$: \emph{dimple}. $r>0$, and along the upper half $0\le\theta\le\pi$ the coordinate $x$ first decreases, then increases.
+  \item $a\ge2b$: \emph{oval}. $r>0$ and $x$ decreases steadily along the upper half.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+$f(\theta)=a+b\cos\theta$ is even, so the curve is symmetric about the $x$-axis (Theorem~\ref{thm:sym} below). The zeros of $f$ are the solutions of $\cos\theta=-\frac ab$, which exist exactly when $a\le b$.
+(1) If $a<b$, then $f$ is positive near $\theta=0$ and negative at $\theta=\pi$ ($f(\pi)=a-b<0$), so it changes sign at the zeros $\theta=\pm\theta_0$, $\theta_0=\arccos\left(-\frac ab\right)$, where $f'(\theta)=-b\sin\theta\ne0$; for $\theta_0<\theta<2\pi-\theta_0$ we have $r<0$, and these points form the inner loop (Procedure~\ref{proc:c2p}).
+(2) If $a=b$, then $f(\theta)=b(1+\cos\theta)=2b\cos^2\frac\theta2\ge0$, which is $0$ only when $\cos\frac\theta2=0$, that is at $\theta=\pi$ (mod $2\pi$). There $f(\pi)=0$ and $f'(\pi)=-b\sin\pi=0$, so the velocity $(x',y')=(0,0)$ by Theorem~\ref{thm:polpar}.
+(3), (4) If $a>b$ then $f(\theta)\ge a-b>0$. On the curve $x=r\cos\theta=a\cos\theta+b\cos^2\theta$, hence
+\[
+\frac{dx}{d\theta}=-a\sin\theta-2b\sin\theta\cos\theta=-\sin\theta\,(a+2b\cos\theta).
+\]
+%@ lima-dx | simplify(diff(a*cos(t)+b*cos(t)**2,t)+sin(t)*(a+2*b*cos(t))) == 0 and simplify((a+b*cos(t))*cos(t)-(a*cos(t)+b*cos(t)**2)) == 0 | -a\sin\theta-2b\sin\theta\cos\theta=-\sin\theta\,(a+2b\cos\theta).
+On $0<\theta<\pi$, $\sin\theta>0$, so the sign of $\frac{dx}{d\theta}$ is the sign of $-(a+2b\cos\theta)$. If $a\ge2b$ then $a+2b\cos\theta>a-2b\ge0$ for $\cos\theta>-1$, so $x$ decreases on $[0,\pi]$: (4). If $a<2b$, then $a+2b\cos\theta=0$ at $\cos\theta=-\frac a{2b}\in(-1,0)$, an angle $\theta_1$ in $\left(\frac\pi2,\pi\right)$, positive before $\theta_1$ and negative after: so $\frac{dx}{d\theta}<0$ on $(0,\theta_1)$ and $>0$ on $(\theta_1,\pi)$, and $x$ decreases and then increases: (3).
+\end{proof}
+
+\begin{center}
+\begin{tikzpicture}[x=0.36cm,y=0.36cm]
+  \begin{scope}
+    \draw[->] (-1,0) -- (4,0) node[right] {$x$};
+    \draw[->] (0,-3.2) -- (0,3.4);
+    \draw[very thick,blue!70!black,domain=0:6.28319,samples=80,variable=\t] plot ({(1+2*cos(\t r))*cos(\t r)},{(1+2*cos(\t r))*sin(\t r)});
+    \fill[red!70!black] (1,0) circle (0.12);
+%@ g-lima-1 | (1-2)*cos(pi) == 1 | (1,0) circle
+    \node[font=\scriptsize] at (1.2,-4.2) {$a=1$: loop};
+  \end{scope}
+  \begin{scope}[xshift=3.7cm]
+    \draw[->] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-3.2) -- (0,3.4);
+    \draw[very thick,blue!70!black,domain=0:6.28319,samples=80,variable=\t] plot ({(2+2*cos(\t r))*cos(\t r)},{(2+2*cos(\t r))*sin(\t r)});
+    \fill[red!70!black] (0,0) circle (0.12);
+%@ g-lima-2 | (2-2)*cos(pi) == 0 | (0,0) circle
+    \node[font=\scriptsize] at (1.7,-4.2) {$a=2$: cardioid};
+  \end{scope}
+  \begin{scope}[xshift=7.4cm]
+    \draw[->] (-2,0) -- (6,0) node[right] {$x$};
+    \draw[->] (0,-3.2) -- (0,3.4);
+    \draw[very thick,blue!70!black,domain=0:6.28319,samples=80,variable=\t] plot ({(3+2*cos(\t r))*cos(\t r)},{(3+2*cos(\t r))*sin(\t r)});
+    \fill[red!70!black] (-1,0) circle (0.12);
+%@ g-lima-3 | (3-2)*cos(pi) == -1 | (-1,0) circle
+    \node[font=\scriptsize] at (2.0,-4.2) {$a=3$: dimple};
+  \end{scope}
+  \begin{scope}[xshift=11.6cm]
+    \draw[->] (-3,0) -- (7,0) node[right] {$x$};
+    \draw[->] (0,-3.2) -- (0,3.4);
+    \draw[very thick,blue!70!black,domain=0:6.28319,samples=80,variable=\t] plot ({(4+2*cos(\t r))*cos(\t r)},{(4+2*cos(\t r))*sin(\t r)});
+    \fill[red!70!black] (-2,0) circle (0.12);
+%@ g-lima-4 | (4-2)*cos(pi) == -2 | (-2,0) circle
+    \node[font=\scriptsize] at (2.0,-4.2) {$a=4$: oval};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The four curves are $r=a+2\cos\theta$ with $a=1,2,3,4$. The red point is the one at $\theta=\pi$, where $r=a-2$: $(1,0)$ (tip of the inner loop), the cusp $O$, the dimple $(-1,0)$ and the point $(-2,0)$.
+
+% ---------------------------------------------------------------------
+\subsection*{Roses}
+
+\begin{thm}{Roses}{rose}
+Let $m$ be a positive integer and $a\ne0$. The graph of $r=a\cos m\theta$ is a \emph{rose} made of congruent petals, each a closed loop through the origin whose tip is at distance $\abs a$ from $O$; adjacent petals meet only at $O$. There are $m$ petals if $m$ is odd (traced once for $0\le\theta\le\pi$) and $2m$ petals if $m$ is even (traced once for $0\le\theta\le2\pi$).
+
+The tips are at the angles $\frac{n\pi}m$ with $n$ even if $m$ is odd (and $a>0$), and with $n$ any integer if $m$ is even. The graph of $r=a\sin m\theta$ is the same rose rotated through the angle $\frac\pi{2m}$.
+\end{thm}
+\begin{proof}
+Let $f(\theta)=a\cos m\theta$ and, for an integer $j$, let $I_j=\left[\frac{j\pi}m-\frac\pi{2m},\frac{j\pi}m+\frac\pi{2m}\right]$; these intervals have length $\frac\pi m$ and cover $\R$. The \emph{$j$-th arch} is $A_j=\{P(f(\theta),\theta):\theta\in I_j\}$. For $\theta=\frac{j\pi}m+s$ with $\abs s\le\frac\pi{2m}$ we have $\cos m\theta=\cos(j\pi+ms)=(-1)^j\cos ms$, and $\cos ms\ge0$, so $f(\theta)=(-1)^ja\cos ms$: the sign of $f$ on $I_j$ is the constant sign of $(-1)^ja$, $\abs f=\abs a\cos ms$ is $0$ at the ends of $I_j$ and equals $\abs a$ at $s=0$.
+%@ rose-arch | (lambda j: simplify(cos(m*(j*pi/m+t))-(-1)**j*cos(m*t)) == 0)(Symbol('j',integer=True)) | $\cos m\theta=\cos(j\pi+ms)=(-1)^j\cos ms$, and $\cos ms\ge0$, so $f(\theta)=(-1)^ja\cos ms$: the sign of $f$ on $I_j$ is the constant sign of $(-1)^ja$, $\abs f=\abs a\cos ms$ is $0$ at the ends of $I_j$ and equals $\abs a$ at $s=0$.
+\emph{Each arch is a petal.} A point of $A_j$ is on the ray at angle $\theta=\frac{j\pi}m+s$ if $(-1)^ja>0$, and on the opposite ray if $(-1)^ja<0$. In both cases the point is on the ray at angle $\varphi_j+s$, where $\varphi_j=\frac{j\pi}m$ if $(-1)^ja>0$ and $\varphi_j=\frac{j\pi}m+\pi$ otherwise, at distance $\abs a\cos ms$. So $A_j$ is the polar graph $\rho=\abs a\cos ms$ over the sector of directions $\varphi_j-\frac\pi{2m}\le\varphi\le\varphi_j+\frac\pi{2m}$: a simple closed loop through $O$ with its tip at distance $\abs a$ in the direction $\varphi_j$. Two arches with the same $\varphi_j$ (mod $2\pi$) are the same set; two arches with different $\varphi_j$ (mod $2\pi$) lie in sectors of width $\frac\pi m$ whose directions differ by a nonzero multiple of $\frac\pi m$, so they meet only at $O$.
+\emph{Counting.} Take $a>0$ (for $a<0$ every $\varphi_j$ is shifted by $\pi$, which does not change the count). Then $\varphi_j=\frac{n_j\pi}m$ with $n_j=j$ for even $j$ and $n_j=j+m$ for odd $j$, taken modulo $2m$.
+\begin{itemize}[nosep]
+  \item \emph{$m$ even.} Then $n_j\equiv j$ modulo $2$ for all $j$. As $j=0,1,\dots,2m-1$ runs through a full set of residues modulo $2m$, so does $n_j$: there are $2m$ different directions and so $2m$ petals. The arches $A_0,\dots,A_{2m-1}$ fill the $\theta$-interval $\left[-\frac\pi{2m},2\pi-\frac\pi{2m}\right]$ of length $2\pi$, and $f$ has period $2\pi$.
+  \item \emph{$m$ odd.} Then $n_j$ is even for all $j$ (for odd $j$, $j+m$ is even), so there are at most $m$ different directions. Moreover $f(\theta+\pi)=a\cos(m\theta+m\pi)=-f(\theta)$, so $P(f(\theta+\pi),\theta+\pi)=P(-f(\theta),\theta+\pi)=P(f(\theta),\theta)$ by Theorem~\ref{thm:reps}: the curve repeats after $\pi$. The arches $A_0,\dots,A_{m-1}$ fill an interval of length $\pi$, and their numbers are $n_j=j$ for the even $j\le m-1$ (that is $\frac{m+1}2$ values) and $n_j=j+m\in\{m+1,\dots,2m-1\}$ for the odd $j\le m-1$ ($\frac{m-1}2$ values): all different, so $m$ petals.
+\end{itemize}
+%@ rose-count | [len(FiniteSet(*[(j if j%2==0 else j+mm)%(2*mm) for j in range(2*mm)])) for mm in range(1,10)] == [1,4,3,8,5,12,7,16,9] and [len(FiniteSet(*[(j if j%2==0 else j+mm)%(2*mm) for j in range(mm)])) for mm in (1,3,5,7,9)] == [1,3,5,7,9] | all different, so $m$ petals.
+\emph{Sine.} $\sin m\theta=\cos\left(m\theta-\frac\pi2\right)=\cos\bigl(m(\theta-\frac\pi{2m})\bigr)$, so $P(r,\theta)$ is on the cosine rose exactly when $P\left(r,\theta+\frac\pi{2m}\right)$ is on $r=a\sin m\theta$: the second graph is the first rotated through $\frac\pi{2m}$.
+\end{proof}
+
+\begin{exmp}{A three-petal rose}{rose3}
+Graph $r=4\cos3\theta$. Find the number of petals, the tips, the interval of $\theta$ traced by each petal, and the tangent lines at the origin.
+
+\textbf{Solution.} Here $m=3$ is odd, so by Theorem~\ref{thm:rose} there are $3$ petals and the whole curve is traced for $0\le\theta\le\pi$. \emph{Zeros.} $\cos3\theta=0$ for $3\theta=\frac\pi2+k\pi$, that is $\theta=\frac\pi6+\frac{k\pi}3$: in $[0,\pi]$, $\theta=\frac\pi6,\frac\pi2,\frac{5\pi}6$. \emph{Tips.} $\abs r=4$ when $\cos3\theta=\pm1$, at $\theta=0,\frac\pi3,\frac{2\pi}3$: $r=4,-4,4$. The tip at $\theta=0$ is $(4,0)$. The tip at $\theta=\frac\pi3$ has $r=-4$, so it is $P\left(-4,\frac\pi3\right)=P\left(4,\frac{4\pi}3\right)=\left(4\cos\frac{4\pi}3,4\sin\frac{4\pi}3\right)=(-2,-2\sqrt3)$. The tip at $\theta=\frac{2\pi}3$ is $\left(4\cos\frac{2\pi}3,4\sin\frac{2\pi}3\right)=(-2,2\sqrt3)$. The three tips are $4$ units from $O$, in the directions $0$, $\frac{2\pi}3$, $\frac{4\pi}3$, equally spaced.
+%@ rose3-tips | [(f*cos(s), f*sin(s)) for (f,s) in ((4,0),(-4,pi/3),(4,2*pi/3))] == [(4,0),(-2,-2*sqrt(3)),(-2,2*sqrt(3))] and (4*cos(4*pi/3), 4*sin(4*pi/3)) == (-2,-2*sqrt(3)) and [4*cos(3*s) for s in (0,pi/3,2*pi/3)] == [4,-4,4] and [4*cos(3*s) for s in (pi/6,pi/2,5*pi/6)] == [0,0,0] | The three tips are $4$ units from $O$, in the directions $0$, $\frac{2\pi}3$, $\frac{4\pi}3$, equally spaced.
+\emph{Petals and intervals.} Between consecutive zeros $f$ has constant sign: for $-\frac\pi6\le\theta\le\frac\pi6$, $r\ge0$: the petal around the $x$-axis (tip $(4,0)$). For $\frac\pi6\le\theta\le\frac\pi2$, $r\le0$: the points are on the opposite rays, with angles between $\frac{7\pi}6$ and $\frac{3\pi}2$: the petal with tip $(-2,-2\sqrt3)$. For $\frac\pi2\le\theta\le\frac{5\pi}6$, $r\ge0$: the petal with tip $(-2,2\sqrt3)$. For $\frac{5\pi}6\le\theta\le\frac{7\pi}6$, $r\le0$ and the first petal is traced again (period $\pi$).
+\emph{Tangent lines at $O$.} $f'(\theta)=-12\sin3\theta$, so $f'\left(\frac\pi6\right)=-12$, $f'\left(\frac\pi2\right)=12$, $f'\left(\frac{5\pi}6\right)=-12$, all nonzero. By Theorem~\ref{thm:polpar} the tangent lines at the origin are $\theta=\frac\pi6$, $\theta=\frac\pi2$ and $\theta=\frac{5\pi}6$: the lines with slopes $\frac1{\sqrt3}$, vertical, and $-\frac1{\sqrt3}$. Each petal is bounded by two of these lines (Figure below).
+%@ rose3-tan | [diff(4*cos(3*t),t).subs(t,s) for s in (pi/6,pi/2,5*pi/6)] == [-12,12,-12] and [tan(pi/6),tan(5*pi/6)] == [sqrt(3)/3,-sqrt(3)/3] | Each petal is bounded by two of these lines (Figure below).
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=0.95cm,y=0.95cm]
+  \draw[->] (-3.4,0) -- (4.6,0) node[right] {$x$};
+  \draw[->] (0,-4.0) -- (0,4.2) node[above] {$y$};
+  \draw[dashed,gray] (-1.5588,-0.9) -- (3.0,1.732);
+  \draw[dashed,gray] (-3.0,-1.732) -- (1.5588,0.9);
+  \draw[dashed,gray] (0,-3.5) -- (0,3.5);
+  \draw[very thick,blue!70!black,domain=-0.5236:0.5236,samples=40,variable=\t] plot ({4*cos(3*\t r)*cos(\t r)},{4*cos(3*\t r)*sin(\t r)});
+  \draw[very thick,red!70!black,domain=0.5236:1.5708,samples=40,variable=\t] plot ({4*cos(3*\t r)*cos(\t r)},{4*cos(3*\t r)*sin(\t r)});
+  \draw[very thick,green!50!black,domain=1.5708:2.6180,samples=40,variable=\t] plot ({4*cos(3*\t r)*cos(\t r)},{4*cos(3*\t r)*sin(\t r)});
+  \fill (4,0) circle (0.07) node[above right] {$(4,0)$};
+  \fill (-2,-3.4641) circle (0.07) node[below left] {$(-2,-2\sqrt3)$};
+%@ g-rose3-t2 | (4*cos(4*pi/3), 4*sin(4*pi/3)) == (-2,-2*sqrt(3)) and abs(float(2*sqrt(3))-3.4641)<1e-4 | (-2,-3.4641) circle
+  \fill (-2,3.4641) circle (0.07) node[above left] {$(-2,2\sqrt3)$};
+%@ g-rose3-t3 | (4*cos(2*pi/3), 4*sin(2*pi/3)) == (-2,2*sqrt(3)) and abs(float(2*sqrt(3))-3.4641)<1e-4 | (-2,3.4641) circle
+  \fill (0,0) circle (0.06) node[below right] {$O$};
+  \node[blue!70!black,font=\scriptsize] at (1.9,0.0) {$-\pi/6\le\theta\le\pi/6$};
+  \node[red!70!black,font=\scriptsize] at (-0.7,-2.2) {$\pi/6\le\theta\le\pi/2$};
+  \node[green!50!black,font=\scriptsize] at (-0.7,2.2) {$\pi/2\le\theta\le5\pi/6$};
+  \node[gray,font=\scriptsize] at (3.5,2.1) {$\theta=\pi/6$};
+  \node[gray,font=\scriptsize] at (-2.7,-1.1) {$\theta=5\pi/6$};
+\end{tikzpicture}
+\end{center}
+
+\begin{kc}{Petals and periods}{rosekc}
+How many petals do $r=3\sin7\theta$ and $r=2\cos6\theta$ have, and over what interval of $\theta$ is each traced once?
+\end{kc}
+
+\subsection*{Lemniscates and spirals}
+
+\begin{exmp}{A lemniscate}{lemn}
+Graph $r^2=4\cos2\theta$. Find the values of $\theta$ for which the curve exists, the tips, the tangent lines at the origin, a Cartesian equation, and the symmetries.
+
+\textbf{Solution.} \emph{Existence.} $r^2\ge0$, so $\cos2\theta\ge0$: $-\frac\pi4\le\theta\le\frac\pi4$ (and the same shifted by $\pi$; no points exist for $\frac\pi4<\theta<\frac{3\pi}4$). For such $\theta$, $r=\pm2\sqrt{\cos2\theta}$. \emph{Two loops.} The sign $+$ gives the points $P(2\sqrt{\cos2\theta},\theta)$, a loop in the directions $-\frac\pi4\le\theta\le\frac\pi4$ (right of the origin). The sign $-$ gives $P(-2\sqrt{\cos2\theta},\theta)=P(2\sqrt{\cos2\theta},\theta+\pi)$, the mirror loop to the left. \emph{Tips.} The largest $\abs r$ is at $\theta=0$: $r=\pm2$, the points $(\pm2,0)$. \emph{At the origin.} $r=0$ at $\theta=\pm\frac\pi4$; the curve is tangent there to the lines $\theta=\pm\frac\pi4$, that is $y=\pm x$. (Since $r=2\sqrt{\cos2\theta}$ near these angles, Theorem~\ref{thm:polpar} does not apply directly because $f'$ is not finite there; the lines $\theta=\pm\frac\pi4$ are nonetheless the directions in which $r\to0$, so they are the directions in which the loops leave the origin.)
+\emph{Cartesian equation.} Multiply by $r^2$: $r^4=4r^2\cos2\theta=4r^2\left(\cos^2\theta-\sin^2\theta\right)=4\left(x^2-y^2\right)$, so
+\[
+(x^2+y^2)^2=4\left(x^2-y^2\right).
+\]
+The multiplication by $r^2$ can add only the origin (Theorem~\ref{thm:eqconv}(2)), and the origin is on the lemniscate, so the two graphs agree. \emph{Check.} $\theta=\frac\pi6$: $r=\pm2\sqrt{\cos\frac\pi3}=\pm\sqrt2$; the point $\left(\sqrt2\cos\frac\pi6,\sqrt2\sin\frac\pi6\right)=\left(\frac{\sqrt6}2,\frac{\sqrt2}2\right)\approx(1.22,0.71)$ satisfies $(x^2+y^2)^2=\left(\frac64+\frac24\right)^2=4$ and $4(x^2-y^2)=4\left(\frac64-\frac24\right)=4$.
+%@ lemn-cart | simplify(cos(2*t)-(cos(t)**2-sin(t)**2)) == 0 and 4*cos(pi/3) == 2 and abs(float(sqrt(6)/2)-1.22)<5e-3 and abs(float(sqrt(2)/2)-0.71)<5e-3 and ((sqrt(6)/2)**2+(sqrt(2)/2)**2)**2 == 4 and 4*((sqrt(6)/2)**2-(sqrt(2)/2)**2) == 4 | and $4(x^2-y^2)=4\left(\frac64-\frac24\right)=4$.
+\emph{Symmetry.} The equation $r^2=4\cos2\theta$ is unchanged when $r$ is replaced by $-r$ (symmetry about the origin) and when $\theta$ is replaced by $-\theta$ ($\cos$ is even: symmetry about the $x$-axis); hence also about the $y$-axis.
+
+\textbf{Answer.} A figure eight with tips $(\pm2,0)$, tangent to $y=\pm x$ at the origin, $(x^2+y^2)^2=4(x^2-y^2)$ (Figure below).
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.35cm,y=1.35cm]
+  \draw[->] (-2.6,0) -- (2.8,0) node[right] {$x$};
+  \draw[->] (0,-1.5) -- (0,1.6) node[above] {$y$};
+  \draw[dashed,gray] (-1.2,-1.2) -- (1.2,1.2);
+  \draw[dashed,gray] (-1.2,1.2) -- (1.2,-1.2);
+  \draw[very thick,blue!70!black,domain=-0.7853:0.7853,samples=80,variable=\t] plot ({2*sqrt(cos(2*\t r))*cos(\t r)},{2*sqrt(cos(2*\t r))*sin(\t r)});
+  \draw[very thick,blue!70!black,domain=-0.7853:0.7853,samples=80,variable=\t] plot ({-2*sqrt(cos(2*\t r))*cos(\t r)},{-2*sqrt(cos(2*\t r))*sin(\t r)});
+  \fill (2,0) circle (0.05) node[above right] {$(2,0)$};
+  \fill (-2,0) circle (0.05) node[above left] {$(-2,0)$};
+  \fill[red!70!black] (1.2247,0.7071) circle (0.05) node[above right] {$\theta=\pi/6$};
+%@ g-lemn-p | (sqrt(2)*cos(pi/6), sqrt(2)*sin(pi/6)) == (sqrt(6)/2, sqrt(2)/2) and abs(float(sqrt(6)/2)-1.2247)<1e-4 and abs(float(sqrt(2)/2)-0.7071)<1e-4 | (1.2247,0.7071) circle
+  \fill[red!70!black] (1.2247,-0.7071) circle (0.05) node[below right] {$\theta=-\pi/6$};
+  \node[gray,font=\scriptsize] at (1.0,1.35) {$\theta=\pi/4$};
+  \node[gray,font=\scriptsize] at (-1.0,1.35) {$\theta=3\pi/4$};
+\end{tikzpicture}
+\end{center}
+
+\begin{exmp}{Two spirals}{spirals}
+(a) Describe the spiral of Archimedes $r=\theta$, $\theta\ge0$. (b) Describe $r=\frac1\theta$ for $\theta>0$, the hyperbolic spiral; show that it has a horizontal asymptote.
+
+\textbf{Solution.} (a) By Theorem~\ref{thm:polpar} the curve is $x=\theta\cos\theta$, $y=\theta\sin\theta$. The radial distance grows with $\theta$ while the direction turns counterclockwise, so the curve spirals outward. Points: $\theta=0$: $O$; $\theta=\frac\pi2$: $\left(0,\frac\pi2\right)$; $\theta=\pi$: $(-\pi,0)$; $\theta=\frac{3\pi}2$: $\left(0,-\frac{3\pi}2\right)$; $\theta=2\pi$: $(2\pi,0)$. Successive crossings of the positive $x$-axis are at $\theta=2\pi k$, $r=2\pi k$, so the turns are always $2\pi$ apart. (For $\theta<0$ the point $P(\theta,\theta)$ is $(\theta\cos\theta,\theta\sin\theta)$, which is the reflection of the point for $-\theta$ in the $y$-axis: the other arm of the spiral.)
+%@ spir-a | [(s*cos(s), s*sin(s)) for s in (pi/2,pi,3*pi/2,2*pi)] == [(0,pi/2),(-pi,0),(0,-3*pi/2),(2*pi,0)] and simplify((-t)*cos(-t)+t*cos(t)) == 0 and simplify((-t)*sin(-t)-t*sin(t)) == 0 | which is the reflection of the point for $-\theta$ in the $y$-axis: the other arm of the spiral.)
+(b) Here $x=\frac{\cos\theta}\theta$, $y=\frac{\sin\theta}\theta$. As $\theta\to0^+$, $r=\frac1\theta\to\infty$, $x=\frac{\cos\theta}\theta\to+\infty$, while $y=\frac{\sin\theta}\theta\to1$ by the basic limit of Calculus~I. So the curve approaches the horizontal line $y=1$ as it goes out to the right: the line $y=1$ is a horizontal asymptote. As $\theta\to\infty$, $r\to0$ and the curve winds around the origin infinitely often without reaching it. Points: $\theta=\frac\pi2$: $\left(0,\frac2\pi\right)$; $\theta=\pi$: $\left(-\frac1\pi,0\right)$; $\theta=2\pi$: $\left(\frac1{2\pi},0\right)$.
+%@ spir-b | limit(sin(t)/t,t,0,'+') == 1 and limit(cos(t)/t,t,0,'+') == oo and [(cos(s)/s, sin(s)/s) for s in (pi/2,pi,2*pi)] == [(0,2/pi),(-1/pi,0),(1/(2*pi),0)] and limit(1/t,t,oo) == 0 | Points: $\theta=\frac\pi2$: $\left(0,\frac2\pi\right)$; $\theta=\pi$: $\left(-\frac1\pi,0\right)$; $\theta=2\pi$: $\left(\frac1{2\pi},0\right)$.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=0.19cm,y=0.19cm]
+  \draw[->] (-14,0) -- (14.5,0) node[right] {$x$};
+  \draw[->] (0,-14.5) -- (0,14.5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:12.5664,samples=200,variable=\t] plot ({\t*cos(\t r)},{\t*sin(\t r)});
+  \fill (0,1.5708) circle (0.35) node[above left] {$\pi/2$};
+  \fill (-3.1416,0) circle (0.35) node[below left] {$\pi$};
+%@ g-spir-pi | (pi*cos(pi), pi*sin(pi)) == (-pi,0) and abs(float(pi)-3.1416)<1e-4 | (-3.1416,0) circle
+  \fill (0,-4.7124) circle (0.35) node[below right] {$3\pi/2$};
+  \fill (6.2832,0) circle (0.35) node[above right] {$2\pi$};
+%@ g-spir-2pi | (2*pi*cos(2*pi), 2*pi*sin(2*pi)) == (2*pi,0) and abs(float(2*pi)-6.2832)<1e-4 | (6.2832,0) circle
+  \node at (0,-17) {$r=\theta$, $0\le\theta\le4\pi$};
+  \begin{scope}[xshift=7.6cm,x=1.0cm,y=1.0cm]
+    \draw[->] (-1.3,0) -- (3.0,0) node[right] {$x$};
+    \draw[->] (0,-0.9) -- (0,1.7) node[above] {$y$};
+    \draw[dashed,red!70!black] (-1.3,1) -- (3.0,1);
+    \draw[very thick,blue!70!black,domain=0.45:25,samples=300,variable=\t] plot ({cos(\t r)/\t},{sin(\t r)/\t});
+    \node[red!70!black,font=\scriptsize] at (2.2,1.25) {$y=1$};
+    \fill (0,0.6366) circle (0.05) node[above left] {$\pi/2$};
+%@ g-spir-h1 | (cos(pi/2)/(pi/2), sin(pi/2)/(pi/2)) == (0,2/pi) and abs(float(2/pi)-0.6366)<1e-4 | (0,0.6366) circle
+    \fill (-0.3183,0) circle (0.05) node[below left] {$\pi$};
+%@ g-spir-h2 | (cos(pi)/pi, sin(pi)/pi) == (-1/pi,0) and abs(float(1/pi)-0.3183)<1e-4 | (-0.3183,0) circle
+    \node at (0.8,-1.5) {$r=1/\theta$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+% ---------------------------------------------------------------------
+\subsection*{Symmetry}
+
+\begin{thm}{Symmetry tests}{sym}
+Let $\mathcal C$ be the graph of a polar equation $E(r,\theta)=0$. If the equation is satisfied by $(r,\theta)$ whenever it is satisfied by \emph{one} of the replacements below, then $\mathcal C$ has the stated symmetry.
+\begin{center}
+\begin{tabular}{ll}
+about the $x$-axis: & $(r,-\theta)$  or $(-r,\pi-\theta)$\\
+about the $y$-axis: & $(r,\pi-\theta)$  or $(-r,-\theta)$\\
+about the origin: & $(-r,\theta)$  or $(r,\theta+\pi)$
+\end{tabular}
+\end{center}
+These tests are sufficient, not necessary: a curve can be symmetric although the particular replacement you try does not return the equation you started with.
+\end{thm}
+\begin{proof}
+Let $P=(x,y)=(r\cos\theta,r\sin\theta)$ be on $\mathcal C$, with $(r,\theta)$ satisfying $E=0$.
+\emph{$x$-axis.} The reflection of $P$ is $(x,-y)=(r\cos\theta,-r\sin\theta)$. Since $\cos(-\theta)=\cos\theta$ and $\sin(-\theta)=-\sin\theta$, this is $P(r,-\theta)$. Also $(-r)\cos(\pi-\theta)=r\cos\theta$ and $(-r)\sin(\pi-\theta)=-r\sin\theta$, so it is $P(-r,\pi-\theta)$. If the equation holds at $(r,-\theta)$ or at $(-r,\pi-\theta)$ whenever it holds at $(r,\theta)$, the reflection is on $\mathcal C$.
+\emph{$y$-axis.} The reflection is $(-x,y)=(-r\cos\theta,r\sin\theta)$. Since $\cos(\pi-\theta)=-\cos\theta$ and $\sin(\pi-\theta)=\sin\theta$, it is $P(r,\pi-\theta)$; since $(-r)\cos(-\theta)=-r\cos\theta$ and $(-r)\sin(-\theta)=r\sin\theta$, it is also $P(-r,-\theta)$.
+\emph{Origin.} The reflection is $(-x,-y)=(-r\cos\theta,-r\sin\theta)$, which is $P(-r,\theta)$ and, since $\cos(\theta+\pi)=-\cos\theta$ and $\sin(\theta+\pi)=-\sin\theta$, also $P(r,\theta+\pi)$.
+%@ sym-proof | simplify((-r)*cos(pi-t)-r*cos(t)) == 0 and simplify((-r)*sin(pi-t)+r*sin(t)) == 0 and simplify(r*cos(pi-t)+r*cos(t)) == 0 and simplify(r*sin(pi-t)-r*sin(t)) == 0 and simplify((-r)*cos(-t)+r*cos(t)) == 0 and simplify((-r)*sin(-t)-r*sin(t)) == 0 and simplify(r*cos(t+pi)+r*cos(t)) == 0 and simplify(r*sin(t+pi)+r*sin(t)) == 0 | which is $P(-r,\theta)$ and, since $\cos(\theta+\pi)=-\cos\theta$ and $\sin(\theta+\pi)=-\sin\theta$, also $P(r,\theta+\pi)$.
+In each case the reflected point has a representation satisfying $E=0$, so it is on $\mathcal C$ (Definition~\ref{def:pgraph}).
+\end{proof}
+
+\begin{exmp}{Testing symmetry}{symex}
+Use Theorem~\ref{thm:sym} on $r=\sin2\theta$.
+
+\textbf{Solution.} \emph{$x$-axis.} Replace $(r,\theta)$ by $(-r,\pi-\theta)$: the equation becomes $-r=\sin(2\pi-2\theta)=-\sin2\theta$ (since $\sin(2\pi-u)=-\sin u$), which is equivalent to $r=\sin2\theta$. So the curve is symmetric about the $x$-axis. (The first replacement, $(r,-\theta)$, gives $r=-\sin2\theta$, which is \emph{not} the original equation; this test fails, but the second succeeds.) \emph{$y$-axis.} Replace by $(-r,-\theta)$: $-r=\sin(-2\theta)=-\sin2\theta$, equivalent to the original. Symmetric about the $y$-axis. \emph{Origin.} Replace by $(r,\theta+\pi)$: $r=\sin(2\theta+2\pi)=\sin2\theta$, the original. Symmetric about the origin. This agrees with Theorem~\ref{thm:rose}: $r=\sin2\theta$ is a four-petal rose.
+%@ sym-ex | simplify(sin(2*pi-2*t)+sin(2*t)) == 0 and simplify(sin(-2*t)+sin(2*t)) == 0 and simplify(sin(2*t+2*pi)-sin(2*t)) == 0 and simplify(sin(-2*t)-sin(2*t)) != 0 | Symmetric about the origin. This agrees with Theorem~\ref{thm:rose}: $r=\sin2\theta$ is a four-petal rose.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{How far must $\theta$ run?}
+
+\begin{thm}{Tracing the whole curve}{period}
+Let $f$ be defined for all $\theta$ and $P>0$.
+\begin{enumerate}[nosep]
+  \item If $f(\theta+P)=f(\theta)$ for all $\theta$ and $P$ is a multiple of $2\pi$, the curve $r=f(\theta)$ is traced completely on any $\theta$-interval of length $P$ ($P=2\pi$ is the smallest case).
+  \item If $f(\theta+P)=-f(\theta)$ for all $\theta$ and $P$ is an odd multiple of $\pi$, the same is true.
+  \item For $r=\cos\frac{p\theta}q$ or $r=\sin\frac{p\theta}q$ ($p,q$ positive integers with no common factor), the whole curve is traced on any interval of length $\pi q$ if $p$ and $q$ are both odd, and on any interval of length $2\pi q$ otherwise.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) $P(f(\theta+P),\theta+P)=P(f(\theta),\theta+P)=P(f(\theta),\theta)$ because $P$ is a multiple of $2\pi$ (Theorem~\ref{thm:reps}). So the point for $\theta+P$ is the point for $\theta$; any $\theta$ is congruent, by a multiple of $P$, to a $\theta$ in the given interval, and nothing new appears.
+(2) $P(f(\theta+P),\theta+P)=P(-f(\theta),\theta+P)=P(-f(\theta),\theta+\pi)=P(f(\theta),\theta)$, using $P-\pi$ a multiple of $2\pi$ and then Theorem~\ref{thm:reps} twice (once to drop the multiple of $2\pi$, once for the pair $(-r,\theta+\pi)$).
+(3) Let $f(\theta)=\cos\frac{p\theta}q$ (the sine case is identical). If $p,q$ are odd, $f(\theta+\pi q)=\cos\left(\frac{p\theta}q+p\pi\right)=-\cos\frac{p\theta}q=-f(\theta)$ because $p$ is odd, and $\pi q$ is an odd multiple of $\pi$ because $q$ is odd: case (2). Otherwise take $P=2\pi q$: $f(\theta+2\pi q)=\cos\left(\frac{p\theta}q+2\pi p\right)=f(\theta)$, a multiple of $2\pi$: case (1).
+%@ per-proof | [simplify(cos(a*(t+pi*b)/b)+cos(a*t/b)).subs({a:3,b:5}), simplify(cos(a*(t+2*pi*b)/b)-cos(a*t/b)).subs({a:3,b:2}), simplify(cos(a*(t+2*pi*b)/b)-cos(a*t/b)).subs({a:2,b:3})] == [0,0,0] | $f(\theta+2\pi q)=\cos\left(\frac{p\theta}q+2\pi p\right)=f(\theta)$, a multiple of $2\pi$: case (1).
+\end{proof}
+
+The theorem gives an interval that \emph{suffices}; it does not claim that no shorter interval would do (for the rose $r=\cos m\theta$ with $m$ even the full $2\pi$ is needed; Theorem~\ref{thm:rose}).
+
+\begin{exmp}{A curve that closes after two turns}{period}
+Graph $r=\cos\frac{3\theta}2$. Over what interval is it traced, and where is it for $\theta=0$ and $\theta=2\pi$?
+
+\textbf{Solution.} Here $p=3$, $q=2$ have no common factor and $q$ is even, so Theorem~\ref{thm:period}(3) gives the interval $0\le\theta\le4\pi$. Check by hand: $f(\theta+4\pi)=\cos\left(\frac{3\theta}2+6\pi\right)=f(\theta)$. After one turn the curve has not closed: $f(\theta+2\pi)=\cos\left(\frac{3\theta}2+3\pi\right)=-f(\theta)$, and the point for $\theta+2\pi$ is $P(-f(\theta),\theta)$, the point of the opposite ray, which differs from $P(f(\theta),\theta)$ whenever $f(\theta)\ne0$. So the second turn draws a different part of the curve. \emph{Key points.} $\theta=0$: $r=1$, the point $(1,0)$. $\theta=2\pi$: $r=\cos3\pi=-1$, the point $P(-1,2\pi)=(-\cos2\pi,-\sin2\pi)=(-1,0)$. \emph{Zeros.} $\frac{3\theta}2=\frac\pi2+k\pi$ gives $\theta=\frac\pi3,\pi,\frac{5\pi}3,\frac{7\pi}3,3\pi,\frac{11\pi}3$ in $[0,4\pi]$: six passes through the origin. \emph{Symmetry.} $f$ is even, so the curve is symmetric about the $x$-axis. The curve is the figure below.
+%@ per-ex | cos(3*(0+4*pi)/2) == 1 and simplify(cos(3*(t+2*pi)/2)+cos(3*t/2)) == 0 and (cos(3*pi)*cos(2*pi), cos(3*pi)*sin(2*pi)) == (-1,0) and [cos(3*s/2) for s in (pi/3,pi,5*pi/3,7*pi/3,3*pi,11*pi/3)] == [0,0,0,0,0,0] | The curve is the figure below.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.7cm,y=1.7cm]
+  \draw[->] (-1.4,0) -- (1.4,0) node[right] {$x$};
+  \draw[->] (0,-1.1) -- (0,1.2) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:12.5664,samples=300,variable=\t] plot ({cos(1.5*\t r)*cos(\t r)},{cos(1.5*\t r)*sin(\t r)});
+  \fill[red!70!black] (1,0) circle (0.05) node[above right] {$\theta=0$};
+  \fill[red!70!black] (-1,0) circle (0.05) node[below left] {$\theta=2\pi$};
+%@ g-per-1 | (cos(0), 0) == (1,0) and (cos(3*pi)*cos(2*pi), cos(3*pi)*sin(2*pi)) == (-1,0) | (-1,0) circle
+  \node at (0,-1.3) {$r=\cos(3\theta/2)$, $0\le\theta\le4\pi$};
+\end{tikzpicture}
+\end{center}
+
+% ---------------------------------------------------------------------
+\subsection*{Where two polar curves meet}
+
+Finding intersections is where the non-uniqueness of polar coordinates does its damage. Solving $f(\theta)=g(\theta)$ finds the points where both curves reach the same point \emph{at the same angle}; it can miss points that the two curves reach with different representations.
+
+\begin{thm}{Intersections of polar curves}{inter}
+Let $f$ and $g$ have period $2\pi$. A point $P\ne O$ lies on both $r=f(\theta)$ and $r=g(\theta)$ if and only if there is a $\theta$ with
+\[
+\text{(A)}\ \ f(\theta)=g(\theta)\qquad\text{or}\qquad\text{(B)}\ \ f(\theta)=-g(\theta+\pi)
+\]
+and $P=P(f(\theta),\theta)$. The origin is on a curve if and only if its function has a zero; it is on both curves when each of $f$ and $g$ has a zero, which is \emph{not} detected by (A) or (B) unless the zeros occur at related angles.
+\end{thm}
+\begin{proof}
+($\Leftarrow$) Under (A), $P(f(\theta),\theta)=P(g(\theta),\theta)$ is on both curves. Under (B), $P(f(\theta),\theta)=P(-f(\theta),\theta+\pi)$ (Theorem~\ref{thm:reps}) $=P\bigl(g(\theta+\pi),\theta+\pi\bigr)$, which is on $r=g(\theta)$ as well.
+($\Rightarrow$) Let $P\ne O$ be on both curves. Then $P$ has a representation $(r_1,\theta_1)$ with $r_1=f(\theta_1)$ and a representation $(r_2,\theta_2)$ with $r_2=g(\theta_2)$. By Theorem~\ref{thm:reps}, either $r_2=r_1$ and $\theta_2=\theta_1+2\pi k$, or $r_2=-r_1$ and $\theta_2=\theta_1+\pi+2\pi k$ ($k$ an integer). In the first case $g(\theta_1)=g(\theta_2)=r_2=r_1=f(\theta_1)$ by periodicity: (A) at $\theta_1$. In the second case $g(\theta_1+\pi)=g(\theta_2)=r_2=-r_1=-f(\theta_1)$: (B) at $\theta_1$. The last sentence is the definition of the graph and the fact that $r=0$ represents $O$.
+\end{proof}
+
+\begin{proc}{Intersections of $r=f(\theta)$ and $r=g(\theta)$}{inter}
+\begin{enumerate}[nosep]
+  \item Solve (A) $f(\theta)=g(\theta)$ and (B) $f(\theta)=-g(\theta+\pi)$ for $\theta$ in an interval of length $2\pi$.
+  \item Find the points $P(f(\theta),\theta)$ for each solution; remove duplicates (compare Cartesian coordinates).
+  \item Check the origin separately: solve $f(\theta)=0$ and $g(\theta)=0$.
+  \item Draw both curves to confirm the count.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Two cardioids: a hidden intersection}{int1}
+Find all intersections of $r=1+\cos\theta$ and $r=1-\cos\theta$.
+
+\textbf{Solution.} $f=1+\cos\theta$, $g=1-\cos\theta$, both of period $2\pi$. \emph{(A).} $1+\cos\theta=1-\cos\theta$ gives $2\cos\theta=0$, so $\theta=\frac\pi2$ or $\frac{3\pi}2$, with $r=1$: the points $(0,1)$ and $(0,-1)$. \emph{(B).} $g(\theta+\pi)=1-\cos(\theta+\pi)=1+\cos\theta$, so (B) reads $1+\cos\theta=-(1+\cos\theta)$, that is $\cos\theta=-1$, $\theta=\pi$, $r=f(\pi)=0$: the origin. \emph{Origin.} $f(\pi)=0$ and $g(0)=0$: the origin is on both curves (reached at \emph{different} angles, $\pi$ and $0$). Equation (A) alone found only two points, and would have missed the origin. \emph{Answer.} $(0,1)$, $(0,-1)$ and the origin.
+%@ int1 | FiniteSet(*solve(cos(t),t)) == FiniteSet(pi/2,3*pi/2) and [(1+cos(s))*cos(s) for s in (pi/2,3*pi/2)] == [0,0] and [(1+cos(s))*sin(s) for s in (pi/2,3*pi/2)] == [1,-1] and simplify((1-cos(t+pi))-(1+cos(t))) == 0 and (1+cos(pi), 1-cos(0)) == (0,0) | Equation (A) alone found only two points, and would have missed the origin.
+\end{exmp}
+
+\begin{exmp}{A rose and a circle: all eight points}{int2}
+Find all intersections of $r=2\cos2\theta$ and $r=1$.
+
+\textbf{Solution.} $g=1$ is constant, so $g(\theta+\pi)=1$. \emph{(A).} $2\cos2\theta=1$, $\cos2\theta=\frac12$, $2\theta=\pm\frac\pi3+2\pi k$, so $\theta=\pm\frac\pi6+\pi k$: in $[0,2\pi)$, $\theta=\frac\pi6,\frac{5\pi}6,\frac{7\pi}6,\frac{11\pi}6$, each with $r=1$. \emph{(B).} $2\cos2\theta=-1$, $\cos2\theta=-\frac12$, $2\theta=\pm\frac{2\pi}3+2\pi k$, so $\theta=\pm\frac\pi3+\pi k$: $\theta=\frac\pi3,\frac{2\pi}3,\frac{4\pi}3,\frac{5\pi}3$, each with $r=f(\theta)=-1$; the points are $P(-1,\theta)=P\left(1,\theta+\pi\right)$, on the unit circle at the angles $\frac{4\pi}3,\frac{5\pi}3,\frac\pi3,\frac{2\pi}3$. \emph{Together} the eight points are on the unit circle at the angles $\frac\pi6,\frac\pi3,\frac{2\pi}3,\frac{5\pi}6,\frac{7\pi}6,\frac{4\pi}3,\frac{5\pi}3,\frac{11\pi}6$. A solution of (A) alone would give only four. \emph{Origin.} The rose passes through $O$ but the circle $r=1$ does not, so $O$ is not an intersection. \emph{Check} with the picture: each of the four petals leaves the circle through two points.
+%@ int2 | FiniteSet(pi/6,pi/3,2*pi/3,5*pi/6,7*pi/6,4*pi/3,5*pi/3,11*pi/6) == FiniteSet(pi/6,5*pi/6,7*pi/6,11*pi/6,4*pi/3,5*pi/3,pi/3,2*pi/3) and [2*cos(2*s) for s in (pi/6,5*pi/6,7*pi/6,11*pi/6)] == [1,1,1,1] and [2*cos(2*s) for s in (pi/3,2*pi/3,4*pi/3,5*pi/3)] == [-1,-1,-1,-1] | A solution of (A) alone would give only four.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.9cm,y=1.9cm]
+  \draw[->] (-2.4,0) -- (2.5,0) node[right] {$x$};
+  \draw[->] (0,-2.3) -- (0,2.4) node[above] {$y$};
+  \draw[thick,gray] (0,0) circle (1);
+  \draw[very thick,blue!70!black,domain=0:6.28319,samples=200,variable=\t] plot ({2*cos(2*\t r)*cos(\t r)},{2*cos(2*\t r)*sin(\t r)});
+  \foreach \a in {30,60,120,150,210,240,300,330} {\fill[red!70!black] ({cos(\a)},{sin(\a)}) circle (0.04);}
+  \node[red!70!black,font=\scriptsize] at (1.25,0.6) {$\pi/6$};
+  \node[red!70!black,font=\scriptsize] at (0.78,1.15) {$\pi/3$};
+%@ g-int2 | (cos(pi/6), sin(pi/6)) == (sqrt(3)/2,Q(1,2)) and abs(float(sqrt(3)/2)-0.8660)<1e-4 and abs(float(cos(pi/3))-0.5)<1e-9 | \node[red!70!black,font=\scriptsize] at (0.78,1.15) {$\pi/3$};
+  \node[blue!70!black,font=\scriptsize] at (2.0,-0.4) {$r=2\cos2\theta$};
+  \node[gray,font=\scriptsize] at (-1.3,1.05) {$r=1$};
+\end{tikzpicture}
+\end{center}
+
+% ---------------------------------------------------------------------
+\subsection*{Tangent lines to polar curves}
+
+\begin{thm}{Slope of a polar curve}{polslope}
+Let $r=f(\theta)$ with $f$ differentiable. At a point where $x'(\theta)=f'\cos\theta-f\sin\theta\ne0$, the slope of the tangent line is
+\[
+\frac{dy}{dx}=\frac{f'(\theta)\sin\theta+f(\theta)\cos\theta}{f'(\theta)\cos\theta-f(\theta)\sin\theta}.
+\]
+The tangent is horizontal where the numerator is $0$ and the denominator is not, and vertical where the denominator is $0$ and the numerator is not.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:polpar} the curve is parametric with $x'=f'\cos\theta-f\sin\theta$ and $y'=f'\sin\theta+f\cos\theta$. By the slope formula for parametric curves (Theorem~\ref{12.1-thm:slope}), $\frac{dy}{dx}=\frac{y'}{x'}$ wherever $x'\ne0$. The statements on horizontal and vertical tangents are the same formula read at a zero of $y'$ or $x'$.
+\end{proof}
+
+\begin{exmp}{Tangent lines of a cardioid}{polslope}
+Find the slope of the tangent line to $r=1+\cos\theta$ at $\theta=\frac\pi3$ and at $\theta=\frac\pi2$, and give the tangent lines.
+
+\textbf{Solution.} $f=1+\cos\theta$, $f'=-\sin\theta$. \emph{Numerator.} $y'=f'\sin\theta+f\cos\theta=-\sin^2\theta+\cos\theta+\cos^2\theta=\cos\theta+\cos2\theta$, using $\cos^2\theta-\sin^2\theta=\cos2\theta$. \emph{Denominator.} $x'=f'\cos\theta-f\sin\theta=-\sin\theta\cos\theta-\sin\theta-\sin\theta\cos\theta=-\sin\theta(1+2\cos\theta)$.
+%@ pol-xy | simplify((-sin(t)**2+(1+cos(t))*cos(t))-(cos(t)+cos(2*t))) == 0 and simplify((-sin(t)*cos(t)-(1+cos(t))*sin(t))+sin(t)*(1+2*cos(t))) == 0 | $x'=f'\cos\theta-f\sin\theta=-\sin\theta\cos\theta-\sin\theta-\sin\theta\cos\theta=-\sin\theta(1+2\cos\theta)$.
+\emph{At $\theta=\frac\pi3$.} $y'=\frac12+\cos\frac{2\pi}3=\frac12-\frac12=0$ and $x'=-\frac{\sqrt3}2\cdot2=-\sqrt3\ne0$. The slope is $0$: horizontal tangent. The point has $r=1+\frac12=\frac32$, so it is $\left(\frac32\cos\frac\pi3,\frac32\sin\frac\pi3\right)=\left(\frac34,\frac{3\sqrt3}4\right)$ and the tangent line is $y=\frac{3\sqrt3}4$.
+\emph{At $\theta=\frac\pi2$.} $y'=0+\cos\pi=-1$ and $x'=-1\cdot(1+0)=-1$. The slope is $\frac{-1}{-1}=1$. The point has $r=1$, so it is $(0,1)$, and the tangent line is $y-1=x$, that is $y=x+1$.
+%@ pol-slope | [cos(s)+cos(2*s) for s in (pi/3,pi/2)] == [0,-1] and [-sin(s)*(1+2*cos(s)) for s in (pi/3,pi/2)] == [-sqrt(3),-1] and ((1+cos(pi/3))*cos(pi/3), (1+cos(pi/3))*sin(pi/3)) == (Q(3,4),3*sqrt(3)/4) and (-1)/(-1) == 1 | and the tangent line is $y-1=x$, that is $y=x+1$.
+\emph{Check.} From $r=1+\cos\theta$ we get $r^2=r+x$, so $r=r^2-x$ and, squaring the relation $r=r^2-x$, the Cartesian equation $(x^2+y^2-x)^2=x^2+y^2$. The point $(0,1)$ gives $(1-0)^2=1$, and $\left(\frac34,\frac{3\sqrt3}4\right)$ has $x^2+y^2=\frac9{16}+\frac{27}{16}=\frac94$, so $\left(\frac94-\frac34\right)^2=\left(\frac32\right)^2=\frac94$.
+%@ pol-chk | (1-0)**2 == 1 and (Q(9,16)+Q(27,16)-Q(3,4))**2 == Q(9,16)+Q(27,16) and Q(9,16)+Q(27,16) == Q(9,4) and (Q(9,4)-Q(3,4))**2 == Q(9,4) | so $\left(\frac94-\frac34\right)^2=\left(\frac32\right)^2=\frac94$.
+\end{exmp}
+
+\begin{think}{Why (B) did not matter}{oddrose}
+In Example~\ref{ex:int2}, equation (B) produced four points that (A) missed. Now take the three-petal rose $r=\cos3\theta$ and the circle $r=\frac12$. Show that every solution of (B) gives a point that is already found by (A) at the angle $\theta+\pi$. (Hint: compare $f(\theta+\pi)$ with $f(\theta)$.)
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+A polar equation is a recipe for a parametric curve, so the tools of Section~12.1 apply: Theorem~\ref{thm:polpar} says that the speed of a polar curve is $\sqrt{f^2+f'^2}$, which is exactly what an arc length integral needs, and the sectors of angle $d\theta$ that sweep out a rose petal suggest how to compute areas. Both are the subject of Section~12.3 (area and arc length in polar coordinates). In Section~12.4 the circles, ellipses, parabolas and hyperbolas reappear as \emph{conic sections}, and a single polar equation, $r=\frac{ed}{1+e\cos\theta}$, will describe all of them. In a later chapter, polar coordinates in the plane are extended to cylindrical coordinates in space by adding a height, and to spherical coordinates by tilting the ray out of the plane; the conversion formulas of Theorem~\ref{thm:conv} carry over almost word for word.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Points and conversions} (Examples~\ref{ex:b1}--\ref{ex:b3}): a negative radial coordinate; Cartesian to polar in the second quadrant; a distance.
+  \item \emph{Equations, lines and circles} (Examples~\ref{ex:b4}--\ref{ex:b6}): a circle from its polar equation; a line in polar form; a circle with a center away from the axes.
+  \item \emph{Graphing} (Examples~\ref{ex:b7}--\ref{ex:b9}): a cardioid; a five-petal rose; a logarithmic spiral.
+  \item \emph{Symmetry and period} (Examples~\ref{ex:b10}--\ref{ex:b11}): a lemniscate whose symmetry tests mostly fail; periods of two curves.
+  \item \emph{Tangent lines} (Examples~\ref{ex:b12}--\ref{ex:b14}): a spiral; horizontal and vertical tangents of a cardioid; a rose.
+  \item \emph{Intersections} (Examples~\ref{ex:b15}--\ref{ex:b17}): two circles; a circle and a cardioid meeting at the origin; a lemniscate and a circle.
+  \item \emph{Proofs} (Examples~\ref{ex:b18}--\ref{ex:b20}).
+\end{enumerate}
+
+\subsection*{Group 1: Points and conversions}
+
+\begin{exmp}{A negative radial coordinate}{b1}
+Convert $\left(-3,-\frac{5\pi}6\right)$ to Cartesian coordinates, and give its representation with $r>0$ and $0\le\theta<2\pi$.
+
+\textbf{Solution.} $x=-3\cos\left(-\frac{5\pi}6\right)=-3\cdot\left(-\frac{\sqrt3}2\right)=\frac{3\sqrt3}2$ and $y=-3\sin\left(-\frac{5\pi}6\right)=-3\cdot\left(-\frac12\right)=\frac32$, using $\cos(-u)=\cos u$, $\sin(-u)=-\sin u$, $\cos\frac{5\pi}6=-\frac{\sqrt3}2$, $\sin\frac{5\pi}6=\frac12$. The point is $\left(\frac{3\sqrt3}2,\frac32\right)$. Its distance from $O$ is $\sqrt{\frac{27}4+\frac94}=\sqrt9=3$ and its angle satisfies $\cos\theta=\frac{\sqrt3}2$, $\sin\theta=\frac12$, so $\theta=\frac\pi6$. \emph{Answer.} $\left(3,\frac\pi6\right)$. \emph{Check} by Theorem~\ref{thm:reps}: $\left(-3,-\frac{5\pi}6\right)=\left(3,-\frac{5\pi}6+\pi\right)=\left(3,\frac\pi6\right)$.
+%@ b1 | (-3*cos(-5*pi/6), -3*sin(-5*pi/6)) == (3*sqrt(3)/2, Q(3,2)) and sqrt(Q(27,4)+Q(9,4)) == 3 and (3*cos(pi/6), 3*sin(pi/6)) == (3*sqrt(3)/2, Q(3,2)) and -5*pi/6+pi == pi/6 | $\left(-3,-\frac{5\pi}6\right)=\left(3,-\frac{5\pi}6+\pi\right)=\left(3,\frac\pi6\right)$.
+\end{exmp}
+
+\begin{exmp}{Cartesian to polar in the second quadrant}{b2}
+Give two polar representations of $(-2,2\sqrt3)$: one with $r>0$ and one with $r<0$, both with $0\le\theta<2\pi$.
+
+\textbf{Solution.} $r=\sqrt{(-2)^2+(2\sqrt3)^2}=\sqrt{4+12}=4$. The point is in the second quadrant, so $\theta=\arctan\frac{2\sqrt3}{-2}+\pi=-\frac\pi3+\pi=\frac{2\pi}3$ (the arctangent alone would give the fourth-quadrant angle $-\frac\pi3$). \emph{With $r>0$:} $\left(4,\frac{2\pi}3\right)$. \emph{With $r<0$:} add $\pi$ to the angle and reverse the sign: $\left(-4,\frac{2\pi}3+\pi\right)=\left(-4,\frac{5\pi}3\right)$. \emph{Check.} $4\cos\frac{2\pi}3=-2$, $4\sin\frac{2\pi}3=2\sqrt3$; $-4\cos\frac{5\pi}3=-4\cdot\frac12=-2$, $-4\sin\frac{5\pi}3=-4\cdot\left(-\frac{\sqrt3}2\right)=2\sqrt3$.
+%@ b2 | sqrt((-2)**2+(2*sqrt(3))**2) == 4 and (4*cos(2*pi/3), 4*sin(2*pi/3)) == (-2,2*sqrt(3)) and (-4*cos(5*pi/3), -4*sin(5*pi/3)) == (-2,2*sqrt(3)) and 2*pi/3+pi == 5*pi/3 | $-4\sin\frac{5\pi}3=-4\cdot\left(-\frac{\sqrt3}2\right)=2\sqrt3$.
+\end{exmp}
+
+\begin{exmp}{A distance}{b3}
+Find the distance between $P_1\left(2,\frac\pi3\right)$ and $P_2(5,\pi)$.
+
+\textbf{Solution.} By Theorem~\ref{thm:dist}, $d^2=2^2+5^2-2\cdot2\cdot5\cos\left(\frac\pi3-\pi\right)=29-20\cos\left(-\frac{2\pi}3\right)=29-20\cdot\left(-\frac12\right)=39$, so $d=\sqrt{39}\approx6.245$. \emph{Check} in Cartesian coordinates: $P_1=(1,\sqrt3)$, $P_2=(-5,0)$, and $d^2=(1+5)^2+(\sqrt3-0)^2=36+3=39$.
+%@ b3 | 2**2+5**2-2*2*5*cos(pi/3-pi) == 39 and (1+5)**2+sqrt(3)**2 == 39 and (2*cos(pi/3), 2*sin(pi/3)) == (1,sqrt(3)) and abs(float(sqrt(39))-6.245)<1e-3 | $P_1=(1,\sqrt3)$, $P_2=(-5,0)$, and $d^2=(1+5)^2+(\sqrt3-0)^2=36+3=39$.
+\end{exmp}
+
+\subsection*{Group 2: Equations, lines and circles}
+
+\begin{exmp}{A circle from its polar equation}{b4}
+Identify $r=4\cos\theta+2\sin\theta$.
+
+\textbf{Solution.} Multiply by $r$ (Theorem~\ref{thm:eqconv}(2)): $r^2=4r\cos\theta+2r\sin\theta$, so $x^2+y^2=4x+2y$. Complete the squares: $x^2-4x+4+y^2-2y+1=5$, that is $(x-2)^2+(y-1)^2=5$. The graph is the circle with center $(2,1)$ and radius $\sqrt5$. The origin is on the original graph, since $4\cos\theta+2\sin\theta=0$ at $\theta=\arctan(-2)$, so no point was added by multiplying by $r$. This agrees with Theorem~\ref{thm:pcircles}(3) ($a=2$, $b=1$).
+%@ b4 | expand((x-2)**2+(c-1)**2-5) == x**2-4*x+c**2-2*c and 4+1 == 5 and simplify(4*cos(atan(-2))+2*sin(atan(-2))) == 0 | This agrees with Theorem~\ref{thm:pcircles}(3) ($a=2$, $b=1$).
+\end{exmp}
+
+\begin{exmp}{A line in polar form}{b5}
+Write $y=2x-3$ as $r=\dfrac{\cdot}{\cdot}$.
+
+\textbf{Solution.} By Theorem~\ref{thm:plines}(4) with $m=2$, $b=-3$: $r=\dfrac{-3}{\sin\theta-2\cos\theta}$. \emph{Derivation.} $r\sin\theta=2r\cos\theta-3$, so $r(\sin\theta-2\cos\theta)=-3$. \emph{Check.} $\theta=\frac\pi2$: $r=\frac{-3}{1}=-3$, the point $P\left(-3,\frac\pi2\right)=(0,-3)$, and $2\cdot0-3=-3$. $\theta=0$: $r=\frac{-3}{-2}=\frac32$, the point $\left(\frac32,0\right)$, and $2\cdot\frac32-3=0$.
+%@ b5 | -3/(sin(pi/2)-2*cos(pi/2)) == -3 and (-3*cos(pi/2), -3*sin(pi/2)) == (0,-3) and 2*0-3 == -3 and -3/(sin(0)-2*cos(0)) == Q(3,2) and 2*Q(3,2)-3 == 0 | $\theta=0$: $r=\frac{-3}{-2}=\frac32$, the point $\left(\frac32,0\right)$, and $2\cdot\frac32-3=0$.
+\end{exmp}
+
+\begin{exmp}{A circle whose center is not on an axis}{b6}
+Find the polar equation of the circle of radius $2$ centered at $C\left(4,\frac\pi3\right)$, and the nearest and farthest points of the circle from $O$ along the ray $\theta=\frac\pi3$.
+
+\textbf{Solution.} By Theorem~\ref{thm:pcircles}(2), $r^2-2\cdot4\,r\cos\left(\theta-\frac\pi3\right)=2^2-4^2$, that is $r^2-8r\cos\left(\theta-\frac\pi3\right)=-12$. On the ray $\theta=\frac\pi3$, $\cos0=1$, so $r^2-8r+12=0$, $(r-2)(r-6)=0$, $r=2$ or $r=6$. These are the points $\left(2,\frac\pi3\right)$ and $\left(6,\frac\pi3\right)$, at distance $4-2$ and $4+2$ from $O$, as the picture of a circle of radius $2$ around a center at distance $4$ requires. The circle does not enclose $O$ ($\abs{OC}=4>2$), and indeed the equation $r=0$ gives $0=-12$: the origin is not on it.
+%@ b6 | factor(r**2-8*r+12) == (r-2)*(r-6) and 2**2-4**2 == -12 and 4-2 == 2 and 4+2 == 6 and 0**2-8*0*cos(0) != -12 | the equation $r=0$ gives $0=-12$: the origin is not on it.
+\end{exmp}
+
+\subsection*{Group 3: Graphing}
+
+\begin{exmp}{A cardioid}{b7}
+Graph $r=2-2\cos\theta$.
+
+\textbf{Solution.} Here $a=b$ in Theorem~\ref{thm:lima} (with the sign of the cosine reversed, which reflects the curve in the $y$-axis), so it is a cardioid. $f(\theta)=2-2\cos\theta=4\sin^2\frac\theta2\ge0$, zero only at $\theta=0$ (mod $2\pi$). \emph{Table.}
+\[
+\begin{array}{c|ccccc}
+\theta&0&\frac\pi2&\pi&\frac{3\pi}2&2\pi\\\hline
+r&0&2&4&2&0\\
+(x,y)&(0,0)&(0,2)&(-4,0)&(0,-2)&(0,0)
+\end{array}
+\]
+%@ b7 | [2-2*cos(s) for s in (0,pi/2,pi,3*pi/2,2*pi)] == [0,2,4,2,0] and [((2-2*cos(s))*cos(s), (2-2*cos(s))*sin(s)) for s in (pi/2,pi,3*pi/2)] == [(0,2),(-4,0),(0,-2)] and simplify(2-2*cos(t)-4*sin(t/2)**2) == 0 | (x,y)&(0,0)&(0,2)&(-4,0)&(0,-2)&(0,0)
+Since $f\ge0$ the points are on the rays of angle $\theta$. As $\theta$ goes from $0$ to $\pi$, $r$ grows from $0$ to $4$, and the curve goes from the cusp at $O$ through $(0,2)$ to $(-4,0)$; by symmetry about the $x$-axis ($f$ is even) the lower half returns through $(0,-2)$ to the cusp.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=0.7cm,y=0.7cm]
+  \draw[->] (-4.8,0) -- (1.6,0) node[right] {$x$};
+  \draw[->] (0,-3.6) -- (0,3.8) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:6.28319,samples=100,variable=\t] plot ({(2-2*cos(\t r))*cos(\t r)},{(2-2*cos(\t r))*sin(\t r)});
+  \fill (0,0) circle (0.1) node[above right] {cusp};
+  \fill (0,2) circle (0.1) node[right] {$(0,2)$};
+  \fill (-4,0) circle (0.1) node[below left] {$(-4,0)$};
+%@ g-b7 | ((2-2*cos(pi))*cos(pi), (2-2*cos(pi))*sin(pi)) == (-4,0) and ((2-2*cos(pi/2))*cos(pi/2), (2-2*cos(pi/2))*sin(pi/2)) == (0,2) | (-4,0) circle
+  \fill (0,-2) circle (0.1) node[right] {$(0,-2)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{exmp}{A five-petal rose}{b8}
+Graph $r=2\sin5\theta$: find the number of petals, the directions of the tips, and the interval of $\theta$ that traces the curve once.
+
+\textbf{Solution.} $m=5$ is odd, so by Theorem~\ref{thm:rose} there are $5$ petals and $0\le\theta\le\pi$ traces the curve once (indeed $\sin(5\theta+5\pi)=-\sin5\theta$, Theorem~\ref{thm:period}(2)). The tips are where $\sin5\theta=\pm1$: $5\theta=\frac\pi2+k\pi$, $\theta_k=\frac\pi{10}+\frac{k\pi}5$ for $k=0,1,2,3,4$, with $r=2\sin\left(\frac\pi2+k\pi\right)=2(-1)^k$. For even $k$, $r=2>0$ and the tip direction is $\theta_k$; for odd $k$, $r=-2<0$ and the tip is on the opposite ray, direction $\theta_k+\pi$. In degrees, the directions are $\theta_k\cdot\frac{180}\pi=18^\circ+36^\circ k$, plus $180^\circ$ for odd $k$:
+\[
+\begin{array}{c|ccccc}
+k&0&1&2&3&4\\\hline
+\theta_k&18^\circ&54^\circ&90^\circ&126^\circ&162^\circ\\
+\text{tip direction}&18^\circ&54^\circ+180^\circ=234^\circ&90^\circ&126^\circ+180^\circ=306^\circ&162^\circ
+\end{array}
+\]
+%@ b8 | [(Q(1,10)+Q(k,5)+(k%2))*180 % 360 for k in range(5)] == [18,234,90,306,162] and [2*sin(5*(pi/10+k*pi/5)) for k in range(5)] == [2,-2,2,-2,2] and simplify(sin(5*(t+pi))+sin(5*t)) == 0 | \text{tip direction}&18^\circ&54^\circ+180^\circ=234^\circ&90^\circ&126^\circ+180^\circ=306^\circ&162^\circ
+Sorted, they are $18^\circ,90^\circ,162^\circ,234^\circ,306^\circ$: five tips, $72^\circ$ apart, each $2$ units from $O$, as a rose with five equal petals should have.
+\end{exmp}
+
+\begin{exmp}{A logarithmic spiral}{b9}
+Describe $r=2e^{\theta/4}$, $-\infty<\theta<\infty$.
+
+\textbf{Solution.} $r>0$ for all $\theta$, so the point is on the ray at angle $\theta$, at distance $2e^{\theta/4}$. As $\theta$ increases the distance grows, and as $\theta\to-\infty$, $r\to0$: the curve winds infinitely often around the origin without reaching it. \emph{One turn.} Going once around adds $2\pi$ to $\theta$ and multiplies the distance by $\frac{2e^{(\theta+2\pi)/4}}{2e^{\theta/4}}=e^{\pi/2}\approx4.81$, the \emph{same} factor on every turn; this is why the spiral is self-similar. Crossings of the positive $x$-axis: $\theta=2\pi k$, $r=2e^{\pi k/2}$: $2,\ 2e^{\pi/2}\approx9.62,\dots$ and for $k=-1$, $2e^{-\pi/2}\approx0.416$.
+%@ b9 | simplify(exp((t+2*pi)/4)/exp(t/4)-exp(pi/2)) == 0 and abs(float(exp(pi/2))-4.81)<5e-3 and abs(float(2*exp(pi/2))-9.62)<5e-3 and abs(float(2*exp(-pi/2))-0.416)<5e-4 and limit(2*exp(t/4),t,-oo) == 0 | and for $k=-1$, $2e^{-\pi/2}\approx0.416$.
+\end{exmp}
+
+\subsection*{Group 4: Symmetry and period}
+
+\begin{exmp}{A curve that is symmetric about the origin only}{b10}
+Test $r^2=9\sin2\theta$ for symmetry about the axes and the origin.
+
+\textbf{Solution.} \emph{$x$-axis.} $(r,-\theta)$: $r^2=9\sin(-2\theta)=-9\sin2\theta$, not the original. $(-r,\pi-\theta)$: $r^2=9\sin(2\pi-2\theta)=-9\sin2\theta$, not the original. Both tests fail. \emph{$y$-axis.} $(r,\pi-\theta)$ and $(-r,-\theta)$ give the same two results: both fail. \emph{Origin.} $(-r,\theta)$: $(-r)^2=r^2=9\sin2\theta$, the original: symmetric about the origin.
+The failing tests do not by themselves prove that there is no symmetry (Theorem~\ref{thm:sym} gives sufficient conditions only), so we check directly. Points exist only where $\sin2\theta\ge0$, that is $0\le\theta\le\frac\pi2$ or $\pi\le\theta\le\frac{3\pi}2$ (mod $2\pi$): the points $P(\pm3\sqrt{\sin2\theta},\theta)$ lie in the first and third quadrants. The reflection of a point $\neq O$ of the first quadrant in the $x$-axis lies in the fourth quadrant, which the curve does not enter, and likewise for the $y$-axis. So there is \emph{no} symmetry about the axes. \emph{Answer.} Symmetric about the origin only (it is also symmetric about the line $y=x$, which these tests do not check). At $\theta=\frac\pi{12}$: $r^2=9\sin\frac\pi6=\frac92$.
+%@ b10 | simplify(sin(2*pi-2*t)+sin(2*t)) == 0 and simplify(sin(-2*t)+sin(2*t)) == 0 and 9*sin(2*(pi/12)) == Q(9,2) and [sin(2*s)>=0 for s in (pi/4,5*pi/4)] == [True,True] and [sin(2*s)<0 for s in (3*pi/4,7*pi/4)] == [True,True] | At $\theta=\frac\pi{12}$: $r^2=9\sin\frac\pi6=\frac92$.
+\end{exmp}
+
+\begin{exmp}{Periods}{b11}
+Find an interval of $\theta$ that traces each curve completely: (a) $r=\sin\frac{5\theta}3$; (b) $r=\cos\frac{4\theta}3$.
+
+\textbf{Solution.} (a) $p=5$, $q=3$ are both odd, so Theorem~\ref{thm:period}(3) gives length $\pi q=3\pi$: $f(\theta+3\pi)=\sin\left(\frac{5\theta}3+5\pi\right)=-\sin\frac{5\theta}3=-f(\theta)$, and $3\pi$ is an odd multiple of $\pi$. (b) $p=4$, $q=3$: not both odd, so the length is $2\pi q=6\pi$: $f(\theta+6\pi)=\cos\left(\frac{4\theta}3+8\pi\right)=f(\theta)$. \emph{Note.} For (b) a shorter shift does \emph{not} give $f(\theta+P)=-f(\theta)$ with $P$ an odd multiple of $\pi$: for $P=3\pi$, $f(\theta+3\pi)=\cos(\frac{4\theta}3+4\pi)=f(\theta)$, but $3\pi$ is not a multiple of $2\pi$, so Theorem~\ref{thm:period}(1) does not apply.
+%@ b11 | simplify(sin(5*(t+3*pi)/3)+sin(5*t/3)) == 0 and simplify(cos(4*(t+6*pi)/3)-cos(4*t/3)) == 0 and simplify(cos(4*(t+3*pi)/3)-cos(4*t/3)) == 0 | but $3\pi$ is not a multiple of $2\pi$, so Theorem~\ref{thm:period}(1) does not apply.
+\end{exmp}
+
+\subsection*{Group 5: Tangent lines}
+
+\begin{exmp}{Tangent to the spiral of Archimedes}{b12}
+Find the tangent line to $r=\theta$ at $\theta=\frac\pi2$.
+
+\textbf{Solution.} $f=\theta$, $f'=1$. Then $x'=f'\cos\theta-f\sin\theta=\cos\theta-\theta\sin\theta$ and $y'=f'\sin\theta+f\cos\theta=\sin\theta+\theta\cos\theta$. At $\theta=\frac\pi2$: $x'=0-\frac\pi2\cdot1=-\frac\pi2$ and $y'=1+0=1$. The slope is $\frac{1}{-\pi/2}=-\frac2\pi$. The point is $\left(\frac\pi2\cos\frac\pi2,\frac\pi2\sin\frac\pi2\right)=\left(0,\frac\pi2\right)$. \emph{Answer.} $y-\frac\pi2=-\frac2\pi x$, that is $y=-\frac2\pi x+\frac\pi2$.
+%@ b12 | (cos(pi/2)-(pi/2)*sin(pi/2), sin(pi/2)+(pi/2)*cos(pi/2)) == (-pi/2,1) and 1/(-pi/2) == -2/pi and ((pi/2)*cos(pi/2), (pi/2)*sin(pi/2)) == (0,pi/2) | that is $y=-\frac2\pi x+\frac\pi2$.
+\end{exmp}
+
+\begin{exmp}{Horizontal and vertical tangents of a cardioid}{b13}
+Find the points of $r=1+\cos\theta$, $0\le\theta<2\pi$, where the tangent is horizontal or vertical.
+
+\textbf{Solution.} From Example~\ref{ex:polslope}, $y'=\cos\theta+\cos2\theta$ and $x'=-\sin\theta(1+2\cos\theta)$. \emph{Horizontal} ($y'=0$, $x'\ne0$): $\cos\theta+2\cos^2\theta-1=0$ (using $\cos2\theta=2\cos^2\theta-1$), that is $(2\cos\theta-1)(\cos\theta+1)=0$. So $\cos\theta=\frac12$, $\theta=\frac\pi3,\frac{5\pi}3$, where $x'=-\sin\theta\cdot2\ne0$; or $\cos\theta=-1$, $\theta=\pi$, where $x'=0$ as well, so the theorem does not apply (this is the cusp, where $f(\pi)=f'(\pi)=0$ and the velocity vanishes). The horizontal tangents are at $\left(\frac34,\pm\frac{3\sqrt3}4\right)$. \emph{Vertical} ($x'=0$, $y'\ne0$): $\sin\theta=0$ gives $\theta=0$ ($y'=1+1=2\ne0$): the point $(2,0)$; $\theta=\pi$ is the cusp again. $1+2\cos\theta=0$ gives $\cos\theta=-\frac12$, $\theta=\frac{2\pi}3,\frac{4\pi}3$, where $y'=\cos\theta+\cos2\theta=-\frac12-\frac12=-1\ne0$: $r=\frac12$, the points $\left(-\frac14,\pm\frac{\sqrt3}4\right)$. \emph{Answer.} Horizontal at $\left(\frac34,\pm\frac{3\sqrt3}4\right)$; vertical at $(2,0)$ and $\left(-\frac14,\pm\frac{\sqrt3}4\right)$.
+%@ b13 | factor(2*cos(t)**2+cos(t)-1) == (2*cos(t)-1)*(cos(t)+1) and simplify(cos(t)+cos(2*t)-(2*cos(t)**2+cos(t)-1)) == 0 and [cos(s)+cos(2*s) for s in (2*pi/3,4*pi/3)] == [-1,-1] and (Q(1,2)*cos(2*pi/3), Q(1,2)*sin(2*pi/3)) == (-Q(1,4), sqrt(3)/4) and (Q(1,2)*cos(4*pi/3), Q(1,2)*sin(4*pi/3)) == (-Q(1,4), -sqrt(3)/4) and (1+cos(0))*cos(0) == 2 | $r=\frac12$, the points $\left(-\frac14,\pm\frac{\sqrt3}4\right)$.
+\end{exmp}
+
+\begin{exmp}{A tangent to a rose}{b14}
+For $r=3\cos2\theta$ find the tangent lines at the origin and the slope of the tangent at $\theta=\frac\pi6$.
+
+\textbf{Solution.} \emph{Origin.} $3\cos2\theta=0$ for $2\theta=\frac\pi2+k\pi$: $\theta=\frac\pi4,\frac{3\pi}4$ in $[0,\pi]$. $f'=-6\sin2\theta$, $f'\left(\frac\pi4\right)=-6\ne0$ and $f'\left(\frac{3\pi}4\right)=6\ne0$. By Theorem~\ref{thm:polpar} the tangent lines at $O$ are $\theta=\frac\pi4$ and $\theta=\frac{3\pi}4$, that is $y=x$ and $y=-x$.
+\emph{At $\theta=\frac\pi6$.} $f=3\cos\frac\pi3=\frac32$ and $f'=-6\sin\frac\pi3=-3\sqrt3$. Then
+\[
+x'=f'\cos\theta-f\sin\theta=-3\sqrt3\cdot\frac{\sqrt3}2-\frac32\cdot\frac12=-\frac92-\frac34=-\frac{21}4,
+\]
+\[
+y'=f'\sin\theta+f\cos\theta=-3\sqrt3\cdot\frac12+\frac32\cdot\frac{\sqrt3}2=-\frac{3\sqrt3}2+\frac{3\sqrt3}4=-\frac{3\sqrt3}4.
+\]
+The slope is $\dfrac{y'}{x'}=\dfrac{-3\sqrt3/4}{-21/4}=\dfrac{3\sqrt3}{21}=\dfrac{\sqrt3}7\approx0.247$.
+%@ b14 | [-6*sin(2*s) for s in (pi/4,3*pi/4)] == [-6,6] and (-3*sqrt(3)*(sqrt(3)/2)-Q(3,2)*Q(1,2), -3*sqrt(3)*Q(1,2)+Q(3,2)*(sqrt(3)/2)) == (-Q(21,4), -3*sqrt(3)/4) and (-3*sqrt(3)/4)/(-Q(21,4)) == sqrt(3)/7 and abs(float(sqrt(3)/7)-0.247)<1e-3 | The slope is $\dfrac{y'}{x'}=\dfrac{-3\sqrt3/4}{-21/4}=\dfrac{3\sqrt3}{21}=\dfrac{\sqrt3}7\approx0.247$.
+\end{exmp}
+
+\subsection*{Group 6: Intersections}
+
+\begin{exmp}{Two circles}{b15}
+Find all intersections of $r=2\sin\theta$ and $r=2\cos\theta$.
+
+\textbf{Solution.} Both functions have period $2\pi$. (A): $2\sin\theta=2\cos\theta$, $\tan\theta=1$, $\theta=\frac\pi4,\frac{5\pi}4$: $r=\sqrt2$ at $\frac\pi4$ (the point $(1,1)$) and $r=-\sqrt2$ at $\frac{5\pi}4$ (the point $\left(-\sqrt2\cos\frac{5\pi}4,-\sqrt2\sin\frac{5\pi}4\right)=(1,1)$ again). (B): $f(\theta)=-g(\theta+\pi)$ reads $2\sin\theta=-2\cos(\theta+\pi)=2\cos\theta$, the same equation as (A): nothing new. \emph{Origin.} $2\sin\theta=0$ at $\theta=0$ and $2\cos\theta=0$ at $\theta=\frac\pi2$: the origin is on both. \emph{Answer.} $(1,1)$ and the origin. (The circles are $x^2+(y-1)^2=1$ and $(x-1)^2+y^2=1$, which indeed meet at $(0,0)$ and $(1,1)$.)
+%@ b15 | (sqrt(2)*cos(pi/4), sqrt(2)*sin(pi/4)) == (1,1) and (-sqrt(2)*cos(5*pi/4), -sqrt(2)*sin(5*pi/4)) == (1,1) and simplify(-2*cos(t+pi)-2*cos(t)) == 0 and expand(1**2+(1-1)**2-1) == 0 and (1-1)**2+1**2 == 1 | and $(x-1)^2+y^2=1$, which indeed meet at $(0,0)$ and $(1,1)$.)
+\end{exmp}
+
+\begin{exmp}{A circle and a cardioid meeting at the origin}{b16}
+Find all intersections of $r=3\cos\theta$ and $r=1+\cos\theta$.
+
+\textbf{Solution.} Let $f=1+\cos\theta$, $g=3\cos\theta$. (A): $1+\cos\theta=3\cos\theta$, $\cos\theta=\frac12$, $\theta=\pm\frac\pi3$, $r=\frac32$: the points $\left(\frac32\cos\frac\pi3,\pm\frac32\sin\frac\pi3\right)=\left(\frac34,\pm\frac{3\sqrt3}4\right)$. (B): $f(\theta)=-g(\theta+\pi)$, $1+\cos\theta=-3\cos(\theta+\pi)=3\cos\theta$: the same equation: nothing new. \emph{Origin.} $f(\pi)=1+\cos\pi=0$ and $g\left(\frac\pi2\right)=0$: the origin is on both, reached at different angles; (A) does not find it, since at $\theta=\pi$, $f=0$ but $g=-3$. \emph{Answer.} Three points: $\left(\frac34,\frac{3\sqrt3}4\right)$, $\left(\frac34,-\frac{3\sqrt3}4\right)$ and the origin (Figure below).
+%@ b16 | simplify(1+cos(t)-3*cos(t)-(1-2*cos(t))) == 0 and 1+cos(pi/3) == 3*cos(pi/3) and 1+cos(-pi/3) == 3*cos(-pi/3) and [(Q(3,2)*cos(s), Q(3,2)*sin(s)) for s in (pi/3,-pi/3)] == [(Q(3,4),3*sqrt(3)/4),(Q(3,4),-3*sqrt(3)/4)] and simplify(-3*cos(t+pi)-3*cos(t)) == 0 and (1+cos(pi), 3*cos(pi/2)) == (0,0) and 3*cos(pi) == -3 | $f=0$ but $g=-3$.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=1.0cm]
+  \draw[->] (-0.8,0) -- (3.6,0) node[right] {$x$};
+  \draw[->] (0,-2.2) -- (0,2.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:6.28319,samples=100,variable=\t] plot ({(1+cos(\t r))*cos(\t r)},{(1+cos(\t r))*sin(\t r)});
+  \draw[very thick,red!70!black,domain=0:3.14159,samples=100,variable=\t] plot ({3*cos(\t r)*cos(\t r)},{3*cos(\t r)*sin(\t r)});
+  \fill (0.75,1.299) circle (0.07) node[above] {$\left(\frac34,\frac{3\sqrt3}4\right)$};
+  \fill (0.75,-1.299) circle (0.07) node[below] {$\left(\frac34,-\frac{3\sqrt3}4\right)$};
+%@ g-b16 | (Q(3,2)*cos(pi/3), Q(3,2)*sin(pi/3)) == (Q(3,4),3*sqrt(3)/4) and abs(float(3*sqrt(3)/4)-1.299)<1e-3 | (0.75,-1.299) circle
+  \fill (0,0) circle (0.07) node[below left] {$O$};
+  \node[blue!70!black,font=\scriptsize] at (2.0,0.7) {$r=1+\cos\theta$};
+  \node[red!70!black,font=\scriptsize] at (2.8,-1.2) {$r=3\cos\theta$};
+\end{tikzpicture}
+\end{center}
+
+\begin{exmp}{A lemniscate and a circle}{b17}
+Find all intersections of $r^2=2\cos2\theta$ and $r=1$.
+
+\textbf{Solution.} The lemniscate is not of the form $r=f(\theta)$, so we use the Cartesian equations instead, which avoid the problem of several representations (Theorem~\ref{thm:eqconv}). The lemniscate is $(x^2+y^2)^2=2(x^2-y^2)$ (as in Example~\ref{ex:lemn}) and the circle is $x^2+y^2=1$. Substituting $x^2+y^2=1$: $1=2(x^2-y^2)$, so $x^2-y^2=\frac12$. Adding $x^2+y^2=1$: $2x^2=\frac32$, $x^2=\frac34$, and then $y^2=1-\frac34=\frac14$. So $x=\pm\frac{\sqrt3}2$, $y=\pm\frac12$: four points, one in each quadrant, at the angles $\pm\frac\pi6$ and $\pi\pm\frac\pi6$. \emph{Check} in polar form: at $\theta=\frac\pi6$, $r^2=2\cos\frac\pi3=1$, so $r=\pm1$, and $r=1$ is on the circle. The origin is on the lemniscate but not on the circle. \emph{Answer.} $\left(\pm\frac{\sqrt3}2,\pm\frac12\right)$ (all four sign choices).
+%@ b17 | all(((sx*sqrt(3)/2)**2+(sy*Q(1,2))**2)**2-2*((sx*sqrt(3)/2)**2-(sy*Q(1,2))**2) == 0 for sx in (1,-1) for sy in (1,-1)) and 2*(Q(3,4)-Q(1,4)) == 1 and Q(3,4)+Q(1,4) == 1 and 2*cos(2*(pi/6)) == 1 | The origin is on the lemniscate but not on the circle.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{The angle between the radius and the tangent}{b18}
+Let $\psi$ be the angle from the radial direction $(\cos\theta,\sin\theta)$ to the tangent direction $(x',y')$ of $r=f(\theta)$. Prove that if $f'\ne0$, then $\tan\psi=\dfrac{f(\theta)}{f'(\theta)}$.
+
+\textbf{Plan.} The tangent of the angle between two vectors is their cross product divided by their dot product; compute both with Theorem~\ref{thm:polpar}.
+
+\begin{proof}
+For vectors $\mathbf u=(\cos\theta,\sin\theta)$ and $\mathbf v=(x',y')$ with angle $\psi$ from $\mathbf u$ to $\mathbf v$, $\mathbf u\cdot\mathbf v=\abs{\mathbf v}\cos\psi$ and $u_1v_2-u_2v_1=\abs{\mathbf v}\sin\psi$ (the length of $\mathbf u$ is $1$). Now
+\begin{align*}
+\mathbf u\cdot\mathbf v&=(f'\cos\theta-f\sin\theta)\cos\theta+(f'\sin\theta+f\cos\theta)\sin\theta=f'\left(\cos^2\theta+\sin^2\theta\right)=f',\\
+u_1v_2-u_2v_1&=\cos\theta\,(f'\sin\theta+f\cos\theta)-\sin\theta\,(f'\cos\theta-f\sin\theta)=f\left(\cos^2\theta+\sin^2\theta\right)=f.
+\end{align*}
+Dividing, $\tan\psi=\dfrac{\abs{\mathbf v}\sin\psi}{\abs{\mathbf v}\cos\psi}=\dfrac f{f'}$ (when $f'\ne0$, $\cos\psi\ne0$).
+\end{proof}
+%@ b18 | (lambda F: simplify((diff(F,t)*cos(t)-F*sin(t))*cos(t)+(diff(F,t)*sin(t)+F*cos(t))*sin(t)-diff(F,t)) == 0 and simplify(cos(t)*(diff(F,t)*sin(t)+F*cos(t))-sin(t)*(diff(F,t)*cos(t)-F*sin(t))-F) == 0)(Function('F')(t)) | u_1v_2-u_2v_1&=\cos\theta\,(f'\sin\theta+f\cos\theta)-\sin\theta\,(f'\cos\theta-f\sin\theta)=f\left(\cos^2\theta+\sin^2\theta\right)=f.
+For the cardioid $r=1+\cos\theta$ at $\theta=\frac\pi2$: $\tan\psi=\frac{1}{-1}=-1$, so $\psi=-\frac\pi4$ ($-45^\circ$), which agrees with the slope $1$ found in Example~\ref{ex:polslope}: the radial direction is vertical (angle $90^\circ$) and the tangent direction has angle $90^\circ-45^\circ=45^\circ$, slope $\tan45^\circ=1$.
+\end{exmp}
+
+\begin{exmp}{Rotating a polar curve}{b19}
+Prove that the graph of $r=f(\theta-\alpha)$ is the graph of $r=f(\theta)$ rotated counterclockwise about $O$ through the angle $\alpha$.
+
+\textbf{Plan.} Rotation through $\alpha$ adds $\alpha$ to the angle in a polar representation. Show that this maps one graph onto the other.
+
+\begin{proof}
+A rotation about $O$ through $\alpha$ takes $(r\cos\varphi,r\sin\varphi)$ to $\bigl(r\cos(\varphi+\alpha),r\sin(\varphi+\alpha)\bigr)$: by the addition formulas $\cos(\varphi+\alpha)=\cos\varphi\cos\alpha-\sin\varphi\sin\alpha$ and $\sin(\varphi+\alpha)=\sin\varphi\cos\alpha+\cos\varphi\sin\alpha$, so the new point is the old point multiplied by the rotation matrix, which is the rotation through $\alpha$. Hence the rotation maps $P(r,\varphi)$ to $P(r,\varphi+\alpha)$. If $P(r,\varphi)$ is on $r=f(\theta)$, that is $r=f(\varphi)$, then the rotated point $P(r,\varphi+\alpha)$ satisfies $r=f\bigl((\varphi+\alpha)-\alpha\bigr)$, so it is on $r=f(\theta-\alpha)$. Conversely, if $P(r,\theta)$ is on $r=f(\theta-\alpha)$, then rotating it through $-\alpha$ gives $P(r,\theta-\alpha)$ with $r=f(\theta-\alpha)$, a point of $r=f(\theta)$, and rotating that back through $\alpha$ gives $P(r,\theta)$. So the rotation is a bijection from one graph onto the other.
+\end{proof}
+%@ b19 | simplify(r*cos(t+a)-(cos(a)*(r*cos(t))-sin(a)*(r*sin(t)))) == 0 and simplify(r*sin(t+a)-(sin(a)*(r*cos(t))+cos(a)*(r*sin(t)))) == 0 | So the rotation is a bijection from one graph onto the other.
+Example: $r=\sin2\theta$ is $r=\cos\left(2\theta-\frac\pi2\right)=\cos2\left(\theta-\frac\pi4\right)$, the rose $r=\cos2\theta$ rotated through $\frac\pi4$, as Theorem~\ref{thm:rose} said.
+\end{exmp}
+
+\begin{exmp}{The lemniscate equation}{b20}
+Prove that for $a\ne0$ the graph of $r^2=a^2\cos2\theta$ is exactly the set of points with $(x^2+y^2)^2=a^2(x^2-y^2)$.
+
+\textbf{Plan.} Convert with $x^2+y^2=r^2$ and $\cos2\theta=\cos^2\theta-\sin^2\theta$; treat the origin separately because dividing by $r^2$ is involved.
+
+\begin{proof}
+Let $P=(x,y)\ne O$ with a representation $(r,\theta)$, $r\ne0$. Then $x^2-y^2=r^2\left(\cos^2\theta-\sin^2\theta\right)=r^2\cos2\theta$ and $x^2+y^2=r^2$, so
+\[
+(x^2+y^2)^2-a^2(x^2-y^2)=r^4-a^2r^2\cos2\theta=r^2\left(r^2-a^2\cos2\theta\right).
+\]
+Since $r^2\ne0$, the left side is $0$ exactly when $r^2=a^2\cos2\theta$. By Theorem~\ref{thm:eqconv}(1) (the equation $r^2=a^2\cos2\theta$ is $F(r\cos\theta,r\sin\theta)=0$ for the Cartesian $F(x,y)=(x^2+y^2)^2-a^2(x^2-y^2)$ divided by $r^2$, and changing the representation does not change the condition), the two descriptions agree for every $P\ne O$. The origin satisfies the Cartesian equation ($0=0$) and lies on the polar graph: $r=0$ at $\theta=\frac\pi4$, where $\cos2\theta=0$, so $r^2=0=a^2\cos\frac\pi2$.
+\end{proof}
+%@ b20 | simplify(((r*cos(t))**2+(r*sin(t))**2)**2-a**2*((r*cos(t))**2-(r*sin(t))**2)-r**2*(r**2-a**2*cos(2*t))) == 0 and simplify(cos(2*t)-(cos(t)**2-sin(t)**2)) == 0 and a**2*cos(2*(pi/4)) == 0 | so $r^2=0=a^2\cos\frac\pi2$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:samekc}.] The first, second and third pairs represent the same point and the fourth does not. $\left(-2,\frac{4\pi}3\right)=\left(2,\frac{4\pi}3-\pi\right)=\left(2,\frac\pi3\right)$; $\left(2,\frac{7\pi}3\right)=\left(2,\frac\pi3+2\pi\right)=\left(2,\frac\pi3\right)$; but $\left(-2,-\frac\pi3\right)=\left(2,\frac{2\pi}3\right)$, whose Cartesian form is $(-1,\sqrt3)$, not $(1,\sqrt3)$.
+%@ ans-same | [(s[0]*cos(s[1]), s[0]*sin(s[1])) for s in ((2,pi/3),(-2,4*pi/3),(2,7*pi/3),(-2,-pi/3))] == [(1,sqrt(3)),(1,sqrt(3)),(1,sqrt(3)),(-1,sqrt(3))] | whose Cartesian form is $(-1,\sqrt3)$, not $(1,\sqrt3)$.
+  \item[Knowledge Check \ref{kc:circkc}.] Multiply by $r$: $r^2=-3r\sin\theta$, so $x^2+y^2=-3y$ and $x^2+y^2+3y+\frac94=\frac94$, that is $x^2+\left(y+\frac32\right)^2=\frac94$: the circle with center $\left(0,-\frac32\right)$ and radius $\frac32$. This agrees with Theorem~\ref{thm:pcircles}(3) with $a=0$, $b=-\frac32$.
+%@ ans-circ | expand(x**2+(c+Q(3,2))**2-Q(9,4)) == x**2+c**2+3*c and Q(3,2)**2 == Q(9,4) | the circle with center $\left(0,-\frac32\right)$ and radius $\frac32$. This agrees with Theorem~\ref{thm:pcircles}(3) with $a=0$, $b=-\frac32$.
+  \item[Knowledge Check \ref{kc:rosekc}.] $r=3\sin7\theta$ has $m=7$ odd: $7$ petals, traced once for $0\le\theta\le\pi$. $r=2\cos6\theta$ has $m=6$ even: $2m=12$ petals, traced once for $0\le\theta\le2\pi$ (Theorems~\ref{thm:rose} and \ref{thm:period}).
+%@ ans-rose | [7, 2*6] == [7,12] and simplify(sin(7*(t+pi))+sin(7*t)) == 0 and simplify(cos(6*(t+pi))-cos(6*t)) == 0 | (Theorems~\ref{thm:rose} and \ref{thm:period}).
+  \item[Pause and think \ref{think:timesr}.] Take $r=1$, the unit circle, which does not contain the origin. Multiplying by $r$ gives $r^2=r$, that is $r(r-1)=0$, whose graph contains all the points with $r=0$: the origin is added. This is Theorem~\ref{thm:eqconv}(2) with $E=r-1$: $rE=r(r-1)$.
+%@ ans-times | expand(r*(r-1)) == r**2-r and (r-1).subs(r,0) != 0 and (r*(r-1)).subs(r,0) == 0 | This is Theorem~\ref{thm:eqconv}(2) with $E=r-1$: $rE=r(r-1)$.
+  \item[Pause and think \ref{think:innerloop}.] For $\frac{2\pi}3<\theta<\frac{4\pi}3$ the radial coordinate is negative, so each point is on the ray \emph{opposite} to the direction $\theta$, that is at the angle $\theta+\pi$. As $\theta$ runs from $\frac{2\pi}3$ to $\frac{4\pi}3$, $\theta+\pi$ runs from $\frac{5\pi}3$ to $\frac{7\pi}3$, angles that point into the right half-plane (they are within $\frac\pi3$ of the positive $x$-axis). At the middle, $\theta=\pi$, the point is $P(-1,\pi)=(1,0)$.
+%@ ans-inner | [2*pi/3+pi, 4*pi/3+pi] == [5*pi/3,7*pi/3] and (-1*cos(pi), -1*sin(pi)) == (1,0) and cos(5*pi/3) == Q(1,2) and cos(7*pi/3) == Q(1,2) | At the middle, $\theta=\pi$, the point is $P(-1,\pi)=(1,0)$.
+  \item[Pause and think \ref{think:oddrose}.] For $f(\theta)=\cos3\theta$ we have $f(\theta+\pi)=\cos(3\theta+3\pi)=-\cos3\theta=-f(\theta)$. A solution of (B), $f(\theta)=-\frac12$, therefore satisfies $f(\theta+\pi)=-f(\theta)=\frac12=g(\theta+\pi)$: so $\theta+\pi$ solves (A), and the point $P\left(f(\theta+\pi),\theta+\pi\right)$ found by (A) is $P\left(\frac12,\theta+\pi\right)=P\left(-\frac12,\theta\right)=P(f(\theta),\theta)$, the point that (B) produced. The same argument works for every $f$ with $f(\theta+\pi)=-f(\theta)$, which is the case for roses with an odd number of petals; for the rose with an even number $f(\theta+\pi)=f(\theta)$ and (B) really is new.
+%@ ans-odd | simplify(cos(3*(t+pi))+cos(3*t)) == 0 and simplify(cos(2*(t+pi))-cos(2*t)) == 0 | for the rose with an even number $f(\theta+\pi)=f(\theta)$ and (B) really is new.
+\end{description}
+
+\end{document}
