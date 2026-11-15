@@ -1,0 +1,550 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{10}{8}{Choosing a Convergence Test}
+\calcxdoc{10.7}
+\calcxdoc{10.6}
+\calcxdoc{10.5}
+\calcxdoc{10.4}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+\calcxapp
+
+\begin{document}
+
+\section{Choosing a Convergence Test}
+
+\begin{guide}
+You now own nine tools for infinite series, and a series such as $\sum\frac{\ln k}{k^2}$ or $\sum\frac{(-1)^k}{\sqrt k+(-1)^k}$ will not announce which one to pick. Choosing is a skill, and it rests on two habits: \emph{look at the terms before you compute}, and \emph{treat an inconclusive test as information}, not as a dead end. A test that returns ``$r=1$'' or ``$L=0$'' has told you which tool to put down. This section collects the tests of the chapter in one table, turns them into a strategy, proves the small facts the strategy leans on, and then practises on a large mixed bank.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item state the hypotheses of each test, what it proves, and when it fails to apply or fails to decide;
+  \item choose a first test from the form of the terms, and change tests when one is inconclusive;
+  \item classify a series as absolutely convergent, conditionally convergent or divergent, and justify the class;
+  \item explain why the Ratio and Root Tests are useless for rational terms, and why the Alternating Series Test needs monotone terms;
+  \item recognise ``wrong test'' arguments and repair them.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The tests at a glance}
+
+\textbf{Tests for series of positive terms} (for mixed signs, apply them to $\sum\abs{a_k}$):
+
+\begingroup\small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.25in}>{\raggedright\arraybackslash}p{1.45in}>{\raggedright\arraybackslash}p{1.5in}>{\raggedright\arraybackslash}p{1.75in}@{}}\toprule
+\textbf{Test} & \textbf{Hypotheses} & \textbf{What it proves} & \textbf{When it fails}\\\midrule
+Divergence (Thm~\ref{10.4-thm:divtest}) & any series & diverges if $a_k\not\to0$ & $a_k\to0$ decides nothing (harmonic series); never proves convergence\\
+Geometric, $p$-series (Thms~\ref{10.3-thm:geoseries}, \ref{10.4-thm:pseries}) & $\sum ar^k$, $\sum k^{-p}$ & converges iff $\abs r<1$; iff $p>1$ & only for exactly this shape (shift or factor first)\\
+Integral (Thm~\ref{10.4-thm:inttest}) & $a_k=f(k)$, $f$ continuous, positive, decreasing & $\sum a_k$ and $\int f$ both converge or both diverge & no usable antiderivative, or $f$ not monotone; the integral is \emph{not} the sum\\
+Comparison (Thm~\ref{10.5-thm:comp}) & $0\le a_k\le b_k$ eventually & $\sum a_k$ converges if $\sum b_k$ does; $\sum b_k$ diverges if $\sum a_k$ does & the inequality points the wrong way; terms not $\ge0$\\
+Limit Comparison (Thm~\ref{10.5-thm:lct}) & $a_k,b_k>0$; $L=\lim\frac{a_k}{b_k}$ & $0<L<\infty$: same behaviour & $L=0$ with $\sum b_k$ divergent, or $L=\infty$ with $\sum b_k$ convergent\\\bottomrule
+\end{tabular}
+\endgroup
+
+\textbf{Tests that accept terms of any sign:}\par\nopagebreak
+\begingroup\small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.25in}>{\raggedright\arraybackslash}p{1.45in}>{\raggedright\arraybackslash}p{1.5in}>{\raggedright\arraybackslash}p{1.75in}@{}}\toprule
+\textbf{Test} & \textbf{Hypotheses} & \textbf{What it proves} & \textbf{When it fails}\\\midrule
+Alternating Series (Thm~\ref{10.6-thm:ast}) & $(-1)^ka_k$, $a_k\ge0$ nonincreasing, $a_k\to0$ & converges (possibly only conditionally) & $a_k$ not monotone (Thm~\ref{thm:astmono}) or $a_k\not\to0$; never proves divergence\\
+Absolute convergence (Thm~\ref{10.6-thm:absconv}) & any series & $\sum\abs{a_k}$ converges $\Rightarrow$ $\sum a_k$ converges & $\sum\abs{a_k}$ diverges: no conclusion about $\sum a_k$\\
+Ratio (Thm~\ref{10.7-thm:ratio}) & $a_k\ne0$; $r=\lim\abs{\frac{a_{k+1}}{a_k}}$ & $r<1$: absolutely convergent; $r>1$: divergent & $r=1$; no limit; rational terms (Thm~\ref{thm:rational})\\
+Root (Thm~\ref{10.7-thm:root}) & $r=\lim\abs{a_k}^{1/k}$ & same as the Ratio Test & $r=1$; no limit; $(k!)^{1/k}$ has no simple form\\\bottomrule
+\end{tabular}
+\endgroup
+
+Three remarks on the tables. First, the Divergence Test and the tests of the second table accept terms of any sign; the Integral, Comparison and Limit Comparison Tests need positive terms. Second, ``fails'' has two meanings: a hypothesis is false (the test does not \emph{apply}), or the test applies and returns no verdict (it is \emph{inconclusive}). Either way another test must be used. Third, if the Ratio Test limit exists, the Root Test limit exists and is equal to it (Theorem~\ref{10.7-thm:ratroot}); running both on the same series tells you nothing new when the ratio limit exists, and when that limit is $1$ both are silent.
+
+% ---------------------------------------------------------------------
+\subsection*{A strategy}
+
+\begin{proc}{Choosing a convergence test}{choose}
+\begin{enumerate}[nosep]
+  \item \textbf{Look and simplify.} Is the series geometric, a $p$-series after a shift or after factoring, or telescoping? Can it be split into two simpler series? Is there a sign pattern?
+  \item \textbf{Divergence Test.} Find $\lim a_k$. If it is not $0$, the series diverges: stop. If it is $0$, nothing is decided: continue.
+  \item \textbf{Match the terms to a test} using the table below.
+  \item \textbf{If the test is inconclusive, change tests.} A value $r=1$, a limit $L=0$ or $\infty$, or an inequality that points the wrong way means \emph{wrong tool}, not \emph{hard series}.
+  \item \textbf{Signs.} If the signs are mixed, test $\sum\abs{a_k}$ first. If it converges, you are done (absolute convergence). If it diverges, look for conditional convergence with the Alternating Series Test, or split the series (Theorem~\ref{thm:sumclass}).
+  \item \textbf{Say what you proved:} name the test, check its hypotheses, and state the class: converges absolutely, converges conditionally, or diverges.
+\end{enumerate}
+\end{proc}
+
+\noindent\begingroup\small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.55in}>{\raggedright\arraybackslash}p{3.4in}@{}}\toprule
+\textbf{If the terms contain\dots} & \textbf{try first\dots}\\\midrule
+factorials ($k!$, $(2k)!$), or $c^k$ times powers of $k$ & Ratio Test\\
+a whole expression to the $k$th power, $(\cdots)^k$ or $(\cdots)^{k^2}$ & Root Test\\
+a rational function, or roots of one & Limit Comparison with $\sum k^{-p}$, read off from the leading terms\\
+$\ln k$ as a factor & Comparison with a $p$-series (Theorem~\ref{thm:logs}), or the Integral Test\\
+an $f(k)$ with an easy antiderivative ($\frac1{k\ln k}$, $ke^{-k^2}$) & Integral Test\\
+$\sin k$, $\cos k$ or other bounded factors & bound them, then Comparison\\
+$(-1)^k$ and decreasing terms & $\sum\abs{a_k}$ first, then the Alternating Series Test\\
+a sum of two different kinds of terms & split (Theorem~\ref{thm:sumclass})\\\bottomrule
+\end{tabular}
+\endgroup
+
+\begin{kc}{Which test first?}{firstkc}
+Say which test you would try first, and why, for (a)~$\displaystyle\sum_{k=1}^\infty\frac{2k^2+1}{5k^2-3}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{k!}{10^k}$; \quad (c)~$\displaystyle\sum_{k=2}^\infty\frac1{k\,(\ln k)^2}$. You do not need to finish the test.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 1: simplify and split}
+
+A series with two kinds of terms is often best split, but the pieces must be handled with care: a sum of two series can be absolutely convergent, conditionally convergent or divergent, depending on the pieces.
+
+\begin{thm}{Classifying a sum of two series}{sumclass}
+Let $\sum a_k$ converge absolutely.
+\begin{enumerate}[label=(\alph*)]
+  \item If $\sum b_k$ converges absolutely, then $\sum(a_k+b_k)$ converges absolutely.
+  \item If $\sum b_k$ converges conditionally, then $\sum(a_k+b_k)$ converges conditionally.
+  \item If $\sum b_k$ diverges, then $\sum(a_k+b_k)$ diverges.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(a) For every $k$,
+\[
+\abs{a_k+b_k}\le\abs{a_k}+\abs{b_k}.
+\]
+The series with terms $\abs{a_k}+\abs{b_k}$ converges (Theorem~\ref{10.3-thm:props}(3)), so $\sum\abs{a_k+b_k}$ converges by the Comparison Test (Theorem~\ref{10.5-thm:comp}).
+
+(b) $\sum a_k$ converges (Theorem~\ref{10.6-thm:absconv}), so $\sum(a_k+b_k)$ converges, as a sum of two convergent series. Suppose it converged absolutely. Since $b_k=(a_k+b_k)-a_k$, we have $\abs{b_k}\le\abs{a_k+b_k}+\abs{a_k}$, and $\sum\left(\abs{a_k+b_k}+\abs{a_k}\right)$ converges. By the Comparison Test $\sum\abs{b_k}$ converges, contradicting the assumption that $\sum b_k$ converges only conditionally. So $\sum(a_k+b_k)$ converges but not absolutely: it converges conditionally.
+
+(c) $\sum a_k$ converges and $\sum b_k$ diverges, so $\sum(a_k+b_k)$ diverges (Theorem~\ref{10.3-thm:props}(4)).
+\end{proof}
+
+The hypothesis that $\sum a_k$ is \emph{absolutely} convergent matters for (a) and (b). Two conditionally convergent series can add up to anything: $\sum\frac{(-1)^k}k+\sum\frac{(-1)^{k+1}}k$ has every term $0$, while $\sum\frac{(-1)^k}k+\sum\frac{(-1)^k}k=2\sum\frac{(-1)^k}k$ converges only conditionally.
+%@ sumclass | all(Q((-1)**j,j)+Q((-1)**(j+1),j) == 0 for j in range(1,30)) and summation(2*(-1)**k/k,(k,1,oo)) == -2*log(2) | 2\sum\frac{(-1)^k}k$ converges only conditionally
+
+\begin{exmp}{Split a series}{split}
+Classify $\displaystyle\sum_{k=1}^\infty\frac{(-1)^k+k\,3^{-k}}{\sqrt k}$.
+
+\textbf{Solution.} Split each term: $\dfrac{(-1)^k+k\,3^{-k}}{\sqrt k}=\dfrac{(-1)^k}{\sqrt k}+\dfrac{\sqrt k}{3^k}$.
+%@ ex-split-a | all(abs(float(((-1)**j+j*Q(1,3**j))/sqrt(j)-((-1)**j/sqrt(j)+sqrt(j)/3**j)))<1e-12 for j in range(1,40)) and Q(1,3)*3 == 1 | \dfrac{(-1)^k}{\sqrt k}+\dfrac{\sqrt k}{3^k}$.
+The second series has positive terms and an exponential, so use the Ratio Test: $\dfrac{\sqrt{k+1}/3^{k+1}}{\sqrt k/3^k}=\dfrac13\sqrt{\dfrac{k+1}k}\to\dfrac13<1$, so it converges absolutely. The first series is alternating with $a_k=\frac1{\sqrt k}$ decreasing to $0$, so it converges (Alternating Series Test); its absolute values form the $p$-series with $p=\frac12$, which diverges, so it converges only conditionally. By Theorem~\ref{thm:sumclass}(b) the original series converges conditionally.
+%@ ex-split-b | limit(Q(1,3)*sqrt((k+1)/k),k,oo) == Q(1,3) | \dfrac13\sqrt{\dfrac{k+1}k}\to\dfrac13<1$
+(Applying the Ratio Test to the \emph{whole} series would give $\abs{a_{k+1}/a_k}$ with the sign pattern and the two parts tangled together; splitting is what makes each test clean.)
+\end{exmp}
+
+\begin{exmp}{Special series in disguise}{special}
+Decide (a)~$\displaystyle\sum_{k=6}^\infty\frac1{\left(k^2-10k+25\right)^{3/4}}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac6{k(k+3)}$.
+
+\textbf{Solution.} (a) Factor first: $k^2-10k+25=(k-5)^2$, so for $k\ge6$ the term is $\frac1{(k-5)^{3/2}}$. With $j=k-5$ the series is $\sum_{j=1}^\infty\frac1{j^{3/2}}$, a $p$-series with $p=\frac32>1$: it converges (Theorem~\ref{10.4-thm:pseries}). No test was needed beyond recognising the series.
+%@ ex-spec-a | all(((j-5)**2)**Q(3,4) == (j-5)**Q(3,2) for j in range(6,30)) and Q(3,2) > 1 | $p=\frac32>1$: it converges
+(b) The partial fractions $\frac6{k(k+3)}=2\left(\frac1k-\frac1{k+3}\right)$ show a telescoping series with step $3$ (Theorem~\ref{10.3-thm:tele}): the partial sums leave $2\left(1+\frac12+\frac13\right)$ as $n\to\infty$, so the series converges, and its sum is $\frac{11}3$. Here the Integral and Comparison Tests would also prove convergence, but only telescoping gives the value.
+%@ ex-spec-b | all(Q(6,j*(j+3)) == 2*(Q(1,j)-Q(1,j+3)) for j in range(1,30)) and summation(6/(k*(k+3)),(k,1,oo)) == Q(11,3) | and its sum is $\frac{11}3$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 2: the Divergence Test comes first}
+
+The Divergence Test needs only a limit, and when it applies it ends the problem. Do it before any test that needs an idea.
+
+\begin{exmp}{Terms that do not tend to $0$}{divtest}
+Decide (a)~$\displaystyle\sum_{k=1}^\infty\left(1-\frac3k\right)^k$; \quad (b)~$\displaystyle\sum_{k=1}^\infty k\sin\frac1k$.
+
+\textbf{Solution.} (a) $\left(1-\frac3k\right)^k\to e^{-3}\approx0.0498\ne0$ (the limit $\left(1+\frac ak\right)^k\to e^a$ with $a=-3$). The terms are small but do not tend to $0$, so the series diverges. (b) With $t=\frac1k\to0$, $k\sin\frac1k=\frac{\sin t}t\to1\ne0$: the series diverges. In both cases the other tests would waste time; one limit settles it.
+%@ ex-div-a | limit((1-3/k)**k,k,oo) == exp(-3) and abs(float(exp(-3))-0.0498)<1e-4 and limit(k*sin(1/k),k,oo) == 1 | $k\sin\frac1k=\frac{\sin t}t\to1\ne0$
+\end{exmp}
+
+\begin{think}{Why first?}{whyfirst}
+Suppose you skip the Divergence Test and apply the Ratio Test to $\sum\frac{k+1}{k}$. What happens? Explain why the Divergence Test is the cheapest test to try, and say what it \emph{cannot} tell you when $a_k\to0$.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 3: exponentials, factorials and $k$th powers}
+
+For these terms the Integral Test rarely helps and the Ratio or Root Test usually works at once (Section~10.7). Sometimes more than one test works; then take the shorter route.
+
+\begin{exmp}{More than one test works}{intratio}
+Does $\displaystyle\sum_{k=1}^\infty k\,e^{-k^2}$ converge?
+
+\textbf{Solution.} \emph{Ratio Test:} $\dfrac{(k+1)e^{-(k+1)^2}}{k\,e^{-k^2}}=\left(1+\dfrac1k\right)e^{-2k-1}\to1\cdot0=0<1$, so the series converges absolutely. \emph{Integral Test:} $f(x)=xe^{-x^2}$ has $f'(x)=(1-2x^2)e^{-x^2}<0$ for $x\ge1$, so $f$ is positive and decreasing, and $\int_1^\infty xe^{-x^2}\,dx=\frac1{2e}$ is finite, so the series converges. The Ratio Test is shorter. Notice that the integral $\frac1{2e}\approx0.184$ is not the sum: the sum is about $0.405$ (Theorem~\ref{10.4-thm:inttest}(b) puts it between $\frac1{2e}$ and $\frac1e+\frac1{2e}\approx0.552$).
+%@ ex-ir | abs(float(sum(j*exp(-j**2) for j in range(1,12)))-0.405)<1e-3 and limit((1+1/k)*exp(-2*k-1),k,oo) == 0 and simplify(diff(x*exp(-x**2),x)-(1-2*x**2)*exp(-x**2)) == 0 and integrate(x*exp(-x**2),(x,1,oo)) == exp(-1)/2 | $\frac1{2e}\approx0.184$ is not the sum: the sum is about $0.405$
+\end{exmp}
+
+\begin{exmp}{A factorial against a power}{factpow}
+Does $\displaystyle\sum_{k=1}^\infty\frac{k^k}{(k!)^2}$ converge?
+
+\textbf{Solution.} Factorials: use the Ratio Test. Since $(k+1)!=(k+1)\,k!$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{(k+1)^{k+1}}{\left((k+1)!\right)^2}\cdot\frac{(k!)^2}{k^k}=\frac{(k+1)^{k+1}}{(k+1)^2\,k^k}=\frac{\left(1+\frac1k\right)^k}{k+1}\to e\cdot0=0 .
+\]
+%@ ex-fp | all(Q((j+1)**(j+1),factorial(j+1)**2)/Q(j**j,factorial(j)**2) == Q(j+1,j)**j/(j+1) for j in range(1,15)) and limit((1+1/k)**k/(k+1),k,oo) == 0 | \frac{\left(1+\frac1k\right)^k}{k+1}\to e\cdot0=0
+So $r=0<1$ and the series converges absolutely. (The terms are $1,1,\frac34,\frac49,\dots$: the first few do not shrink, which is why only the limit matters.)
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 3, continued: rational and algebraic terms}
+
+For rational terms the Limit Comparison Test compares with the $p$-series suggested by the leading terms. Its conclusion, that the two series behave alike, can be sharpened: when $\frac{a_k}{b_k}\to L>0$, not only convergence but the \emph{size} of the tails agrees.
+
+\begin{thm}{Terms that behave alike have sums that behave alike}{equiv}
+Let $a_k>0$ and $b_k>0$ with $\dfrac{a_k}{b_k}\to L$, where $0<L<\infty$.
+\begin{enumerate}[label=(\alph*)]
+  \item If $\sum b_k$ converges, then $\sum a_k$ converges, and the remainders $R_n(a)=\sum_{k>n}a_k$ and $R_n(b)=\sum_{k>n}b_k$ satisfy $\dfrac{R_n(a)}{R_n(b)}\to L$ as $n\to\infty$.
+  \item If $\sum b_k$ diverges, then $\sum a_k$ diverges, and the partial sums $s_n(a)=\sum_{k=1}^na_k$ and $s_n(b)=\sum_{k=1}^nb_k$ satisfy $\dfrac{s_n(a)}{s_n(b)}\to L$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Let $0<\varepsilon<L$. Choose $K$ with $\abs{\frac{a_k}{b_k}-L}<\varepsilon$ for $k>K$, that is,
+\[
+(L-\varepsilon)\,b_k<a_k<(L+\varepsilon)\,b_k\qquad(k>K).
+\]
+(a) The series $\sum(L\pm\varepsilon)b_k$ converge (Theorem~\ref{10.3-thm:props}(1)). The Comparison Test (Theorem~\ref{10.5-thm:comp}) applied to $a_k<(L+\varepsilon)b_k$ shows that $\sum a_k$ converges, and part (3) of that theorem, applied to both inequalities, gives for every $n\ge K$
+\[
+(L-\varepsilon)R_n(b)\le R_n(a)\le(L+\varepsilon)R_n(b).
+\]
+Since $R_n(b)>0$, dividing gives $L-\varepsilon\le\frac{R_n(a)}{R_n(b)}\le L+\varepsilon$ for all $n\ge K$. As $\varepsilon$ was arbitrary, $\frac{R_n(a)}{R_n(b)}\to L$.
+
+(b) The terms $b_k$ are positive, so $s_n(b)\to\infty$ (Theorem~\ref{10.3-thm:posterms}(b)). Put $A=s_K(a)$ and $B=s_K(b)$. For $n>K$, adding the inequalities for $k=K+1,\dots,n$ gives
+\[
+(L-\varepsilon)\left(s_n(b)-B\right)\le s_n(a)-A\le(L+\varepsilon)\left(s_n(b)-B\right).
+\]
+Since $A\ge0$ we get $s_n(a)\ge(L-\varepsilon)\left(s_n(b)-B\right)\to\infty$, so $\sum a_k$ diverges. Dividing the two inequalities by $s_n(b)$,
+\[
+(L-\varepsilon)\left(1-\tfrac B{s_n(b)}\right)\le\frac{s_n(a)}{s_n(b)}\le(L+\varepsilon)\left(1-\tfrac B{s_n(b)}\right)+\frac A{s_n(b)}.
+\]
+As $n\to\infty$, $\frac B{s_n(b)}\to0$ and $\frac A{s_n(b)}\to0$, so the left side tends to $L-\varepsilon$ and the right side to $L+\varepsilon$. Hence $L-2\varepsilon<\frac{s_n(a)}{s_n(b)}<L+2\varepsilon$ for all large $n$, and the ratio tends to $L$.
+\end{proof}
+
+\begin{think}{The tails agree, the sums do not}{tails}
+Take $a_k=\frac1{k^2+1}$ and $b_k=\frac1{k^2}$, so $L=1$. Theorem~\ref{thm:equiv} says $R_n(a)/R_n(b)\to1$. Do the two series have the same sum? What does the theorem say about their sums?
+\end{think}
+
+\begin{exmp}{Limit Comparison with roots, and a remainder}{lctroot}
+(a) Does $\displaystyle\sum_{k=1}^\infty\frac{2k+\sqrt k}{k^{5/2}+7k}$ converge? (b) For $a_k=\dfrac{2k+1}{k^3+4}$, estimate the error after $n=50$ terms.
+
+\textbf{Solution.} (a) The leading terms are $\frac{2k}{k^{5/2}}=\frac2{k^{3/2}}$, so compare with $b_k=\frac1{k^{3/2}}$ (a convergent $p$-series, $p=\frac32$):
+\[
+\frac{a_k}{b_k}=\frac{(2k+\sqrt k)\,k^{3/2}}{k^{5/2}+7k}=\frac{2k^{5/2}+k^2}{k^{5/2}+7k}=\frac{2+k^{-1/2}}{1+7k^{-3/2}}\to2 .
+\]
+%@ ex-lct-a | limit(((2*(k+1)+sqrt(k+1))/((k+1)**Q(5,2)+7*(k+1)))/((2*k+sqrt(k))/(k**Q(5,2)+7*k)),k,oo) == 1 and limit((2*k+sqrt(k))*k**Q(3,2)/(k**Q(5,2)+7*k),k,oo) == 2 | {k^{5/2}+7k}=\frac{2k^{5/2}+k^2}{k^{5/2}+7k}=\frac{2+k^{-1/2}}{1+7k^{-3/2}}\to2
+Since $0<L=2<\infty$ and $\sum b_k$ converges, the series converges (Limit Comparison Test). The Ratio Test returns $r=1$ here as well (the terms behave like a power of $k$), and the Integral Test needs an antiderivative of an ugly function.
+
+(b) Compare with $b_k=\frac1{k^2}$: $k^2a_k=\frac{2k^3+k^2}{k^3+4}\to2=L$. By Theorem~\ref{thm:equiv}(a), $R_n(a)\approx2R_n(b)$, and $R_n(b)\approx\frac1n$ for large $n$ (Theorem~\ref{10.4-thm:estimate} gives $\frac1{n+1}<R_n(b)<\frac1n$). So the error after $50$ terms is about $2\cdot\frac1{50}=0.04$. The true value is $R_{50}(a)=0.03980$, and the ratio $R_{50}(a)/R_{50}(b)=2.0099$ is already close to $2$.
+%@ ex-lct-b | abs(float(Sum((2*k+1)/(k**3+4),(k,51,oo)).evalf(12))-0.039798)<1e-6 and abs(float(Sum((2*k+1)/(k**3+4),(k,51,oo)).evalf(12)/Sum(1/k**2,(k,51,oo)).evalf(12))-2.0099)<1e-4 and Q(1,51) < Sum(1/k**2,(k,51,oo)).evalf(12) and limit((2*k**3+k**2)/(k**3+4),k,oo) == 2 | $R_{50}(a)/R_{50}(b)=2.0099$ is already close to $2$
+\end{exmp}
+
+Now the Ratio and Root Tests. Section~10.7 asserted that they are useless for rational terms; here is the proof.
+
+\begin{thm}{Rational terms: the Ratio and Root Tests say nothing}{rational}
+Let $p$ and $q$ be nonzero polynomials and $a_k=\dfrac{p(k)}{q(k)}$ (defined and nonzero for all large $k$). Then
+\[
+\lim_{k\to\infty}\abs{\frac{a_{k+1}}{a_k}}=1\qquad\text{and}\qquad\lim_{k\to\infty}\abs{a_k}^{1/k}=1 .
+\]
+So for a series with rational terms both tests return $r=1$ and are inconclusive.
+\end{thm}
+\begin{proof}
+\emph{Step 1: $\frac{p(k+1)}{p(k)}\to1$.} Let $p$ have degree $m$ and leading coefficient $c\ne0$, so $p(k)=ck^m+c_{m-1}k^{m-1}+\cdots+c_0$. Dividing by $k^m$ gives $\frac{p(k)}{k^m}=c+\frac{c_{m-1}}k+\cdots+\frac{c_0}{k^m}\to c$ by the limit laws, and in the same way $\frac{p(k+1)}{(k+1)^m}\to c$. Therefore
+\[
+\frac{p(k+1)}{p(k)}=\frac{p(k+1)}{(k+1)^m}\cdot\frac{k^m}{p(k)}\cdot\left(1+\frac1k\right)^m\to c\cdot\frac1c\cdot1=1 .
+\]
+\emph{Step 2: the ratio.} The same holds for $q$, so $\frac{a_{k+1}}{a_k}=\frac{p(k+1)/p(k)}{q(k+1)/q(k)}\to\frac11=1$.
+
+\emph{Step 3: the root.} A nonzero polynomial has finitely many zeros, so $a_k\ne0$ for all $k\ge K$, and Theorem~\ref{10.7-thm:ratroot} applied to the sequence $\{a_k\}_{k\ge K}$ shows $\abs{a_k}^{1/k}\to1$ (the first $K-1$ terms do not affect a limit, Theorem~\ref{app-thm:tail}).
+\end{proof}
+
+The same happens for a power $k^p$ (the ratio is $\left(1+\frac1k\right)^p\to1$, Theorem~\ref{10.2-thm:contfn}) and for terms such as $\frac1{k\ln k}$. The tests live in the world of exponentials and factorials.
+
+\begin{kc}{When the ratio is silent}{ratiokc}
+Compute $\lim\abs{a_{k+1}/a_k}$ for $a_k=\dfrac{3k+1}{k^2+2}$. What does the Ratio Test say, and which test settles $\sum a_k$?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 3, continued: logarithms}
+
+A logarithm grows more slowly than every positive power (Theorem~\ref{10.2-thm:growth}), so a factor $\ln k$ or $(\ln k)^q$ moves the answer only on the borderline $p=1$.
+
+\begin{thm}{Logarithmic factors}{logs}
+\begin{enumerate}[label=(\alph*)]
+  \item $\displaystyle\sum_{k=2}^\infty\frac{\ln k}{k^p}$ converges if and only if $p>1$.
+  \item $\displaystyle\sum_{k=2}^\infty\frac1{k\,(\ln k)^q}$ converges if and only if $q>1$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(a) \emph{If $p>1$:} let $s=\frac{1+p}2$, so $1<s<p$. Then $\frac{\ln k}{k^p}=\frac{\ln k}{k^{p-s}}\cdot\frac1{k^s}$, and $\frac{\ln k}{k^{p-s}}\to0$ by Theorem~\ref{10.2-thm:growth}(a) because $p-s>0$. So $\frac{\ln k}{k^{p-s}}\le1$ for large $k$, and $0<\frac{\ln k}{k^p}\le\frac1{k^s}$. The $p$-series with exponent $s>1$ converges, so $\sum\frac{\ln k}{k^p}$ converges by the Comparison Test. \emph{If $p\le1$:} for $k\ge3$, $\ln k>1$, so $\frac{\ln k}{k^p}>\frac1{k^p}$, and $\sum\frac1{k^p}$ diverges ($p\le1$). By the Comparison Test the series diverges.
+
+(b) \emph{If $q\le0$:} the term is $\frac{(\ln k)^{-q}}k$, and for $k\ge3$, $(\ln k)^{-q}\ge1$ (because $\ln k>1$ and $-q\ge0$), so the term is at least $\frac1k$ and the series diverges by comparison with the harmonic series. \emph{If $q>0$:} $f(x)=\frac1{x(\ln x)^q}$ is continuous and positive on $[2,\infty)$ and decreasing, because $x(\ln x)^q$ is a product of positive increasing functions. By the Integral Test (Theorem~\ref{10.4-thm:inttest}) we study $\int_2^b f(x)\,dx$. The substitution $u=\ln x$, $du=\frac{dx}x$, gives
+\[
+\int_2^b\frac{dx}{x(\ln x)^q}=\int_{\ln2}^{\ln b}u^{-q}\,du=\begin{cases}\dfrac{(\ln b)^{1-q}-(\ln2)^{1-q}}{1-q}&q\ne1,\\[6pt]\ln\ln b-\ln\ln2&q=1.\end{cases}
+\]
+As $b\to\infty$, $\ln b\to\infty$. For $q>1$ the exponent $1-q$ is negative, $(\ln b)^{1-q}\to0$, and the integral tends to the finite number $\frac{(\ln2)^{1-q}}{q-1}$. For $0<q<1$ the exponent is positive and the integral tends to $\infty$; for $q=1$, $\ln\ln b\to\infty$. So the integral, and with it the series, converges if and only if $q>1$.
+\end{proof}
+%@ logs | integrate(1/(x*log(x)**2),(x,2,oo)) == 1/log(2) and limit(log(k)/k**Q(1,10),k,oo) == 0 | the integral tends to the finite number $\frac{(\ln2)^{1-q}}{q-1}$
+
+\begin{exmp}{Three tests fail, a comparison works}{threefail}
+Does $\displaystyle\sum_{k=2}^\infty\frac1{k^2\ln k}$ converge?
+
+\textbf{Solution.} \emph{Divergence Test:} $a_k\to0$, no verdict. \emph{Ratio Test:} $\frac{a_{k+1}}{a_k}=\frac{k^2}{(k+1)^2}\cdot\frac{\ln k}{\ln(k+1)}\to1\cdot1=1$, no verdict. \emph{Integral Test:} $\int\frac{dx}{x^2\ln x}$ has no elementary antiderivative, so it is not practical. \emph{Comparison:} for $k\ge3$, $\ln k\ge\ln3>1$, so $0<\frac1{k^2\ln k}<\frac1{k^2}$, and $\sum\frac1{k^2}$ converges. The series converges. The lesson: the logarithm in the denominator only helps convergence, so a comparison with the $p$-series without the logarithm is enough here.
+%@ ex-three | log(3) > 1 and all(1/(j**2*log(j)) < Q(1,j**2) for j in range(3,60)) and limit(k**2*log(k)/((k+1)**2*log(k+1)),k,oo) == 1 | for $k\ge3$, $\ln k\ge\ln3>1$, so $0<\frac1{k^2\ln k}<\frac1{k^2}$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 5: signs, and the limits of the Alternating Series Test}
+
+The Alternating Series Test (Theorem~\ref{10.6-thm:ast}) needs three things: alternating signs, terms tending to $0$, and terms that are \emph{nonincreasing}. The first two are easy to see and the third is easy to forget. Dropping it is not a harmless shortcut.
+
+\begin{thm}{Monotonicity cannot be dropped}{astmono}
+Let $a_k=\dfrac1{\sqrt k+(-1)^k}$ for $k\ge2$. Then $a_k>0$ and $a_k\to0$, the series $\sum_{k=2}^\infty(-1)^ka_k$ alternates in sign, and yet $\sum_{k=2}^\infty\dfrac{(-1)^k}{\sqrt k+(-1)^k}$ diverges. The sequence $\{a_k\}$ is not monotone.
+\end{thm}
+\begin{proof}
+\emph{Positive, tending to $0$.} For $k\ge2$, $\sqrt k\ge\sqrt2>1$, so $\sqrt k+(-1)^k\ge\sqrt k-1>0$ and $a_k>0$. Since $\sqrt k-1\to\infty$, $0<a_k\le\frac1{\sqrt k-1}\to0$.
+
+\emph{Not monotone.} $a_2=\frac1{\sqrt2+1}\approx0.414$ and $a_3=\frac1{\sqrt3-1}\approx1.366$, so $a_3>a_2$. (The same happens at every step from an even index to the next odd index.)
+%@ astmono-d | abs(float(1/(sqrt(2)+1))-0.414)<1e-3 and abs(float(1/(sqrt(3)-1))-1.366)<1e-3 and 1/(sqrt(3)-1) > 1/(sqrt(2)+1) | $a_3=\frac1{\sqrt3-1}\approx1.366$, so $a_3>a_2$
+
+\emph{Divergence.} Multiply the numerator and the denominator by $\sqrt k-(-1)^k$. Since
+\[
+\left(\sqrt k+(-1)^k\right)\left(\sqrt k-(-1)^k\right)=k-1\qquad\text{and}\qquad\left((-1)^k\right)^2=1,
+\]
+we get
+\[
+\frac{(-1)^k}{\sqrt k+(-1)^k}=\frac{(-1)^k\sqrt k-1}{k-1}=\underbrace{\frac{(-1)^k\sqrt k}{k-1}}_{u_k}-\underbrace{\frac1{k-1}}_{v_k}\qquad(k\ge2).
+\]
+%@ astmono-a | all(abs(float((-1)**j/(sqrt(j)+(-1)**j)-((-1)**j*sqrt(j)/(j-1)-Q(1,j-1))))<1e-12 for j in range(2,60)) and sqrt(2) > 1 | \frac{(-1)^k\sqrt k-1}{k-1}=\underbrace{\frac{(-1)^k\sqrt k}{k-1}}_{u_k}-\underbrace{\frac1{k-1}}_{v_k}\qquad(k\ge2).
+The series $\sum v_k=\sum_{k\ge2}\frac1{k-1}$ is the harmonic series, which diverges. The series $\sum u_k$ alternates with $c_k=\frac{\sqrt k}{k-1}$, and $c_k=\frac1{\sqrt k}\cdot\frac k{k-1}\to0\cdot1=0$. Moreover $f(x)=\frac{\sqrt x}{x-1}$ has
+\[
+f'(x)=\frac{\frac{x-1}{2\sqrt x}-\sqrt x}{(x-1)^2}=-\frac{x+1}{2\sqrt x\,(x-1)^2}<0\qquad(x>1),
+\]
+%@ astmono-b | limit(sqrt(k)/(k-1),k,oo) == 0 and simplify(diff(sqrt(x)/(x-1),x)+(x+1)/(2*sqrt(x)*(x-1)**2)) == 0 | f'(x)=\frac{\frac{x-1}{2\sqrt x}-\sqrt x}{(x-1)^2}=-\frac{x+1}{2\sqrt x\,(x-1)^2}<0\qquad(x>1),
+so $\{c_k\}$ is decreasing, and $\sum u_k$ converges by the Alternating Series Test. Now $\sum u_k$ converges and $\sum v_k$ diverges, so $\sum(u_k-v_k)$ diverges (Theorem~\ref{10.3-thm:props}(2) and (4)).
+\end{proof}
+
+The divergence is slow: the partial sums behave like $-\ln n$ (the second series is the harmonic series, with a minus sign), and $s_{10000}\approx-8.87$.
+%@ astmono-c | abs(sum((-1)**j/(float(j)**0.5+(-1)**j) for j in range(2,10001))+8.8676)<1e-3 and abs(float(log(10000))-9.2103)<1e-3 | $s_{10000}\approx-8.87$
+
+\begin{think}{Where is monotonicity used?}{monouse}
+In the proof of the Alternating Series Test (Theorem~\ref{10.6-thm:ast}) the hypothesis $a_1\ge a_2\ge\cdots$ is used in two places. Find them, and say which step of the proof breaks for $a_k=\frac1{\sqrt k+(-1)^k}$.
+\end{think}
+
+\begin{exmp}{Absolute or conditional?}{condlog}
+Classify $\displaystyle\sum_{k=3}^\infty(-1)^k\frac{\ln k}k$.
+
+\textbf{Solution.} \emph{Absolute values first.} $\frac{\ln k}k\ge\frac1k$ for $k\ge3$ (because $\ln k>1$), and $\sum\frac1k$ diverges, so $\sum\abs{a_k}$ diverges by the Comparison Test (this is Theorem~\ref{thm:logs}(a) with $p=1$). The series is not absolutely convergent. \emph{The series itself.} The terms alternate, $\frac{\ln k}k\to0$ (Theorem~\ref{10.2-thm:growth}(a)), and $f(x)=\frac{\ln x}x$ has $f'(x)=\frac{1-\ln x}{x^2}<0$ for $x>e$, so the terms decrease from $k=3$ on (the test only needs this eventually). The Alternating Series Test shows that the series converges. It converges conditionally.
+%@ ex-cond | all(log(j)/j > Q(1,j) and log(j+1)/(j+1) < log(j)/j for j in range(3,80)) and simplify(diff(log(x)/x,x)-(1-log(x))/x**2) == 0 and limit(log(k)/k,k,oo) == 0 | so the terms decrease from $k=3$ on
+\end{exmp}
+
+\begin{exmp}{Two wrong tests}{wrongtwo}
+Each argument below is wrong. Find the error and give the right conclusion. (a)~``For $\sum\frac{k^2+3}{k^3+k+1}$ the ratio of successive terms tends to $1$, so the Ratio Test shows that the series diverges.'' (b)~``The terms of $\sum_{k\ge2}\frac{(-1)^k}{\sqrt k+(-1)^k}$ alternate in sign and tend to $0$, so the series converges by the Alternating Series Test.''
+
+\textbf{Solution.} (a) $r=1$ is inconclusive, and by Theorem~\ref{thm:rational} it will always be $1$ here. The correct tool for a rational term is the Limit Comparison Test with the harmonic series: $k\,a_k=\frac{k^3+3k}{k^3+k+1}\to1$, so the series \emph{diverges}, but because of the comparison, not because $r=1$. (b) The Alternating Series Test needs $a_k=\frac1{\sqrt k+(-1)^k}$ to be nonincreasing, and it is not ($a_3>a_2$). By Theorem~\ref{thm:astmono} this series diverges.
+%@ ex-wrong | limit((k**2+3)*(k**3+k+1)**(-1)*k,k,oo) == 1 and limit(((k+1)**2+3)*(k**3+k+1)/(((k+1)**3+(k+1)+1)*(k**2+3)),k,oo) == 1 | $k\,a_k=\frac{k^3+3k}{k^3+k+1}\to1$
+\end{exmp}
+
+\begin{kc}{Classify}{classkc}
+Classify as absolutely convergent, conditionally convergent or divergent: (a)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k+4}$; \quad (b)~$\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^2+4}$; \quad (c)~$\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+4}{k}$.
+\end{kc}
+
+\begin{remark}[Looking ahead]
+A \emph{power series} is a series $\sum c_kx^k$ whose terms contain a variable. For each fixed $x$ it is an ordinary series, and the strategy of this section applies to it: the Ratio or Root Test finds the values of $x$ where it converges absolutely, and an interval of such $x$ appears. Its half-length is the radius of convergence. At the two end points the Ratio and Root Tests return $r=1$ and say nothing, so those two series must be settled one at a time with the rest of the toolbox: the Divergence Test, $p$-series, the Alternating Series Test. That is exactly the situation of this section, repeated for every power series. Taylor series are power series built from the derivatives of a function, and the question ``for which $x$ does the series converge?'' is answered in the chapter on power series by the same tests.
+\end{remark}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group. Every solution says why that test was chosen.
+\begin{enumerate}[nosep]
+  \item \emph{Divergence, special series and the Integral Test} (Examples~\ref{ex:b1}--\ref{ex:b3}).
+  \item \emph{Comparison and Limit Comparison} (Examples~\ref{ex:b4}--\ref{ex:b6}): a bounded numerator, exponentials, roots.
+  \item \emph{Ratio and Root Tests} (Examples~\ref{ex:b7}--\ref{ex:b9}): factorials, a $k^2$ exponent, logarithms inside a $k$th power.
+  \item \emph{The first test fails} (Examples~\ref{ex:b10}--\ref{ex:b12}): a logarithm, a split, a comparison.
+  \item \emph{Absolute, conditional or divergent} (Examples~\ref{ex:b13}--\ref{ex:b15}), including a parameter.
+  \item \emph{Wrong tests} (Examples~\ref{ex:b16}--\ref{ex:b18}).
+  \item \emph{Proofs} (Examples~\ref{ex:b19}--\ref{ex:b20}).
+\end{enumerate}
+
+\subsection*{Group 1: Divergence, special series and the Integral Test}
+
+\begin{exmp}{A difference of square roots}{b1}
+Does $\displaystyle\sum_{k=1}^\infty\left(\sqrt{k^2+k}-k\right)$ converge?
+
+\textbf{Solution.} The term has the form ``large minus large'', so the sign of the difference is not obvious and the Divergence Test is the first thing to try. Multiply by the conjugate: $\sqrt{k^2+k}-k=\dfrac{k}{\sqrt{k^2+k}+k}=\dfrac1{\sqrt{1+1/k}+1}\to\dfrac12$. The limit is not $0$, so the series diverges. (The terms are positive and tend to $\frac12$: the partial sums grow like $\frac n2$.)
+%@ b1 | all(abs(float(sqrt(j**2+j)-j-1/(sqrt(1+Q(1,j))+1)))<1e-12 for j in range(1,40)) and limit(sqrt(k**2+k)-k,k,oo) == Q(1,2) | \dfrac1{\sqrt{1+1/k}+1}\to\dfrac12
+\end{exmp}
+
+\begin{exmp}{A perfect square under a root}{b2}
+Does $\displaystyle\sum_{k=4}^\infty\frac1{\sqrt{k^2-6k+9}}$ converge?
+
+\textbf{Solution.} Before choosing a test, look at the expression: $k^2-6k+9=(k-3)^2$, so for $k\ge4$ the term is $\frac1{k-3}$ (the root of a square is the absolute value, and $k-3>0$). With $j=k-3$ the series is $\sum_{j=1}^\infty\frac1j$, the harmonic series, which diverges.
+%@ b2 | all(harmonic(2**m) >= 1+Q(m,2) for m in range(0,10)) and all(sqrt(j**2-6*j+9) == j-3 for j in range(4,40)) | the series is $\sum_{j=1}^\infty\frac1j$, the harmonic series, which diverges
+\end{exmp}
+
+\begin{exmp}{An Integral Test that is immediate}{b3}
+Does $\displaystyle\sum_{k=1}^\infty\frac{k}{(k^2+4)^{3/2}}$ converge?
+
+\textbf{Solution.} The numerator is half the derivative of $k^2+4$, so the antiderivative is immediate and the Integral Test is natural. (The Limit Comparison Test with $\sum\frac1{k^2}$ would work too.) Let $f(x)=x(x^2+4)^{-3/2}$. Then $f'(x)=\dfrac{4-2x^2}{(x^2+4)^{5/2}}<0$ for $x>\sqrt2$, so $f$ is positive and decreasing on $[2,\infty)$, and
+\[
+\int_2^\infty\frac{x\,dx}{(x^2+4)^{3/2}}=\left[-\frac1{\sqrt{x^2+4}}\right]_2^\infty=\frac1{\sqrt8}=\frac{\sqrt2}4\approx0.354 .
+\]
+%@ b3a | simplify(diff(x*(x**2+4)**Q(-3,2),x)-(4-2*x**2)*(x**2+4)**Q(-5,2)) == 0 and abs(float(sqrt(2)/4)-0.354)<1e-3 and integrate(x*(x**2+4)**Q(-3,2),(x,2,oo)) == sqrt(2)/4 | \frac1{\sqrt8}=\frac{\sqrt2}4\approx0.354
+The integral is finite, so the series converges (the first term $k=1$ does not affect convergence). The value $0.354$ is not the sum.
+\end{exmp}
+
+\subsection*{Group 2: Comparison and Limit Comparison}
+
+\begin{exmp}{A bounded numerator}{b4}
+Does $\displaystyle\sum_{k=1}^\infty\frac{2+\sin k}{k^2+k}$ converge?
+
+\textbf{Solution.} The signs are all positive (the numerator is between $1$ and $3$), so $\sin k$ does not make the series alternating, and a Ratio Test would be hopeless because $\sin(k+1)/\sin k$ misbehaves. Bound the bounded factor: $1\le2+\sin k\le3$ gives $0<\frac{2+\sin k}{k^2+k}\le\frac3{k^2+k}<\frac3{k^2}$. The series $\sum\frac3{k^2}$ converges, so the series converges by the Comparison Test.
+%@ b4 | all(0 < (2+sin(j))/(j**2+j) and (2+sin(j))/(j**2+j) < Q(3,j**2) for j in range(1,120)) and summation(3/k**2,(k,1,oo)) == pi**2/2 | $0<\frac{2+\sin k}{k^2+k}\le\frac3{k^2+k}<\frac3{k^2}$
+\end{exmp}
+
+\begin{exmp}{Exponentials with a small correction}{b5}
+Does $\displaystyle\sum_{k=1}^\infty\frac{3^k+k}{5^k-2}$ converge?
+
+\textbf{Solution.} The dominant terms are $\frac{3^k}{5^k}=\left(\frac35\right)^k$, a convergent geometric series, so use the Limit Comparison Test with $b_k=\left(\frac35\right)^k$:
+\[
+\frac{a_k}{b_k}=\frac{\left(3^k+k\right)5^k}{3^k\left(5^k-2\right)}=\frac{1+k\,3^{-k}}{1-2\cdot5^{-k}}\to\frac{1+0}{1-0}=1,
+\]
+because $k\,3^{-k}\to0$ (Theorem~\ref{10.2-thm:growth}(b)). Since $0<L=1<\infty$ and $\sum b_k$ converges, the series converges. (The Ratio Test also works and gives $r=\frac35$.)
+%@ b5 | all(Q((3**j+j)*5**j,3**j*(5**j-2)) == (1+Q(j,3**j))/(1-Q(2,5**j)) for j in range(1,20)) and limit((1+k/3**k)/(1-2/5**k),k,oo) == 1 | \to\frac{1+0}{1-0}=1,
+\end{exmp}
+
+\begin{exmp}{A cube root, and a divergent comparison}{b6}
+Does $\displaystyle\sum_{k=1}^\infty\frac{\sqrt[3]{k^2+1}}{k+2}$ converge?
+
+\textbf{Solution.} For large $k$ the term is about $\frac{k^{2/3}}k=\frac1{k^{1/3}}$, a divergent $p$-series ($p=\frac13\le1$). Let $b_k=\frac1{k^{1/3}}$. Then $\frac{a_k}{b_k}=\dfrac{(k^2+1)^{1/3}\,k^{1/3}}{k+2}=\dfrac{(k^3+k)^{1/3}}{k+2}=\dfrac{\left(1+k^{-2}\right)^{1/3}}{1+2/k}\to1$. With $0<L=1<\infty$ and $\sum b_k$ divergent, the series diverges by the Limit Comparison Test. (Check the Divergence Test first: $a_k\to0$, so it decides nothing.)
+%@ b6 | all(abs(float((j**2+1)**Q(1,3)*j**Q(1,3)-(j**3+j)**Q(1,3)))<1e-9 for j in range(1,30)) and limit((k**3+k)**Q(1,3)/(k+2),k,oo) == 1 | \dfrac{(k^3+k)^{1/3}}{k+2}=\dfrac{\left(1+k^{-2}\right)^{1/3}}{1+2/k}\to1
+\end{exmp}
+
+\subsection*{Group 3: Ratio and Root Tests}
+
+\begin{exmp}{A polynomial against two factorials}{b7}
+Does $\displaystyle\sum_{k=1}^\infty\frac{k^3\,(k+1)!}{(2k)!}$ converge?
+
+\textbf{Solution.} Factorials with different arguments: use the Ratio Test. With $(k+2)!=(k+2)(k+1)!$ and $(2k+2)!=(2k+2)(2k+1)(2k)!$,
+\[
+\frac{a_{k+1}}{a_k}=\frac{(k+1)^3}{k^3}\cdot\frac{(k+2)!}{(k+1)!}\cdot\frac{(2k)!}{(2k+2)!}=\left(1+\frac1k\right)^3\frac{k+2}{(2k+2)(2k+1)}\to1\cdot0=0 .
+\]
+%@ b7 | all(Q((j+1)**3*factorial(j+2),factorial(2*j+2))/Q(j**3*factorial(j+1),factorial(2*j)) == Q((j+1)**3*(j+2),j**3*(2*j+2)*(2*j+1)) for j in range(1,20)) and limit((1+1/k)**3*(k+2)/((2*k+2)*(2*k+1)),k,oo) == 0 | \left(1+\frac1k\right)^3\frac{k+2}{(2k+2)(2k+1)}\to1\cdot0=0
+So $r=0<1$ and the series converges absolutely. The factorial of $2k$ dominates everything else.
+\end{exmp}
+
+\begin{exmp}{An exponent of $k^2$}{b8}
+Does $\displaystyle\sum_{k=2}^\infty\left(1-\frac1k\right)^{k^2}$ converge?
+
+\textbf{Solution.} The whole expression is raised to a power that grows with $k$: use the Root Test. $a_k^{1/k}=\left(1-\frac1k\right)^k\to e^{-1}\approx0.368<1$ (the limit $\left(1+\frac ak\right)^k\to e^a$ with $a=-1$). The series converges absolutely. (The Ratio Test would involve $\left(1-\frac1{k+1}\right)^{(k+1)^2}$ against $\left(1-\frac1k\right)^{k^2}$: possible, but much messier.)
+%@ b8 | abs(float(exp(-1))-0.368)<1e-3 and all(((1-Q(1,j))**(j*j))**Q(1,j) == (1-Q(1,j))**j for j in range(2,12)) and limit((1-1/k)**k,k,oo) == exp(-1) | \left(1-\frac1k\right)^k\to e^{-1}\approx0.368<1
+\end{exmp}
+
+\begin{exmp}{Logarithms inside a $k$th power}{b9}
+Does $\displaystyle\sum_{k=2}^\infty\left(\frac{\ln k}{\sqrt k}\right)^k$ converge?
+
+\textbf{Solution.} A $k$th power again: use the Root Test. $a_k^{1/k}=\dfrac{\ln k}{\sqrt k}\to0<1$ by Theorem~\ref{10.2-thm:growth}(a) (with $p=\frac12$, $q=1$). The series converges absolutely. In fact $\frac{\ln x}{\sqrt x}$ has derivative $\frac{2-\ln x}{2x^{3/2}}$, so its largest value is $\frac2e\approx0.736$ at $x=e^2$, and every root $a_k^{1/k}$ is below $0.74$: the terms are dominated by a geometric series from the very start.
+%@ b9 | all(log(j)/sqrt(j) < 1 for j in range(2,300)) and abs(float(2/E)-0.736)<1e-3 and limit(log(k)/sqrt(k),k,oo) == 0 and simplify(diff(log(x)/sqrt(x),x)-(2-log(x))/(2*x**Q(3,2))) == 0 | so its largest value is $\frac2e\approx0.736$ at $x=e^2$
+\end{exmp}
+
+\subsection*{Group 4: The first test fails}
+
+\begin{exmp}{A square root of a logarithm}{b10}
+Does $\displaystyle\sum_{k=2}^\infty\frac1{k\sqrt{\ln k}}$ converge?
+
+\textbf{Solution.} \emph{First attempt:} the terms tend to $0$ (Divergence Test: no verdict), and the ratio tends to $1$ (Ratio Test: no verdict). \emph{Second attempt:} the logarithm suggests the Integral Test. $f(x)=\frac1{x\sqrt{\ln x}}$ is positive and decreasing on $[2,\infty)$, and $\frac d{dx}\left(2\sqrt{\ln x}\right)=\frac1{x\sqrt{\ln x}}$, so $\int_2^bf\,dx=2\sqrt{\ln b}-2\sqrt{\ln2}\to\infty$ as $b\to\infty$. The series diverges. (This is Theorem~\ref{thm:logs}(b) with $q=\frac12\le1$.)
+%@ b10 | all(2*sqrt(log(10**j))-2*sqrt(log(2)) > sqrt(j) for j in range(2,80)) and simplify(diff(2*sqrt(log(x)),x)-1/(x*sqrt(log(x)))) == 0 | so $\int_2^bf\,dx=2\sqrt{\ln b}-2\sqrt{\ln2}\to\infty$ as $b\to\infty$
+\end{exmp}
+
+\begin{exmp}{Alternating signs, but not an Alternating Series Test}{b11}
+Does $\displaystyle\sum_{k=1}^\infty(-1)^k\,\frac{2+(-1)^k}{k}$ converge?
+
+\textbf{Solution.} The terms $(-1)^ka_k$ with $a_k=\frac{2+(-1)^k}k$ alternate and tend to $0$, so the Alternating Series Test looks tempting. But $a_1=1<a_2=\frac32$: the sequence is not decreasing, so the test does not apply (Theorem~\ref{thm:astmono} shows what can go wrong). \emph{Split instead:} $(-1)^k\frac{2+(-1)^k}k=\frac{2(-1)^k}k+\frac1k$. The series $\sum\frac{2(-1)^k}k$ converges (alternating harmonic series times $2$), and $\sum\frac1k$ diverges, so the sum diverges (Theorem~\ref{10.3-thm:props}(4)).
+%@ b11 | all(Q((-1)**j*(2+(-1)**j),j) == Q(2*(-1)**j+1,j) for j in range(1,30)) and Q(2+(-1)**2,2) > Q(2+(-1)**1,1) | so the test does not apply
+\end{exmp}
+
+\begin{exmp}{A comparison from an inequality}{b12}
+Does $\displaystyle\sum_{k=1}^\infty\ln\left(1+\frac1{k^2}\right)$ converge?
+
+\textbf{Solution.} The terms tend to $0$ (no verdict) and the ratio tends to $1$ (no verdict). Use the inequality $\ln(1+t)\le t$ for $t\ge0$: the function $g(t)=t-\ln(1+t)$ has $g(0)=0$ and $g'(t)=\frac t{1+t}\ge0$, so $g(t)\ge0$. With $t=\frac1{k^2}$, $0<\ln\left(1+\frac1{k^2}\right)\le\frac1{k^2}$, and $\sum\frac1{k^2}$ converges, so the series converges by the Comparison Test. (The Limit Comparison Test also works: $\frac{\ln(1+t)}t\to1$ as $t\to0$.)
+%@ b12 | all(log(1+Q(1,j**2)) < Q(1,j**2) for j in range(1,60)) and limit(log(1+1/k**2)*k**2,k,oo) == 1 and simplify(diff(x-log(1+x),x)-x/(1+x)) == 0 | has $g(0)=0$ and $g'(t)=\frac t{1+t}\ge0$, so $g(t)\ge0$
+\end{exmp}
+
+\subsection*{Group 5: Absolute, conditional or divergent}
+
+\begin{exmp}{A $k$th power with alternating signs}{b13}
+Classify $\displaystyle\sum_{k=1}^\infty(-1)^k\left(\frac k{2k+1}\right)^k$.
+
+\textbf{Solution.} The absolute values are a $k$th power: $\abs{a_k}^{1/k}=\frac k{2k+1}\to\frac12<1$. By the Root Test $\sum\abs{a_k}$ converges, so the series converges \emph{absolutely}. No Alternating Series Test is needed.
+%@ b13 | limit(k/(2*k+1),k,oo) == Q(1,2) | \abs{a_k}^{1/k}=\frac k{2k+1}\to\frac12<1
+\end{exmp}
+
+\begin{exmp}{Conditional convergence by telescoping}{b14}
+Classify $\displaystyle\sum_{k=1}^\infty(-1)^k\left(\sqrt{k+1}-\sqrt k\right)$.
+
+\textbf{Solution.} Write $a_k=\sqrt{k+1}-\sqrt k=\frac1{\sqrt{k+1}+\sqrt k}$. The denominator increases, so $a_k$ decreases, and $a_k\to0$: the Alternating Series Test shows that the series converges. \emph{Absolute values:} $\sum a_k$ telescopes, with partial sums $\sqrt{n+1}-1\to\infty$, so $\sum\abs{a_k}$ diverges. (Equivalently, $\sqrt k\,a_k\to\frac12$ and $\sum\frac1{\sqrt k}$ diverges.) The series converges conditionally.
+%@ b14 | all(abs(float(sum(sqrt(j+1)-sqrt(j) for j in range(1,m+1))-(sqrt(m+1)-1)))<1e-9 for m in (3,10,25)) and limit(sqrt(k)*(sqrt(k+1)-sqrt(k)),k,oo) == Q(1,2) | $\sqrt k\,a_k\to\frac12$ and $\sum\frac1{\sqrt k}$ diverges
+\end{exmp}
+
+\begin{exmp}{A parameter decides the class}{b15}
+For each $p>0$ classify $\displaystyle\sum_{k=1}^\infty(-1)^k\frac k{k^p+1}$.
+
+\textbf{Solution.} Let $a_k=\frac k{k^p+1}$. \emph{Case $p\le1$:} $a_k\to\infty$ if $p<1$ and $a_k=\frac k{k+1}\to1$ if $p=1$, so the terms do not tend to $0$ and the series diverges. \emph{Case $p>1$:} $a_k\to0$, and $f(x)=\frac x{x^p+1}$ has $f'(x)=\frac{1-(p-1)x^p}{(x^p+1)^2}<0$ once $x^p>\frac1{p-1}$, so $a_k$ is eventually decreasing and the Alternating Series Test shows convergence. For absolute convergence compare $a_k$ with $k^{1-p}=\frac1{k^{p-1}}$: $\frac{a_k}{k^{1-p}}=\frac{k^p}{k^p+1}\to1$, so $\sum a_k$ converges if and only if $p-1>1$. So: \emph{absolutely convergent for $p>2$, conditionally convergent for $1<p\le2$, divergent for $0<p\le1$.} (For $p=\frac32$ the terms behave like $\frac1{\sqrt k}$; for $p=3$ like $\frac1{k^2}$.)
+%@ b15 | simplify(diff(x/(x**Symbol('p',positive=True)+1),x)-(1-(Symbol('p',positive=True)-1)*x**Symbol('p',positive=True))/(x**Symbol('p',positive=True)+1)**2) == 0 and limit(k/(k+1),k,oo) == 1 | $\frac{a_k}{k^{1-p}}=\frac{k^p}{k^p+1}\to1$, so $\sum a_k$ converges if and only if $p-1>1$
+\end{exmp}
+
+\subsection*{Group 6: Wrong tests}
+
+\begin{exmp}{A limit of $0$ with a divergent comparison}{b16}
+A student compares $\sum\frac{\ln k}{k^2}$ with $\sum\frac1k$: ``$\frac{a_k}{b_k}=\frac{\ln k}k\to0$, so the series behaves like the harmonic series and diverges.'' Find the error and decide the series.
+
+\textbf{Solution.} The case $L=0$ of the Limit Comparison Test proves \emph{convergence} when $\sum b_k$ converges; it says nothing when $\sum b_k$ diverges, and $\sum\frac1k$ diverges. The student chose a comparison series that is too large. Choose a convergent one: with $b_k=\frac1{k^{3/2}}$, $\frac{a_k}{b_k}=\frac{\ln k}{\sqrt k}\to0$ and $\sum\frac1{k^{3/2}}$ converges, so $\sum\frac{\ln k}{k^2}$ converges. (This is also Theorem~\ref{thm:logs}(a) with $p=2$.)
+%@ b16 | limit(log(k)/k**2/(1/k),k,oo) == 0 and limit(log(k)/k**2*k**Q(3,2),k,oo) == 0 | $\frac{a_k}{b_k}=\frac{\ln k}{\sqrt k}\to0$ and $\sum\frac1{k^{3/2}}$ converges
+\end{exmp}
+
+\begin{exmp}{The integral is not the sum}{b17}
+A student writes: ``$\sum_{k=1}^\infty\frac1{k^2+1}=\int_1^\infty\frac{dx}{x^2+1}=\frac\pi4$.'' Find the error and bracket the sum.
+
+\textbf{Solution.} The Integral Test says that the series and the integral converge or diverge \emph{together}; it does not say that they are equal. The function $\frac1{x^2+1}$ is positive and decreasing, and $\int_1^\infty\frac{dx}{x^2+1}=\frac\pi4\approx0.785$, so the series converges, and Theorem~\ref{10.4-thm:inttest}(b) gives $\frac\pi4<S<a_1+\frac\pi4=\frac12+\frac\pi4\approx1.285$. The actual sum is about $1.0767$ (it equals $\frac{\pi\coth\pi-1}2$, a closed form we do not need), between the two bounds and different from $\frac\pi4$.
+%@ b17 | abs(sum(1.0/(j*j+1) for j in range(1,20001))+1.0/20000-float((pi*coth(pi)-1)/2))<1e-8 and abs(float((pi*coth(pi)-1)/2)-1.0767)<1e-4 and abs(float(Q(1,2)+pi/4)-1.285)<1e-3 and integrate(1/(x**2+1),(x,1,oo)) == pi/4 | is about $1.0767$ (it equals $\frac{\pi\coth\pi-1}2$, a closed form we do not need), between the two bounds
+\end{exmp}
+
+\begin{exmp}{Terms tend to $0$: two opposite answers}{b18}
+Show that $\sum\sin\frac1k$ diverges and $\sum\left(1-\cos\frac1k\right)$ converges, although both have terms tending to $0$.
+
+\textbf{Solution.} For both series the Divergence Test is inconclusive, which shows once more that $a_k\to0$ does not decide anything. Both terms are positive for $k\ge1$ (as $0<\frac1k\le1<\frac\pi2$). Use the Limit Comparison Test. With $t=\frac1k$: $k\sin\frac1k=\frac{\sin t}t\to1$ and $\sum\frac1k$ diverges, so $\sum\sin\frac1k$ diverges. And $k^2\left(1-\cos\frac1k\right)=\frac{1-\cos t}{t^2}\to\frac12$, so by comparison with $\sum\frac1{k^2}$ the second series converges.
+%@ b18 | all(sin(Q(1,j)) > 0 and 1-cos(Q(1,j)) > 0 for j in range(1,50)) and limit(k*sin(1/k),k,oo) == 1 and limit(k**2*(1-cos(1/k)),k,oo) == Q(1,2) | $k^2\left(1-\cos\frac1k\right)=\frac{1-\cos t}{t^2}\to\frac12$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Squares of the terms}{b19}
+Prove: if $a_k\ge0$ and $\sum a_k$ converges, then $\sum a_k^2$ converges. Is the converse true?
+
+\textbf{Plan.} Use that $a_k\to0$ to get $a_k\le1$, hence $a_k^2\le a_k$, and compare.
+
+\begin{proof}
+Since $\sum a_k$ converges, $a_k\to0$ (Theorem~\ref{10.4-thm:divtest}), so there is $K$ with $0\le a_k\le1$ for $k\ge K$. For these $k$, multiplying $a_k\le1$ by $a_k\ge0$ gives $0\le a_k^2\le a_k$. The series $\sum a_k$ converges, so $\sum_{k\ge K}a_k^2$ converges by the Comparison Test, and then so does $\sum a_k^2$ (Theorem~\ref{10.3-thm:props}(5)).
+\end{proof}
+%@ b19 | all(Q(1,j)**2 == Q(1,j**2) for j in range(1,30)) and Q(1,2)**2 <= Q(1,2) | a_k^2$ converges by the Comparison Test
+The converse is false: $a_k=\frac1k$ has $\sum a_k^2=\sum\frac1{k^2}$ convergent, but $\sum a_k$ is the harmonic series. A common mistake is to say ``$a_k^2\le a_k$'' for all $k$ without noting that this needs $a_k\le1$: for $a_k=2$ it is false. That is why the proof first uses $a_k\to0$.
+\end{exmp}
+
+\begin{exmp}{A series and the same series in a fraction}{b20}
+Prove: if $a_k\ge0$, then $\sum a_k$ converges if and only if $\sum\frac{a_k}{1+a_k}$ converges.
+
+\textbf{Plan.} One direction is a direct comparison. For the other, show that convergence of $\sum\frac{a_k}{1+a_k}$ forces $a_k$ to be small, so that $1+a_k\le2$.
+
+\begin{proof}
+Let $c_k=\frac{a_k}{1+a_k}$. Since $a_k\ge0$ we have $0\le c_k\le a_k$. ($\Rightarrow$ direction, from $\sum a_k$ to $\sum c_k$): if $\sum a_k$ converges, then $\sum c_k$ converges by the Comparison Test. ($\Leftarrow$): suppose $\sum c_k$ converges. Then $c_k\to0$, so $c_k<\frac12$ for $k\ge K$. Solving $c_k=\frac{a_k}{1+a_k}$ for $a_k$ gives $a_k=\frac{c_k}{1-c_k}$, and for $k\ge K$ we have $1-c_k>\frac12$, so $a_k<2c_k$. The series $\sum2c_k$ converges, so $\sum a_k$ converges by the Comparison Test.
+\end{proof}
+%@ b20 | all(Q(Q(1,j),1+Q(1,j)) == Q(1,j+1) and Q(Q(1,j+1),1-Q(1,j+1)) == Q(1,j) for j in range(1,30)) | $a_k=\frac{c_k}{1-c_k}$, and for $k\ge K$ we have $1-c_k>\frac12$, so $a_k<2c_k$
+A common mistake is to stop after the first direction. Comparison in one direction only gives ``converges if $\sum a_k$ converges''; the other direction needs a reason why the fraction does not shrink the terms too much, and that reason is $a_k\to0$. Example: for $a_k=\frac1k$, $c_k=\frac1{k+1}$, and both series diverge.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:firstkc}.] (a) The Divergence Test: $\frac{2k^2+1}{5k^2-3}\to\frac25\ne0$, so the series diverges. (b) The factorial suggests the Ratio Test: $\frac{a_{k+1}}{a_k}=\frac{k+1}{10}\to\infty>1$, so it diverges (the terms eventually grow, so the Divergence Test also works). (c) The Integral Test: $\frac1{x(\ln x)^2}$ has the antiderivative $-\frac1{\ln x}$ (Theorem~\ref{thm:logs}(b) with $q=2$), so the series converges.
+%@ ans-firstkc | all(Q(factorial(j+1),10**(j+1))/Q(factorial(j),10**j) == Q(j+1,10) for j in range(1,20)) and integrate(1/(x*log(x)**2),(x,2,oo)) == 1/log(2) and limit((2*k**2+1)/(5*k**2-3),k,oo) == Q(2,5) | $\frac{2k^2+1}{5k^2-3}\to\frac25\ne0$
+  \item[Knowledge Check \ref{kc:ratiokc}.] The ratio is $\frac{(3k+4)(k^2+2)}{(3k+1)\left((k+1)^2+2\right)}\to1$, so the Ratio Test is inconclusive (as it is for every rational term, Theorem~\ref{thm:rational}). Limit Comparison with $\sum\frac1k$: $k\,a_k=\frac{3k^2+k}{k^2+2}\to3$, and the harmonic series diverges, so $\sum a_k$ diverges.
+%@ ans-ratiokc | limit((3*k+4)*(k**2+2)/((3*k+1)*((k+1)**2+2)),k,oo) == 1 and limit(k*(3*k+1)/(k**2+2),k,oo) == 3 | $k\,a_k=\frac{3k^2+k}{k^2+2}\to3$
+  \item[Knowledge Check \ref{kc:classkc}.] (a) The terms $\frac1{k+4}$ decrease to $0$, so the series converges (Alternating Series Test); $\sum\frac1{k+4}$ diverges (Limit Comparison with $\sum\frac1k$), so the convergence is conditional. (b) $\frac1{k^2+4}<\frac1{k^2}$, so $\sum\abs{a_k}$ converges by comparison: absolutely convergent. (c) $\abs{a_k}=\frac{k+4}k\to1\ne0$: divergent (Divergence Test).
+%@ ans-classkc | limit(k/(k+4),k,oo) == 1 and limit((k+4)/k,k,oo) == 1 | $\abs{a_k}=\frac{k+4}k\to1\ne0$
+  \item[Pause and think \ref{think:whyfirst}.] For $a_k=\frac{k+1}k$ the ratio $\frac{a_{k+1}}{a_k}=\frac{k(k+2)}{(k+1)^2}\to1$: the Ratio Test is inconclusive and you have learned nothing. The Divergence Test finishes at once, since $a_k\to1\ne0$. It is the cheapest test because it asks for one limit and no idea. When $a_k\to0$ it tells you nothing: both $\sum\frac1k$ and $\sum\frac1{k^2}$ have terms tending to $0$, and one diverges and one converges.
+%@ ans-whyfirst | limit((k+1)/k,k,oo) == 1 and limit(((k+2)/(k+1))/((k+1)/k),k,oo) == 1 | $\frac{a_{k+1}}{a_k}=\frac{k(k+2)}{(k+1)^2}\to1$
+  \item[Pause and think \ref{think:tails}.] No. $\sum\frac1{k^2}=\frac{\pi^2}6\approx1.645$, while $\sum\frac1{k^2+1}\approx1.077$ (the first terms are $1$ against $\frac12$, $\frac14$ against $\frac15$, and so on). Theorem~\ref{thm:equiv} says only that the \emph{tails} become proportional with factor $L$, so $R_n(a)\approx R_n(b)$ for large $n$. The sums $\sum_{k\ge1}$ also contain the first terms, where $a_k$ and $b_k$ are not close. In general $\sum a_k\ne L\sum b_k$.
+%@ ans-tails | abs(float((pi*coth(pi)-1)/2)-1.0767)<1e-4 and abs(float(pi**2/6)-1.645)<1e-3 and summation(1/k**2,(k,1,oo)) == pi**2/6 | $\sum\frac1{k^2}=\frac{\pi^2}6\approx1.645$
+  \item[Pause and think \ref{think:monouse}.] The proof uses $a_{2m-1}\ge a_{2m}$ to show that the even partial sums $s_{2m}=s_{2m-2}+(a_{2m-1}-a_{2m})$ are nondecreasing, and $a_{k}\ge a_{k+1}$ again to show that $s_{2m}\le a_1$ (every bracket $a_{2j}-a_{2j+1}$ is $\ge0$). For $\sum_{k\ge2}(-1)^ka_k$ with $a_k=\frac1{\sqrt k+(-1)^k}$ the pairs are $a_{2j}-a_{2j+1}$, and these are \emph{negative} because $a_{2j}=\frac1{\sqrt{2j}+1}<\frac1{\sqrt{2j+1}-1}=a_{2j+1}$. So the partial sums do not form a monotone bounded sequence, and the Monotone Convergence Theorem cannot be used; in fact they tend to $-\infty$ (Theorem~\ref{thm:astmono}).
+%@ ans-monouse | all(1/(sqrt(2*j)+1) < 1/(sqrt(2*j+1)-1) for j in range(1,100)) | $a_{2j}=\frac1{\sqrt{2j}+1}<\frac1{\sqrt{2j+1}-1}=a_{2j+1}$
+\end{description}
+
+\end{document}
