@@ -10,7 +10,7 @@
       
       
       
-        <link rel="prev" href="../../11.2/notes/">
+        <link rel="prev" href="../../11.3/notes/">
       
       
       
@@ -1183,6 +1183,90 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -1333,6 +1417,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix-g-abels-theorem-and-the-binomial-series-at-the-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix G. Abel’s Theorem and the Binomial Series at the Endpoints
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1458,6 +1553,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix-g-abels-theorem-and-the-binomial-series-at-the-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix G. Abel’s Theorem and the Binomial Series at the Endpoints
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1475,11 +1581,11 @@
                   
 
 
-<h1 id="appendix-sequences-and-infinite-series">Appendix: Sequences and Infinite Series<a class="headerlink" href="#appendix-sequences-and-infinite-series" title="Permanent link">&para;</a></h1>
+<h1 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">&para;</a></h1>
 <p><a href="../appendix.pdf">Download the PDF version</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Guiding question</p>
-<p>Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of <span class="arithmatex">\(n\)</span>-th roots (such as <span class="arithmatex">\(n^{1/n}\to1\)</span>) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Nothing here is needed to <em>use</em> the facts, only to see why they are true.</p>
+<p>Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of <span class="arithmatex">\(n\)</span>-th roots (such as <span class="arithmatex">\(n^{1/n}\to1\)</span>) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel’s theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at <span class="arithmatex">\(x=\pm1\)</span>. Nothing here is needed to <em>use</em> the facts, only to see why they are true.</p>
 </div>
 <h2 id="appendix-a-completeness-and-the-monotone-convergence-theorem">Appendix A. Completeness and the Monotone Convergence Theorem<a class="headerlink" href="#appendix-a-completeness-and-the-monotone-convergence-theorem" title="Permanent link">&para;</a></h2>
 <div class="admonition definition">
@@ -1867,6 +1973,93 @@
 <p><span id="ex-termdiffex"></span></p>
 <p>Take <span class="arithmatex">\(f(x)=\frac1{1-x}=\sum x^k\)</span> (<span class="arithmatex">\(a=0\)</span>, <span class="arithmatex">\(R=1\)</span>), <span class="arithmatex">\(x_0=0.3\)</span>, <span class="arithmatex">\(h=0.01\)</span> and <span class="arithmatex">\(\rho=\frac12\)</span>. Compare the actual error in the difference quotient with the bound <span class="arithmatex">\(E\abs h\)</span> in the proof of Theorem <a href="#thm-termdiff">F.4</a>.</p>
 <p><strong>Solution.</strong> <span class="arithmatex">\(f'(x_0)=\frac1{0.7^2}=\frac{100}{49}\approx2.040816\)</span>. The difference quotient is <span class="arithmatex">\(\frac{f(0.31)-f(0.3)}{0.01}=100\left(\frac{100}{69}-\frac{10}7\right)=\frac{1000}{483}\approx2.070393\)</span>, so the actual difference is <span class="arithmatex">\(\frac{700}{23667}\approx0.0296\)</span>. The bound uses <span class="arithmatex">\(E=\sum_{k\ge2}k(k-1)\rho^{k-2}=\frac2{(1-\rho)^3}=16\)</span> (the second derivative of <span class="arithmatex">\(\frac1{1-x}\)</span> at <span class="arithmatex">\(\rho\)</span>), so <span class="arithmatex">\(E\abs h=0.16\)</span>. The bound is valid and five times larger than the true difference, as is typical: it must work for every <span class="arithmatex">\(c_k\)</span> and every <span class="arithmatex">\(h\)</span>.</p>
+</div>
+<h2 id="appendix-g-abels-theorem-and-the-binomial-series-at-the-endpoints">Appendix G. Abel’s Theorem and the Binomial Series at the Endpoints<a class="headerlink" href="#appendix-g-abels-theorem-and-the-binomial-series-at-the-endpoints" title="Permanent link">&para;</a></h2>
+<p>The section on Taylor series needs two facts about the <em>endpoints</em> of an interval of convergence, where the theorems on power series say nothing. First, a power series can converge at an endpoint <span class="arithmatex">\(x=a+R\)</span> and equal a function <span class="arithmatex">\(f\)</span> inside the interval; is its sum at the endpoint the number <span class="arithmatex">\(f(a+R)\)</span>? Abel’s theorem says that the sum is the <em>limit</em> of <span class="arithmatex">\(f\)</span> as <span class="arithmatex">\(x\)</span> approaches the endpoint from inside, which is <span class="arithmatex">\(f(a+R)\)</span> when <span class="arithmatex">\(f\)</span> is continuous there. This is how <span class="arithmatex">\(1-\frac12+\frac13-\cdots=\ln2\)</span> and <span class="arithmatex">\(1-\frac13+\frac15-\cdots=\frac\pi4\)</span> are proved. Second, the binomial series <span class="arithmatex">\(\sum\binom pkx^k\)</span> has radius <span class="arithmatex">\(1\)</span>, and whether it converges at <span class="arithmatex">\(x=1\)</span> and at <span class="arithmatex">\(x=-1\)</span> depends on <span class="arithmatex">\(p\)</span>; we settle every case. This section proves both facts <em>in full</em>. It uses the Divergence Test, the Alternating Series Test, the Comparison Test, the harmonic series, the geometric series and the Monotone Convergence Theorem (Section A).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem G.1: Abel’s limit theorem</p>
+<p><span id="thm-abellimit"></span></p>
+<p>Let <span class="arithmatex">\(\sum c_k(x-a)^k\)</span> have radius of convergence <span class="arithmatex">\(R\)</span> with <span class="arithmatex">\(0&lt;R&lt;\infty\)</span>, and let <span class="arithmatex">\(f(x)=\sum_{k=0}^\infty c_k(x-a)^k\)</span> for <span class="arithmatex">\(\abs{x-a}&lt;R\)</span>.</p>
+<ol>
+<li>
+<p>If <span class="arithmatex">\(\sum_{k=0}^\infty c_kR^k\)</span> converges, then <span class="arithmatex">\(\displaystyle\lim_{x\to(a+R)^-}f(x)=\sum_{k=0}^\infty c_kR^k\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(\sum_{k=0}^\infty c_k(-R)^k\)</span> converges, then <span class="arithmatex">\(\displaystyle\lim_{x\to(a-R)^+}f(x)=\sum_{k=0}^\infty c_k(-R)^k\)</span>.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) <em>Reduction.</em> Put <span class="arithmatex">\(d_k=c_kR^k\)</span> and <span class="arithmatex">\(t=\frac{x-a}R\)</span>. Then <span class="arithmatex">\(f(x)=g(t)\)</span> with <span class="arithmatex">\(g(t)=\sum d_kt^k\)</span> for <span class="arithmatex">\(\abs t&lt;1\)</span>, and <span class="arithmatex">\(x\to(a+R)^-\)</span> means <span class="arithmatex">\(t\to1^-\)</span>. Let <span class="arithmatex">\(S=\sum d_k\)</span>. Replacing <span class="arithmatex">\(d_0\)</span> by <span class="arithmatex">\(d_0-S\)</span> subtracts the constant <span class="arithmatex">\(S\)</span> from <span class="arithmatex">\(g\)</span> and makes <span class="arithmatex">\(\sum d_k=0\)</span>. So it is enough to prove: <em>if <span class="arithmatex">\(\sum d_k\)</span> converges to <span class="arithmatex">\(0\)</span>, then <span class="arithmatex">\(g(t)\to0\)</span> as <span class="arithmatex">\(t\to1^-\)</span>.</em></p>
+<p><em>Summation by parts.</em> Let <span class="arithmatex">\(s_n=d_0+\cdots+d_n\)</span>, so <span class="arithmatex">\(s_n\to0\)</span>, and put <span class="arithmatex">\(s_{-1}=0\)</span>, so <span class="arithmatex">\(d_k=s_k-s_{k-1}\)</span>. For every <span class="arithmatex">\(n\ge1\)</span> and every <span class="arithmatex">\(t\)</span>,</p>
+<div class="arithmatex">\[\sum_{k=0}^nd_kt^k=\sum_{k=0}^ns_kt^k-\sum_{k=0}^ns_{k-1}t^k=\sum_{k=0}^ns_kt^k-\sum_{k=0}^{n-1}s_kt^{k+1}=(1-t)\sum_{k=0}^{n-1}s_kt^k+s_nt^n .\]</div>
+<p>Now let <span class="arithmatex">\(\abs t&lt;1\)</span>. The sequence <span class="arithmatex">\((s_n)\)</span> converges, so it is bounded, <span class="arithmatex">\(\abs{s_k}\le K\)</span>, and <span class="arithmatex">\(\sum s_kt^k\)</span> converges absolutely by comparison with the geometric series <span class="arithmatex">\(\sum Kt^k\)</span>; also <span class="arithmatex">\(s_nt^n\to0\)</span>. Letting <span class="arithmatex">\(n\to\infty\)</span>,</p>
+<div class="arithmatex">\[g(t)=(1-t)\sum_{k=0}^\infty s_kt^k\qquad(\abs t&lt;1).\]</div>
+<p><em>The estimate.</em> Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Choose <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(\abs{s_k}&lt;\varepsilon\)</span> for all <span class="arithmatex">\(k&gt;N\)</span>, and put <span class="arithmatex">\(M=\sum_{k=0}^N\abs{s_k}\)</span>. For <span class="arithmatex">\(0&lt;t&lt;1\)</span>,</p>
+<div class="arithmatex">\[\abs{g(t)}\le(1-t)\sum_{k=0}^N\abs{s_k}t^k+(1-t)\sum_{k=N+1}^\infty\varepsilon\,t^k\le(1-t)M+\varepsilon\,t^{N+1}\le(1-t)M+\varepsilon ,\]</div>
+<p>because <span class="arithmatex">\((1-t)\sum_{k&gt;N}t^k=t^{N+1}\le1\)</span>. If <span class="arithmatex">\(1-t&lt;\frac\varepsilon{M+1}\)</span>, then <span class="arithmatex">\(\abs{g(t)}&lt;2\varepsilon\)</span>. Since <span class="arithmatex">\(\varepsilon\)</span> was arbitrary, <span class="arithmatex">\(g(t)\to0\)</span> as <span class="arithmatex">\(t\to1^-\)</span>.</p>
+<p>(2) Put <span class="arithmatex">\(\tilde c_k=(-1)^kc_k\)</span>. For <span class="arithmatex">\(\abs{x-a}&lt;R\)</span> we have <span class="arithmatex">\(\sum\tilde c_k(x-a)^k=\sum c_k(a-x)^k=f(2a-x)\)</span>, and <span class="arithmatex">\(\sum\tilde c_kR^k=\sum c_k(-R)^k\)</span> converges. By part (1), <span class="arithmatex">\(f(2a-x)\to\sum c_k(-R)^k\)</span> as <span class="arithmatex">\(x\to(a+R)^-\)</span>. Writing <span class="arithmatex">\(y=2a-x\)</span>, which tends to <span class="arithmatex">\((a-R)^+\)</span>, gives part (2). ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example G.2: The hypothesis cannot be dropped</p>
+<p><span id="ex-abelfail"></span></p>
+<p>The series <span class="arithmatex">\(\sum_{k=0}^\infty(-1)^kx^k\)</span> has radius <span class="arithmatex">\(1\)</span> and sums to <span class="arithmatex">\(f(x)=\frac1{1+x}\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>. As <span class="arithmatex">\(x\to1^-\)</span>, <span class="arithmatex">\(f(x)\to\frac12\)</span>. Is <span class="arithmatex">\(\frac12\)</span> the “sum of the series at <span class="arithmatex">\(x=1\)</span>”?</p>
+<p><strong>Solution.</strong> No: at <span class="arithmatex">\(x=1\)</span> the series is <span class="arithmatex">\(1-1+1-1+\cdots\)</span>, whose terms <span class="arithmatex">\((-1)^k\)</span> do not tend to <span class="arithmatex">\(0\)</span>, so it diverges (Divergence Test), and there is no sum for the limit to equal. Numerically, <span class="arithmatex">\(f(0.9)=\frac1{1.9}\approx0.526\)</span> and <span class="arithmatex">\(f(0.99)=\frac1{1.99}\approx0.5025\)</span> approach <span class="arithmatex">\(\frac12\)</span>. Abel’s theorem applies only when the series converges at the endpoint; it then says that the limit of <span class="arithmatex">\(f\)</span> <em>is</em> the sum.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example G.3: Abel’s theorem and the alternating harmonic series</p>
+<p><span id="ex-abelln2"></span></p>
+<p>Show that <span class="arithmatex">\(\sum_{k=1}^\infty\frac{(-1)^{k+1}}k=\ln2\)</span>, given that <span class="arithmatex">\(\ln(1+x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>.</p>
+<p><strong>Solution.</strong> The power series has radius <span class="arithmatex">\(1\)</span> and converges at <span class="arithmatex">\(x=1\)</span> by the Alternating Series Test (the terms <span class="arithmatex">\(\frac1k\)</span> decrease to <span class="arithmatex">\(0\)</span>). By Theorem <a href="#thm-abellimit">G.1</a>(1), its sum at <span class="arithmatex">\(x=1\)</span> equals <span class="arithmatex">\(\lim_{x\to1^-}\ln(1+x)=\ln2\)</span>, because the logarithm is continuous at <span class="arithmatex">\(2\)</span>. The convergence is slow: the error after <span class="arithmatex">\(n\)</span> terms is at most <span class="arithmatex">\(\frac1{n+1}\)</span>, and the first ten terms give <span class="arithmatex">\(0.6456\)</span> against <span class="arithmatex">\(\ln2=0.6931\)</span>.</p>
+</div>
+<p>For the second fact, recall that for a real number <span class="arithmatex">\(p\)</span> and an integer <span class="arithmatex">\(k\ge0\)</span> the <em>binomial coefficient</em> is <span class="arithmatex">\(\binom pk=\frac{p(p-1)\cdots(p-k+1)}{k!}\)</span>, with <span class="arithmatex">\(\binom p0=1\)</span>. If <span class="arithmatex">\(p\)</span> is a nonnegative integer then <span class="arithmatex">\(\binom pk=0\)</span> for <span class="arithmatex">\(k&gt;p\)</span> (the factor <span class="arithmatex">\(p-p=0\)</span> appears) and <span class="arithmatex">\(\sum\binom pkx^k\)</span> is a polynomial. Otherwise no factor is <span class="arithmatex">\(0\)</span> and every <span class="arithmatex">\(\binom pk\ne0\)</span>. Let <span class="arithmatex">\(c_k=\binom pk\)</span> and <span class="arithmatex">\(u_k=\abs{c_k}\)</span>. Multiplying out the definition,</p>
+<div class="arithmatex">\[(k+1)\,c_{k+1}=(p-k)\,c_k,\qquad\text{so}\qquad(k+1)\,u_{k+1}=\abs{p-k}\,u_k .\tag{$\ast$}\]</div>
+<p>We also use <span class="arithmatex">\(1-y\le e^{-y}\)</span> for all real <span class="arithmatex">\(y\)</span> (the graph of the convex function <span class="arithmatex">\(e^{-y}\)</span> lies above its tangent line <span class="arithmatex">\(1-y\)</span> at <span class="arithmatex">\(y=0\)</span>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem G.4: The size of the binomial coefficients</p>
+<p><span id="thm-binomsize"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be a real number that is not a nonnegative integer.</p>
+<ol>
+<li>
+<p>If <span class="arithmatex">\(p\le-1\)</span> then <span class="arithmatex">\(u_k\ge1\)</span> for every <span class="arithmatex">\(k\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(-1&lt;p&lt;0\)</span> then <span class="arithmatex">\(c_k=(-1)^ku_k\)</span>, the numbers <span class="arithmatex">\(u_k\)</span> decrease strictly to <span class="arithmatex">\(0\)</span>, and <span class="arithmatex">\(\sum u_k\)</span> diverges.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(p&gt;0\)</span>, let <span class="arithmatex">\(K\)</span> be the smallest integer greater than <span class="arithmatex">\(p\)</span>. For <span class="arithmatex">\(k\ge K\)</span> the signs of <span class="arithmatex">\(c_k\)</span> alternate, the numbers <span class="arithmatex">\(u_k\)</span> decrease strictly to <span class="arithmatex">\(0\)</span>, and <span class="arithmatex">\(\sum u_k\)</span> converges.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) Here <span class="arithmatex">\(\abs{p-k}=k+\abs p\ge k+1\)</span>, so <span class="arithmatex">\((\ast)\)</span> gives <span class="arithmatex">\(u_{k+1}\ge u_k\)</span>. Since <span class="arithmatex">\(u_0=1\)</span>, <span class="arithmatex">\(u_k\ge1\)</span> for all <span class="arithmatex">\(k\)</span>.</p>
+<p>(2) Every factor <span class="arithmatex">\(p-j\)</span> is negative, so <span class="arithmatex">\(c_k\)</span> has the sign <span class="arithmatex">\((-1)^k\)</span>. Now <span class="arithmatex">\(\abs{p-k}=k+\abs p\)</span> with <span class="arithmatex">\(0&lt;\abs p&lt;1\)</span>, so <span class="arithmatex">\((\ast)\)</span> reads <span class="arithmatex">\((k+1)u_{k+1}=(k+\abs p)u_k\)</span>, which gives three facts. First, <span class="arithmatex">\(u_{k+1}&lt;u_k\)</span> because <span class="arithmatex">\(k+\abs p&lt;k+1\)</span>. Second, <span class="arithmatex">\((k+1)u_{k+1}&gt;k\,u_k\)</span>, so <span class="arithmatex">\(k\,u_k\)</span> increases and <span class="arithmatex">\(k\,u_k\ge1\cdot u_1=\abs p\)</span> for <span class="arithmatex">\(k\ge1\)</span>; that is <span class="arithmatex">\(u_k\ge\frac{\abs p}k\)</span>, and <span class="arithmatex">\(\sum u_k\)</span> diverges by comparison with the harmonic series. Third, <span class="arithmatex">\(\frac{u_{k+1}}{u_k}=1-\frac{1-\abs p}{k+1}\le e^{-(1-\abs p)/(k+1)}\)</span>, so</p>
+<div class="arithmatex">\[0&lt;u_n=u_0\prod_{j=0}^{n-1}\frac{u_{j+1}}{u_j}\le\exp\left(-(1-\abs p)\sum_{j=1}^n\frac1j\right)\to0,\]</div>
+<p>because the harmonic series diverges. So <span class="arithmatex">\(u_n\to0\)</span> by the Squeeze Theorem.</p>
+<p>(3) For <span class="arithmatex">\(k\ge K\)</span> we have <span class="arithmatex">\(k&gt;p\)</span>, so <span class="arithmatex">\(p-k&lt;0\)</span>. Then <span class="arithmatex">\(\frac{c_{k+1}}{c_k}=\frac{p-k}{k+1}&lt;0\)</span>: the signs alternate. By <span class="arithmatex">\((\ast)\)</span>, <span class="arithmatex">\((k+1)u_{k+1}=(k-p)u_k\)</span>, so <span class="arithmatex">\(u_{k+1}&lt;u_k\)</span>. As in (2), <span class="arithmatex">\(\frac{u_{k+1}}{u_k}=1-\frac{p+1}{k+1}\le e^{-(p+1)/(k+1)}\)</span>, so for <span class="arithmatex">\(n&gt;K\)</span>, <span class="arithmatex">\(0&lt;u_n\le u_K\exp\left(-(p+1)\sum_{j=K+1}^n\frac1j\right)\to0\)</span>. Finally <span class="arithmatex">\((\ast)\)</span> gives <span class="arithmatex">\(k\,u_k-(k+1)u_{k+1}=p\,u_k\)</span> for <span class="arithmatex">\(k\ge K\)</span>. Adding these equations for <span class="arithmatex">\(k=K,\dots,n\)</span>, the left sides telescope:</p>
+<div class="arithmatex">\[p\sum_{k=K}^nu_k=K\,u_K-(n+1)\,u_{n+1}\le K\,u_K .\]</div>
+<p>So the partial sums of <span class="arithmatex">\(\sum u_k\)</span> are bounded, and since the terms are positive the partial sums increase, so <span class="arithmatex">\(\sum u_k\)</span> converges by the Monotone Convergence Theorem (Theorem <a href="#thm-mct">A.5</a>). ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem G.5: The binomial series at the endpoints</p>
+<p><span id="thm-binomend"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be a real number that is not a nonnegative integer. The series <span class="arithmatex">\(\sum_{k=0}^\infty\binom pkx^k\)</span> has radius of convergence <span class="arithmatex">\(1\)</span>, and</p>
+<ol>
+<li>
+<p>at <span class="arithmatex">\(x=1\)</span> it converges if and only if <span class="arithmatex">\(p&gt;-1\)</span>;</p>
+</li>
+<li>
+<p>at <span class="arithmatex">\(x=-1\)</span> it converges if and only if <span class="arithmatex">\(p&gt;0\)</span>.</p>
+</li>
+</ol>
+<p>So its interval of convergence is <span class="arithmatex">\((-1,1)\)</span> if <span class="arithmatex">\(p\le-1\)</span>, <span class="arithmatex">\((-1,1]\)</span> if <span class="arithmatex">\(-1&lt;p&lt;0\)</span>, and <span class="arithmatex">\([-1,1]\)</span> if <span class="arithmatex">\(p&gt;0\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>Radius.</em> <span class="arithmatex">\(\abs{c_{k+1}/c_k}=\frac{\abs{p-k}}{k+1}\to1\)</span>, so <span class="arithmatex">\(R=1\)</span> (the Ratio Test applied to the coefficients).</p>
+<p><em>At <span class="arithmatex">\(x=1\)</span>.</em> If <span class="arithmatex">\(p\le-1\)</span> the terms satisfy <span class="arithmatex">\(\abs{c_k}\ge1\)</span> (Theorem <a href="#thm-binomsize">G.4</a>(1)), so they do not tend to <span class="arithmatex">\(0\)</span> and the series diverges (Divergence Test). If <span class="arithmatex">\(-1&lt;p&lt;0\)</span> then <span class="arithmatex">\(c_k=(-1)^ku_k\)</span> with <span class="arithmatex">\(u_k\)</span> decreasing to <span class="arithmatex">\(0\)</span> (Theorem <a href="#thm-binomsize">G.4</a>(2)), so the series converges by the Alternating Series Test. If <span class="arithmatex">\(p&gt;0\)</span>, the terms from <span class="arithmatex">\(k=K\)</span> on alternate in sign and decrease in absolute value to <span class="arithmatex">\(0\)</span> (Theorem <a href="#thm-binomsize">G.4</a>(3)); the Alternating Series Test applied to the tail shows that the series converges (the first <span class="arithmatex">\(K\)</span> terms are finitely many).</p>
+<p><em>At <span class="arithmatex">\(x=-1\)</span>.</em> The terms are <span class="arithmatex">\((-1)^kc_k\)</span>. If <span class="arithmatex">\(p\le-1\)</span> their absolute values are <span class="arithmatex">\(\ge1\)</span>: divergence. If <span class="arithmatex">\(-1&lt;p&lt;0\)</span> they are <span class="arithmatex">\((-1)^kc_k=u_k&gt;0\)</span>, and <span class="arithmatex">\(\sum u_k\)</span> diverges (Theorem <a href="#thm-binomsize">G.4</a>(2)). If <span class="arithmatex">\(p&gt;0\)</span>, <span class="arithmatex">\(\sum u_k\)</span> converges (Theorem <a href="#thm-binomsize">G.4</a>(3); the first <span class="arithmatex">\(K\)</span> terms do not matter), so the series converges absolutely. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example G.6: The coefficients for <span class="arithmatex">\(p=\frac12\)</span></p>
+<p><span id="ex-binomsum"></span></p>
+<p>For <span class="arithmatex">\(p=\frac12\)</span> we have <span class="arithmatex">\(K=1\)</span> in Theorem <a href="#thm-binomsize">G.4</a>(3), and the telescoping identity reads <span class="arithmatex">\(\frac12\sum_{k=1}^nu_k=u_1-(n+1)u_{n+1}\)</span>, that is</p>
+<div class="arithmatex">\[\sum_{k=1}^n\abs{\binom{1/2}k}=1-2(n+1)\abs{\binom{1/2}{n+1}} .\]</div>
+<p>Check it for <span class="arithmatex">\(n=9\)</span> and say what it shows about <span class="arithmatex">\(\sum_{k=1}^\infty\abs{\binom{1/2}k}\)</span>.</p>
+<p><strong>Solution.</strong> The absolute values of the coefficients are <span class="arithmatex">\(u_1=\frac12\)</span>, <span class="arithmatex">\(u_2=\frac18\)</span>, <span class="arithmatex">\(u_3=\frac1{16}\)</span>, <span class="arithmatex">\(u_4=\frac5{128}\)</span>, <span class="arithmatex">\(u_5=\frac7{256}\)</span>, <span class="arithmatex">\(u_6=\frac{21}{1024}\)</span>, <span class="arithmatex">\(u_7=\frac{33}{2048}\)</span>, <span class="arithmatex">\(u_8=\frac{429}{32768}\)</span>, <span class="arithmatex">\(u_9=\frac{715}{65536}\)</span>, <span class="arithmatex">\(u_{10}=\frac{2431}{262144}\)</span>. Their sum for <span class="arithmatex">\(k=1,\dots,9\)</span> is <span class="arithmatex">\(\frac{53381}{65536}\approx0.81453\)</span>, and the right side is <span class="arithmatex">\(1-20\cdot\frac{2431}{262144}=\frac{53381}{65536}\)</span>: equal. The partial sums increase and are at most <span class="arithmatex">\(1\)</span>, so they converge to some <span class="arithmatex">\(L\le1\)</span>, and then <span class="arithmatex">\((n+1)u_{n+1}=\frac{1-S_n}2\to\frac{1-L}2\)</span>. If this limit were positive, <span class="arithmatex">\(u_n\ge\frac cn\)</span> for large <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\sum u_k\)</span> would diverge by comparison with the harmonic series, contradicting Theorem <a href="#thm-binomsize">G.4</a>(3). So the limit is <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(L=1\)</span>, and <span class="arithmatex">\(\sum_{k=1}^\infty\abs{\binom{1/2}k}=1\)</span>. Since <span class="arithmatex">\((-1)^k\binom{1/2}k=-u_k\)</span> for <span class="arithmatex">\(k\ge1\)</span>, this says that <span class="arithmatex">\(\sum_{k=0}^\infty\binom{1/2}k(-1)^k=1-1=0=\sqrt{1+(-1)}\)</span>.</p>
 </div>
 
 

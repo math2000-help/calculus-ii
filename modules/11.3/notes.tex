@@ -1,0 +1,625 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{11}{3}{Taylor Series}
+\calcxdoc{11.1}
+\calcxdoc{11.2}
+\calcxdoc{10.2}
+\calcxdoc{10.3}
+\calcxdoc{10.4}
+\calcxdoc{10.5}
+\calcxdoc{10.6}
+\calcxdoc{10.7}
+\calcxapp
+
+\begin{document}
+
+\section{Taylor Series}
+
+\begin{guide}
+In Section 11.1 a Taylor polynomial stopped at some degree $n$, and the remainder measured what was lost. Let $n$ grow without end and the polynomial becomes a power series, the \emph{Taylor series}. Two questions follow. For which $x$ does it converge? (Section 11.2 answers this with the Ratio Test, the Root Test and the other tests of Chapter 10.) And when it converges, is its sum the function we started with? The second question is subtler than it looks: some functions have a Taylor series that converges everywhere, to the wrong function. This section answers both questions, derives the series of $e^x$, $\sin x$, $\cos x$, $\frac1{1-x}$, $\ln(1+x)$, $\tan^{-1}x$ and $(1+x)^p$ with their intervals of convergence (endpoints included), and shows how to build new series from these. What Taylor series are used for (numerical approximation, limits, differential equations) is the subject of the next section.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item write the Taylor or Maclaurin series of a function, from the definition or by building it from known series, and find its interval of convergence;
+  \item state and use the criterion $R_n(x)\to0$ for a Taylor series to converge to its function;
+  \item derive the Maclaurin series of the standard functions, with the interval on which each is valid and the behavior at the endpoints;
+  \item explain, with the example $e^{-1/x^2}$, why a convergent Taylor series need not converge to its function.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{From Taylor polynomials to Taylor series}
+
+\begin{defn}{Taylor series and Maclaurin series}{ts}
+Let $f$ have derivatives of all orders at $a$. The \emph{Taylor series of $f$ centered at $a$} is the power series
+\[
+\sum_{k=0}^\infty\frac{f^{(k)}(a)}{k!}(x-a)^k=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots .
+\]
+When $a=0$ it is called the \emph{Maclaurin series} of $f$.
+\end{defn}
+
+The partial sums of the Taylor series are exactly the Taylor polynomials $p_n$ of Definition~\ref{11.1-def:taylor}, so the series is what the polynomials grow into. It is a power series in the sense of Definition~\ref{11.2-def:ps}, so Section 11.2 applies to it: it has a radius of convergence, and the tests of Chapter 10 find the interval of convergence. But the definition uses only the values of the derivatives at the single point $a$. Nothing yet says that the series converges at any $x\ne a$, and even where it does, nothing says that its sum is $f(x)$. Until we have an answer we write ``the Taylor series of $f$'' and do \emph{not} write $f(x)=\sum\cdots$.
+
+\begin{kc}{Series of polynomials}{poly}
+Find the Maclaurin series of $p(x)=2+3x^2-x^4$ and the Taylor series of $q(x)=x^3$ centered at $a=1$. For which $x$ does each converge, and to what?
+\end{kc}
+
+\begin{exmp}{The Maclaurin series of $\sin x$ from the definition}{sinser}
+Find the Maclaurin series of $f(x)=\sin x$ and its interval of convergence.
+
+\textbf{Solution.} The derivatives repeat with period $4$: $\sin x,\ \cos x,\ -\sin x,\ -\cos x,\ \sin x,\dots$. At $0$ they are $0,1,0,-1,0,1,0,-1,\dots$
+%@ ex1a | [diff(sin(x),x,j).subs(x,0) for j in range(8)] == [0,1,0,-1,0,1,0,-1] | $0,1,0,-1,0,1,0,-1,\dots$
+so the even-order derivatives vanish and $f^{(2k+1)}(0)=(-1)^k$. The coefficients are $c_{2k}=0$ and $c_{2k+1}=\frac{(-1)^k}{(2k+1)!}$, and the series is
+\[
+x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!}.
+\]
+%@ ex1b | Tay(sin(x),0,7) == x-x**3/6+x**5/120-x**7/5040 and factorial(3) == 6 and factorial(5) == 120 and factorial(7) == 5040 | \frac{x^7}{7!}+\cdots
+Only odd powers occur, so we apply the Ratio Test to the terms $a_k=\frac{(-1)^kx^{2k+1}}{(2k+1)!}$ rather than to the coefficients (Warning on gaps in Section 11.2):
+\[
+\abs{\frac{a_{k+1}}{a_k}}=\frac{x^2}{(2k+3)(2k+2)}\to0\quad\text{for every }x ,
+\]
+%@ ex1c | simplify(gammasimp(factorial(2*k+1)/factorial(2*k+3)) - 1/((2*k+3)*(2*k+2))) == 0 and limit(1/((2*k+3)*(2*k+2)),k,oo) == 0 | \to0\quad\text{for every }x
+so $r=0<1$ and the series converges absolutely for all $x$: the interval of convergence is $(-\infty,\infty)$. We have \emph{not} shown yet that the sum is $\sin x$; that is Theorem~\ref{thm:esc} below.
+\end{exmp}
+
+\begin{exmp}{A center other than $0$: the reciprocal at $a=2$}{recip}
+Find the Taylor series of $f(x)=\frac1x$ centered at $2$, its radius and interval of convergence, and show that it converges to $f(x)$ exactly on its interval.
+
+\textbf{Solution.} $f^{(k)}(x)=\frac{(-1)^kk!}{x^{k+1}}$, so $f^{(k)}(2)=\frac{(-1)^kk!}{2^{k+1}}$ and $c_k=\frac{f^{(k)}(2)}{k!}=\frac{(-1)^k}{2^{k+1}}$:
+\[
+\frac12-\frac{x-2}4+\frac{(x-2)^2}8-\frac{(x-2)^3}{16}+\cdots=\sum_{k=0}^\infty\frac{(-1)^k(x-2)^k}{2^{k+1}} .
+\]
+%@ ex2a | Tay(1/x,2,5) == sum((-1)**j*(x-2)**j/Integer(2)**(j+1) for j in range(6)) and diff(1/x,x,3).subs(x,2) == -Q(6,16) and Q(6,16)/factorial(3) == Q(1,16) | \frac{(x-2)^3}{16}+\cdots
+Here $\abs{c_{k+1}/c_k}=\frac12$, so $R=2$ (Theorem~\ref{11.2-thm:radiusrule}) and the open interval is $(0,4)$. At $x=4$ the terms are $\frac{(-1)^k2^k}{2^{k+1}}=\frac{(-1)^k}2$ and at $x=0$ they are $\frac{(-1)^k(-2)^k}{2^{k+1}}=\frac12$. Neither tends to $0$, so both endpoints diverge (Theorem~\ref{10.4-thm:divtest}), and the interval of convergence is $(0,4)$. For $x$ in it the series is geometric with ratio $-\frac{x-2}2$, so by Theorem~\ref{10.3-thm:geoseries} its sum is $\frac12\cdot\frac1{1+(x-2)/2}=\frac1x$. So here the series \emph{does} converge to $f$, on the whole interval, and the endpoint $x=0$ is exactly where $f$ is undefined.
+%@ ex2b | limit(abs(((-1)**(k+1)/Integer(2)**(k+2))/((-1)**k/Integer(2)**(k+1))),k,oo) == Q(1,2) and 2-2 == 0 and 2+2 == 4 and simplify(Q(1,2)/(1+(x-2)/2)-1/x) == 0 | so $R=2$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{When does the Taylor series converge to the function?}
+
+Section 11.1 gave the tool: Taylor's Theorem (Theorem~\ref{11.1-thm:taylor}) says $f(x)=p_n(x)+R_n(x)$, where $R_n(x)=f(x)-p_n(x)$ is the remainder (Definition~\ref{11.1-def:remainder}). The partial sums of the Taylor series are the $p_n(x)$, so the question is exactly whether $R_n(x)\to0$.
+
+\begin{thm}{Convergence of a Taylor series to its function}{crit}
+Let $f$ have derivatives of all orders on an open interval $I$ containing $a$, and let $p_n$ and $R_n=f-p_n$ be its Taylor polynomial and remainder of order $n$ centered at $a$. For a given $x$ in $I$, the Taylor series of $f$ converges to $f(x)$ if and only if $\lim_{n\to\infty}R_n(x)=0$.
+\end{thm}
+\begin{proof}
+The $n$-th partial sum of the Taylor series at $x$ is $p_n(x)$, and $p_n(x)=f(x)-R_n(x)$ by the definition of the remainder. If $R_n(x)\to0$, the limit laws (Theorem~\ref{10.2-thm:laws}) give $p_n(x)=f(x)-R_n(x)\to f(x)-0=f(x)$, so the series converges to $f(x)$. Conversely, if $p_n(x)\to f(x)$ then $R_n(x)=f(x)-p_n(x)\to f(x)-f(x)=0$.
+\end{proof}
+
+The proof is two lines. The work is in showing that $R_n(x)\to0$ in a given case, and for that Taylor's Theorem gives $R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ between $a$ and $x$, which we estimate with Theorem~\ref{11.1-thm:estimate}.
+
+\begin{think}{Convergence is not equality}{conv}
+Suppose the Maclaurin series of $f$ converges at $x=1$, to a number $S$. Does Theorem~\ref{thm:crit} tell you that $S=f(1)$? What does it tell you about $R_n(1)$, and what would you have to show to conclude that $S=f(1)$?
+\end{think}
+
+The most useful case is when the derivatives are not too large.
+
+\begin{thm}{Derivatives that do not grow too fast}{bounded}
+Let $f$ have derivatives of all orders on an open interval $I$ containing $a$. Suppose there are constants $M\ge0$ and $B>0$ such that $\abs{f^{(n)}(c)}\le MB^n$ for every $n\ge0$ and every $c$ in $I$. Then the Taylor series of $f$ centered at $a$ converges to $f(x)$ for every $x$ in $I$.
+\end{thm}
+\begin{proof}
+Let $x$ be in $I$. If $x=a$ then $R_n(a)=0$. Otherwise every $c$ between $a$ and $x$ lies in $I$, so $\abs{f^{(n+1)}(c)}\le MB^{n+1}$, and Theorem~\ref{11.1-thm:estimate} gives
+\[
+\abs{R_n(x)}\le\frac{MB^{n+1}\abs{x-a}^{n+1}}{(n+1)!}=M\,\frac{b^{n+1}}{(n+1)!},\qquad b=B\abs{x-a}.
+\]
+Put $b'=\max(b,2)>1$. Then $b^{m}\le b'^m$, and $\frac{b'^m}{m!}\to0$ by the growth rates (Theorem~\ref{10.2-thm:growth}(c)); taking $m=n+1$ and using the Squeeze Theorem (Theorem~\ref{app-thm:squeeze}), $R_n(x)\to0$. By Theorem~\ref{thm:crit} the series converges to $f(x)$.
+\end{proof}
+
+With it we obtain the first three standard series.
+
+\begin{thm}{The series of $e^x$, $\sin x$ and $\cos x$}{esc}
+For every real number $x$,
+\[
+e^x=\sum_{k=0}^\infty\frac{x^k}{k!},\qquad\sin x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!},\qquad\cos x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!}.
+\]
+\end{thm}
+\begin{proof}
+\emph{$e^x$.} Every derivative of $e^x$ is $e^x$, and at $0$ it is $1$, so the Maclaurin coefficients are $\frac1{k!}$. Fix $L>0$ and let $I=(-L,L)$. For $c$ in $I$, $\abs{f^{(n)}(c)}=e^c<e^L$, so Theorem~\ref{thm:bounded} applies with $M=e^L$ and $B=1$: the series converges to $e^x$ for $\abs x<L$. Since $L$ was arbitrary, this holds for all $x$.
+
+\emph{$\sin x$ and $\cos x$.} Each derivative of $\sin x$ or $\cos x$ is one of $\sin x$, $\cos x$, $-\sin x$, $-\cos x$, so $\abs{f^{(n)}(c)}\le1$ for all $n$ and all real $c$: Theorem~\ref{thm:bounded} applies with $M=B=1$ and $I=\R$, and both Maclaurin series converge to the function for every $x$. The coefficients: the derivatives of $\sin x$ at $0$ are $0,1,0,-1,\dots$ (Example~\ref{ex:sinser}), giving $\frac{(-1)^k}{(2k+1)!}$ at $x^{2k+1}$ and $0$ at the even powers. Those of $\cos x$ are $1,0,-1,0,\dots$, giving $\frac{(-1)^k}{(2k)!}$ at $x^{2k}$ and $0$ at the odd powers.
+%@ esc | [diff(cos(x),x,j).subs(x,0) for j in range(8)] == [1,0,-1,0,1,0,-1,0] and Tay(cos(x),0,6) == 1-x**2/2+x**4/24-x**6/720 and Tay(exp(x),0,5) == sum(x**j/factorial(j) for j in range(6)) and factorial(6) == 720 | at $x^{2k}$ and $0$ at the odd powers
+\end{proof}
+
+So $e^x$, $\sin x$ and $\cos x$ equal their Maclaurin series on all of $\R$ (the intervals of convergence are all $(-\infty,\infty)$, by the Ratio Test as in Example~\ref{ex:sinser}). The following theorem explains why we can often skip derivatives altogether.
+
+\begin{thm}{A power series is the Taylor series of its sum}{uniq}
+Suppose $\sum c_k(x-a)^k$ converges to $f(x)$ for all $x$ with $\abs{x-a}<R$, where $R>0$. Then $f$ has derivatives of all orders on $(a-R,a+R)$, and $c_k=\dfrac{f^{(k)}(a)}{k!}$ for every $k$. That is, the series is the Taylor series of $f$ centered at $a$.
+\end{thm}
+\begin{proof}
+The power series has radius of convergence at least $R$ (Definition~\ref{11.2-def:radius}), so by Theorem~\ref{11.2-thm:diffint} applied $j$ times (the complete statement is Theorem~\ref{app-thm:allderiv}), $f$ has derivatives of every order and
+\[
+f^{(j)}(x)=\sum_{k=j}^\infty k(k-1)\cdots(k-j+1)\,c_k(x-a)^{k-j}\qquad(\abs{x-a}<R).
+\]
+At $x=a$ every term with $k>j$ contains the factor $(x-a)^{k-j}=0$, and the term $k=j$ is $j!\,c_j$. So $f^{(j)}(a)=j!\,c_j$.
+\end{proof}
+
+\textbf{Consequence.} A function has \emph{one} Taylor series about a given center, and any method that produces a power series equal to $f$ on an interval about $a$ (substitution, adding, multiplying by powers, differentiating, integrating a known series) has produced \emph{that} series, with no derivatives to compute. Bank Example~\ref{ex:b14} of Section 11.2 is the special case that two power series with the same sum have the same coefficients. The converse of Theorem~\ref{thm:uniq} is false in general: a Taylor series can converge without converging to its function (Theorem~\ref{thm:flat} below).
+
+\begin{kc}{Reading derivatives off a series}{read}
+The Maclaurin series of $f$ begins $4-3x+5x^2+7x^3+\cdots$ and converges to $f(x)$ near $0$. Find $f(0)$, $f'(0)$, $f''(0)$ and $f'''(0)$.
+\end{kc}
+
+\begin{exmp}{Two ways to the series of $\cos2x$}{cos2x}
+Find the Maclaurin series of $f(x)=\cos2x$, and show that it converges to $f$ for all $x$.
+
+\textbf{Solution.} \emph{By the definition.} $f^{(n)}(x)$ is $2^n$ times $\pm\cos2x$ or $\pm\sin2x$, so $\abs{f^{(n)}(c)}\le2^n$ for all $c$: Theorem~\ref{thm:bounded} applies with $M=1$, $B=2$, $I=\R$, and the series converges to $\cos2x$ for every $x$. The derivatives at $0$ are $1,0,-4,0,16,0,\dots$, that is $f^{(2k)}(0)=(-1)^k4^k$, so $c_{2k}=\frac{(-1)^k4^k}{(2k)!}$:
+\[
+\cos2x=\sum_{k=0}^\infty\frac{(-1)^k(2x)^{2k}}{(2k)!}=1-2x^2+\frac23x^4-\frac4{45}x^6+\cdots .
+\]
+%@ ex3a | [diff(cos(2*x),x,j).subs(x,0) for j in range(7)] == [1,0,-4,0,16,0,-64] and Tay(cos(2*x),0,6) == 1-2*x**2+Q(2,3)*x**4-Q(4,45)*x**6 and Q(64,720) == Q(4,45) | =1-2x^2+\frac23x^4-\frac4{45}x^6+\cdots
+\emph{By substitution.} Replace $x$ by $2x$ in the series of $\cos x$ (Theorem~\ref{11.2-thm:comb}(3)): the result is the same series, valid for all $x$ because the cosine series converges for all arguments. By Theorem~\ref{thm:uniq} it must be the Taylor series, and it is: no derivatives were needed.
+\end{exmp}
+
+\begin{exmp}{Building series from the standard ones}{build}
+Find the Maclaurin series and the interval of convergence of (a)~$x^2e^{-3x}$, (b)~$\dfrac{1-\cos x}{x^2}$, (c)~$\sinh x=\dfrac{e^x-e^{-x}}2$.
+
+\textbf{Solution.} (a) Substituting $-3x$ in the series of $e^x$ and multiplying by $x^2$ (Theorem~\ref{11.2-thm:comb}(2) and (3)): $x^2e^{-3x}=\sum_{k=0}^\infty\frac{(-3)^kx^{k+2}}{k!}=x^2-3x^3+\frac92x^4-\frac92x^5+\cdots$, for all $x$.
+%@ ex4a | Tay(x**2*exp(-3*x),0,5) == x**2-3*x**3+Q(9,2)*x**4-Q(9,2)*x**5 and (-3)**2/factorial(2) == Q(9,2) and (-3)**3/factorial(3) == -Q(9,2) | x^2-3x^3+\frac92x^4-\frac92x^5+\cdots
+(b) $1-\cos x=\frac{x^2}{2!}-\frac{x^4}{4!}+\frac{x^6}{6!}-\cdots=\sum_{j=0}^\infty\frac{(-1)^jx^{2j+2}}{(2j+2)!}=x^2\sum_{j=0}^\infty\frac{(-1)^jx^{2j}}{(2j+2)!}$. The last series converges for all $x$ (Ratio Test: $\frac{x^2}{(2j+4)(2j+3)}\to0$), so for $x\ne0$ we may divide by $x^2$: $\frac{1-\cos x}{x^2}=\frac12-\frac{x^2}{24}+\frac{x^4}{720}-\cdots$ for all $x\ne0$. The series has the value $\frac12$ at $x=0$, which is the limit of the quotient there.
+%@ ex4b | series((1-cos(x))/x**2,x,0,6).removeO() == Q(1,2)-x**2/24+x**4/720 and limit((1-cos(x))/x**2,x,0) == Q(1,2) and factorial(4) == 24 | \frac12-\frac{x^2}{24}+\frac{x^4}{720}-\cdots
+(c) By Theorem~\ref{11.2-thm:comb}(1), $\sinh x=\frac12\sum\frac{x^k-(-x)^k}{k!}=\frac12\sum\frac{(1-(-1)^k)x^k}{k!}$: the even terms cancel and the odd terms double, so $\sinh x=\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}=x+\frac{x^3}6+\frac{x^5}{120}+\cdots$ for all $x$.
+%@ ex4c | Tay(sinh(x),0,7) == x+x**3/6+x**5/120+x**7/5040 and simplify(sinh(x)-(exp(x)-exp(-x))/2) == 0 and 2*Q(1,2) == 1 | $\sinh x=\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}=x+\frac{x^3}6+\frac{x^5}{120}+\cdots$
+\end{exmp}
+
+\begin{exmp}{A series for a function with no elementary antiderivative}{si}
+The function $\frac{\sin t}t$ has no elementary antiderivative. Use its series to find a power series for $F(x)=\displaystyle\int_0^x\frac{\sin t}t\,dt$, and estimate $F(1)$ with an error bound.
+
+\textbf{Solution.} Since $\sin t=t\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+1)!}$, dividing by $t$ (as in Example~\ref{ex:build}(b)) gives $\frac{\sin t}t=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+1)!}$ for all $t\ne0$, and the series equals $1=\lim_{t\to0}\frac{\sin t}t$ at $t=0$. Integrating term by term from $0$ to $x$ (Theorem~\ref{11.2-thm:diffint}; the radius stays $\infty$):
+\[
+F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)\,(2k+1)!}=x-\frac{x^3}{18}+\frac{x^5}{600}-\frac{x^7}{35280}+\cdots\qquad\text{for all }x.
+\]
+%@ ex5a | series(integrate(series(sin(x)/x,x,0,9).removeO(),x),x,0,8).removeO() == x-x**3/18+x**5/600-x**7/35280 and 3*factorial(3) == 18 and 5*factorial(5) == 600 and 7*factorial(7) == 35280 | x-\frac{x^3}{18}+\frac{x^5}{600}-\frac{x^7}{35280}+\cdots
+At $x=1$ the series alternates with decreasing terms (Theorem~\ref{10.6-thm:ast}), so by Theorem~\ref{10.6-thm:remainder} the error after three terms is at most the next term, $\frac1{35280}\approx2.8\times10^{-5}$. The three terms sum to $1-\frac1{18}+\frac1{600}=\frac{1703}{1800}\approx0.94611$. The true value is $F(1)=0.946083$; the difference, $2.8\times10^{-5}$, is within the bound.
+%@ ex5b | 1-Q(1,18)+Q(1,600) == Q(1703,1800) and abs(float(Q(1703,1800))-0.94611)<1e-5 and abs(float(Integral(sin(x)/x,(x,0,1)).evalf(15))-0.946083)<1e-6 and abs(float(Q(1703,1800)-Integral(sin(x)/x,(x,0,1)).evalf(15))-2.8e-5)<1e-6 and abs(float(Q(1,35280))-2.8e-5)<1e-6 and 7*factorial(7) == 35280 | \frac{1703}{1800}\approx0.94611
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The geometric, logarithm and arctangent series, and the endpoints}
+
+The geometric series $\frac1{1-x}=\sum x^k$ (Theorem~\ref{10.3-thm:geoseries}) is already a Taylor series: $\frac1{1-x}$ has $f^{(k)}(0)=k!$ (Example~\ref{11.1-ex:geom}), and the series equals it exactly for $\abs x<1$. Integrating it term by term gives the logarithm and the arctangent for $\abs x<1$ (Section 11.2). What happens \emph{at} $x=\pm1$ is the question Section 11.2 left open: the series for $\ln(1+2x)$ converges at $x=\frac12$, but is its sum $\ln2$? Theorem~\ref{11.2-thm:diffint} says nothing at the endpoints. The missing tool is the following theorem about a series that converges at an endpoint.
+
+\begin{thm}{Abel's limit theorem}{abel}
+Let $\sum c_k(x-a)^k$ have radius of convergence $R$ with $0<R<\infty$, and let $f(x)=\sum c_k(x-a)^k$ for $\abs{x-a}<R$. If the series converges at $x=a+R$, then its sum there is $\lim_{x\to(a+R)^-}f(x)$. If it converges at $x=a-R$, its sum there is $\lim_{x\to(a-R)^+}f(x)$.
+\end{thm}
+%%@omitted abel  (proved in full in Appendix G, Theorem G.1)
+\textbf{The proof is in Appendix~G} (Theorem~\ref{app-thm:abellimit}); it is a page of summation by parts and needs nothing beyond the geometric series. Two remarks. If $f$ is continuous at the endpoint (for example, if $f$ is given by a formula that is continuous there), the limit is the value of $f$, so the series sums to $f(a+R)$. And the hypothesis that the series converges at the endpoint is essential: $\sum(-1)^kx^k=\frac1{1+x}$ for $\abs x<1$ tends to $\frac12$ as $x\to1^-$, yet $1-1+1-\cdots$ diverges (Example~\ref{app-ex:abelfail}).
+
+\begin{thm}{The logarithm and arctangent series}{logatan}
+\begin{enumerate}
+  \item $\displaystyle\ln(1+x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k=x-\frac{x^2}2+\frac{x^3}3-\cdots$ for $-1<x\le1$; the series diverges for all other $x$.
+  \item $\displaystyle\tan^{-1}x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}=x-\frac{x^3}3+\frac{x^5}5-\cdots$ for $-1\le x\le1$; the series diverges for $\abs x>1$.
+\end{enumerate}
+In particular $\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}k=\ln2$ and $\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}=\frac\pi4$.
+\end{thm}
+\begin{proof}
+(1)~For $\abs t<1$, $\frac1{1+t}=\sum_{k=0}^\infty(-t)^k$ (the geometric series with ratio $-t$). Integrate term by term from $0$ to $x$ for $\abs x<1$ (Theorem~\ref{11.2-thm:diffint}; the constant is $0$ because both sides vanish at $x=0$):
+\[
+\ln(1+x)=\sum_{k=0}^\infty\frac{(-1)^kx^{k+1}}{k+1}=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k\qquad(\abs x<1).
+\]
+The radius is $1$, so the series diverges for $\abs x>1$. At $x=-1$ it is $-\sum\frac1k$, the harmonic series with a minus sign, which diverges (Theorem~\ref{10.4-thm:harm}). At $x=1$ it is $\sum\frac{(-1)^{k+1}}k$, which converges by the Alternating Series Test (Theorem~\ref{10.6-thm:ast}). By Abel's theorem (Theorem~\ref{thm:abel}) its sum is $\lim_{x\to1^-}\ln(1+x)=\ln2$, because $\ln(1+x)$ is continuous at $x=1$.
+
+(2)~For $\abs t<1$, $\frac1{1+t^2}=\sum_{k=0}^\infty(-1)^kt^{2k}$. Integrating from $0$ to $x$ (and using $\tan^{-1}0=0$) gives $\tan^{-1}x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}$ for $\abs x<1$. The radius is $1$, so the series diverges for $\abs x>1$. At $x=1$ the terms $\frac1{2k+1}$ decrease to $0$, so $\sum\frac{(-1)^k}{2k+1}$ converges by the Alternating Series Test, and by Abel's theorem its sum is $\lim_{x\to1^-}\tan^{-1}x=\tan^{-1}1=\frac\pi4$. At $x=-1$ the series is the negative of this one, with sum $-\frac\pi4=\tan^{-1}(-1)$ (Abel's theorem at the left endpoint gives the same).
+\end{proof}
+
+The convergence at the endpoints is slow. The alternating-series error bound after $n$ terms is $\frac1{n+1}$ for $\ln2$, so about a thousand terms give three decimal places. That is why practical computations of $\ln2$ and $\pi$ use these series at smaller arguments (Example~\ref{ex:endsums}), or other series, and it is the subject of the next section.
+
+\begin{exmp}{The endpoint sums, and the loop from Section 11.2}{endsums}
+(a)~In Example~\ref{11.2-ex:int} we found $\ln(1+2x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}(2x)^k}k$ for $\abs x<\frac12$, and the series converges at $x=\frac12$. Show that its sum there is $\ln2$, and find the interval on which the series equals $\ln(1+2x)$. (b)~Estimate $\pi$ from the series of $\tan^{-1}x$ at $x=1$ with $100$ terms. (c)~Find $\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k\,2^k}$ and compare the speed with (a).
+
+\textbf{Solution.} (a) Substituting $t=2x$ in Theorem~\ref{thm:logatan}(1) (Theorem~\ref{11.2-thm:comb}(3)), the series $\sum\frac{(-1)^{k+1}(2x)^k}k$ converges to $\ln(1+2x)$ exactly when $-1<2x\le1$, that is $-\frac12<x\le\frac12$. At $x=\frac12$ it is $\sum\frac{(-1)^{k+1}}k$ with sum $\ln2=\ln(1+2\cdot\frac12)$, as it should be. The interval of convergence found in Section 11.2, $(-\frac12,\frac12]$, is therefore also the interval on which the series \emph{equals} the function. (b) With $x=1$, $\pi=4\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}$. The sum of the first $100$ terms is $0.78290$, so $4\times0.78290=3.1316$; the error is at most $4\cdot\frac1{201}=0.0199$ (Theorem~\ref{10.6-thm:remainder}), and in fact it is $0.0100$. (c) This is the series of $\ln(1+x)$ at $x=\frac12$, inside the interval, so the sum is $\ln\frac32=0.405465$. Ten terms give $0.405435$, with error at most $\frac1{11\cdot2^{11}}=4.4\times10^{-5}$ (actual error $3.0\times10^{-5}$): ten terms here are worth far more than a thousand in (a), because $\left(\frac12\right)^k$ shrinks the terms.
+%@ ex6 | limit(log(1+x),x,1,'-') == log(2) and solveset(Abs(2*x) <= 1, x, S.Reals) == Interval(-Q(1,2),Q(1,2)) and abs(float(4*sum(Integer(-1)**j*Q(1,2*j+1) for j in range(100)))-3.1316)<1e-4 and abs(float(pi-4*sum(Integer(-1)**j*Q(1,2*j+1) for j in range(100)))-0.0100)<1e-4 and abs(float(sum(Integer(-1)**(j+1)*Q(1,j*2**j) for j in range(1,11)))-0.405435)<1e-6 and abs(float(log(Q(3,2))-sum(Integer(-1)**(j+1)*Q(1,j*2**j) for j in range(1,11)))-3.0e-5)<1e-6 and Q(1,11*2**11) == Q(1,22528) | with error at most $\frac1{11\cdot2^{11}}=4.4\times10^{-5}$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The binomial series}
+
+\begin{defn}{Binomial coefficients}{bincoef}
+For a real number $p$ and an integer $k\ge0$,
+\[
+\binom pk=\frac{p(p-1)(p-2)\cdots(p-k+1)}{k!}\quad(k\text{ factors in the numerator}),\qquad\binom p0=1 .
+\]
+\end{defn}
+
+For a nonnegative integer $p$ these are the familiar numbers of Pascal's triangle, and $\binom pk=0$ for $k>p$. For other $p$ none of them is $0$: $\binom{1/2}3=\frac{\frac12\cdot(-\frac12)\cdot(-\frac32)}{6}=\frac1{16}$. Multiplying out the definition gives the relation we use below,
+\[
+(k+1)\binom p{k+1}=(p-k)\binom pk .\tag{$\ast$}
+\]
+
+\begin{kc}{Binomial coefficients}{binom}
+Evaluate $\dbinom{-1/3}2$ and $\dbinom{3/2}3$.
+\end{kc}
+
+\begin{thm}{The binomial series}{binom}
+Let $p$ be any real number. For $\abs x<1$,
+\[
+(1+x)^p=\sum_{k=0}^\infty\binom pkx^k=1+px+\frac{p(p-1)}{2!}x^2+\frac{p(p-1)(p-2)}{3!}x^3+\cdots .
+\]
+This series is the Maclaurin series of $(1+x)^p$. If $p$ is a nonnegative integer, it is a polynomial and the formula is the binomial theorem of algebra.
+\end{thm}
+\begin{proof}
+Write $c_k=\binom pk$ and $B(x)=\sum c_kx^k$.
+
+\emph{Step 1: $B$ converges for $\abs x<1$.} If $p$ is a nonnegative integer, $B$ is a polynomial. Otherwise every $c_k\ne0$ and by $(\ast)$, $\abs{c_{k+1}/c_k}=\frac{\abs{p-k}}{k+1}\to1$, so the radius is $1$ (Theorem~\ref{11.2-thm:radiusrule}).
+
+\emph{Step 2: a differential equation.} By $(\ast)$, $(k+1)c_{k+1}+k\,c_k=(p-k)c_k+k\,c_k=p\,c_k$. By Theorem~\ref{11.2-thm:diffint}, $B'(x)=\sum_{k=1}^\infty kc_kx^{k-1}=\sum_{k=0}^\infty(k+1)c_{k+1}x^k$ for $\abs x<1$, and $xB'(x)=\sum_{k=0}^\infty kc_kx^k$. Adding (Theorem~\ref{11.2-thm:comb}(1)),
+\[
+(1+x)B'(x)=\sum_{k=0}^\infty\bigl((k+1)c_{k+1}+kc_k\bigr)x^k=p\sum_{k=0}^\infty c_kx^k=p\,B(x).
+\]
+
+\emph{Step 3: solve it.} On $(-1,1)$ we have $1+x>0$. Let $g(x)=B(x)\,(1+x)^{-p}$. By the product rule and Step~2,
+\[
+g'(x)=B'(x)(1+x)^{-p}-pB(x)(1+x)^{-p-1}=(1+x)^{-p-1}\bigl((1+x)B'(x)-pB(x)\bigr)=0 .
+\]
+A function with derivative $0$ on an interval is constant (Mean Value Theorem), and $g(0)=B(0)\cdot1=1$. So $B(x)(1+x)^{-p}=1$, that is $B(x)=(1+x)^p$.
+
+\emph{Maclaurin series.} The function $f(x)=(1+x)^p$ has $f^{(k)}(x)=p(p-1)\cdots(p-k+1)(1+x)^{p-k}$, so $f^{(k)}(0)/k!=\binom pk$. (This also follows from Theorem~\ref{thm:uniq}.)
+%@ binom | all(diff((1+x)**Q(1,3),x,j).subs(x,0)/factorial(j) == binomial(Q(1,3),j) for j in range(7)) and all((j+1)*binomial(Q(2,7),j+1) == (Q(2,7)-j)*binomial(Q(2,7),j) for j in range(12)) and simplify(diff((1+x)**Q(2,7)*(1+x)**(-Q(2,7)),x)) == 0 | so $f^{(k)}(0)/k!=\binom pk$
+\end{proof}
+
+The theorem settles the interior. At $x=\pm1$ the answer depends on $p$.
+
+\begin{thm}{The binomial series at the endpoints}{binomend}
+Let $p$ be a real number that is not a nonnegative integer. The binomial series has radius of convergence $1$, and its interval of convergence is
+\[
+(-1,1)\ \text{if }p\le-1,\qquad(-1,1]\ \text{if }-1<p<0,\qquad[-1,1]\ \text{if }p>0 .
+\]
+When it converges at an endpoint, its sum there is $(1+x)^p$: the sum is $2^p$ at $x=1$ (for $p>-1$), and $0$ at $x=-1$ (for $p>0$).
+\end{thm}
+\begin{proof}
+\emph{Convergence.} The radius is $1$ by Step~1 above. The behavior at $x=1$ and $x=-1$ is proved in Theorem~\ref{app-thm:binomend}; it uses the Divergence Test, the Alternating Series Test and the comparison with the harmonic series, together with the estimates of the coefficients in Theorem~\ref{app-thm:binomsize}.
+
+\emph{The sums.} By Theorem~\ref{thm:binom}, the series sums to $(1+x)^p$ for $\abs x<1$. Let $p>-1$. The series converges at $x=1$, so by Abel's theorem (Theorem~\ref{thm:abel}) its sum is $\lim_{x\to1^-}(1+x)^p=2^p$. Let $p>0$. The series converges at $x=-1$, so by the second half of Abel's theorem its sum is $\lim_{x\to-1^+}(1+x)^p=0$, because $p>0$.
+\end{proof}
+
+\begin{exmp}{A negative fractional exponent}{binomneg}
+Find the Maclaurin series of $f(x)=(1+x)^{-1/2}=\dfrac1{\sqrt{1+x}}$, its interval of convergence, and its sum at each endpoint where it converges.
+
+\textbf{Solution.} With $p=-\frac12$: $\binom{-1/2}1=-\frac12$, $\binom{-1/2}2=\frac{(-\frac12)(-\frac32)}2=\frac38$, $\binom{-1/2}3=\frac{(-\frac12)(-\frac32)(-\frac52)}6=-\frac5{16}$, $\binom{-1/2}4=\frac{35}{128}$. So
+\[
+\frac1{\sqrt{1+x}}=1-\frac12x+\frac38x^2-\frac5{16}x^3+\frac{35}{128}x^4-\cdots,\qquad\binom{-1/2}k=\frac{(-1)^k}{4^k}\binom{2k}k .
+\]
+%@ ex7a | [binomial(Q(-1,2),j) for j in range(5)] == [1,-Q(1,2),Q(3,8),-Q(5,16),Q(35,128)] and all(binomial(Q(-1,2),j) == (-1)**j*binomial(2*j,j)/Integer(4)**j for j in range(12)) and Tay((1+x)**Q(-1,2),0,4) == 1-x/2+Q(3,8)*x**2-Q(5,16)*x**3+Q(35,128)*x**4 | =\frac{(-1)^k}{4^k}\binom{2k}k
+Since $-1<p<0$, Theorem~\ref{thm:binomend} gives the interval $(-1,1]$. At $x=1$ the series $\sum\frac{(-1)^k}{4^k}\binom{2k}k=1-\frac12+\frac38-\frac5{16}+\cdots$ converges, with sum $2^{-1/2}=\frac1{\sqrt2}\approx0.7071$ (the partial sums are $1,0.5,0.875,0.5625,\dots$, an alternating sequence that closes in slowly). At $x=-1$ the terms are all positive, $\frac1{4^k}\binom{2k}k\ge\frac1{2k}$, so the series diverges by comparison with the harmonic series.
+%@ ex7b | [sum(binomial(Q(-1,2),j) for j in range(m)) for m in range(1,5)] == [1,Q(1,2),Q(7,8),Q(9,16)] and abs(float(2**Q(-1,2))-0.7071)<1e-4 and all(binomial(2*j,j)/Integer(4)**j >= Q(1,2*j) for j in range(1,40)) and 2**Q(-1,2) == sqrt(2)/2 | with sum $2^{-1/2}=\frac1{\sqrt2}\approx0.7071$
+\end{exmp}
+
+\begin{exmp}{The binomial series with a substitution}{binomsub}
+Find the Maclaurin series of $f(x)=\dfrac1{\sqrt{4-x^2}}$ and its interval of convergence.
+
+\textbf{Solution.} Factor out the $4$: $\frac1{\sqrt{4-x^2}}=\frac12\left(1-\frac{x^2}4\right)^{-1/2}=\frac12(1+u)^{-1/2}$ with $u=-\frac{x^2}4$. By Theorem~\ref{thm:binom} with $p=-\frac12$, and Example~\ref{ex:binomneg} for the coefficients,
+\[
+f(x)=\frac12\sum_{k=0}^\infty\frac{(-1)^k}{4^k}\binom{2k}k\left(-\frac{x^2}4\right)^k=\frac12\sum_{k=0}^\infty\binom{2k}k\frac{x^{2k}}{16^k}=\frac12+\frac{x^2}{16}+\frac{3x^4}{256}+\frac{5x^6}{2048}+\cdots,
+\]
+%@ ex8a | Tay(1/sqrt(4-x**2),0,6) == Q(1,2)+x**2/16+3*x**4/256+5*x**6/2048 and all(Tay(1/sqrt(4-x**2),0,12).coeff(x,2*j) == binomial(2*j,j)/(2*Integer(16)**j) for j in range(7)) and binomial(6,3)/(2*16**3) == Q(5,2048) | \frac12+\frac{x^2}{16}+\frac{3x^4}{256}+\frac{5x^6}{2048}+\cdots
+valid when $\abs u<1$, that is $\abs x<2$. At $x=\pm2$ we have $u=-1$, and the binomial series for $p=-\frac12$ diverges at $u=-1$ (Theorem~\ref{thm:binomend}: for $p\le0$ there is no convergence at the left endpoint). So the interval of convergence is $(-2,2)$: the radius is the distance from the center $0$ to the points $\pm2$ where $f$ is undefined.
+%@ ex8b | solveset(Abs(x**2/4) < 1, x, S.Reals) == Interval.open(-2,2) and all(binomial(2*j,j)/Integer(4)**j >= Q(1,2*j) for j in range(1,40)) and 2*Q(1,2) == 1 | $\abs x<2$
+\end{exmp}
+
+\begin{exmp}{A square root centered at $4$, with both endpoints}{sqrt4}
+Find the Taylor series of $\sqrt x$ centered at $4$ and its interval of convergence. What does it give at the endpoints?
+
+\textbf{Solution.} Write $\sqrt x=\sqrt{4+(x-4)}=2\sqrt{1+u}$ with $u=\frac{x-4}4$. By Theorem~\ref{thm:binom} with $p=\frac12$ (the coefficients are $1,\frac12,-\frac18,\frac1{16},-\frac5{128},\dots$):
+\[
+\sqrt x=2\sum_{k=0}^\infty\binom{1/2}k\left(\frac{x-4}4\right)^k=2+\frac{x-4}4-\frac{(x-4)^2}{64}+\frac{(x-4)^3}{512}-\frac{5(x-4)^4}{16384}+\cdots .
+\]
+%@ ex9a | [binomial(Q(1,2),j) for j in range(5)] == [1,Q(1,2),-Q(1,8),Q(1,16),-Q(5,128)] and expand(Tay(sqrt(x),4,4)-(2+(x-4)/4-(x-4)**2/64+(x-4)**3/512-5*(x-4)**4/16384)) == 0 and 2*binomial(Q(1,2),4)/4**4 == -Q(5,16384) | -\frac{5(x-4)^4}{16384}+\cdots
+Since $p=\frac12>0$, the binomial series converges for $-1\le u\le1$ (Theorem~\ref{thm:binomend}), that is $0\le x\le8$. The interval of convergence is $[0,8]$ and the series equals $\sqrt x$ on all of it. At $x=8$ the sum is $2\sqrt2$. At $x=0$ (where $\sqrt x$ is not differentiable) the sum is $0$: $2\left(1-\frac12-\frac18-\frac1{16}-\frac5{128}-\cdots\right)=0$, that is, the numbers $\frac18,\frac1{16},\frac5{128},\dots$ add up to $\frac12$ (compare Example~\ref{app-ex:binomsum}). The radius $4$ is the distance from the center to $x=0$, but unlike the series of $\frac1x$ in Example~\ref{ex:recip}, this one still converges there.
+%@ ex9b | 4-4 == 0 and 4+4 == 8 and 1-Q(1,2)-sum(abs(binomial(Q(1,2),j)) for j in range(2,10)) == 20*abs(binomial(Q(1,2),10)) and sqrt(8) == 2*sqrt(2) | $0$: $2\left(1-\frac12-\frac18-\frac1{16}-\frac5{128}-\cdots\right)=0$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The radius is not the whole story}
+
+Two warnings, one about the interval and one about the function. The first: the interval of convergence of a Taylor series is \emph{not} the interval where $f$ is defined or smooth.
+
+\begin{think}{A smooth function, a small radius}{radius}
+The function $f(x)=\frac1{1+x^2}$ has derivatives of all orders at every real number, and its graph has no break. Would you expect its Maclaurin series to converge for every $x$? Make a prediction before reading the next example.
+\end{think}
+
+\begin{exmp}{$\dfrac1{1+x^2}$ has radius $1$}{radiusone}
+Find the Maclaurin series of $\dfrac1{1+x^2}$ and its interval of convergence. Why does it fail at $x=2$?
+
+\textbf{Solution.} Substituting $-x^2$ in the geometric series (Theorem~\ref{11.2-thm:comb}(3)), $\frac1{1+x^2}=\sum_{k=0}^\infty(-1)^kx^{2k}=1-x^2+x^4-x^6+\cdots$ exactly when $\abs{x^2}<1$, that is $\abs x<1$. By Theorem~\ref{thm:uniq} this is the Maclaurin series. At $x=\pm1$ the terms are $(-1)^k$, which do not tend to $0$: divergence. So the interval of convergence is $(-1,1)$, although $f$ is smooth on all of $\R$. At $x=2$, $f(2)=\frac15$, but the partial sums are $1,-3,13,-51,205,\dots$, which grow without bound; by Theorem~\ref{thm:crit}, $R_n(2)\not\to0$. Nothing visible on the real line explains the radius $1$. (The explanation, which belongs to a later course on complex numbers, is that $1+x^2=0$ at $x=\pm i$, and these numbers are at distance $1$ from the center $0$.)
+%@ ex11 | [Tay(1/(1+x**2),0,2*j).subs(x,2) for j in range(5)] == [1,-3,13,-51,205] and Tay(1/(1+x**2),0,6) == 1-x**2+x**4-x**6 and 1/(1+Q(2)**2) == Q(1,5) | $1,-3,13,-51,205,\dots$
+\end{exmp}
+
+The second warning is more serious: a Taylor series can converge on a whole interval and still not converge to $f$.
+
+\begin{thm}{A flat function}{flat}
+Let $f(x)=e^{-1/x^2}$ for $x\ne0$ and $f(0)=0$. Then $f$ has derivatives of all orders at every real number, and $f^{(k)}(0)=0$ for every $k\ge0$. Consequently the Maclaurin series of $f$ is $0+0x+0x^2+\cdots$, which converges for every $x$ but equals $f(x)$ only at $x=0$.
+\end{thm}
+\begin{proof}
+\emph{A limit.} For every integer $m\ge0$, $\lim_{u\to\infty}u^me^{-u^2}=0$. Indeed, $e^{v}=\sum\frac{v^j}{j!}$ for $v\ge0$ (Theorem~\ref{thm:esc}), and a sum of positive terms is at least any one of them, so $e^{u^2}\ge\frac{u^{2(m+1)}}{(m+1)!}$ and $0<u^me^{-u^2}\le\frac{(m+1)!}{u^{m+2}}\to0$. Since $e^{-u^2}$ depends only on $\abs u$, also $\abs u^me^{-u^2}\to0$ as $u\to-\infty$.
+
+\emph{Derivatives away from $0$.} We claim that for each $k\ge0$ there is a polynomial $P_k$ with $f^{(k)}(x)=P_k\!\left(\frac1x\right)e^{-1/x^2}$ for all $x\ne0$. For $k=0$ take $P_0=1$. If it holds for $k$, the product and chain rules, with $\frac d{dx}e^{-1/x^2}=\frac2{x^3}e^{-1/x^2}$ and $\frac d{dx}P_k(\frac1x)=-\frac1{x^2}P_k'(\frac1x)$, give $f^{(k+1)}(x)=P_{k+1}\!\left(\frac1x\right)e^{-1/x^2}$ with $P_{k+1}(u)=2u^3P_k(u)-u^2P_k'(u)$, again a polynomial.
+
+\emph{Derivatives at $0$.} We show $f^{(k)}(0)=0$ by induction. For $k=0$ this is the definition. If $f^{(k)}(0)=0$, then by the definition of the derivative
+\[
+f^{(k+1)}(0)=\lim_{h\to0}\frac{f^{(k)}(h)-f^{(k)}(0)}h=\lim_{h\to0}\frac1hP_k\!\left(\frac1h\right)e^{-1/h^2}=\lim_{\abs u\to\infty}uP_k(u)\,e^{-u^2}\qquad\left(u=\tfrac1h\right).
+\]
+Now $uP_k(u)=\sum_ja_ju^j$ is a polynomial, so $\abs{uP_k(u)e^{-u^2}}\le\sum_j\abs{a_j}\abs u^je^{-u^2}\to0$ by the limit above. Hence $f^{(k+1)}(0)=0$.
+
+\emph{The series.} All the Maclaurin coefficients are $0$, so the series is $0$ and converges for every $x$ with sum $0$. For $x\ne0$, $f(x)=e^{-1/x^2}>0$, so the sum is not $f(x)$.
+\end{proof}
+
+\begin{think}{No power series for the flat function}{flat}
+Could the function $f$ of Theorem~\ref{thm:flat} equal some power series $\sum c_kx^k$ on an interval $(-r,r)$, $r>0$? Use Theorem~\ref{thm:uniq}. What does this say about the criterion $R_n(x)\to0$ for this $f$?
+\end{think}
+
+\begin{exmp}{Two functions with the same Taylor series}{twofunc}
+Let $f$ be the function of Theorem~\ref{thm:flat} and $g(x)=\sin x+f(x)$. Compare the Maclaurin series of $g$ with that of $\sin x$, and compare $g(0.5)$ with the value of the series.
+
+\textbf{Solution.} $g^{(k)}(0)=\sin^{(k)}(0)+f^{(k)}(0)=\sin^{(k)}(0)$ for every $k$, so $g$ has the same Maclaurin series as $\sin x$: $x-\frac{x^3}{3!}+\cdots$, which converges for all $x$ (Example~\ref{ex:sinser}) with sum $\sin x$ (Theorem~\ref{thm:esc}), not $g(x)$. At $x=0.5$: the series gives $\sin0.5=0.479426$ but $g(0.5)=\sin0.5+e^{-4}=0.479426+0.018316=0.497741$. The remainder of $g$ is $R_n(0.5)=g(0.5)-p_n(0.5)\to e^{-4}\ne0$, so the criterion of Theorem~\ref{thm:crit} fails. How flat is $f$? Already $f(0.1)=e^{-100}\approx3.7\times10^{-44}$, smaller than any power of $x$ would explain: it is $0$ to all orders. The functions met in this course ($e^x$, $\sin x$, polynomials, rational functions, and the others in this section) are well behaved; the example shows that this is a theorem to be checked and not an automatic property.
+%@ ex10 | abs(float(sin(Q(1,2)))-0.479426)<1e-6 and abs(float(exp(-4))-0.018316)<1e-6 and abs(float(sin(Q(1,2))+exp(-4))-0.497741)<1e-6 and abs(float(exp(-100))-3.7e-44)<1e-45 and limit(exp(-1/x**2)/x**10,x,0) == 0 | $f(0.1)=e^{-100}\approx3.7\times10^{-44}$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The standard series, and recognizing numerical series}
+
+\begin{remark}[Standard Maclaurin series]
+Each series below is derived in this section or in Section 11.2, and the stated set is exactly where the series converges \emph{to the function}.
+\begin{itemize}[nosep]
+  \item $\dfrac1{1-x}=\displaystyle\sum_{k=0}^\infty x^k$ and $\dfrac1{1+x}=\displaystyle\sum_{k=0}^\infty(-1)^kx^k$, for $\abs x<1$.
+  \item $e^x=\displaystyle\sum_{k=0}^\infty\frac{x^k}{k!}$, $\ \sin x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!}$, $\ \cos x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!}$, for all $x$.
+  \item $\sinh x=\displaystyle\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}$ and $\cosh x=\displaystyle\sum_{k=0}^\infty\frac{x^{2k}}{(2k)!}$, for all $x$.
+  \item $\ln(1+x)=\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k$ for $-1<x\le1$, and $-\ln(1-x)=\displaystyle\sum_{k=1}^\infty\frac{x^k}k$ for $-1\le x<1$.
+  \item $\tan^{-1}x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}$, for $-1\le x\le1$.
+  \item $(1+x)^p=\displaystyle\sum_{k=0}^\infty\binom pkx^k$ for $\abs x<1$; the endpoints are included for $p>0$ (both) and for $-1<p<0$ (only $x=1$), and excluded for $p\le-1$.
+\end{itemize}
+\end{remark}
+
+The series of $-\ln(1-x)$ is the series of $\ln(1+t)$ with $t=-x$ (Theorem~\ref{11.2-thm:comb}(3)), which is valid for $-1<-x\le1$; and $\cosh x=\frac{e^x+e^{-x}}2$ has the series $\sum\frac{x^{2k}}{(2k)!}$ by the same cancellation as in Example~\ref{ex:build}(c).
+
+\begin{exmp}{Recognizing a numerical series}{recognize}
+Find the exact sums of (a)~$\displaystyle\sum_{k=0}^\infty\frac{(-1)^k\pi^{2k}}{(2k)!}$, (b)~$\displaystyle\sum_{k=1}^\infty\frac{2^k}{k\,3^k}$, (c)~$\displaystyle\sum_{k=0}^\infty\frac{k+1}{k!}$.
+
+\textbf{Solution.} (a) This is the cosine series at $x=\pi$: the sum is $\cos\pi=-1$. (b) The series is $\sum\frac{x^k}k$ at $x=\frac23$, which lies in $(-1,1)$, so its sum is $-\ln\left(1-\frac23\right)=\ln3\approx1.0986$. (c) Multiply the exponential series by $x$ and differentiate term by term (Theorem~\ref{11.2-thm:diffint}): $xe^x=\sum_{k=0}^\infty\frac{x^{k+1}}{k!}$ gives $(x+1)e^x=\sum_{k=0}^\infty\frac{(k+1)x^k}{k!}$ for all $x$. At $x=1$ the sum is $2e\approx5.4366$.
+%@ ex12 | summation((-1)**k*pi**(2*k)/factorial(2*k),(k,0,oo)) == -1 and summation(2**k/(k*3**k),(k,1,oo)) == log(3) and abs(float(log(3))-1.0986)<1e-4 and simplify(diff(x*exp(x),x)-(x+1)*exp(x)) == 0 and abs(float(2*E)-5.4366)<1e-4 and summation((k+1)/factorial(k),(k,0,oo)) == 2*E | $(x+1)e^x=\sum_{k=0}^\infty\frac{(k+1)x^k}{k!}$ for all $x$
+\end{exmp}
+
+\emph{Looking ahead.} Taylor series are a computational tool. The next section uses them to approximate values and integrals with a guaranteed error, to evaluate limits that would need repeated use of l'H\^opital's Rule, and to solve differential equations. Later courses use power series to define functions such as the exponential and sine of a complex number or of a matrix.
+
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Taylor series from the definition} (Examples~\ref{ex:b1}--\ref{ex:b2}): the sine at $\frac\pi2$; the logarithm at $3$ with its endpoints.
+  \item \emph{Convergence to the function} (Examples~\ref{ex:b3}--\ref{ex:b5}): the exponential at $2$; a Lagrange-remainder argument for $\ln(1+x)$; the sine at $\frac\pi6$.
+  \item \emph{Building new series} (Examples~\ref{ex:b6}--\ref{ex:b9}): substitution and a factor $x$; dividing by $x^2$; endpoints through the arctangent; the difference of two logarithms.
+  \item \emph{Differentiating and integrating} (Examples~\ref{ex:b10}--\ref{ex:b12}): an integral with a Catalan-type sum; summing a numerical series with $-\ln(1-x)$; a function defined by an integral.
+  \item \emph{The binomial series} (Examples~\ref{ex:b13}--\ref{ex:b15}): a negative integer exponent; a square root with both endpoints; the inverse sine and $\frac\pi2$.
+  \item \emph{Recognizing numerical series} (Examples~\ref{ex:b16}--\ref{ex:b18}): a sine value; a logarithm that converges fast; a series with $k^2$ over $k!$.
+  \item \emph{Proofs} (Examples~\ref{ex:b19}--\ref{ex:b20}).
+\end{enumerate}
+
+\subsection*{Group 1: Taylor series from the definition}
+
+\begin{exmp}{The sine centered at $\frac\pi2$}{b1}
+Find the Taylor series of $\sin x$ centered at $\frac\pi2$ from the definition. For which $x$ does it converge, and to what?
+
+\textbf{Solution.} The derivatives $\sin x,\ \cos x,\ -\sin x,\ -\cos x,\dots$ at $\frac\pi2$ are $1,0,-1,0,1,0,-1,0,\dots$, so the odd-order derivatives vanish and $f^{(2k)}(\frac\pi2)=(-1)^k$. The coefficients are $c_{2k}=\frac{(-1)^k}{(2k)!}$ and
+\[
+\sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}\left(x-\frac\pi2\right)^{2k}=1-\frac12\left(x-\frac\pi2\right)^2+\frac1{24}\left(x-\frac\pi2\right)^4-\cdots .
+\]
+%@ bank-1 | [diff(sin(x),x,j).subs(x,pi/2) for j in range(8)] == [1,0,-1,0,1,0,-1,0] and expand(Tay(sin(x),pi/2,6)-(1-(x-pi/2)**2/2+(x-pi/2)**4/24-(x-pi/2)**6/720)) == 0 and simplify(sin(x)-cos(x-pi/2)) == 0 | +\frac1{24}\left(x-\frac\pi2\right)^4-\cdots
+For the terms $a_k=\frac{(-1)^k(x-\pi/2)^{2k}}{(2k)!}$ the Ratio Test gives $\frac{(x-\pi/2)^2}{(2k+2)(2k+1)}\to0$, so the series converges for all $x$. All derivatives of $\sin$ satisfy $\abs{f^{(n)}(c)}\le1$, so Theorem~\ref{thm:bounded} ($M=B=1$, $I=\R$) shows that the sum is $\sin x$ for every $x$. This agrees with the identity $\sin x=\cos\left(x-\frac\pi2\right)$ and the cosine series with $x-\frac\pi2$ substituted (Theorem~\ref{thm:uniq}).
+\end{exmp}
+
+\begin{exmp}{The logarithm centered at $3$, with endpoints}{b2}
+Find the Taylor series of $\ln x$ centered at $3$, its interval of convergence, and the interval on which it equals $\ln x$.
+
+\textbf{Solution.} $f^{(k)}(x)=\frac{(-1)^{k-1}(k-1)!}{x^k}$ for $k\ge1$, so $c_k=\frac{f^{(k)}(3)}{k!}=\frac{(-1)^{k-1}}{k\,3^k}$ and $c_0=\ln3$:
+\[
+\ln x=\ln3+\sum_{k=1}^\infty\frac{(-1)^{k-1}(x-3)^k}{k\,3^k}=\ln3+\frac{x-3}3-\frac{(x-3)^2}{18}+\frac{(x-3)^3}{81}-\cdots .
+\]
+%@ bank-2a | expand(Tay(log(x),3,4)-(log(3)+(x-3)/3-(x-3)**2/18+(x-3)**3/81-(x-3)**4/324)) == 0 and all(diff(log(x),x,j).subs(x,3)/factorial(j) == (-1)**(j-1)/(j*Integer(3)**j) for j in range(1,7)) and Q(1,2)*Q(1,9) == Q(1,18) | -\frac{(x-3)^2}{18}+\frac{(x-3)^3}{81}-\cdots
+Then $\abs{c_{k+1}/c_k}=\frac k{3(k+1)}\to\frac13$, so $R=3$ and the open interval is $(0,6)$. At $x=6$ the series is $\ln3+\sum\frac{(-1)^{k-1}}k$, convergent (Alternating Series Test); at $x=0$ it is $\ln3-\sum\frac1k$, divergent (harmonic series). The interval of convergence is $(0,6]$. It equals $\ln x$ on this whole interval: $\ln x=\ln3+\ln\left(1+\frac{x-3}3\right)$, and Theorem~\ref{thm:logatan}(1) with $t=\frac{x-3}3\in(-1,1]$ gives the series. At $x=6$ the sum is $\ln3+\ln2=\ln6$.
+%@ bank-2b | limit(k/(3*(k+1)),k,oo) == Q(1,3) and 3-3 == 0 and 3+3 == 6 and simplify(log(3)+log(2)-log(6)) == 0 | At $x=6$ the sum is $\ln3+\ln2=\ln6$
+\end{exmp}
+
+\subsection*{Group 2: Convergence to the function}
+
+\begin{exmp}{The exponential centered at $2$}{b3}
+Show that the Taylor series of $e^x$ centered at $2$ converges to $e^x$ for all $x$.
+
+\textbf{Solution.} Every derivative of $e^x$ is $e^x$, which equals $e^2$ at $2$, so the series is $\sum\frac{e^2}{k!}(x-2)^k$. Fix $L>0$ and let $I=(2-L,2+L)$. For $c$ in $I$, $\abs{f^{(n)}(c)}=e^c<e^{2+L}$, so Theorem~\ref{thm:bounded} applies with $M=e^{2+L}$ and $B=1$, and the series converges to $e^x$ for $\abs{x-2}<L$. Since $L$ is arbitrary, it holds for all $x$:
+\[
+e^x=e^2\sum_{k=0}^\infty\frac{(x-2)^k}{k!}=e^2\left(1+(x-2)+\frac{(x-2)^2}2+\cdots\right).
+\]
+%@ bank-3 | expand(Tay(exp(x),2,4)-exp(2)*(1+(x-2)+(x-2)**2/2+(x-2)**3/6+(x-2)**4/24)) == 0 and simplify(exp(x)-exp(2)*exp(x-2)) == 0 and exp(2)*exp(1) == exp(3) | e^2\left(1+(x-2)+\frac{(x-2)^2}2+\cdots\right)
+This is also the series of $e^{x-2}$ (substitution) multiplied by $e^2$, in accordance with Theorem~\ref{thm:uniq}. For example at $x=3$ it says $e^3=e^2\sum\frac1{k!}=e^2\cdot e$.
+\end{exmp}
+
+\begin{exmp}{Convergence of the logarithm series by the Lagrange remainder}{b4}
+For $f(x)=\ln(1+x)$ show, using Taylor's Theorem, that $R_n(x)\to0$ for $-\frac12\le x\le1$. What goes wrong for $-1<x<-\frac12$?
+
+\textbf{Solution.} $f^{(n+1)}(c)=\frac{(-1)^nn!}{(1+c)^{n+1}}$, so for some $c$ between $0$ and $x$ (Theorem~\ref{11.1-thm:taylor})
+\[
+R_n(x)=\frac{(-1)^nn!}{(n+1)!\,(1+c)^{n+1}}x^{n+1}\qquad\text{and}\qquad\abs{R_n(x)}=\frac1{n+1}\left(\frac{\abs x}{1+c}\right)^{n+1}.
+\]
+%@ bank-4a | all(simplify(diff(log(1+x),x,j+1)-(-1)**j*factorial(j)/(1+x)**(j+1)) == 0 for j in range(7)) and all(factorial(j)/factorial(j+1) == Q(1,j+1) for j in range(1,9)) and factorial(3)/factorial(4) == Q(1,4) | \frac1{n+1}\left(\frac{\abs x}{1+c}\right)^{n+1}
+\emph{If $0\le x\le1$:} $c\ge0$ so $1+c\ge1$ and $\frac{\abs x}{1+c}\le1$; hence $\abs{R_n(x)}\le\frac1{n+1}\to0$. This includes $x=1$, so the Lagrange form proves $\ln2=\sum\frac{(-1)^{k+1}}k$ directly, without Abel's theorem. \emph{If $-\frac12\le x<0$:} $x<c<0$, so $1+c>1+x\ge\frac12\ge\abs x$, which gives $\frac{\abs x}{1+c}<1$ and again $\abs{R_n(x)}\le\frac1{n+1}\to0$. \emph{If $-1<x<-\frac12$:} $c$ can be close to $x$, so $\frac{\abs x}{1+c}$ can exceed $1$ and the bound does not tend to $0$; the Lagrange form alone cannot decide these $x$. This is why Theorem~\ref{thm:logatan} integrates the geometric series instead, which works on the whole interval $(-1,1)$.
+%@ bank-4b | all(abs(xx) <= 1+xx for xx in [-Q(1,2),-Q(1,3),-Q(1,10)]) and abs(-Q(3,5)) > 1-Q(3,5) and Q(1,2) == 1-Q(1,2) | which gives $\frac{\abs x}{1+c}<1$ and again
+\end{exmp}
+
+\begin{exmp}{The sine centered at $\frac\pi6$}{b5}
+Find the first five terms of the Taylor series of $\sin x$ centered at $\frac\pi6$ and show that it converges to $\sin x$ for all $x$.
+
+\textbf{Solution.} The derivatives at $\frac\pi6$ are $\sin\frac\pi6=\frac12$, $\cos\frac\pi6=\frac{\sqrt3}2$, $-\frac12$, $-\frac{\sqrt3}2$, $\frac12$, and the coefficients are these numbers divided by $k!$: $\frac12,\ \frac{\sqrt3}2,\ -\frac14,\ -\frac{\sqrt3}{12},\ \frac1{48}$. So
+\[
+\sin x=\frac12+\frac{\sqrt3}2\left(x-\frac\pi6\right)-\frac14\left(x-\frac\pi6\right)^2-\frac{\sqrt3}{12}\left(x-\frac\pi6\right)^3+\frac1{48}\left(x-\frac\pi6\right)^4+\cdots .
+\]
+%@ bank-5 | expand(Tay(sin(x),pi/6,4)-(Q(1,2)+sqrt(3)/2*(x-pi/6)-Q(1,4)*(x-pi/6)**2-sqrt(3)/12*(x-pi/6)**3+(x-pi/6)**4/48)) == 0 and Q(1,2)/factorial(4) == Q(1,48) and sqrt(3)/2/factorial(3) == sqrt(3)/12 | +\frac1{48}\left(x-\frac\pi6\right)^4+\cdots
+As in Example~\ref{ex:b1}, $\abs{f^{(n)}(c)}\le1$ for all $n$ and $c$, so Theorem~\ref{thm:bounded} gives convergence to $\sin x$ for every $x$. (The series is the expansion of $\sin\left(\frac\pi6+h\right)=\frac12\cos h+\frac{\sqrt3}2\sin h$ in powers of $h=x-\frac\pi6$, which is the same series by Theorem~\ref{thm:uniq}.)
+\end{exmp}
+
+\subsection*{Group 3: Building new series}
+
+\begin{exmp}{Substitution and a factor $x$}{b6}
+Find the Maclaurin series of $x\cos(x^3)$ and its interval of convergence.
+
+\textbf{Solution.} In $\cos u=\sum\frac{(-1)^ku^{2k}}{(2k)!}$ put $u=x^3$ (Theorem~\ref{11.2-thm:comb}(3)) and multiply by $x$ (part 2): $x\cos(x^3)=\sum_{k=0}^\infty\frac{(-1)^kx^{6k+1}}{(2k)!}=x-\frac{x^7}2+\frac{x^{13}}{24}-\cdots$. The cosine series converges for every $u$, so the new series converges for every $x$.
+%@ bank-6 | Tay(x*cos(x**3),0,13) == x-x**7/2+x**13/24 and 6*2+1 == 13 and factorial(4) == 24 | x-\frac{x^7}2+\frac{x^{13}}{24}-\cdots
+\end{exmp}
+
+\begin{exmp}{Dividing by $x^2$}{b7}
+Find the Maclaurin series of $\dfrac{e^x-1-x}{x^2}$ and its value at $0$.
+
+\textbf{Solution.} $e^x-1-x=\sum_{k=2}^\infty\frac{x^k}{k!}=x^2\sum_{j=0}^\infty\frac{x^j}{(j+2)!}$ (put $k=j+2$). The last series converges for all $x$ (Ratio Test: $\frac{x}{j+3}\to0$), so for $x\ne0$ we can divide by $x^2$:
+\[
+\frac{e^x-1-x}{x^2}=\sum_{j=0}^\infty\frac{x^j}{(j+2)!}=\frac12+\frac x6+\frac{x^2}{24}+\frac{x^3}{120}+\cdots .
+\]
+The series has value $\frac12$ at $x=0$, the limit of the quotient there.
+%@ bank-7 | all(Tay(exp(x),0,8).coeff(x,j+2) == Q(1,factorial(j+2)) for j in range(6)) and series((exp(x)-1-x)/x**2,x,0,4).removeO() == Q(1,2)+x/6+x**2/24+x**3/120 and limit((exp(x)-1-x)/x**2,x,0) == Q(1,2) | The series has value $\frac12$ at $x=0$
+\end{exmp}
+
+\begin{exmp}{An endpoint decided by the arctangent}{b8}
+Find the Maclaurin series of $x^2\tan^{-1}(x^2)$ and its interval of convergence. What is the sum at $x=1$?
+
+\textbf{Solution.} Substitute $u=x^2$ in $\tan^{-1}u=\sum\frac{(-1)^ku^{2k+1}}{2k+1}$ (valid for $\abs u\le1$, Theorem~\ref{thm:logatan}(2)) and multiply by $x^2$: $x^2\tan^{-1}(x^2)=\sum_{k=0}^\infty\frac{(-1)^kx^{4k+4}}{2k+1}=x^4-\frac{x^8}3+\frac{x^{12}}5-\cdots$. This converges exactly when $\abs{x^2}\le1$, that is $-1\le x\le1$, including both endpoints. At $x=1$ the sum is $1^2\tan^{-1}1=\frac\pi4$, the Leibniz series $1-\frac13+\frac15-\cdots$ again.
+%@ bank-8 | Tay(x**2*atan(x**2),0,12) == x**4-x**8/3+x**12/5 and solveset(Abs(x**2) <= 1, x, S.Reals) == Interval(-1,1) and 1**2*atan(1**2) == pi/4 | \frac\pi4$, the Leibniz series
+\end{exmp}
+
+\begin{exmp}{A difference of two logarithms}{b9}
+Find the Maclaurin series of $\ln\dfrac{1+x}{1-x}$ and its interval of convergence. Use it at $x=\frac13$ to compute $\ln2$.
+
+\textbf{Solution.} $\ln\frac{1+x}{1-x}=\ln(1+x)-\ln(1-x)$. The first series is $\sum\frac{(-1)^{k+1}x^k}k$ and the second, $-\ln(1-x)=\sum\frac{x^k}k$; they are valid for $-1<x\le1$ and $-1\le x<1$, so the difference is valid for $\abs x<1$ (Theorem~\ref{11.2-thm:comb}(1)). The even powers cancel and the odd powers double:
+\[
+\ln\frac{1+x}{1-x}=2\sum_{k=0}^\infty\frac{x^{2k+1}}{2k+1}=2x+\frac{2x^3}3+\frac{2x^5}5+\cdots,\qquad\abs x<1 .
+\]
+%@ bank-9a | expand(Tay(log((1+x)/(1-x)),0,7)-(2*x+2*x**3/3+2*x**5/5+2*x**7/7)) == 0 and expand_log(log((1+x)/(1-x)),force=True) == log(1+x)-log(1-x) and 2*Q(1,3) == Q(2,3) | 2x+\frac{2x^3}3+\frac{2x^5}5+\cdots
+At $x=\pm1$ the series diverges: it is $\pm2\sum\frac1{2k+1}$ (compare with the harmonic series). At $x=\frac13$, $\frac{1+x}{1-x}=2$, so $\ln2=2\left(\frac13+\frac1{81}+\frac1{1215}+\frac1{15309}+\cdots\right)$. Four terms give $\frac{53056}{76545}=0.693135$, against $\ln2=0.693147$: an error of $1.2\times10^{-5}$ from four terms, where the alternating series of Example~\ref{ex:endsums} would need about $10^5$ terms.
+%@ bank-9b | [2*Q(1,3)**(2*j+1)/(2*j+1) for j in range(4)] == [Q(2,3),Q(2,81),Q(2,1215),Q(2,15309)] and sum(2*Q(1,3)**(2*j+1)/(2*j+1) for j in range(4)) == Q(53056,76545) and abs(float(log(2)-Q(53056,76545))-1.2e-5)<1e-6 and (1+Q(1,3))/(1-Q(1,3)) == 2 | $\frac{53056}{76545}=0.693135$
+\end{exmp}
+
+\subsection*{Group 4: Differentiating and integrating}
+
+\begin{exmp}{An integral and a Catalan-type sum}{b10}
+Find a power series for $F(x)=\displaystyle\int_0^x\frac{\tan^{-1}t}t\,dt$, its interval of convergence, and the value of $\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)^2}$ as an integral.
+
+\textbf{Solution.} Dividing the series of $\tan^{-1}t$ by $t$: $\frac{\tan^{-1}t}t=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{2k+1}$ for $\abs t<1$. Integrating term by term (Theorem~\ref{11.2-thm:diffint}),
+\[
+F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)^2}=x-\frac{x^3}9+\frac{x^5}{25}-\frac{x^7}{49}+\cdots,\qquad\abs x<1 .
+\]
+%@ bank-10a | series(integrate(series(atan(x)/x,x,0,10).removeO(),x),x,0,8).removeO() == x-x**3/9+x**5/25-x**7/49 and 3**2 == 9 and 5**2 == 25 and 7**2 == 49 | x-\frac{x^3}9+\frac{x^5}{25}-\frac{x^7}{49}+\cdots
+At $x=\pm1$ the terms have absolute value $\frac1{(2k+1)^2}\le\frac1{k^2}$ (for $k\ge1$), so the series converges absolutely (Comparison Test with a $p$-series, $p=2$): the interval of convergence is $[-1,1]$. The function $F$ is continuous on $[-1,1]$ because its integrand is (it is $1$ at $t=0$), so Abel's theorem (Theorem~\ref{thm:abel}) gives $\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)^2}=F(1)=\int_0^1\frac{\tan^{-1}t}t\,dt=0.915966\ldots$ (this number is called Catalan's constant).
+%@ bank-10b | abs(float(Integral(atan(x)/x,(x,0,1)).evalf(15))-0.915966)<1e-6 and abs(float(Catalan)-0.915966)<1e-6 and Catalan == summation((-1)**k/(2*k+1)**2,(k,0,oo)) | \int_0^1\frac{\tan^{-1}t}t\,dt=0.915966\ldots
+\end{exmp}
+
+\begin{exmp}{Summing a numerical series with $-\ln(1-x)$}{b11}
+Find $\displaystyle\sum_{k=1}^\infty\frac k{(k+1)\,2^k}$.
+
+\textbf{Solution.} Write $\frac k{k+1}=1-\frac1{k+1}$, so the sum is $\sum_{k\ge1}\frac1{2^k}-\sum_{k\ge1}\frac1{(k+1)2^k}$. The first is a geometric series with sum $1$. For the second, $\sum_{k=1}^\infty\frac{x^k}{k+1}=\frac1x\sum_{k=1}^\infty\frac{x^{k+1}}{k+1}=\frac1x\left(-\ln(1-x)-x\right)$ for $0<\abs x<1$ (the series of $-\ln(1-x)$ without its first term $x$). At $x=\frac12$ it equals $2\left(\ln2-\frac12\right)=2\ln2-1$. Therefore the sum is $1-(2\ln2-1)=2-2\ln2\approx0.6137$.
+%@ bank-11 | summation(k/((k+1)*2**k),(k,1,oo)) == 2-2*log(2) and abs(float(sum(Q(j,(j+1)*2**j) for j in range(1,60)))-0.613706)<1e-6 and 1-(2*log(2)-1) == 2-2*log(2) | $1-(2\ln2-1)=2-2\ln2\approx0.6137$
+\end{exmp}
+
+\begin{exmp}{A function defined by an integral}{b12}
+Find a power series for $F(x)=\displaystyle\int_0^x\frac{1-\cos t}{t^2}\,dt$ and its radius of convergence.
+
+\textbf{Solution.} By Example~\ref{ex:b7}'s method (or Example~\ref{ex:build}(b)), $\frac{1-\cos t}{t^2}=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+2)!}$ for all $t$ (the value at $t=0$ is $\frac12$, the limit). Integrating term by term from $0$ to $x$: $F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)(2k+2)!}=\frac x2-\frac{x^3}{72}+\frac{x^5}{3600}-\cdots$. The radius is $\infty$, the same as that of the series that was integrated (Theorem~\ref{11.2-thm:diffint}). Since $\frac{1-\cos t}{t^2}\ge0$, $F$ is increasing, and $F'(x)=\frac{1-\cos x}{x^2}\to\frac12$ as $x\to0$, consistent with the first term $\frac x2$.
+%@ bank-12 | series(integrate(series((1-cos(x))/x**2,x,0,10).removeO(),x),x,0,7).removeO() == x/2-x**3/72+x**5/3600 and 3*factorial(4) == 72 and 5*factorial(6) == 3600 | \frac x2-\frac{x^3}{72}+\frac{x^5}{3600}-\cdots
+\end{exmp}
+
+\subsection*{Group 5: The binomial series}
+
+\begin{exmp}{A negative integer exponent}{b13}
+Find the Maclaurin series of $(1-x)^{-3}$ and its interval of convergence.
+
+\textbf{Solution.} Put $p=-3$ and replace $x$ by $-x$ in Theorem~\ref{thm:binom}: $(1-x)^{-3}=\sum\binom{-3}k(-x)^k$. Now $\binom{-3}k=\frac{(-3)(-4)\cdots(-k-2)}{k!}=(-1)^k\frac{(k+2)!}{2\,k!}=(-1)^k\binom{k+2}2$, so the coefficient of $x^k$ is $\binom{k+2}2=\frac{(k+1)(k+2)}2$:
+\[
+\frac1{(1-x)^3}=\sum_{k=0}^\infty\frac{(k+1)(k+2)}2\,x^k=1+3x+6x^2+10x^3+15x^4+\cdots,\qquad\abs x<1 .
+\]
+%@ bank-13 | Tay((1-x)**(-3),0,5) == sum(binomial(j+2,2)*x**j for j in range(6)) and all((-1)**j*binomial(Integer(-3),j) == binomial(j+2,2) for j in range(10)) and (-1)**3*binomial(Integer(-3),3) == binomial(5,2) | 1+3x+6x^2+10x^3+15x^4+\cdots
+Since $p=-3\le-1$, Theorem~\ref{thm:binomend} says that both endpoints diverge (the terms $\frac{(k+1)(k+2)}2$ do not tend to $0$). This agrees with differentiating $\frac1{(1-x)^2}$ term by term (Section 11.2).
+\end{exmp}
+
+\begin{exmp}{A square root, with both endpoints}{b14}
+Find the Maclaurin series of $\sqrt{9+x}$ and its interval of convergence, and its sums at the endpoints.
+
+\textbf{Solution.} $\sqrt{9+x}=3\sqrt{1+\frac x9}$, so by Theorem~\ref{thm:binom} with $p=\frac12$ and $x$ replaced by $\frac x9$,
+\[
+\sqrt{9+x}=3\sum_{k=0}^\infty\binom{1/2}k\frac{x^k}{9^k}=3+\frac x6-\frac{x^2}{216}+\frac{x^3}{3888}-\frac{5x^4}{279936}+\cdots .
+\]
+%@ bank-14 | Tay(sqrt(9+x),0,4) == 3+x/6-x**2/216+x**3/3888-5*x**4/279936 and [3*binomial(Q(1,2),j)/9**j for j in range(5)] == [3,Q(1,6),-Q(1,216),Q(1,3888),-Q(5,279936)] and 3*binomial(Q(1,2),4)/9**4 == -Q(5,279936) | \frac{x^3}{3888}-\frac{5x^4}{279936}+\cdots
+Since $p=\frac12>0$, the binomial series converges for $\abs{\frac x9}\le1$, so the interval of convergence is $[-9,9]$, and the series equals $\sqrt{9+x}$ on all of it (Theorem~\ref{thm:binomend}). At $x=9$ the sum is $\sqrt{18}=3\sqrt2$; at $x=-9$ it is $\sqrt0=0$.
+\end{exmp}
+
+\begin{exmp}{The inverse sine, and $\frac\pi2$}{b15}
+Find the Maclaurin series of $\sin^{-1}x$ and its interval of convergence. Deduce a series for $\frac\pi2$.
+
+\textbf{Solution.} By Example~\ref{ex:binomsub}'s method, with $p=-\frac12$ and $u=-t^2$ in Theorem~\ref{thm:binom}: $\frac1{\sqrt{1-t^2}}=\sum_{k=0}^\infty\binom{2k}k\frac{t^{2k}}{4^k}$ for $\abs t<1$ (using $\binom{-1/2}k=\frac{(-1)^k}{4^k}\binom{2k}k$). Since $\frac d{dx}\sin^{-1}x=\frac1{\sqrt{1-x^2}}$ and $\sin^{-1}0=0$, integrating term by term gives
+\[
+\sin^{-1}x=\sum_{k=0}^\infty\binom{2k}k\frac{x^{2k+1}}{4^k(2k+1)}=x+\frac{x^3}6+\frac{3x^5}{40}+\frac{5x^7}{112}+\cdots,\qquad\abs x<1 .
+\]
+%@ bank-15a | Tay(asin(x),0,7) == x+x**3/6+3*x**5/40+5*x**7/112 and Q(2,4*3) == Q(1,6) and Q(6,16*5) == Q(3,40) and Q(20,64*7) == Q(5,112) | x+\frac{x^3}6+\frac{3x^5}{40}+\frac{5x^7}{112}+\cdots
+\emph{Endpoints.} Let $a_k=\binom{2k}k4^{-k}$. Then $a_{k+1}=a_k\cdot\frac{2k+1}{2k+2}$, and $a_k^2\le\frac1{2k+1}$ for all $k$: this holds for $k=0$ ($1\le1$), and if it holds for $k$ then $a_{k+1}^2\le\frac{2k+1}{(2k+2)^2}\le\frac1{2k+3}$, because $(2k+1)(2k+3)=4k^2+8k+3\le(2k+2)^2$. So the terms at $x=\pm1$ satisfy $\frac{a_k}{2k+1}\le(2k+1)^{-3/2}\le k^{-3/2}$, and the series converges absolutely there (Comparison Test with a $p$-series, $p=\frac32$). The interval of convergence is $[-1,1]$. Since $\sin^{-1}$ is continuous on $[-1,1]$, Abel's theorem gives $\sum_{k=0}^\infty\binom{2k}k\frac1{4^k(2k+1)}=\sin^{-1}1=\frac\pi2$. The convergence is slow: $1000$ terms give $1.5530$ against $1.5708$.
+%@ bank-15b | all((2*j+1)*(2*j+3) <= (2*j+2)**2 for j in range(100)) and all((binomial(2*j,j)/Integer(4)**j)**2 <= Q(1,2*j+1) for j in range(0,200)) and abs(float(sum(binomial(2*j,j)/(Integer(4)**j*(2*j+1)) for j in range(1000)))-1.5530)<1e-4 and abs(float(pi/2)-1.5708)<1e-4 and (2*7+2)**2-(2*7+1)*(2*7+3) == 1 | $1000$ terms give $1.5530$ against $1.5708$
+\end{exmp}
+
+\subsection*{Group 6: Recognizing numerical series}
+
+\begin{exmp}{A sine value}{b16}
+Find the exact sum of $\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)!}\left(\frac\pi4\right)^{2k+1}$.
+
+\textbf{Solution.} This is the series of $\sin x$ (Theorem~\ref{thm:esc}) at $x=\frac\pi4$, valid because the series converges to $\sin x$ for every $x$. The sum is $\sin\frac\pi4=\frac{\sqrt2}2\approx0.7071$. The terms decrease very fast: $0.7854-0.0807+0.0025-0.00004=0.70711$.
+%@ bank-16 | abs(float(sum((-1)**j*(pi/4)**(2*j+1)/factorial(2*j+1) for j in range(4)))-0.70711)<1e-5 and abs(float(pi/4)-0.7854)<1e-4 and sin(pi/4) == sqrt(2)/2 | $0.7854-0.0807+0.0025-0.00004=0.70711$
+\end{exmp}
+
+\begin{exmp}{A logarithm that converges fast}{b17}
+Find $\displaystyle\sum_{k=0}^\infty\frac1{(2k+1)\,9^k}$.
+
+\textbf{Solution.} By Example~\ref{ex:b9}, $\sum_{k=0}^\infty\frac{x^{2k+1}}{2k+1}=\frac12\ln\frac{1+x}{1-x}$ for $\abs x<1$. At $x=\frac13$: $\sum\frac1{(2k+1)3^{2k+1}}=\frac12\ln2$. Our series is $3$ times this, because $\frac1{3^{2k+1}}=\frac13\cdot\frac1{9^k}$. So the sum is $\frac32\ln2\approx1.0397$.
+%@ bank-17 | abs(float(sum(Q(1,(2*j+1)*9**j) for j in range(40)))-1.03972)<1e-5 and abs(float(3*log(2)/2)-1.03972)<1e-5 and expand_log(log(Q(4,3))-log(Q(2,3)),force=True) == log(2) | So the sum is $\frac32\ln2\approx1.0397$
+\end{exmp}
+
+\begin{exmp}{$k^2$ over $k!$}{b18}
+Find $\displaystyle\sum_{k=0}^\infty\frac{k^2}{k!}$.
+
+\textbf{Solution.} Start from $e^x=\sum\frac{x^k}{k!}$. Differentiating and multiplying by $x$ gives $xe^x=\sum\frac{kx^k}{k!}$; doing it again, $x(e^x+xe^x)=(x^2+x)e^x=\sum\frac{k^2x^k}{k!}$, for all $x$ (Theorem~\ref{11.2-thm:diffint}). At $x=1$ the sum is $2e\approx5.4366$.
+%@ bank-18 | simplify(x*diff(x*exp(x),x)-(x**2+x)*exp(x)) == 0 and abs(float(sum(Q(j**2,factorial(j)) for j in range(40)))-5.43656)<1e-5 and summation(k**2/factorial(k),(k,0,oo)) == 2*E | At $x=1$ the sum is $2e\approx5.4366$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{The Taylor series of a derivative}{b19}
+Prove: if $f$ has derivatives of all orders at $a$, the Taylor series of $f'$ centered at $a$ is the series obtained by differentiating the Taylor series of $f$ term by term.
+
+\textbf{Plan.} Write both series with Definition~\ref{def:ts} and compare coefficients.
+
+\begin{proof}
+The Taylor series of $f$ is $\sum_{k=0}^\infty\frac{f^{(k)}(a)}{k!}(x-a)^k$; differentiating term by term (the constant term disappears) gives $\sum_{k=1}^\infty\frac{kf^{(k)}(a)}{k!}(x-a)^{k-1}=\sum_{k=1}^\infty\frac{f^{(k)}(a)}{(k-1)!}(x-a)^{k-1}$. Put $j=k-1$: this is $\sum_{j=0}^\infty\frac{f^{(j+1)}(a)}{j!}(x-a)^j$. The Taylor series of $g=f'$ has coefficients $\frac{g^{(j)}(a)}{j!}=\frac{f^{(j+1)}(a)}{j!}$ because $g^{(j)}=f^{(j+1)}$. The two series have the same coefficients.
+\end{proof}
+%@ bank-19 | expand(diff(Tay(sin(x),0,9),x)-Tay(cos(x),0,8)) == 0 and all(factorial(j+1)/factorial(j) == j+1 for j in range(8)) and factorial(4)/factorial(3) == 4 | $\frac{g^{(j)}(a)}{j!}=\frac{f^{(j+1)}(a)}{j!}$
+A common mistake is to think this proves that $f'$ equals the derivative of the sum of the Taylor series of $f$; that needs the series to represent $f$ (and Theorem~\ref{11.2-thm:diffint}). The statement proved is about coefficients only, and it holds even for functions like Theorem~\ref{thm:flat}'s, where both series are $0$.
+\end{exmp}
+
+\begin{exmp}{Even functions have even Maclaurin series}{b20}
+Prove: if $f$ is even and $f(x)=\sum c_kx^k$ for $\abs x<r$ ($r>0$), then $c_k=0$ for every odd $k$.
+
+\textbf{Plan.} The series $\sum(-1)^kc_kx^k$ also represents $f$ (by evenness); then use Theorem~\ref{thm:uniq} to compare coefficients.
+
+\begin{proof}
+For $\abs x<r$ the point $-x$ also satisfies $\abs{-x}<r$, so $f(-x)=\sum c_k(-x)^k=\sum(-1)^kc_kx^k$. Since $f$ is even, $f(-x)=f(x)$, so $\sum(-1)^kc_kx^k$ and $\sum c_kx^k$ converge to the same function on $(-r,r)$. By Theorem~\ref{thm:uniq} both are the Maclaurin series of that function, and the Maclaurin coefficients are $\frac{f^{(k)}(0)}{k!}$, so $(-1)^kc_k=c_k$ for every $k$. For odd $k$ this reads $-c_k=c_k$, so $c_k=0$.
+\end{proof}
+%@ bank-20 | Tay(cos(x),0,8).coeff(x,3) == 0 and Tay(cos(x),0,8).coeff(x,5) == 0 and Tay(cos(x),0,8).coeff(x,7) == 0 and diff(x**2,x).subs(x,1) == 2 | so $c_k=0$
+A common mistake is to apply this at a center other than $0$: $f(x)=x^2$ is even, but its Taylor series at $a=1$, $1+2(x-1)+(x-1)^2$, has an odd power of $x-1$ with coefficient $2\ne0$. (Evenness is about symmetry around $0$.)
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:poly}.] A polynomial has $p^{(k)}(0)=0$ for $k$ larger than its degree, so its Maclaurin series is the polynomial itself, $2+3x^2-x^4$ (Theorem~\ref{11.1-thm:polyself}); it converges for all $x$ to $p(x)$. For $q(x)=x^3$ at $a=1$: $q(1)=1$, $q'(1)=3$, $q''(1)=6$, $q'''(1)=6$, so the series is $1+3(x-1)+3(x-1)^2+(x-1)^3$, again a polynomial with sum $q(x)$ for all $x$.
+%@ ans-poly | Tay(2+3*x**2-x**4,0,6) == 2+3*x**2-x**4 and expand(Tay(x**3,1,5)-(1+3*(x-1)+3*(x-1)**2+(x-1)**3)) == 0 and expand(1+3*(x-1)+3*(x-1)**2+(x-1)**3-x**3) == 0 | so the series is $1+3(x-1)+3(x-1)^2+(x-1)^3$
+  \item[Knowledge Check \ref{kc:read}.] $f^{(k)}(0)=k!\,c_k$ (Theorem~\ref{thm:uniq}): $f(0)=4$, $f'(0)=1!\cdot(-3)=-3$, $f''(0)=2!\cdot5=10$, $f'''(0)=3!\cdot7=42$.
+%@ ans-read | factorial(0)*4 == 4 and factorial(1)*(-3) == -3 and factorial(2)*5 == 10 and factorial(3)*7 == 42 | $f'''(0)=3!\cdot7=42$
+  \item[Knowledge Check \ref{kc:binom}.] $\binom{-1/3}2=\frac{(-\frac13)(-\frac43)}2=\frac29$ and $\binom{3/2}3=\frac{\frac32\cdot\frac12\cdot(-\frac12)}6=-\frac1{16}$.
+%@ ans-binom | binomial(Q(-1,3),2) == Q(2,9) and binomial(Q(3,2),3) == -Q(1,16) and Q(3,2)*Q(1,2)*Q(-1,2)/6 == -Q(1,16) | $\binom{3/2}3=\frac{\frac32\cdot\frac12\cdot(-\frac12)}6=-\frac1{16}$
+  \item[Pause and think \ref{think:conv}.] Theorem~\ref{thm:crit} says that the series converges to $f(1)$ if and only if $R_n(1)\to0$. If the series converges to $S$ then $p_n(1)\to S$, so $R_n(1)=f(1)-p_n(1)\to f(1)-S$. Hence $S=f(1)$ exactly when $R_n(1)\to0$; convergence of the series alone says only that $R_n(1)$ has a limit, namely $f(1)-S$. To conclude $S=f(1)$ one must show $R_n(1)\to0$, for example with the estimate of Theorem~\ref{11.1-thm:estimate}. (Theorem~\ref{thm:flat} shows the difference can be real.)
+  \item[Pause and think \ref{think:radius}.] A prediction of ``converges everywhere'' is natural, but wrong: Example~\ref{ex:radiusone} shows the radius is $1$. The interval of convergence of a Taylor series is not determined by where $f$ is defined or smooth on the real line.
+  \item[Pause and think \ref{think:flat}.] No. If $f(x)=\sum c_kx^k$ on $(-r,r)$, Theorem~\ref{thm:uniq} gives $c_k=\frac{f^{(k)}(0)}{k!}=0$ for all $k$ (Theorem~\ref{thm:flat}), so $f(x)=0$ on $(-r,r)$. But $f(x)=e^{-1/x^2}>0$ for $x\ne0$, a contradiction. So $f$ equals no power series about $0$. Its remainder is $R_n(x)=f(x)-0=f(x)$ for every $n$ (all the Taylor polynomials are $0$), so $R_n(x)\to0$ fails at every $x\ne0$, in agreement with Theorem~\ref{thm:crit}: the criterion is not automatic, and it is exactly what separates $e^x$ from $e^{-1/x^2}$.
+\end{description}
+
+\end{document}

@@ -1,0 +1,2298 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../11.2/notes/">
+      
+      
+        <link rel="next" href="../../appendix/appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-taylor-polynomials-to-taylor-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        From Taylor polynomials to Taylor series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-does-the-taylor-series-converge-to-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        When does the Taylor series converge to the function?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-geometric-logarithm-and-arctangent-series-and-the-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The geometric, logarithm and arctangent series, and the endpoints
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-binomial-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The binomial series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-radius-is-not-the-whole-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The radius is not the whole story
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-standard-series-and-recognizing-numerical-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The standard series, and recognizing numerical series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-taylor-series-from-the-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Taylor series from the definition
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-convergence-to-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Convergence to the function
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-building-new-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Building new series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-differentiating-and-integrating" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Differentiating and integrating
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-the-binomial-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: The binomial series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-recognizing-numerical-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Recognizing numerical series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-taylor-polynomials-to-taylor-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        From Taylor polynomials to Taylor series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-does-the-taylor-series-converge-to-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        When does the Taylor series converge to the function?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-geometric-logarithm-and-arctangent-series-and-the-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The geometric, logarithm and arctangent series, and the endpoints
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-binomial-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The binomial series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-radius-is-not-the-whole-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The radius is not the whole story
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-standard-series-and-recognizing-numerical-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The standard series, and recognizing numerical series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-taylor-series-from-the-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Taylor series from the definition
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-convergence-to-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Convergence to the function
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-building-new-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Building new series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-differentiating-and-integrating" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Differentiating and integrating
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-the-binomial-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: The binomial series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-recognizing-numerical-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Recognizing numerical series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="113-taylor-series">11.3 Taylor Series<a class="headerlink" href="#113-taylor-series" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>In Section 11.1 a Taylor polynomial stopped at some degree <span class="arithmatex">\(n\)</span>, and the remainder measured what was lost. Let <span class="arithmatex">\(n\)</span> grow without end and the polynomial becomes a power series, the <em>Taylor series</em>. Two questions follow. For which <span class="arithmatex">\(x\)</span> does it converge? (Section 11.2 answers this with the Ratio Test, the Root Test and the other tests of Chapter 10.) And when it converges, is its sum the function we started with? The second question is subtler than it looks: some functions have a Taylor series that converges everywhere, to the wrong function. This section answers both questions, derives the series of <span class="arithmatex">\(e^x\)</span>, <span class="arithmatex">\(\sin x\)</span>, <span class="arithmatex">\(\cos x\)</span>, <span class="arithmatex">\(\frac1{1-x}\)</span>, <span class="arithmatex">\(\ln(1+x)\)</span>, <span class="arithmatex">\(\tan^{-1}x\)</span> and <span class="arithmatex">\((1+x)^p\)</span> with their intervals of convergence (endpoints included), and shows how to build new series from these. What Taylor series are used for (numerical approximation, limits, differential equations) is the subject of the next section.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>write the Taylor or Maclaurin series of a function, from the definition or by building it from known series, and find its interval of convergence;</p>
+</li>
+<li>
+<p>state and use the criterion <span class="arithmatex">\(R_n(x)\to0\)</span> for a Taylor series to converge to its function;</p>
+</li>
+<li>
+<p>derive the Maclaurin series of the standard functions, with the interval on which each is valid and the behavior at the endpoints;</p>
+</li>
+<li>
+<p>explain, with the example <span class="arithmatex">\(e^{-1/x^2}\)</span>, why a convergent Taylor series need not converge to its function.</p>
+</li>
+</ul>
+<h2 id="from-taylor-polynomials-to-taylor-series">From Taylor polynomials to Taylor series<a class="headerlink" href="#from-taylor-polynomials-to-taylor-series" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 11.3.1: Taylor series and Maclaurin series</p>
+<p><span id="def-ts"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> have derivatives of all orders at <span class="arithmatex">\(a\)</span>. The <em>Taylor series of <span class="arithmatex">\(f\)</span> centered at <span class="arithmatex">\(a\)</span></em> is the power series</p>
+<div class="arithmatex">\[\sum_{k=0}^\infty\frac{f^{(k)}(a)}{k!}(x-a)^k=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots .\]</div>
+<p>When <span class="arithmatex">\(a=0\)</span> it is called the <em>Maclaurin series</em> of <span class="arithmatex">\(f\)</span>.</p>
+</div>
+<p>The partial sums of the Taylor series are exactly the Taylor polynomials <span class="arithmatex">\(p_n\)</span> of Definition <a href="../../11.1/notes/#def-taylor">11.1.2</a>, so the series is what the polynomials grow into. It is a power series in the sense of Definition <a href="../../11.2/notes/#def-ps">11.2.1</a>, so Section 11.2 applies to it: it has a radius of convergence, and the tests of Chapter 10 find the interval of convergence. But the definition uses only the values of the derivatives at the single point <span class="arithmatex">\(a\)</span>. Nothing yet says that the series converges at any <span class="arithmatex">\(x\ne a\)</span>, and even where it does, nothing says that its sum is <span class="arithmatex">\(f(x)\)</span>. Until we have an answer we write “the Taylor series of <span class="arithmatex">\(f\)</span>” and do <em>not</em> write <span class="arithmatex">\(f(x)=\sum\cdots\)</span>.</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 11.3.1: Series of polynomials</p>
+<p><span id="kc-poly"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(p(x)=2+3x^2-x^4\)</span> and the Taylor series of <span class="arithmatex">\(q(x)=x^3\)</span> centered at <span class="arithmatex">\(a=1\)</span>. For which <span class="arithmatex">\(x\)</span> does each converge, and to what?</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.2: The Maclaurin series of <span class="arithmatex">\(\sin x\)</span> from the definition</p>
+<p><span id="ex-sinser"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(f(x)=\sin x\)</span> and its interval of convergence.</p>
+<p><strong>Solution.</strong> The derivatives repeat with period <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\(\sin x,\ \cos x,\ -\sin x,\ -\cos x,\ \sin x,\dots\)</span>. At <span class="arithmatex">\(0\)</span> they are <span class="arithmatex">\(0,1,0,-1,0,1,0,-1,\dots\)</span> so the even-order derivatives vanish and <span class="arithmatex">\(f^{(2k+1)}(0)=(-1)^k\)</span>. The coefficients are <span class="arithmatex">\(c_{2k}=0\)</span> and <span class="arithmatex">\(c_{2k+1}=\frac{(-1)^k}{(2k+1)!}\)</span>, and the series is</p>
+<div class="arithmatex">\[x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!}.\]</div>
+<p>Only odd powers occur, so we apply the Ratio Test to the terms <span class="arithmatex">\(a_k=\frac{(-1)^kx^{2k+1}}{(2k+1)!}\)</span> rather than to the coefficients (Warning on gaps in Section 11.2):</p>
+<div class="arithmatex">\[\abs{\frac{a_{k+1}}{a_k}}=\frac{x^2}{(2k+3)(2k+2)}\to0\quad\text{for every }x ,\]</div>
+<p>so <span class="arithmatex">\(r=0&lt;1\)</span> and the series converges absolutely for all <span class="arithmatex">\(x\)</span>: the interval of convergence is <span class="arithmatex">\((-\infty,\infty)\)</span>. We have <em>not</em> shown yet that the sum is <span class="arithmatex">\(\sin x\)</span>; that is Theorem <a href="#thm-esc">11.3.6</a> below.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.3: A center other than <span class="arithmatex">\(0\)</span>: the reciprocal at <span class="arithmatex">\(a=2\)</span></p>
+<p><span id="ex-recip"></span></p>
+<p>Find the Taylor series of <span class="arithmatex">\(f(x)=\frac1x\)</span> centered at <span class="arithmatex">\(2\)</span>, its radius and interval of convergence, and show that it converges to <span class="arithmatex">\(f(x)\)</span> exactly on its interval.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f^{(k)}(x)=\frac{(-1)^kk!}{x^{k+1}}\)</span>, so <span class="arithmatex">\(f^{(k)}(2)=\frac{(-1)^kk!}{2^{k+1}}\)</span> and <span class="arithmatex">\(c_k=\frac{f^{(k)}(2)}{k!}=\frac{(-1)^k}{2^{k+1}}\)</span>:</p>
+<div class="arithmatex">\[\frac12-\frac{x-2}4+\frac{(x-2)^2}8-\frac{(x-2)^3}{16}+\cdots=\sum_{k=0}^\infty\frac{(-1)^k(x-2)^k}{2^{k+1}} .\]</div>
+<p>Here <span class="arithmatex">\(\abs{c_{k+1}/c_k}=\frac12\)</span>, so <span class="arithmatex">\(R=2\)</span> (Theorem <a href="../../11.2/notes/#thm-radiusrule">11.2.4</a>) and the open interval is <span class="arithmatex">\((0,4)\)</span>. At <span class="arithmatex">\(x=4\)</span> the terms are <span class="arithmatex">\(\frac{(-1)^k2^k}{2^{k+1}}=\frac{(-1)^k}2\)</span> and at <span class="arithmatex">\(x=0\)</span> they are <span class="arithmatex">\(\frac{(-1)^k(-2)^k}{2^{k+1}}=\frac12\)</span>. Neither tends to <span class="arithmatex">\(0\)</span>, so both endpoints diverge (Theorem <a href="../../10.4/notes/#thm-divtest">10.4.1</a>), and the interval of convergence is <span class="arithmatex">\((0,4)\)</span>. For <span class="arithmatex">\(x\)</span> in it the series is geometric with ratio <span class="arithmatex">\(-\frac{x-2}2\)</span>, so by Theorem <a href="../../10.3/notes/#thm-geoseries">10.3.3</a> its sum is <span class="arithmatex">\(\frac12\cdot\frac1{1+(x-2)/2}=\frac1x\)</span>. So here the series <em>does</em> converge to <span class="arithmatex">\(f\)</span>, on the whole interval, and the endpoint <span class="arithmatex">\(x=0\)</span> is exactly where <span class="arithmatex">\(f\)</span> is undefined.</p>
+</div>
+<h2 id="when-does-the-taylor-series-converge-to-the-function">When does the Taylor series converge to the function?<a class="headerlink" href="#when-does-the-taylor-series-converge-to-the-function" title="Permanent link">&para;</a></h2>
+<p>Section 11.1 gave the tool: Taylor’s Theorem (Theorem <a href="../../11.1/notes/#thm-taylor">11.1.11</a>) says <span class="arithmatex">\(f(x)=p_n(x)+R_n(x)\)</span>, where <span class="arithmatex">\(R_n(x)=f(x)-p_n(x)\)</span> is the remainder (Definition <a href="../../11.1/notes/#def-remainder">11.1.10</a>). The partial sums of the Taylor series are the <span class="arithmatex">\(p_n(x)\)</span>, so the question is exactly whether <span class="arithmatex">\(R_n(x)\to0\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.4: Convergence of a Taylor series to its function</p>
+<p><span id="thm-crit"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> have derivatives of all orders on an open interval <span class="arithmatex">\(I\)</span> containing <span class="arithmatex">\(a\)</span>, and let <span class="arithmatex">\(p_n\)</span> and <span class="arithmatex">\(R_n=f-p_n\)</span> be its Taylor polynomial and remainder of order <span class="arithmatex">\(n\)</span> centered at <span class="arithmatex">\(a\)</span>. For a given <span class="arithmatex">\(x\)</span> in <span class="arithmatex">\(I\)</span>, the Taylor series of <span class="arithmatex">\(f\)</span> converges to <span class="arithmatex">\(f(x)\)</span> if and only if <span class="arithmatex">\(\lim_{n\to\infty}R_n(x)=0\)</span>.</p>
+</div>
+<p><em>Proof.</em> The <span class="arithmatex">\(n\)</span>-th partial sum of the Taylor series at <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(p_n(x)\)</span>, and <span class="arithmatex">\(p_n(x)=f(x)-R_n(x)\)</span> by the definition of the remainder. If <span class="arithmatex">\(R_n(x)\to0\)</span>, the limit laws (Theorem <a href="../../10.2/notes/#thm-laws">10.2.3</a>) give <span class="arithmatex">\(p_n(x)=f(x)-R_n(x)\to f(x)-0=f(x)\)</span>, so the series converges to <span class="arithmatex">\(f(x)\)</span>. Conversely, if <span class="arithmatex">\(p_n(x)\to f(x)\)</span> then <span class="arithmatex">\(R_n(x)=f(x)-p_n(x)\to f(x)-f(x)=0\)</span>. ◻ ∎</p>
+<p>The proof is two lines. The work is in showing that <span class="arithmatex">\(R_n(x)\to0\)</span> in a given case, and for that Taylor’s Theorem gives <span class="arithmatex">\(R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}\)</span> for some <span class="arithmatex">\(c\)</span> between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(x\)</span>, which we estimate with Theorem <a href="../../11.1/notes/#thm-estimate">11.1.12</a>.</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 11.3.1: Convergence is not equality</p>
+<p><span id="think-conv"></span></p>
+<p>Suppose the Maclaurin series of <span class="arithmatex">\(f\)</span> converges at <span class="arithmatex">\(x=1\)</span>, to a number <span class="arithmatex">\(S\)</span>. Does Theorem <a href="#thm-crit">11.3.4</a> tell you that <span class="arithmatex">\(S=f(1)\)</span>? What does it tell you about <span class="arithmatex">\(R_n(1)\)</span>, and what would you have to show to conclude that <span class="arithmatex">\(S=f(1)\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Theorem <a href="#thm-crit">11.3.4</a> says that the series converges to <span class="arithmatex">\(f(1)\)</span> if and only if <span class="arithmatex">\(R_n(1)\to0\)</span>. If the series converges to <span class="arithmatex">\(S\)</span> then <span class="arithmatex">\(p_n(1)\to S\)</span>, so <span class="arithmatex">\(R_n(1)=f(1)-p_n(1)\to f(1)-S\)</span>. Hence <span class="arithmatex">\(S=f(1)\)</span> exactly when <span class="arithmatex">\(R_n(1)\to0\)</span>; convergence of the series alone says only that <span class="arithmatex">\(R_n(1)\)</span> has a limit, namely <span class="arithmatex">\(f(1)-S\)</span>. To conclude <span class="arithmatex">\(S=f(1)\)</span> one must show <span class="arithmatex">\(R_n(1)\to0\)</span>, for example with the estimate of Theorem <a href="../../11.1/notes/#thm-estimate">11.1.12</a>. (Theorem <a href="#thm-flat">11.3.21</a> shows the difference can be real.)</p>
+</details>
+</div>
+<p>The most useful case is when the derivatives are not too large.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.5: Derivatives that do not grow too fast</p>
+<p><span id="thm-bounded"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> have derivatives of all orders on an open interval <span class="arithmatex">\(I\)</span> containing <span class="arithmatex">\(a\)</span>. Suppose there are constants <span class="arithmatex">\(M\ge0\)</span> and <span class="arithmatex">\(B&gt;0\)</span> such that <span class="arithmatex">\(\abs{f^{(n)}(c)}\le MB^n\)</span> for every <span class="arithmatex">\(n\ge0\)</span> and every <span class="arithmatex">\(c\)</span> in <span class="arithmatex">\(I\)</span>. Then the Taylor series of <span class="arithmatex">\(f\)</span> centered at <span class="arithmatex">\(a\)</span> converges to <span class="arithmatex">\(f(x)\)</span> for every <span class="arithmatex">\(x\)</span> in <span class="arithmatex">\(I\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(x\)</span> be in <span class="arithmatex">\(I\)</span>. If <span class="arithmatex">\(x=a\)</span> then <span class="arithmatex">\(R_n(a)=0\)</span>. Otherwise every <span class="arithmatex">\(c\)</span> between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(x\)</span> lies in <span class="arithmatex">\(I\)</span>, so <span class="arithmatex">\(\abs{f^{(n+1)}(c)}\le MB^{n+1}\)</span>, and Theorem <a href="../../11.1/notes/#thm-estimate">11.1.12</a> gives</p>
+<div class="arithmatex">\[\abs{R_n(x)}\le\frac{MB^{n+1}\abs{x-a}^{n+1}}{(n+1)!}=M\,\frac{b^{n+1}}{(n+1)!},\qquad b=B\abs{x-a}.\]</div>
+<p>Put <span class="arithmatex">\(b'=\max(b,2)&gt;1\)</span>. Then <span class="arithmatex">\(b^{m}\le b'^m\)</span>, and <span class="arithmatex">\(\frac{b'^m}{m!}\to0\)</span> by the growth rates (Theorem <a href="../../10.2/notes/#thm-growth">10.2.13</a>(c)); taking <span class="arithmatex">\(m=n+1\)</span> and using the Squeeze Theorem (Theorem <a href="../../appendix/appendix/#thm-squeeze">B.5</a>), <span class="arithmatex">\(R_n(x)\to0\)</span>. By Theorem <a href="#thm-crit">11.3.4</a> the series converges to <span class="arithmatex">\(f(x)\)</span>. ◻ ∎</p>
+<p>With it we obtain the first three standard series.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.6: The series of <span class="arithmatex">\(e^x\)</span>, <span class="arithmatex">\(\sin x\)</span> and <span class="arithmatex">\(\cos x\)</span></p>
+<p><span id="thm-esc"></span></p>
+<p>For every real number <span class="arithmatex">\(x\)</span>,</p>
+<div class="arithmatex">\[e^x=\sum_{k=0}^\infty\frac{x^k}{k!},\qquad\sin x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!},\qquad\cos x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!}.\]</div>
+</div>
+<p><em>Proof.</em> <em><span class="arithmatex">\(e^x\)</span>.</em> Every derivative of <span class="arithmatex">\(e^x\)</span> is <span class="arithmatex">\(e^x\)</span>, and at <span class="arithmatex">\(0\)</span> it is <span class="arithmatex">\(1\)</span>, so the Maclaurin coefficients are <span class="arithmatex">\(\frac1{k!}\)</span>. Fix <span class="arithmatex">\(L&gt;0\)</span> and let <span class="arithmatex">\(I=(-L,L)\)</span>. For <span class="arithmatex">\(c\)</span> in <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(\abs{f^{(n)}(c)}=e^c&lt;e^L\)</span>, so Theorem <a href="#thm-bounded">11.3.5</a> applies with <span class="arithmatex">\(M=e^L\)</span> and <span class="arithmatex">\(B=1\)</span>: the series converges to <span class="arithmatex">\(e^x\)</span> for <span class="arithmatex">\(\abs x&lt;L\)</span>. Since <span class="arithmatex">\(L\)</span> was arbitrary, this holds for all <span class="arithmatex">\(x\)</span>.</p>
+<p><em><span class="arithmatex">\(\sin x\)</span> and <span class="arithmatex">\(\cos x\)</span>.</em> Each derivative of <span class="arithmatex">\(\sin x\)</span> or <span class="arithmatex">\(\cos x\)</span> is one of <span class="arithmatex">\(\sin x\)</span>, <span class="arithmatex">\(\cos x\)</span>, <span class="arithmatex">\(-\sin x\)</span>, <span class="arithmatex">\(-\cos x\)</span>, so <span class="arithmatex">\(\abs{f^{(n)}(c)}\le1\)</span> for all <span class="arithmatex">\(n\)</span> and all real <span class="arithmatex">\(c\)</span>: Theorem <a href="#thm-bounded">11.3.5</a> applies with <span class="arithmatex">\(M=B=1\)</span> and <span class="arithmatex">\(I=\R\)</span>, and both Maclaurin series converge to the function for every <span class="arithmatex">\(x\)</span>. The coefficients: the derivatives of <span class="arithmatex">\(\sin x\)</span> at <span class="arithmatex">\(0\)</span> are <span class="arithmatex">\(0,1,0,-1,\dots\)</span> (Example <a href="#ex-sinser">11.3.2</a>), giving <span class="arithmatex">\(\frac{(-1)^k}{(2k+1)!}\)</span> at <span class="arithmatex">\(x^{2k+1}\)</span> and <span class="arithmatex">\(0\)</span> at the even powers. Those of <span class="arithmatex">\(\cos x\)</span> are <span class="arithmatex">\(1,0,-1,0,\dots\)</span>, giving <span class="arithmatex">\(\frac{(-1)^k}{(2k)!}\)</span> at <span class="arithmatex">\(x^{2k}\)</span> and <span class="arithmatex">\(0\)</span> at the odd powers. ◻ ∎</p>
+<p>So <span class="arithmatex">\(e^x\)</span>, <span class="arithmatex">\(\sin x\)</span> and <span class="arithmatex">\(\cos x\)</span> equal their Maclaurin series on all of <span class="arithmatex">\(\R\)</span> (the intervals of convergence are all <span class="arithmatex">\((-\infty,\infty)\)</span>, by the Ratio Test as in Example <a href="#ex-sinser">11.3.2</a>). The following theorem explains why we can often skip derivatives altogether.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.7: A power series is the Taylor series of its sum</p>
+<p><span id="thm-uniq"></span></p>
+<p>Suppose <span class="arithmatex">\(\sum c_k(x-a)^k\)</span> converges to <span class="arithmatex">\(f(x)\)</span> for all <span class="arithmatex">\(x\)</span> with <span class="arithmatex">\(\abs{x-a}&lt;R\)</span>, where <span class="arithmatex">\(R&gt;0\)</span>. Then <span class="arithmatex">\(f\)</span> has derivatives of all orders on <span class="arithmatex">\((a-R,a+R)\)</span>, and <span class="arithmatex">\(c_k=\dfrac{f^{(k)}(a)}{k!}\)</span> for every <span class="arithmatex">\(k\)</span>. That is, the series is the Taylor series of <span class="arithmatex">\(f\)</span> centered at <span class="arithmatex">\(a\)</span>.</p>
+</div>
+<p><em>Proof.</em> The power series has radius of convergence at least <span class="arithmatex">\(R\)</span> (Definition <a href="../../11.2/notes/#def-radius">11.2.3</a>), so by Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a> applied <span class="arithmatex">\(j\)</span> times (the complete statement is Theorem <a href="../../appendix/appendix/#thm-allderiv">F.6</a>), <span class="arithmatex">\(f\)</span> has derivatives of every order and</p>
+<div class="arithmatex">\[f^{(j)}(x)=\sum_{k=j}^\infty k(k-1)\cdots(k-j+1)\,c_k(x-a)^{k-j}\qquad(\abs{x-a}&lt;R).\]</div>
+<p>At <span class="arithmatex">\(x=a\)</span> every term with <span class="arithmatex">\(k&gt;j\)</span> contains the factor <span class="arithmatex">\((x-a)^{k-j}=0\)</span>, and the term <span class="arithmatex">\(k=j\)</span> is <span class="arithmatex">\(j!\,c_j\)</span>. So <span class="arithmatex">\(f^{(j)}(a)=j!\,c_j\)</span>. ◻ ∎</p>
+<p><strong>Consequence.</strong> A function has <em>one</em> Taylor series about a given center, and any method that produces a power series equal to <span class="arithmatex">\(f\)</span> on an interval about <span class="arithmatex">\(a\)</span> (substitution, adding, multiplying by powers, differentiating, integrating a known series) has produced <em>that</em> series, with no derivatives to compute. Bank Example <a href="#ex-b14">11.3.37</a> of Section 11.2 is the special case that two power series with the same sum have the same coefficients. The converse of Theorem <a href="#thm-uniq">11.3.7</a> is false in general: a Taylor series can converge without converging to its function (Theorem <a href="#thm-flat">11.3.21</a> below).</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 11.3.2: Reading derivatives off a series</p>
+<p><span id="kc-read"></span></p>
+<p>The Maclaurin series of <span class="arithmatex">\(f\)</span> begins <span class="arithmatex">\(4-3x+5x^2+7x^3+\cdots\)</span> and converges to <span class="arithmatex">\(f(x)\)</span> near <span class="arithmatex">\(0\)</span>. Find <span class="arithmatex">\(f(0)\)</span>, <span class="arithmatex">\(f'(0)\)</span>, <span class="arithmatex">\(f''(0)\)</span> and <span class="arithmatex">\(f'''(0)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.8: Two ways to the series of <span class="arithmatex">\(\cos2x\)</span></p>
+<p><span id="ex-cos2x"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(f(x)=\cos2x\)</span>, and show that it converges to <span class="arithmatex">\(f\)</span> for all <span class="arithmatex">\(x\)</span>.</p>
+<p><strong>Solution.</strong> <em>By the definition.</em> <span class="arithmatex">\(f^{(n)}(x)\)</span> is <span class="arithmatex">\(2^n\)</span> times <span class="arithmatex">\(\pm\cos2x\)</span> or <span class="arithmatex">\(\pm\sin2x\)</span>, so <span class="arithmatex">\(\abs{f^{(n)}(c)}\le2^n\)</span> for all <span class="arithmatex">\(c\)</span>: Theorem <a href="#thm-bounded">11.3.5</a> applies with <span class="arithmatex">\(M=1\)</span>, <span class="arithmatex">\(B=2\)</span>, <span class="arithmatex">\(I=\R\)</span>, and the series converges to <span class="arithmatex">\(\cos2x\)</span> for every <span class="arithmatex">\(x\)</span>. The derivatives at <span class="arithmatex">\(0\)</span> are <span class="arithmatex">\(1,0,-4,0,16,0,\dots\)</span>, that is <span class="arithmatex">\(f^{(2k)}(0)=(-1)^k4^k\)</span>, so <span class="arithmatex">\(c_{2k}=\frac{(-1)^k4^k}{(2k)!}\)</span>:</p>
+<div class="arithmatex">\[\cos2x=\sum_{k=0}^\infty\frac{(-1)^k(2x)^{2k}}{(2k)!}=1-2x^2+\frac23x^4-\frac4{45}x^6+\cdots .\]</div>
+<p><em>By substitution.</em> Replace <span class="arithmatex">\(x\)</span> by <span class="arithmatex">\(2x\)</span> in the series of <span class="arithmatex">\(\cos x\)</span> (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(3)): the result is the same series, valid for all <span class="arithmatex">\(x\)</span> because the cosine series converges for all arguments. By Theorem <a href="#thm-uniq">11.3.7</a> it must be the Taylor series, and it is: no derivatives were needed.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.9: Building series from the standard ones</p>
+<p><span id="ex-build"></span></p>
+<p>Find the Maclaurin series and the interval of convergence of (a) <span class="arithmatex">\(x^2e^{-3x}\)</span>, (b) <span class="arithmatex">\(\dfrac{1-\cos x}{x^2}\)</span>, (c) <span class="arithmatex">\(\sinh x=\dfrac{e^x-e^{-x}}2\)</span>.</p>
+<p><strong>Solution.</strong> (a) Substituting <span class="arithmatex">\(-3x\)</span> in the series of <span class="arithmatex">\(e^x\)</span> and multiplying by <span class="arithmatex">\(x^2\)</span> (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(2) and (3)): <span class="arithmatex">\(x^2e^{-3x}=\sum_{k=0}^\infty\frac{(-3)^kx^{k+2}}{k!}=x^2-3x^3+\frac92x^4-\frac92x^5+\cdots\)</span>, for all <span class="arithmatex">\(x\)</span>. (b) <span class="arithmatex">\(1-\cos x=\frac{x^2}{2!}-\frac{x^4}{4!}+\frac{x^6}{6!}-\cdots=\sum_{j=0}^\infty\frac{(-1)^jx^{2j+2}}{(2j+2)!}=x^2\sum_{j=0}^\infty\frac{(-1)^jx^{2j}}{(2j+2)!}\)</span>. The last series converges for all <span class="arithmatex">\(x\)</span> (Ratio Test: <span class="arithmatex">\(\frac{x^2}{(2j+4)(2j+3)}\to0\)</span>), so for <span class="arithmatex">\(x\ne0\)</span> we may divide by <span class="arithmatex">\(x^2\)</span>: <span class="arithmatex">\(\frac{1-\cos x}{x^2}=\frac12-\frac{x^2}{24}+\frac{x^4}{720}-\cdots\)</span> for all <span class="arithmatex">\(x\ne0\)</span>. The series has the value <span class="arithmatex">\(\frac12\)</span> at <span class="arithmatex">\(x=0\)</span>, which is the limit of the quotient there. (c) By Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(1), <span class="arithmatex">\(\sinh x=\frac12\sum\frac{x^k-(-x)^k}{k!}=\frac12\sum\frac{(1-(-1)^k)x^k}{k!}\)</span>: the even terms cancel and the odd terms double, so <span class="arithmatex">\(\sinh x=\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}=x+\frac{x^3}6+\frac{x^5}{120}+\cdots\)</span> for all <span class="arithmatex">\(x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.10: A series for a function with no elementary antiderivative</p>
+<p><span id="ex-si"></span></p>
+<p>The function <span class="arithmatex">\(\frac{\sin t}t\)</span> has no elementary antiderivative. Use its series to find a power series for <span class="arithmatex">\(F(x)=\displaystyle\int_0^x\frac{\sin t}t\,dt\)</span>, and estimate <span class="arithmatex">\(F(1)\)</span> with an error bound.</p>
+<p><strong>Solution.</strong> Since <span class="arithmatex">\(\sin t=t\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+1)!}\)</span>, dividing by <span class="arithmatex">\(t\)</span> (as in Example <a href="#ex-build">11.3.9</a>(b)) gives <span class="arithmatex">\(\frac{\sin t}t=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+1)!}\)</span> for all <span class="arithmatex">\(t\ne0\)</span>, and the series equals <span class="arithmatex">\(1=\lim_{t\to0}\frac{\sin t}t\)</span> at <span class="arithmatex">\(t=0\)</span>. Integrating term by term from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(x\)</span> (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>; the radius stays <span class="arithmatex">\(\infty\)</span>):</p>
+<div class="arithmatex">\[F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)\,(2k+1)!}=x-\frac{x^3}{18}+\frac{x^5}{600}-\frac{x^7}{35280}+\cdots\qquad\text{for all }x.\]</div>
+<p>At <span class="arithmatex">\(x=1\)</span> the series alternates with decreasing terms (Theorem <a href="../../10.6/notes/#thm-ast">10.6.2</a>), so by Theorem <a href="../../10.6/notes/#thm-remainder">10.6.5</a> the error after three terms is at most the next term, <span class="arithmatex">\(\frac1{35280}\approx2.8\times10^{-5}\)</span>. The three terms sum to <span class="arithmatex">\(1-\frac1{18}+\frac1{600}=\frac{1703}{1800}\approx0.94611\)</span>. The true value is <span class="arithmatex">\(F(1)=0.946083\)</span>; the difference, <span class="arithmatex">\(2.8\times10^{-5}\)</span>, is within the bound.</p>
+</div>
+<h2 id="the-geometric-logarithm-and-arctangent-series-and-the-endpoints">The geometric, logarithm and arctangent series, and the endpoints<a class="headerlink" href="#the-geometric-logarithm-and-arctangent-series-and-the-endpoints" title="Permanent link">&para;</a></h2>
+<p>The geometric series <span class="arithmatex">\(\frac1{1-x}=\sum x^k\)</span> (Theorem <a href="../../10.3/notes/#thm-geoseries">10.3.3</a>) is already a Taylor series: <span class="arithmatex">\(\frac1{1-x}\)</span> has <span class="arithmatex">\(f^{(k)}(0)=k!\)</span> (Example <a href="../../11.1/notes/#ex-geom">11.1.17</a>), and the series equals it exactly for <span class="arithmatex">\(\abs x&lt;1\)</span>. Integrating it term by term gives the logarithm and the arctangent for <span class="arithmatex">\(\abs x&lt;1\)</span> (Section 11.2). What happens <em>at</em> <span class="arithmatex">\(x=\pm1\)</span> is the question Section 11.2 left open: the series for <span class="arithmatex">\(\ln(1+2x)\)</span> converges at <span class="arithmatex">\(x=\frac12\)</span>, but is its sum <span class="arithmatex">\(\ln2\)</span>? Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a> says nothing at the endpoints. The missing tool is the following theorem about a series that converges at an endpoint.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.11: Abel’s limit theorem</p>
+<p><span id="thm-abel"></span></p>
+<p>Let <span class="arithmatex">\(\sum c_k(x-a)^k\)</span> have radius of convergence <span class="arithmatex">\(R\)</span> with <span class="arithmatex">\(0&lt;R&lt;\infty\)</span>, and let <span class="arithmatex">\(f(x)=\sum c_k(x-a)^k\)</span> for <span class="arithmatex">\(\abs{x-a}&lt;R\)</span>. If the series converges at <span class="arithmatex">\(x=a+R\)</span>, then its sum there is <span class="arithmatex">\(\lim_{x\to(a+R)^-}f(x)\)</span>. If it converges at <span class="arithmatex">\(x=a-R\)</span>, its sum there is <span class="arithmatex">\(\lim_{x\to(a-R)^+}f(x)\)</span>.</p>
+</div>
+<p><strong>The proof is in Appendix G</strong> (Theorem <a href="../../appendix/appendix/#thm-abellimit">G.1</a>); it is a page of summation by parts and needs nothing beyond the geometric series. Two remarks. If <span class="arithmatex">\(f\)</span> is continuous at the endpoint (for example, if <span class="arithmatex">\(f\)</span> is given by a formula that is continuous there), the limit is the value of <span class="arithmatex">\(f\)</span>, so the series sums to <span class="arithmatex">\(f(a+R)\)</span>. And the hypothesis that the series converges at the endpoint is essential: <span class="arithmatex">\(\sum(-1)^kx^k=\frac1{1+x}\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span> tends to <span class="arithmatex">\(\frac12\)</span> as <span class="arithmatex">\(x\to1^-\)</span>, yet <span class="arithmatex">\(1-1+1-\cdots\)</span> diverges (Example <a href="../../appendix/appendix/#ex-abelfail">G.2</a>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.12: The logarithm and arctangent series</p>
+<p><span id="thm-logatan"></span></p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\displaystyle\ln(1+x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k=x-\frac{x^2}2+\frac{x^3}3-\cdots\)</span> for <span class="arithmatex">\(-1&lt;x\le1\)</span>; the series diverges for all other <span class="arithmatex">\(x\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\tan^{-1}x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}=x-\frac{x^3}3+\frac{x^5}5-\cdots\)</span> for <span class="arithmatex">\(-1\le x\le1\)</span>; the series diverges for <span class="arithmatex">\(\abs x&gt;1\)</span>.</p>
+</li>
+</ol>
+<p>In particular <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}k=\ln2\)</span> and <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}=\frac\pi4\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) For <span class="arithmatex">\(\abs t&lt;1\)</span>, <span class="arithmatex">\(\frac1{1+t}=\sum_{k=0}^\infty(-t)^k\)</span> (the geometric series with ratio <span class="arithmatex">\(-t\)</span>). Integrate term by term from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(x\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span> (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>; the constant is <span class="arithmatex">\(0\)</span> because both sides vanish at <span class="arithmatex">\(x=0\)</span>):</p>
+<div class="arithmatex">\[\ln(1+x)=\sum_{k=0}^\infty\frac{(-1)^kx^{k+1}}{k+1}=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k\qquad(\abs x&lt;1).\]</div>
+<p>The radius is <span class="arithmatex">\(1\)</span>, so the series diverges for <span class="arithmatex">\(\abs x&gt;1\)</span>. At <span class="arithmatex">\(x=-1\)</span> it is <span class="arithmatex">\(-\sum\frac1k\)</span>, the harmonic series with a minus sign, which diverges (Theorem <a href="../../10.4/notes/#thm-harm">10.4.4</a>). At <span class="arithmatex">\(x=1\)</span> it is <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}k\)</span>, which converges by the Alternating Series Test (Theorem <a href="../../10.6/notes/#thm-ast">10.6.2</a>). By Abel’s theorem (Theorem <a href="#thm-abel">11.3.11</a>) its sum is <span class="arithmatex">\(\lim_{x\to1^-}\ln(1+x)=\ln2\)</span>, because <span class="arithmatex">\(\ln(1+x)\)</span> is continuous at <span class="arithmatex">\(x=1\)</span>.</p>
+<p>(2) For <span class="arithmatex">\(\abs t&lt;1\)</span>, <span class="arithmatex">\(\frac1{1+t^2}=\sum_{k=0}^\infty(-1)^kt^{2k}\)</span>. Integrating from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(x\)</span> (and using <span class="arithmatex">\(\tan^{-1}0=0\)</span>) gives <span class="arithmatex">\(\tan^{-1}x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>. The radius is <span class="arithmatex">\(1\)</span>, so the series diverges for <span class="arithmatex">\(\abs x&gt;1\)</span>. At <span class="arithmatex">\(x=1\)</span> the terms <span class="arithmatex">\(\frac1{2k+1}\)</span> decrease to <span class="arithmatex">\(0\)</span>, so <span class="arithmatex">\(\sum\frac{(-1)^k}{2k+1}\)</span> converges by the Alternating Series Test, and by Abel’s theorem its sum is <span class="arithmatex">\(\lim_{x\to1^-}\tan^{-1}x=\tan^{-1}1=\frac\pi4\)</span>. At <span class="arithmatex">\(x=-1\)</span> the series is the negative of this one, with sum <span class="arithmatex">\(-\frac\pi4=\tan^{-1}(-1)\)</span> (Abel’s theorem at the left endpoint gives the same). ◻ ∎</p>
+<p>The convergence at the endpoints is slow. The alternating-series error bound after <span class="arithmatex">\(n\)</span> terms is <span class="arithmatex">\(\frac1{n+1}\)</span> for <span class="arithmatex">\(\ln2\)</span>, so about a thousand terms give three decimal places. That is why practical computations of <span class="arithmatex">\(\ln2\)</span> and <span class="arithmatex">\(\pi\)</span> use these series at smaller arguments (Example <a href="#ex-endsums">11.3.13</a>), or other series, and it is the subject of the next section.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.13: The endpoint sums, and the loop from Section 11.2</p>
+<p><span id="ex-endsums"></span></p>
+<p>(a) In Example <a href="../../11.2/notes/#ex-int">11.2.16</a> we found <span class="arithmatex">\(\ln(1+2x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}(2x)^k}k\)</span> for <span class="arithmatex">\(\abs x&lt;\frac12\)</span>, and the series converges at <span class="arithmatex">\(x=\frac12\)</span>. Show that its sum there is <span class="arithmatex">\(\ln2\)</span>, and find the interval on which the series equals <span class="arithmatex">\(\ln(1+2x)\)</span>. (b) Estimate <span class="arithmatex">\(\pi\)</span> from the series of <span class="arithmatex">\(\tan^{-1}x\)</span> at <span class="arithmatex">\(x=1\)</span> with <span class="arithmatex">\(100\)</span> terms. (c) Find <span class="arithmatex">\(\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k\,2^k}\)</span> and compare the speed with (a).</p>
+<p><strong>Solution.</strong> (a) Substituting <span class="arithmatex">\(t=2x\)</span> in Theorem <a href="#thm-logatan">11.3.12</a>(1) (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(3)), the series <span class="arithmatex">\(\sum\frac{(-1)^{k+1}(2x)^k}k\)</span> converges to <span class="arithmatex">\(\ln(1+2x)\)</span> exactly when <span class="arithmatex">\(-1&lt;2x\le1\)</span>, that is <span class="arithmatex">\(-\frac12&lt;x\le\frac12\)</span>. At <span class="arithmatex">\(x=\frac12\)</span> it is <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}k\)</span> with sum <span class="arithmatex">\(\ln2=\ln(1+2\cdot\frac12)\)</span>, as it should be. The interval of convergence found in Section 11.2, <span class="arithmatex">\((-\frac12,\frac12]\)</span>, is therefore also the interval on which the series <em>equals</em> the function. (b) With <span class="arithmatex">\(x=1\)</span>, <span class="arithmatex">\(\pi=4\sum_{k=0}^\infty\frac{(-1)^k}{2k+1}\)</span>. The sum of the first <span class="arithmatex">\(100\)</span> terms is <span class="arithmatex">\(0.78290\)</span>, so <span class="arithmatex">\(4\times0.78290=3.1316\)</span>; the error is at most <span class="arithmatex">\(4\cdot\frac1{201}=0.0199\)</span> (Theorem <a href="../../10.6/notes/#thm-remainder">10.6.5</a>), and in fact it is <span class="arithmatex">\(0.0100\)</span>. (c) This is the series of <span class="arithmatex">\(\ln(1+x)\)</span> at <span class="arithmatex">\(x=\frac12\)</span>, inside the interval, so the sum is <span class="arithmatex">\(\ln\frac32=0.405465\)</span>. Ten terms give <span class="arithmatex">\(0.405435\)</span>, with error at most <span class="arithmatex">\(\frac1{11\cdot2^{11}}=4.4\times10^{-5}\)</span> (actual error <span class="arithmatex">\(3.0\times10^{-5}\)</span>): ten terms here are worth far more than a thousand in (a), because <span class="arithmatex">\(\left(\frac12\right)^k\)</span> shrinks the terms.</p>
+</div>
+<h2 id="the-binomial-series">The binomial series<a class="headerlink" href="#the-binomial-series" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 11.3.14: Binomial coefficients</p>
+<p><span id="def-bincoef"></span></p>
+<p>For a real number <span class="arithmatex">\(p\)</span> and an integer <span class="arithmatex">\(k\ge0\)</span>,</p>
+<div class="arithmatex">\[\binom pk=\frac{p(p-1)(p-2)\cdots(p-k+1)}{k!}\quad(k\text{ factors in the numerator}),\qquad\binom p0=1 .\]</div>
+</div>
+<p>For a nonnegative integer <span class="arithmatex">\(p\)</span> these are the familiar numbers of Pascal’s triangle, and <span class="arithmatex">\(\binom pk=0\)</span> for <span class="arithmatex">\(k&gt;p\)</span>. For other <span class="arithmatex">\(p\)</span> none of them is <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(\binom{1/2}3=\frac{\frac12\cdot(-\frac12)\cdot(-\frac32)}{6}=\frac1{16}\)</span>. Multiplying out the definition gives the relation we use below,</p>
+<div class="arithmatex">\[(k+1)\binom p{k+1}=(p-k)\binom pk .\tag{$\ast$}\]</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 11.3.3: Binomial coefficients</p>
+<p><span id="kc-binom"></span></p>
+<p>Evaluate <span class="arithmatex">\(\dbinom{-1/3}2\)</span> and <span class="arithmatex">\(\dbinom{3/2}3\)</span>.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.15: The binomial series</p>
+<p><span id="thm-binom"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be any real number. For <span class="arithmatex">\(\abs x&lt;1\)</span>,</p>
+<div class="arithmatex">\[(1+x)^p=\sum_{k=0}^\infty\binom pkx^k=1+px+\frac{p(p-1)}{2!}x^2+\frac{p(p-1)(p-2)}{3!}x^3+\cdots .\]</div>
+<p>This series is the Maclaurin series of <span class="arithmatex">\((1+x)^p\)</span>. If <span class="arithmatex">\(p\)</span> is a nonnegative integer, it is a polynomial and the formula is the binomial theorem of algebra.</p>
+</div>
+<p><em>Proof.</em> Write <span class="arithmatex">\(c_k=\binom pk\)</span> and <span class="arithmatex">\(B(x)=\sum c_kx^k\)</span>.</p>
+<p><em>Step 1: <span class="arithmatex">\(B\)</span> converges for <span class="arithmatex">\(\abs x&lt;1\)</span>.</em> If <span class="arithmatex">\(p\)</span> is a nonnegative integer, <span class="arithmatex">\(B\)</span> is a polynomial. Otherwise every <span class="arithmatex">\(c_k\ne0\)</span> and by <span class="arithmatex">\((\ast)\)</span>, <span class="arithmatex">\(\abs{c_{k+1}/c_k}=\frac{\abs{p-k}}{k+1}\to1\)</span>, so the radius is <span class="arithmatex">\(1\)</span> (Theorem <a href="../../11.2/notes/#thm-radiusrule">11.2.4</a>).</p>
+<p><em>Step 2: a differential equation.</em> By <span class="arithmatex">\((\ast)\)</span>, <span class="arithmatex">\((k+1)c_{k+1}+k\,c_k=(p-k)c_k+k\,c_k=p\,c_k\)</span>. By Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>, <span class="arithmatex">\(B'(x)=\sum_{k=1}^\infty kc_kx^{k-1}=\sum_{k=0}^\infty(k+1)c_{k+1}x^k\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>, and <span class="arithmatex">\(xB'(x)=\sum_{k=0}^\infty kc_kx^k\)</span>. Adding (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(1)),</p>
+<div class="arithmatex">\[(1+x)B'(x)=\sum_{k=0}^\infty\bigl((k+1)c_{k+1}+kc_k\bigr)x^k=p\sum_{k=0}^\infty c_kx^k=p\,B(x).\]</div>
+<p><em>Step 3: solve it.</em> On <span class="arithmatex">\((-1,1)\)</span> we have <span class="arithmatex">\(1+x&gt;0\)</span>. Let <span class="arithmatex">\(g(x)=B(x)\,(1+x)^{-p}\)</span>. By the product rule and Step 2,</p>
+<div class="arithmatex">\[g'(x)=B'(x)(1+x)^{-p}-pB(x)(1+x)^{-p-1}=(1+x)^{-p-1}\bigl((1+x)B'(x)-pB(x)\bigr)=0 .\]</div>
+<p>A function with derivative <span class="arithmatex">\(0\)</span> on an interval is constant (Mean Value Theorem), and <span class="arithmatex">\(g(0)=B(0)\cdot1=1\)</span>. So <span class="arithmatex">\(B(x)(1+x)^{-p}=1\)</span>, that is <span class="arithmatex">\(B(x)=(1+x)^p\)</span>.</p>
+<p><em>Maclaurin series.</em> The function <span class="arithmatex">\(f(x)=(1+x)^p\)</span> has <span class="arithmatex">\(f^{(k)}(x)=p(p-1)\cdots(p-k+1)(1+x)^{p-k}\)</span>, so <span class="arithmatex">\(f^{(k)}(0)/k!=\binom pk\)</span>. (This also follows from Theorem <a href="#thm-uniq">11.3.7</a>.) ◻ ∎</p>
+<p>The theorem settles the interior. At <span class="arithmatex">\(x=\pm1\)</span> the answer depends on <span class="arithmatex">\(p\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.16: The binomial series at the endpoints</p>
+<p><span id="thm-binomend"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be a real number that is not a nonnegative integer. The binomial series has radius of convergence <span class="arithmatex">\(1\)</span>, and its interval of convergence is</p>
+<div class="arithmatex">\[(-1,1)\ \text{if }p\le-1,\qquad(-1,1]\ \text{if }-1&lt;p&lt;0,\qquad[-1,1]\ \text{if }p&gt;0 .\]</div>
+<p>When it converges at an endpoint, its sum there is <span class="arithmatex">\((1+x)^p\)</span>: the sum is <span class="arithmatex">\(2^p\)</span> at <span class="arithmatex">\(x=1\)</span> (for <span class="arithmatex">\(p&gt;-1\)</span>), and <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=-1\)</span> (for <span class="arithmatex">\(p&gt;0\)</span>).</p>
+</div>
+<p><em>Proof.</em> <em>Convergence.</em> The radius is <span class="arithmatex">\(1\)</span> by Step 1 above. The behavior at <span class="arithmatex">\(x=1\)</span> and <span class="arithmatex">\(x=-1\)</span> is proved in Theorem <a href="../../appendix/appendix/#thm-binomend">G.5</a>; it uses the Divergence Test, the Alternating Series Test and the comparison with the harmonic series, together with the estimates of the coefficients in Theorem <a href="../../appendix/appendix/#thm-binomsize">G.4</a>.</p>
+<p><em>The sums.</em> By Theorem <a href="#thm-binom">11.3.15</a>, the series sums to <span class="arithmatex">\((1+x)^p\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>. Let <span class="arithmatex">\(p&gt;-1\)</span>. The series converges at <span class="arithmatex">\(x=1\)</span>, so by Abel’s theorem (Theorem <a href="#thm-abel">11.3.11</a>) its sum is <span class="arithmatex">\(\lim_{x\to1^-}(1+x)^p=2^p\)</span>. Let <span class="arithmatex">\(p&gt;0\)</span>. The series converges at <span class="arithmatex">\(x=-1\)</span>, so by the second half of Abel’s theorem its sum is <span class="arithmatex">\(\lim_{x\to-1^+}(1+x)^p=0\)</span>, because <span class="arithmatex">\(p&gt;0\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.17: A negative fractional exponent</p>
+<p><span id="ex-binomneg"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(f(x)=(1+x)^{-1/2}=\dfrac1{\sqrt{1+x}}\)</span>, its interval of convergence, and its sum at each endpoint where it converges.</p>
+<p><strong>Solution.</strong> With <span class="arithmatex">\(p=-\frac12\)</span>: <span class="arithmatex">\(\binom{-1/2}1=-\frac12\)</span>, <span class="arithmatex">\(\binom{-1/2}2=\frac{(-\frac12)(-\frac32)}2=\frac38\)</span>, <span class="arithmatex">\(\binom{-1/2}3=\frac{(-\frac12)(-\frac32)(-\frac52)}6=-\frac5{16}\)</span>, <span class="arithmatex">\(\binom{-1/2}4=\frac{35}{128}\)</span>. So</p>
+<div class="arithmatex">\[\frac1{\sqrt{1+x}}=1-\frac12x+\frac38x^2-\frac5{16}x^3+\frac{35}{128}x^4-\cdots,\qquad\binom{-1/2}k=\frac{(-1)^k}{4^k}\binom{2k}k .\]</div>
+<p>Since <span class="arithmatex">\(-1&lt;p&lt;0\)</span>, Theorem <a href="#thm-binomend">11.3.16</a> gives the interval <span class="arithmatex">\((-1,1]\)</span>. At <span class="arithmatex">\(x=1\)</span> the series <span class="arithmatex">\(\sum\frac{(-1)^k}{4^k}\binom{2k}k=1-\frac12+\frac38-\frac5{16}+\cdots\)</span> converges, with sum <span class="arithmatex">\(2^{-1/2}=\frac1{\sqrt2}\approx0.7071\)</span> (the partial sums are <span class="arithmatex">\(1,0.5,0.875,0.5625,\dots\)</span>, an alternating sequence that closes in slowly). At <span class="arithmatex">\(x=-1\)</span> the terms are all positive, <span class="arithmatex">\(\frac1{4^k}\binom{2k}k\ge\frac1{2k}\)</span>, so the series diverges by comparison with the harmonic series.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.18: The binomial series with a substitution</p>
+<p><span id="ex-binomsub"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(f(x)=\dfrac1{\sqrt{4-x^2}}\)</span> and its interval of convergence.</p>
+<p><strong>Solution.</strong> Factor out the <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\(\frac1{\sqrt{4-x^2}}=\frac12\left(1-\frac{x^2}4\right)^{-1/2}=\frac12(1+u)^{-1/2}\)</span> with <span class="arithmatex">\(u=-\frac{x^2}4\)</span>. By Theorem <a href="#thm-binom">11.3.15</a> with <span class="arithmatex">\(p=-\frac12\)</span>, and Example <a href="#ex-binomneg">11.3.17</a> for the coefficients,</p>
+<div class="arithmatex">\[f(x)=\frac12\sum_{k=0}^\infty\frac{(-1)^k}{4^k}\binom{2k}k\left(-\frac{x^2}4\right)^k=\frac12\sum_{k=0}^\infty\binom{2k}k\frac{x^{2k}}{16^k}=\frac12+\frac{x^2}{16}+\frac{3x^4}{256}+\frac{5x^6}{2048}+\cdots,\]</div>
+<p>valid when <span class="arithmatex">\(\abs u&lt;1\)</span>, that is <span class="arithmatex">\(\abs x&lt;2\)</span>. At <span class="arithmatex">\(x=\pm2\)</span> we have <span class="arithmatex">\(u=-1\)</span>, and the binomial series for <span class="arithmatex">\(p=-\frac12\)</span> diverges at <span class="arithmatex">\(u=-1\)</span> (Theorem <a href="#thm-binomend">11.3.16</a>: for <span class="arithmatex">\(p\le0\)</span> there is no convergence at the left endpoint). So the interval of convergence is <span class="arithmatex">\((-2,2)\)</span>: the radius is the distance from the center <span class="arithmatex">\(0\)</span> to the points <span class="arithmatex">\(\pm2\)</span> where <span class="arithmatex">\(f\)</span> is undefined.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.19: A square root centered at <span class="arithmatex">\(4\)</span>, with both endpoints</p>
+<p><span id="ex-sqrt4"></span></p>
+<p>Find the Taylor series of <span class="arithmatex">\(\sqrt x\)</span> centered at <span class="arithmatex">\(4\)</span> and its interval of convergence. What does it give at the endpoints?</p>
+<p><strong>Solution.</strong> Write <span class="arithmatex">\(\sqrt x=\sqrt{4+(x-4)}=2\sqrt{1+u}\)</span> with <span class="arithmatex">\(u=\frac{x-4}4\)</span>. By Theorem <a href="#thm-binom">11.3.15</a> with <span class="arithmatex">\(p=\frac12\)</span> (the coefficients are <span class="arithmatex">\(1,\frac12,-\frac18,\frac1{16},-\frac5{128},\dots\)</span>):</p>
+<div class="arithmatex">\[\sqrt x=2\sum_{k=0}^\infty\binom{1/2}k\left(\frac{x-4}4\right)^k=2+\frac{x-4}4-\frac{(x-4)^2}{64}+\frac{(x-4)^3}{512}-\frac{5(x-4)^4}{16384}+\cdots .\]</div>
+<p>Since <span class="arithmatex">\(p=\frac12&gt;0\)</span>, the binomial series converges for <span class="arithmatex">\(-1\le u\le1\)</span> (Theorem <a href="#thm-binomend">11.3.16</a>), that is <span class="arithmatex">\(0\le x\le8\)</span>. The interval of convergence is <span class="arithmatex">\([0,8]\)</span> and the series equals <span class="arithmatex">\(\sqrt x\)</span> on all of it. At <span class="arithmatex">\(x=8\)</span> the sum is <span class="arithmatex">\(2\sqrt2\)</span>. At <span class="arithmatex">\(x=0\)</span> (where <span class="arithmatex">\(\sqrt x\)</span> is not differentiable) the sum is <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(2\left(1-\frac12-\frac18-\frac1{16}-\frac5{128}-\cdots\right)=0\)</span>, that is, the numbers <span class="arithmatex">\(\frac18,\frac1{16},\frac5{128},\dots\)</span> add up to <span class="arithmatex">\(\frac12\)</span> (compare Example <a href="../../appendix/appendix/#ex-binomsum">G.6</a>). The radius <span class="arithmatex">\(4\)</span> is the distance from the center to <span class="arithmatex">\(x=0\)</span>, but unlike the series of <span class="arithmatex">\(\frac1x\)</span> in Example <a href="#ex-recip">11.3.3</a>, this one still converges there.</p>
+</div>
+<h2 id="the-radius-is-not-the-whole-story">The radius is not the whole story<a class="headerlink" href="#the-radius-is-not-the-whole-story" title="Permanent link">&para;</a></h2>
+<p>Two warnings, one about the interval and one about the function. The first: the interval of convergence of a Taylor series is <em>not</em> the interval where <span class="arithmatex">\(f\)</span> is defined or smooth.</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 11.3.2: A smooth function, a small radius</p>
+<p><span id="think-radius"></span></p>
+<p>The function <span class="arithmatex">\(f(x)=\frac1{1+x^2}\)</span> has derivatives of all orders at every real number, and its graph has no break. Would you expect its Maclaurin series to converge for every <span class="arithmatex">\(x\)</span>? Make a prediction before reading the next example.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>A prediction of “converges everywhere” is natural, but wrong: Example <a href="#ex-radiusone">11.3.20</a> shows the radius is <span class="arithmatex">\(1\)</span>. The interval of convergence of a Taylor series is not determined by where <span class="arithmatex">\(f\)</span> is defined or smooth on the real line.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.20: <span class="arithmatex">\(\dfrac1{1+x^2}\)</span> has radius <span class="arithmatex">\(1\)</span></p>
+<p><span id="ex-radiusone"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(\dfrac1{1+x^2}\)</span> and its interval of convergence. Why does it fail at <span class="arithmatex">\(x=2\)</span>?</p>
+<p><strong>Solution.</strong> Substituting <span class="arithmatex">\(-x^2\)</span> in the geometric series (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(3)), <span class="arithmatex">\(\frac1{1+x^2}=\sum_{k=0}^\infty(-1)^kx^{2k}=1-x^2+x^4-x^6+\cdots\)</span> exactly when <span class="arithmatex">\(\abs{x^2}&lt;1\)</span>, that is <span class="arithmatex">\(\abs x&lt;1\)</span>. By Theorem <a href="#thm-uniq">11.3.7</a> this is the Maclaurin series. At <span class="arithmatex">\(x=\pm1\)</span> the terms are <span class="arithmatex">\((-1)^k\)</span>, which do not tend to <span class="arithmatex">\(0\)</span>: divergence. So the interval of convergence is <span class="arithmatex">\((-1,1)\)</span>, although <span class="arithmatex">\(f\)</span> is smooth on all of <span class="arithmatex">\(\R\)</span>. At <span class="arithmatex">\(x=2\)</span>, <span class="arithmatex">\(f(2)=\frac15\)</span>, but the partial sums are <span class="arithmatex">\(1,-3,13,-51,205,\dots\)</span>, which grow without bound; by Theorem <a href="#thm-crit">11.3.4</a>, <span class="arithmatex">\(R_n(2)\not\to0\)</span>. Nothing visible on the real line explains the radius <span class="arithmatex">\(1\)</span>. (The explanation, which belongs to a later course on complex numbers, is that <span class="arithmatex">\(1+x^2=0\)</span> at <span class="arithmatex">\(x=\pm i\)</span>, and these numbers are at distance <span class="arithmatex">\(1\)</span> from the center <span class="arithmatex">\(0\)</span>.)</p>
+</div>
+<p>The second warning is more serious: a Taylor series can converge on a whole interval and still not converge to <span class="arithmatex">\(f\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 11.3.21: A flat function</p>
+<p><span id="thm-flat"></span></p>
+<p>Let <span class="arithmatex">\(f(x)=e^{-1/x^2}\)</span> for <span class="arithmatex">\(x\ne0\)</span> and <span class="arithmatex">\(f(0)=0\)</span>. Then <span class="arithmatex">\(f\)</span> has derivatives of all orders at every real number, and <span class="arithmatex">\(f^{(k)}(0)=0\)</span> for every <span class="arithmatex">\(k\ge0\)</span>. Consequently the Maclaurin series of <span class="arithmatex">\(f\)</span> is <span class="arithmatex">\(0+0x+0x^2+\cdots\)</span>, which converges for every <span class="arithmatex">\(x\)</span> but equals <span class="arithmatex">\(f(x)\)</span> only at <span class="arithmatex">\(x=0\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>A limit.</em> For every integer <span class="arithmatex">\(m\ge0\)</span>, <span class="arithmatex">\(\lim_{u\to\infty}u^me^{-u^2}=0\)</span>. Indeed, <span class="arithmatex">\(e^{v}=\sum\frac{v^j}{j!}\)</span> for <span class="arithmatex">\(v\ge0\)</span> (Theorem <a href="#thm-esc">11.3.6</a>), and a sum of positive terms is at least any one of them, so <span class="arithmatex">\(e^{u^2}\ge\frac{u^{2(m+1)}}{(m+1)!}\)</span> and <span class="arithmatex">\(0&lt;u^me^{-u^2}\le\frac{(m+1)!}{u^{m+2}}\to0\)</span>. Since <span class="arithmatex">\(e^{-u^2}\)</span> depends only on <span class="arithmatex">\(\abs u\)</span>, also <span class="arithmatex">\(\abs u^me^{-u^2}\to0\)</span> as <span class="arithmatex">\(u\to-\infty\)</span>.</p>
+<p><em>Derivatives away from <span class="arithmatex">\(0\)</span>.</em> We claim that for each <span class="arithmatex">\(k\ge0\)</span> there is a polynomial <span class="arithmatex">\(P_k\)</span> with <span class="arithmatex">\(f^{(k)}(x)=P_k\!\left(\frac1x\right)e^{-1/x^2}\)</span> for all <span class="arithmatex">\(x\ne0\)</span>. For <span class="arithmatex">\(k=0\)</span> take <span class="arithmatex">\(P_0=1\)</span>. If it holds for <span class="arithmatex">\(k\)</span>, the product and chain rules, with <span class="arithmatex">\(\frac d{dx}e^{-1/x^2}=\frac2{x^3}e^{-1/x^2}\)</span> and <span class="arithmatex">\(\frac d{dx}P_k(\frac1x)=-\frac1{x^2}P_k'(\frac1x)\)</span>, give <span class="arithmatex">\(f^{(k+1)}(x)=P_{k+1}\!\left(\frac1x\right)e^{-1/x^2}\)</span> with <span class="arithmatex">\(P_{k+1}(u)=2u^3P_k(u)-u^2P_k'(u)\)</span>, again a polynomial.</p>
+<p><em>Derivatives at <span class="arithmatex">\(0\)</span>.</em> We show <span class="arithmatex">\(f^{(k)}(0)=0\)</span> by induction. For <span class="arithmatex">\(k=0\)</span> this is the definition. If <span class="arithmatex">\(f^{(k)}(0)=0\)</span>, then by the definition of the derivative</p>
+<div class="arithmatex">\[f^{(k+1)}(0)=\lim_{h\to0}\frac{f^{(k)}(h)-f^{(k)}(0)}h=\lim_{h\to0}\frac1hP_k\!\left(\frac1h\right)e^{-1/h^2}=\lim_{\abs u\to\infty}uP_k(u)\,e^{-u^2}\qquad\left(u=\tfrac1h\right).\]</div>
+<p>Now <span class="arithmatex">\(uP_k(u)=\sum_ja_ju^j\)</span> is a polynomial, so <span class="arithmatex">\(\abs{uP_k(u)e^{-u^2}}\le\sum_j\abs{a_j}\abs u^je^{-u^2}\to0\)</span> by the limit above. Hence <span class="arithmatex">\(f^{(k+1)}(0)=0\)</span>.</p>
+<p><em>The series.</em> All the Maclaurin coefficients are <span class="arithmatex">\(0\)</span>, so the series is <span class="arithmatex">\(0\)</span> and converges for every <span class="arithmatex">\(x\)</span> with sum <span class="arithmatex">\(0\)</span>. For <span class="arithmatex">\(x\ne0\)</span>, <span class="arithmatex">\(f(x)=e^{-1/x^2}&gt;0\)</span>, so the sum is not <span class="arithmatex">\(f(x)\)</span>. ◻ ∎</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 11.3.3: No power series for the flat function</p>
+<p><span id="think-flat"></span></p>
+<p>Could the function <span class="arithmatex">\(f\)</span> of Theorem <a href="#thm-flat">11.3.21</a> equal some power series <span class="arithmatex">\(\sum c_kx^k\)</span> on an interval <span class="arithmatex">\((-r,r)\)</span>, <span class="arithmatex">\(r&gt;0\)</span>? Use Theorem <a href="#thm-uniq">11.3.7</a>. What does this say about the criterion <span class="arithmatex">\(R_n(x)\to0\)</span> for this <span class="arithmatex">\(f\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>No. If <span class="arithmatex">\(f(x)=\sum c_kx^k\)</span> on <span class="arithmatex">\((-r,r)\)</span>, Theorem <a href="#thm-uniq">11.3.7</a> gives <span class="arithmatex">\(c_k=\frac{f^{(k)}(0)}{k!}=0\)</span> for all <span class="arithmatex">\(k\)</span> (Theorem <a href="#thm-flat">11.3.21</a>), so <span class="arithmatex">\(f(x)=0\)</span> on <span class="arithmatex">\((-r,r)\)</span>. But <span class="arithmatex">\(f(x)=e^{-1/x^2}&gt;0\)</span> for <span class="arithmatex">\(x\ne0\)</span>, a contradiction. So <span class="arithmatex">\(f\)</span> equals no power series about <span class="arithmatex">\(0\)</span>. Its remainder is <span class="arithmatex">\(R_n(x)=f(x)-0=f(x)\)</span> for every <span class="arithmatex">\(n\)</span> (all the Taylor polynomials are <span class="arithmatex">\(0\)</span>), so <span class="arithmatex">\(R_n(x)\to0\)</span> fails at every <span class="arithmatex">\(x\ne0\)</span>, in agreement with Theorem <a href="#thm-crit">11.3.4</a>: the criterion is not automatic, and it is exactly what separates <span class="arithmatex">\(e^x\)</span> from <span class="arithmatex">\(e^{-1/x^2}\)</span>.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.22: Two functions with the same Taylor series</p>
+<p><span id="ex-twofunc"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be the function of Theorem <a href="#thm-flat">11.3.21</a> and <span class="arithmatex">\(g(x)=\sin x+f(x)\)</span>. Compare the Maclaurin series of <span class="arithmatex">\(g\)</span> with that of <span class="arithmatex">\(\sin x\)</span>, and compare <span class="arithmatex">\(g(0.5)\)</span> with the value of the series.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(g^{(k)}(0)=\sin^{(k)}(0)+f^{(k)}(0)=\sin^{(k)}(0)\)</span> for every <span class="arithmatex">\(k\)</span>, so <span class="arithmatex">\(g\)</span> has the same Maclaurin series as <span class="arithmatex">\(\sin x\)</span>: <span class="arithmatex">\(x-\frac{x^3}{3!}+\cdots\)</span>, which converges for all <span class="arithmatex">\(x\)</span> (Example <a href="#ex-sinser">11.3.2</a>) with sum <span class="arithmatex">\(\sin x\)</span> (Theorem <a href="#thm-esc">11.3.6</a>), not <span class="arithmatex">\(g(x)\)</span>. At <span class="arithmatex">\(x=0.5\)</span>: the series gives <span class="arithmatex">\(\sin0.5=0.479426\)</span> but <span class="arithmatex">\(g(0.5)=\sin0.5+e^{-4}=0.479426+0.018316=0.497741\)</span>. The remainder of <span class="arithmatex">\(g\)</span> is <span class="arithmatex">\(R_n(0.5)=g(0.5)-p_n(0.5)\to e^{-4}\ne0\)</span>, so the criterion of Theorem <a href="#thm-crit">11.3.4</a> fails. How flat is <span class="arithmatex">\(f\)</span>? Already <span class="arithmatex">\(f(0.1)=e^{-100}\approx3.7\times10^{-44}\)</span>, smaller than any power of <span class="arithmatex">\(x\)</span> would explain: it is <span class="arithmatex">\(0\)</span> to all orders. The functions met in this course (<span class="arithmatex">\(e^x\)</span>, <span class="arithmatex">\(\sin x\)</span>, polynomials, rational functions, and the others in this section) are well behaved; the example shows that this is a theorem to be checked and not an automatic property.</p>
+</div>
+<h2 id="the-standard-series-and-recognizing-numerical-series">The standard series, and recognizing numerical series<a class="headerlink" href="#the-standard-series-and-recognizing-numerical-series" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Standard Maclaurin series</p>
+<p>Each series below is derived in this section or in Section 11.2, and the stated set is exactly where the series converges <em>to the function</em>.</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\dfrac1{1-x}=\displaystyle\sum_{k=0}^\infty x^k\)</span> and <span class="arithmatex">\(\dfrac1{1+x}=\displaystyle\sum_{k=0}^\infty(-1)^kx^k\)</span>, for <span class="arithmatex">\(\abs x&lt;1\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(e^x=\displaystyle\sum_{k=0}^\infty\frac{x^k}{k!}\)</span>, <span class="arithmatex">\(\ \sin x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)!}\)</span>, <span class="arithmatex">\(\ \cos x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{(2k)!}\)</span>, for all <span class="arithmatex">\(x\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\sinh x=\displaystyle\sum_{k=0}^\infty\frac{x^{2k+1}}{(2k+1)!}\)</span> and <span class="arithmatex">\(\cosh x=\displaystyle\sum_{k=0}^\infty\frac{x^{2k}}{(2k)!}\)</span>, for all <span class="arithmatex">\(x\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\ln(1+x)=\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k\)</span> for <span class="arithmatex">\(-1&lt;x\le1\)</span>, and <span class="arithmatex">\(-\ln(1-x)=\displaystyle\sum_{k=1}^\infty\frac{x^k}k\)</span> for <span class="arithmatex">\(-1\le x&lt;1\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\tan^{-1}x=\displaystyle\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}\)</span>, for <span class="arithmatex">\(-1\le x\le1\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\((1+x)^p=\displaystyle\sum_{k=0}^\infty\binom pkx^k\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>; the endpoints are included for <span class="arithmatex">\(p&gt;0\)</span> (both) and for <span class="arithmatex">\(-1&lt;p&lt;0\)</span> (only <span class="arithmatex">\(x=1\)</span>), and excluded for <span class="arithmatex">\(p\le-1\)</span>.</p>
+</li>
+</ul>
+</div>
+<p>The series of <span class="arithmatex">\(-\ln(1-x)\)</span> is the series of <span class="arithmatex">\(\ln(1+t)\)</span> with <span class="arithmatex">\(t=-x\)</span> (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(3)), which is valid for <span class="arithmatex">\(-1&lt;-x\le1\)</span>; and <span class="arithmatex">\(\cosh x=\frac{e^x+e^{-x}}2\)</span> has the series <span class="arithmatex">\(\sum\frac{x^{2k}}{(2k)!}\)</span> by the same cancellation as in Example <a href="#ex-build">11.3.9</a>(c).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.23: Recognizing a numerical series</p>
+<p><span id="ex-recognize"></span></p>
+<p>Find the exact sums of (a) <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{(-1)^k\pi^{2k}}{(2k)!}\)</span>, (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{2^k}{k\,3^k}\)</span>, (c) <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{k+1}{k!}\)</span>.</p>
+<p><strong>Solution.</strong> (a) This is the cosine series at <span class="arithmatex">\(x=\pi\)</span>: the sum is <span class="arithmatex">\(\cos\pi=-1\)</span>. (b) The series is <span class="arithmatex">\(\sum\frac{x^k}k\)</span> at <span class="arithmatex">\(x=\frac23\)</span>, which lies in <span class="arithmatex">\((-1,1)\)</span>, so its sum is <span class="arithmatex">\(-\ln\left(1-\frac23\right)=\ln3\approx1.0986\)</span>. (c) Multiply the exponential series by <span class="arithmatex">\(x\)</span> and differentiate term by term (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>): <span class="arithmatex">\(xe^x=\sum_{k=0}^\infty\frac{x^{k+1}}{k!}\)</span> gives <span class="arithmatex">\((x+1)e^x=\sum_{k=0}^\infty\frac{(k+1)x^k}{k!}\)</span> for all <span class="arithmatex">\(x\)</span>. At <span class="arithmatex">\(x=1\)</span> the sum is <span class="arithmatex">\(2e\approx5.4366\)</span>.</p>
+</div>
+<p><em>Looking ahead.</em> Taylor series are a computational tool. The next section uses them to approximate values and integrals with a guaranteed error, to evaluate limits that would need repeated use of l’Hôpital’s Rule, and to solve differential equations. Later courses use power series to define functions such as the exponential and sine of a complex number or of a matrix.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Taylor series from the definition</em> (Examples <a href="#ex-b1">11.3.24</a>–<a href="#ex-b2">11.3.25</a>): the sine at <span class="arithmatex">\(\frac\pi2\)</span>; the logarithm at <span class="arithmatex">\(3\)</span> with its endpoints.</p>
+</li>
+<li>
+<p><em>Convergence to the function</em> (Examples <a href="#ex-b3">11.3.26</a>–<a href="#ex-b5">11.3.28</a>): the exponential at <span class="arithmatex">\(2\)</span>; a Lagrange-remainder argument for <span class="arithmatex">\(\ln(1+x)\)</span>; the sine at <span class="arithmatex">\(\frac\pi6\)</span>.</p>
+</li>
+<li>
+<p><em>Building new series</em> (Examples <a href="#ex-b6">11.3.29</a>–<a href="#ex-b9">11.3.32</a>): substitution and a factor <span class="arithmatex">\(x\)</span>; dividing by <span class="arithmatex">\(x^2\)</span>; endpoints through the arctangent; the difference of two logarithms.</p>
+</li>
+<li>
+<p><em>Differentiating and integrating</em> (Examples <a href="#ex-b10">11.3.33</a>–<a href="#ex-b12">11.3.35</a>): an integral with a Catalan-type sum; summing a numerical series with <span class="arithmatex">\(-\ln(1-x)\)</span>; a function defined by an integral.</p>
+</li>
+<li>
+<p><em>The binomial series</em> (Examples <a href="#ex-b13">11.3.36</a>–<a href="#ex-b15">11.3.38</a>): a negative integer exponent; a square root with both endpoints; the inverse sine and <span class="arithmatex">\(\frac\pi2\)</span>.</p>
+</li>
+<li>
+<p><em>Recognizing numerical series</em> (Examples <a href="#ex-b16">11.3.39</a>–<a href="#ex-b18">11.3.41</a>): a sine value; a logarithm that converges fast; a series with <span class="arithmatex">\(k^2\)</span> over <span class="arithmatex">\(k!\)</span>.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b19">11.3.42</a>–<a href="#ex-b20">11.3.43</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-taylor-series-from-the-definition">Group 1: Taylor series from the definition<a class="headerlink" href="#group-1-taylor-series-from-the-definition" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.24: The sine centered at <span class="arithmatex">\(\frac\pi2\)</span></p>
+<p><span id="ex-b1"></span></p>
+<p>Find the Taylor series of <span class="arithmatex">\(\sin x\)</span> centered at <span class="arithmatex">\(\frac\pi2\)</span> from the definition. For which <span class="arithmatex">\(x\)</span> does it converge, and to what?</p>
+<p><strong>Solution.</strong> The derivatives <span class="arithmatex">\(\sin x,\ \cos x,\ -\sin x,\ -\cos x,\dots\)</span> at <span class="arithmatex">\(\frac\pi2\)</span> are <span class="arithmatex">\(1,0,-1,0,1,0,-1,0,\dots\)</span>, so the odd-order derivatives vanish and <span class="arithmatex">\(f^{(2k)}(\frac\pi2)=(-1)^k\)</span>. The coefficients are <span class="arithmatex">\(c_{2k}=\frac{(-1)^k}{(2k)!}\)</span> and</p>
+<div class="arithmatex">\[\sum_{k=0}^\infty\frac{(-1)^k}{(2k)!}\left(x-\frac\pi2\right)^{2k}=1-\frac12\left(x-\frac\pi2\right)^2+\frac1{24}\left(x-\frac\pi2\right)^4-\cdots .\]</div>
+<p>For the terms <span class="arithmatex">\(a_k=\frac{(-1)^k(x-\pi/2)^{2k}}{(2k)!}\)</span> the Ratio Test gives <span class="arithmatex">\(\frac{(x-\pi/2)^2}{(2k+2)(2k+1)}\to0\)</span>, so the series converges for all <span class="arithmatex">\(x\)</span>. All derivatives of <span class="arithmatex">\(\sin\)</span> satisfy <span class="arithmatex">\(\abs{f^{(n)}(c)}\le1\)</span>, so Theorem <a href="#thm-bounded">11.3.5</a> (<span class="arithmatex">\(M=B=1\)</span>, <span class="arithmatex">\(I=\R\)</span>) shows that the sum is <span class="arithmatex">\(\sin x\)</span> for every <span class="arithmatex">\(x\)</span>. This agrees with the identity <span class="arithmatex">\(\sin x=\cos\left(x-\frac\pi2\right)\)</span> and the cosine series with <span class="arithmatex">\(x-\frac\pi2\)</span> substituted (Theorem <a href="#thm-uniq">11.3.7</a>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.25: The logarithm centered at <span class="arithmatex">\(3\)</span>, with endpoints</p>
+<p><span id="ex-b2"></span></p>
+<p>Find the Taylor series of <span class="arithmatex">\(\ln x\)</span> centered at <span class="arithmatex">\(3\)</span>, its interval of convergence, and the interval on which it equals <span class="arithmatex">\(\ln x\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f^{(k)}(x)=\frac{(-1)^{k-1}(k-1)!}{x^k}\)</span> for <span class="arithmatex">\(k\ge1\)</span>, so <span class="arithmatex">\(c_k=\frac{f^{(k)}(3)}{k!}=\frac{(-1)^{k-1}}{k\,3^k}\)</span> and <span class="arithmatex">\(c_0=\ln3\)</span>:</p>
+<div class="arithmatex">\[\ln x=\ln3+\sum_{k=1}^\infty\frac{(-1)^{k-1}(x-3)^k}{k\,3^k}=\ln3+\frac{x-3}3-\frac{(x-3)^2}{18}+\frac{(x-3)^3}{81}-\cdots .\]</div>
+<p>Then <span class="arithmatex">\(\abs{c_{k+1}/c_k}=\frac k{3(k+1)}\to\frac13\)</span>, so <span class="arithmatex">\(R=3\)</span> and the open interval is <span class="arithmatex">\((0,6)\)</span>. At <span class="arithmatex">\(x=6\)</span> the series is <span class="arithmatex">\(\ln3+\sum\frac{(-1)^{k-1}}k\)</span>, convergent (Alternating Series Test); at <span class="arithmatex">\(x=0\)</span> it is <span class="arithmatex">\(\ln3-\sum\frac1k\)</span>, divergent (harmonic series). The interval of convergence is <span class="arithmatex">\((0,6]\)</span>. It equals <span class="arithmatex">\(\ln x\)</span> on this whole interval: <span class="arithmatex">\(\ln x=\ln3+\ln\left(1+\frac{x-3}3\right)\)</span>, and Theorem <a href="#thm-logatan">11.3.12</a>(1) with <span class="arithmatex">\(t=\frac{x-3}3\in(-1,1]\)</span> gives the series. At <span class="arithmatex">\(x=6\)</span> the sum is <span class="arithmatex">\(\ln3+\ln2=\ln6\)</span>.</p>
+</div>
+<h2 id="group-2-convergence-to-the-function">Group 2: Convergence to the function<a class="headerlink" href="#group-2-convergence-to-the-function" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.26: The exponential centered at <span class="arithmatex">\(2\)</span></p>
+<p><span id="ex-b3"></span></p>
+<p>Show that the Taylor series of <span class="arithmatex">\(e^x\)</span> centered at <span class="arithmatex">\(2\)</span> converges to <span class="arithmatex">\(e^x\)</span> for all <span class="arithmatex">\(x\)</span>.</p>
+<p><strong>Solution.</strong> Every derivative of <span class="arithmatex">\(e^x\)</span> is <span class="arithmatex">\(e^x\)</span>, which equals <span class="arithmatex">\(e^2\)</span> at <span class="arithmatex">\(2\)</span>, so the series is <span class="arithmatex">\(\sum\frac{e^2}{k!}(x-2)^k\)</span>. Fix <span class="arithmatex">\(L&gt;0\)</span> and let <span class="arithmatex">\(I=(2-L,2+L)\)</span>. For <span class="arithmatex">\(c\)</span> in <span class="arithmatex">\(I\)</span>, <span class="arithmatex">\(\abs{f^{(n)}(c)}=e^c&lt;e^{2+L}\)</span>, so Theorem <a href="#thm-bounded">11.3.5</a> applies with <span class="arithmatex">\(M=e^{2+L}\)</span> and <span class="arithmatex">\(B=1\)</span>, and the series converges to <span class="arithmatex">\(e^x\)</span> for <span class="arithmatex">\(\abs{x-2}&lt;L\)</span>. Since <span class="arithmatex">\(L\)</span> is arbitrary, it holds for all <span class="arithmatex">\(x\)</span>:</p>
+<div class="arithmatex">\[e^x=e^2\sum_{k=0}^\infty\frac{(x-2)^k}{k!}=e^2\left(1+(x-2)+\frac{(x-2)^2}2+\cdots\right).\]</div>
+<p>This is also the series of <span class="arithmatex">\(e^{x-2}\)</span> (substitution) multiplied by <span class="arithmatex">\(e^2\)</span>, in accordance with Theorem <a href="#thm-uniq">11.3.7</a>. For example at <span class="arithmatex">\(x=3\)</span> it says <span class="arithmatex">\(e^3=e^2\sum\frac1{k!}=e^2\cdot e\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.27: Convergence of the logarithm series by the Lagrange remainder</p>
+<p><span id="ex-b4"></span></p>
+<p>For <span class="arithmatex">\(f(x)=\ln(1+x)\)</span> show, using Taylor’s Theorem, that <span class="arithmatex">\(R_n(x)\to0\)</span> for <span class="arithmatex">\(-\frac12\le x\le1\)</span>. What goes wrong for <span class="arithmatex">\(-1&lt;x&lt;-\frac12\)</span>?</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f^{(n+1)}(c)=\frac{(-1)^nn!}{(1+c)^{n+1}}\)</span>, so for some <span class="arithmatex">\(c\)</span> between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(x\)</span> (Theorem <a href="../../11.1/notes/#thm-taylor">11.1.11</a>)</p>
+<div class="arithmatex">\[R_n(x)=\frac{(-1)^nn!}{(n+1)!\,(1+c)^{n+1}}x^{n+1}\qquad\text{and}\qquad\abs{R_n(x)}=\frac1{n+1}\left(\frac{\abs x}{1+c}\right)^{n+1}.\]</div>
+<p><em>If <span class="arithmatex">\(0\le x\le1\)</span>:</em> <span class="arithmatex">\(c\ge0\)</span> so <span class="arithmatex">\(1+c\ge1\)</span> and <span class="arithmatex">\(\frac{\abs x}{1+c}\le1\)</span>; hence <span class="arithmatex">\(\abs{R_n(x)}\le\frac1{n+1}\to0\)</span>. This includes <span class="arithmatex">\(x=1\)</span>, so the Lagrange form proves <span class="arithmatex">\(\ln2=\sum\frac{(-1)^{k+1}}k\)</span> directly, without Abel’s theorem. <em>If <span class="arithmatex">\(-\frac12\le x&lt;0\)</span>:</em> <span class="arithmatex">\(x&lt;c&lt;0\)</span>, so <span class="arithmatex">\(1+c&gt;1+x\ge\frac12\ge\abs x\)</span>, which gives <span class="arithmatex">\(\frac{\abs x}{1+c}&lt;1\)</span> and again <span class="arithmatex">\(\abs{R_n(x)}\le\frac1{n+1}\to0\)</span>. <em>If <span class="arithmatex">\(-1&lt;x&lt;-\frac12\)</span>:</em> <span class="arithmatex">\(c\)</span> can be close to <span class="arithmatex">\(x\)</span>, so <span class="arithmatex">\(\frac{\abs x}{1+c}\)</span> can exceed <span class="arithmatex">\(1\)</span> and the bound does not tend to <span class="arithmatex">\(0\)</span>; the Lagrange form alone cannot decide these <span class="arithmatex">\(x\)</span>. This is why Theorem <a href="#thm-logatan">11.3.12</a> integrates the geometric series instead, which works on the whole interval <span class="arithmatex">\((-1,1)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.28: The sine centered at <span class="arithmatex">\(\frac\pi6\)</span></p>
+<p><span id="ex-b5"></span></p>
+<p>Find the first five terms of the Taylor series of <span class="arithmatex">\(\sin x\)</span> centered at <span class="arithmatex">\(\frac\pi6\)</span> and show that it converges to <span class="arithmatex">\(\sin x\)</span> for all <span class="arithmatex">\(x\)</span>.</p>
+<p><strong>Solution.</strong> The derivatives at <span class="arithmatex">\(\frac\pi6\)</span> are <span class="arithmatex">\(\sin\frac\pi6=\frac12\)</span>, <span class="arithmatex">\(\cos\frac\pi6=\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(-\frac12\)</span>, <span class="arithmatex">\(-\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\frac12\)</span>, and the coefficients are these numbers divided by <span class="arithmatex">\(k!\)</span>: <span class="arithmatex">\(\frac12,\ \frac{\sqrt3}2,\ -\frac14,\ -\frac{\sqrt3}{12},\ \frac1{48}\)</span>. So</p>
+<div class="arithmatex">\[\sin x=\frac12+\frac{\sqrt3}2\left(x-\frac\pi6\right)-\frac14\left(x-\frac\pi6\right)^2-\frac{\sqrt3}{12}\left(x-\frac\pi6\right)^3+\frac1{48}\left(x-\frac\pi6\right)^4+\cdots .\]</div>
+<p>As in Example <a href="#ex-b1">11.3.24</a>, <span class="arithmatex">\(\abs{f^{(n)}(c)}\le1\)</span> for all <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(c\)</span>, so Theorem <a href="#thm-bounded">11.3.5</a> gives convergence to <span class="arithmatex">\(\sin x\)</span> for every <span class="arithmatex">\(x\)</span>. (The series is the expansion of <span class="arithmatex">\(\sin\left(\frac\pi6+h\right)=\frac12\cos h+\frac{\sqrt3}2\sin h\)</span> in powers of <span class="arithmatex">\(h=x-\frac\pi6\)</span>, which is the same series by Theorem <a href="#thm-uniq">11.3.7</a>.)</p>
+</div>
+<h2 id="group-3-building-new-series">Group 3: Building new series<a class="headerlink" href="#group-3-building-new-series" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.29: Substitution and a factor <span class="arithmatex">\(x\)</span></p>
+<p><span id="ex-b6"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(x\cos(x^3)\)</span> and its interval of convergence.</p>
+<p><strong>Solution.</strong> In <span class="arithmatex">\(\cos u=\sum\frac{(-1)^ku^{2k}}{(2k)!}\)</span> put <span class="arithmatex">\(u=x^3\)</span> (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(3)) and multiply by <span class="arithmatex">\(x\)</span> (part 2): <span class="arithmatex">\(x\cos(x^3)=\sum_{k=0}^\infty\frac{(-1)^kx^{6k+1}}{(2k)!}=x-\frac{x^7}2+\frac{x^{13}}{24}-\cdots\)</span>. The cosine series converges for every <span class="arithmatex">\(u\)</span>, so the new series converges for every <span class="arithmatex">\(x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.30: Dividing by <span class="arithmatex">\(x^2\)</span></p>
+<p><span id="ex-b7"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(\dfrac{e^x-1-x}{x^2}\)</span> and its value at <span class="arithmatex">\(0\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(e^x-1-x=\sum_{k=2}^\infty\frac{x^k}{k!}=x^2\sum_{j=0}^\infty\frac{x^j}{(j+2)!}\)</span> (put <span class="arithmatex">\(k=j+2\)</span>). The last series converges for all <span class="arithmatex">\(x\)</span> (Ratio Test: <span class="arithmatex">\(\frac{x}{j+3}\to0\)</span>), so for <span class="arithmatex">\(x\ne0\)</span> we can divide by <span class="arithmatex">\(x^2\)</span>:</p>
+<div class="arithmatex">\[\frac{e^x-1-x}{x^2}=\sum_{j=0}^\infty\frac{x^j}{(j+2)!}=\frac12+\frac x6+\frac{x^2}{24}+\frac{x^3}{120}+\cdots .\]</div>
+<p>The series has value <span class="arithmatex">\(\frac12\)</span> at <span class="arithmatex">\(x=0\)</span>, the limit of the quotient there.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.31: An endpoint decided by the arctangent</p>
+<p><span id="ex-b8"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(x^2\tan^{-1}(x^2)\)</span> and its interval of convergence. What is the sum at <span class="arithmatex">\(x=1\)</span>?</p>
+<p><strong>Solution.</strong> Substitute <span class="arithmatex">\(u=x^2\)</span> in <span class="arithmatex">\(\tan^{-1}u=\sum\frac{(-1)^ku^{2k+1}}{2k+1}\)</span> (valid for <span class="arithmatex">\(\abs u\le1\)</span>, Theorem <a href="#thm-logatan">11.3.12</a>(2)) and multiply by <span class="arithmatex">\(x^2\)</span>: <span class="arithmatex">\(x^2\tan^{-1}(x^2)=\sum_{k=0}^\infty\frac{(-1)^kx^{4k+4}}{2k+1}=x^4-\frac{x^8}3+\frac{x^{12}}5-\cdots\)</span>. This converges exactly when <span class="arithmatex">\(\abs{x^2}\le1\)</span>, that is <span class="arithmatex">\(-1\le x\le1\)</span>, including both endpoints. At <span class="arithmatex">\(x=1\)</span> the sum is <span class="arithmatex">\(1^2\tan^{-1}1=\frac\pi4\)</span>, the Leibniz series <span class="arithmatex">\(1-\frac13+\frac15-\cdots\)</span> again.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.32: A difference of two logarithms</p>
+<p><span id="ex-b9"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(\ln\dfrac{1+x}{1-x}\)</span> and its interval of convergence. Use it at <span class="arithmatex">\(x=\frac13\)</span> to compute <span class="arithmatex">\(\ln2\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(\ln\frac{1+x}{1-x}=\ln(1+x)-\ln(1-x)\)</span>. The first series is <span class="arithmatex">\(\sum\frac{(-1)^{k+1}x^k}k\)</span> and the second, <span class="arithmatex">\(-\ln(1-x)=\sum\frac{x^k}k\)</span>; they are valid for <span class="arithmatex">\(-1&lt;x\le1\)</span> and <span class="arithmatex">\(-1\le x&lt;1\)</span>, so the difference is valid for <span class="arithmatex">\(\abs x&lt;1\)</span> (Theorem <a href="../../11.2/notes/#thm-comb">11.2.11</a>(1)). The even powers cancel and the odd powers double:</p>
+<div class="arithmatex">\[\ln\frac{1+x}{1-x}=2\sum_{k=0}^\infty\frac{x^{2k+1}}{2k+1}=2x+\frac{2x^3}3+\frac{2x^5}5+\cdots,\qquad\abs x&lt;1 .\]</div>
+<p>At <span class="arithmatex">\(x=\pm1\)</span> the series diverges: it is <span class="arithmatex">\(\pm2\sum\frac1{2k+1}\)</span> (compare with the harmonic series). At <span class="arithmatex">\(x=\frac13\)</span>, <span class="arithmatex">\(\frac{1+x}{1-x}=2\)</span>, so <span class="arithmatex">\(\ln2=2\left(\frac13+\frac1{81}+\frac1{1215}+\frac1{15309}+\cdots\right)\)</span>. Four terms give <span class="arithmatex">\(\frac{53056}{76545}=0.693135\)</span>, against <span class="arithmatex">\(\ln2=0.693147\)</span>: an error of <span class="arithmatex">\(1.2\times10^{-5}\)</span> from four terms, where the alternating series of Example <a href="#ex-endsums">11.3.13</a> would need about <span class="arithmatex">\(10^5\)</span> terms.</p>
+</div>
+<h2 id="group-4-differentiating-and-integrating">Group 4: Differentiating and integrating<a class="headerlink" href="#group-4-differentiating-and-integrating" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.33: An integral and a Catalan-type sum</p>
+<p><span id="ex-b10"></span></p>
+<p>Find a power series for <span class="arithmatex">\(F(x)=\displaystyle\int_0^x\frac{\tan^{-1}t}t\,dt\)</span>, its interval of convergence, and the value of <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)^2}\)</span> as an integral.</p>
+<p><strong>Solution.</strong> Dividing the series of <span class="arithmatex">\(\tan^{-1}t\)</span> by <span class="arithmatex">\(t\)</span>: <span class="arithmatex">\(\frac{\tan^{-1}t}t=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{2k+1}\)</span> for <span class="arithmatex">\(\abs t&lt;1\)</span>. Integrating term by term (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>),</p>
+<div class="arithmatex">\[F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)^2}=x-\frac{x^3}9+\frac{x^5}{25}-\frac{x^7}{49}+\cdots,\qquad\abs x&lt;1 .\]</div>
+<p>At <span class="arithmatex">\(x=\pm1\)</span> the terms have absolute value <span class="arithmatex">\(\frac1{(2k+1)^2}\le\frac1{k^2}\)</span> (for <span class="arithmatex">\(k\ge1\)</span>), so the series converges absolutely (Comparison Test with a <span class="arithmatex">\(p\)</span>-series, <span class="arithmatex">\(p=2\)</span>): the interval of convergence is <span class="arithmatex">\([-1,1]\)</span>. The function <span class="arithmatex">\(F\)</span> is continuous on <span class="arithmatex">\([-1,1]\)</span> because its integrand is (it is <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(t=0\)</span>), so Abel’s theorem (Theorem <a href="#thm-abel">11.3.11</a>) gives <span class="arithmatex">\(\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)^2}=F(1)=\int_0^1\frac{\tan^{-1}t}t\,dt=0.915966\ldots\)</span> (this number is called Catalan’s constant).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.34: Summing a numerical series with <span class="arithmatex">\(-\ln(1-x)\)</span></p>
+<p><span id="ex-b11"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac k{(k+1)\,2^k}\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="arithmatex">\(\frac k{k+1}=1-\frac1{k+1}\)</span>, so the sum is <span class="arithmatex">\(\sum_{k\ge1}\frac1{2^k}-\sum_{k\ge1}\frac1{(k+1)2^k}\)</span>. The first is a geometric series with sum <span class="arithmatex">\(1\)</span>. For the second, <span class="arithmatex">\(\sum_{k=1}^\infty\frac{x^k}{k+1}=\frac1x\sum_{k=1}^\infty\frac{x^{k+1}}{k+1}=\frac1x\left(-\ln(1-x)-x\right)\)</span> for <span class="arithmatex">\(0&lt;\abs x&lt;1\)</span> (the series of <span class="arithmatex">\(-\ln(1-x)\)</span> without its first term <span class="arithmatex">\(x\)</span>). At <span class="arithmatex">\(x=\frac12\)</span> it equals <span class="arithmatex">\(2\left(\ln2-\frac12\right)=2\ln2-1\)</span>. Therefore the sum is <span class="arithmatex">\(1-(2\ln2-1)=2-2\ln2\approx0.6137\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.35: A function defined by an integral</p>
+<p><span id="ex-b12"></span></p>
+<p>Find a power series for <span class="arithmatex">\(F(x)=\displaystyle\int_0^x\frac{1-\cos t}{t^2}\,dt\)</span> and its radius of convergence.</p>
+<p><strong>Solution.</strong> By Example <a href="#ex-b7">11.3.30</a>’s method (or Example <a href="#ex-build">11.3.9</a>(b)), <span class="arithmatex">\(\frac{1-\cos t}{t^2}=\sum_{k=0}^\infty\frac{(-1)^kt^{2k}}{(2k+2)!}\)</span> for all <span class="arithmatex">\(t\)</span> (the value at <span class="arithmatex">\(t=0\)</span> is <span class="arithmatex">\(\frac12\)</span>, the limit). Integrating term by term from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(F(x)=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{(2k+1)(2k+2)!}=\frac x2-\frac{x^3}{72}+\frac{x^5}{3600}-\cdots\)</span>. The radius is <span class="arithmatex">\(\infty\)</span>, the same as that of the series that was integrated (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>). Since <span class="arithmatex">\(\frac{1-\cos t}{t^2}\ge0\)</span>, <span class="arithmatex">\(F\)</span> is increasing, and <span class="arithmatex">\(F'(x)=\frac{1-\cos x}{x^2}\to\frac12\)</span> as <span class="arithmatex">\(x\to0\)</span>, consistent with the first term <span class="arithmatex">\(\frac x2\)</span>.</p>
+</div>
+<h2 id="group-5-the-binomial-series">Group 5: The binomial series<a class="headerlink" href="#group-5-the-binomial-series" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.36: A negative integer exponent</p>
+<p><span id="ex-b13"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\((1-x)^{-3}\)</span> and its interval of convergence.</p>
+<p><strong>Solution.</strong> Put <span class="arithmatex">\(p=-3\)</span> and replace <span class="arithmatex">\(x\)</span> by <span class="arithmatex">\(-x\)</span> in Theorem <a href="#thm-binom">11.3.15</a>: <span class="arithmatex">\((1-x)^{-3}=\sum\binom{-3}k(-x)^k\)</span>. Now <span class="arithmatex">\(\binom{-3}k=\frac{(-3)(-4)\cdots(-k-2)}{k!}=(-1)^k\frac{(k+2)!}{2\,k!}=(-1)^k\binom{k+2}2\)</span>, so the coefficient of <span class="arithmatex">\(x^k\)</span> is <span class="arithmatex">\(\binom{k+2}2=\frac{(k+1)(k+2)}2\)</span>:</p>
+<div class="arithmatex">\[\frac1{(1-x)^3}=\sum_{k=0}^\infty\frac{(k+1)(k+2)}2\,x^k=1+3x+6x^2+10x^3+15x^4+\cdots,\qquad\abs x&lt;1 .\]</div>
+<p>Since <span class="arithmatex">\(p=-3\le-1\)</span>, Theorem <a href="#thm-binomend">11.3.16</a> says that both endpoints diverge (the terms <span class="arithmatex">\(\frac{(k+1)(k+2)}2\)</span> do not tend to <span class="arithmatex">\(0\)</span>). This agrees with differentiating <span class="arithmatex">\(\frac1{(1-x)^2}\)</span> term by term (Section 11.2).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.37: A square root, with both endpoints</p>
+<p><span id="ex-b14"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(\sqrt{9+x}\)</span> and its interval of convergence, and its sums at the endpoints.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(\sqrt{9+x}=3\sqrt{1+\frac x9}\)</span>, so by Theorem <a href="#thm-binom">11.3.15</a> with <span class="arithmatex">\(p=\frac12\)</span> and <span class="arithmatex">\(x\)</span> replaced by <span class="arithmatex">\(\frac x9\)</span>,</p>
+<div class="arithmatex">\[\sqrt{9+x}=3\sum_{k=0}^\infty\binom{1/2}k\frac{x^k}{9^k}=3+\frac x6-\frac{x^2}{216}+\frac{x^3}{3888}-\frac{5x^4}{279936}+\cdots .\]</div>
+<p>Since <span class="arithmatex">\(p=\frac12&gt;0\)</span>, the binomial series converges for <span class="arithmatex">\(\abs{\frac x9}\le1\)</span>, so the interval of convergence is <span class="arithmatex">\([-9,9]\)</span>, and the series equals <span class="arithmatex">\(\sqrt{9+x}\)</span> on all of it (Theorem <a href="#thm-binomend">11.3.16</a>). At <span class="arithmatex">\(x=9\)</span> the sum is <span class="arithmatex">\(\sqrt{18}=3\sqrt2\)</span>; at <span class="arithmatex">\(x=-9\)</span> it is <span class="arithmatex">\(\sqrt0=0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.38: The inverse sine, and <span class="arithmatex">\(\frac\pi2\)</span></p>
+<p><span id="ex-b15"></span></p>
+<p>Find the Maclaurin series of <span class="arithmatex">\(\sin^{-1}x\)</span> and its interval of convergence. Deduce a series for <span class="arithmatex">\(\frac\pi2\)</span>.</p>
+<p><strong>Solution.</strong> By Example <a href="#ex-binomsub">11.3.18</a>’s method, with <span class="arithmatex">\(p=-\frac12\)</span> and <span class="arithmatex">\(u=-t^2\)</span> in Theorem <a href="#thm-binom">11.3.15</a>: <span class="arithmatex">\(\frac1{\sqrt{1-t^2}}=\sum_{k=0}^\infty\binom{2k}k\frac{t^{2k}}{4^k}\)</span> for <span class="arithmatex">\(\abs t&lt;1\)</span> (using <span class="arithmatex">\(\binom{-1/2}k=\frac{(-1)^k}{4^k}\binom{2k}k\)</span>). Since <span class="arithmatex">\(\frac d{dx}\sin^{-1}x=\frac1{\sqrt{1-x^2}}\)</span> and <span class="arithmatex">\(\sin^{-1}0=0\)</span>, integrating term by term gives</p>
+<div class="arithmatex">\[\sin^{-1}x=\sum_{k=0}^\infty\binom{2k}k\frac{x^{2k+1}}{4^k(2k+1)}=x+\frac{x^3}6+\frac{3x^5}{40}+\frac{5x^7}{112}+\cdots,\qquad\abs x&lt;1 .\]</div>
+<p><em>Endpoints.</em> Let <span class="arithmatex">\(a_k=\binom{2k}k4^{-k}\)</span>. Then <span class="arithmatex">\(a_{k+1}=a_k\cdot\frac{2k+1}{2k+2}\)</span>, and <span class="arithmatex">\(a_k^2\le\frac1{2k+1}\)</span> for all <span class="arithmatex">\(k\)</span>: this holds for <span class="arithmatex">\(k=0\)</span> (<span class="arithmatex">\(1\le1\)</span>), and if it holds for <span class="arithmatex">\(k\)</span> then <span class="arithmatex">\(a_{k+1}^2\le\frac{2k+1}{(2k+2)^2}\le\frac1{2k+3}\)</span>, because <span class="arithmatex">\((2k+1)(2k+3)=4k^2+8k+3\le(2k+2)^2\)</span>. So the terms at <span class="arithmatex">\(x=\pm1\)</span> satisfy <span class="arithmatex">\(\frac{a_k}{2k+1}\le(2k+1)^{-3/2}\le k^{-3/2}\)</span>, and the series converges absolutely there (Comparison Test with a <span class="arithmatex">\(p\)</span>-series, <span class="arithmatex">\(p=\frac32\)</span>). The interval of convergence is <span class="arithmatex">\([-1,1]\)</span>. Since <span class="arithmatex">\(\sin^{-1}\)</span> is continuous on <span class="arithmatex">\([-1,1]\)</span>, Abel’s theorem gives <span class="arithmatex">\(\sum_{k=0}^\infty\binom{2k}k\frac1{4^k(2k+1)}=\sin^{-1}1=\frac\pi2\)</span>. The convergence is slow: <span class="arithmatex">\(1000\)</span> terms give <span class="arithmatex">\(1.5530\)</span> against <span class="arithmatex">\(1.5708\)</span>.</p>
+</div>
+<h2 id="group-6-recognizing-numerical-series">Group 6: Recognizing numerical series<a class="headerlink" href="#group-6-recognizing-numerical-series" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.39: A sine value</p>
+<p><span id="ex-b16"></span></p>
+<p>Find the exact sum of <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)!}\left(\frac\pi4\right)^{2k+1}\)</span>.</p>
+<p><strong>Solution.</strong> This is the series of <span class="arithmatex">\(\sin x\)</span> (Theorem <a href="#thm-esc">11.3.6</a>) at <span class="arithmatex">\(x=\frac\pi4\)</span>, valid because the series converges to <span class="arithmatex">\(\sin x\)</span> for every <span class="arithmatex">\(x\)</span>. The sum is <span class="arithmatex">\(\sin\frac\pi4=\frac{\sqrt2}2\approx0.7071\)</span>. The terms decrease very fast: <span class="arithmatex">\(0.7854-0.0807+0.0025-0.00004=0.70711\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.40: A logarithm that converges fast</p>
+<p><span id="ex-b17"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac1{(2k+1)\,9^k}\)</span>.</p>
+<p><strong>Solution.</strong> By Example <a href="#ex-b9">11.3.32</a>, <span class="arithmatex">\(\sum_{k=0}^\infty\frac{x^{2k+1}}{2k+1}=\frac12\ln\frac{1+x}{1-x}\)</span> for <span class="arithmatex">\(\abs x&lt;1\)</span>. At <span class="arithmatex">\(x=\frac13\)</span>: <span class="arithmatex">\(\sum\frac1{(2k+1)3^{2k+1}}=\frac12\ln2\)</span>. Our series is <span class="arithmatex">\(3\)</span> times this, because <span class="arithmatex">\(\frac1{3^{2k+1}}=\frac13\cdot\frac1{9^k}\)</span>. So the sum is <span class="arithmatex">\(\frac32\ln2\approx1.0397\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.41: <span class="arithmatex">\(k^2\)</span> over <span class="arithmatex">\(k!\)</span></p>
+<p><span id="ex-b18"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\sum_{k=0}^\infty\frac{k^2}{k!}\)</span>.</p>
+<p><strong>Solution.</strong> Start from <span class="arithmatex">\(e^x=\sum\frac{x^k}{k!}\)</span>. Differentiating and multiplying by <span class="arithmatex">\(x\)</span> gives <span class="arithmatex">\(xe^x=\sum\frac{kx^k}{k!}\)</span>; doing it again, <span class="arithmatex">\(x(e^x+xe^x)=(x^2+x)e^x=\sum\frac{k^2x^k}{k!}\)</span>, for all <span class="arithmatex">\(x\)</span> (Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>). At <span class="arithmatex">\(x=1\)</span> the sum is <span class="arithmatex">\(2e\approx5.4366\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.42: The Taylor series of a derivative</p>
+<p><span id="ex-b19"></span></p>
+<p>Prove: if <span class="arithmatex">\(f\)</span> has derivatives of all orders at <span class="arithmatex">\(a\)</span>, the Taylor series of <span class="arithmatex">\(f'\)</span> centered at <span class="arithmatex">\(a\)</span> is the series obtained by differentiating the Taylor series of <span class="arithmatex">\(f\)</span> term by term.</p>
+<p><strong>Plan.</strong> Write both series with Definition <a href="#def-ts">11.3.1</a> and compare coefficients.</p>
+<p><em>Proof.</em> The Taylor series of <span class="arithmatex">\(f\)</span> is <span class="arithmatex">\(\sum_{k=0}^\infty\frac{f^{(k)}(a)}{k!}(x-a)^k\)</span>; differentiating term by term (the constant term disappears) gives <span class="arithmatex">\(\sum_{k=1}^\infty\frac{kf^{(k)}(a)}{k!}(x-a)^{k-1}=\sum_{k=1}^\infty\frac{f^{(k)}(a)}{(k-1)!}(x-a)^{k-1}\)</span>. Put <span class="arithmatex">\(j=k-1\)</span>: this is <span class="arithmatex">\(\sum_{j=0}^\infty\frac{f^{(j+1)}(a)}{j!}(x-a)^j\)</span>. The Taylor series of <span class="arithmatex">\(g=f'\)</span> has coefficients <span class="arithmatex">\(\frac{g^{(j)}(a)}{j!}=\frac{f^{(j+1)}(a)}{j!}\)</span> because <span class="arithmatex">\(g^{(j)}=f^{(j+1)}\)</span>. The two series have the same coefficients. ◻ ∎</p>
+<p>A common mistake is to think this proves that <span class="arithmatex">\(f'\)</span> equals the derivative of the sum of the Taylor series of <span class="arithmatex">\(f\)</span>; that needs the series to represent <span class="arithmatex">\(f\)</span> (and Theorem <a href="../../11.2/notes/#thm-diffint">11.2.14</a>). The statement proved is about coefficients only, and it holds even for functions like Theorem <a href="#thm-flat">11.3.21</a>’s, where both series are <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 11.3.43: Even functions have even Maclaurin series</p>
+<p><span id="ex-b20"></span></p>
+<p>Prove: if <span class="arithmatex">\(f\)</span> is even and <span class="arithmatex">\(f(x)=\sum c_kx^k\)</span> for <span class="arithmatex">\(\abs x&lt;r\)</span> (<span class="arithmatex">\(r&gt;0\)</span>), then <span class="arithmatex">\(c_k=0\)</span> for every odd <span class="arithmatex">\(k\)</span>.</p>
+<p><strong>Plan.</strong> The series <span class="arithmatex">\(\sum(-1)^kc_kx^k\)</span> also represents <span class="arithmatex">\(f\)</span> (by evenness); then use Theorem <a href="#thm-uniq">11.3.7</a> to compare coefficients.</p>
+<p><em>Proof.</em> For <span class="arithmatex">\(\abs x&lt;r\)</span> the point <span class="arithmatex">\(-x\)</span> also satisfies <span class="arithmatex">\(\abs{-x}&lt;r\)</span>, so <span class="arithmatex">\(f(-x)=\sum c_k(-x)^k=\sum(-1)^kc_kx^k\)</span>. Since <span class="arithmatex">\(f\)</span> is even, <span class="arithmatex">\(f(-x)=f(x)\)</span>, so <span class="arithmatex">\(\sum(-1)^kc_kx^k\)</span> and <span class="arithmatex">\(\sum c_kx^k\)</span> converge to the same function on <span class="arithmatex">\((-r,r)\)</span>. By Theorem <a href="#thm-uniq">11.3.7</a> both are the Maclaurin series of that function, and the Maclaurin coefficients are <span class="arithmatex">\(\frac{f^{(k)}(0)}{k!}\)</span>, so <span class="arithmatex">\((-1)^kc_k=c_k\)</span> for every <span class="arithmatex">\(k\)</span>. For odd <span class="arithmatex">\(k\)</span> this reads <span class="arithmatex">\(-c_k=c_k\)</span>, so <span class="arithmatex">\(c_k=0\)</span>. ◻ ∎</p>
+<p>A common mistake is to apply this at a center other than <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(f(x)=x^2\)</span> is even, but its Taylor series at <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(1+2(x-1)+(x-1)^2\)</span>, has an odd power of <span class="arithmatex">\(x-1\)</span> with coefficient <span class="arithmatex">\(2\ne0\)</span>. (Evenness is about symmetry around <span class="arithmatex">\(0\)</span>.)</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-poly">11.3.1</a>.</strong> A polynomial has <span class="arithmatex">\(p^{(k)}(0)=0\)</span> for <span class="arithmatex">\(k\)</span> larger than its degree, so its Maclaurin series is the polynomial itself, <span class="arithmatex">\(2+3x^2-x^4\)</span> (Theorem <a href="../../11.1/notes/#thm-polyself">11.1.8</a>); it converges for all <span class="arithmatex">\(x\)</span> to <span class="arithmatex">\(p(x)\)</span>. For <span class="arithmatex">\(q(x)=x^3\)</span> at <span class="arithmatex">\(a=1\)</span>: <span class="arithmatex">\(q(1)=1\)</span>, <span class="arithmatex">\(q'(1)=3\)</span>, <span class="arithmatex">\(q''(1)=6\)</span>, <span class="arithmatex">\(q'''(1)=6\)</span>, so the series is <span class="arithmatex">\(1+3(x-1)+3(x-1)^2+(x-1)^3\)</span>, again a polynomial with sum <span class="arithmatex">\(q(x)\)</span> for all <span class="arithmatex">\(x\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-read">11.3.2</a>.</strong> <span class="arithmatex">\(f^{(k)}(0)=k!\,c_k\)</span> (Theorem <a href="#thm-uniq">11.3.7</a>): <span class="arithmatex">\(f(0)=4\)</span>, <span class="arithmatex">\(f'(0)=1!\cdot(-3)=-3\)</span>, <span class="arithmatex">\(f''(0)=2!\cdot5=10\)</span>, <span class="arithmatex">\(f'''(0)=3!\cdot7=42\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-binom">11.3.3</a>.</strong> <span class="arithmatex">\(\binom{-1/3}2=\frac{(-\frac13)(-\frac43)}2=\frac29\)</span> and <span class="arithmatex">\(\binom{3/2}3=\frac{\frac32\cdot\frac12\cdot(-\frac12)}6=-\frac1{16}\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,11 +1,11 @@
 \documentclass[11pt]{article}
 \usepackage[appendix]{calc}
-\calcappendix{Foundations for Chapter 10}
+\calcappendix{Appendix}
 
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel's theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at $x=\pm1$. Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -577,5 +577,110 @@ Take $f(x)=\frac1{1-x}=\sum x^k$ ($a=0$, $R=1$), $x_0=0.3$, $h=0.01$ and $\rho=\
 \textbf{Solution.} $f'(x_0)=\frac1{0.7^2}=\frac{100}{49}\approx2.040816$. The difference quotient is $\frac{f(0.31)-f(0.3)}{0.01}=100\left(\frac{100}{69}-\frac{10}7\right)=\frac{1000}{483}\approx2.070393$, so the actual difference is $\frac{700}{23667}\approx0.0296$. The bound uses $E=\sum_{k\ge2}k(k-1)\rho^{k-2}=\frac2{(1-\rho)^3}=16$ (the second derivative of $\frac1{1-x}$ at $\rho$), so $E\abs h=0.16$. The bound is valid and five times larger than the true difference, as is typical: it must work for every $c_k$ and every $h$.
 %@ F-ex1 | Q(100,69)-Q(10,7) == Q(10,483) and 100*Q(10,483) == Q(1000,483) and Q(1000,483)-Q(100,49) == Q(700,23667) and abs(float(Q(700,23667))-0.0296)<1e-4 and summation(k*(k-1)*Q(1,2)**(k-2),(k,2,oo)) == 16 and 16*Q(1,100) == Q(4,25) | $E=\sum_{k\ge2}k(k-1)\rho^{k-2}=\frac2{(1-\rho)^3}=16$
 \end{exmp}
+
+% =====================================================================
+\section{Abel's Theorem and the Binomial Series at the Endpoints}
+
+The section on Taylor series needs two facts about the \emph{endpoints} of an interval of convergence, where the theorems on power series say nothing. First, a power series can converge at an endpoint $x=a+R$ and equal a function $f$ inside the interval; is its sum at the endpoint the number $f(a+R)$? Abel's theorem says that the sum is the \emph{limit} of $f$ as $x$ approaches the endpoint from inside, which is $f(a+R)$ when $f$ is continuous there. This is how $1-\frac12+\frac13-\cdots=\ln2$ and $1-\frac13+\frac15-\cdots=\frac\pi4$ are proved. Second, the binomial series $\sum\binom pkx^k$ has radius $1$, and whether it converges at $x=1$ and at $x=-1$ depends on $p$; we settle every case. This section proves both facts \emph{in full}. It uses the Divergence Test, the Alternating Series Test, the Comparison Test, the harmonic series, the geometric series and the Monotone Convergence Theorem (Section~A).
+
+\begin{thm}{Abel's limit theorem}{abellimit}
+Let $\sum c_k(x-a)^k$ have radius of convergence $R$ with $0<R<\infty$, and let $f(x)=\sum_{k=0}^\infty c_k(x-a)^k$ for $\abs{x-a}<R$.
+\begin{enumerate}
+  \item If $\sum_{k=0}^\infty c_kR^k$ converges, then $\displaystyle\lim_{x\to(a+R)^-}f(x)=\sum_{k=0}^\infty c_kR^k$.
+  \item If $\sum_{k=0}^\infty c_k(-R)^k$ converges, then $\displaystyle\lim_{x\to(a-R)^+}f(x)=\sum_{k=0}^\infty c_k(-R)^k$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1)~\emph{Reduction.} Put $d_k=c_kR^k$ and $t=\frac{x-a}R$. Then $f(x)=g(t)$ with $g(t)=\sum d_kt^k$ for $\abs t<1$, and $x\to(a+R)^-$ means $t\to1^-$. Let $S=\sum d_k$. Replacing $d_0$ by $d_0-S$ subtracts the constant $S$ from $g$ and makes $\sum d_k=0$. So it is enough to prove: \emph{if $\sum d_k$ converges to $0$, then $g(t)\to0$ as $t\to1^-$.}
+
+\emph{Summation by parts.} Let $s_n=d_0+\cdots+d_n$, so $s_n\to0$, and put $s_{-1}=0$, so $d_k=s_k-s_{k-1}$. For every $n\ge1$ and every $t$,
+\[
+\sum_{k=0}^nd_kt^k=\sum_{k=0}^ns_kt^k-\sum_{k=0}^ns_{k-1}t^k=\sum_{k=0}^ns_kt^k-\sum_{k=0}^{n-1}s_kt^{k+1}=(1-t)\sum_{k=0}^{n-1}s_kt^k+s_nt^n .
+\]
+Now let $\abs t<1$. The sequence $(s_n)$ converges, so it is bounded, $\abs{s_k}\le K$, and $\sum s_kt^k$ converges absolutely by comparison with the geometric series $\sum Kt^k$; also $s_nt^n\to0$. Letting $n\to\infty$,
+\[
+g(t)=(1-t)\sum_{k=0}^\infty s_kt^k\qquad(\abs t<1).
+\]
+
+\emph{The estimate.} Let $\varepsilon>0$. Choose $N$ with $\abs{s_k}<\varepsilon$ for all $k>N$, and put $M=\sum_{k=0}^N\abs{s_k}$. For $0<t<1$,
+\[
+\abs{g(t)}\le(1-t)\sum_{k=0}^N\abs{s_k}t^k+(1-t)\sum_{k=N+1}^\infty\varepsilon\,t^k\le(1-t)M+\varepsilon\,t^{N+1}\le(1-t)M+\varepsilon ,
+\]
+because $(1-t)\sum_{k>N}t^k=t^{N+1}\le1$. If $1-t<\frac\varepsilon{M+1}$, then $\abs{g(t)}<2\varepsilon$. Since $\varepsilon$ was arbitrary, $g(t)\to0$ as $t\to1^-$.
+
+(2)~Put $\tilde c_k=(-1)^kc_k$. For $\abs{x-a}<R$ we have $\sum\tilde c_k(x-a)^k=\sum c_k(a-x)^k=f(2a-x)$, and $\sum\tilde c_kR^k=\sum c_k(-R)^k$ converges. By part~(1), $f(2a-x)\to\sum c_k(-R)^k$ as $x\to(a+R)^-$. Writing $y=2a-x$, which tends to $(a-R)^+$, gives part~(2).
+\end{proof}
+
+\begin{exmp}{The hypothesis cannot be dropped}{abelfail}
+The series $\sum_{k=0}^\infty(-1)^kx^k$ has radius $1$ and sums to $f(x)=\frac1{1+x}$ for $\abs x<1$. As $x\to1^-$, $f(x)\to\frac12$. Is $\frac12$ the ``sum of the series at $x=1$''?
+
+\textbf{Solution.} No: at $x=1$ the series is $1-1+1-1+\cdots$, whose terms $(-1)^k$ do not tend to $0$, so it diverges (Divergence Test), and there is no sum for the limit to equal. Numerically, $f(0.9)=\frac1{1.9}\approx0.526$ and $f(0.99)=\frac1{1.99}\approx0.5025$ approach $\frac12$. Abel's theorem applies only when the series converges at the endpoint; it then says that the limit of $f$ \emph{is} the sum.
+%@ G-abelfail | limit(1/(1+x),x,1,'-') == Q(1,2) and abs(float(1/(1+Q(9,10)))-0.526)<1e-3 and abs(float(1/(1+Q(99,100)))-0.5025)<1e-4 | \frac1{1.99}\approx0.5025
+\end{exmp}
+
+\begin{exmp}{Abel's theorem and the alternating harmonic series}{abelln2}
+Show that $\sum_{k=1}^\infty\frac{(-1)^{k+1}}k=\ln2$, given that $\ln(1+x)=\sum_{k=1}^\infty\frac{(-1)^{k+1}x^k}k$ for $\abs x<1$.
+
+\textbf{Solution.} The power series has radius $1$ and converges at $x=1$ by the Alternating Series Test (the terms $\frac1k$ decrease to $0$). By Theorem~\ref{thm:abellimit}(1), its sum at $x=1$ equals $\lim_{x\to1^-}\ln(1+x)=\ln2$, because the logarithm is continuous at $2$. The convergence is slow: the error after $n$ terms is at most $\frac1{n+1}$, and the first ten terms give $0.6456$ against $\ln2=0.6931$.
+%@ G-abelln2 | limit(log(1+x),x,1,'-') == log(2) and summation((-1)**(k+1)/k,(k,1,oo)) == log(2) and abs(float(sum(Integer(-1)**(j+1)*Q(1,j) for j in range(1,11)))-0.6456)<1e-4 and abs(float(log(2))-0.6931)<1e-4 | $0.6456$ against $\ln2=0.6931$
+\end{exmp}
+
+For the second fact, recall that for a real number $p$ and an integer $k\ge0$ the \emph{binomial coefficient} is $\binom pk=\frac{p(p-1)\cdots(p-k+1)}{k!}$, with $\binom p0=1$. If $p$ is a nonnegative integer then $\binom pk=0$ for $k>p$ (the factor $p-p=0$ appears) and $\sum\binom pkx^k$ is a polynomial. Otherwise no factor is $0$ and every $\binom pk\ne0$. Let $c_k=\binom pk$ and $u_k=\abs{c_k}$. Multiplying out the definition,
+\[
+(k+1)\,c_{k+1}=(p-k)\,c_k,\qquad\text{so}\qquad(k+1)\,u_{k+1}=\abs{p-k}\,u_k .\tag{$\ast$}
+\]
+We also use $1-y\le e^{-y}$ for all real $y$ (the graph of the convex function $e^{-y}$ lies above its tangent line $1-y$ at $y=0$).
+
+\begin{thm}{The size of the binomial coefficients}{binomsize}
+Let $p$ be a real number that is not a nonnegative integer.
+\begin{enumerate}
+  \item If $p\le-1$ then $u_k\ge1$ for every $k$.
+  \item If $-1<p<0$ then $c_k=(-1)^ku_k$, the numbers $u_k$ decrease strictly to $0$, and $\sum u_k$ diverges.
+  \item If $p>0$, let $K$ be the smallest integer greater than $p$. For $k\ge K$ the signs of $c_k$ alternate, the numbers $u_k$ decrease strictly to $0$, and $\sum u_k$ converges.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1)~Here $\abs{p-k}=k+\abs p\ge k+1$, so $(\ast)$ gives $u_{k+1}\ge u_k$. Since $u_0=1$, $u_k\ge1$ for all $k$.
+
+(2)~Every factor $p-j$ is negative, so $c_k$ has the sign $(-1)^k$. Now $\abs{p-k}=k+\abs p$ with $0<\abs p<1$, so $(\ast)$ reads $(k+1)u_{k+1}=(k+\abs p)u_k$, which gives three facts. First, $u_{k+1}<u_k$ because $k+\abs p<k+1$. Second, $(k+1)u_{k+1}>k\,u_k$, so $k\,u_k$ increases and $k\,u_k\ge1\cdot u_1=\abs p$ for $k\ge1$; that is $u_k\ge\frac{\abs p}k$, and $\sum u_k$ diverges by comparison with the harmonic series. Third, $\frac{u_{k+1}}{u_k}=1-\frac{1-\abs p}{k+1}\le e^{-(1-\abs p)/(k+1)}$, so
+\[
+0<u_n=u_0\prod_{j=0}^{n-1}\frac{u_{j+1}}{u_j}\le\exp\left(-(1-\abs p)\sum_{j=1}^n\frac1j\right)\to0,
+\]
+because the harmonic series diverges. So $u_n\to0$ by the Squeeze Theorem.
+
+(3)~For $k\ge K$ we have $k>p$, so $p-k<0$. Then $\frac{c_{k+1}}{c_k}=\frac{p-k}{k+1}<0$: the signs alternate. By $(\ast)$, $(k+1)u_{k+1}=(k-p)u_k$, so $u_{k+1}<u_k$. As in~(2), $\frac{u_{k+1}}{u_k}=1-\frac{p+1}{k+1}\le e^{-(p+1)/(k+1)}$, so for $n>K$, $0<u_n\le u_K\exp\left(-(p+1)\sum_{j=K+1}^n\frac1j\right)\to0$. Finally $(\ast)$ gives $k\,u_k-(k+1)u_{k+1}=p\,u_k$ for $k\ge K$. Adding these equations for $k=K,\dots,n$, the left sides telescope:
+\[
+p\sum_{k=K}^nu_k=K\,u_K-(n+1)\,u_{n+1}\le K\,u_K .
+\]
+So the partial sums of $\sum u_k$ are bounded, and since the terms are positive the partial sums increase, so $\sum u_k$ converges by the Monotone Convergence Theorem (Theorem~\ref{thm:mct}).
+\end{proof}
+
+\begin{thm}{The binomial series at the endpoints}{binomend}
+Let $p$ be a real number that is not a nonnegative integer. The series $\sum_{k=0}^\infty\binom pkx^k$ has radius of convergence $1$, and
+\begin{enumerate}
+  \item at $x=1$ it converges if and only if $p>-1$;
+  \item at $x=-1$ it converges if and only if $p>0$.
+\end{enumerate}
+So its interval of convergence is $(-1,1)$ if $p\le-1$, $(-1,1]$ if $-1<p<0$, and $[-1,1]$ if $p>0$.
+\end{thm}
+\begin{proof}
+\emph{Radius.} $\abs{c_{k+1}/c_k}=\frac{\abs{p-k}}{k+1}\to1$, so $R=1$ (the Ratio Test applied to the coefficients).
+
+\emph{At $x=1$.} If $p\le-1$ the terms satisfy $\abs{c_k}\ge1$ (Theorem~\ref{thm:binomsize}(1)), so they do not tend to $0$ and the series diverges (Divergence Test). If $-1<p<0$ then $c_k=(-1)^ku_k$ with $u_k$ decreasing to $0$ (Theorem~\ref{thm:binomsize}(2)), so the series converges by the Alternating Series Test. If $p>0$, the terms from $k=K$ on alternate in sign and decrease in absolute value to $0$ (Theorem~\ref{thm:binomsize}(3)); the Alternating Series Test applied to the tail shows that the series converges (the first $K$ terms are finitely many).
+
+\emph{At $x=-1$.} The terms are $(-1)^kc_k$. If $p\le-1$ their absolute values are $\ge1$: divergence. If $-1<p<0$ they are $(-1)^kc_k=u_k>0$, and $\sum u_k$ diverges (Theorem~\ref{thm:binomsize}(2)). If $p>0$, $\sum u_k$ converges (Theorem~\ref{thm:binomsize}(3); the first $K$ terms do not matter), so the series converges absolutely.
+\end{proof}
+
+\begin{exmp}{The coefficients for $p=\frac12$}{binomsum}
+For $p=\frac12$ we have $K=1$ in Theorem~\ref{thm:binomsize}(3), and the telescoping identity reads $\frac12\sum_{k=1}^nu_k=u_1-(n+1)u_{n+1}$, that is
+\[
+\sum_{k=1}^n\abs{\binom{1/2}k}=1-2(n+1)\abs{\binom{1/2}{n+1}} .
+\]
+Check it for $n=9$ and say what it shows about $\sum_{k=1}^\infty\abs{\binom{1/2}k}$.
+
+\textbf{Solution.} The absolute values of the coefficients are $u_1=\frac12$, $u_2=\frac18$, $u_3=\frac1{16}$, $u_4=\frac5{128}$, $u_5=\frac7{256}$, $u_6=\frac{21}{1024}$, $u_7=\frac{33}{2048}$, $u_8=\frac{429}{32768}$, $u_9=\frac{715}{65536}$, $u_{10}=\frac{2431}{262144}$. Their sum for $k=1,\dots,9$ is $\frac{53381}{65536}\approx0.81453$, and the right side is $1-20\cdot\frac{2431}{262144}=\frac{53381}{65536}$: equal. The partial sums increase and are at most $1$, so they converge to some $L\le1$, and then $(n+1)u_{n+1}=\frac{1-S_n}2\to\frac{1-L}2$. If this limit were positive, $u_n\ge\frac cn$ for large $n$ and $\sum u_k$ would diverge by comparison with the harmonic series, contradicting Theorem~\ref{thm:binomsize}(3). So the limit is $0$, $L=1$, and $\sum_{k=1}^\infty\abs{\binom{1/2}k}=1$. Since $(-1)^k\binom{1/2}k=-u_k$ for $k\ge1$, this says that $\sum_{k=0}^\infty\binom{1/2}k(-1)^k=1-1=0=\sqrt{1+(-1)}$.
+%@ G-binomsum | [abs(binomial(Q(1,2),j)) for j in range(1,11)] == [Q(1,2),Q(1,8),Q(1,16),Q(5,128),Q(7,256),Q(21,1024),Q(33,2048),Q(429,32768),Q(715,65536),Q(2431,262144)] and sum(abs(binomial(Q(1,2),j)) for j in range(1,10)) == Q(53381,65536) and 1-20*Q(2431,262144) == Q(53381,65536) and abs(float(Q(53381,65536))-0.81453)<1e-5 and all(sum(abs(binomial(Q(1,2),j)) for j in range(1,nn+1)) == 1-2*(nn+1)*abs(binomial(Q(1,2),nn+1)) for nn in range(1,25)) | $\frac{53381}{65536}\approx0.81453$
+\end{exmp}
+
 
 \end{document}
