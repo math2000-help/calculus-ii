@@ -5,7 +5,7 @@
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -485,6 +485,97 @@ Find (a)~$\displaystyle\lim_{n\to\infty}\left(\frac{3n^2+1}{n^2+5}\right)^{1/n}$
 
 \textbf{Solution.} (a) The fraction tends to $3>0$, so with $p=0$ Theorem~\ref{thm:posroot} gives $1$. (b) Take $p=10$ and $c_n=7$: the limit is $1$. (c) Write $\frac{5n+1}{n^4}=n^{-3}\left(5+\frac1n\right)$: here $p=-3$ and $c_n=5+\frac1n\to5>0$, so the limit is $1$. In every case the root of a quantity that is only polynomial in $n$ is $1$ in the limit, and only a genuinely exponential factor ($2^n$, $\left(1+\frac1n\right)^{n^2}$, \dots) changes the answer.
 %@ E-ex2 | abs(float(((3*1000**2+1)/(1000**2+5))**(1/1000))-1.0011)<1e-4 and abs(float((7*1000**10)**(1/1000))-1.0736)<1e-3 and limit(5+1/n,n,oo) == 5 and simplify((5*n+1)/n**4 - n**(-3)*(5+1/n)) == 0 and limit((3*n**2+1)/(n**2+5),n,oo) == 3 | \frac{5n+1}{n^4}=n^{-3}\left(5+\frac1n\right)
+\end{exmp}
+
+% =====================================================================
+\section{Power Series: the Radius of Convergence and Term-by-Term Calculus}
+
+Chapter 11 uses three facts about a power series $\sum c_k(x-a)^k$ that need more care than a lecture allows. First, it converges on an interval around its center, so that a radius of convergence exists. Second, inside that interval it can be differentiated and integrated term by term. Third, doing so does not change the radius. This section proves all three \emph{in full}. It uses the Divergence Test, the Comparison Test, the Ratio Test, the geometric series and the Mean Value Theorem, and (for the radius) the least upper bound property of Section~A. Throughout, $a$ is the center and $c_k$ are the coefficients.
+
+\begin{thm}{Convergence at one point controls all nearer points}{abel}
+If $\sum c_k(x_0-a)^k$ converges, then $\sum c_k(x-a)^k$ converges absolutely for every $x$ with $\abs{x-a}<\abs{x_0-a}$.
+\end{thm}
+\begin{proof}
+Put $s=\abs{x_0-a}$. If $s=0$ no $x$ satisfies $\abs{x-a}<s$ and there is nothing to prove, so let $s>0$. The terms of a convergent series tend to $0$ (otherwise it would diverge, by the Divergence Test), and a convergent sequence is bounded (Theorem~\ref{thm:bounded}). So there is a number $B$ with $\abs{c_k}s^k\le B$ for every $k$. Let $\abs{x-a}<s$ and put $t=\abs{x-a}/s$, so $0\le t<1$. Then
+\[
+\abs{c_k(x-a)^k}=\abs{c_k}s^k\,t^k\le Bt^k .
+\]
+The geometric series $\sum Bt^k$ converges because $t<1$, so $\sum\abs{c_k(x-a)^k}$ converges by the Comparison Test.
+\end{proof}
+
+\begin{thm}{The radius of convergence exists}{radius}
+A power series $\sum c_k(x-a)^k$ converges in exactly one of three ways: (1)~it converges absolutely for every $x$ (then $R=\infty$); (2)~there is a number $R>0$ such that it converges absolutely for $\abs{x-a}<R$ and diverges for $\abs{x-a}>R$; (3)~it converges only at $x=a$ (then $R=0$). The number $R$ is determined by the series.
+\end{thm}
+\begin{proof}
+Let $S$ be the set of numbers $\abs{x-a}$ for the $x$ at which the series converges. It contains $0$ (take $x=a$), so $S$ is not empty. There are three possibilities for $S$.
+
+\emph{$S$ is not bounded above.} Let $x$ be any real number. Some element of $S$ exceeds $\abs{x-a}$, say $\abs{x_0-a}$ with the series convergent at $x_0$. By Theorem~\ref{thm:abel} the series converges absolutely at $x$. This is case~(1).
+
+\emph{$S=\{0\}$.} The series converges only at $a$: case~(3).
+
+\emph{$S$ is bounded above and has a positive element.} By the Completeness Axiom (Section~A), $R=\sup S$ exists, and $R>0$. Let $\abs{x-a}<R$. Then $\abs{x-a}$ is not an upper bound of $S$ (because $R$ is the \emph{least} upper bound), so some $s\in S$ has $s>\abs{x-a}$; the series converges at a point at distance $s$ from $a$, and by Theorem~\ref{thm:abel} it converges absolutely at $x$. Let $\abs{x-a}>R$. Every element of $S$ is $\le R$, so $\abs{x-a}\notin S$: the series diverges at $x$. This is case~(2).
+
+The three cases are exhaustive and exclusive, and $R$ is determined: if two numbers $R<R'$ both satisfied~(2), then at a point with $R<\abs{x-a}<R'$ the series would both diverge and converge.
+\end{proof}
+
+\begin{thm}{The differentiated and integrated series have the same radius}{radderiv}
+Let $\sum c_k(x-a)^k$ have radius $R$. For $\abs{x-a}<R$ the three series
+\[
+\sum_{k=1}^\infty kc_k(x-a)^{k-1},\qquad\sum_{k=2}^\infty k(k-1)c_k(x-a)^{k-2},\qquad\sum_{k=0}^\infty\frac{c_k}{k+1}(x-a)^{k+1}
+\]
+all converge absolutely. The first and the third have radius exactly $R$.
+\end{thm}
+\begin{proof}
+\emph{Convergence.} Fix $x$ and put $\rho=\abs{x-a}<R$. Choose $s$ with $\rho<s<R$. By Theorem~\ref{thm:radius} the original series converges at the point $a+s$, so its terms tend to $0$ and $\abs{c_k}s^k\le B$ for some $B$ (Theorem~\ref{thm:bounded}). With $t=\rho/s\in[0,1)$,
+\[
+k\abs{c_k}\rho^{k-1}\le\frac Bs\,k\,t^{k-1},\qquad k(k-1)\abs{c_k}\rho^{k-2}\le\frac B{s^2}\,k(k-1)\,t^{k-2}.
+\]
+The series $\sum kt^{k-1}$ and $\sum k(k-1)t^{k-2}$ converge for $0\le t<1$: for $t=0$ they have one nonzero term at most, and for $0<t<1$ the Ratio Test applies, since the ratios $\frac{(k+1)t}k$ and $\frac{(k+1)t}{k-1}$ tend to $t<1$. By the Comparison Test the first two series converge absolutely. For the third, $\frac{\abs{c_k}\rho^{k+1}}{k+1}\le\rho\abs{c_k}\rho^k$, and $\sum\abs{c_k}\rho^k$ converges because $\rho<R$ (Theorem~\ref{thm:radius}); compare again.
+
+\emph{The radii.} Let $R_D$ and $R_G$ be the radii of the first and third series. We have shown $R_D\ge R$ and $R_G\ge R$. Conversely, let $\abs u<R_D$ (with $u$ measured from the center $a$). The first series converges absolutely at $u$, and $\abs{c_k}\abs u^k\le k\abs{c_k}\abs u^k=\abs u\cdot k\abs{c_k}\abs u^{k-1}$ for $k\ge1$, so $\sum\abs{c_k}\abs u^k$ converges. Then the original series converges at $u$, so $\abs u\le R$ (it diverges beyond $R$). Hence $R_D\le R$. For the third series, observe that its \emph{differentiated} series is the original one, because $k\cdot\frac{c_{k-1}}k=c_{k-1}$. Applying what we showed ($R_D\ge R$) to the third series, the original converges absolutely wherever $\abs u<R_G$, so $R\ge R_G$. Therefore $R_D=R_G=R$.
+\end{proof}
+
+\begin{thm}{Differentiating a power series term by term}{termdiff}
+Let $\sum c_k(x-a)^k$ have radius $R>0$ and $f(x)=\sum_{k=0}^\infty c_k(x-a)^k$ for $\abs{x-a}<R$. Then $f$ is differentiable at every $x$ with $\abs{x-a}<R$, and $f'(x)=\sum_{k=1}^\infty kc_k(x-a)^{k-1}$.
+\end{thm}
+\begin{proof}
+Fix $x_0$ with $\abs{x_0-a}<R$ and choose $\rho$ with $\abs{x_0-a}<\rho<R$. Put $u=x_0-a$ and, for $h\ne0$ so small that $\abs{u+h}<\rho$, $v=u+h$. All three series $f(x_0+h)=\sum c_kv^k$, $f(x_0)=\sum c_ku^k$ and $\sum kc_ku^{k-1}$ converge (Theorem~\ref{thm:radderiv}), and so does $E=\sum_{k\ge2}k(k-1)\abs{c_k}\rho^{k-2}$, by the same theorem at the point at distance $\rho$. By the limit laws for series,
+\[
+\frac{f(x_0+h)-f(x_0)}h-\sum_{k=1}^\infty kc_ku^{k-1}=\sum_{k=2}^\infty c_k\left(\frac{v^k-u^k}h-ku^{k-1}\right),
+\]
+because the terms $k=0$ and $k=1$ of the right side are $0$. Fix $k\ge2$. By the Mean Value Theorem for $t\mapsto t^k$ on the interval between $u$ and $v$, $v^k-u^k=k\xi^{k-1}h$ for some $\xi$ between $u$ and $v$. Applying it again to $t\mapsto t^{k-1}$ on the interval between $u$ and $\xi$ gives $\xi^{k-1}-u^{k-1}=(k-1)\eta^{k-2}(\xi-u)$ with $\eta$ between $u$ and $\xi$. Hence
+\[
+\frac{v^k-u^k}h-ku^{k-1}=k\left(\xi^{k-1}-u^{k-1}\right)=k(k-1)\eta^{k-2}(\xi-u),
+\]
+and since $\eta$ and $\xi$ lie between $u$ and $v$ (so $\abs\eta<\rho$) and $\abs{\xi-u}\le\abs h$, the absolute value of the $k$-th term of the right side is at most $\abs{c_k}\,k(k-1)\rho^{k-2}\abs h$. The partial sums of the right side are therefore bounded in absolute value by $E\abs h$, and by Theorem~\ref{thm:ineq} so is the sum. So
+\[
+\abs{\frac{f(x_0+h)-f(x_0)}h-\sum_{k=1}^\infty kc_ku^{k-1}}\le E\,\abs h\longrightarrow0\quad(h\to0),
+\]
+that is, $f'(x_0)=\sum kc_ku^{k-1}$.
+\end{proof}
+
+\begin{thm}{Integrating a power series term by term}{termint}
+With $R$ and $f$ as in Theorem~\ref{thm:termdiff}, the series $G(x)=\sum_{k=0}^\infty\frac{c_k}{k+1}(x-a)^{k+1}$ converges for $\abs{x-a}<R$ and $G'(x)=f(x)$ there. Consequently $\int f(x)\,dx=G(x)+C$ on $(a-R,a+R)$.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:radderiv}, $G$ is a power series centered at $a$ with radius $R$. By Theorem~\ref{thm:termdiff} applied to $G$, $G'(x)=\sum_{k=0}^\infty(k+1)\frac{c_k}{k+1}(x-a)^k=f(x)$ for $\abs{x-a}<R$. Two antiderivatives of $f$ on an interval differ by a constant (a consequence of the Mean Value Theorem), so every antiderivative is $G+C$.
+\end{proof}
+
+\begin{thm}{Repeated differentiation}{allderiv}
+With $R$ and $f$ as in Theorem~\ref{thm:termdiff}, $f$ has derivatives of every order on $(a-R,a+R)$, and for $j\ge0$
+\[
+f^{(j)}(x)=\sum_{k=j}^\infty k(k-1)\cdots(k-j+1)\,c_k(x-a)^{k-j},\qquad f^{(j)}(a)=j!\,c_j .
+\]
+\end{thm}
+\begin{proof}
+For $j=0$ this is the definition of $f$. If the formula holds for $j$, its right side is a power series centered at $a$ with the coefficients $k(k-1)\cdots(k-j+1)c_k$, and by Theorem~\ref{thm:radderiv} (applied $j$ times) it has radius $R$. Theorem~\ref{thm:termdiff} applied to it gives the formula for $j+1$. At $x=a$ every term with $k>j$ contains $(x-a)^{k-j}=0$, and the term $k=j$ is $j!\,c_j$.
+\end{proof}
+
+\begin{exmp}{The key estimate for $\frac1{1-x}$}{termdiffex}
+Take $f(x)=\frac1{1-x}=\sum x^k$ ($a=0$, $R=1$), $x_0=0.3$, $h=0.01$ and $\rho=\frac12$. Compare the actual error in the difference quotient with the bound $E\abs h$ in the proof of Theorem~\ref{thm:termdiff}.
+
+\textbf{Solution.} $f'(x_0)=\frac1{0.7^2}=\frac{100}{49}\approx2.040816$. The difference quotient is $\frac{f(0.31)-f(0.3)}{0.01}=100\left(\frac{100}{69}-\frac{10}7\right)=\frac{1000}{483}\approx2.070393$, so the actual difference is $\frac{700}{23667}\approx0.0296$. The bound uses $E=\sum_{k\ge2}k(k-1)\rho^{k-2}=\frac2{(1-\rho)^3}=16$ (the second derivative of $\frac1{1-x}$ at $\rho$), so $E\abs h=0.16$. The bound is valid and five times larger than the true difference, as is typical: it must work for every $c_k$ and every $h$.
+%@ F-ex1 | Q(100,69)-Q(10,7) == Q(10,483) and 100*Q(10,483) == Q(1000,483) and Q(1000,483)-Q(100,49) == Q(700,23667) and abs(float(Q(700,23667))-0.0296)<1e-4 and summation(k*(k-1)*Q(1,2)**(k-2),(k,2,oo)) == 16 and 16*Q(1,100) == Q(4,25) | $E=\sum_{k\ge2}k(k-1)\rho^{k-2}=\frac2{(1-\rho)^3}=16$
 \end{exmp}
 
 \end{document}

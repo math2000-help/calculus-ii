@@ -1,0 +1,2003 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../10.5/notes/">
+      
+      
+        <link rel="next" href="../../10.7/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alternating-series-and-the-alternating-series-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Alternating series and the Alternating Series Test
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-error-in-an-alternating-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The error in an alternating series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#absolute-and-conditional-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Absolute and conditional convergence
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-the-order-of-the-terms-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Does the order of the terms matter?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-the-alternating-series-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: The Alternating Series Test
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-when-the-test-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: When the test fails
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-remainders-and-error-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Remainders and error bounds
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-absolute-and-conditional-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Absolute and conditional convergence
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-alternating-p-series-and-known-sums" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Alternating <span class="arithmatex">\(p\)</span>-series and known sums
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alternating-series-and-the-alternating-series-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Alternating series and the Alternating Series Test
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-error-in-an-alternating-series" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The error in an alternating series
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#absolute-and-conditional-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Absolute and conditional convergence
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-the-order-of-the-terms-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Does the order of the terms matter?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-the-alternating-series-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: The Alternating Series Test
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-when-the-test-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: When the test fails
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-remainders-and-error-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Remainders and error bounds
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-absolute-and-conditional-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Absolute and conditional convergence
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-alternating-p-series-and-known-sums" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Alternating <span class="arithmatex">\(p\)</span>-series and known sums
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="106-alternating-series">10.6 Alternating Series<a class="headerlink" href="#106-alternating-series" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>The harmonic series <span class="arithmatex">\(1+\frac12+\frac13+\cdots\)</span> diverges. Change every second sign and you get <span class="arithmatex">\(1-\frac12+\frac13-\frac14+\cdots\)</span>, whose partial sums <span class="arithmatex">\(1,\ \frac12,\ \frac56,\ \frac7{12},\dots\)</span> hop back and forth and seem to settle near <span class="arithmatex">\(0.69\)</span>. The tests of the last two sections need nonnegative terms, so none of them applies. This section handles the simplest and most important sign pattern: terms that strictly alternate. The test is short, the error is easy to control (it is smaller than the first term you leave out), and the result raises a new question: when does a series converge <em>because of</em> its signs, and when would it converge anyway? The answer leads to absolute and conditional convergence, which are the vocabulary of the next chapter.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>apply the Alternating Series Test, checking both conditions, and recognise when it fails or does not apply;</p>
+</li>
+<li>
+<p>bound the error of a partial sum of an alternating series and find how many terms give a required accuracy;</p>
+</li>
+<li>
+<p>define absolute and conditional convergence and classify a series;</p>
+</li>
+<li>
+<p>decide convergence of every alternating <span class="arithmatex">\(p\)</span>-series;</p>
+</li>
+<li>
+<p>prove the main theorems of this section, and say why the order of terms matters for some series.</p>
+</li>
+</ul>
+<h2 id="alternating-series-and-the-alternating-series-test">Alternating series and the Alternating Series Test<a class="headerlink" href="#alternating-series-and-the-alternating-series-test" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 10.6.1: Alternating series</p>
+<p><span id="def-alt"></span></p>
+<p>An <em>alternating series</em> is a series whose terms alternate in sign, that is, a series of the form <span class="arithmatex">\(\sum_{k=1}^\infty(-1)^{k+1}a_k\)</span> or <span class="arithmatex">\(\sum_{k=1}^\infty(-1)^ka_k\)</span> with all <span class="arithmatex">\(a_k&gt;0\)</span> (or all <span class="arithmatex">\(a_k\ge0\)</span>).</p>
+</div>
+<p>The partial sums of <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}k\)</span> are <span class="arithmatex">\(s_1=1\)</span>, <span class="arithmatex">\(s_2=\frac12\)</span>, <span class="arithmatex">\(s_3=\frac56\)</span>, <span class="arithmatex">\(s_4=\frac7{12}\)</span>, <span class="arithmatex">\(s_5=\frac{47}{60}\)</span>, <span class="arithmatex">\(s_6=\frac{37}{60}\)</span>. Odd partial sums lie above and even partial sums below, and each new pair closes in on the value.</p>
+<p><img alt="Diagram: \(s_\n\); the sum lies here" class="calc-figure" src="../figures/notes-fig1.svg" width="352" /></p>
+<p>This is the pattern the proof makes precise: the even partial sums increase, the odd ones decrease, and the sum is trapped between them.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.6.2: Alternating Series Test</p>
+<p><span id="thm-ast"></span></p>
+<p>Let <span class="arithmatex">\(a_1\ge a_2\ge a_3\ge\cdots\)</span> and <span class="arithmatex">\(\lim_{k\to\infty}a_k=0\)</span>. Then <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}a_k\)</span> converges. Moreover, if <span class="arithmatex">\(s_n\)</span> is the <span class="arithmatex">\(n\)</span>th partial sum and <span class="arithmatex">\(S\)</span> the sum, then</p>
+<div class="arithmatex">\[s_2\le s_4\le s_6\le\cdots\le S\le\cdots\le s_5\le s_3\le s_1 ,\]</div>
+<p>that is, <span class="arithmatex">\(s_{2m}\le S\le s_{2m+1}\)</span> for every <span class="arithmatex">\(m\ge1\)</span>.</p>
+</div>
+<p><em>Proof.</em> First, <span class="arithmatex">\(a_k\ge0\)</span> for all <span class="arithmatex">\(k\)</span>: if some <span class="arithmatex">\(a_j&lt;0\)</span>, then <span class="arithmatex">\(a_k\le a_j&lt;0\)</span> for all <span class="arithmatex">\(k\ge j\)</span> and the limit would be at most <span class="arithmatex">\(a_j&lt;0\)</span>, not <span class="arithmatex">\(0\)</span>.</p>
+<p><em>Even partial sums.</em> Since <span class="arithmatex">\(s_{2m}=s_{2m-2}+(a_{2m-1}-a_{2m})\)</span> and <span class="arithmatex">\(a_{2m-1}\ge a_{2m}\)</span> (with <span class="arithmatex">\(s_0=0\)</span>), <span class="arithmatex">\(\{s_{2m}\}\)</span> is nondecreasing. It is bounded above by <span class="arithmatex">\(a_1\)</span>, because</p>
+<div class="arithmatex">\[s_{2m}=a_1-(a_2-a_3)-(a_4-a_5)-\cdots-(a_{2m-2}-a_{2m-1})-a_{2m}\le a_1 ,\]</div>
+<p>every bracket and <span class="arithmatex">\(a_{2m}\)</span> being <span class="arithmatex">\(\ge0\)</span>. By the Monotone Convergence Theorem (Theorem <a href="../../appendix/appendix/#thm-mct">A.5</a>) <span class="arithmatex">\(s_{2m}\to L\)</span> for some number <span class="arithmatex">\(L\)</span>.</p>
+<p><em>Odd partial sums.</em> <span class="arithmatex">\(s_{2m+1}=s_{2m}+a_{2m+1}\)</span>, and <span class="arithmatex">\(a_{2m+1}\to0\)</span> (a subsequence of a sequence tending to <span class="arithmatex">\(0\)</span>, Theorem <a href="../../appendix/appendix/#thm-subseq">C.2</a>). By the limit laws, <span class="arithmatex">\(s_{2m+1}\to L+0=L\)</span>.</p>
+<p><em>All partial sums.</em> The even-indexed and the odd-indexed partial sums both tend to <span class="arithmatex">\(L\)</span>, so <span class="arithmatex">\(s_n\to L\)</span> by Theorem <a href="../../appendix/appendix/#thm-split">D.1</a>. Thus the series converges, with sum <span class="arithmatex">\(S=L\)</span>.</p>
+<p><em>The sandwich.</em> <span class="arithmatex">\(\{s_{2m}\}\)</span> is nondecreasing with limit <span class="arithmatex">\(S\)</span>, so <span class="arithmatex">\(s_{2m}\le S\)</span> (Theorem <a href="../../appendix/appendix/#thm-mctbound">A.6</a>). The odd sums are nonincreasing: <span class="arithmatex">\(s_{2m+1}=s_{2m-1}-(a_{2m}-a_{2m+1})\le s_{2m-1}\)</span>, and they tend to <span class="arithmatex">\(S\)</span>, so by the nonincreasing case of the Monotone Convergence Theorem <span class="arithmatex">\(S=\inf\{s_{2m+1}\}\le s_{2m+1}\)</span>. ◻ ∎</p>
+<p>The two conditions are both needed: <span class="arithmatex">\(a_k\)</span> must tend to <span class="arithmatex">\(0\)</span>, and <span class="arithmatex">\(a_k\)</span> must not increase. If <span class="arithmatex">\(a_k\)</span> is nonincreasing only from some index <span class="arithmatex">\(N\)</span> on, apply the theorem to the tail <span class="arithmatex">\(\sum_{k=N}^\infty\)</span> and add the finitely many first terms (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(5)); a series written as <span class="arithmatex">\(\sum(-1)^ka_k\)</span> is <span class="arithmatex">\(-1\)</span> times the series <span class="arithmatex">\(\sum(-1)^{k+1}a_k\)</span> (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(1)). In particular <em>the alternating harmonic series</em> <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}k\)</span> converges, although <span class="arithmatex">\(\sum\frac1k\)</span> diverges. Its value is <span class="arithmatex">\(\ln2\approx0.693\)</span>, as the chapter on power series will show.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.3: Using the Alternating Series Test</p>
+<p><span id="ex-astex"></span></p>
+<p>Decide whether each series converges. (a) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{3k+1}\)</span>; (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{k^2+3}\)</span>; (c) <span class="arithmatex">\(\displaystyle\sum_{k=2}^\infty(-1)^k\frac{\ln k}{\sqrt k}\)</span>.</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(a_k=\frac1{3k+1}\)</span> decreases because the denominator increases, and <span class="arithmatex">\(a_k\to0\)</span>. The series converges.</p>
+<p>(b) Here <span class="arithmatex">\(a_k=\frac k{k^2+3}\to0\)</span>. Is it nonincreasing? The first values are <span class="arithmatex">\(a_1=\frac14\)</span>, <span class="arithmatex">\(a_2=\frac27\)</span>, <span class="arithmatex">\(a_3=\frac14\)</span>: not nonincreasing at the start, so look at <span class="arithmatex">\(f(x)=\frac x{x^2+3}\)</span>, with <span class="arithmatex">\(f'(x)=\frac{3-x^2}{(x^2+3)^2}&lt;0\)</span> for <span class="arithmatex">\(x&gt;\sqrt3\approx1.73\)</span>. So <span class="arithmatex">\(a_k\)</span> decreases from <span class="arithmatex">\(k=2\)</span> on, and the test applies to the tail from <span class="arithmatex">\(k=2\)</span>: the series converges.</p>
+<p>(c) <span class="arithmatex">\(a_k=\frac{\ln k}{\sqrt k}\to0\)</span> (a logarithm grows more slowly than any power, Theorem <a href="../../10.2/notes/#thm-growth">10.2.13</a>). For <span class="arithmatex">\(f(x)=\frac{\ln x}{\sqrt x}\)</span>, <span class="arithmatex">\(f'(x)=\frac{2-\ln x}{2x^{3/2}}&lt;0\)</span> when <span class="arithmatex">\(\ln x&gt;2\)</span>, that is <span class="arithmatex">\(x&gt;e^2\approx7.39\)</span>. So <span class="arithmatex">\(a_k\)</span> decreases for <span class="arithmatex">\(k\ge8\)</span>, and the series converges. (The terms first rise, to about <span class="arithmatex">\(0.735\)</span> near <span class="arithmatex">\(k=7\)</span>, before they fall.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.4: When the Alternating Series Test fails</p>
+<p><span id="ex-astfail"></span></p>
+<p>Show that (a) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac{2k+1}{k+3}\)</span> and (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\left(1+\frac1k\right)^k\)</span> diverge, and show that (c) <span class="arithmatex">\(1-\frac14+\frac13-\frac1{16}+\frac15-\frac1{36}+\cdots\)</span> diverges although its terms tend to <span class="arithmatex">\(0\)</span>.</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(\abs{a_k}=\frac{2k+1}{k+3}\to2\ne0\)</span>, so the terms do not tend to <span class="arithmatex">\(0\)</span> and the series diverges by the Divergence Test (Theorem <a href="../../10.4/notes/#thm-divtest">10.4.1</a>). (b) <span class="arithmatex">\(\abs{a_k}=\left(1+\frac1k\right)^k\to e\ne0\)</span>: diverges by the Divergence Test.</p>
+<p>(c) The terms alternate in sign and tend to <span class="arithmatex">\(0\)</span>, but <span class="arithmatex">\(a_k=\frac1k\)</span> for odd <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(a_k=\frac1{k^2}\)</span> for even <span class="arithmatex">\(k\)</span>, so <span class="arithmatex">\(a_2=\frac14&lt;a_3=\frac13\)</span>: the sequence <span class="arithmatex">\(\{a_k\}\)</span> is not nonincreasing, and the test does not apply. In fact the series diverges. The even partial sums are</p>
+<div class="arithmatex">\[s_{2n}=\sum_{j=1}^n\frac1{2j-1}-\sum_{j=1}^n\frac1{(2j)^2}\ \ge\ \frac12H_n-\frac12 ,\]</div>
+<p>because <span class="arithmatex">\(\frac1{2j-1}&gt;\frac1{2j}\)</span> and <span class="arithmatex">\(\sum_{j=1}^n\frac1{4j^2}&lt;\frac14\cdot2=\frac12\)</span> (Theorem <a href="../../10.4/notes/#thm-pseries">10.4.11</a> gives <span class="arithmatex">\(\sum\frac1{j^2}&lt;2\)</span>). Since <span class="arithmatex">\(H_n\to\infty\)</span>, <span class="arithmatex">\(\{s_{2n}\}\)</span> is unbounded, so <span class="arithmatex">\(\{s_n\}\)</span> is not bounded and cannot converge (Theorem <a href="../../appendix/appendix/#thm-bounded">B.2</a>). The sign pattern alone does not rescue a series whose positive terms are large enough.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.6.1: The Alternating Series Test</p>
+<p><span id="kc-astkc"></span></p>
+<p>Decide whether each series converges, and name the condition that fails if it does not: (a) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{2k+7}\)</span>; (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+1}k\)</span>; (c) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{k^2+1}\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.6.1: Where is “nonincreasing” used?</p>
+<p><span id="think-conds"></span></p>
+<p>Write <span class="arithmatex">\(s_6\)</span> as <span class="arithmatex">\(a_1-(a_2-a_3)-(a_4-a_5)-a_6\)</span>. Why does this show <span class="arithmatex">\(s_6\le a_1\)</span> when the terms are nonincreasing and tend to <span class="arithmatex">\(0\)</span>? What goes wrong with this argument if <span class="arithmatex">\(a_3&gt;a_2\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Because each bracket <span class="arithmatex">\(a_2-a_3\)</span>, <span class="arithmatex">\(a_4-a_5\)</span> is <span class="arithmatex">\(\ge0\)</span> when the terms are nonincreasing, and <span class="arithmatex">\(a_6\ge0\)</span>, we subtract nonnegative quantities from <span class="arithmatex">\(a_1\)</span>, so <span class="arithmatex">\(s_6\le a_1\)</span>; in general <span class="arithmatex">\(s_{2m}\le a_1\)</span>, which makes the even partial sums bounded and lets the Monotone Convergence Theorem apply. If <span class="arithmatex">\(a_3&gt;a_2\)</span>, the bracket <span class="arithmatex">\(a_2-a_3\)</span> is negative and we would be <em>adding</em> a positive amount; the bound by <span class="arithmatex">\(a_1\)</span> is lost, and this is exactly how the divergent series of Example <a href="#ex-astfail">10.6.4</a>(c) escapes.</p>
+</details>
+</div>
+<h2 id="the-error-in-an-alternating-series">The error in an alternating series<a class="headerlink" href="#the-error-in-an-alternating-series" title="Permanent link">&para;</a></h2>
+<p>The sandwich in the theorem gives the error at once. If we stop after <span class="arithmatex">\(n\)</span> terms, the sum is on one side of <span class="arithmatex">\(s_n\)</span>, between <span class="arithmatex">\(s_n\)</span> and the next partial sum <span class="arithmatex">\(s_{n+1}=s_n\pm a_{n+1}\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.6.5: Remainder in an alternating series</p>
+<p><span id="thm-remainder"></span></p>
+<p>Under the hypotheses of the Alternating Series Test, let <span class="arithmatex">\(R_n=S-s_n\)</span>. Then <span class="arithmatex">\(R_n\)</span> has the same sign as the first neglected term <span class="arithmatex">\((-1)^{n+2}a_{n+1}\)</span> (or is <span class="arithmatex">\(0\)</span>), and</p>
+<div class="arithmatex">\[\abs{R_n}\le a_{n+1}\qquad(n\ge1).\]</div>
+<p>Equivalently, <span class="arithmatex">\(S\)</span> lies between <span class="arithmatex">\(s_n\)</span> and <span class="arithmatex">\(s_{n+1}\)</span>.</p>
+</div>
+<p><em>Proof.</em> If <span class="arithmatex">\(n=2m\)</span> is even, the theorem above gives <span class="arithmatex">\(s_{2m}\le S\le s_{2m+1}\)</span>, so <span class="arithmatex">\(0\le S-s_{2m}\le s_{2m+1}-s_{2m}=a_{2m+1}\)</span>. The first neglected term is <span class="arithmatex">\(+a_{2m+1}\)</span>, so the sign is right. If <span class="arithmatex">\(n=2m+1\)</span> is odd, then <span class="arithmatex">\(s_{2m+2}\le S\le s_{2m+1}\)</span>, so <span class="arithmatex">\(0\le s_{2m+1}-S\le s_{2m+1}-s_{2m+2}=a_{2m+2}\)</span>, that is <span class="arithmatex">\(-a_{2m+2}\le R_n\le0\)</span>, and the first neglected term is <span class="arithmatex">\(-a_{2m+2}\)</span>. ◻ ∎</p>
+<p>If the terms are nonincreasing only from index <span class="arithmatex">\(N\)</span> on, the same bound holds for every <span class="arithmatex">\(n\ge N\)</span>, since the remainder is the same series started later (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(5)).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.6: How many terms are enough?</p>
+<p><span id="ex-howmany"></span></p>
+<p>How many terms of <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^3}\)</span> guarantee an error less than <span class="arithmatex">\(10^{-4}\)</span>?</p>
+<p><strong>Solution.</strong> The terms <span class="arithmatex">\(\frac1{k^3}\)</span> decrease to <span class="arithmatex">\(0\)</span>. By the remainder theorem <span class="arithmatex">\(\abs{R_n}\le\frac1{(n+1)^3}\)</span>, and <span class="arithmatex">\(\frac1{(n+1)^3}&lt;10^{-4}\)</span> when <span class="arithmatex">\((n+1)^3&gt;10^4\)</span>. Since <span class="arithmatex">\(21^3=9261&lt;10^4&lt;10648=22^3\)</span>, we need <span class="arithmatex">\(n+1\ge22\)</span>: <span class="arithmatex">\(n=21\)</span> terms. Then <span class="arithmatex">\(s_{21}\approx0.901593\)</span> and the true value is <span class="arithmatex">\(S\approx0.901543\)</span>, an error of <span class="arithmatex">\(5\times10^{-5}\)</span>, below the guaranteed bound <span class="arithmatex">\(\frac1{22^3}\approx9.4\times10^{-5}\)</span>. For comparison, the positive series <span class="arithmatex">\(\sum\frac1{k^3}\)</span> needs <span class="arithmatex">\(n=71\)</span> terms for the same guarantee from the Integral Test bound <span class="arithmatex">\(R_n&lt;\frac1{2n^2}\)</span> (Section 10.4), so the alternating signs help a great deal.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.7: Trapping the value between two partial sums</p>
+<p><span id="ex-bracket"></span></p>
+<p>Estimate <span class="arithmatex">\(S=\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{2^k(k+1)}=1-\frac14+\frac1{12}-\frac1{32}+\frac1{80}-\cdots\)</span> and say how far off the estimate can be.</p>
+<p><strong>Solution.</strong> The terms <span class="arithmatex">\(a_k=\frac1{2^k(k+1)}\)</span> decrease to <span class="arithmatex">\(0\)</span>. Using the first four terms, <span class="arithmatex">\(s_4=1-\frac14+\frac1{12}-\frac1{32}=\frac{77}{96}\approx0.8021\)</span>; the next term is <span class="arithmatex">\(+\frac1{80}\)</span>, so <span class="arithmatex">\(s_5=\frac{391}{480}\approx0.8146\)</span>. By the theorem, <span class="arithmatex">\(S\)</span> lies between them: <span class="arithmatex">\(0.8021&lt;S&lt;0.8146\)</span>. The remainder <span class="arithmatex">\(R_4\)</span> is positive (the first neglected term is positive) and at most <span class="arithmatex">\(\frac1{80}=0.0125\)</span>. Taking the midpoint <span class="arithmatex">\(0.8083\)</span> as the estimate leaves an error of at most <span class="arithmatex">\(0.0063\)</span>. (The exact value is <span class="arithmatex">\(2\ln\frac32\approx0.8109\)</span>.)</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.6.2: Remainders</p>
+<p><span id="kc-remkc"></span></p>
+<p>How many terms of <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2}\)</span> guarantee an error less than <span class="arithmatex">\(0.01\)</span>?</p>
+</div>
+<h2 id="absolute-and-conditional-convergence">Absolute and conditional convergence<a class="headerlink" href="#absolute-and-conditional-convergence" title="Permanent link">&para;</a></h2>
+<p>The alternating harmonic series converges, but only because of its signs: with all signs positive it diverges. The series <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}{k^2}\)</span> converges too, and would converge with all signs positive. This difference matters. Now <span class="arithmatex">\(\sum a_k\)</span> denotes <em>any</em> series, with terms of any signs.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 10.6.8: Absolute and conditional convergence</p>
+<p><span id="def-abscond"></span></p>
+<p>The series <span class="arithmatex">\(\sum a_k\)</span> <em>converges absolutely</em> if <span class="arithmatex">\(\sum\abs{a_k}\)</span> converges. It <em>converges conditionally</em> if <span class="arithmatex">\(\sum a_k\)</span> converges but <span class="arithmatex">\(\sum\abs{a_k}\)</span> diverges.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.6.9: Absolute convergence implies convergence</p>
+<p><span id="thm-absconv"></span></p>
+<p>If <span class="arithmatex">\(\sum\abs{a_k}\)</span> converges, then <span class="arithmatex">\(\sum a_k\)</span> converges, and <span class="arithmatex">\(\abs{\sum a_k}\le\sum\abs{a_k}\)</span>. Equivalently, if <span class="arithmatex">\(\sum a_k\)</span> diverges, then <span class="arithmatex">\(\sum\abs{a_k}\)</span> diverges.</p>
+</div>
+<p><em>Proof.</em> For every <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(-\abs{a_k}\le a_k\le\abs{a_k}\)</span>, so <span class="arithmatex">\(0\le a_k+\abs{a_k}\le2\abs{a_k}\)</span>. The series <span class="arithmatex">\(\sum2\abs{a_k}\)</span> converges (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(1)), so <span class="arithmatex">\(\sum(a_k+\abs{a_k})\)</span> converges by the Comparison Test (Theorem <a href="../../10.5/notes/#thm-comp">10.5.1</a>). Since <span class="arithmatex">\(a_k=(a_k+\abs{a_k})-\abs{a_k}\)</span>, the series <span class="arithmatex">\(\sum a_k\)</span> is a difference of two convergent series and converges (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(3)). For the inequality, let <span class="arithmatex">\(s_n\)</span> and <span class="arithmatex">\(A_n\)</span> be the partial sums of <span class="arithmatex">\(\sum a_k\)</span> and <span class="arithmatex">\(\sum\abs{a_k}\)</span>. By the triangle inequality <span class="arithmatex">\(\abs{s_n}\le A_n\le A=\sum\abs{a_k}\)</span> (Theorem <a href="../../10.3/notes/#thm-posterms">10.3.13</a>(a)). As <span class="arithmatex">\(n\to\infty\)</span>, <span class="arithmatex">\(\abs{s_n}\to\abs S\)</span>, and limits preserve non-strict inequalities (Theorem <a href="../../appendix/appendix/#thm-ineq">C.1</a>), so <span class="arithmatex">\(\abs S\le A\)</span>. The second statement is the contrapositive. ◻ ∎</p>
+<p>Consequences: if all terms are <span class="arithmatex">\(\ge0\)</span>, convergence is absolute convergence, so “conditional” only concerns series with mixed signs. To test absolute convergence, apply the tests for nonnegative terms (Divergence, Integral, Comparison, Limit Comparison) to <span class="arithmatex">\(\sum\abs{a_k}\)</span>. Series divide into three classes: absolutely convergent, conditionally convergent, divergent.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.6.10: Alternating <span class="arithmatex">\(p\)</span>-series</p>
+<p><span id="thm-altp"></span></p>
+<p>The series <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^p}\)</span> converges absolutely if <span class="arithmatex">\(p&gt;1\)</span>, converges conditionally if <span class="arithmatex">\(0&lt;p\le1\)</span>, and diverges if <span class="arithmatex">\(p\le0\)</span>.</p>
+</div>
+<p><em>Proof.</em> The series of absolute values is the <span class="arithmatex">\(p\)</span>-series <span class="arithmatex">\(\sum\frac1{k^p}\)</span>, which converges if and only if <span class="arithmatex">\(p&gt;1\)</span> (Theorem <a href="../../10.4/notes/#thm-pseries">10.4.11</a>); this gives absolute convergence for <span class="arithmatex">\(p&gt;1\)</span> and the failure of absolute convergence for <span class="arithmatex">\(p\le1\)</span>. If <span class="arithmatex">\(0&lt;p\le1\)</span>, then <span class="arithmatex">\(a_k=k^{-p}\)</span> is decreasing and tends to <span class="arithmatex">\(0\)</span>, so the series converges by the Alternating Series Test: it converges conditionally. If <span class="arithmatex">\(p\le0\)</span>, then <span class="arithmatex">\(\abs{a_k}=k^{-p}\ge1\)</span> does not tend to <span class="arithmatex">\(0\)</span>, and the series diverges by the Divergence Test. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.11: Classifying series</p>
+<p><span id="ex-classify"></span></p>
+<p>Classify as absolutely convergent, conditionally convergent or divergent: (a) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^{2/3}}\)</span>; (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^2+1}\)</span>; (c) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{\cos k}{k^{3/2}+1}\)</span>; (d) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac k{2k+1}\)</span>; (e) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac{2+(-1)^k}{k^2}\)</span>.</p>
+<p><strong>Solution.</strong> (a) Alternating <span class="arithmatex">\(p\)</span>-series with <span class="arithmatex">\(p=\frac23\in(0,1]\)</span>: conditionally convergent. (b) <span class="arithmatex">\(\frac1{k^2+1}&lt;\frac1{k^2}\)</span>, so the series of absolute values converges by the Comparison Test: absolutely convergent. (c) The signs of <span class="arithmatex">\(\cos k\)</span> do not alternate regularly, so the Alternating Series Test does not apply, but <span class="arithmatex">\(\abs{\cos k}\le1\)</span> gives <span class="arithmatex">\(\frac{\abs{\cos k}}{k^{3/2}+1}&lt;\frac1{k^{3/2}}\)</span>, a convergent <span class="arithmatex">\(p\)</span>-series: absolutely convergent. (d) <span class="arithmatex">\(\abs{a_k}=\frac k{2k+1}\to\frac12\ne0\)</span>: diverges.</p>
+<p>(e) The terms are <span class="arithmatex">\(+\frac1{k^2}\)</span> for odd <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(-\frac3{k^2}\)</span> for even <span class="arithmatex">\(k\)</span>: they alternate, but <span class="arithmatex">\(a_k=\frac{2+(-1)^k}{k^2}\)</span> is not nonincreasing (<span class="arithmatex">\(a_3=\frac19&lt;a_4=\frac3{16}\)</span>), so the Alternating Series Test is not available. It is not needed: <span class="arithmatex">\(\abs{a_k}\le\frac3{k^2}\)</span>, so the series converges absolutely.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.12: A parameter</p>
+<p><span id="ex-pparam"></span></p>
+<p>For which <span class="arithmatex">\(p\)</span> is <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac k{k^p+1}\)</span> absolutely convergent, conditionally convergent, divergent?</p>
+<p><strong>Solution.</strong> Write <span class="arithmatex">\(a_k=\frac k{k^p+1}\)</span>. <em>Divergent:</em> if <span class="arithmatex">\(p\le1\)</span> then <span class="arithmatex">\(a_k\ge\frac k{k+1}\ge\frac12\)</span> (for <span class="arithmatex">\(p&lt;1\)</span>, <span class="arithmatex">\(k^p\le k\)</span>; for <span class="arithmatex">\(p=1\)</span> equal), so <span class="arithmatex">\(a_k\not\to0\)</span> and the series diverges. <em>Convergent:</em> if <span class="arithmatex">\(p&gt;1\)</span>, <span class="arithmatex">\(a_k\to0\)</span> (the denominator grows faster than <span class="arithmatex">\(k\)</span>), and <span class="arithmatex">\(f(x)=\frac x{x^p+1}\)</span> has <span class="arithmatex">\(f'(x)=\frac{1-(p-1)x^p}{(x^p+1)^2}&lt;0\)</span> once <span class="arithmatex">\(x^p&gt;\frac1{p-1}\)</span>, so <span class="arithmatex">\(a_k\)</span> is eventually decreasing and the Alternating Series Test shows convergence. <em>Absolute:</em> <span class="arithmatex">\(\abs{a_k}\sim k^{1-p}\)</span>; by the Limit Comparison Test with <span class="arithmatex">\(\frac1{k^{p-1}}\)</span> (the ratio <span class="arithmatex">\(\frac{k^p}{k^p+1}\to1\)</span>), <span class="arithmatex">\(\sum\abs{a_k}\)</span> converges if and only if <span class="arithmatex">\(p-1&gt;1\)</span>. So: absolutely convergent for <span class="arithmatex">\(p&gt;2\)</span>, conditionally convergent for <span class="arithmatex">\(1&lt;p\le2\)</span>, divergent for <span class="arithmatex">\(p\le1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.13: Signs that do not alternate</p>
+<p><span id="ex-sinexp"></span></p>
+<p>Show that <span class="arithmatex">\(S=\displaystyle\sum_{k=1}^\infty\frac{\sin k}{2^k}\)</span> converges, and bound <span class="arithmatex">\(S\)</span> using three terms.</p>
+<p><strong>Solution.</strong> The signs of <span class="arithmatex">\(\sin k\)</span> follow no simple pattern, so the Alternating Series Test is of no use. But <span class="arithmatex">\(\abs{\frac{\sin k}{2^k}}\le\frac1{2^k}\)</span>, and <span class="arithmatex">\(\sum\frac1{2^k}=1\)</span> converges, so the series converges absolutely, hence converges, and <span class="arithmatex">\(\abs S\le\sum\frac1{2^k}=1\)</span> (Theorem <a href="#thm-absconv">10.6.9</a>). The same argument applied to the tail gives <span class="arithmatex">\(\abs{S-s_3}\le\sum_{k&gt;3}\frac1{2^k}=\frac18\)</span>. With <span class="arithmatex">\(s_3=\frac{\sin1}2+\frac{\sin2}4+\frac{\sin3}8\approx0.6657\)</span> this gives <span class="arithmatex">\(0.5407\le S\le0.7907\)</span>. (The true value is about <span class="arithmatex">\(0.5928\)</span>.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.14: A value from the <span class="arithmatex">\(p\)</span>-series</p>
+<p><span id="ex-known"></span></p>
+<p>Given <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac1{k^6}=\frac{\pi^6}{945}\)</span>, find <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^6}\)</span>.</p>
+<p><strong>Solution.</strong> The alternating series converges absolutely (Theorem <a href="#thm-altp">10.6.10</a>, <span class="arithmatex">\(p=6\)</span>). Its partial sum <span class="arithmatex">\(s_{2n}\)</span> is the sum of all <span class="arithmatex">\(\frac1{k^6}\)</span> for <span class="arithmatex">\(k\le2n\)</span> minus twice the sum over the even <span class="arithmatex">\(k\le2n\)</span>, since each even term has the wrong sign:</p>
+<div class="arithmatex">\[s_{2n}=\sum_{k=1}^{2n}\frac1{k^6}-2\sum_{j=1}^n\frac1{(2j)^6}=\sum_{k=1}^{2n}\frac1{k^6}-\frac2{64}\sum_{j=1}^n\frac1{j^6}.\]</div>
+<p>Let <span class="arithmatex">\(n\to\infty\)</span>: both sums tend to <span class="arithmatex">\(\frac{\pi^6}{945}\)</span>, and <span class="arithmatex">\(s_{2n}\to S\)</span> because the series converges. So <span class="arithmatex">\(S=\frac{\pi^6}{945}\left(1-\frac1{32}\right)=\frac{31}{32}\cdot\frac{\pi^6}{945}=\frac{31\pi^6}{30240}\approx0.98555\)</span>.</p>
+</div>
+<h2 id="does-the-order-of-the-terms-matter">Does the order of the terms matter?<a class="headerlink" href="#does-the-order-of-the-terms-matter" title="Permanent link">&para;</a></h2>
+<p>For a finite sum, no. For an infinite sum, it depends on how the series converges.</p>
+<div class="admonition note">
+<p class="admonition-title">Rearranging a series</p>
+<p><strong>Absolutely convergent series</strong> can be summed in any order: every rearrangement converges to the same sum (Theorem <a href="../../appendix/appendix/#thm-rearrabs">D.6</a>). <strong>Conditionally convergent series cannot</strong>: the positive terms add to <span class="arithmatex">\(+\infty\)</span> and the negative terms to <span class="arithmatex">\(-\infty\)</span> (Theorem <a href="../../appendix/appendix/#thm-parts">D.3</a>), and by Riemann’s theorem a suitable order gives <em>any</em> sum you like (Theorem <a href="../../appendix/appendix/#thm-riemann">D.7</a>). The two theorems are stated in the appendix with a sketch; <strong>their full proofs are omitted</strong>. The appendix does prove everything for one concrete rearrangement (Example <a href="../../appendix/appendix/#ex-rearr">D.5</a>), which is the next example.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.15: Same terms, half the sum</p>
+<p><span id="ex-rearr"></span></p>
+<p>Let <span class="arithmatex">\(S=\sum\frac{(-1)^{k+1}}k\)</span>. Compare <span class="arithmatex">\(s_6\)</span> with the partial sum of the rearranged series <span class="arithmatex">\(1-\frac12-\frac14+\frac13-\frac16-\frac18+\cdots\)</span> over the first nine terms.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(s_6=1-\frac12+\frac13-\frac14+\frac15-\frac16=\frac{37}{60}\approx0.617\)</span>. The first nine terms of the rearranged series are <span class="arithmatex">\((1-\frac12-\frac14)+(\frac13-\frac16-\frac18)+(\frac15-\frac1{10}-\frac1{12})=\frac{37}{120}\approx0.308\)</span>, exactly half of <span class="arithmatex">\(s_6\)</span>. By Example <a href="../../appendix/appendix/#ex-rearr">D.5</a> this is no accident: the rearranged series converges to <span class="arithmatex">\(\frac12S\)</span>, not to <span class="arithmatex">\(S\)</span>. For an absolutely convergent series such as <span class="arithmatex">\(\sum\frac{(-1)^{k+1}}{k^2}\)</span> this cannot happen.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.6.2: Positive terms alone</p>
+<p><span id="think-posalone"></span></p>
+<p>For the alternating harmonic series, what do the positive terms <span class="arithmatex">\(1+\frac13+\frac15+\cdots\)</span> add up to? What about the negative terms? Why does this make it plausible that the order in which we add can change the answer?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The positive terms <span class="arithmatex">\(1+\frac13+\frac15+\cdots\)</span> exceed <span class="arithmatex">\(\frac12\left(1+\frac12+\frac13+\cdots\right)\)</span> term by term, so they add up to <span class="arithmatex">\(+\infty\)</span> (Appendix, Theorem <a href="../../appendix/appendix/#thm-parts">D.3</a>); the negative terms <span class="arithmatex">\(-\frac12-\frac14-\cdots=-\frac12H_n\)</span> go to <span class="arithmatex">\(-\infty\)</span>. The sum converges only because the two infinities are cancelled in a particular order: one positive, one negative, one positive, … Change the proportion (one positive, two negative) and the cancellation is different, so a different answer is plausible, and the appendix shows it happens (half the sum).</p>
+</details>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.6.3: Is the monotone condition needed for the error bound?</p>
+<p><span id="think-needmono"></span></p>
+<p>For <span class="arithmatex">\(\sum(-1)^{k+1}\frac{2+(-1)^k}{k^2}\)</span> (Example <a href="#ex-classify">10.6.11</a>(e)) the sum is exactly <span class="arithmatex">\(0\)</span>. Compute <span class="arithmatex">\(s_2\)</span> and compare <span class="arithmatex">\(\abs{S-s_2}\)</span> with the next term <span class="arithmatex">\(a_3\)</span>. What does this say about the bound <span class="arithmatex">\(\abs{R_n}\le a_{n+1}\)</span> when the terms are not nonincreasing?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p><span class="arithmatex">\(s_2=1-\frac34=\frac14\)</span>, and <span class="arithmatex">\(S=0\)</span>: splitting the absolutely convergent series into its odd and even parts, the odd terms add to <span class="arithmatex">\(\sum\frac1{(2k-1)^2}=\frac{\pi^2}8\)</span> (Example <a href="#ex-b10">10.6.25</a>) and the even terms to <span class="arithmatex">\(-3\sum\frac1{(2k)^2}=-\frac34\cdot\frac{\pi^2}6=-\frac{\pi^2}8\)</span>, so <span class="arithmatex">\(S=\frac{\pi^2}8-\frac{\pi^2}8=0\)</span>. Then <span class="arithmatex">\(\abs{S-s_2}=\frac14&gt;\frac19=a_3\)</span>: the bound <span class="arithmatex">\(\abs{R_n}\le a_{n+1}\)</span> <em>fails</em>. The monotonicity of the terms is used in the proof (the sandwich <span class="arithmatex">\(s_{2m}\le S\le s_{2m+1}\)</span>), so it cannot be dropped from the remainder theorem.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.6.3: Absolute and conditional convergence</p>
+<p><span id="kc-abskc"></span></p>
+<p>Classify: (a) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{1.5}}\)</span>; (b) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{\sqrt k}\)</span>; (c) <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k+1}k\)</span>.</p>
+</div>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>The Alternating Series Test</em> (Examples <a href="#ex-b1">10.6.16</a>–<a href="#ex-b2">10.6.17</a>).</p>
+</li>
+<li>
+<p><em>When the test fails</em> (Examples <a href="#ex-b3">10.6.18</a>–<a href="#ex-b4">10.6.19</a>).</p>
+</li>
+<li>
+<p><em>Remainders and error bounds</em> (Examples <a href="#ex-b5">10.6.20</a>–<a href="#ex-b6">10.6.21</a>).</p>
+</li>
+<li>
+<p><em>Absolute and conditional convergence</em> (Examples <a href="#ex-b7">10.6.22</a>–<a href="#ex-b8">10.6.23</a>).</p>
+</li>
+<li>
+<p><em>Alternating <span class="arithmatex">\(p\)</span>-series and sums from known values</em> (Examples <a href="#ex-b9">10.6.24</a>–<a href="#ex-b10">10.6.25</a>).</p>
+</li>
+<li>
+<p><em>Applications: a parameter and a numerical value</em> (Examples <a href="#ex-b11">10.6.26</a>–<a href="#ex-b12">10.6.27</a>).</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">10.6.28</a>–<a href="#ex-b14">10.6.29</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-the-alternating-series-test">Group 1: The Alternating Series Test<a class="headerlink" href="#group-1-the-alternating-series-test" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.16: A decreasing denominator</p>
+<p><span id="ex-b1"></span></p>
+<p>Does <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2+2k}\)</span> converge?</p>
+<p><strong>Solution.</strong> The series alternates, <span class="arithmatex">\(a_k=\frac1{k^2+2k}&gt;0\)</span>. The denominator <span class="arithmatex">\(k^2+2k\)</span> increases with <span class="arithmatex">\(k\)</span>, so <span class="arithmatex">\(a_k\)</span> decreases, and <span class="arithmatex">\(a_k\to0\)</span>. Both conditions hold, so the series converges. Check: <span class="arithmatex">\(a_1=\frac13&gt;a_2=\frac18&gt;a_3=\frac1{15}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.17: Monotone only from <span class="arithmatex">\(k=3\)</span></p>
+<p><span id="ex-b2"></span></p>
+<p>Does <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac{k^2}{k^3+10}\)</span> converge?</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(a_k=\frac{k^2}{k^3+10}\to0\)</span>. For <span class="arithmatex">\(f(x)=\frac{x^2}{x^3+10}\)</span>, <span class="arithmatex">\(f'(x)=\frac{2x(x^3+10)-3x^4}{(x^3+10)^2}=\frac{x(20-x^3)}{(x^3+10)^2}\)</span>, which is negative for <span class="arithmatex">\(x^3&gt;20\)</span>, i.e. <span class="arithmatex">\(x&gt;2.71\)</span>. So <span class="arithmatex">\(a_k\)</span> decreases for <span class="arithmatex">\(k\ge3\)</span>; the first values are <span class="arithmatex">\(a_1\approx0.091\)</span>, <span class="arithmatex">\(a_2\approx0.222\)</span>, <span class="arithmatex">\(a_3\approx0.243\)</span>, <span class="arithmatex">\(a_4\approx0.216\)</span>: the sequence rises until <span class="arithmatex">\(k=3\)</span>. The test applies to the tail from <span class="arithmatex">\(k=3\)</span> (the first terms do not affect convergence), so the series converges.</p>
+</div>
+<h2 id="group-2-when-the-test-fails">Group 2: When the test fails<a class="headerlink" href="#group-2-when-the-test-fails" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.18: Terms that do not tend to zero</p>
+<p><span id="ex-b3"></span></p>
+<p>Does <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}\frac k{\sqrt{k^2+1}}\)</span> converge?</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(a_k=\frac k{\sqrt{k^2+1}}=\frac1{\sqrt{1+1/k^2}}\to1\ne0\)</span>. The second condition fails, and so the terms do not tend to <span class="arithmatex">\(0\)</span>: by the Divergence Test the series diverges. The partial sums keep oscillating: <span class="arithmatex">\(s_{2n}\)</span> and <span class="arithmatex">\(s_{2n+1}\)</span> stay about <span class="arithmatex">\(1\)</span> apart. Note that <span class="arithmatex">\(a_k\)</span> is increasing here, so the first condition fails as well, but it is the limit that decides.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.19: Not decreasing, and divergent</p>
+<p><span id="ex-b4"></span></p>
+<p>Let <span class="arithmatex">\(a_k=\frac1{\sqrt k}\)</span> for odd <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(a_k=\frac1{k^2}\)</span> for even <span class="arithmatex">\(k\)</span>. Does <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^{k+1}a_k\)</span> converge?</p>
+<p><strong>Solution.</strong> The terms alternate and tend to <span class="arithmatex">\(0\)</span>, but <span class="arithmatex">\(a_2=\frac14&lt;a_3=\frac1{\sqrt3}\)</span>, so the test does not apply. The even partial sums are <span class="arithmatex">\(s_{2n}=\sum_{j=1}^n\frac1{\sqrt{2j-1}}-\sum_{j=1}^n\frac1{4j^2}\)</span>. The second sum is less than <span class="arithmatex">\(\frac12\)</span> (as <span class="arithmatex">\(\sum\frac1{j^2}&lt;2\)</span>), and <span class="arithmatex">\(\frac1{\sqrt{2j-1}}\ge\frac1{\sqrt{2j}}\)</span>, so <span class="arithmatex">\(s_{2n}\ge\frac1{\sqrt2}\sum_{j=1}^n\frac1{\sqrt j}-\frac12\)</span>. The sum <span class="arithmatex">\(\sum\frac1{\sqrt j}\)</span> diverges (<span class="arithmatex">\(p=\frac12\)</span>), so <span class="arithmatex">\(\{s_{2n}\}\)</span> is unbounded and the series diverges.</p>
+</div>
+<h2 id="group-3-remainders-and-error-bounds">Group 3: Remainders and error bounds<a class="headerlink" href="#group-3-remainders-and-error-bounds" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.20: Terms for a given accuracy</p>
+<p><span id="ex-b5"></span></p>
+<p>How many terms of <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^{k+1}}{k^2+1}\)</span> guarantee an error less than <span class="arithmatex">\(0.005\)</span>?</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(\abs{R_n}\le a_{n+1}=\frac1{(n+1)^2+1}\)</span>, and we need <span class="arithmatex">\((n+1)^2+1&gt;200\)</span>, i.e. <span class="arithmatex">\((n+1)^2&gt;199\)</span>. Since <span class="arithmatex">\(14^2=196&lt;199&lt;225=15^2\)</span>, <span class="arithmatex">\(n+1\ge15\)</span>, so <span class="arithmatex">\(n=14\)</span>. Check: for <span class="arithmatex">\(n=14\)</span> the bound is <span class="arithmatex">\(\frac1{226}\approx0.00442&lt;0.005\)</span>, and for <span class="arithmatex">\(n=13\)</span> it is <span class="arithmatex">\(\frac1{197}\approx0.00508&gt;0.005\)</span>. Indeed <span class="arithmatex">\(s_{14}\approx0.36163\)</span> and <span class="arithmatex">\(S\approx0.36399\)</span>, an error of <span class="arithmatex">\(0.0024\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.21: The sign of the error</p>
+<p><span id="ex-b6"></span></p>
+<p>Let <span class="arithmatex">\(S=\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k\,3^k}\)</span>. Bracket <span class="arithmatex">\(S\)</span> using <span class="arithmatex">\(s_3\)</span>, and say on which side of <span class="arithmatex">\(s_3\)</span> the value <span class="arithmatex">\(S\)</span> lies.</p>
+<p><strong>Solution.</strong> The terms <span class="arithmatex">\(a_k=\frac1{k3^k}\)</span> decrease to <span class="arithmatex">\(0\)</span>. Here the first term is negative: <span class="arithmatex">\(s_3=-\frac13+\frac1{18}-\frac1{81}=-\frac{47}{162}\approx-0.2901\)</span>. The first neglected term is <span class="arithmatex">\(+\frac1{4\cdot81}=\frac1{324}\)</span>, so <span class="arithmatex">\(R_3\)</span> is positive and at most <span class="arithmatex">\(\frac1{324}\approx0.0031\)</span>: <span class="arithmatex">\(S\)</span> lies above <span class="arithmatex">\(s_3\)</span>, <span class="arithmatex">\(-0.2901&lt;S&lt;-0.2870\)</span>. (The value is <span class="arithmatex">\(-\ln\frac43\approx-0.2877\)</span>, as the next chapter will show.)</p>
+</div>
+<h2 id="group-4-absolute-and-conditional-convergence">Group 4: Absolute and conditional convergence<a class="headerlink" href="#group-4-absolute-and-conditional-convergence" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.22: Absolute convergence by comparison</p>
+<p><span id="ex-b7"></span></p>
+<p>Classify <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty(-1)^k\frac{2k+1}{k^3+4}\)</span>.</p>
+<p><strong>Solution.</strong> Look at the absolute values: <span class="arithmatex">\(\frac{2k+1}{k^3+4}\le\frac{3k}{k^3}=\frac3{k^2}\)</span> (since <span class="arithmatex">\(2k+1\le3k\)</span> for <span class="arithmatex">\(k\ge1\)</span> and <span class="arithmatex">\(k^3+4&gt;k^3\)</span>). The series <span class="arithmatex">\(\sum\frac3{k^2}\)</span> converges, so <span class="arithmatex">\(\sum\abs{a_k}\)</span> converges by the Comparison Test: the series converges absolutely (and so converges, Theorem <a href="#thm-absconv">10.6.9</a>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.23: Conditional convergence with a logarithm</p>
+<p><span id="ex-b8"></span></p>
+<p>Classify <span class="arithmatex">\(\displaystyle\sum_{k=2}^\infty\frac{(-1)^k}{\sqrt k\,\ln k}\)</span>.</p>
+<p><strong>Solution.</strong> <em>Absolute values:</em> <span class="arithmatex">\(\frac1{\sqrt k\ln k}\)</span>. Compare with <span class="arithmatex">\(b_k=\frac1k\)</span>: <span class="arithmatex">\(\frac{a_k}{b_k}=\frac{\sqrt k}{\ln k}\to\infty\)</span> and <span class="arithmatex">\(\sum\frac1k\)</span> diverges, so <span class="arithmatex">\(\sum\abs{a_k}\)</span> diverges (Limit Comparison Test, case 3): not absolutely convergent. <em>Alternating series:</em> <span class="arithmatex">\(\sqrt k\ln k\)</span> increases for <span class="arithmatex">\(k\ge2\)</span> (a product of positive increasing functions), so <span class="arithmatex">\(a_k\)</span> decreases, and <span class="arithmatex">\(a_k\to0\)</span>. The Alternating Series Test shows that the series converges. Hence it converges conditionally.</p>
+</div>
+<h2 id="group-5-alternating-p-series-and-known-sums">Group 5: Alternating <span class="arithmatex">\(p\)</span>-series and known sums<a class="headerlink" href="#group-5-alternating-p-series-and-known-sums" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.24: Reading off the type</p>
+<p><span id="ex-b9"></span></p>
+<p>Classify <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{0.9}}\)</span>, <span class="arithmatex">\(\ \displaystyle\sum_{k=1}^\infty\frac{(-1)^k}{k^{1.2}}\)</span> and <span class="arithmatex">\(\ \displaystyle\sum_{k=1}^\infty(-1)^kk^{0.1}\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-altp">10.6.10</a> (the factor <span class="arithmatex">\((-1)^k\)</span> instead of <span class="arithmatex">\((-1)^{k+1}\)</span> only changes the overall sign): <span class="arithmatex">\(p=0.9\in(0,1]\)</span> gives conditional convergence; <span class="arithmatex">\(p=1.2&gt;1\)</span> gives absolute convergence; the third series has <span class="arithmatex">\(p=-0.1\le0\)</span>, and its terms <span class="arithmatex">\(k^{0.1}\ge1\)</span> do not tend to <span class="arithmatex">\(0\)</span>: it diverges.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.25: The odd reciprocals squared</p>
+<p><span id="ex-b10"></span></p>
+<p>Given <span class="arithmatex">\(\sum_{k=1}^\infty\frac1{k^2}=\frac{\pi^2}6\)</span>, find <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac1{(2k-1)^2}=1+\frac19+\frac1{25}+\cdots\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(o_n=\sum_{k=1}^n\frac1{(2k-1)^2}\)</span>. The first <span class="arithmatex">\(2n\)</span> terms of <span class="arithmatex">\(\sum\frac1{k^2}\)</span> consist of the odd-indexed terms and the even-indexed ones, <span class="arithmatex">\(\sum_{k=1}^{2n}\frac1{k^2}=o_n+\sum_{k=1}^n\frac1{(2k)^2}=o_n+\frac14\sum_{k=1}^n\frac1{k^2}\)</span>. Letting <span class="arithmatex">\(n\to\infty\)</span>, the left side and the last sum tend to <span class="arithmatex">\(\frac{\pi^2}6\)</span>, so <span class="arithmatex">\(o_n\to\frac{\pi^2}6-\frac14\cdot\frac{\pi^2}6=\frac{\pi^2}8\approx1.2337\)</span>.</p>
+</div>
+<h2 id="group-6-applications">Group 6: Applications<a class="headerlink" href="#group-6-applications" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.26: Which <span class="arithmatex">\(x\)</span> work?</p>
+<p><span id="ex-b11"></span></p>
+<p>For which <span class="arithmatex">\(x\ge0\)</span> does <span class="arithmatex">\(\displaystyle\sum_{k=1}^\infty\frac{(-1)^kx^k}k\)</span> converge absolutely, conditionally, or not at all?</p>
+<p><strong>Solution.</strong> The absolute values are <span class="arithmatex">\(\frac{x^k}k\)</span>. If <span class="arithmatex">\(0\le x&lt;1\)</span>, <span class="arithmatex">\(\frac{x^k}k\le x^k\)</span> and <span class="arithmatex">\(\sum x^k\)</span> converges (geometric), so the series converges absolutely. If <span class="arithmatex">\(x=1\)</span>, the series is <span class="arithmatex">\(\sum\frac{(-1)^k}k\)</span>, the negative of the alternating harmonic series: it converges conditionally. If <span class="arithmatex">\(x&gt;1\)</span>, <span class="arithmatex">\(\frac{x^k}k\to\infty\)</span> (exponentials beat powers), so the terms do not tend to <span class="arithmatex">\(0\)</span> and the series diverges. So the series converges exactly for <span class="arithmatex">\(0\le x\le1\)</span>, absolutely for <span class="arithmatex">\(x&lt;1\)</span> and conditionally at the end point <span class="arithmatex">\(x=1\)</span>. (Series like this, with powers of <span class="arithmatex">\(x\)</span>, are the subject of the next chapter.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.27: Six decimal places</p>
+<p><span id="ex-b12"></span></p>
+<p>Estimate <span class="arithmatex">\(S=\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)!}=1-\frac1{3!}+\frac1{5!}-\frac1{7!}+\cdots\)</span> with an error less than <span class="arithmatex">\(10^{-6}\)</span>.</p>
+<p><strong>Solution.</strong> The terms <span class="arithmatex">\(a_k=\frac1{(2k+1)!}\)</span> decrease to <span class="arithmatex">\(0\)</span>. After <span class="arithmatex">\(n\)</span> terms (<span class="arithmatex">\(k=0,\dots,n-1\)</span>) the first neglected term is <span class="arithmatex">\(\frac1{(2n+1)!}\)</span> and <span class="arithmatex">\(\abs{R_n}\le\frac1{(2n+1)!}\)</span>. For <span class="arithmatex">\(n=4\)</span> this is <span class="arithmatex">\(\frac1{9!}\approx2.8\times10^{-6}\)</span>, too big; for <span class="arithmatex">\(n=5\)</span> it is <span class="arithmatex">\(\frac1{11!}\approx2.5\times10^{-8}&lt;10^{-6}\)</span>. So five terms suffice: <span class="arithmatex">\(s_5=1-\frac16+\frac1{120}-\frac1{5040}+\frac1{362880}\approx0.8414710\)</span>. (The sum is <span class="arithmatex">\(\sin1\approx0.8414710\)</span>; the next chapter explains why.)</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.28: Multiplying by a bounded sequence</p>
+<p><span id="ex-b13"></span></p>
+<p>Let <span class="arithmatex">\(\sum a_k\)</span> converge absolutely and let <span class="arithmatex">\(\abs{b_k}\le M\)</span> for all <span class="arithmatex">\(k\)</span>. Prove that <span class="arithmatex">\(\sum a_kb_k\)</span> converges absolutely.</p>
+<p><strong>Plan.</strong> Bound <span class="arithmatex">\(\abs{a_kb_k}\)</span> by a multiple of <span class="arithmatex">\(\abs{a_k}\)</span> and use the Comparison Test.</p>
+<p><em>Proof.</em> <span class="arithmatex">\(\abs{a_kb_k}=\abs{a_k}\abs{b_k}\le M\abs{a_k}\)</span>. The series <span class="arithmatex">\(\sum M\abs{a_k}\)</span> converges (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(1)), so <span class="arithmatex">\(\sum\abs{a_kb_k}\)</span> converges by the Comparison Test. That is the definition of absolute convergence of <span class="arithmatex">\(\sum a_kb_k\)</span>. ◻ ∎</p>
+<p>A common mistake is to assume only that <span class="arithmatex">\(\sum a_k\)</span> <em>converges</em>: with <span class="arithmatex">\(a_k=\frac{(-1)^k}k\)</span> (conditionally convergent) and the bounded sequence <span class="arithmatex">\(b_k=(-1)^k\)</span>, the product is <span class="arithmatex">\(\frac1k\)</span> and <span class="arithmatex">\(\sum a_kb_k\)</span> diverges.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.6.29: Squares of an absolutely convergent series</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that if <span class="arithmatex">\(\sum a_k\)</span> converges absolutely then <span class="arithmatex">\(\sum a_k^2\)</span> converges.</p>
+<p><strong>Plan.</strong> The terms <span class="arithmatex">\(a_k\)</span> tend to <span class="arithmatex">\(0\)</span>, so eventually <span class="arithmatex">\(a_k^2\le\abs{a_k}\)</span>.</p>
+<p><em>Proof.</em> Since <span class="arithmatex">\(\sum\abs{a_k}\)</span> converges, <span class="arithmatex">\(\abs{a_k}\to0\)</span> (Divergence Test, Theorem <a href="../../10.4/notes/#thm-divtest">10.4.1</a>), so there is <span class="arithmatex">\(K\)</span> with <span class="arithmatex">\(\abs{a_k}\le1\)</span> for <span class="arithmatex">\(k\ge K\)</span>. For these <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(a_k^2=\abs{a_k}\cdot\abs{a_k}\le\abs{a_k}\)</span>. The series <span class="arithmatex">\(\sum_{k\ge K}\abs{a_k}\)</span> converges, so <span class="arithmatex">\(\sum_{k\ge K}a_k^2\)</span> converges by the Comparison Test, and then so does <span class="arithmatex">\(\sum_{k\ge1}a_k^2\)</span> (Theorem <a href="../../10.3/notes/#thm-props">10.3.11</a>(5)). ◻ ∎</p>
+<p>Absolute convergence is essential. The series <span class="arithmatex">\(\sum\frac{(-1)^k}{\sqrt k}\)</span> converges (alternating <span class="arithmatex">\(p\)</span>-series, <span class="arithmatex">\(p=\frac12\)</span>), but <span class="arithmatex">\(\sum\left(\frac{(-1)^k}{\sqrt k}\right)^2=\sum\frac1k\)</span> diverges.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-astkc">10.6.1</a>.</strong> (a) <span class="arithmatex">\(a_k=\frac1{2k+7}\)</span> decreases to <span class="arithmatex">\(0\)</span>: converges. (b) <span class="arithmatex">\(\abs{a_k}=\frac{k+1}k=1+\frac1k\to1\ne0\)</span>: the second condition fails, and the series diverges by the Divergence Test. (c) <span class="arithmatex">\(a_k=\frac k{k^2+1}\to0\)</span> and <span class="arithmatex">\(f(x)=\frac x{x^2+1}\)</span> has <span class="arithmatex">\(f'(x)=\frac{1-x^2}{(x^2+1)^2}&lt;0\)</span> for <span class="arithmatex">\(x&gt;1\)</span>, so <span class="arithmatex">\(a_k\)</span> decreases: converges.</p>
+<p><strong>Knowledge Check <a href="#kc-remkc">10.6.2</a>.</strong> <span class="arithmatex">\(\abs{R_n}\le\frac1{(n+1)^2}&lt;0.01\)</span> when <span class="arithmatex">\((n+1)^2&gt;100\)</span>, i.e. <span class="arithmatex">\(n+1\ge11\)</span>, so <span class="arithmatex">\(n=10\)</span> terms. (For <span class="arithmatex">\(n=9\)</span> the bound is exactly <span class="arithmatex">\(\frac1{100}=0.01\)</span>, which is not less than <span class="arithmatex">\(0.01\)</span>; so <span class="arithmatex">\(9\)</span> terms are not guaranteed.)</p>
+<p><strong>Knowledge Check <a href="#kc-abskc">10.6.3</a>.</strong> (a) <span class="arithmatex">\(p=1.5&gt;1\)</span>: absolutely convergent. (b) <span class="arithmatex">\(p=\frac12\in(0,1]\)</span>: conditionally convergent. (c) <span class="arithmatex">\(\abs{a_k}=\frac{k+1}k\to1\)</span>: divergent.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>

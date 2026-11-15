@@ -1,0 +1,441 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{11}{2}{Properties of Power Series}
+\calcxdoc{11.1}
+\calcxdoc{10.2}
+\calcxdoc{10.3}
+\calcxdoc{10.4}
+\calcxdoc{10.5}
+\calcxdoc{10.6}
+\calcxdoc{10.7}
+\calcxapp
+
+\begin{document}
+
+\section{Properties of Power Series}
+
+\begin{guide}
+A Taylor polynomial stops at some degree. What if it never stops? A polynomial with infinitely many terms is a \emph{power series}: a function, but only at those $x$ where the series converges. This section asks for which $x$ it converges (the Ratio and Root Tests from Chapter 10 do most of the work), and what we can build from one power series we know (add, substitute, differentiate, integrate). The geometric series will generate almost everything. Which power series represent which functions is the subject of a later section on Taylor series.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item find the radius and the interval of convergence of a power series, using the Ratio or Root Test for the interior and the tests of Chapter 10 for the endpoints;
+  \item state the three ways a power series can converge, and explain why the radius exists;
+  \item build new power series from a known one by sums, powers of $x$, substitution, differentiation and integration, find where they converge, and use them to evaluate numerical series.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{From polynomials to power series}
+
+\begin{defn}{Power series}{ps}
+A \emph{power series centered at $a$} is a series
+\[
+\sum_{k=0}^\infty c_k(x-a)^k=c_0+c_1(x-a)+c_2(x-a)^2+\cdots,
+\]
+where $a$ and the \emph{coefficients} $c_k$ are real numbers and $x$ is a variable (with $(x-a)^0=1$ even for $x=a$). For each fixed $x$ it is an ordinary series of Chapter 10. It defines a function $f(x)=\sum c_k(x-a)^k$ on the set of $x$ where it converges, its \emph{convergence set}.
+\end{defn}
+
+At $x=a$ every term except $c_0$ is $0$, so the convergence set always contains $a$. The partial sums $c_0+c_1(x-a)+\cdots+c_n(x-a)^n$ are polynomials in $x-a$, and when $c_k=\frac{f^{(k)}(a)}{k!}$ they are exactly the Taylor polynomials of the previous section.
+
+The first example is the geometric series $\sum_{k=0}^\infty x^k$, a power series with $a=0$ and every $c_k=1$. By Theorem~\ref{10.3-thm:geoseries} it converges to $\frac1{1-x}$ exactly when $\abs x<1$. Its partial sums $1+x+\cdots+x^n$ are the Taylor polynomials $p_n$ of $\frac1{1-x}$ in Example~\ref{11.1-ex:geom}, whose remainder $R_n(x)=\frac{x^{n+1}}{1-x}$ (Definition~\ref{11.1-def:remainder}) tends to $0$ exactly when $\abs x<1$. So the series \emph{converges} at $x$ when the polynomials settle down, and it converges \emph{to $f(x)$} when the remainder tends to $0$.
+
+\begin{think}{Which points converge?}{partial}
+In Example~\ref{11.1-ex:geom} the polynomials $p_n(x)$ approached $f(x)=\frac1{1-x}$ at $x=\frac12$ but not at $x=-1$ or $x=2$. Which of the three numbers lie in the convergence set of $\sum x^k$? What happens to the remainder at the other two?
+\end{think}
+
+\begin{kc}{Center and coefficients}{coef}
+Write $\sum_{k=0}^\infty\frac{(3x-6)^k}{k+1}$ in the form $\sum c_k(x-a)^k$. What are $a$ and $c_k$?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Where does a power series converge?}
+
+\begin{thm}{Convergence of power series}{conv}
+A power series $\sum_{k=0}^\infty c_k(x-a)^k$ converges in exactly one of three ways.
+\begin{enumerate}
+  \item It converges absolutely for every $x$.
+  \item There is a number $R>0$ such that it converges absolutely for $\abs{x-a}<R$ and diverges for $\abs{x-a}>R$.
+  \item It converges only at $x=a$.
+\end{enumerate}
+\end{thm}
+%%@omitted conv  (the proof is Theorem F.2 in Appendix F)
+\emph{The proof is in Appendix~F} (Theorems~\ref{app-thm:abel} and~\ref{app-thm:radius}); it needs the least upper bound property of Appendix~A, because $R$ is a least upper bound. The idea: if the series converges at $x_0$, its terms $c_k(x_0-a)^k$ tend to $0$, so they are bounded, and then $\abs{c_k(x-a)^k}$ is below a geometric series for every $x$ closer to $a$ than $x_0$.
+
+\begin{defn}{Radius and interval of convergence}{radius}
+In Theorem~\ref{thm:conv} the number $R$ is the \emph{radius of convergence}: $R=\infty$ in case 1, $R=0$ in case 3. The set of $x$ where the series converges is its \emph{interval of convergence}. It contains $(a-R,a+R)$ and possibly one or both endpoints $a\pm R$ (and is $\R$ if $R=\infty$ and $\{a\}$ if $R=0$).
+\end{defn}
+
+The theorem says \emph{nothing} about the endpoints. For example, $(2,6)$, $[2,6)$, $(2,6]$ and $[2,6]$ all have center $4$ and radius $2$.
+
+\begin{kc}{What the theorem tells us}{interval}
+A power series $\sum c_k(x-4)^k$ converges at $x=7$ and diverges at $x=-1$. What can you say about $R$? For each of $x=2$, $8$, $10$, $-2$, decide whether the series converges, diverges, or this cannot be decided.
+\end{kc}
+
+How do we find $R$? Theorem~\ref{thm:conv} is about absolute convergence, and the Ratio and Root Tests (Theorems~\ref{10.7-thm:ratio} and~\ref{10.7-thm:root}) are exactly tests for absolute convergence.
+
+\begin{thm}{Radius from the Ratio or Root Test}{radiusrule}
+Let $\sum c_k(x-a)^k$ be a power series, and let $L$ be a number $\ge0$ or $\infty$.
+\begin{enumerate}
+  \item If every $c_k\ne0$ and $\abs{c_{k+1}/c_k}\to L$, then $R=1/L$.
+  \item If $\abs{c_k}^{1/k}\to L$, then $R=1/L$.
+\end{enumerate}
+Here $1/0=\infty$ and $1/\infty=0$.
+\end{thm}
+\begin{proof}
+Fix $x\ne a$ and put $a_k=c_k(x-a)^k$. In case~1 all $a_k\ne0$ and $\abs{a_{k+1}/a_k}=\abs{c_{k+1}/c_k}\,\abs{x-a}\to L\abs{x-a}$; in case~2, $\abs{a_k}^{1/k}=\abs{c_k}^{1/k}\abs{x-a}\to L\abs{x-a}$. By the Ratio Test (case~1) or the Root Test (case~2), the series converges absolutely if $L\abs{x-a}<1$ and diverges if $L\abs{x-a}>1$ (including $L=\infty$). If $L=0$ then $L\abs{x-a}=0<1$ for every $x$, so the series converges for all $x$: $R=\infty$. If $0<L<\infty$ it converges absolutely for $\abs{x-a}<\frac1L$ and diverges for $\abs{x-a}>\frac1L$, so $R=\frac1L$. If $L=\infty$ it diverges for every $x\ne a$, so $R=0$.
+\end{proof}
+
+\begin{warn}[Gaps in the exponents]
+If some $c_k=0$ (a series such as $\sum x^{2k}/4^k$ has no odd powers), the quotient $c_{k+1}/c_k$ is undefined or $0$ and $\abs{c_k}^{1/k}$ may have no limit, so Theorem~\ref{thm:radiusrule} does not apply directly. Apply the Ratio or Root Test to the \emph{terms} $a_k$ of the series for fixed $x$ instead (Example~\ref{ex:gaps}).
+\end{warn}
+
+\begin{proc}{Radius and interval of convergence}{interval}
+\begin{enumerate}[nosep]
+  \item \emph{Interior.} Apply the Ratio Test (factorials, products of consecutive terms) or the Root Test ($k$-th powers) to the terms. The test gives $r=\abs{x-a}/R$; solve $r<1$ for the open interval $(a-R,a+R)$. For $\abs{x-a}>R$, $r>1$ and the series diverges.
+  \item \emph{Endpoints.} At $x=a\pm R$ both tests give $r=1$ and say nothing. Substitute each endpoint and test the resulting numerical series with the tests of Chapter 10: the Divergence Test (Theorem~\ref{10.4-thm:divtest}), $p$-series and the Integral Test (Theorems~\ref{10.4-thm:pseries}, \ref{10.4-thm:inttest}), comparison (Theorems~\ref{10.5-thm:comp}, \ref{10.5-thm:lct}), the Alternating Series Test (Theorem~\ref{10.6-thm:ast}).
+  \item \emph{Conclude} with the interval, including exactly the endpoints that converge.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Factorials: radius $\infty$ and radius $0$}{fact}
+Find the radius and interval of convergence of (a)~$\displaystyle\sum_{k=0}^\infty\frac{3^kx^k}{k!}$ and (b)~$\displaystyle\sum_{k=0}^\infty\frac{k!\,(x+1)^k}{10^k}$.
+
+\textbf{Solution.} (a) The center is $0$ and $c_k=\frac{3^k}{k!}\ne0$. Then
+\[
+\abs{\frac{c_{k+1}}{c_k}}=\frac{3^{k+1}\,k!}{(k+1)!\,3^k}=\frac3{k+1}\to0 ,
+\]
+%@ ex1a | simplify(gammasimp((3**(k+1)/factorial(k+1))/(3**k/factorial(k))) - 3/(k+1)) == 0 and limit(3/(k+1),k,oo) == 0 | \frac3{k+1}\to0
+so $L=0$ and $R=\infty$ (Theorem~\ref{thm:radiusrule}): the interval is $(-\infty,\infty)$. (b) The center is $-1$ and $c_k=\frac{k!}{10^k}$:
+\[
+\abs{\frac{c_{k+1}}{c_k}}=\frac{(k+1)!\,10^k}{10^{k+1}\,k!}=\frac{k+1}{10}\to\infty ,
+\]
+%@ ex1b | simplify(gammasimp((factorial(k+1)/10**(k+1))/(factorial(k)/10**k)) - (k+1)/10) == 0 and limit((k+1)/10,k,oo) == oo and Q(1,1)/10 == Q(1,10) | \frac{k+1}{10}\to\infty
+so $L=\infty$ and $R=0$. The series converges only at the center $x=-1$, where it equals $c_0=1$. In (a) the factorial in the denominator wins against any power; in (b) it is in the numerator and wins the other way.
+\end{exmp}
+
+\begin{exmp}{The Root Test, and endpoints that diverge}{root}
+Find the radius and interval of convergence of $\displaystyle\sum_{k=1}^\infty\left(\frac k{3k+1}\right)^k(x+2)^k$.
+
+\textbf{Solution.} The $k$-th power suggests the Root Test. With $a_k$ the $k$-th term, $\abs{a_k}^{1/k}=\frac k{3k+1}\abs{x+2}\to\frac{\abs{x+2}}3$.
+%@ ex2a | limit(k/(3*k+1),k,oo) == Q(1,3) | \to\frac{\abs{x+2}}3
+So the series converges absolutely when $\abs{x+2}<3$, that is $-5<x<1$, and diverges when $\abs{x+2}>3$: $R=3$. At the endpoints the Root Test gives $r=1$, so we substitute. At $x=1$ the terms are $\left(\frac{3k}{3k+1}\right)^k=\left(1+\frac1{3k}\right)^{-k}\to e^{-1/3}\approx0.7165\ne0$ (because $\left(1+\frac1{3k}\right)^{3k}\to e$); at $x=-5$ the terms are $(-1)^k$ times these, so they do not tend to $0$ either. Both endpoints diverge by the Divergence Test (Theorem~\ref{10.4-thm:divtest}), and the interval is $(-5,1)$.
+%@ ex2b | limit((3*k/(3*k+1))**k,k,oo) == exp(-Q(1,3)) and abs(float(exp(-Q(1,3)))-0.7165)<1e-4 and -2-3 == -5 | e^{-1/3}\approx0.7165\ne0
+\end{exmp}
+
+\begin{exmp}{One endpoint converges conditionally}{ast}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{(x-3)^k}{k\,2^k}$.
+
+\textbf{Solution.} The center is $3$ and $c_k=\frac1{k2^k}$, so $\abs{\frac{c_{k+1}}{c_k}}=\frac k{2(k+1)}\to\frac12$. Hence $R=2$ and the series converges absolutely on $(1,5)$. At $x=5$ the series is $\sum\frac1k$, the harmonic series (Theorem~\ref{10.4-thm:harm}): divergent. At $x=1$ it is $\sum\frac{(-1)^k}k$, which converges by the Alternating Series Test (Theorem~\ref{10.6-thm:ast}) (the terms $\frac1k$ decrease to $0$), but not absolutely. The interval of convergence is $[1,5)$.
+%@ ex3 | limit(k/(2*(k+1)),k,oo) == Q(1,2) and 1/Q(1,2) == 2 and 3-2 == 1 | $[1,5)$
+\end{exmp}
+
+\begin{exmp}{Both endpoints converge}{both}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{(x+1)^k}{k^2\,2^k}$.
+
+\textbf{Solution.} Center $-1$, $c_k=\frac1{k^22^k}$, $\abs{\frac{c_{k+1}}{c_k}}=\frac{k^2}{2(k+1)^2}\to\frac12$, so $R=2$ and the open interval is $(-3,1)$. At $x=1$ the series is $\sum\frac1{k^2}$, a convergent $p$-series (Theorem~\ref{10.4-thm:pseries}). At $x=-3$ it is $\sum\frac{(-1)^k}{k^2}$, which converges absolutely, because $\sum\frac1{k^2}$ converges. So the interval is $[-3,1]$.
+%@ ex4 | limit(k**2/(2*(k+1)**2),k,oo) == Q(1,2) and -1-2 == -3 | $[-3,1]$
+\end{exmp}
+
+\begin{think}{Why the Ratio Test cannot settle the endpoints}{endpt}
+In Examples~\ref{ex:ast} and~\ref{ex:both} the Ratio Test gave $r=\frac{\abs{x-3}}2$ and $r=\frac{\abs{x+1}}2$. What is $r$ at each endpoint? Why does this not contradict the fact that one of the series ($\sum\frac1k$) diverges and the other ($\sum\frac1{k^2}$) converges?
+\end{think}
+
+\begin{exmp}{A series with gaps}{gaps}
+Find the interval of convergence of $\displaystyle\sum_{k=0}^\infty\frac{x^{2k+1}}{4^k(2k+1)}$.
+
+\textbf{Solution.} Only odd powers of $x$ occur, so we cannot use $c_{k+1}/c_k$ (Warning above). Apply the Ratio Test to the terms $a_k=\frac{x^{2k+1}}{4^k(2k+1)}$:
+\[
+\abs{\frac{a_{k+1}}{a_k}}=\frac{x^2}4\cdot\frac{2k+1}{2k+3}\to\frac{x^2}4 .
+\]
+%@ ex5a | limit((2*k+1)/(2*k+3),k,oo) == 1 and solveset(x**2/4 < 1, x, S.Reals) == Interval.open(-2,2) and Q(1,4)*4 == 1 | \to\frac{x^2}4
+The series converges absolutely when $\frac{x^2}4<1$, that is $\abs x<2$, and diverges when $\abs x>2$: $R=2$. At $x=2$ the terms are $\frac{2^{2k+1}}{4^k(2k+1)}=\frac2{2k+1}$; since $\frac{2/(2k+1)}{1/k}\to1$, the Limit Comparison Test (Theorem~\ref{10.5-thm:lct}) with the harmonic series shows divergence. At $x=-2$ every term changes sign, so the series is $-1$ times the divergent one. The interval is $(-2,2)$.
+%@ ex5b | simplify(2**(2*k+1)/(4**k*(2*k+1)) - 2/(2*k+1)) == 0 and limit((2/(2*k+1))/(1/k),k,oo) == 1 | \frac{2^{2k+1}}{4^k(2k+1)}=\frac2{2k+1}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Combining power series}
+
+\begin{thm}{Combining power series}{comb}
+Let $\sum c_k(x-a)^k$ and $\sum d_k(x-a)^k$ converge to $f(x)$ and $g(x)$ for all $x$ in a set $I$.
+\begin{enumerate}
+  \item \emph{Sum and difference.} $\sum(c_k\pm d_k)(x-a)^k$ converges to $f(x)\pm g(x)$ for all $x$ in $I$. If the two series have different radii, the combined series has the smaller radius.
+  \item \emph{Multiplying by a power.} For an integer $m\ge0$, $\sum c_k(x-a)^{k+m}$ converges at exactly the same points $x\ne a$ as $\sum c_k(x-a)^k$, and then to $(x-a)^mf(x)$. In particular it has the same radius.
+  \item \emph{Substitution.} Suppose $\sum c_kt^k$ converges to $F(t)$ exactly for $t$ in a set $J$. For any expression $u(x)$ (for example $bx^m$ with $b\ne0$ and $m\ge1$ an integer, or $x-s$), $\sum c_k\,u(x)^k$ converges to $F(u(x))$ exactly for those $x$ with $u(x)$ in $J$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1)~The partial sums of the new series are the sum or difference of the partial sums of the two series, so they converge to $f\pm g$ at every $x$ in $I$ (Theorem~\ref{10.3-thm:props}). Suppose the radii are $R_1<R_2$. Choose $x$ with $R_1<\abs{x-a}<R_2$: the series $\sum c_k(x-a)^k$ diverges and $\sum d_k(x-a)^k$ converges. If $\sum(c_k+d_k)(x-a)^k$ converged, then so would $\sum c_k(x-a)^k$, the difference of two convergent series. So the new series diverges for $\abs{x-a}>R_1$ and converges for $\abs{x-a}<R_1$: its radius is $R_1$. (When the radii are equal, the combined radius is at least that number and can be larger: take $d_k=-c_k$.)
+
+(2)~$\sum_{k=0}^nc_k(x-a)^{k+m}=(x-a)^m\sum_{k=0}^nc_k(x-a)^k$ for every $n$. For $x\ne a$ the factor $(x-a)^m\ne0$, so the left side converges if and only if the sum on the right does, and the limit is $(x-a)^mf(x)$.
+
+(3)~For a given $x$, $\sum c_k\,u(x)^k$ is the series $\sum c_kt^k$ at the single point $t=u(x)$. It converges to $F(t)$ exactly when $t\in J$.
+\end{proof}
+
+For $\sum c_kx^k$ with radius $R$, part~3 with $u(x)=bx^m$ gives radius $(R/\abs b)^{1/m}$ and part~2 gives radius $R$.
+
+\begin{exmp}{Building series from $\frac1{1-x}$}{comb}
+Use $\frac1{1-x}=\sum_{k=0}^\infty x^k$ $(\abs x<1)$ to find power series, centered at $0$, and the interval of convergence for (a)~$\dfrac{6x^3}{1-x}$, (b)~$\dfrac1{1-5x}$, (c)~$\dfrac1{9+x^2}$.
+
+\textbf{Solution.} (a) By Theorem~\ref{thm:comb}(2) with $m=3$ and the constant factor $6$: $\frac{6x^3}{1-x}=\sum_{k=0}^\infty6x^{k+3}$, same interval $\abs x<1$. (b) Substitute $u=5x$: $\sum(5x)^k$ converges exactly when $\abs{5x}<1$, so the interval is $\abs x<\frac15$. (c) Write $\frac1{9+x^2}=\frac19\cdot\frac1{1-(-x^2/9)}$ and substitute $u=-\frac{x^2}9$:
+\[
+\frac1{9+x^2}=\frac19\sum_{k=0}^\infty\left(-\frac{x^2}9\right)^k=\sum_{k=0}^\infty\frac{(-1)^kx^{2k}}{9^{k+1}},\qquad\abs{\tfrac{x^2}9}<1\iff\abs x<3 .
+\]
+%@ ex6 | Tay(6*x**3/(1-x),0,7) == sum(6*x**j for j in range(3,8)) and Tay(1/(1-5*x),0,5) == sum((5*x)**j for j in range(6)) and solveset(Abs(5*x) < 1, x, S.Reals) == Interval.open(-Q(1,5),Q(1,5)) and Tay(1/(9+x**2),0,6) == sum((-1)**j*x**(2*j)/Integer(9)**(j+1) for j in range(4)) and solveset(Abs(x**2/9) < 1, x, S.Reals) == Interval.open(-3,3) | \abs{\tfrac{x^2}9}<1\iff\abs x<3
+\end{exmp}
+
+\begin{exmp}{One function, two centers}{centers}
+Find power series for $f(x)=\dfrac1{3-x}$ centered at $0$ and at $1$, with their intervals of convergence. Compare them at $x=-2.5$.
+
+\textbf{Solution.} At $0$: $\frac1{3-x}=\frac13\cdot\frac1{1-x/3}=\sum_{k=0}^\infty\frac{x^k}{3^{k+1}}$ for $\abs{x/3}<1$, that is $\abs x<3$. At $1$: write $3-x=2-(x-1)$, so $\frac1{3-x}=\frac12\cdot\frac1{1-(x-1)/2}=\sum_{k=0}^\infty\frac{(x-1)^k}{2^{k+1}}$ for $\abs{x-1}<2$. Each radius is the distance from the center to $x=3$, where $f$ is not defined. At $x=-2.5$, $f=\frac2{11}$. The center-$0$ series converges there ($\abs{-2.5}<3$): its sum is $\frac13\cdot\frac1{1+5/6}=\frac2{11}$. The center-$1$ series diverges there ($\abs{-3.5}>2$): its terms do not tend to $0$. Same function, but each series represents it only where it converges.
+%@ ex7 | Tay(1/(3-x),0,5) == sum(x**j/Integer(3)**(j+1) for j in range(6)) and Tay(1/(3-x),1,5) == sum((x-1)**j/Integer(2)**(j+1) for j in range(6)) and 1/(3-Q(-5,2)) == Q(2,11) and Q(1,3)/(1-Q(-5,2)/3) == Q(2,11) | its sum is $\frac13\cdot\frac1{1+5/6}=\frac2{11}$
+\end{exmp}
+
+\emph{Products.} Multiplying two power series ``as if they were polynomials'' gives the coefficient $\sum_{j=0}^nc_jd_{n-j}$ of $x^n$; for $\frac1{1-x}\cdot\frac1{1-x}$ it is $n+1$, as in Example~\ref{ex:diff} below. That this series converges to $f(x)g(x)$ inside both intervals is true; the proof (it uses rearrangement, compare Theorem~\ref{app-thm:rearrabs}) is not given here.
+
+% ---------------------------------------------------------------------
+\subsection*{Differentiating and integrating power series}
+
+Polynomials can be differentiated and integrated term by term. Power series can too, inside the interval of convergence.
+
+\begin{thm}{Differentiating and integrating power series}{diffint}
+Let $\sum c_k(x-a)^k$ have radius of convergence $R>0$ and let $f(x)=\sum_{k=0}^\infty c_k(x-a)^k$ for $\abs{x-a}<R$.
+\begin{enumerate}
+  \item $f$ is differentiable (so continuous) on $(a-R,a+R)$ and $f'(x)=\sum_{k=1}^\infty kc_k(x-a)^{k-1}$.
+  \item $\displaystyle\int f(x)\,dx=C+\sum_{k=0}^\infty\frac{c_k}{k+1}(x-a)^{k+1}$ on $(a-R,a+R)$.
+  \item Both new series have the same radius $R$. At the endpoints $a\pm R$ they may converge when the original does not, or diverge when it converges.
+\end{enumerate}
+\end{thm}
+%%@omitted diffint  (sketched here; the complete proof is Theorems F.4 and F.5 in Appendix F)
+\textbf{The proof is not given in the notes.} It takes more room than a lecture allows. Here is a sketch; the complete argument, which needs nothing beyond the Mean Value Theorem, is in Appendix~F (Theorems~\ref{app-thm:radderiv}, \ref{app-thm:termdiff} and~\ref{app-thm:termint}).
+\begin{enumerate}[nosep]
+  \item \emph{The new series converge.} Fix $x$ with $\abs{x-a}<R$ and $s$ with $\abs{x-a}<s<R$. The terms $c_ks^k$ tend to $0$, so $\abs{c_k}s^k\le B$, and $k\abs{c_k}\abs{x-a}^{k-1}\le\frac Bs\,k\,t^{k-1}$ with $t=\frac{\abs{x-a}}s<1$; $\sum kt^{k-1}$ converges (Ratio Test). The integrated series is handled the same way.
+  \item \emph{It converges to $f'$.} With $u=x-a$ and $v=u+h$, two uses of the Mean Value Theorem give $\left|\frac{v^k-u^k}h-ku^{k-1}\right|\le k(k-1)\rho^{k-2}\abs h$ when $\abs u,\abs v\le\rho<R$. Summing against $\abs{c_k}$, the difference quotient of $f$ differs from the differentiated series by at most $C\abs h\to0$.
+  \item \emph{Integration.} The integrated series has the original as its differentiated series, so by step~2 it is an antiderivative of $f$.
+\end{enumerate}
+
+The theorem claims nothing at the endpoints, not even that a new series converging there converges to $f'$ or to the integral.
+
+\begin{exmp}{Differentiating a geometric series to sum numerical series}{diff}
+Starting from $\frac1{1-x}=\sum_{k=0}^\infty x^k$ $(\abs x<1)$: (a)~find a series for $\frac1{(1-x)^2}$; (b)~find $\sum_{k=1}^\infty\frac k{3^k}$; (c)~find $\sum_{k=1}^\infty\frac{k^2}{2^k}$.
+
+\textbf{Solution.} (a) Differentiate term by term (Theorem~\ref{thm:diffint}), $\frac d{dx}\frac1{1-x}=\frac1{(1-x)^2}$:
+\[
+\frac1{(1-x)^2}=\sum_{k=1}^\infty kx^{k-1}=\sum_{k=0}^\infty(k+1)x^k=1+2x+3x^2+\cdots,\qquad\abs x<1 .
+\]
+%@ ex8a | simplify(diff(1/(1-x),x)-1/(1-x)**2) == 0 and Tay(1/(1-x)**2,0,5) == sum((j+1)*x**j for j in range(6)) and Tay(1/(1-x)**2,0,2) == 1+2*x+3*x**2 | =1+2x+3x^2+\cdots
+The radius is still $1$; at $x=\pm1$ the terms $(k+1)(\pm1)^k$ do not tend to $0$. (b) Multiply by $x$ (Theorem~\ref{thm:comb}(2)): $\sum_{k=1}^\infty kx^k=\frac x{(1-x)^2}$ for $\abs x<1$. At $x=\frac13$: $\sum\frac k{3^k}=\frac{1/3}{(2/3)^2}=\frac34$. (c) Differentiate (a) again, $\frac2{(1-x)^3}=\sum_{k=2}^\infty k(k-1)x^{k-2}$, and multiply by $x^2$: $\sum_{k=2}^\infty k(k-1)x^k=\frac{2x^2}{(1-x)^3}$. At $x=\frac12$ this is $\frac{2/4}{1/8}=4$, and (b) at $x=\frac12$ gives $\sum\frac k{2^k}=\frac{1/2}{1/4}=2$. Since $k^2=k(k-1)+k$, $\sum\frac{k^2}{2^k}=4+2=6$.
+%@ ex8b | summation(k/3**k,(k,1,oo)) == Q(3,4) and Q(1,3)/(1-Q(1,3))**2 == Q(3,4) and summation(k*(k-1)/2**k,(k,1,oo)) == 4 and Q(2,4)/Q(1,8) == 4 and summation(k/2**k,(k,1,oo)) == 2 and abs(float(sum(Q(j**2,2**j) for j in range(1,80)))-6)<1e-9 and summation(k**2/2**k,(k,1,oo)) == 6 | $\sum\frac{k^2}{2^k}=4+2=6$
+\end{exmp}
+
+\begin{exmp}{Integrating a geometric series: a logarithm}{int}
+Find a power series for $\ln(1+2x)$ centered at $0$ and its interval of convergence. Use it to estimate $\ln1.2$.
+
+\textbf{Solution.} $\frac d{dx}\ln(1+2x)=\frac2{1+2x}=2\sum_{k=0}^\infty(-2x)^k$ for $\abs{2x}<1$ (substitution $u=-2x$). Integrate term by term (Theorem~\ref{thm:diffint}); at $x=0$ both sides are $0$, so the constant is $C=0$:
+\[
+\ln(1+2x)=\sum_{k=0}^\infty\frac{2(-2)^kx^{k+1}}{k+1}=\sum_{k=1}^\infty\frac{(-1)^{k+1}(2x)^k}k=2x-2x^2+\tfrac83x^3-\cdots,\qquad\abs x<\tfrac12 .
+\]
+%@ ex9a | Tay(log(1+2*x),0,5) == sum(Integer(-1)**(j+1)*(2*x)**j/j for j in range(1,6)) and Tay(log(1+2*x),0,3) == 2*x-2*x**2+Q(8,3)*x**3 and Tay(2/(1+2*x),0,4) == sum(2*(-2*x)**j for j in range(5)) | =2x-2x^2+\tfrac83x^3-\cdots
+The radius is $\frac12$. Endpoints: at $x=\frac12$ the series is $\sum\frac{(-1)^{k+1}}k$, the alternating harmonic series, which converges; at $x=-\frac12$ it is $-\sum\frac1k$, which diverges. The interval is $(-\frac12,\frac12]$. The theorem guarantees equality with $\ln(1+2x)$ only for $\abs x<\frac12$ (whether the series equals $\ln2$ at $x=\frac12$ is a question for the section on Taylor series). To estimate $\ln1.2$ put $x=0.1$: the series is $0.2-0.02+0.002667-0.0004+\cdots$, alternating with decreasing terms, so by Theorem~\ref{10.6-thm:remainder} the error after four terms is at most the next term $\frac{0.2^5}5=0.000064$. The four terms sum to $0.182267$, and $\ln1.2=0.182322$ (actual error $5.5\times10^{-5}$).
+%@ ex9b | sum(Integer(-1)**(j+1)*Q(1,5)**j/j for j in range(1,5)) == Q(1367,7500) and abs(float(Q(1367,7500))-0.182267)<1e-6 and abs(float(log(Q(6,5)))-0.182322)<1e-6 and abs(float(log(Q(6,5))-Q(1367,7500))-5.5e-5)<1e-6 and Q(1,5)**5/5 == Q(1,15625) | $\ln1.2=0.182322$
+\end{exmp}
+
+\begin{kc}{Differentiate and integrate}{diffint}
+Let $f(x)=\sum_{k=1}^\infty\frac{x^k}k$ for $\abs x<1$. Find $f'(x)$ as a power series and as a function, and use it to identify $f(x)$. What is $\sum_{k=1}^\infty\frac1{k\,3^k}$?
+\end{kc}
+
+\begin{think}{Endpoints change}{endchange}
+Consider $\sum_{k=1}^\infty\frac{x^k}{k^2}$, its derivative $\sum_{k=1}^\infty\frac{x^{k-1}}k$ and the derivative of that. Find the radius and the interval of convergence of each.
+\end{think}
+
+\begin{exmp}{Series that are not power series}{notps}
+Find where each series converges, and its sum: (a)~$\sum_{k=0}^\infty e^{-kx}$, (b)~$\sum_{k=0}^\infty\left(\frac{x^2-1}3\right)^k$.
+
+\textbf{Solution.} (a) A geometric series with ratio $e^{-x}$. It converges exactly when $e^{-x}<1$, that is $x>0$, to $\frac1{1-e^{-x}}$ (at $x=\ln2$: $\sum2^{-k}=2$). This is not a power series (no $(x-a)^k$), and its convergence set $(0,\infty)$ is not symmetric about any center. (b) It is $\sum u^k$ with $u=\frac{x^2-1}3$ (substitution, Theorem~\ref{thm:comb}(3)), so it converges exactly when $\abs u<1$, that is $-2<x^2<4$, so $\abs x<2$, with sum $\frac1{1-u}=\frac3{4-x^2}$. Here the convergence set is an interval around $0$, but the series is a power series in $x^2-1$, not in $x$.
+%@ ex10 | summation(Q(1,2)**k,(k,0,oo)) == 2 and 1/(1-exp(-log(2))) == 2 and solveset(Abs((x**2-1)/3) < 1, x, S.Reals) == Interval.open(-2,2) and simplify(1/(1-(x**2-1)/3)-3/(4-x**2)) == 0 | at $x=\ln2$: $\sum2^{-k}=2$
+\end{exmp}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Radius and interval by the Ratio Test} (Examples~\ref{ex:b1}--\ref{ex:b2}): a polynomial factor; factorials with a quotient.
+  \item \emph{Radius and interval by the Root Test} (Examples~\ref{ex:b3}--\ref{ex:b4}): a rational base; the base $(1+\frac1k)^k$.
+  \item \emph{Endpoints} (Examples~\ref{ex:b5}--\ref{ex:b6}): an interval open on the left; the Integral Test.
+  \item \emph{Combining and substituting} (Examples~\ref{ex:b7}--\ref{ex:b8}): shifting and scaling $\frac1{1-x}$; partial fractions.
+  \item \emph{Differentiating and integrating} (Examples~\ref{ex:b9}--\ref{ex:b10}): a derivative series; a definite integral with an error bound.
+  \item \emph{From series to functions and numbers} (Examples~\ref{ex:b11}--\ref{ex:b12}): a geometric series in $2x-3$; the arctangent and a numerical series.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Radius and interval by the Ratio Test}
+
+\begin{exmp}{A polynomial factor}{b1}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{k\,(x-3)^k}{4^k}$.
+
+\textbf{Solution.} The center is $3$ and $c_k=\frac k{4^k}\ne0$. Then $\abs{\frac{c_{k+1}}{c_k}}=\frac{k+1}{4k}\to\frac14$, so $R=4$ and the series converges absolutely on $(-1,7)$. At $x=7$ the terms are $k\cdot1^k=k$, and at $x=-1$ they are $k(-1)^k$. In both cases $\abs{a_k}=k\not\to0$, so the Divergence Test shows divergence. The interval is $(-1,7)$.
+%@ bank-1 | limit((k+1)/(4*k),k,oo) == Q(1,4) and 3-4 == -1 and 3+4 == 7 | The interval is $(-1,7)$
+\end{exmp}
+
+\begin{exmp}{Factorials in a quotient}{b2}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{(k!)^2}{(2k)!}\,x^k$.
+
+\textbf{Solution.} Here $c_k=\frac{(k!)^2}{(2k)!}$ and, cancelling factorials ($(k+1)!=(k+1)k!$ and $(2k+2)!=(2k+2)(2k+1)(2k)!$),
+\[
+\frac{c_{k+1}}{c_k}=\frac{(k+1)^2}{(2k+2)(2k+1)}=\frac{k+1}{2(2k+1)}\to\frac14 ,
+\]
+%@ bank-2a | simplify(gammasimp(factorial(k+1)**2*factorial(2*k)/(factorial(2*k+2)*factorial(k)**2)) - (k+1)/(2*(2*k+1))) == 0 and limit((k+1)/(2*(2*k+1)),k,oo) == Q(1,4) | \frac{k+1}{2(2k+1)}\to\frac14
+so $R=4$. At $x=\pm4$ the Ratio Test is inconclusive ($r=1$), so look at $t_k=4^kc_k=\abs{a_k}$ directly: $\frac{t_{k+1}}{t_k}=4\cdot\frac{k+1}{2(2k+1)}=\frac{2k+2}{2k+1}>1$. The numbers $t_k$ are \emph{increasing}, starting at $t_1=\frac{4\cdot1}2=2$, so they cannot tend to $0$. Both endpoints diverge by the Divergence Test, and the interval is $(-4,4)$.
+%@ bank-2b | simplify(gammasimp(4*factorial(k+1)**2*factorial(2*k)/(factorial(2*k+2)*factorial(k)**2)) - (2*k+2)/(2*k+1)) == 0 and 4*factorial(1)**2/factorial(2) == 2 | \frac{2k+2}{2k+1}>1
+\end{exmp}
+
+\subsection*{Group 2: Radius and interval by the Root Test}
+
+\begin{exmp}{A rational base}{b3}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\left(\frac{2k+3}{5k+1}\right)^k(x-1)^k$.
+
+\textbf{Solution.} The $k$-th root of the term is $\frac{2k+3}{5k+1}\abs{x-1}\to\frac25\abs{x-1}$. This is $<1$ for $\abs{x-1}<\frac52$, so $R=\frac52$ and the open interval is $\left(-\frac32,\frac72\right)$. At an endpoint $\abs{x-1}=\frac52$ and $\abs{a_k}=\left(\frac52\cdot\frac{2k+3}{5k+1}\right)^k=\left(\frac{10k+15}{10k+2}\right)^k=\left(1+\frac{13}{10k+2}\right)^k$. Since $\left(1+\frac{13}m\right)^m\to e^{13}$ with $m=10k+2$, and the exponent $\frac k{10k+2}\to\frac1{10}$, we get $\abs{a_k}\to e^{13/10}\ne0$. Divergence at both endpoints, interval $\left(-\frac32,\frac72\right)$.
+%@ bank-3 | limit((2*k+3)/(5*k+1),k,oo) == Q(2,5) and limit(((10*k+15)/(10*k+2))**k,k,oo) == exp(Q(13,10)) and 1-Q(5,2) == Q(-3,2) and 1+Q(5,2) == Q(7,2) | Divergence at both endpoints, interval $\left(-\frac32,\frac72\right)$
+\end{exmp}
+
+\begin{exmp}{The base $\left(1+\frac1k\right)^k$}{b4}
+Find the radius and interval of convergence of $\displaystyle\sum_{k=1}^\infty\left(1+\frac1k\right)^{k^2}x^k$.
+
+\textbf{Solution.} $\abs{a_k}^{1/k}=\left(1+\frac1k\right)^k\abs x\to e\abs x$ (the definition of $e$), so $R=\frac1e$. The endpoints need care, since $\abs{a_k}=\left(\frac{(1+1/k)^k}e\right)^k$ is a number close to $1$ raised to the power $k$. Taking logarithms, $\ln\abs{a_k}=k\left(k\ln\left(1+\tfrac1k\right)-1\right)$. Taylor's Theorem (Theorem~\ref{11.1-thm:taylor}) for $\ln(1+u)$ with $n=2$ gives $\ln(1+u)=u-\frac{u^2}2+\frac{u^3}{3(1+c)^3}$ for some $c$ between $0$ and $u$. With $u=\frac1k$: $k\ln(1+\frac1k)-1=-\frac1{2k}+\frac1{3k^2(1+c)^3}$ and
+\[
+\ln\abs{a_k}=-\frac12+\frac1{3k(1+c)^3}\longrightarrow-\frac12 ,
+\]
+%@ bank-4 | Tay(log(1+x),0,2) == x-x**2/2 and limit((1+1/k)**k,k,oo) == E and limit(k*(k*log(1+1/k)-1),k,oo) == -Q(1,2) and limit(exp(k*(k*log(1+1/k)-1)),k,oo) == exp(-Q(1,2)) | \longrightarrow-\frac12
+because $0<\frac1{3k(1+c)^3}<\frac1{3k}$. So $\abs{a_k}\to e^{-1/2}\ne0$ at $x=\pm\frac1e$, and both endpoints diverge. The interval is $\left(-\frac1e,\frac1e\right)$.
+\end{exmp}
+
+\subsection*{Group 3: Endpoints}
+
+\begin{exmp}{An interval open on the left}{b5}
+Find the interval of convergence of $\displaystyle\sum_{k=1}^\infty\frac{(-1)^k(x-4)^k}{k\,3^k}$.
+
+\textbf{Solution.} $\abs{\frac{c_{k+1}}{c_k}}=\frac k{3(k+1)}\to\frac13$, so $R=3$ and the open interval is $(1,7)$. At $x=7$: $\frac{(-1)^k3^k}{k3^k}=\frac{(-1)^k}k$, which converges (Alternating Series Test). At $x=1$: $(-1)^k(-3)^k=3^k$, so the series is $\sum\frac1k$, divergent. The interval is $(1,7]$: the sign $(-1)^k$ in the coefficients moves the convergent endpoint to the right.
+%@ bank-5 | limit(k/(3*(k+1)),k,oo) == Q(1,3) and 4-3 == 1 and 4+3 == 7 | The interval is $(1,7]$
+\end{exmp}
+
+\begin{exmp}{An endpoint decided by the Integral Test}{b6}
+Find the interval of convergence of $\displaystyle\sum_{k=2}^\infty\frac{(x+1)^k}{2^k\,k\ln k}$.
+
+\textbf{Solution.} $\abs{\frac{c_{k+1}}{c_k}}=\frac12\cdot\frac{k\ln k}{(k+1)\ln(k+1)}\to\frac12$, so $R=2$ and the open interval is $(-3,1)$. At $x=1$ the series is $\sum_{k\ge2}\frac1{k\ln k}$. The function $\frac1{x\ln x}$ is positive and decreasing for $x\ge2$ and $\int_2^\infty\frac{dx}{x\ln x}=\lim_{b\to\infty}\left[\ln\ln x\right]_2^b=\infty$, so the series diverges by the Integral Test (Theorem~\ref{10.4-thm:inttest}). At $x=-3$ the series is $\sum\frac{(-1)^k}{k\ln k}$: the terms $\frac1{k\ln k}$ decrease to $0$, so it converges by the Alternating Series Test. The interval is $[-3,1)$.
+%@ bank-6 | limit(k*log(k)/((k+1)*log(k+1)),k,oo) == 1 and simplify(diff(log(log(x)),x)-1/(x*log(x))) == 0 and integrate(1/(x*log(x)),(x,2,oo)) == oo and -1-2 == -3 | The interval is $[-3,1)$
+\end{exmp}
+
+\subsection*{Group 4: Combining and substituting}
+
+\begin{exmp}{Shifting and scaling}{b7}
+Find power series centered at $0$, with the interval of convergence, for (a)~$\dfrac{x^2}{1+3x}$ and (b)~$\dfrac4{2-x}$.
+
+\textbf{Solution.} (a) $\frac1{1+3x}=\sum(-3x)^k$ for $\abs{3x}<1$ (substitution $u=-3x$), and multiplying by $x^2$ does not change the interval: $\frac{x^2}{1+3x}=\sum_{k=0}^\infty(-3)^kx^{k+2}$, $\abs x<\frac13$. (b) $\frac4{2-x}=2\cdot\frac1{1-x/2}=2\sum\left(\frac x2\right)^k=\sum_{k=0}^\infty\frac{x^k}{2^{k-1}}$, valid for $\abs{x/2}<1$, that is $\abs x<2$.
+%@ bank-7 | Tay(x**2/(1+3*x),0,6) == sum((-3)**j*x**(j+2) for j in range(5)) and solveset(Abs(3*x) < 1, x, S.Reals) == Interval.open(-Q(1,3),Q(1,3)) and Tay(4/(2-x),0,5) == sum(x**j*Q(2)**(1-j) for j in range(6)) and solveset(Abs(x/2) < 1, x, S.Reals) == Interval.open(-2,2) | $\abs x<2$
+\end{exmp}
+
+\begin{exmp}{Partial fractions}{b8}
+Find the power series of $f(x)=\dfrac1{(1-x)(1+2x)}$ centered at $0$ and its interval of convergence.
+
+\textbf{Solution.} Partial fractions: $\frac1{(1-x)(1+2x)}=\frac13\left(\frac1{1-x}+\frac2{1+2x}\right)$ (check: $\frac1{1-x}+\frac2{1+2x}=\frac{(1+2x)+2(1-x)}{(1-x)(1+2x)}=\frac3{(1-x)(1+2x)}$). The two series are $\sum x^k$ (radius $1$) and $2\sum(-2x)^k$ (radius $\frac12$). By Theorem~\ref{thm:comb}(1), since the radii differ the sum has the smaller radius, $\frac12$, and
+\[
+f(x)=\sum_{k=0}^\infty\frac{1+2(-2)^k}3\,x^k=1-x+3x^2-5x^3+11x^4-\cdots,\qquad\abs x<\tfrac12 .
+\]
+%@ bank-8 | simplify(1/(1-x)+2/(1+2*x)-3/((1-x)*(1+2*x))) == 0 and Tay(1/((1-x)*(1+2*x)),0,5) == sum((1+2*(-2)**j)*x**j/3 for j in range(6)) and Tay(1/((1-x)*(1+2*x)),0,4) == 1-x+3*x**2-5*x**3+11*x**4 | =1-x+3x^2-5x^3+11x^4-\cdots
+\end{exmp}
+
+\subsection*{Group 5: Differentiating and integrating}
+
+\begin{exmp}{A derivative series}{b9}
+Find a power series for $\dfrac1{(3+x)^2}$ centered at $0$, and its radius.
+
+\textbf{Solution.} First $\frac1{3+x}=\frac13\cdot\frac1{1+x/3}=\sum_{k=0}^\infty\frac{(-1)^kx^k}{3^{k+1}}$ for $\abs x<3$. Since $\frac d{dx}\frac1{3+x}=-\frac1{(3+x)^2}$, differentiating term by term gives $-\frac1{(3+x)^2}=\sum_{k=1}^\infty\frac{(-1)^kk\,x^{k-1}}{3^{k+1}}$, so (change the sign and put $j=k-1$)
+\[
+\frac1{(3+x)^2}=\sum_{j=0}^\infty\frac{(-1)^j(j+1)\,x^j}{3^{j+2}},\qquad\abs x<3 .
+\]
+%@ bank-9 | Tay(1/(3+x),0,5) == sum((-1)**j*x**j/Integer(3)**(j+1) for j in range(6)) and simplify(diff(1/(3+x),x)+1/(3+x)**2) == 0 and Tay(1/(3+x)**2,0,5) == sum((-1)**j*(j+1)*x**j/Integer(3)**(j+2) for j in range(6)) | \frac{(-1)^j(j+1)\,x^j}{3^{j+2}}
+The radius stays $3$. (At $x=\pm3$ the terms have absolute value $\frac{j+1}9\not\to0$, so the new series diverges at both endpoints.)
+\end{exmp}
+
+\begin{exmp}{A definite integral with an error bound}{b10}
+Use a power series to estimate $\displaystyle\int_0^{1/2}\frac{dt}{1+t^4}$ with error below $10^{-6}$.
+
+\textbf{Solution.} $\frac1{1+t^4}=\sum_{k=0}^\infty(-1)^kt^{4k}$ for $\abs t<1$ (substitution $u=-t^4$). Integrating from $0$ to $x$ term by term (Theorem~\ref{thm:diffint}; the constant is $0$ because the integral from $0$ to $0$ is $0$), for $\abs x<1$:
+\[
+\int_0^x\frac{dt}{1+t^4}=\sum_{k=0}^\infty\frac{(-1)^kx^{4k+1}}{4k+1}=x-\frac{x^5}5+\frac{x^9}9-\cdots .
+\]
+At $x=\frac12$ this is an alternating series with decreasing terms $\frac{(1/2)^{4k+1}}{4k+1}$: $\frac12,\ \frac1{160},\ \frac1{4608},\ \frac1{106496},\ \frac1{2228224},\dots$ By Theorem~\ref{10.6-thm:remainder} the error after four terms ($k=0,\dots,3$) is at most the next term $\frac1{2228224}\approx4.5\times10^{-7}<10^{-6}$. So the integral is $\frac12-\frac1{160}+\frac1{4608}-\frac1{106496}=0.493958$ to six places.
+%@ bank-10 | [Q(1,2)**(4*j+1)/(4*j+1) for j in range(5)] == [Q(1,2),Q(1,160),Q(1,4608),Q(1,106496),Q(1,2228224)] and abs(float(Q(1,2228224))-4.5e-7)<1e-8 and abs(float(Q(1,2)-Q(1,160)+Q(1,4608)-Q(1,106496))-0.493958)<1e-6 and abs(float(Integral(1/(1+x**4),(x,0,Q(1,2))).evalf(20))-0.4939580511)<1e-9 and Q(1,2)**17/17 == Q(1,2228224) | $\frac12-\frac1{160}+\frac1{4608}-\frac1{106496}=0.493958$
+\end{exmp}
+
+\subsection*{Group 6: From series to functions and numbers}
+
+\begin{exmp}{A series in $2x-3$}{b11}
+Find the sum and the interval of convergence of $\displaystyle\sum_{k=0}^\infty(2x-3)^k$. Write it as a power series centered at $a=\frac32$.
+
+\textbf{Solution.} It is a geometric series with ratio $2x-3$, which converges exactly when $\abs{2x-3}<1$, that is $1<x<2$, to $\frac1{1-(2x-3)}=\frac1{4-2x}$. Since $(2x-3)^k=2^k\left(x-\frac32\right)^k$ it is a power series with center $\frac32$ and $c_k=2^k$, whose radius is $\frac1L=\frac12$ with $L=2$ (Theorem~\ref{thm:radiusrule}); this agrees with the interval $(1,2)$. At $x=1$ the terms are $(-1)^k$ and at $x=2$ they are $1$, so neither endpoint converges.
+%@ bank-11 | solveset(Abs(2*x-3) < 1, x, S.Reals) == Interval.open(1,2) and simplify(1/(1-(2*x-3))-1/(4-2*x)) == 0 and expand((2*x-3)**3-2**3*(x-Q(3,2))**3) == 0 and limit(2**(k+1)/2**k,k,oo) == 2 | \frac1{1-(2x-3)}=\frac1{4-2x}
+\end{exmp}
+
+\begin{exmp}{The arctangent and a numerical series}{b12}
+Find a power series for $\tan^{-1}x$ and use it to sum $\displaystyle\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)3^k}$.
+
+\textbf{Solution.} $\frac d{dx}\tan^{-1}x=\frac1{1+x^2}=\sum_{k=0}^\infty(-1)^kx^{2k}$ for $\abs x<1$ (substitution $u=-x^2$). Integrate (the constant is $0$ since $\tan^{-1}0=0$): $\tan^{-1}x=\sum_{k=0}^\infty\frac{(-1)^kx^{2k+1}}{2k+1}$ for $\abs x<1$. Now take $x=\frac1{\sqrt3}$, which lies inside the interval: $x^{2k+1}=\frac1{\sqrt3\,3^k}$ and $\tan^{-1}\frac1{\sqrt3}=\frac\pi6$, so $\frac1{\sqrt3}\sum\frac{(-1)^k}{(2k+1)3^k}=\frac\pi6$ and
+\[
+\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)\,3^k}=\frac{\pi\sqrt3}6\approx0.9069 .
+\]
+%@ bank-12a | Tay(atan(x),0,7) == sum(Integer(-1)**j*x**(2*j+1)/(2*j+1) for j in range(4)) and simplify(diff(atan(x),x)-1/(1+x**2)) == 0 and atan(1/sqrt(3)) == pi/6 and simplify(sqrt(3)*pi/6 - pi/(2*sqrt(3))) == 0 | \frac{\pi\sqrt3}6\approx0.9069
+Check: the alternating series $1-\frac19+\frac1{45}-\frac1{189}+\frac1{729}$ has sum $0.90719$, and the error is at most the next term $\frac1{2673}\approx3.7\times10^{-4}$; indeed $0.90719-0.90690=2.9\times10^{-4}$.
+%@ bank-12b | abs(float(sum(Integer(-1)**j/((2*j+1)*3**j) for j in range(5)))-0.90719)<1e-5 and abs(float(sqrt(3)*pi/6)-0.90690)<1e-5 and Q(1,11*243) == Q(1,2673) and abs(float(Q(1,2673))-3.7e-4)<1e-5 and abs(float(sum(Integer(-1)**j/((2*j+1)*3**j) for j in range(5))-sqrt(3)*pi/6)-2.9e-4)<1e-5 and 11*243 == 2673 | the error is at most the next term $\frac1{2673}\approx3.7\times10^{-4}$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Bounded coefficients}{b13}
+Prove: if $\abs{c_k}\le M$ for all $k$, then the radius of convergence of $\sum c_k(x-a)^k$ is at least $1$.
+
+\textbf{Plan.} Compare with a geometric series at every point with $\abs{x-a}<1$, then use Theorem~\ref{thm:conv}.
+
+\begin{proof}
+Let $\abs{x-a}<1$. Then $\abs{c_k(x-a)^k}\le M\abs{x-a}^k$, and $\sum M\abs{x-a}^k$ is a geometric series with ratio $\abs{x-a}<1$, which converges (Theorem~\ref{10.3-thm:geoseries}). By the Comparison Test (Theorem~\ref{10.5-thm:comp}) $\sum\abs{c_k(x-a)^k}$ converges, so the power series converges (absolutely) at every $x$ with $\abs{x-a}<1$. If $R$ were less than $1$, the series would diverge at points with $R<\abs{x-a}<1$ (Theorem~\ref{thm:conv}), a contradiction. Hence $R\ge1$.
+\end{proof}
+%@ bank-13 | limit(abs(1/factorial(k+1))/abs(1/factorial(k)),k,oo) == 0 and limit(Integer(1)/Integer(1),k,oo) == 1 | $R\ge1$
+A common mistake is to conclude $R=1$. The bound is attained for $c_k=1$ ($R=1$), but $c_k=\frac1{k!}$ is also bounded by $1$ and has $R=\infty$ (its coefficient ratio $\frac1{k+1}\to0$).
+\end{exmp}
+
+\begin{exmp}{A power series determines its coefficients}{b14}
+Prove: if $\sum c_kx^k=\sum d_kx^k$ for all $x$ with $\abs x<r$ ($r>0$, both series convergent there), then $c_k=d_k$ for every $k$.
+
+\textbf{Plan.} Subtract (Theorem~\ref{thm:comb}(1)) to get a series equal to $0$, then differentiate $j$ times (Theorem~\ref{thm:diffint}) and evaluate at $0$.
+
+\begin{proof}
+Let $e_k=c_k-d_k$. By Theorem~\ref{thm:comb}(1), $h(x)=\sum e_kx^k$ converges to $f(x)-g(x)=0$ for $\abs x<r$, so $h\equiv0$ on $(-r,r)$ and the radius of $\sum e_kx^k$ is at least $r$. By Theorem~\ref{thm:diffint}, applied $j$ times (the differentiated series has the same radius each time; see Theorem~\ref{app-thm:allderiv}), for $\abs x<r$
+\[
+h^{(j)}(x)=\sum_{k=j}^\infty k(k-1)\cdots(k-j+1)\,e_kx^{k-j}.
+\]
+At $x=0$ every term with $k>j$ contains the factor $x^{k-j}=0$, and the term $k=j$ is $j!\,e_j$. So $h^{(j)}(0)=j!\,e_j$. But $h\equiv0$ on $(-r,r)$, so $h^{(j)}(0)=0$, and $e_j=0$ for every $j$.
+\end{proof}
+%@ bank-14 | all(diff(1/(1-x)**2,x,j).subs(x,0) == factorial(j)*(j+1) for j in range(0,9)) and all(Tay(1/(1-x)**2,0,8).coeff(x,j) == j+1 for j in range(0,9)) and factorial(3)*4 == 24 | $h^{(j)}(0)=j!\,e_j$
+A common mistake is to put $x=0$ only, which gives $c_0=d_0$ and nothing more; the other coefficients are reached by differentiating first. The theorem is why ``the power series of a function about a given center'' makes sense: there is at most one.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:coef}.] $(3x-6)^k=3^k(x-2)^k$, so $a=2$ and $c_k=\frac{3^k}{k+1}$. (Then $\abs{c_{k+1}/c_k}=\frac{3(k+1)}{k+2}\to3$, so $R=\frac13$, in agreement with $\abs{3x-6}<1\iff\abs{x-2}<\frac13$.)
+%@ ans-coef | expand((3*x-6)**4-3**4*(x-2)**4) == 0 and limit(3*(k+1)/(k+2),k,oo) == 3 and solveset(Abs(3*x-6) < 1, x, S.Reals) == Interval.open(Q(5,3),Q(7,3)) | $R=\frac13$
+  \item[Knowledge Check \ref{kc:interval}.] The center is $4$. Convergence at $x=7$ (distance $3$) forces $R\ge3$; divergence at $x=-1$ (distance $5$) forces $R\le5$. So $3\le R\le5$. At $x=2$ (distance $2<3\le R$) the series converges. At $x=8$ (distance $4$) it cannot be decided: $R$ could be $3.5$ (diverges) or $4.5$ (converges). At $x=10$ and $x=-2$ (distance $6>5\ge R$) it diverges.
+%@ ans-interval | abs(7-4) == 3 and abs(-1-4) == 5 and abs(2-4) == 2 and abs(8-4) == 4 and abs(10-4) == 6 and abs(-2-4) == 6 | $x=10$ and $x=-2$ (distance $6>5\ge R$)
+  \item[Knowledge Check \ref{kc:diffint}.] $f'(x)=\sum_{k=1}^\infty x^{k-1}=\sum_{j=0}^\infty x^j=\frac1{1-x}$ for $\abs x<1$. An antiderivative of $\frac1{1-x}$ is $-\ln(1-x)$, so $f(x)=-\ln(1-x)+C$, and $f(0)=0$ gives $C=0$: $f(x)=-\ln(1-x)$ for $\abs x<1$. At $x=\frac13$: $\sum\frac1{k3^k}=-\ln\frac23=\ln\frac32\approx0.405465$ (the partial sum of six terms is $0.40537$).
+%@ ans-diffint | simplify(diff(-log(1-x),x)-1/(1-x)) == 0 and Tay(-log(1-x),0,5) == sum(x**j/j for j in range(1,6)) and abs(float(-log(Q(2,3)))-0.405465)<1e-6 and abs(float(sum(Q(1,j*3**j) for j in range(1,7)))-0.40537)<1e-5 and simplify(log(Q(3,2))+log(Q(2,3))) == 0 | \ln\frac32\approx0.405465
+  \item[Pause and think \ref{think:partial}.] Only $x=\frac12$ lies in $\abs x<1$. At $x=-1$ the partial sums are $1,0,1,0,\dots$ and at $x=2$ they are $2^{n+1}-1\to\infty$: both diverge. The remainder $R_n(x)=\frac{x^{n+1}}{1-x}$ tends to $0$ if and only if $\abs x<1$: at $x=-1$ it has absolute value $\frac12$ for every $n$, and at $x=2$ it is $-2^{n+1}$. Since $p_n(x)=f(x)-R_n(x)$, convergence \emph{to} $f(x)$ means $R_n(x)\to0$.
+%@ ans-partial | [Tay(1/(1-x),0,j).subs(x,-1) for j in range(6)] == [1,0,1,0,1,0] and all(Tay(1/(1-x),0,j).subs(x,2) == 2**(j+1)-1 for j in range(8)) and all(abs((x**(j+1)/(1-x)).subs(x,-1)) == Q(1,2) for j in range(8)) and all((x**(j+1)/(1-x)).subs(x,2) == -2**(j+1) for j in range(8)) | at $x=2$ it is $-2^{n+1}$
+  \item[Pause and think \ref{think:endpt}.] At an endpoint $\abs{x-a}=R$, so $r=\frac{\abs{x-a}}R=1$ (here $\frac22=1$). The Ratio Test (Theorem~\ref{10.7-thm:ratio}) is inconclusive when $r=1$: both $\sum\frac1k$ and $\sum\frac1{k^2}$ have $\abs{a_{k+1}/a_k}\to1$ and one diverges while the other converges. So endpoints need other tests (harmonic series, $p$-series, Alternating Series Test).
+%@ ans-endpt | limit(k/(k+1),k,oo) == 1 and limit(k**2/(k+1)**2,k,oo) == 1 and Q(2,2) == 1 | $\frac22=1$
+  \item[Pause and think \ref{think:endchange}.] $\sum\frac{x^k}{k^2}$: $\abs{c_{k+1}/c_k}=\frac{k^2}{(k+1)^2}\to1$, $R=1$, and at $x=\pm1$ it converges ($p$-series with $p=2$, absolutely): interval $[-1,1]$. Derivative $\sum\frac{x^{k-1}}k$: $R=1$; at $x=1$ it is the harmonic series (diverges), at $x=-1$ it is $\sum\frac{(-1)^{k-1}}k$ (converges): interval $[-1,1)$. Second derivative $\sum_{k\ge2}\frac{(k-1)x^{k-2}}k$: $R=1$, and at $x=\pm1$ the terms have absolute value $\frac{k-1}k\to1\ne0$: interval $(-1,1)$. The radius is unchanged, but each differentiation can lose an endpoint (and each integration gain one).
+%@ ans-endchange | limit(k**2/(k+1)**2,k,oo) == 1 and limit((k-1)/k,k,oo) == 1 and Q(2,2) == 1 | $\frac{k-1}k\to1\ne0$
+\end{description}
+
+\end{document}
