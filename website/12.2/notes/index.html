@@ -1,0 +1,2902 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../12.1/notes/">
+      
+      
+        <link rel="next" href="../../appendix/appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#polar-coordinates-and-their-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Polar coordinates and their representations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distance-equations-lines-and-circles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Distance, equations, lines and circles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-polar-curve-is-a-parametric-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A polar curve is a parametric curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-limacon-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The limaçon family
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Roses
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lemniscates-and-spirals" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lemniscates and spirals
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Symmetry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-far-must-theta-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How far must <span class="arithmatex">\(\theta\)</span> run?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-two-polar-curves-meet" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where two polar curves meet
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tangent-lines-to-polar-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tangent lines to polar curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-points-and-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Points and conversions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-equations-lines-and-circles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Equations, lines and circles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-graphing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Graphing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-symmetry-and-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Symmetry and period
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-tangent-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Tangent lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-intersections" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Intersections
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#polar-coordinates-and-their-representations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Polar coordinates and their representations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distance-equations-lines-and-circles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Distance, equations, lines and circles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-polar-curve-is-a-parametric-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A polar curve is a parametric curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-limacon-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The limaçon family
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Roses
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lemniscates-and-spirals" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lemniscates and spirals
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Symmetry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-far-must-theta-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How far must <span class="arithmatex">\(\theta\)</span> run?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-two-polar-curves-meet" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where two polar curves meet
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tangent-lines-to-polar-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tangent lines to polar curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-points-and-conversions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Points and conversions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-equations-lines-and-circles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Equations, lines and circles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-graphing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Graphing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-symmetry-and-period" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Symmetry and period
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-tangent-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Tangent lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-intersections" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Intersections
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="122-polar-coordinates">12.2 Polar Coordinates<a class="headerlink" href="#122-polar-coordinates" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>A Cartesian grid is made of two families of straight lines. Many problems are better described by <em>circles and rays</em>: the heat shield of a space vehicle, a radar screen, the orbit of a planet, the sound field around a loudspeaker. For these, the natural address of a point is its <em>distance</em> from a fixed point and the <em>direction</em> in which it lies. That is a polar coordinate system. It has one price: a point no longer has a unique address, and that fact, which looks harmless, decides how we find symmetry, how we find complete curves, and above all how we find where two curves meet. This section builds the system, proves the formulas for converting and for lines and circles, graphs the standard families of polar curves (circles, cardioids and limaçons, roses, lemniscates, spirals), and develops the tests for symmetry, for the complete curve and for intersection points, all proved in full. The calculus of polar curves comes in the next section.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>plot a point given in polar coordinates, give all of its polar representations, including those with a negative radial coordinate, and convert between polar and Cartesian coordinates choosing the angle in the correct quadrant;</p>
+</li>
+<li>
+<p>convert equations between polar and Cartesian form, and write polar equations of lines and circles;</p>
+</li>
+<li>
+<p>graph <span class="arithmatex">\(r=f(\theta)\)</span> by tables and by the Cartesian-to-polar method, recognize circles, limaçons, roses, lemniscates and spirals, and state the interval of <span class="arithmatex">\(\theta\)</span> that traces each curve once;</p>
+</li>
+<li>
+<p>test a polar equation for symmetry, and find the period of a polar curve;</p>
+</li>
+<li>
+<p>find <em>all</em> intersection points of two polar curves, including the points reached at different angles and the origin;</p>
+</li>
+<li>
+<p>prove each of these statements.</p>
+</li>
+</ul>
+<h2 id="polar-coordinates-and-their-representations">Polar coordinates and their representations<a class="headerlink" href="#polar-coordinates-and-their-representations" title="Permanent link">&para;</a></h2>
+<p>Fix a point <span class="arithmatex">\(O\)</span>, the <em>pole</em> (the origin), and a ray from <span class="arithmatex">\(O\)</span>, the <em>polar axis</em>, which we draw along the positive <span class="arithmatex">\(x\)</span>-axis. Angles are measured counterclockwise from the polar axis, and the <em>ray at angle <span class="arithmatex">\(\theta\)</span></em> is the ray from <span class="arithmatex">\(O\)</span> through the point <span class="arithmatex">\((\cos\theta,\sin\theta)\)</span>.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.2.1: Polar coordinates</p>
+<p><span id="def-polar"></span></p>
+<p>Let <span class="arithmatex">\(r\)</span> and <span class="arithmatex">\(\theta\)</span> be real numbers. The point <span class="arithmatex">\(P(r,\theta)\)</span> is defined as follows.</p>
+<ul>
+<li>
+<p>If <span class="arithmatex">\(r&gt;0\)</span>: the point on the ray at angle <span class="arithmatex">\(\theta\)</span> whose distance from <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(r\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(r&lt;0\)</span>: the point on the ray at angle <span class="arithmatex">\(\theta+\pi\)</span> (the ray <em>opposite</em> to the ray at angle <span class="arithmatex">\(\theta\)</span>) whose distance from <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(\abs r\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(r=0\)</span>: the point <span class="arithmatex">\(O\)</span>.</p>
+</li>
+</ul>
+<p>We call <span class="arithmatex">\((r,\theta)\)</span> a <em>polar representation</em> (or a pair of polar coordinates) of <span class="arithmatex">\(P(r,\theta)\)</span>. The number <span class="arithmatex">\(r\)</span> is the <em>radial coordinate</em>, a signed distance, and <span class="arithmatex">\(\theta\)</span> is the <em>angular coordinate</em>.</p>
+</div>
+<p><img alt="Diagram: \(\theta\); \(r\); \(|r|\)" class="calc-figure" src="../figures/notes-fig1.svg" width="431" /></p>
+<p>The picture is drawn for <span class="arithmatex">\(r=2.4\)</span> and <span class="arithmatex">\(\theta=\frac\pi6\)</span>: <span class="arithmatex">\(P^*(-r,\theta)\)</span> is the reflection of <span class="arithmatex">\(P(r,\theta)\)</span> through the origin. Polar coordinates <em>agree</em> with Cartesian coordinates in the following precise sense.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.2: Conversion between polar and Cartesian coordinates</p>
+<p><span id="thm-conv"></span></p>
+<p>The point <span class="arithmatex">\(P(r,\theta)\)</span>, for <em>every</em> real <span class="arithmatex">\(r\)</span> (positive, negative or zero), has Cartesian coordinates</p>
+<div class="arithmatex">\[x=r\cos\theta,\qquad y=r\sin\theta.\]</div>
+<p>Consequently <span class="arithmatex">\(x^2+y^2=r^2\)</span>, and <span class="arithmatex">\(\tan\theta=\frac yx\)</span> if <span class="arithmatex">\(x\ne0\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>Case <span class="arithmatex">\(r&gt;0\)</span>.</em> The ray at angle <span class="arithmatex">\(\theta\)</span> passes through the point <span class="arithmatex">\((\cos\theta,\sin\theta)\)</span>, which is at distance <span class="arithmatex">\(\sqrt{\cos^2\theta+\sin^2\theta}=1\)</span> from <span class="arithmatex">\(O\)</span>. The point on this ray at distance <span class="arithmatex">\(r\)</span> is <span class="arithmatex">\(r\)</span> times this point: <span class="arithmatex">\((r\cos\theta,r\sin\theta)\)</span>. <em>Case <span class="arithmatex">\(r&lt;0\)</span>.</em> By definition the point is on the ray at angle <span class="arithmatex">\(\theta+\pi\)</span>, at distance <span class="arithmatex">\(\abs r=-r\)</span>. By the case just proved it is <span class="arithmatex">\(\bigl(\abs r\cos(\theta+\pi),\abs r\sin(\theta+\pi)\bigr)\)</span>. Since <span class="arithmatex">\(\cos(\theta+\pi)=-\cos\theta\)</span> and <span class="arithmatex">\(\sin(\theta+\pi)=-\sin\theta\)</span>, and <span class="arithmatex">\(\abs r=-r\)</span>, this is <span class="arithmatex">\((-r\cdot(-\cos\theta),\,-r\cdot(-\sin\theta))=(r\cos\theta,r\sin\theta)\)</span>. <em>Case <span class="arithmatex">\(r=0\)</span>.</em> Both sides are <span class="arithmatex">\((0,0)\)</span>. <em>The consequences.</em> <span class="arithmatex">\(x^2+y^2=r^2\cos^2\theta+r^2\sin^2\theta=r^2(\cos^2\theta+\sin^2\theta)=r^2\)</span>. If <span class="arithmatex">\(x\ne0\)</span> then <span class="arithmatex">\(r\ne0\)</span> and <span class="arithmatex">\(\cos\theta\ne0\)</span>, and <span class="arithmatex">\(\frac yx=\frac{r\sin\theta}{r\cos\theta}=\tan\theta\)</span>. ◻ ∎</p>
+<p>A single point has <em>many</em> representations: we can add a full turn to <span class="arithmatex">\(\theta\)</span>, and we can replace <span class="arithmatex">\((r,\theta)\)</span> by <span class="arithmatex">\((-r,\theta+\pi)\)</span>. The next theorem says that these are the only changes.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.3: All the representations of a point</p>
+<p><span id="thm-reps"></span></p>
+<ol>
+<li>
+<p>The origin <span class="arithmatex">\(O\)</span> has the representations <span class="arithmatex">\((0,\theta)\)</span>, for every real <span class="arithmatex">\(\theta\)</span>, and no others.</p>
+</li>
+<li>
+<p>Let <span class="arithmatex">\(P\ne O\)</span> have Cartesian coordinates <span class="arithmatex">\((x,y)\)</span> and put <span class="arithmatex">\(\rho=\sqrt{x^2+y^2}&gt;0\)</span>. Then there is an angle <span class="arithmatex">\(\theta_0\)</span> with <span class="arithmatex">\(\cos\theta_0=\frac x\rho\)</span> and <span class="arithmatex">\(\sin\theta_0=\frac y\rho\)</span>, and the representations of <span class="arithmatex">\(P\)</span> are exactly</p>
+<div class="arithmatex">\[(\rho,\ \theta_0+2\pi k)\quad\text{and}\quad(-\rho,\ \theta_0+\pi+2\pi k),\qquad k=0,\pm1,\pm2,\dots\]</div>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-conv">12.2.2</a>, <span class="arithmatex">\((r,\theta)\)</span> represents the point <span class="arithmatex">\((x,y)\)</span> exactly when <span class="arithmatex">\(r\cos\theta=x\)</span> and <span class="arithmatex">\(r\sin\theta=y\)</span>. (1) For <span class="arithmatex">\((x,y)=(0,0)\)</span> these equations say <span class="arithmatex">\(r\cos\theta=0=r\sin\theta\)</span>. Since <span class="arithmatex">\(\cos\theta\)</span> and <span class="arithmatex">\(\sin\theta\)</span> are never both <span class="arithmatex">\(0\)</span> (because <span class="arithmatex">\(\cos^2\theta+\sin^2\theta=1\)</span>), this forces <span class="arithmatex">\(r=0\)</span>, and then any <span class="arithmatex">\(\theta\)</span> works. (2) <em>Existence of <span class="arithmatex">\(\theta_0\)</span>.</em> Put <span class="arithmatex">\(u=\frac x\rho\)</span> and <span class="arithmatex">\(v=\frac y\rho\)</span>, so <span class="arithmatex">\(u^2+v^2=1\)</span> and <span class="arithmatex">\(\abs u\le1\)</span>. Let <span class="arithmatex">\(\theta_0=\arccos u\)</span> if <span class="arithmatex">\(v\ge0\)</span> and <span class="arithmatex">\(\theta_0=-\arccos u\)</span> if <span class="arithmatex">\(v&lt;0\)</span>. Then <span class="arithmatex">\(\cos\theta_0=u\)</span> in both cases (cosine is even). Also <span class="arithmatex">\(\sin(\arccos u)=\sqrt{1-u^2}=\abs v\)</span>. If <span class="arithmatex">\(v\ge0\)</span>, <span class="arithmatex">\(\sin\theta_0=\abs v=v\)</span>; if <span class="arithmatex">\(v&lt;0\)</span>, <span class="arithmatex">\(\sin\theta_0=-\abs v=v\)</span>. <em>All the representations.</em> Let <span class="arithmatex">\((r,\theta)\)</span> represent <span class="arithmatex">\(P\)</span>. Squaring the two equations and adding, <span class="arithmatex">\(r^2=x^2+y^2=\rho^2\)</span>, so <span class="arithmatex">\(r=\rho\)</span> or <span class="arithmatex">\(r=-\rho\)</span>. If <span class="arithmatex">\(r=\rho\)</span>, then <span class="arithmatex">\(\cos\theta=\frac x\rho=\cos\theta_0\)</span> and <span class="arithmatex">\(\sin\theta=\sin\theta_0\)</span>. By the subtraction formula,</p>
+<div class="arithmatex">\[\cos(\theta-\theta_0)=\cos\theta\cos\theta_0+\sin\theta\sin\theta_0=\cos^2\theta_0+\sin^2\theta_0=1,\]</div>
+<p>and the cosine equals <span class="arithmatex">\(1\)</span> only at the multiples of <span class="arithmatex">\(2\pi\)</span>, so <span class="arithmatex">\(\theta=\theta_0+2\pi k\)</span>. If <span class="arithmatex">\(r=-\rho\)</span>, then <span class="arithmatex">\(\cos\theta=-\frac x\rho=\cos(\theta_0+\pi)\)</span> and <span class="arithmatex">\(\sin\theta=-\frac y\rho=\sin(\theta_0+\pi)\)</span>, and the same argument with <span class="arithmatex">\(\theta_0+\pi\)</span> in place of <span class="arithmatex">\(\theta_0\)</span> gives <span class="arithmatex">\(\theta=\theta_0+\pi+2\pi k\)</span>. Conversely, each pair in the list satisfies <span class="arithmatex">\(r\cos\theta=x\)</span> and <span class="arithmatex">\(r\sin\theta=y\)</span>, because sine and cosine have period <span class="arithmatex">\(2\pi\)</span> and <span class="arithmatex">\(\cos(\theta_0+\pi)=-\cos\theta_0\)</span>, <span class="arithmatex">\(\sin(\theta_0+\pi)=-\sin\theta_0\)</span>. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.2.4: From Cartesian to polar coordinates</p>
+<p><span id="proc-topolar"></span></p>
+<p>Given <span class="arithmatex">\((x,y)\ne(0,0)\)</span>:</p>
+<ol>
+<li>
+<p>Compute <span class="arithmatex">\(\rho=\sqrt{x^2+y^2}\)</span>.</p>
+</li>
+<li>
+<p>Find an angle <span class="arithmatex">\(\theta_0\)</span> with <span class="arithmatex">\(\cos\theta_0=\frac x\rho\)</span> <em>and</em> <span class="arithmatex">\(\sin\theta_0=\frac y\rho\)</span>. Decide the quadrant from the signs of <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> first; use a reference angle (<span class="arithmatex">\(\arctan\frac{\abs y}{\abs x}\)</span>) and place it in that quadrant.</p>
+</li>
+<li>
+<p>The representations are <span class="arithmatex">\((\rho,\theta_0+2\pi k)\)</span> and <span class="arithmatex">\((-\rho,\theta_0+\pi+2\pi k)\)</span>.</p>
+</li>
+<li>
+<p>Check by converting back: <span class="arithmatex">\(\rho\cos\theta_0=x\)</span> and <span class="arithmatex">\(\rho\sin\theta_0=y\)</span>.</p>
+</li>
+</ol>
+<p>The origin is <span class="arithmatex">\((0,\theta)\)</span> for any <span class="arithmatex">\(\theta\)</span>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The tangent relation alone is not enough</p>
+<p><span class="arithmatex">\(\tan\theta=\frac yx\)</span> has solutions in two opposite quadrants, and a calculator’s <span class="arithmatex">\(\arctan\frac yx\)</span> always returns an angle between <span class="arithmatex">\(-\frac\pi2\)</span> and <span class="arithmatex">\(\frac\pi2\)</span>, which is correct only when <span class="arithmatex">\(x&gt;0\)</span>. For <span class="arithmatex">\((-1,1)\)</span> the value <span class="arithmatex">\(\arctan(-1)=-\frac\pi4\)</span> points into the <em>fourth</em> quadrant, but the point is in the second: <span class="arithmatex">\(\theta_0=\frac{3\pi}4\)</span>. Always look at the signs of <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.5: Points in polar coordinates</p>
+<p><span id="ex-points"></span></p>
+<p>Plot the points <span class="arithmatex">\(A\left(2,\frac{7\pi}6\right)\)</span>, <span class="arithmatex">\(B\left(-3,\frac\pi4\right)\)</span> and <span class="arithmatex">\(C\left(-2,-\frac{2\pi}3\right)\)</span>. For each, give its Cartesian coordinates and two other polar representations.</p>
+<p><strong>Solution.</strong> <em>Locating the points.</em> <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(r=2&gt;0\)</span>, so <span class="arithmatex">\(A\)</span> is on the ray at angle <span class="arithmatex">\(\frac{7\pi}6=210^\circ\)</span> (in the third quadrant, <span class="arithmatex">\(30^\circ\)</span> past the negative <span class="arithmatex">\(x\)</span>-axis) at distance <span class="arithmatex">\(2\)</span>. <span class="arithmatex">\(B\)</span>: <span class="arithmatex">\(r=-3&lt;0\)</span>, so first find the ray at angle <span class="arithmatex">\(\frac\pi4\)</span>, then go to the <em>opposite</em> ray (angle <span class="arithmatex">\(\frac\pi4+\pi=\frac{5\pi}4\)</span>), at distance <span class="arithmatex">\(3\)</span>; <span class="arithmatex">\(B\)</span> is in the third quadrant. <span class="arithmatex">\(C\)</span>: <span class="arithmatex">\(r=-2&lt;0\)</span> and <span class="arithmatex">\(\theta=-\frac{2\pi}3\)</span> is <span class="arithmatex">\(120^\circ\)</span> clockwise; the opposite ray has angle <span class="arithmatex">\(-\frac{2\pi}3+\pi=\frac\pi3\)</span>, so <span class="arithmatex">\(C\)</span> is on the ray at <span class="arithmatex">\(60^\circ\)</span>, at distance <span class="arithmatex">\(2\)</span>, in the first quadrant (Figure below).</p>
+<p><em>Cartesian coordinates</em> (Theorem <a href="#thm-conv">12.2.2</a>). For <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(\cos\frac{7\pi}6=-\frac{\sqrt3}2\)</span> and <span class="arithmatex">\(\sin\frac{7\pi}6=-\frac12\)</span>, so <span class="arithmatex">\(A=\left(2\cdot\left(-\frac{\sqrt3}2\right),\,2\cdot\left(-\frac12\right)\right)=(-\sqrt3,-1)\)</span>. For <span class="arithmatex">\(B\)</span>: <span class="arithmatex">\(\cos\frac\pi4=\sin\frac\pi4=\frac{\sqrt2}2\)</span>, so <span class="arithmatex">\(B=\left(-3\cdot\frac{\sqrt2}2,\,-3\cdot\frac{\sqrt2}2\right)=\left(-\frac{3\sqrt2}2,-\frac{3\sqrt2}2\right)\approx(-2.12,-2.12)\)</span>. For <span class="arithmatex">\(C\)</span>: <span class="arithmatex">\(\cos\left(-\frac{2\pi}3\right)=-\frac12\)</span> and <span class="arithmatex">\(\sin\left(-\frac{2\pi}3\right)=-\frac{\sqrt3}2\)</span>, so <span class="arithmatex">\(C=\left(-2\cdot\left(-\frac12\right),\,-2\cdot\left(-\frac{\sqrt3}2\right)\right)=(1,\sqrt3)\)</span>.</p>
+<p><em>Other representations</em> (Theorem <a href="#thm-reps">12.2.3</a>: subtract <span class="arithmatex">\(2\pi\)</span>, or change the sign of <span class="arithmatex">\(r\)</span> and add or subtract <span class="arithmatex">\(\pi\)</span>). <span class="arithmatex">\(A\)</span>: <span class="arithmatex">\(\left(2,\frac{7\pi}6-2\pi\right)=\left(2,-\frac{5\pi}6\right)\)</span> and <span class="arithmatex">\(\left(-2,\frac{7\pi}6-\pi\right)=\left(-2,\frac\pi6\right)\)</span>. <span class="arithmatex">\(B\)</span>: <span class="arithmatex">\(\left(3,\frac\pi4+\pi\right)=\left(3,\frac{5\pi}4\right)\)</span> and <span class="arithmatex">\(\left(-3,\frac\pi4-2\pi\right)=\left(-3,-\frac{7\pi}4\right)\)</span>. <span class="arithmatex">\(C\)</span>: <span class="arithmatex">\(\left(2,-\frac{2\pi}3+\pi\right)=\left(2,\frac\pi3\right)\)</span> and <span class="arithmatex">\(\left(-2,-\frac{2\pi}3+2\pi\right)=\left(-2,\frac{4\pi}3\right)\)</span>. <em>Check.</em> Convert <span class="arithmatex">\(\left(-2,\frac\pi6\right)\)</span>: <span class="arithmatex">\(\left(-2\cdot\frac{\sqrt3}2,-2\cdot\frac12\right)=(-\sqrt3,-1)=A\)</span>; and <span class="arithmatex">\(\left(2,\frac\pi3\right)\)</span>: <span class="arithmatex">\(\left(2\cdot\frac12,2\cdot\frac{\sqrt3}2\right)=(1,\sqrt3)=C\)</span>.</p>
+</div>
+<p><img alt="Diagram: \u; ray \(\theta=\pi/4\); ray \(\theta=-2\pi/3\)" class="calc-figure" src="../figures/notes-fig2.svg" width="482" /></p>
+<p>The dashed rays show the angle that was <em>given</em> for <span class="arithmatex">\(B\)</span> and for <span class="arithmatex">\(C\)</span>; because <span class="arithmatex">\(r&lt;0\)</span>, the point is on the opposite ray.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.6: Converting coordinates</p>
+<p><span id="ex-convert"></span></p>
+<p>(a) Convert the polar points <span class="arithmatex">\(P\left(-4,\frac{2\pi}3\right)\)</span> and <span class="arithmatex">\(Q\left(6,-\frac{5\pi}4\right)\)</span> to Cartesian coordinates. (b) Convert the Cartesian points <span class="arithmatex">\((-3,-3\sqrt3)\)</span>, <span class="arithmatex">\((-2,1)\)</span> and <span class="arithmatex">\((0,-5)\)</span> to polar coordinates, giving one representation with <span class="arithmatex">\(r&gt;0\)</span> and one with <span class="arithmatex">\(r&lt;0\)</span>.</p>
+<p><strong>Solution.</strong> (a) <em><span class="arithmatex">\(P\)</span>.</em> <span class="arithmatex">\(\cos\frac{2\pi}3=-\frac12\)</span> and <span class="arithmatex">\(\sin\frac{2\pi}3=\frac{\sqrt3}2\)</span>, so <span class="arithmatex">\(x=-4\cdot\left(-\frac12\right)=2\)</span> and <span class="arithmatex">\(y=-4\cdot\frac{\sqrt3}2=-2\sqrt3\)</span>: <span class="arithmatex">\(P=(2,-2\sqrt3)\approx(2,-3.46)\)</span>. <em><span class="arithmatex">\(Q\)</span>.</em> <span class="arithmatex">\(\cos\left(-\frac{5\pi}4\right)=\cos\frac{5\pi}4=-\frac{\sqrt2}2\)</span> and <span class="arithmatex">\(\sin\left(-\frac{5\pi}4\right)=-\sin\frac{5\pi}4=\frac{\sqrt2}2\)</span>, so <span class="arithmatex">\(Q=\left(6\cdot\left(-\frac{\sqrt2}2\right),\,6\cdot\frac{\sqrt2}2\right)=\left(-3\sqrt2,3\sqrt2\right)\)</span>. (b) <em><span class="arithmatex">\((-3,-3\sqrt3)\)</span>.</em> <span class="arithmatex">\(\rho=\sqrt{9+27}=\sqrt{36}=6\)</span>. Both coordinates are negative, so the point is in the third quadrant. <span class="arithmatex">\(\cos\theta_0=\frac{-3}6=-\frac12\)</span> and <span class="arithmatex">\(\sin\theta_0=\frac{-3\sqrt3}6=-\frac{\sqrt3}2\)</span>: the reference angle is <span class="arithmatex">\(\frac\pi3\)</span>, so <span class="arithmatex">\(\theta_0=\pi+\frac\pi3=\frac{4\pi}3\)</span>. Representations: <span class="arithmatex">\(\left(6,\frac{4\pi}3\right)\)</span> and <span class="arithmatex">\(\left(-6,\frac{4\pi}3-\pi\right)=\left(-6,\frac\pi3\right)\)</span>. <em>Check:</em> <span class="arithmatex">\(6\cos\frac{4\pi}3=-3\)</span>, <span class="arithmatex">\(6\sin\frac{4\pi}3=-3\sqrt3\)</span>. <em><span class="arithmatex">\((-2,1)\)</span>.</em> <span class="arithmatex">\(\rho=\sqrt{4+1}=\sqrt5\)</span>. The point is in the second quadrant (<span class="arithmatex">\(x&lt;0\)</span>, <span class="arithmatex">\(y&gt;0\)</span>), with <span class="arithmatex">\(\tan\theta=-\frac12\)</span>. The calculator value <span class="arithmatex">\(\arctan\left(-\frac12\right)\approx-0.4636\)</span> is in the fourth quadrant, so we must add <span class="arithmatex">\(\pi\)</span>: <span class="arithmatex">\(\theta_0=\pi-\arctan\frac12\approx3.1416-0.4636=2.6779\)</span>. Representations: <span class="arithmatex">\(\left(\sqrt5,\,\pi-\arctan\tfrac12\right)\)</span> and <span class="arithmatex">\(\left(-\sqrt5,\,-\arctan\tfrac12\right)\)</span> (subtract <span class="arithmatex">\(\pi\)</span> from <span class="arithmatex">\(\theta_0\)</span>). <em>Check:</em> <span class="arithmatex">\(\sqrt5\cos(2.6779)\approx-2.000\)</span> and <span class="arithmatex">\(\sqrt5\sin(2.6779)\approx1.000\)</span>. <em><span class="arithmatex">\((0,-5)\)</span>.</em> <span class="arithmatex">\(\rho=5\)</span>, and <span class="arithmatex">\(\frac y\rho=-1\)</span>, <span class="arithmatex">\(\frac x\rho=0\)</span>, so <span class="arithmatex">\(\theta_0=-\frac\pi2\)</span> (<span class="arithmatex">\(\tan\theta\)</span> is undefined here; the signs and the unit vector <span class="arithmatex">\((0,-1)\)</span> decide). Representations: <span class="arithmatex">\(\left(5,-\frac\pi2\right)\)</span> and <span class="arithmatex">\(\left(-5,\frac\pi2\right)\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.2.1: Same point or not</p>
+<p><span id="kc-samekc"></span></p>
+<p>Which of the pairs <span class="arithmatex">\(\left(2,\frac\pi3\right)\)</span>, <span class="arithmatex">\(\left(-2,\frac{4\pi}3\right)\)</span>, <span class="arithmatex">\(\left(2,\frac{7\pi}3\right)\)</span>, <span class="arithmatex">\(\left(-2,-\frac\pi3\right)\)</span> represent the same point as <span class="arithmatex">\(\left(2,\frac\pi3\right)\)</span>?</p>
+</div>
+<h2 id="distance-equations-lines-and-circles">Distance, equations, lines and circles<a class="headerlink" href="#distance-equations-lines-and-circles" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.7: The distance formula in polar coordinates</p>
+<p><span id="thm-dist"></span></p>
+<p>For any real <span class="arithmatex">\(r_1,r_2,\theta_1,\theta_2\)</span>, the distance <span class="arithmatex">\(d\)</span> between <span class="arithmatex">\(P_1(r_1,\theta_1)\)</span> and <span class="arithmatex">\(P_2(r_2,\theta_2)\)</span> satisfies</p>
+<div class="arithmatex">\[d^2=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2).\]</div>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-conv">12.2.2</a>, <span class="arithmatex">\(P_1=(r_1\cos\theta_1,r_1\sin\theta_1)\)</span> and <span class="arithmatex">\(P_2=(r_2\cos\theta_2,r_2\sin\theta_2)\)</span>. The distance formula gives</p>
+<div class="arithmatex">\[\begin{aligned}
+d^2&amp;=(r_1\cos\theta_1-r_2\cos\theta_2)^2+(r_1\sin\theta_1-r_2\sin\theta_2)^2\\
+&amp;=r_1^2\cos^2\theta_1-2r_1r_2\cos\theta_1\cos\theta_2+r_2^2\cos^2\theta_2+r_1^2\sin^2\theta_1-2r_1r_2\sin\theta_1\sin\theta_2+r_2^2\sin^2\theta_2\\
+&amp;=r_1^2\left(\cos^2\theta_1+\sin^2\theta_1\right)+r_2^2\left(\cos^2\theta_2+\sin^2\theta_2\right)-2r_1r_2\left(\cos\theta_1\cos\theta_2+\sin\theta_1\sin\theta_2\right)\\
+&amp;=r_1^2+r_2^2-2r_1r_2\cos(\theta_1-\theta_2),
+\end{aligned}\]</div>
+<p>where the last step uses <span class="arithmatex">\(\cos^2+\sin^2=1\)</span> and the subtraction formula for the cosine. (This is the law of cosines.) ◻ ∎</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.2.8: The graph of a polar equation</p>
+<p><span id="def-pgraph"></span></p>
+<p>The <em>graph</em> of a polar equation <span class="arithmatex">\(E(r,\theta)=0\)</span> (for example <span class="arithmatex">\(r=f(\theta)\)</span>) is the set of all points <span class="arithmatex">\(P\)</span> for which <em>at least one</em> polar representation <span class="arithmatex">\((r,\theta)\)</span> of <span class="arithmatex">\(P\)</span> satisfies the equation.</p>
+</div>
+<p>Because a point has infinitely many representations, a point can be on the graph even though the representation you happened to write down does not satisfy the equation. For instance <span class="arithmatex">\(\left(-1,\frac{3\pi}2\right)\)</span> does not satisfy <span class="arithmatex">\(r=1+\cos\theta\)</span> (the right side is <span class="arithmatex">\(1+0=1\)</span>), yet it represents the same point as <span class="arithmatex">\(\left(1,\frac\pi2\right)\)</span>, which does: the point <span class="arithmatex">\((0,-1)\)</span> is on the graph of <span class="arithmatex">\(r=1+\cos\theta\)</span>. The next theorem tells when an equation can be converted without such surprises.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.9: Converting equations</p>
+<p><span id="thm-eqconv"></span></p>
+<ol>
+<li>
+<p>Let <span class="arithmatex">\(F(x,y)=0\)</span> be a Cartesian equation and <span class="arithmatex">\(E(r,\theta)=F(r\cos\theta,r\sin\theta)\)</span>. A point is on the graph of <span class="arithmatex">\(E(r,\theta)=0\)</span> exactly when it satisfies <span class="arithmatex">\(F(x,y)=0\)</span>, and then <em>every</em> representation of the point satisfies <span class="arithmatex">\(E=0\)</span>.</p>
+</li>
+<li>
+<p>The graph of <span class="arithmatex">\(r\,E(r,\theta)=0\)</span> is the graph of <span class="arithmatex">\(E(r,\theta)=0\)</span> together with the origin.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) Let <span class="arithmatex">\((r,\theta)\)</span> be any representation of the point <span class="arithmatex">\(P=(x,y)\)</span>. By Theorem <a href="#thm-conv">12.2.2</a>, <span class="arithmatex">\(E(r,\theta)=F(r\cos\theta,r\sin\theta)=F(x,y)\)</span>, which does not depend on which representation we chose. So <span class="arithmatex">\(E=0\)</span> holds for one representation if and only if <span class="arithmatex">\(F(x,y)=0\)</span>, if and only if it holds for all. (2) A pair <span class="arithmatex">\((r,\theta)\)</span> satisfies <span class="arithmatex">\(rE(r,\theta)=0\)</span> exactly when <span class="arithmatex">\(r=0\)</span> or <span class="arithmatex">\(E(r,\theta)=0\)</span>. The pairs with <span class="arithmatex">\(r=0\)</span> represent the origin, so the origin is on the graph of <span class="arithmatex">\(rE=0\)</span>. A point <span class="arithmatex">\(P\ne O\)</span> has only representations with <span class="arithmatex">\(r\ne0\)</span> (Theorem <a href="#thm-reps">12.2.3</a>), so it is on the graph of <span class="arithmatex">\(rE=0\)</span> exactly when some representation satisfies <span class="arithmatex">\(E=0\)</span>, that is, when it is on the graph of <span class="arithmatex">\(E=0\)</span>. ◻ ∎</p>
+<p>So multiplying by <span class="arithmatex">\(r\)</span> can add only the origin, and it adds nothing when the origin is already on the graph. Dividing by <span class="arithmatex">\(r\)</span> can lose only the origin, and it loses nothing when the origin is on the graph of the new equation.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.10: Lines in polar coordinates</p>
+<p><span id="thm-plines"></span></p>
+<ol>
+<li>
+<p>The graph of <span class="arithmatex">\(\theta=\alpha\)</span> is the line through <span class="arithmatex">\(O\)</span> that contains the ray at angle <span class="arithmatex">\(\alpha\)</span> (slope <span class="arithmatex">\(\tan\alpha\)</span>, or the <span class="arithmatex">\(y\)</span>-axis if <span class="arithmatex">\(\cos\alpha=0\)</span>).</p>
+</li>
+<li>
+<p>The vertical line <span class="arithmatex">\(x=h\)</span> has the polar equation <span class="arithmatex">\(r\cos\theta=h\)</span> and the horizontal line <span class="arithmatex">\(y=k\)</span> has <span class="arithmatex">\(r\sin\theta=k\)</span>.</p>
+</li>
+<li>
+<p><em>Normal form.</em> Let <span class="arithmatex">\(p&gt;0\)</span>. The line whose point nearest to <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(P(p,\alpha)\)</span> is the graph of <span class="arithmatex">\(r\cos(\theta-\alpha)=p\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(b\ne0\)</span>, the line <span class="arithmatex">\(y=mx+b\)</span> is the graph of <span class="arithmatex">\(r=\dfrac{b}{\sin\theta-m\cos\theta}\)</span>.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) The graph is the set of points <span class="arithmatex">\(P(r,\alpha)\)</span>, <span class="arithmatex">\(r\)</span> real. By Theorem <a href="#thm-conv">12.2.2</a> this is <span class="arithmatex">\(\{r(\cos\alpha,\sin\alpha)\}\)</span>, the line through <span class="arithmatex">\(O\)</span> with direction vector <span class="arithmatex">\((\cos\alpha,\sin\alpha)\)</span>. (2) Apply Theorem <a href="#thm-eqconv">12.2.9</a>(1) to <span class="arithmatex">\(x-h=0\)</span> and <span class="arithmatex">\(y-k=0\)</span>. (3) Let <span class="arithmatex">\(\mathbf n=(\cos\alpha,\sin\alpha)\)</span>, a unit vector. The foot of the perpendicular from <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(p\,\mathbf n=(p\cos\alpha,p\sin\alpha)=P(p,\alpha)\)</span>, and the line through it perpendicular to <span class="arithmatex">\(\mathbf n\)</span> is <span class="arithmatex">\(\{X:\ \mathbf n\cdot(X-p\mathbf n)=0\}=\{X:\ \mathbf n\cdot X=p\}\)</span>, because <span class="arithmatex">\(\mathbf n\cdot\mathbf n=1\)</span>. In coordinates this is <span class="arithmatex">\(x\cos\alpha+y\sin\alpha=p\)</span>. Now put <span class="arithmatex">\(x=r\cos\theta\)</span>, <span class="arithmatex">\(y=r\sin\theta\)</span>:</p>
+<div class="arithmatex">\[x\cos\alpha+y\sin\alpha=r\cos\theta\cos\alpha+r\sin\theta\sin\alpha=r\cos(\theta-\alpha).\]</div>
+<p>By Theorem <a href="#thm-eqconv">12.2.9</a>(1) the line is the graph of <span class="arithmatex">\(r\cos(\theta-\alpha)=p\)</span>. (4) By Theorem <a href="#thm-eqconv">12.2.9</a>(1), <span class="arithmatex">\(y=mx+b\)</span> becomes <span class="arithmatex">\(r\sin\theta=mr\cos\theta+b\)</span>, that is <span class="arithmatex">\(r(\sin\theta-m\cos\theta)=b\)</span>. If <span class="arithmatex">\(\sin\theta=m\cos\theta\)</span> this reads <span class="arithmatex">\(0=b\)</span>, which is false, so no point has such an angle; for every other <span class="arithmatex">\(\theta\)</span> the equation is <span class="arithmatex">\(r=\frac b{\sin\theta-m\cos\theta}\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.11: Circles in polar coordinates</p>
+<p><span id="thm-pcircles"></span></p>
+<ol>
+<li>
+<p>For <span class="arithmatex">\(a\ne0\)</span>, the graph of <span class="arithmatex">\(r=a\)</span> is the circle of radius <span class="arithmatex">\(\abs a\)</span> centered at <span class="arithmatex">\(O\)</span>.</p>
+</li>
+<li>
+<p>The circle of radius <span class="arithmatex">\(R\)</span> whose center is <span class="arithmatex">\(C(\rho_0,\theta_0)\)</span> is the graph of</p>
+<div class="arithmatex">\[r^2-2\rho_0\,r\cos(\theta-\theta_0)=R^2-\rho_0^2 .\]</div>
+<p>If the center is the Cartesian point <span class="arithmatex">\((a,b)\)</span>, this reads <span class="arithmatex">\(r^2-2r(a\cos\theta+b\sin\theta)=R^2-a^2-b^2\)</span>.</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\((a,b)\ne(0,0)\)</span>, the graph of <span class="arithmatex">\(r=2a\cos\theta+2b\sin\theta\)</span> is the <em>whole</em> circle of radius <span class="arithmatex">\(\sqrt{a^2+b^2}\)</span> centered at <span class="arithmatex">\((a,b)\)</span>, which passes through the origin. In particular <span class="arithmatex">\(r=2a\cos\theta\)</span> is the circle with center <span class="arithmatex">\((a,0)\)</span> and radius <span class="arithmatex">\(\abs a\)</span>, and <span class="arithmatex">\(r=2b\sin\theta\)</span> is the circle with center <span class="arithmatex">\((0,b)\)</span> and radius <span class="arithmatex">\(\abs b\)</span>.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) A point is on the graph if some representation has <span class="arithmatex">\(r=a\)</span>; its distance from <span class="arithmatex">\(O\)</span> is then <span class="arithmatex">\(\abs a\)</span>. Conversely, a point at distance <span class="arithmatex">\(\abs a\)</span> from <span class="arithmatex">\(O\)</span> has the representations <span class="arithmatex">\((\abs a,\theta_0)\)</span> and <span class="arithmatex">\((-\abs a,\theta_0+\pi)\)</span> (Theorem <a href="#thm-reps">12.2.3</a>), and one of them has radial coordinate <span class="arithmatex">\(a\)</span>. (2) The point <span class="arithmatex">\(P(r,\theta)\)</span> is on the circle exactly when <span class="arithmatex">\(\abs{PC}^2=R^2\)</span>. By Theorem <a href="#thm-dist">12.2.7</a>, <span class="arithmatex">\(\abs{PC}^2=r^2+\rho_0^2-2r\rho_0\cos(\theta-\theta_0)\)</span>, so the condition is <span class="arithmatex">\(r^2-2\rho_0r\cos(\theta-\theta_0)=R^2-\rho_0^2\)</span>. The distance does not depend on the representation chosen, so the equation holds for one representation of <span class="arithmatex">\(P\)</span> exactly when it holds for all. If <span class="arithmatex">\(C=(a,b)\)</span> then <span class="arithmatex">\(a=\rho_0\cos\theta_0\)</span> and <span class="arithmatex">\(b=\rho_0\sin\theta_0\)</span>, and <span class="arithmatex">\(\rho_0\cos(\theta-\theta_0)=\rho_0\cos\theta\cos\theta_0+\rho_0\sin\theta\sin\theta_0=a\cos\theta+b\sin\theta\)</span>. (3) Here <span class="arithmatex">\(R^2=a^2+b^2\)</span>, so the right side of the equation in (2) is <span class="arithmatex">\(0\)</span> and the equation is <span class="arithmatex">\(r\bigl(r-2a\cos\theta-2b\sin\theta\bigr)=0\)</span>. By Theorem <a href="#thm-eqconv">12.2.9</a>(2), the graph of <span class="arithmatex">\(r=2a\cos\theta+2b\sin\theta\)</span> is the circle, <em>provided</em> the origin is on the graph of <span class="arithmatex">\(r=2a\cos\theta+2b\sin\theta\)</span>. It is: <span class="arithmatex">\(2a\cos\theta+2b\sin\theta=0\)</span> when <span class="arithmatex">\((\cos\theta,\sin\theta)=\frac1{\sqrt{a^2+b^2}}(-b,a)\)</span>, an angle that exists because this is a unit vector, and then <span class="arithmatex">\(r=0\)</span>. (Equivalently, the circle passes through <span class="arithmatex">\(O\)</span> because <span class="arithmatex">\(\abs{OC}=R\)</span>.) ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.12: Converting equations</p>
+<p><span id="ex-eqs"></span></p>
+<p>Convert to the other coordinate system and identify the graph: (a) <span class="arithmatex">\(r=6\cos\theta-8\sin\theta\)</span>; (b) <span class="arithmatex">\(r^2\cos2\theta=8\)</span>; (c) <span class="arithmatex">\(y=2x^2\)</span>; (d) <span class="arithmatex">\(3x-4y=12\)</span>.</p>
+<p><strong>Solution.</strong> (a) Multiply by <span class="arithmatex">\(r\)</span> (see Theorem <a href="#thm-eqconv">12.2.9</a>(2)): <span class="arithmatex">\(r^2=6r\cos\theta-8r\sin\theta\)</span>. Substitute <span class="arithmatex">\(r^2=x^2+y^2\)</span>, <span class="arithmatex">\(r\cos\theta=x\)</span>, <span class="arithmatex">\(r\sin\theta=y\)</span>: <span class="arithmatex">\(x^2+y^2=6x-8y\)</span>. Collect and complete the squares:</p>
+<div class="arithmatex">\[x^2-6x+9+y^2+8y+16=9+16\quad\Longrightarrow\quad(x-3)^2+(y+4)^2=25.\]</div>
+<p>This is the circle with center <span class="arithmatex">\((3,-4)\)</span> and radius <span class="arithmatex">\(5\)</span>, which agrees with Theorem <a href="#thm-pcircles">12.2.11</a>(3) for <span class="arithmatex">\(2a=6\)</span>, <span class="arithmatex">\(2b=-8\)</span>. Multiplying by <span class="arithmatex">\(r\)</span> could have added the origin, but the origin is already on the graph of the original equation, since <span class="arithmatex">\(6\cos\theta-8\sin\theta=0\)</span> at <span class="arithmatex">\(\theta=\arctan\frac34\)</span>. So the equation <span class="arithmatex">\(r=6\cos\theta-8\sin\theta\)</span> describes the whole circle. <em>Check.</em> <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=6\)</span>, the point <span class="arithmatex">\((6,0)\)</span>, and <span class="arithmatex">\((6-3)^2+(0+4)^2=9+16=25\)</span>. <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(r=-8\)</span>, the point <span class="arithmatex">\(P\left(-8,\frac\pi2\right)=(0,-8)\)</span>, and <span class="arithmatex">\((0-3)^2+(-8+4)^2=9+16=25\)</span>. (b) Use <span class="arithmatex">\(\cos2\theta=\cos^2\theta-\sin^2\theta\)</span>: <span class="arithmatex">\(r^2\cos^2\theta-r^2\sin^2\theta=8\)</span>, that is <span class="arithmatex">\(x^2-y^2=8\)</span>, a hyperbola with vertices <span class="arithmatex">\((\pm2\sqrt2,0)\)</span> and asymptotes <span class="arithmatex">\(y=\pm x\)</span>. No multiplication was needed, so Theorem <a href="#thm-eqconv">12.2.9</a>(1) shows that the graphs agree. (c) <span class="arithmatex">\(y=2x^2\)</span> becomes <span class="arithmatex">\(r\sin\theta=2r^2\cos^2\theta\)</span>, that is <span class="arithmatex">\(r\left(\sin\theta-2r\cos^2\theta\right)=0\)</span>. So <span class="arithmatex">\(r=0\)</span> or <span class="arithmatex">\(r=\dfrac{\sin\theta}{2\cos^2\theta}=\dfrac12\tan\theta\sec\theta\)</span>. The origin is on the graph of the second equation (<span class="arithmatex">\(\theta=0\)</span> gives <span class="arithmatex">\(r=0\)</span>), so the single equation <span class="arithmatex">\(r=\frac12\tan\theta\sec\theta\)</span> describes the whole parabola. <em>Check.</em> <span class="arithmatex">\(\theta=\frac\pi4\)</span>: <span class="arithmatex">\(r=\frac{\sqrt2/2}{2\cdot\frac12}=\frac{\sqrt2}2\)</span>, the point <span class="arithmatex">\(\left(\frac{\sqrt2}2\cos\frac\pi4,\frac{\sqrt2}2\sin\frac\pi4\right)=\left(\frac12,\frac12\right)\)</span>, and <span class="arithmatex">\(2\left(\frac12\right)^2=\frac12\)</span>. (d) Substitute <span class="arithmatex">\(x=r\cos\theta\)</span>, <span class="arithmatex">\(y=r\sin\theta\)</span>: <span class="arithmatex">\(r(3\cos\theta-4\sin\theta)=12\)</span>. Divide by <span class="arithmatex">\(\sqrt{3^2+4^2}=5\)</span>: <span class="arithmatex">\(r\left(\frac35\cos\theta-\frac45\sin\theta\right)=\frac{12}5\)</span>. The numbers <span class="arithmatex">\(\frac35,-\frac45\)</span> satisfy <span class="arithmatex">\(\frac9{25}+\frac{16}{25}=1\)</span>, so <span class="arithmatex">\(\cos\alpha=\frac35\)</span>, <span class="arithmatex">\(\sin\alpha=-\frac45\)</span> for an angle <span class="arithmatex">\(\alpha=-\arctan\frac43\approx-0.9273\)</span>, and the left side is <span class="arithmatex">\(r\cos(\theta-\alpha)\)</span>. By Theorem <a href="#thm-plines">12.2.10</a>(3):</p>
+<div class="arithmatex">\[r\cos(\theta-\alpha)=\frac{12}5,\]</div>
+<p>the line whose nearest point to <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(P\left(\frac{12}5,\alpha\right)=\left(\frac{36}{25},-\frac{48}{25}\right)\)</span>. <em>Check.</em> <span class="arithmatex">\(3\cdot\frac{36}{25}-4\cdot\left(-\frac{48}{25}\right)=\frac{108+192}{25}=12\)</span>, and the distance from <span class="arithmatex">\(O\)</span> to <span class="arithmatex">\(3x-4y=12\)</span> is <span class="arithmatex">\(\frac{12}{\sqrt{9+16}}=\frac{12}5\)</span>.</p>
+</div>
+<p><img alt="Diagram: radius \(5\); \(3x-4y=12\)" class="calc-figure" src="../figures/notes-fig3.svg" width="366" /></p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.2.2: A circle from its equation</p>
+<p><span id="kc-circkc"></span></p>
+<p>Describe the graph of <span class="arithmatex">\(r=-3\sin\theta\)</span>: give its center and radius.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.2.1: Multiplying by <span class="arithmatex">\(r\)</span></p>
+<p><span id="think-timesr"></span></p>
+<p>In Example <a href="#ex-eqs">12.2.12</a>(a) we multiplied the equation by <span class="arithmatex">\(r\)</span>, and Theorem <a href="#thm-eqconv">12.2.9</a>(2) says that this may add the origin. No point was added there. Give an equation whose graph does <em>not</em> contain the origin, and show that multiplying it by <span class="arithmatex">\(r\)</span> does add the origin.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Take <span class="arithmatex">\(r=1\)</span>, the unit circle, which does not contain the origin. Multiplying by <span class="arithmatex">\(r\)</span> gives <span class="arithmatex">\(r^2=r\)</span>, that is <span class="arithmatex">\(r(r-1)=0\)</span>, whose graph contains all the points with <span class="arithmatex">\(r=0\)</span>: the origin is added. This is Theorem <a href="#thm-eqconv">12.2.9</a>(2) with <span class="arithmatex">\(E=r-1\)</span>: <span class="arithmatex">\(rE=r(r-1)\)</span>.</p>
+</details>
+</div>
+<h2 id="a-polar-curve-is-a-parametric-curve">A polar curve is a parametric curve<a class="headerlink" href="#a-polar-curve-is-a-parametric-curve" title="Permanent link">&para;</a></h2>
+<p>A polar equation <span class="arithmatex">\(r=f(\theta)\)</span> describes a curve in the plane, and Section 12.1 gave us the language for curves: parameter, orientation, tangent line. The two descriptions are connected by one theorem.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.13: A polar curve is a parametric curve</p>
+<p><span id="thm-polpar"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be defined on an interval <span class="arithmatex">\(I\)</span> (possibly all of <span class="arithmatex">\(\R\)</span>). The points <span class="arithmatex">\(P(f(\theta),\theta)\)</span>, <span class="arithmatex">\(\theta\)</span> in <span class="arithmatex">\(I\)</span>, form the parametric curve (Definition <a href="../../12.1/notes/#def-param">12.1.1</a>)</p>
+<div class="arithmatex">\[x=f(\theta)\cos\theta,\qquad y=f(\theta)\sin\theta,\qquad\theta\in I,\]</div>
+<p>with <span class="arithmatex">\(\theta\)</span> as the parameter; its positive orientation is the direction of increasing <span class="arithmatex">\(\theta\)</span>. If <span class="arithmatex">\(f\)</span> is differentiable, then</p>
+<div class="arithmatex">\[x'(\theta)=f'(\theta)\cos\theta-f(\theta)\sin\theta,\qquad y'(\theta)=f'(\theta)\sin\theta+f(\theta)\cos\theta,\]</div>
+<p>and <span class="arithmatex">\(x'(\theta)^2+y'(\theta)^2=f(\theta)^2+f'(\theta)^2\)</span>. If <span class="arithmatex">\(f(\theta_0)=0\)</span> and <span class="arithmatex">\(f'(\theta_0)\ne0\)</span>, the curve passes through the origin at <span class="arithmatex">\(\theta=\theta_0\)</span> and its tangent line there is the line <span class="arithmatex">\(\theta=\theta_0\)</span>.</p>
+</div>
+<p><em>Proof.</em> The coordinates are those of Theorem <a href="#thm-conv">12.2.2</a> with <span class="arithmatex">\(r=f(\theta)\)</span>. By the Product Rule, <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta\)</span> and <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta\)</span>. Squaring and adding,</p>
+<div class="arithmatex">\[\begin{aligned}
+x'^2+y'^2&amp;=f'^2\cos^2\theta-2ff'\sin\theta\cos\theta+f^2\sin^2\theta+f'^2\sin^2\theta+2ff'\sin\theta\cos\theta+f^2\cos^2\theta\\
+&amp;=f'^2\left(\cos^2\theta+\sin^2\theta\right)+f^2\left(\sin^2\theta+\cos^2\theta\right)=f'^2+f^2,
+\end{aligned}\]</div>
+<p>since the two cross terms cancel. Now let <span class="arithmatex">\(f(\theta_0)=0\)</span> and <span class="arithmatex">\(f'(\theta_0)\ne0\)</span>. Then <span class="arithmatex">\(x(\theta_0)=y(\theta_0)=0\)</span>, so the curve is at <span class="arithmatex">\(O\)</span>, and the velocity is <span class="arithmatex">\(\bigl(x'(\theta_0),y'(\theta_0)\bigr)=f'(\theta_0)\,(\cos\theta_0,\sin\theta_0)\ne(0,0)\)</span>. By Theorem <a href="../../12.1/notes/#thm-slope">12.1.12</a>, if <span class="arithmatex">\(x'(\theta_0)\ne0\)</span> (that is, <span class="arithmatex">\(\cos\theta_0\ne0\)</span>) the tangent line has slope <span class="arithmatex">\(\frac{y'}{x'}=\frac{\sin\theta_0}{\cos\theta_0}=\tan\theta_0\)</span> and passes through <span class="arithmatex">\(O\)</span>; if <span class="arithmatex">\(x'(\theta_0)=0\)</span> the tangent line is vertical through <span class="arithmatex">\(O\)</span>. In both cases it is the line through <span class="arithmatex">\(O\)</span> at angle <span class="arithmatex">\(\theta_0\)</span>, the graph of <span class="arithmatex">\(\theta=\theta_0\)</span> (Theorem <a href="#thm-plines">12.2.10</a>(1)). ◻ ∎</p>
+<p>When <span class="arithmatex">\(f(\theta_0)=0=f'(\theta_0)\)</span> the velocity vanishes and the theorem says nothing; the cardioid of the next pages has such a point. The identity <span class="arithmatex">\(x'^2+y'^2=f^2+f'^2\)</span> will matter when we measure lengths of polar curves; for now we use only the last statement, which tells us in which direction a curve leaves the origin.</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.2.14: The Cartesian-to-polar method for graphing <span class="arithmatex">\(r=f(\theta)\)</span></p>
+<p><span id="proc-c2p"></span></p>
+<ol>
+<li>
+<p>Graph <span class="arithmatex">\(r=f(\theta)\)</span> in an ordinary <span class="arithmatex">\(\theta r\)</span>-plane over an interval of <span class="arithmatex">\(\theta\)</span> that traces the whole curve (see Theorem <a href="#thm-period">12.2.23</a> for how long such an interval must be).</p>
+</li>
+<li>
+<p>Mark the zeros of <span class="arithmatex">\(f\)</span> (the curve passes through the origin; by Theorem <a href="#thm-polpar">12.2.13</a> it is tangent to the line <span class="arithmatex">\(\theta=\theta_0\)</span> if <span class="arithmatex">\(f'(\theta_0)\ne0\)</span>) and the extreme values of <span class="arithmatex">\(\abs f\)</span> (the farthest points).</p>
+</li>
+<li>
+<p>Where <span class="arithmatex">\(r&gt;0\)</span> the point is on the ray at angle <span class="arithmatex">\(\theta\)</span>. Where <span class="arithmatex">\(r&lt;0\)</span> it is on the <em>opposite</em> ray, at distance <span class="arithmatex">\(\abs r\)</span>.</p>
+</li>
+<li>
+<p>Where <span class="arithmatex">\(\abs r\)</span> increases the curve moves away from the origin; where it decreases, towards it. Follow the curve in the order of increasing <span class="arithmatex">\(\theta\)</span>, and draw the arrows.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.15: A limaçon with an inner loop</p>
+<p><span id="ex-limacon1"></span></p>
+<p>Graph <span class="arithmatex">\(r=1+2\cos\theta\)</span> for <span class="arithmatex">\(0\le\theta\le2\pi\)</span> with the Cartesian-to-polar method. Find where it meets the origin, the tangent lines there, and any symmetry.</p>
+<p><strong>Solution.</strong> <em>The <span class="arithmatex">\(\theta r\)</span>-graph.</em> <span class="arithmatex">\(f(\theta)=1+2\cos\theta\)</span> is a cosine curve with amplitude <span class="arithmatex">\(2\)</span>, shifted up <span class="arithmatex">\(1\)</span>: <span class="arithmatex">\(f(0)=3\)</span> is the maximum and <span class="arithmatex">\(f(\pi)=-1\)</span> the minimum. <em>Zeros.</em> <span class="arithmatex">\(1+2\cos\theta=0\)</span> gives <span class="arithmatex">\(\cos\theta=-\frac12\)</span>, so <span class="arithmatex">\(\theta=\frac{2\pi}3\)</span> and <span class="arithmatex">\(\theta=\frac{4\pi}3\)</span> in <span class="arithmatex">\([0,2\pi]\)</span>. <em>Sign.</em> <span class="arithmatex">\(f&gt;0\)</span> for <span class="arithmatex">\(0\le\theta&lt;\frac{2\pi}3\)</span> and for <span class="arithmatex">\(\frac{4\pi}3&lt;\theta\le2\pi\)</span>, and <span class="arithmatex">\(f&lt;0\)</span> for <span class="arithmatex">\(\frac{2\pi}3&lt;\theta&lt;\frac{4\pi}3\)</span>. <em>Table.</em></p>
+<div class="arithmatex">\[\begin{array}{c|ccccccccc}
+\theta&amp;0&amp;\frac\pi3&amp;\frac\pi2&amp;\frac{2\pi}3&amp;\pi&amp;\frac{4\pi}3&amp;\frac{3\pi}2&amp;\frac{5\pi}3&amp;2\pi\\\hline
+r&amp;3&amp;2&amp;1&amp;0&amp;-1&amp;0&amp;1&amp;2&amp;3\\
+\text{point}&amp;A&amp;B&amp;C&amp;D&amp;E&amp;F&amp;G&amp;H&amp;A
+\end{array}\]</div>
+<p><em>Transfer to the polar plane.</em> For <span class="arithmatex">\(0\le\theta&lt;\frac{2\pi}3\)</span>, <span class="arithmatex">\(r&gt;0\)</span> decreases from <span class="arithmatex">\(3\)</span> to <span class="arithmatex">\(0\)</span>: the curve starts at <span class="arithmatex">\(A=(3,0)\)</span>, passes <span class="arithmatex">\(B=2\left(\cos\frac\pi3,\sin\frac\pi3\right)=(1,\sqrt3)\)</span> and <span class="arithmatex">\(C=(0,1)\)</span>, and reaches the origin at <span class="arithmatex">\(D\)</span> along the ray <span class="arithmatex">\(\theta=\frac{2\pi}3\)</span>. For <span class="arithmatex">\(\frac{2\pi}3&lt;\theta&lt;\frac{4\pi}3\)</span> we have <span class="arithmatex">\(r&lt;0\)</span>, so the points are on the <em>opposite</em> rays, with angles between <span class="arithmatex">\(\frac{2\pi}3+\pi=\frac{5\pi}3\)</span> and <span class="arithmatex">\(\frac{4\pi}3+\pi=\frac{7\pi}3\equiv\frac\pi3\)</span>, which is to the right of the origin. The distance <span class="arithmatex">\(\abs r\)</span> grows from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(\theta=\pi\)</span> and shrinks back to <span class="arithmatex">\(0\)</span>: the farthest point of this <em>inner loop</em> is <span class="arithmatex">\(E=P(-1,\pi)=(-1\cdot\cos\pi,-1\cdot\sin\pi)=(1,0)\)</span>. At <span class="arithmatex">\(F\)</span> the curve is again at the origin. For <span class="arithmatex">\(\frac{4\pi}3&lt;\theta\le2\pi\)</span> we have <span class="arithmatex">\(r&gt;0\)</span>, increasing from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(3\)</span>: through <span class="arithmatex">\(G=(0,-1)\)</span> and <span class="arithmatex">\(H=2\left(\cos\frac{5\pi}3,\sin\frac{5\pi}3\right)=(1,-\sqrt3)\)</span> back to <span class="arithmatex">\(A\)</span>. <em>Tangents at the origin.</em> <span class="arithmatex">\(f'(\theta)=-2\sin\theta\)</span>, and <span class="arithmatex">\(f'\left(\frac{2\pi}3\right)=-\sqrt3\ne0\)</span>, <span class="arithmatex">\(f'\left(\frac{4\pi}3\right)=\sqrt3\ne0\)</span>. By Theorem <a href="#thm-polpar">12.2.13</a> the tangent lines at <span class="arithmatex">\(O\)</span> are <span class="arithmatex">\(\theta=\frac{2\pi}3\)</span> (slope <span class="arithmatex">\(\tan\frac{2\pi}3=-\sqrt3\)</span>) and <span class="arithmatex">\(\theta=\frac{4\pi}3\)</span> (slope <span class="arithmatex">\(\tan\frac{4\pi}3=\sqrt3\)</span>). <em>Symmetry.</em> <span class="arithmatex">\(f(-\theta)=f(\theta)\)</span>, so the curve is symmetric about the <span class="arithmatex">\(x\)</span>-axis (Theorem <a href="#thm-sym">12.2.21</a> below), which agrees with the picture.</p>
+<p><strong>Answer.</strong> A limaçon with an inner loop: an outer loop through <span class="arithmatex">\((3,0)\)</span>, <span class="arithmatex">\((0,\pm1)\)</span> and the origin, and an inner loop from the origin to <span class="arithmatex">\((1,0)\)</span> and back, traced for <span class="arithmatex">\(\frac{2\pi}3\le\theta\le\frac{4\pi}3\)</span> (Figure below).</p>
+</div>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig4.svg" width="618" /></p>
+<p>The tangent lines at the origin, <span class="arithmatex">\(\theta=\frac{2\pi}3\)</span> and <span class="arithmatex">\(\theta=\frac{4\pi}3\)</span>, are the dashed lines. The left graph and the right curve are the same information: the red part of the <span class="arithmatex">\(\theta r\)</span>-graph, where <span class="arithmatex">\(r&lt;0\)</span>, becomes the inner loop.</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.2.2: An inner loop on the right</p>
+<p><span id="think-innerloop"></span></p>
+<p>The inner loop of <span class="arithmatex">\(r=1+2\cos\theta\)</span> is traced for <span class="arithmatex">\(\frac{2\pi}3\le\theta\le\frac{4\pi}3\)</span>, angles that point into the <em>left</em> half-plane. Why does the loop lie in the <em>right</em> half-plane?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>For <span class="arithmatex">\(\frac{2\pi}3&lt;\theta&lt;\frac{4\pi}3\)</span> the radial coordinate is negative, so each point is on the ray <em>opposite</em> to the direction <span class="arithmatex">\(\theta\)</span>, that is at the angle <span class="arithmatex">\(\theta+\pi\)</span>. As <span class="arithmatex">\(\theta\)</span> runs from <span class="arithmatex">\(\frac{2\pi}3\)</span> to <span class="arithmatex">\(\frac{4\pi}3\)</span>, <span class="arithmatex">\(\theta+\pi\)</span> runs from <span class="arithmatex">\(\frac{5\pi}3\)</span> to <span class="arithmatex">\(\frac{7\pi}3\)</span>, angles that point into the right half-plane (they are within <span class="arithmatex">\(\frac\pi3\)</span> of the positive <span class="arithmatex">\(x\)</span>-axis). At the middle, <span class="arithmatex">\(\theta=\pi\)</span>, the point is <span class="arithmatex">\(P(-1,\pi)=(1,0)\)</span>.</p>
+</details>
+</div>
+<h2 id="the-limacon-family">The limaçon family<a class="headerlink" href="#the-limacon-family" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.16: Limaçons</p>
+<p><span id="thm-lima"></span></p>
+<p>Let <span class="arithmatex">\(a&gt;0\)</span>, <span class="arithmatex">\(b&gt;0\)</span> and consider the curve <span class="arithmatex">\(r=a+b\cos\theta\)</span> (the curve <span class="arithmatex">\(r=a+b\sin\theta\)</span> is this one rotated through <span class="arithmatex">\(\frac\pi2\)</span>). It is symmetric about the <span class="arithmatex">\(x\)</span>-axis, and its shape depends on <span class="arithmatex">\(\frac ab\)</span>:</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(a&lt;b\)</span>: <em>inner loop</em>. <span class="arithmatex">\(r\)</span> changes sign, so the curve passes through <span class="arithmatex">\(O\)</span> at <span class="arithmatex">\(\cos\theta=-\frac ab\)</span> and has an inner loop traced where <span class="arithmatex">\(r&lt;0\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(a=b\)</span>: <em>cardioid</em>. <span class="arithmatex">\(r\ge0\)</span> and <span class="arithmatex">\(r=0\)</span> only at <span class="arithmatex">\(\theta=\pi\)</span>, where the velocity is zero: a cusp at <span class="arithmatex">\(O\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(b&lt;a&lt;2b\)</span>: <em>dimple</em>. <span class="arithmatex">\(r&gt;0\)</span>, and along the upper half <span class="arithmatex">\(0\le\theta\le\pi\)</span> the coordinate <span class="arithmatex">\(x\)</span> first decreases, then increases.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(a\ge2b\)</span>: <em>oval</em>. <span class="arithmatex">\(r&gt;0\)</span> and <span class="arithmatex">\(x\)</span> decreases steadily along the upper half.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> <span class="arithmatex">\(f(\theta)=a+b\cos\theta\)</span> is even, so the curve is symmetric about the <span class="arithmatex">\(x\)</span>-axis (Theorem <a href="#thm-sym">12.2.21</a> below). The zeros of <span class="arithmatex">\(f\)</span> are the solutions of <span class="arithmatex">\(\cos\theta=-\frac ab\)</span>, which exist exactly when <span class="arithmatex">\(a\le b\)</span>. (1) If <span class="arithmatex">\(a&lt;b\)</span>, then <span class="arithmatex">\(f\)</span> is positive near <span class="arithmatex">\(\theta=0\)</span> and negative at <span class="arithmatex">\(\theta=\pi\)</span> (<span class="arithmatex">\(f(\pi)=a-b&lt;0\)</span>), so it changes sign at the zeros <span class="arithmatex">\(\theta=\pm\theta_0\)</span>, <span class="arithmatex">\(\theta_0=\arccos\left(-\frac ab\right)\)</span>, where <span class="arithmatex">\(f'(\theta)=-b\sin\theta\ne0\)</span>; for <span class="arithmatex">\(\theta_0&lt;\theta&lt;2\pi-\theta_0\)</span> we have <span class="arithmatex">\(r&lt;0\)</span>, and these points form the inner loop (Procedure <a href="#proc-c2p">12.2.14</a>). (2) If <span class="arithmatex">\(a=b\)</span>, then <span class="arithmatex">\(f(\theta)=b(1+\cos\theta)=2b\cos^2\frac\theta2\ge0\)</span>, which is <span class="arithmatex">\(0\)</span> only when <span class="arithmatex">\(\cos\frac\theta2=0\)</span>, that is at <span class="arithmatex">\(\theta=\pi\)</span> (mod <span class="arithmatex">\(2\pi\)</span>). There <span class="arithmatex">\(f(\pi)=0\)</span> and <span class="arithmatex">\(f'(\pi)=-b\sin\pi=0\)</span>, so the velocity <span class="arithmatex">\((x',y')=(0,0)\)</span> by Theorem <a href="#thm-polpar">12.2.13</a>. (3), (4) If <span class="arithmatex">\(a&gt;b\)</span> then <span class="arithmatex">\(f(\theta)\ge a-b&gt;0\)</span>. On the curve <span class="arithmatex">\(x=r\cos\theta=a\cos\theta+b\cos^2\theta\)</span>, hence</p>
+<div class="arithmatex">\[\frac{dx}{d\theta}=-a\sin\theta-2b\sin\theta\cos\theta=-\sin\theta\,(a+2b\cos\theta).\]</div>
+<p>On <span class="arithmatex">\(0&lt;\theta&lt;\pi\)</span>, <span class="arithmatex">\(\sin\theta&gt;0\)</span>, so the sign of <span class="arithmatex">\(\frac{dx}{d\theta}\)</span> is the sign of <span class="arithmatex">\(-(a+2b\cos\theta)\)</span>. If <span class="arithmatex">\(a\ge2b\)</span> then <span class="arithmatex">\(a+2b\cos\theta&gt;a-2b\ge0\)</span> for <span class="arithmatex">\(\cos\theta&gt;-1\)</span>, so <span class="arithmatex">\(x\)</span> decreases on <span class="arithmatex">\([0,\pi]\)</span>: (4). If <span class="arithmatex">\(a&lt;2b\)</span>, then <span class="arithmatex">\(a+2b\cos\theta=0\)</span> at <span class="arithmatex">\(\cos\theta=-\frac a{2b}\in(-1,0)\)</span>, an angle <span class="arithmatex">\(\theta_1\)</span> in <span class="arithmatex">\(\left(\frac\pi2,\pi\right)\)</span>, positive before <span class="arithmatex">\(\theta_1\)</span> and negative after: so <span class="arithmatex">\(\frac{dx}{d\theta}&lt;0\)</span> on <span class="arithmatex">\((0,\theta_1)\)</span> and <span class="arithmatex">\(&gt;0\)</span> on <span class="arithmatex">\((\theta_1,\pi)\)</span>, and <span class="arithmatex">\(x\)</span> decreases and then increases: (3). ◻ ∎</p>
+<p><img alt="Diagram: \(a=1\): loop; \(a=2\): cardioid; \(a=3\): dimple; \(a=4\): oval" class="calc-figure" src="../figures/notes-fig5.svg" width="777" /></p>
+<p>The four curves are <span class="arithmatex">\(r=a+2\cos\theta\)</span> with <span class="arithmatex">\(a=1,2,3,4\)</span>. The red point is the one at <span class="arithmatex">\(\theta=\pi\)</span>, where <span class="arithmatex">\(r=a-2\)</span>: <span class="arithmatex">\((1,0)\)</span> (tip of the inner loop), the cusp <span class="arithmatex">\(O\)</span>, the dimple <span class="arithmatex">\((-1,0)\)</span> and the point <span class="arithmatex">\((-2,0)\)</span>.</p>
+<h2 id="roses">Roses<a class="headerlink" href="#roses" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.17: Roses</p>
+<p><span id="thm-rose"></span></p>
+<p>Let <span class="arithmatex">\(m\)</span> be a positive integer and <span class="arithmatex">\(a\ne0\)</span>. The graph of <span class="arithmatex">\(r=a\cos m\theta\)</span> is a <em>rose</em> made of congruent petals, each a closed loop through the origin whose tip is at distance <span class="arithmatex">\(\abs a\)</span> from <span class="arithmatex">\(O\)</span>; adjacent petals meet only at <span class="arithmatex">\(O\)</span>. There are <span class="arithmatex">\(m\)</span> petals if <span class="arithmatex">\(m\)</span> is odd (traced once for <span class="arithmatex">\(0\le\theta\le\pi\)</span>) and <span class="arithmatex">\(2m\)</span> petals if <span class="arithmatex">\(m\)</span> is even (traced once for <span class="arithmatex">\(0\le\theta\le2\pi\)</span>).</p>
+<p>The tips are at the angles <span class="arithmatex">\(\frac{n\pi}m\)</span> with <span class="arithmatex">\(n\)</span> even if <span class="arithmatex">\(m\)</span> is odd (and <span class="arithmatex">\(a&gt;0\)</span>), and with <span class="arithmatex">\(n\)</span> any integer if <span class="arithmatex">\(m\)</span> is even. The graph of <span class="arithmatex">\(r=a\sin m\theta\)</span> is the same rose rotated through the angle <span class="arithmatex">\(\frac\pi{2m}\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(f(\theta)=a\cos m\theta\)</span> and, for an integer <span class="arithmatex">\(j\)</span>, let <span class="arithmatex">\(I_j=\left[\frac{j\pi}m-\frac\pi{2m},\frac{j\pi}m+\frac\pi{2m}\right]\)</span>; these intervals have length <span class="arithmatex">\(\frac\pi m\)</span> and cover <span class="arithmatex">\(\R\)</span>. The <em><span class="arithmatex">\(j\)</span>-th arch</em> is <span class="arithmatex">\(A_j=\{P(f(\theta),\theta):\theta\in I_j\}\)</span>. For <span class="arithmatex">\(\theta=\frac{j\pi}m+s\)</span> with <span class="arithmatex">\(\abs s\le\frac\pi{2m}\)</span> we have <span class="arithmatex">\(\cos m\theta=\cos(j\pi+ms)=(-1)^j\cos ms\)</span>, and <span class="arithmatex">\(\cos ms\ge0\)</span>, so <span class="arithmatex">\(f(\theta)=(-1)^ja\cos ms\)</span>: the sign of <span class="arithmatex">\(f\)</span> on <span class="arithmatex">\(I_j\)</span> is the constant sign of <span class="arithmatex">\((-1)^ja\)</span>, <span class="arithmatex">\(\abs f=\abs a\cos ms\)</span> is <span class="arithmatex">\(0\)</span> at the ends of <span class="arithmatex">\(I_j\)</span> and equals <span class="arithmatex">\(\abs a\)</span> at <span class="arithmatex">\(s=0\)</span>. <em>Each arch is a petal.</em> A point of <span class="arithmatex">\(A_j\)</span> is on the ray at angle <span class="arithmatex">\(\theta=\frac{j\pi}m+s\)</span> if <span class="arithmatex">\((-1)^ja&gt;0\)</span>, and on the opposite ray if <span class="arithmatex">\((-1)^ja&lt;0\)</span>. In both cases the point is on the ray at angle <span class="arithmatex">\(\varphi_j+s\)</span>, where <span class="arithmatex">\(\varphi_j=\frac{j\pi}m\)</span> if <span class="arithmatex">\((-1)^ja&gt;0\)</span> and <span class="arithmatex">\(\varphi_j=\frac{j\pi}m+\pi\)</span> otherwise, at distance <span class="arithmatex">\(\abs a\cos ms\)</span>. So <span class="arithmatex">\(A_j\)</span> is the polar graph <span class="arithmatex">\(\rho=\abs a\cos ms\)</span> over the sector of directions <span class="arithmatex">\(\varphi_j-\frac\pi{2m}\le\varphi\le\varphi_j+\frac\pi{2m}\)</span>: a simple closed loop through <span class="arithmatex">\(O\)</span> with its tip at distance <span class="arithmatex">\(\abs a\)</span> in the direction <span class="arithmatex">\(\varphi_j\)</span>. Two arches with the same <span class="arithmatex">\(\varphi_j\)</span> (mod <span class="arithmatex">\(2\pi\)</span>) are the same set; two arches with different <span class="arithmatex">\(\varphi_j\)</span> (mod <span class="arithmatex">\(2\pi\)</span>) lie in sectors of width <span class="arithmatex">\(\frac\pi m\)</span> whose directions differ by a nonzero multiple of <span class="arithmatex">\(\frac\pi m\)</span>, so they meet only at <span class="arithmatex">\(O\)</span>. <em>Counting.</em> Take <span class="arithmatex">\(a&gt;0\)</span> (for <span class="arithmatex">\(a&lt;0\)</span> every <span class="arithmatex">\(\varphi_j\)</span> is shifted by <span class="arithmatex">\(\pi\)</span>, which does not change the count). Then <span class="arithmatex">\(\varphi_j=\frac{n_j\pi}m\)</span> with <span class="arithmatex">\(n_j=j\)</span> for even <span class="arithmatex">\(j\)</span> and <span class="arithmatex">\(n_j=j+m\)</span> for odd <span class="arithmatex">\(j\)</span>, taken modulo <span class="arithmatex">\(2m\)</span>.</p>
+<ul>
+<li>
+<p><em><span class="arithmatex">\(m\)</span> even.</em> Then <span class="arithmatex">\(n_j\equiv j\)</span> modulo <span class="arithmatex">\(2\)</span> for all <span class="arithmatex">\(j\)</span>. As <span class="arithmatex">\(j=0,1,\dots,2m-1\)</span> runs through a full set of residues modulo <span class="arithmatex">\(2m\)</span>, so does <span class="arithmatex">\(n_j\)</span>: there are <span class="arithmatex">\(2m\)</span> different directions and so <span class="arithmatex">\(2m\)</span> petals. The arches <span class="arithmatex">\(A_0,\dots,A_{2m-1}\)</span> fill the <span class="arithmatex">\(\theta\)</span>-interval <span class="arithmatex">\(\left[-\frac\pi{2m},2\pi-\frac\pi{2m}\right]\)</span> of length <span class="arithmatex">\(2\pi\)</span>, and <span class="arithmatex">\(f\)</span> has period <span class="arithmatex">\(2\pi\)</span>.</p>
+</li>
+<li>
+<p><em><span class="arithmatex">\(m\)</span> odd.</em> Then <span class="arithmatex">\(n_j\)</span> is even for all <span class="arithmatex">\(j\)</span> (for odd <span class="arithmatex">\(j\)</span>, <span class="arithmatex">\(j+m\)</span> is even), so there are at most <span class="arithmatex">\(m\)</span> different directions. Moreover <span class="arithmatex">\(f(\theta+\pi)=a\cos(m\theta+m\pi)=-f(\theta)\)</span>, so <span class="arithmatex">\(P(f(\theta+\pi),\theta+\pi)=P(-f(\theta),\theta+\pi)=P(f(\theta),\theta)\)</span> by Theorem <a href="#thm-reps">12.2.3</a>: the curve repeats after <span class="arithmatex">\(\pi\)</span>. The arches <span class="arithmatex">\(A_0,\dots,A_{m-1}\)</span> fill an interval of length <span class="arithmatex">\(\pi\)</span>, and their numbers are <span class="arithmatex">\(n_j=j\)</span> for the even <span class="arithmatex">\(j\le m-1\)</span> (that is <span class="arithmatex">\(\frac{m+1}2\)</span> values) and <span class="arithmatex">\(n_j=j+m\in\{m+1,\dots,2m-1\}\)</span> for the odd <span class="arithmatex">\(j\le m-1\)</span> (<span class="arithmatex">\(\frac{m-1}2\)</span> values): all different, so <span class="arithmatex">\(m\)</span> petals.</p>
+</li>
+</ul>
+<p><em>Sine.</em> <span class="arithmatex">\(\sin m\theta=\cos\left(m\theta-\frac\pi2\right)=\cos\bigl(m(\theta-\frac\pi{2m})\bigr)\)</span>, so <span class="arithmatex">\(P(r,\theta)\)</span> is on the cosine rose exactly when <span class="arithmatex">\(P\left(r,\theta+\frac\pi{2m}\right)\)</span> is on <span class="arithmatex">\(r=a\sin m\theta\)</span>: the second graph is the first rotated through <span class="arithmatex">\(\frac\pi{2m}\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.18: A three-petal rose</p>
+<p><span id="ex-rose3"></span></p>
+<p>Graph <span class="arithmatex">\(r=4\cos3\theta\)</span>. Find the number of petals, the tips, the interval of <span class="arithmatex">\(\theta\)</span> traced by each petal, and the tangent lines at the origin.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(m=3\)</span> is odd, so by Theorem <a href="#thm-rose">12.2.17</a> there are <span class="arithmatex">\(3\)</span> petals and the whole curve is traced for <span class="arithmatex">\(0\le\theta\le\pi\)</span>. <em>Zeros.</em> <span class="arithmatex">\(\cos3\theta=0\)</span> for <span class="arithmatex">\(3\theta=\frac\pi2+k\pi\)</span>, that is <span class="arithmatex">\(\theta=\frac\pi6+\frac{k\pi}3\)</span>: in <span class="arithmatex">\([0,\pi]\)</span>, <span class="arithmatex">\(\theta=\frac\pi6,\frac\pi2,\frac{5\pi}6\)</span>. <em>Tips.</em> <span class="arithmatex">\(\abs r=4\)</span> when <span class="arithmatex">\(\cos3\theta=\pm1\)</span>, at <span class="arithmatex">\(\theta=0,\frac\pi3,\frac{2\pi}3\)</span>: <span class="arithmatex">\(r=4,-4,4\)</span>. The tip at <span class="arithmatex">\(\theta=0\)</span> is <span class="arithmatex">\((4,0)\)</span>. The tip at <span class="arithmatex">\(\theta=\frac\pi3\)</span> has <span class="arithmatex">\(r=-4\)</span>, so it is <span class="arithmatex">\(P\left(-4,\frac\pi3\right)=P\left(4,\frac{4\pi}3\right)=\left(4\cos\frac{4\pi}3,4\sin\frac{4\pi}3\right)=(-2,-2\sqrt3)\)</span>. The tip at <span class="arithmatex">\(\theta=\frac{2\pi}3\)</span> is <span class="arithmatex">\(\left(4\cos\frac{2\pi}3,4\sin\frac{2\pi}3\right)=(-2,2\sqrt3)\)</span>. The three tips are <span class="arithmatex">\(4\)</span> units from <span class="arithmatex">\(O\)</span>, in the directions <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(\frac{2\pi}3\)</span>, <span class="arithmatex">\(\frac{4\pi}3\)</span>, equally spaced. <em>Petals and intervals.</em> Between consecutive zeros <span class="arithmatex">\(f\)</span> has constant sign: for <span class="arithmatex">\(-\frac\pi6\le\theta\le\frac\pi6\)</span>, <span class="arithmatex">\(r\ge0\)</span>: the petal around the <span class="arithmatex">\(x\)</span>-axis (tip <span class="arithmatex">\((4,0)\)</span>). For <span class="arithmatex">\(\frac\pi6\le\theta\le\frac\pi2\)</span>, <span class="arithmatex">\(r\le0\)</span>: the points are on the opposite rays, with angles between <span class="arithmatex">\(\frac{7\pi}6\)</span> and <span class="arithmatex">\(\frac{3\pi}2\)</span>: the petal with tip <span class="arithmatex">\((-2,-2\sqrt3)\)</span>. For <span class="arithmatex">\(\frac\pi2\le\theta\le\frac{5\pi}6\)</span>, <span class="arithmatex">\(r\ge0\)</span>: the petal with tip <span class="arithmatex">\((-2,2\sqrt3)\)</span>. For <span class="arithmatex">\(\frac{5\pi}6\le\theta\le\frac{7\pi}6\)</span>, <span class="arithmatex">\(r\le0\)</span> and the first petal is traced again (period <span class="arithmatex">\(\pi\)</span>). <em>Tangent lines at <span class="arithmatex">\(O\)</span>.</em> <span class="arithmatex">\(f'(\theta)=-12\sin3\theta\)</span>, so <span class="arithmatex">\(f'\left(\frac\pi6\right)=-12\)</span>, <span class="arithmatex">\(f'\left(\frac\pi2\right)=12\)</span>, <span class="arithmatex">\(f'\left(\frac{5\pi}6\right)=-12\)</span>, all nonzero. By Theorem <a href="#thm-polpar">12.2.13</a> the tangent lines at the origin are <span class="arithmatex">\(\theta=\frac\pi6\)</span>, <span class="arithmatex">\(\theta=\frac\pi2\)</span> and <span class="arithmatex">\(\theta=\frac{5\pi}6\)</span>: the lines with slopes <span class="arithmatex">\(\frac1{\sqrt3}\)</span>, vertical, and <span class="arithmatex">\(-\frac1{\sqrt3}\)</span>. Each petal is bounded by two of these lines (Figure below).</p>
+</div>
+<p><img alt="Diagram: \(-\pi/6\le\theta\le\pi/6\); \(\pi/6\le\theta\le\pi/2\); \(\pi/2\le\theta\le5\pi/6\); \(\theta=\pi/6\); \(\theta=5\pi/6\)" class="calc-figure" src="../figures/notes-fig6.svg" width="461" /></p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.2.3: Petals and periods</p>
+<p><span id="kc-rosekc"></span></p>
+<p>How many petals do <span class="arithmatex">\(r=3\sin7\theta\)</span> and <span class="arithmatex">\(r=2\cos6\theta\)</span> have, and over what interval of <span class="arithmatex">\(\theta\)</span> is each traced once?</p>
+</div>
+<h2 id="lemniscates-and-spirals">Lemniscates and spirals<a class="headerlink" href="#lemniscates-and-spirals" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.19: A lemniscate</p>
+<p><span id="ex-lemn"></span></p>
+<p>Graph <span class="arithmatex">\(r^2=4\cos2\theta\)</span>. Find the values of <span class="arithmatex">\(\theta\)</span> for which the curve exists, the tips, the tangent lines at the origin, a Cartesian equation, and the symmetries.</p>
+<p><strong>Solution.</strong> <em>Existence.</em> <span class="arithmatex">\(r^2\ge0\)</span>, so <span class="arithmatex">\(\cos2\theta\ge0\)</span>: <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span> (and the same shifted by <span class="arithmatex">\(\pi\)</span>; no points exist for <span class="arithmatex">\(\frac\pi4&lt;\theta&lt;\frac{3\pi}4\)</span>). For such <span class="arithmatex">\(\theta\)</span>, <span class="arithmatex">\(r=\pm2\sqrt{\cos2\theta}\)</span>. <em>Two loops.</em> The sign <span class="arithmatex">\(+\)</span> gives the points <span class="arithmatex">\(P(2\sqrt{\cos2\theta},\theta)\)</span>, a loop in the directions <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span> (right of the origin). The sign <span class="arithmatex">\(-\)</span> gives <span class="arithmatex">\(P(-2\sqrt{\cos2\theta},\theta)=P(2\sqrt{\cos2\theta},\theta+\pi)\)</span>, the mirror loop to the left. <em>Tips.</em> The largest <span class="arithmatex">\(\abs r\)</span> is at <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\pm2\)</span>, the points <span class="arithmatex">\((\pm2,0)\)</span>. <em>At the origin.</em> <span class="arithmatex">\(r=0\)</span> at <span class="arithmatex">\(\theta=\pm\frac\pi4\)</span>; the curve is tangent there to the lines <span class="arithmatex">\(\theta=\pm\frac\pi4\)</span>, that is <span class="arithmatex">\(y=\pm x\)</span>. (Since <span class="arithmatex">\(r=2\sqrt{\cos2\theta}\)</span> near these angles, Theorem <a href="#thm-polpar">12.2.13</a> does not apply directly because <span class="arithmatex">\(f'\)</span> is not finite there; the lines <span class="arithmatex">\(\theta=\pm\frac\pi4\)</span> are nonetheless the directions in which <span class="arithmatex">\(r\to0\)</span>, so they are the directions in which the loops leave the origin.) <em>Cartesian equation.</em> Multiply by <span class="arithmatex">\(r^2\)</span>: <span class="arithmatex">\(r^4=4r^2\cos2\theta=4r^2\left(\cos^2\theta-\sin^2\theta\right)=4\left(x^2-y^2\right)\)</span>, so</p>
+<div class="arithmatex">\[(x^2+y^2)^2=4\left(x^2-y^2\right).\]</div>
+<p>The multiplication by <span class="arithmatex">\(r^2\)</span> can add only the origin (Theorem <a href="#thm-eqconv">12.2.9</a>(2)), and the origin is on the lemniscate, so the two graphs agree. <em>Check.</em> <span class="arithmatex">\(\theta=\frac\pi6\)</span>: <span class="arithmatex">\(r=\pm2\sqrt{\cos\frac\pi3}=\pm\sqrt2\)</span>; the point <span class="arithmatex">\(\left(\sqrt2\cos\frac\pi6,\sqrt2\sin\frac\pi6\right)=\left(\frac{\sqrt6}2,\frac{\sqrt2}2\right)\approx(1.22,0.71)\)</span> satisfies <span class="arithmatex">\((x^2+y^2)^2=\left(\frac64+\frac24\right)^2=4\)</span> and <span class="arithmatex">\(4(x^2-y^2)=4\left(\frac64-\frac24\right)=4\)</span>. <em>Symmetry.</em> The equation <span class="arithmatex">\(r^2=4\cos2\theta\)</span> is unchanged when <span class="arithmatex">\(r\)</span> is replaced by <span class="arithmatex">\(-r\)</span> (symmetry about the origin) and when <span class="arithmatex">\(\theta\)</span> is replaced by <span class="arithmatex">\(-\theta\)</span> (<span class="arithmatex">\(\cos\)</span> is even: symmetry about the <span class="arithmatex">\(x\)</span>-axis); hence also about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Answer.</strong> A figure eight with tips <span class="arithmatex">\((\pm2,0)\)</span>, tangent to <span class="arithmatex">\(y=\pm x\)</span> at the origin, <span class="arithmatex">\((x^2+y^2)^2=4(x^2-y^2)\)</span> (Figure below).</p>
+</div>
+<p><img alt="Diagram: \(\theta=\pi/4\); \(\theta=3\pi/4\)" class="calc-figure" src="../figures/notes-fig7.svg" width="434" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.20: Two spirals</p>
+<p><span id="ex-spirals"></span></p>
+<p>(a) Describe the spiral of Archimedes <span class="arithmatex">\(r=\theta\)</span>, <span class="arithmatex">\(\theta\ge0\)</span>. (b) Describe <span class="arithmatex">\(r=\frac1\theta\)</span> for <span class="arithmatex">\(\theta&gt;0\)</span>, the hyperbolic spiral; show that it has a horizontal asymptote.</p>
+<p><strong>Solution.</strong> (a) By Theorem <a href="#thm-polpar">12.2.13</a> the curve is <span class="arithmatex">\(x=\theta\cos\theta\)</span>, <span class="arithmatex">\(y=\theta\sin\theta\)</span>. The radial distance grows with <span class="arithmatex">\(\theta\)</span> while the direction turns counterclockwise, so the curve spirals outward. Points: <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(O\)</span>; <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(\left(0,\frac\pi2\right)\)</span>; <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\((-\pi,0)\)</span>; <span class="arithmatex">\(\theta=\frac{3\pi}2\)</span>: <span class="arithmatex">\(\left(0,-\frac{3\pi}2\right)\)</span>; <span class="arithmatex">\(\theta=2\pi\)</span>: <span class="arithmatex">\((2\pi,0)\)</span>. Successive crossings of the positive <span class="arithmatex">\(x\)</span>-axis are at <span class="arithmatex">\(\theta=2\pi k\)</span>, <span class="arithmatex">\(r=2\pi k\)</span>, so the turns are always <span class="arithmatex">\(2\pi\)</span> apart. (For <span class="arithmatex">\(\theta&lt;0\)</span> the point <span class="arithmatex">\(P(\theta,\theta)\)</span> is <span class="arithmatex">\((\theta\cos\theta,\theta\sin\theta)\)</span>, which is the reflection of the point for <span class="arithmatex">\(-\theta\)</span> in the <span class="arithmatex">\(y\)</span>-axis: the other arm of the spiral.) (b) Here <span class="arithmatex">\(x=\frac{\cos\theta}\theta\)</span>, <span class="arithmatex">\(y=\frac{\sin\theta}\theta\)</span>. As <span class="arithmatex">\(\theta\to0^+\)</span>, <span class="arithmatex">\(r=\frac1\theta\to\infty\)</span>, <span class="arithmatex">\(x=\frac{\cos\theta}\theta\to+\infty\)</span>, while <span class="arithmatex">\(y=\frac{\sin\theta}\theta\to1\)</span> by the basic limit of Calculus I. So the curve approaches the horizontal line <span class="arithmatex">\(y=1\)</span> as it goes out to the right: the line <span class="arithmatex">\(y=1\)</span> is a horizontal asymptote. As <span class="arithmatex">\(\theta\to\infty\)</span>, <span class="arithmatex">\(r\to0\)</span> and the curve winds around the origin infinitely often without reaching it. Points: <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(\left(0,\frac2\pi\right)\)</span>; <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\(\left(-\frac1\pi,0\right)\)</span>; <span class="arithmatex">\(\theta=2\pi\)</span>: <span class="arithmatex">\(\left(\frac1{2\pi},0\right)\)</span>.</p>
+</div>
+<p><img alt="Diagram: \(r=\theta\), \(0\le\theta\le4\pi\); \(y=1\); \(r=1/\theta\)" class="calc-figure" src="../figures/notes-fig8.svg" width="714" /></p>
+<h2 id="symmetry">Symmetry<a class="headerlink" href="#symmetry" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.21: Symmetry tests</p>
+<p><span id="thm-sym"></span></p>
+<p>Let <span class="arithmatex">\(\mathcal C\)</span> be the graph of a polar equation <span class="arithmatex">\(E(r,\theta)=0\)</span>. If the equation is satisfied by <span class="arithmatex">\((r,\theta)\)</span> whenever it is satisfied by <em>one</em> of the replacements below, then <span class="arithmatex">\(\mathcal C\)</span> has the stated symmetry.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">about the <span class="arithmatex">\(x\)</span>-axis:</td>
+<td style="text-align: left;"><span class="arithmatex">\((r,-\theta)\)</span> or <span class="arithmatex">\((-r,\pi-\theta)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">about the <span class="arithmatex">\(y\)</span>-axis:</td>
+<td style="text-align: left;"><span class="arithmatex">\((r,\pi-\theta)\)</span> or <span class="arithmatex">\((-r,-\theta)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">about the origin:</td>
+<td style="text-align: left;"><span class="arithmatex">\((-r,\theta)\)</span> or <span class="arithmatex">\((r,\theta+\pi)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These tests are sufficient, not necessary: a curve can be symmetric although the particular replacement you try does not return the equation you started with.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(P=(x,y)=(r\cos\theta,r\sin\theta)\)</span> be on <span class="arithmatex">\(\mathcal C\)</span>, with <span class="arithmatex">\((r,\theta)\)</span> satisfying <span class="arithmatex">\(E=0\)</span>. <em><span class="arithmatex">\(x\)</span>-axis.</em> The reflection of <span class="arithmatex">\(P\)</span> is <span class="arithmatex">\((x,-y)=(r\cos\theta,-r\sin\theta)\)</span>. Since <span class="arithmatex">\(\cos(-\theta)=\cos\theta\)</span> and <span class="arithmatex">\(\sin(-\theta)=-\sin\theta\)</span>, this is <span class="arithmatex">\(P(r,-\theta)\)</span>. Also <span class="arithmatex">\((-r)\cos(\pi-\theta)=r\cos\theta\)</span> and <span class="arithmatex">\((-r)\sin(\pi-\theta)=-r\sin\theta\)</span>, so it is <span class="arithmatex">\(P(-r,\pi-\theta)\)</span>. If the equation holds at <span class="arithmatex">\((r,-\theta)\)</span> or at <span class="arithmatex">\((-r,\pi-\theta)\)</span> whenever it holds at <span class="arithmatex">\((r,\theta)\)</span>, the reflection is on <span class="arithmatex">\(\mathcal C\)</span>. <em><span class="arithmatex">\(y\)</span>-axis.</em> The reflection is <span class="arithmatex">\((-x,y)=(-r\cos\theta,r\sin\theta)\)</span>. Since <span class="arithmatex">\(\cos(\pi-\theta)=-\cos\theta\)</span> and <span class="arithmatex">\(\sin(\pi-\theta)=\sin\theta\)</span>, it is <span class="arithmatex">\(P(r,\pi-\theta)\)</span>; since <span class="arithmatex">\((-r)\cos(-\theta)=-r\cos\theta\)</span> and <span class="arithmatex">\((-r)\sin(-\theta)=r\sin\theta\)</span>, it is also <span class="arithmatex">\(P(-r,-\theta)\)</span>. <em>Origin.</em> The reflection is <span class="arithmatex">\((-x,-y)=(-r\cos\theta,-r\sin\theta)\)</span>, which is <span class="arithmatex">\(P(-r,\theta)\)</span> and, since <span class="arithmatex">\(\cos(\theta+\pi)=-\cos\theta\)</span> and <span class="arithmatex">\(\sin(\theta+\pi)=-\sin\theta\)</span>, also <span class="arithmatex">\(P(r,\theta+\pi)\)</span>. In each case the reflected point has a representation satisfying <span class="arithmatex">\(E=0\)</span>, so it is on <span class="arithmatex">\(\mathcal C\)</span> (Definition <a href="#def-pgraph">12.2.8</a>). ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.22: Testing symmetry</p>
+<p><span id="ex-symex"></span></p>
+<p>Use Theorem <a href="#thm-sym">12.2.21</a> on <span class="arithmatex">\(r=\sin2\theta\)</span>.</p>
+<p><strong>Solution.</strong> <em><span class="arithmatex">\(x\)</span>-axis.</em> Replace <span class="arithmatex">\((r,\theta)\)</span> by <span class="arithmatex">\((-r,\pi-\theta)\)</span>: the equation becomes <span class="arithmatex">\(-r=\sin(2\pi-2\theta)=-\sin2\theta\)</span> (since <span class="arithmatex">\(\sin(2\pi-u)=-\sin u\)</span>), which is equivalent to <span class="arithmatex">\(r=\sin2\theta\)</span>. So the curve is symmetric about the <span class="arithmatex">\(x\)</span>-axis. (The first replacement, <span class="arithmatex">\((r,-\theta)\)</span>, gives <span class="arithmatex">\(r=-\sin2\theta\)</span>, which is <em>not</em> the original equation; this test fails, but the second succeeds.) <em><span class="arithmatex">\(y\)</span>-axis.</em> Replace by <span class="arithmatex">\((-r,-\theta)\)</span>: <span class="arithmatex">\(-r=\sin(-2\theta)=-\sin2\theta\)</span>, equivalent to the original. Symmetric about the <span class="arithmatex">\(y\)</span>-axis. <em>Origin.</em> Replace by <span class="arithmatex">\((r,\theta+\pi)\)</span>: <span class="arithmatex">\(r=\sin(2\theta+2\pi)=\sin2\theta\)</span>, the original. Symmetric about the origin. This agrees with Theorem <a href="#thm-rose">12.2.17</a>: <span class="arithmatex">\(r=\sin2\theta\)</span> is a four-petal rose.</p>
+</div>
+<h2 id="how-far-must-theta-run">How far must <span class="arithmatex">\(\theta\)</span> run?<a class="headerlink" href="#how-far-must-theta-run" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.23: Tracing the whole curve</p>
+<p><span id="thm-period"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be defined for all <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(P&gt;0\)</span>.</p>
+<ol>
+<li>
+<p>If <span class="arithmatex">\(f(\theta+P)=f(\theta)\)</span> for all <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(P\)</span> is a multiple of <span class="arithmatex">\(2\pi\)</span>, the curve <span class="arithmatex">\(r=f(\theta)\)</span> is traced completely on any <span class="arithmatex">\(\theta\)</span>-interval of length <span class="arithmatex">\(P\)</span> (<span class="arithmatex">\(P=2\pi\)</span> is the smallest case).</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(f(\theta+P)=-f(\theta)\)</span> for all <span class="arithmatex">\(\theta\)</span> and <span class="arithmatex">\(P\)</span> is an odd multiple of <span class="arithmatex">\(\pi\)</span>, the same is true.</p>
+</li>
+<li>
+<p>For <span class="arithmatex">\(r=\cos\frac{p\theta}q\)</span> or <span class="arithmatex">\(r=\sin\frac{p\theta}q\)</span> (<span class="arithmatex">\(p,q\)</span> positive integers with no common factor), the whole curve is traced on any interval of length <span class="arithmatex">\(\pi q\)</span> if <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span> are both odd, and on any interval of length <span class="arithmatex">\(2\pi q\)</span> otherwise.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> (1) <span class="arithmatex">\(P(f(\theta+P),\theta+P)=P(f(\theta),\theta+P)=P(f(\theta),\theta)\)</span> because <span class="arithmatex">\(P\)</span> is a multiple of <span class="arithmatex">\(2\pi\)</span> (Theorem <a href="#thm-reps">12.2.3</a>). So the point for <span class="arithmatex">\(\theta+P\)</span> is the point for <span class="arithmatex">\(\theta\)</span>; any <span class="arithmatex">\(\theta\)</span> is congruent, by a multiple of <span class="arithmatex">\(P\)</span>, to a <span class="arithmatex">\(\theta\)</span> in the given interval, and nothing new appears. (2) <span class="arithmatex">\(P(f(\theta+P),\theta+P)=P(-f(\theta),\theta+P)=P(-f(\theta),\theta+\pi)=P(f(\theta),\theta)\)</span>, using <span class="arithmatex">\(P-\pi\)</span> a multiple of <span class="arithmatex">\(2\pi\)</span> and then Theorem <a href="#thm-reps">12.2.3</a> twice (once to drop the multiple of <span class="arithmatex">\(2\pi\)</span>, once for the pair <span class="arithmatex">\((-r,\theta+\pi)\)</span>). (3) Let <span class="arithmatex">\(f(\theta)=\cos\frac{p\theta}q\)</span> (the sine case is identical). If <span class="arithmatex">\(p,q\)</span> are odd, <span class="arithmatex">\(f(\theta+\pi q)=\cos\left(\frac{p\theta}q+p\pi\right)=-\cos\frac{p\theta}q=-f(\theta)\)</span> because <span class="arithmatex">\(p\)</span> is odd, and <span class="arithmatex">\(\pi q\)</span> is an odd multiple of <span class="arithmatex">\(\pi\)</span> because <span class="arithmatex">\(q\)</span> is odd: case (2). Otherwise take <span class="arithmatex">\(P=2\pi q\)</span>: <span class="arithmatex">\(f(\theta+2\pi q)=\cos\left(\frac{p\theta}q+2\pi p\right)=f(\theta)\)</span>, a multiple of <span class="arithmatex">\(2\pi\)</span>: case (1). ◻ ∎</p>
+<p>The theorem gives an interval that <em>suffices</em>; it does not claim that no shorter interval would do (for the rose <span class="arithmatex">\(r=\cos m\theta\)</span> with <span class="arithmatex">\(m\)</span> even the full <span class="arithmatex">\(2\pi\)</span> is needed; Theorem <a href="#thm-rose">12.2.17</a>).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.24: A curve that closes after two turns</p>
+<p><span id="ex-period"></span></p>
+<p>Graph <span class="arithmatex">\(r=\cos\frac{3\theta}2\)</span>. Over what interval is it traced, and where is it for <span class="arithmatex">\(\theta=0\)</span> and <span class="arithmatex">\(\theta=2\pi\)</span>?</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(p=3\)</span>, <span class="arithmatex">\(q=2\)</span> have no common factor and <span class="arithmatex">\(q\)</span> is even, so Theorem <a href="#thm-period">12.2.23</a>(3) gives the interval <span class="arithmatex">\(0\le\theta\le4\pi\)</span>. Check by hand: <span class="arithmatex">\(f(\theta+4\pi)=\cos\left(\frac{3\theta}2+6\pi\right)=f(\theta)\)</span>. After one turn the curve has not closed: <span class="arithmatex">\(f(\theta+2\pi)=\cos\left(\frac{3\theta}2+3\pi\right)=-f(\theta)\)</span>, and the point for <span class="arithmatex">\(\theta+2\pi\)</span> is <span class="arithmatex">\(P(-f(\theta),\theta)\)</span>, the point of the opposite ray, which differs from <span class="arithmatex">\(P(f(\theta),\theta)\)</span> whenever <span class="arithmatex">\(f(\theta)\ne0\)</span>. So the second turn draws a different part of the curve. <em>Key points.</em> <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=1\)</span>, the point <span class="arithmatex">\((1,0)\)</span>. <span class="arithmatex">\(\theta=2\pi\)</span>: <span class="arithmatex">\(r=\cos3\pi=-1\)</span>, the point <span class="arithmatex">\(P(-1,2\pi)=(-\cos2\pi,-\sin2\pi)=(-1,0)\)</span>. <em>Zeros.</em> <span class="arithmatex">\(\frac{3\theta}2=\frac\pi2+k\pi\)</span> gives <span class="arithmatex">\(\theta=\frac\pi3,\pi,\frac{5\pi}3,\frac{7\pi}3,3\pi,\frac{11\pi}3\)</span> in <span class="arithmatex">\([0,4\pi]\)</span>: six passes through the origin. <em>Symmetry.</em> <span class="arithmatex">\(f\)</span> is even, so the curve is symmetric about the <span class="arithmatex">\(x\)</span>-axis. The curve is the figure below.</p>
+</div>
+<p><img alt="Diagram: \(r=\cos(3\theta/2)\), \(0\le\theta\le4\pi\)" class="calc-figure" src="../figures/notes-fig9.svg" width="310" /></p>
+<h2 id="where-two-polar-curves-meet">Where two polar curves meet<a class="headerlink" href="#where-two-polar-curves-meet" title="Permanent link">&para;</a></h2>
+<p>Finding intersections is where the non-uniqueness of polar coordinates does its damage. Solving <span class="arithmatex">\(f(\theta)=g(\theta)\)</span> finds the points where both curves reach the same point <em>at the same angle</em>; it can miss points that the two curves reach with different representations.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.25: Intersections of polar curves</p>
+<p><span id="thm-inter"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> have period <span class="arithmatex">\(2\pi\)</span>. A point <span class="arithmatex">\(P\ne O\)</span> lies on both <span class="arithmatex">\(r=f(\theta)\)</span> and <span class="arithmatex">\(r=g(\theta)\)</span> if and only if there is a <span class="arithmatex">\(\theta\)</span> with</p>
+<div class="arithmatex">\[\text{(A)}\ \ f(\theta)=g(\theta)\qquad\text{or}\qquad\text{(B)}\ \ f(\theta)=-g(\theta+\pi)\]</div>
+<p>and <span class="arithmatex">\(P=P(f(\theta),\theta)\)</span>. The origin is on a curve if and only if its function has a zero; it is on both curves when each of <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> has a zero, which is <em>not</em> detected by (A) or (B) unless the zeros occur at related angles.</p>
+</div>
+<p><em>Proof.</em> (<span class="arithmatex">\(\Leftarrow\)</span>) Under (A), <span class="arithmatex">\(P(f(\theta),\theta)=P(g(\theta),\theta)\)</span> is on both curves. Under (B), <span class="arithmatex">\(P(f(\theta),\theta)=P(-f(\theta),\theta+\pi)\)</span> (Theorem <a href="#thm-reps">12.2.3</a>) <span class="arithmatex">\(=P\bigl(g(\theta+\pi),\theta+\pi\bigr)\)</span>, which is on <span class="arithmatex">\(r=g(\theta)\)</span> as well. (<span class="arithmatex">\(\Rightarrow\)</span>) Let <span class="arithmatex">\(P\ne O\)</span> be on both curves. Then <span class="arithmatex">\(P\)</span> has a representation <span class="arithmatex">\((r_1,\theta_1)\)</span> with <span class="arithmatex">\(r_1=f(\theta_1)\)</span> and a representation <span class="arithmatex">\((r_2,\theta_2)\)</span> with <span class="arithmatex">\(r_2=g(\theta_2)\)</span>. By Theorem <a href="#thm-reps">12.2.3</a>, either <span class="arithmatex">\(r_2=r_1\)</span> and <span class="arithmatex">\(\theta_2=\theta_1+2\pi k\)</span>, or <span class="arithmatex">\(r_2=-r_1\)</span> and <span class="arithmatex">\(\theta_2=\theta_1+\pi+2\pi k\)</span> (<span class="arithmatex">\(k\)</span> an integer). In the first case <span class="arithmatex">\(g(\theta_1)=g(\theta_2)=r_2=r_1=f(\theta_1)\)</span> by periodicity: (A) at <span class="arithmatex">\(\theta_1\)</span>. In the second case <span class="arithmatex">\(g(\theta_1+\pi)=g(\theta_2)=r_2=-r_1=-f(\theta_1)\)</span>: (B) at <span class="arithmatex">\(\theta_1\)</span>. The last sentence is the definition of the graph and the fact that <span class="arithmatex">\(r=0\)</span> represents <span class="arithmatex">\(O\)</span>. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.2.26: Intersections of <span class="arithmatex">\(r=f(\theta)\)</span> and <span class="arithmatex">\(r=g(\theta)\)</span></p>
+<p><span id="proc-inter"></span></p>
+<ol>
+<li>
+<p>Solve (A) <span class="arithmatex">\(f(\theta)=g(\theta)\)</span> and (B) <span class="arithmatex">\(f(\theta)=-g(\theta+\pi)\)</span> for <span class="arithmatex">\(\theta\)</span> in an interval of length <span class="arithmatex">\(2\pi\)</span>.</p>
+</li>
+<li>
+<p>Find the points <span class="arithmatex">\(P(f(\theta),\theta)\)</span> for each solution; remove duplicates (compare Cartesian coordinates).</p>
+</li>
+<li>
+<p>Check the origin separately: solve <span class="arithmatex">\(f(\theta)=0\)</span> and <span class="arithmatex">\(g(\theta)=0\)</span>.</p>
+</li>
+<li>
+<p>Draw both curves to confirm the count.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.27: Two cardioids: a hidden intersection</p>
+<p><span id="ex-int1"></span></p>
+<p>Find all intersections of <span class="arithmatex">\(r=1+\cos\theta\)</span> and <span class="arithmatex">\(r=1-\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=1+\cos\theta\)</span>, <span class="arithmatex">\(g=1-\cos\theta\)</span>, both of period <span class="arithmatex">\(2\pi\)</span>. <em>(A).</em> <span class="arithmatex">\(1+\cos\theta=1-\cos\theta\)</span> gives <span class="arithmatex">\(2\cos\theta=0\)</span>, so <span class="arithmatex">\(\theta=\frac\pi2\)</span> or <span class="arithmatex">\(\frac{3\pi}2\)</span>, with <span class="arithmatex">\(r=1\)</span>: the points <span class="arithmatex">\((0,1)\)</span> and <span class="arithmatex">\((0,-1)\)</span>. <em>(B).</em> <span class="arithmatex">\(g(\theta+\pi)=1-\cos(\theta+\pi)=1+\cos\theta\)</span>, so (B) reads <span class="arithmatex">\(1+\cos\theta=-(1+\cos\theta)\)</span>, that is <span class="arithmatex">\(\cos\theta=-1\)</span>, <span class="arithmatex">\(\theta=\pi\)</span>, <span class="arithmatex">\(r=f(\pi)=0\)</span>: the origin. <em>Origin.</em> <span class="arithmatex">\(f(\pi)=0\)</span> and <span class="arithmatex">\(g(0)=0\)</span>: the origin is on both curves (reached at <em>different</em> angles, <span class="arithmatex">\(\pi\)</span> and <span class="arithmatex">\(0\)</span>). Equation (A) alone found only two points, and would have missed the origin. <em>Answer.</em> <span class="arithmatex">\((0,1)\)</span>, <span class="arithmatex">\((0,-1)\)</span> and the origin.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.28: A rose and a circle: all eight points</p>
+<p><span id="ex-int2"></span></p>
+<p>Find all intersections of <span class="arithmatex">\(r=2\cos2\theta\)</span> and <span class="arithmatex">\(r=1\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(g=1\)</span> is constant, so <span class="arithmatex">\(g(\theta+\pi)=1\)</span>. <em>(A).</em> <span class="arithmatex">\(2\cos2\theta=1\)</span>, <span class="arithmatex">\(\cos2\theta=\frac12\)</span>, <span class="arithmatex">\(2\theta=\pm\frac\pi3+2\pi k\)</span>, so <span class="arithmatex">\(\theta=\pm\frac\pi6+\pi k\)</span>: in <span class="arithmatex">\([0,2\pi)\)</span>, <span class="arithmatex">\(\theta=\frac\pi6,\frac{5\pi}6,\frac{7\pi}6,\frac{11\pi}6\)</span>, each with <span class="arithmatex">\(r=1\)</span>. <em>(B).</em> <span class="arithmatex">\(2\cos2\theta=-1\)</span>, <span class="arithmatex">\(\cos2\theta=-\frac12\)</span>, <span class="arithmatex">\(2\theta=\pm\frac{2\pi}3+2\pi k\)</span>, so <span class="arithmatex">\(\theta=\pm\frac\pi3+\pi k\)</span>: <span class="arithmatex">\(\theta=\frac\pi3,\frac{2\pi}3,\frac{4\pi}3,\frac{5\pi}3\)</span>, each with <span class="arithmatex">\(r=f(\theta)=-1\)</span>; the points are <span class="arithmatex">\(P(-1,\theta)=P\left(1,\theta+\pi\right)\)</span>, on the unit circle at the angles <span class="arithmatex">\(\frac{4\pi}3,\frac{5\pi}3,\frac\pi3,\frac{2\pi}3\)</span>. <em>Together</em> the eight points are on the unit circle at the angles <span class="arithmatex">\(\frac\pi6,\frac\pi3,\frac{2\pi}3,\frac{5\pi}6,\frac{7\pi}6,\frac{4\pi}3,\frac{5\pi}3,\frac{11\pi}6\)</span>. A solution of (A) alone would give only four. <em>Origin.</em> The rose passes through <span class="arithmatex">\(O\)</span> but the circle <span class="arithmatex">\(r=1\)</span> does not, so <span class="arithmatex">\(O\)</span> is not an intersection. <em>Check</em> with the picture: each of the four petals leaves the circle through two points.</p>
+</div>
+<p><img alt="Diagram: \(\pi/6\); \(\pi/3\); \(r=2\cos2\theta\); \(r=1\)" class="calc-figure" src="../figures/notes-fig10.svg" width="512" /></p>
+<h2 id="tangent-lines-to-polar-curves">Tangent lines to polar curves<a class="headerlink" href="#tangent-lines-to-polar-curves" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.2.29: Slope of a polar curve</p>
+<p><span id="thm-polslope"></span></p>
+<p>Let <span class="arithmatex">\(r=f(\theta)\)</span> with <span class="arithmatex">\(f\)</span> differentiable. At a point where <span class="arithmatex">\(x'(\theta)=f'\cos\theta-f\sin\theta\ne0\)</span>, the slope of the tangent line is</p>
+<div class="arithmatex">\[\frac{dy}{dx}=\frac{f'(\theta)\sin\theta+f(\theta)\cos\theta}{f'(\theta)\cos\theta-f(\theta)\sin\theta}.\]</div>
+<p>The tangent is horizontal where the numerator is <span class="arithmatex">\(0\)</span> and the denominator is not, and vertical where the denominator is <span class="arithmatex">\(0\)</span> and the numerator is not.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-polpar">12.2.13</a> the curve is parametric with <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta\)</span> and <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta\)</span>. By the slope formula for parametric curves (Theorem <a href="../../12.1/notes/#thm-slope">12.1.12</a>), <span class="arithmatex">\(\frac{dy}{dx}=\frac{y'}{x'}\)</span> wherever <span class="arithmatex">\(x'\ne0\)</span>. The statements on horizontal and vertical tangents are the same formula read at a zero of <span class="arithmatex">\(y'\)</span> or <span class="arithmatex">\(x'\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.30: Tangent lines of a cardioid</p>
+<p><span id="ex-polslope"></span></p>
+<p>Find the slope of the tangent line to <span class="arithmatex">\(r=1+\cos\theta\)</span> at <span class="arithmatex">\(\theta=\frac\pi3\)</span> and at <span class="arithmatex">\(\theta=\frac\pi2\)</span>, and give the tangent lines.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=1+\cos\theta\)</span>, <span class="arithmatex">\(f'=-\sin\theta\)</span>. <em>Numerator.</em> <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta=-\sin^2\theta+\cos\theta+\cos^2\theta=\cos\theta+\cos2\theta\)</span>, using <span class="arithmatex">\(\cos^2\theta-\sin^2\theta=\cos2\theta\)</span>. <em>Denominator.</em> <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta=-\sin\theta\cos\theta-\sin\theta-\sin\theta\cos\theta=-\sin\theta(1+2\cos\theta)\)</span>. <em>At <span class="arithmatex">\(\theta=\frac\pi3\)</span>.</em> <span class="arithmatex">\(y'=\frac12+\cos\frac{2\pi}3=\frac12-\frac12=0\)</span> and <span class="arithmatex">\(x'=-\frac{\sqrt3}2\cdot2=-\sqrt3\ne0\)</span>. The slope is <span class="arithmatex">\(0\)</span>: horizontal tangent. The point has <span class="arithmatex">\(r=1+\frac12=\frac32\)</span>, so it is <span class="arithmatex">\(\left(\frac32\cos\frac\pi3,\frac32\sin\frac\pi3\right)=\left(\frac34,\frac{3\sqrt3}4\right)\)</span> and the tangent line is <span class="arithmatex">\(y=\frac{3\sqrt3}4\)</span>. <em>At <span class="arithmatex">\(\theta=\frac\pi2\)</span>.</em> <span class="arithmatex">\(y'=0+\cos\pi=-1\)</span> and <span class="arithmatex">\(x'=-1\cdot(1+0)=-1\)</span>. The slope is <span class="arithmatex">\(\frac{-1}{-1}=1\)</span>. The point has <span class="arithmatex">\(r=1\)</span>, so it is <span class="arithmatex">\((0,1)\)</span>, and the tangent line is <span class="arithmatex">\(y-1=x\)</span>, that is <span class="arithmatex">\(y=x+1\)</span>. <em>Check.</em> From <span class="arithmatex">\(r=1+\cos\theta\)</span> we get <span class="arithmatex">\(r^2=r+x\)</span>, so <span class="arithmatex">\(r=r^2-x\)</span> and, squaring the relation <span class="arithmatex">\(r=r^2-x\)</span>, the Cartesian equation <span class="arithmatex">\((x^2+y^2-x)^2=x^2+y^2\)</span>. The point <span class="arithmatex">\((0,1)\)</span> gives <span class="arithmatex">\((1-0)^2=1\)</span>, and <span class="arithmatex">\(\left(\frac34,\frac{3\sqrt3}4\right)\)</span> has <span class="arithmatex">\(x^2+y^2=\frac9{16}+\frac{27}{16}=\frac94\)</span>, so <span class="arithmatex">\(\left(\frac94-\frac34\right)^2=\left(\frac32\right)^2=\frac94\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.2.3: Why (B) did not matter</p>
+<p><span id="think-oddrose"></span></p>
+<p>In Example <a href="#ex-int2">12.2.28</a>, equation (B) produced four points that (A) missed. Now take the three-petal rose <span class="arithmatex">\(r=\cos3\theta\)</span> and the circle <span class="arithmatex">\(r=\frac12\)</span>. Show that every solution of (B) gives a point that is already found by (A) at the angle <span class="arithmatex">\(\theta+\pi\)</span>. (Hint: compare <span class="arithmatex">\(f(\theta+\pi)\)</span> with <span class="arithmatex">\(f(\theta)\)</span>.)</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>For <span class="arithmatex">\(f(\theta)=\cos3\theta\)</span> we have <span class="arithmatex">\(f(\theta+\pi)=\cos(3\theta+3\pi)=-\cos3\theta=-f(\theta)\)</span>. A solution of (B), <span class="arithmatex">\(f(\theta)=-\frac12\)</span>, therefore satisfies <span class="arithmatex">\(f(\theta+\pi)=-f(\theta)=\frac12=g(\theta+\pi)\)</span>: so <span class="arithmatex">\(\theta+\pi\)</span> solves (A), and the point <span class="arithmatex">\(P\left(f(\theta+\pi),\theta+\pi\right)\)</span> found by (A) is <span class="arithmatex">\(P\left(\frac12,\theta+\pi\right)=P\left(-\frac12,\theta\right)=P(f(\theta),\theta)\)</span>, the point that (B) produced. The same argument works for every <span class="arithmatex">\(f\)</span> with <span class="arithmatex">\(f(\theta+\pi)=-f(\theta)\)</span>, which is the case for roses with an odd number of petals; for the rose with an even number <span class="arithmatex">\(f(\theta+\pi)=f(\theta)\)</span> and (B) really is new.</p>
+</details>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>A polar equation is a recipe for a parametric curve, so the tools of Section 12.1 apply: Theorem <a href="#thm-polpar">12.2.13</a> says that the speed of a polar curve is <span class="arithmatex">\(\sqrt{f^2+f'^2}\)</span>, which is exactly what an arc length integral needs, and the sectors of angle <span class="arithmatex">\(d\theta\)</span> that sweep out a rose petal suggest how to compute areas. Both are the subject of Section 12.3 (area and arc length in polar coordinates). In Section 12.4 the circles, ellipses, parabolas and hyperbolas reappear as <em>conic sections</em>, and a single polar equation, <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}\)</span>, will describe all of them. In a later chapter, polar coordinates in the plane are extended to cylindrical coordinates in space by adding a height, and to spherical coordinates by tilting the ray out of the plane; the conversion formulas of Theorem <a href="#thm-conv">12.2.2</a> carry over almost word for word.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Points and conversions</em> (Examples <a href="#ex-b1">12.2.31</a>–<a href="#ex-b3">12.2.33</a>): a negative radial coordinate; Cartesian to polar in the second quadrant; a distance.</p>
+</li>
+<li>
+<p><em>Equations, lines and circles</em> (Examples <a href="#ex-b4">12.2.34</a>–<a href="#ex-b6">12.2.36</a>): a circle from its polar equation; a line in polar form; a circle with a center away from the axes.</p>
+</li>
+<li>
+<p><em>Graphing</em> (Examples <a href="#ex-b7">12.2.37</a>–<a href="#ex-b9">12.2.39</a>): a cardioid; a five-petal rose; a logarithmic spiral.</p>
+</li>
+<li>
+<p><em>Symmetry and period</em> (Examples <a href="#ex-b10">12.2.40</a>–<a href="#ex-b11">12.2.41</a>): a lemniscate whose symmetry tests mostly fail; periods of two curves.</p>
+</li>
+<li>
+<p><em>Tangent lines</em> (Examples <a href="#ex-b12">12.2.42</a>–<a href="#ex-b14">12.2.44</a>): a spiral; horizontal and vertical tangents of a cardioid; a rose.</p>
+</li>
+<li>
+<p><em>Intersections</em> (Examples <a href="#ex-b15">12.2.45</a>–<a href="#ex-b17">12.2.47</a>): two circles; a circle and a cardioid meeting at the origin; a lemniscate and a circle.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b18">12.2.48</a>–<a href="#ex-b20">12.2.50</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-points-and-conversions">Group 1: Points and conversions<a class="headerlink" href="#group-1-points-and-conversions" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.31: A negative radial coordinate</p>
+<p><span id="ex-b1"></span></p>
+<p>Convert <span class="arithmatex">\(\left(-3,-\frac{5\pi}6\right)\)</span> to Cartesian coordinates, and give its representation with <span class="arithmatex">\(r&gt;0\)</span> and <span class="arithmatex">\(0\le\theta&lt;2\pi\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(x=-3\cos\left(-\frac{5\pi}6\right)=-3\cdot\left(-\frac{\sqrt3}2\right)=\frac{3\sqrt3}2\)</span> and <span class="arithmatex">\(y=-3\sin\left(-\frac{5\pi}6\right)=-3\cdot\left(-\frac12\right)=\frac32\)</span>, using <span class="arithmatex">\(\cos(-u)=\cos u\)</span>, <span class="arithmatex">\(\sin(-u)=-\sin u\)</span>, <span class="arithmatex">\(\cos\frac{5\pi}6=-\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{5\pi}6=\frac12\)</span>. The point is <span class="arithmatex">\(\left(\frac{3\sqrt3}2,\frac32\right)\)</span>. Its distance from <span class="arithmatex">\(O\)</span> is <span class="arithmatex">\(\sqrt{\frac{27}4+\frac94}=\sqrt9=3\)</span> and its angle satisfies <span class="arithmatex">\(\cos\theta=\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\theta=\frac12\)</span>, so <span class="arithmatex">\(\theta=\frac\pi6\)</span>. <em>Answer.</em> <span class="arithmatex">\(\left(3,\frac\pi6\right)\)</span>. <em>Check</em> by Theorem <a href="#thm-reps">12.2.3</a>: <span class="arithmatex">\(\left(-3,-\frac{5\pi}6\right)=\left(3,-\frac{5\pi}6+\pi\right)=\left(3,\frac\pi6\right)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.32: Cartesian to polar in the second quadrant</p>
+<p><span id="ex-b2"></span></p>
+<p>Give two polar representations of <span class="arithmatex">\((-2,2\sqrt3)\)</span>: one with <span class="arithmatex">\(r&gt;0\)</span> and one with <span class="arithmatex">\(r&lt;0\)</span>, both with <span class="arithmatex">\(0\le\theta&lt;2\pi\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(r=\sqrt{(-2)^2+(2\sqrt3)^2}=\sqrt{4+12}=4\)</span>. The point is in the second quadrant, so <span class="arithmatex">\(\theta=\arctan\frac{2\sqrt3}{-2}+\pi=-\frac\pi3+\pi=\frac{2\pi}3\)</span> (the arctangent alone would give the fourth-quadrant angle <span class="arithmatex">\(-\frac\pi3\)</span>). <em>With <span class="arithmatex">\(r&gt;0\)</span>:</em> <span class="arithmatex">\(\left(4,\frac{2\pi}3\right)\)</span>. <em>With <span class="arithmatex">\(r&lt;0\)</span>:</em> add <span class="arithmatex">\(\pi\)</span> to the angle and reverse the sign: <span class="arithmatex">\(\left(-4,\frac{2\pi}3+\pi\right)=\left(-4,\frac{5\pi}3\right)\)</span>. <em>Check.</em> <span class="arithmatex">\(4\cos\frac{2\pi}3=-2\)</span>, <span class="arithmatex">\(4\sin\frac{2\pi}3=2\sqrt3\)</span>; <span class="arithmatex">\(-4\cos\frac{5\pi}3=-4\cdot\frac12=-2\)</span>, <span class="arithmatex">\(-4\sin\frac{5\pi}3=-4\cdot\left(-\frac{\sqrt3}2\right)=2\sqrt3\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.33: A distance</p>
+<p><span id="ex-b3"></span></p>
+<p>Find the distance between <span class="arithmatex">\(P_1\left(2,\frac\pi3\right)\)</span> and <span class="arithmatex">\(P_2(5,\pi)\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-dist">12.2.7</a>, <span class="arithmatex">\(d^2=2^2+5^2-2\cdot2\cdot5\cos\left(\frac\pi3-\pi\right)=29-20\cos\left(-\frac{2\pi}3\right)=29-20\cdot\left(-\frac12\right)=39\)</span>, so <span class="arithmatex">\(d=\sqrt{39}\approx6.245\)</span>. <em>Check</em> in Cartesian coordinates: <span class="arithmatex">\(P_1=(1,\sqrt3)\)</span>, <span class="arithmatex">\(P_2=(-5,0)\)</span>, and <span class="arithmatex">\(d^2=(1+5)^2+(\sqrt3-0)^2=36+3=39\)</span>.</p>
+</div>
+<h2 id="group-2-equations-lines-and-circles">Group 2: Equations, lines and circles<a class="headerlink" href="#group-2-equations-lines-and-circles" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.34: A circle from its polar equation</p>
+<p><span id="ex-b4"></span></p>
+<p>Identify <span class="arithmatex">\(r=4\cos\theta+2\sin\theta\)</span>.</p>
+<p><strong>Solution.</strong> Multiply by <span class="arithmatex">\(r\)</span> (Theorem <a href="#thm-eqconv">12.2.9</a>(2)): <span class="arithmatex">\(r^2=4r\cos\theta+2r\sin\theta\)</span>, so <span class="arithmatex">\(x^2+y^2=4x+2y\)</span>. Complete the squares: <span class="arithmatex">\(x^2-4x+4+y^2-2y+1=5\)</span>, that is <span class="arithmatex">\((x-2)^2+(y-1)^2=5\)</span>. The graph is the circle with center <span class="arithmatex">\((2,1)\)</span> and radius <span class="arithmatex">\(\sqrt5\)</span>. The origin is on the original graph, since <span class="arithmatex">\(4\cos\theta+2\sin\theta=0\)</span> at <span class="arithmatex">\(\theta=\arctan(-2)\)</span>, so no point was added by multiplying by <span class="arithmatex">\(r\)</span>. This agrees with Theorem <a href="#thm-pcircles">12.2.11</a>(3) (<span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(b=1\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.35: A line in polar form</p>
+<p><span id="ex-b5"></span></p>
+<p>Write <span class="arithmatex">\(y=2x-3\)</span> as <span class="arithmatex">\(r=\dfrac{\cdot}{\cdot}\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-plines">12.2.10</a>(4) with <span class="arithmatex">\(m=2\)</span>, <span class="arithmatex">\(b=-3\)</span>: <span class="arithmatex">\(r=\dfrac{-3}{\sin\theta-2\cos\theta}\)</span>. <em>Derivation.</em> <span class="arithmatex">\(r\sin\theta=2r\cos\theta-3\)</span>, so <span class="arithmatex">\(r(\sin\theta-2\cos\theta)=-3\)</span>. <em>Check.</em> <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(r=\frac{-3}{1}=-3\)</span>, the point <span class="arithmatex">\(P\left(-3,\frac\pi2\right)=(0,-3)\)</span>, and <span class="arithmatex">\(2\cdot0-3=-3\)</span>. <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\frac{-3}{-2}=\frac32\)</span>, the point <span class="arithmatex">\(\left(\frac32,0\right)\)</span>, and <span class="arithmatex">\(2\cdot\frac32-3=0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.36: A circle whose center is not on an axis</p>
+<p><span id="ex-b6"></span></p>
+<p>Find the polar equation of the circle of radius <span class="arithmatex">\(2\)</span> centered at <span class="arithmatex">\(C\left(4,\frac\pi3\right)\)</span>, and the nearest and farthest points of the circle from <span class="arithmatex">\(O\)</span> along the ray <span class="arithmatex">\(\theta=\frac\pi3\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-pcircles">12.2.11</a>(2), <span class="arithmatex">\(r^2-2\cdot4\,r\cos\left(\theta-\frac\pi3\right)=2^2-4^2\)</span>, that is <span class="arithmatex">\(r^2-8r\cos\left(\theta-\frac\pi3\right)=-12\)</span>. On the ray <span class="arithmatex">\(\theta=\frac\pi3\)</span>, <span class="arithmatex">\(\cos0=1\)</span>, so <span class="arithmatex">\(r^2-8r+12=0\)</span>, <span class="arithmatex">\((r-2)(r-6)=0\)</span>, <span class="arithmatex">\(r=2\)</span> or <span class="arithmatex">\(r=6\)</span>. These are the points <span class="arithmatex">\(\left(2,\frac\pi3\right)\)</span> and <span class="arithmatex">\(\left(6,\frac\pi3\right)\)</span>, at distance <span class="arithmatex">\(4-2\)</span> and <span class="arithmatex">\(4+2\)</span> from <span class="arithmatex">\(O\)</span>, as the picture of a circle of radius <span class="arithmatex">\(2\)</span> around a center at distance <span class="arithmatex">\(4\)</span> requires. The circle does not enclose <span class="arithmatex">\(O\)</span> (<span class="arithmatex">\(\abs{OC}=4&gt;2\)</span>), and indeed the equation <span class="arithmatex">\(r=0\)</span> gives <span class="arithmatex">\(0=-12\)</span>: the origin is not on it.</p>
+</div>
+<h2 id="group-3-graphing">Group 3: Graphing<a class="headerlink" href="#group-3-graphing" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.37: A cardioid</p>
+<p><span id="ex-b7"></span></p>
+<p>Graph <span class="arithmatex">\(r=2-2\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(a=b\)</span> in Theorem <a href="#thm-lima">12.2.16</a> (with the sign of the cosine reversed, which reflects the curve in the <span class="arithmatex">\(y\)</span>-axis), so it is a cardioid. <span class="arithmatex">\(f(\theta)=2-2\cos\theta=4\sin^2\frac\theta2\ge0\)</span>, zero only at <span class="arithmatex">\(\theta=0\)</span> (mod <span class="arithmatex">\(2\pi\)</span>). <em>Table.</em></p>
+<div class="arithmatex">\[\begin{array}{c|ccccc}
+\theta&amp;0&amp;\frac\pi2&amp;\pi&amp;\frac{3\pi}2&amp;2\pi\\\hline
+r&amp;0&amp;2&amp;4&amp;2&amp;0\\
+(x,y)&amp;(0,0)&amp;(0,2)&amp;(-4,0)&amp;(0,-2)&amp;(0,0)
+\end{array}\]</div>
+<p>Since <span class="arithmatex">\(f\ge0\)</span> the points are on the rays of angle <span class="arithmatex">\(\theta\)</span>. As <span class="arithmatex">\(\theta\)</span> goes from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\pi\)</span>, <span class="arithmatex">\(r\)</span> grows from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(4\)</span>, and the curve goes from the cusp at <span class="arithmatex">\(O\)</span> through <span class="arithmatex">\((0,2)\)</span> to <span class="arithmatex">\((-4,0)\)</span>; by symmetry about the <span class="arithmatex">\(x\)</span>-axis (<span class="arithmatex">\(f\)</span> is even) the lower half returns through <span class="arithmatex">\((0,-2)\)</span> to the cusp.</p>
+</div>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig11.svg" width="303" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.38: A five-petal rose</p>
+<p><span id="ex-b8"></span></p>
+<p>Graph <span class="arithmatex">\(r=2\sin5\theta\)</span>: find the number of petals, the directions of the tips, and the interval of <span class="arithmatex">\(\theta\)</span> that traces the curve once.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(m=5\)</span> is odd, so by Theorem <a href="#thm-rose">12.2.17</a> there are <span class="arithmatex">\(5\)</span> petals and <span class="arithmatex">\(0\le\theta\le\pi\)</span> traces the curve once (indeed <span class="arithmatex">\(\sin(5\theta+5\pi)=-\sin5\theta\)</span>, Theorem <a href="#thm-period">12.2.23</a>(2)). The tips are where <span class="arithmatex">\(\sin5\theta=\pm1\)</span>: <span class="arithmatex">\(5\theta=\frac\pi2+k\pi\)</span>, <span class="arithmatex">\(\theta_k=\frac\pi{10}+\frac{k\pi}5\)</span> for <span class="arithmatex">\(k=0,1,2,3,4\)</span>, with <span class="arithmatex">\(r=2\sin\left(\frac\pi2+k\pi\right)=2(-1)^k\)</span>. For even <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(r=2&gt;0\)</span> and the tip direction is <span class="arithmatex">\(\theta_k\)</span>; for odd <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(r=-2&lt;0\)</span> and the tip is on the opposite ray, direction <span class="arithmatex">\(\theta_k+\pi\)</span>. In degrees, the directions are <span class="arithmatex">\(\theta_k\cdot\frac{180}\pi=18^\circ+36^\circ k\)</span>, plus <span class="arithmatex">\(180^\circ\)</span> for odd <span class="arithmatex">\(k\)</span>:</p>
+<div class="arithmatex">\[\begin{array}{c|ccccc}
+k&amp;0&amp;1&amp;2&amp;3&amp;4\\\hline
+\theta_k&amp;18^\circ&amp;54^\circ&amp;90^\circ&amp;126^\circ&amp;162^\circ\\
+\text{tip direction}&amp;18^\circ&amp;54^\circ+180^\circ=234^\circ&amp;90^\circ&amp;126^\circ+180^\circ=306^\circ&amp;162^\circ
+\end{array}\]</div>
+<p>Sorted, they are <span class="arithmatex">\(18^\circ,90^\circ,162^\circ,234^\circ,306^\circ\)</span>: five tips, <span class="arithmatex">\(72^\circ\)</span> apart, each <span class="arithmatex">\(2\)</span> units from <span class="arithmatex">\(O\)</span>, as a rose with five equal petals should have.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.39: A logarithmic spiral</p>
+<p><span id="ex-b9"></span></p>
+<p>Describe <span class="arithmatex">\(r=2e^{\theta/4}\)</span>, <span class="arithmatex">\(-\infty&lt;\theta&lt;\infty\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(r&gt;0\)</span> for all <span class="arithmatex">\(\theta\)</span>, so the point is on the ray at angle <span class="arithmatex">\(\theta\)</span>, at distance <span class="arithmatex">\(2e^{\theta/4}\)</span>. As <span class="arithmatex">\(\theta\)</span> increases the distance grows, and as <span class="arithmatex">\(\theta\to-\infty\)</span>, <span class="arithmatex">\(r\to0\)</span>: the curve winds infinitely often around the origin without reaching it. <em>One turn.</em> Going once around adds <span class="arithmatex">\(2\pi\)</span> to <span class="arithmatex">\(\theta\)</span> and multiplies the distance by <span class="arithmatex">\(\frac{2e^{(\theta+2\pi)/4}}{2e^{\theta/4}}=e^{\pi/2}\approx4.81\)</span>, the <em>same</em> factor on every turn; this is why the spiral is self-similar. Crossings of the positive <span class="arithmatex">\(x\)</span>-axis: <span class="arithmatex">\(\theta=2\pi k\)</span>, <span class="arithmatex">\(r=2e^{\pi k/2}\)</span>: <span class="arithmatex">\(2,\ 2e^{\pi/2}\approx9.62,\dots\)</span> and for <span class="arithmatex">\(k=-1\)</span>, <span class="arithmatex">\(2e^{-\pi/2}\approx0.416\)</span>.</p>
+</div>
+<h2 id="group-4-symmetry-and-period">Group 4: Symmetry and period<a class="headerlink" href="#group-4-symmetry-and-period" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.40: A curve that is symmetric about the origin only</p>
+<p><span id="ex-b10"></span></p>
+<p>Test <span class="arithmatex">\(r^2=9\sin2\theta\)</span> for symmetry about the axes and the origin.</p>
+<p><strong>Solution.</strong> <em><span class="arithmatex">\(x\)</span>-axis.</em> <span class="arithmatex">\((r,-\theta)\)</span>: <span class="arithmatex">\(r^2=9\sin(-2\theta)=-9\sin2\theta\)</span>, not the original. <span class="arithmatex">\((-r,\pi-\theta)\)</span>: <span class="arithmatex">\(r^2=9\sin(2\pi-2\theta)=-9\sin2\theta\)</span>, not the original. Both tests fail. <em><span class="arithmatex">\(y\)</span>-axis.</em> <span class="arithmatex">\((r,\pi-\theta)\)</span> and <span class="arithmatex">\((-r,-\theta)\)</span> give the same two results: both fail. <em>Origin.</em> <span class="arithmatex">\((-r,\theta)\)</span>: <span class="arithmatex">\((-r)^2=r^2=9\sin2\theta\)</span>, the original: symmetric about the origin. The failing tests do not by themselves prove that there is no symmetry (Theorem <a href="#thm-sym">12.2.21</a> gives sufficient conditions only), so we check directly. Points exist only where <span class="arithmatex">\(\sin2\theta\ge0\)</span>, that is <span class="arithmatex">\(0\le\theta\le\frac\pi2\)</span> or <span class="arithmatex">\(\pi\le\theta\le\frac{3\pi}2\)</span> (mod <span class="arithmatex">\(2\pi\)</span>): the points <span class="arithmatex">\(P(\pm3\sqrt{\sin2\theta},\theta)\)</span> lie in the first and third quadrants. The reflection of a point <span class="arithmatex">\(\neq O\)</span> of the first quadrant in the <span class="arithmatex">\(x\)</span>-axis lies in the fourth quadrant, which the curve does not enter, and likewise for the <span class="arithmatex">\(y\)</span>-axis. So there is <em>no</em> symmetry about the axes. <em>Answer.</em> Symmetric about the origin only (it is also symmetric about the line <span class="arithmatex">\(y=x\)</span>, which these tests do not check). At <span class="arithmatex">\(\theta=\frac\pi{12}\)</span>: <span class="arithmatex">\(r^2=9\sin\frac\pi6=\frac92\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.41: Periods</p>
+<p><span id="ex-b11"></span></p>
+<p>Find an interval of <span class="arithmatex">\(\theta\)</span> that traces each curve completely: (a) <span class="arithmatex">\(r=\sin\frac{5\theta}3\)</span>; (b) <span class="arithmatex">\(r=\cos\frac{4\theta}3\)</span>.</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(p=5\)</span>, <span class="arithmatex">\(q=3\)</span> are both odd, so Theorem <a href="#thm-period">12.2.23</a>(3) gives length <span class="arithmatex">\(\pi q=3\pi\)</span>: <span class="arithmatex">\(f(\theta+3\pi)=\sin\left(\frac{5\theta}3+5\pi\right)=-\sin\frac{5\theta}3=-f(\theta)\)</span>, and <span class="arithmatex">\(3\pi\)</span> is an odd multiple of <span class="arithmatex">\(\pi\)</span>. (b) <span class="arithmatex">\(p=4\)</span>, <span class="arithmatex">\(q=3\)</span>: not both odd, so the length is <span class="arithmatex">\(2\pi q=6\pi\)</span>: <span class="arithmatex">\(f(\theta+6\pi)=\cos\left(\frac{4\theta}3+8\pi\right)=f(\theta)\)</span>. <em>Note.</em> For (b) a shorter shift does <em>not</em> give <span class="arithmatex">\(f(\theta+P)=-f(\theta)\)</span> with <span class="arithmatex">\(P\)</span> an odd multiple of <span class="arithmatex">\(\pi\)</span>: for <span class="arithmatex">\(P=3\pi\)</span>, <span class="arithmatex">\(f(\theta+3\pi)=\cos(\frac{4\theta}3+4\pi)=f(\theta)\)</span>, but <span class="arithmatex">\(3\pi\)</span> is not a multiple of <span class="arithmatex">\(2\pi\)</span>, so Theorem <a href="#thm-period">12.2.23</a>(1) does not apply.</p>
+</div>
+<h2 id="group-5-tangent-lines">Group 5: Tangent lines<a class="headerlink" href="#group-5-tangent-lines" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.42: Tangent to the spiral of Archimedes</p>
+<p><span id="ex-b12"></span></p>
+<p>Find the tangent line to <span class="arithmatex">\(r=\theta\)</span> at <span class="arithmatex">\(\theta=\frac\pi2\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=\theta\)</span>, <span class="arithmatex">\(f'=1\)</span>. Then <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta=\cos\theta-\theta\sin\theta\)</span> and <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta=\sin\theta+\theta\cos\theta\)</span>. At <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(x'=0-\frac\pi2\cdot1=-\frac\pi2\)</span> and <span class="arithmatex">\(y'=1+0=1\)</span>. The slope is <span class="arithmatex">\(\frac{1}{-\pi/2}=-\frac2\pi\)</span>. The point is <span class="arithmatex">\(\left(\frac\pi2\cos\frac\pi2,\frac\pi2\sin\frac\pi2\right)=\left(0,\frac\pi2\right)\)</span>. <em>Answer.</em> <span class="arithmatex">\(y-\frac\pi2=-\frac2\pi x\)</span>, that is <span class="arithmatex">\(y=-\frac2\pi x+\frac\pi2\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.43: Horizontal and vertical tangents of a cardioid</p>
+<p><span id="ex-b13"></span></p>
+<p>Find the points of <span class="arithmatex">\(r=1+\cos\theta\)</span>, <span class="arithmatex">\(0\le\theta&lt;2\pi\)</span>, where the tangent is horizontal or vertical.</p>
+<p><strong>Solution.</strong> From Example <a href="#ex-polslope">12.2.30</a>, <span class="arithmatex">\(y'=\cos\theta+\cos2\theta\)</span> and <span class="arithmatex">\(x'=-\sin\theta(1+2\cos\theta)\)</span>. <em>Horizontal</em> (<span class="arithmatex">\(y'=0\)</span>, <span class="arithmatex">\(x'\ne0\)</span>): <span class="arithmatex">\(\cos\theta+2\cos^2\theta-1=0\)</span> (using <span class="arithmatex">\(\cos2\theta=2\cos^2\theta-1\)</span>), that is <span class="arithmatex">\((2\cos\theta-1)(\cos\theta+1)=0\)</span>. So <span class="arithmatex">\(\cos\theta=\frac12\)</span>, <span class="arithmatex">\(\theta=\frac\pi3,\frac{5\pi}3\)</span>, where <span class="arithmatex">\(x'=-\sin\theta\cdot2\ne0\)</span>; or <span class="arithmatex">\(\cos\theta=-1\)</span>, <span class="arithmatex">\(\theta=\pi\)</span>, where <span class="arithmatex">\(x'=0\)</span> as well, so the theorem does not apply (this is the cusp, where <span class="arithmatex">\(f(\pi)=f'(\pi)=0\)</span> and the velocity vanishes). The horizontal tangents are at <span class="arithmatex">\(\left(\frac34,\pm\frac{3\sqrt3}4\right)\)</span>. <em>Vertical</em> (<span class="arithmatex">\(x'=0\)</span>, <span class="arithmatex">\(y'\ne0\)</span>): <span class="arithmatex">\(\sin\theta=0\)</span> gives <span class="arithmatex">\(\theta=0\)</span> (<span class="arithmatex">\(y'=1+1=2\ne0\)</span>): the point <span class="arithmatex">\((2,0)\)</span>; <span class="arithmatex">\(\theta=\pi\)</span> is the cusp again. <span class="arithmatex">\(1+2\cos\theta=0\)</span> gives <span class="arithmatex">\(\cos\theta=-\frac12\)</span>, <span class="arithmatex">\(\theta=\frac{2\pi}3,\frac{4\pi}3\)</span>, where <span class="arithmatex">\(y'=\cos\theta+\cos2\theta=-\frac12-\frac12=-1\ne0\)</span>: <span class="arithmatex">\(r=\frac12\)</span>, the points <span class="arithmatex">\(\left(-\frac14,\pm\frac{\sqrt3}4\right)\)</span>. <em>Answer.</em> Horizontal at <span class="arithmatex">\(\left(\frac34,\pm\frac{3\sqrt3}4\right)\)</span>; vertical at <span class="arithmatex">\((2,0)\)</span> and <span class="arithmatex">\(\left(-\frac14,\pm\frac{\sqrt3}4\right)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.44: A tangent to a rose</p>
+<p><span id="ex-b14"></span></p>
+<p>For <span class="arithmatex">\(r=3\cos2\theta\)</span> find the tangent lines at the origin and the slope of the tangent at <span class="arithmatex">\(\theta=\frac\pi6\)</span>.</p>
+<p><strong>Solution.</strong> <em>Origin.</em> <span class="arithmatex">\(3\cos2\theta=0\)</span> for <span class="arithmatex">\(2\theta=\frac\pi2+k\pi\)</span>: <span class="arithmatex">\(\theta=\frac\pi4,\frac{3\pi}4\)</span> in <span class="arithmatex">\([0,\pi]\)</span>. <span class="arithmatex">\(f'=-6\sin2\theta\)</span>, <span class="arithmatex">\(f'\left(\frac\pi4\right)=-6\ne0\)</span> and <span class="arithmatex">\(f'\left(\frac{3\pi}4\right)=6\ne0\)</span>. By Theorem <a href="#thm-polpar">12.2.13</a> the tangent lines at <span class="arithmatex">\(O\)</span> are <span class="arithmatex">\(\theta=\frac\pi4\)</span> and <span class="arithmatex">\(\theta=\frac{3\pi}4\)</span>, that is <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=-x\)</span>. <em>At <span class="arithmatex">\(\theta=\frac\pi6\)</span>.</em> <span class="arithmatex">\(f=3\cos\frac\pi3=\frac32\)</span> and <span class="arithmatex">\(f'=-6\sin\frac\pi3=-3\sqrt3\)</span>. Then</p>
+<div class="arithmatex">\[x'=f'\cos\theta-f\sin\theta=-3\sqrt3\cdot\frac{\sqrt3}2-\frac32\cdot\frac12=-\frac92-\frac34=-\frac{21}4,\]</div>
+<div class="arithmatex">\[y'=f'\sin\theta+f\cos\theta=-3\sqrt3\cdot\frac12+\frac32\cdot\frac{\sqrt3}2=-\frac{3\sqrt3}2+\frac{3\sqrt3}4=-\frac{3\sqrt3}4.\]</div>
+<p>The slope is <span class="arithmatex">\(\dfrac{y'}{x'}=\dfrac{-3\sqrt3/4}{-21/4}=\dfrac{3\sqrt3}{21}=\dfrac{\sqrt3}7\approx0.247\)</span>.</p>
+</div>
+<h2 id="group-6-intersections">Group 6: Intersections<a class="headerlink" href="#group-6-intersections" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.45: Two circles</p>
+<p><span id="ex-b15"></span></p>
+<p>Find all intersections of <span class="arithmatex">\(r=2\sin\theta\)</span> and <span class="arithmatex">\(r=2\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> Both functions have period <span class="arithmatex">\(2\pi\)</span>. (A): <span class="arithmatex">\(2\sin\theta=2\cos\theta\)</span>, <span class="arithmatex">\(\tan\theta=1\)</span>, <span class="arithmatex">\(\theta=\frac\pi4,\frac{5\pi}4\)</span>: <span class="arithmatex">\(r=\sqrt2\)</span> at <span class="arithmatex">\(\frac\pi4\)</span> (the point <span class="arithmatex">\((1,1)\)</span>) and <span class="arithmatex">\(r=-\sqrt2\)</span> at <span class="arithmatex">\(\frac{5\pi}4\)</span> (the point <span class="arithmatex">\(\left(-\sqrt2\cos\frac{5\pi}4,-\sqrt2\sin\frac{5\pi}4\right)=(1,1)\)</span> again). (B): <span class="arithmatex">\(f(\theta)=-g(\theta+\pi)\)</span> reads <span class="arithmatex">\(2\sin\theta=-2\cos(\theta+\pi)=2\cos\theta\)</span>, the same equation as (A): nothing new. <em>Origin.</em> <span class="arithmatex">\(2\sin\theta=0\)</span> at <span class="arithmatex">\(\theta=0\)</span> and <span class="arithmatex">\(2\cos\theta=0\)</span> at <span class="arithmatex">\(\theta=\frac\pi2\)</span>: the origin is on both. <em>Answer.</em> <span class="arithmatex">\((1,1)\)</span> and the origin. (The circles are <span class="arithmatex">\(x^2+(y-1)^2=1\)</span> and <span class="arithmatex">\((x-1)^2+y^2=1\)</span>, which indeed meet at <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\((1,1)\)</span>.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.46: A circle and a cardioid meeting at the origin</p>
+<p><span id="ex-b16"></span></p>
+<p>Find all intersections of <span class="arithmatex">\(r=3\cos\theta\)</span> and <span class="arithmatex">\(r=1+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(f=1+\cos\theta\)</span>, <span class="arithmatex">\(g=3\cos\theta\)</span>. (A): <span class="arithmatex">\(1+\cos\theta=3\cos\theta\)</span>, <span class="arithmatex">\(\cos\theta=\frac12\)</span>, <span class="arithmatex">\(\theta=\pm\frac\pi3\)</span>, <span class="arithmatex">\(r=\frac32\)</span>: the points <span class="arithmatex">\(\left(\frac32\cos\frac\pi3,\pm\frac32\sin\frac\pi3\right)=\left(\frac34,\pm\frac{3\sqrt3}4\right)\)</span>. (B): <span class="arithmatex">\(f(\theta)=-g(\theta+\pi)\)</span>, <span class="arithmatex">\(1+\cos\theta=-3\cos(\theta+\pi)=3\cos\theta\)</span>: the same equation: nothing new. <em>Origin.</em> <span class="arithmatex">\(f(\pi)=1+\cos\pi=0\)</span> and <span class="arithmatex">\(g\left(\frac\pi2\right)=0\)</span>: the origin is on both, reached at different angles; (A) does not find it, since at <span class="arithmatex">\(\theta=\pi\)</span>, <span class="arithmatex">\(f=0\)</span> but <span class="arithmatex">\(g=-3\)</span>. <em>Answer.</em> Three points: <span class="arithmatex">\(\left(\frac34,\frac{3\sqrt3}4\right)\)</span>, <span class="arithmatex">\(\left(\frac34,-\frac{3\sqrt3}4\right)\)</span> and the origin (Figure below).</p>
+</div>
+<p><img alt="Diagram: \(r=1+\cos\theta\); \(r=3\cos\theta\)" class="calc-figure" src="../figures/notes-fig12.svg" width="262" /></p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.47: A lemniscate and a circle</p>
+<p><span id="ex-b17"></span></p>
+<p>Find all intersections of <span class="arithmatex">\(r^2=2\cos2\theta\)</span> and <span class="arithmatex">\(r=1\)</span>.</p>
+<p><strong>Solution.</strong> The lemniscate is not of the form <span class="arithmatex">\(r=f(\theta)\)</span>, so we use the Cartesian equations instead, which avoid the problem of several representations (Theorem <a href="#thm-eqconv">12.2.9</a>). The lemniscate is <span class="arithmatex">\((x^2+y^2)^2=2(x^2-y^2)\)</span> (as in Example <a href="#ex-lemn">12.2.19</a>) and the circle is <span class="arithmatex">\(x^2+y^2=1\)</span>. Substituting <span class="arithmatex">\(x^2+y^2=1\)</span>: <span class="arithmatex">\(1=2(x^2-y^2)\)</span>, so <span class="arithmatex">\(x^2-y^2=\frac12\)</span>. Adding <span class="arithmatex">\(x^2+y^2=1\)</span>: <span class="arithmatex">\(2x^2=\frac32\)</span>, <span class="arithmatex">\(x^2=\frac34\)</span>, and then <span class="arithmatex">\(y^2=1-\frac34=\frac14\)</span>. So <span class="arithmatex">\(x=\pm\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(y=\pm\frac12\)</span>: four points, one in each quadrant, at the angles <span class="arithmatex">\(\pm\frac\pi6\)</span> and <span class="arithmatex">\(\pi\pm\frac\pi6\)</span>. <em>Check</em> in polar form: at <span class="arithmatex">\(\theta=\frac\pi6\)</span>, <span class="arithmatex">\(r^2=2\cos\frac\pi3=1\)</span>, so <span class="arithmatex">\(r=\pm1\)</span>, and <span class="arithmatex">\(r=1\)</span> is on the circle. The origin is on the lemniscate but not on the circle. <em>Answer.</em> <span class="arithmatex">\(\left(\pm\frac{\sqrt3}2,\pm\frac12\right)\)</span> (all four sign choices).</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.48: The angle between the radius and the tangent</p>
+<p><span id="ex-b18"></span></p>
+<p>Let <span class="arithmatex">\(\psi\)</span> be the angle from the radial direction <span class="arithmatex">\((\cos\theta,\sin\theta)\)</span> to the tangent direction <span class="arithmatex">\((x',y')\)</span> of <span class="arithmatex">\(r=f(\theta)\)</span>. Prove that if <span class="arithmatex">\(f'\ne0\)</span>, then <span class="arithmatex">\(\tan\psi=\dfrac{f(\theta)}{f'(\theta)}\)</span>.</p>
+<p><strong>Plan.</strong> The tangent of the angle between two vectors is their cross product divided by their dot product; compute both with Theorem <a href="#thm-polpar">12.2.13</a>.</p>
+<p><em>Proof.</em> For vectors <span class="arithmatex">\(\mathbf u=(\cos\theta,\sin\theta)\)</span> and <span class="arithmatex">\(\mathbf v=(x',y')\)</span> with angle <span class="arithmatex">\(\psi\)</span> from <span class="arithmatex">\(\mathbf u\)</span> to <span class="arithmatex">\(\mathbf v\)</span>, <span class="arithmatex">\(\mathbf u\cdot\mathbf v=\abs{\mathbf v}\cos\psi\)</span> and <span class="arithmatex">\(u_1v_2-u_2v_1=\abs{\mathbf v}\sin\psi\)</span> (the length of <span class="arithmatex">\(\mathbf u\)</span> is <span class="arithmatex">\(1\)</span>). Now</p>
+<div class="arithmatex">\[\begin{aligned}
+\mathbf u\cdot\mathbf v&amp;=(f'\cos\theta-f\sin\theta)\cos\theta+(f'\sin\theta+f\cos\theta)\sin\theta=f'\left(\cos^2\theta+\sin^2\theta\right)=f',\\
+u_1v_2-u_2v_1&amp;=\cos\theta\,(f'\sin\theta+f\cos\theta)-\sin\theta\,(f'\cos\theta-f\sin\theta)=f\left(\cos^2\theta+\sin^2\theta\right)=f.
+\end{aligned}\]</div>
+<p>Dividing, <span class="arithmatex">\(\tan\psi=\dfrac{\abs{\mathbf v}\sin\psi}{\abs{\mathbf v}\cos\psi}=\dfrac f{f'}\)</span> (when <span class="arithmatex">\(f'\ne0\)</span>, <span class="arithmatex">\(\cos\psi\ne0\)</span>). ◻ ∎</p>
+<p>For the cardioid <span class="arithmatex">\(r=1+\cos\theta\)</span> at <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(\tan\psi=\frac{1}{-1}=-1\)</span>, so <span class="arithmatex">\(\psi=-\frac\pi4\)</span> (<span class="arithmatex">\(-45^\circ\)</span>), which agrees with the slope <span class="arithmatex">\(1\)</span> found in Example <a href="#ex-polslope">12.2.30</a>: the radial direction is vertical (angle <span class="arithmatex">\(90^\circ\)</span>) and the tangent direction has angle <span class="arithmatex">\(90^\circ-45^\circ=45^\circ\)</span>, slope <span class="arithmatex">\(\tan45^\circ=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.49: Rotating a polar curve</p>
+<p><span id="ex-b19"></span></p>
+<p>Prove that the graph of <span class="arithmatex">\(r=f(\theta-\alpha)\)</span> is the graph of <span class="arithmatex">\(r=f(\theta)\)</span> rotated counterclockwise about <span class="arithmatex">\(O\)</span> through the angle <span class="arithmatex">\(\alpha\)</span>.</p>
+<p><strong>Plan.</strong> Rotation through <span class="arithmatex">\(\alpha\)</span> adds <span class="arithmatex">\(\alpha\)</span> to the angle in a polar representation. Show that this maps one graph onto the other.</p>
+<p><em>Proof.</em> A rotation about <span class="arithmatex">\(O\)</span> through <span class="arithmatex">\(\alpha\)</span> takes <span class="arithmatex">\((r\cos\varphi,r\sin\varphi)\)</span> to <span class="arithmatex">\(\bigl(r\cos(\varphi+\alpha),r\sin(\varphi+\alpha)\bigr)\)</span>: by the addition formulas <span class="arithmatex">\(\cos(\varphi+\alpha)=\cos\varphi\cos\alpha-\sin\varphi\sin\alpha\)</span> and <span class="arithmatex">\(\sin(\varphi+\alpha)=\sin\varphi\cos\alpha+\cos\varphi\sin\alpha\)</span>, so the new point is the old point multiplied by the rotation matrix, which is the rotation through <span class="arithmatex">\(\alpha\)</span>. Hence the rotation maps <span class="arithmatex">\(P(r,\varphi)\)</span> to <span class="arithmatex">\(P(r,\varphi+\alpha)\)</span>. If <span class="arithmatex">\(P(r,\varphi)\)</span> is on <span class="arithmatex">\(r=f(\theta)\)</span>, that is <span class="arithmatex">\(r=f(\varphi)\)</span>, then the rotated point <span class="arithmatex">\(P(r,\varphi+\alpha)\)</span> satisfies <span class="arithmatex">\(r=f\bigl((\varphi+\alpha)-\alpha\bigr)\)</span>, so it is on <span class="arithmatex">\(r=f(\theta-\alpha)\)</span>. Conversely, if <span class="arithmatex">\(P(r,\theta)\)</span> is on <span class="arithmatex">\(r=f(\theta-\alpha)\)</span>, then rotating it through <span class="arithmatex">\(-\alpha\)</span> gives <span class="arithmatex">\(P(r,\theta-\alpha)\)</span> with <span class="arithmatex">\(r=f(\theta-\alpha)\)</span>, a point of <span class="arithmatex">\(r=f(\theta)\)</span>, and rotating that back through <span class="arithmatex">\(\alpha\)</span> gives <span class="arithmatex">\(P(r,\theta)\)</span>. So the rotation is a bijection from one graph onto the other. ◻ ∎</p>
+<p>Example: <span class="arithmatex">\(r=\sin2\theta\)</span> is <span class="arithmatex">\(r=\cos\left(2\theta-\frac\pi2\right)=\cos2\left(\theta-\frac\pi4\right)\)</span>, the rose <span class="arithmatex">\(r=\cos2\theta\)</span> rotated through <span class="arithmatex">\(\frac\pi4\)</span>, as Theorem <a href="#thm-rose">12.2.17</a> said.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.2.50: The lemniscate equation</p>
+<p><span id="ex-b20"></span></p>
+<p>Prove that for <span class="arithmatex">\(a\ne0\)</span> the graph of <span class="arithmatex">\(r^2=a^2\cos2\theta\)</span> is exactly the set of points with <span class="arithmatex">\((x^2+y^2)^2=a^2(x^2-y^2)\)</span>.</p>
+<p><strong>Plan.</strong> Convert with <span class="arithmatex">\(x^2+y^2=r^2\)</span> and <span class="arithmatex">\(\cos2\theta=\cos^2\theta-\sin^2\theta\)</span>; treat the origin separately because dividing by <span class="arithmatex">\(r^2\)</span> is involved.</p>
+<p><em>Proof.</em> Let <span class="arithmatex">\(P=(x,y)\ne O\)</span> with a representation <span class="arithmatex">\((r,\theta)\)</span>, <span class="arithmatex">\(r\ne0\)</span>. Then <span class="arithmatex">\(x^2-y^2=r^2\left(\cos^2\theta-\sin^2\theta\right)=r^2\cos2\theta\)</span> and <span class="arithmatex">\(x^2+y^2=r^2\)</span>, so</p>
+<div class="arithmatex">\[(x^2+y^2)^2-a^2(x^2-y^2)=r^4-a^2r^2\cos2\theta=r^2\left(r^2-a^2\cos2\theta\right).\]</div>
+<p>Since <span class="arithmatex">\(r^2\ne0\)</span>, the left side is <span class="arithmatex">\(0\)</span> exactly when <span class="arithmatex">\(r^2=a^2\cos2\theta\)</span>. By Theorem <a href="#thm-eqconv">12.2.9</a>(1) (the equation <span class="arithmatex">\(r^2=a^2\cos2\theta\)</span> is <span class="arithmatex">\(F(r\cos\theta,r\sin\theta)=0\)</span> for the Cartesian <span class="arithmatex">\(F(x,y)=(x^2+y^2)^2-a^2(x^2-y^2)\)</span> divided by <span class="arithmatex">\(r^2\)</span>, and changing the representation does not change the condition), the two descriptions agree for every <span class="arithmatex">\(P\ne O\)</span>. The origin satisfies the Cartesian equation (<span class="arithmatex">\(0=0\)</span>) and lies on the polar graph: <span class="arithmatex">\(r=0\)</span> at <span class="arithmatex">\(\theta=\frac\pi4\)</span>, where <span class="arithmatex">\(\cos2\theta=0\)</span>, so <span class="arithmatex">\(r^2=0=a^2\cos\frac\pi2\)</span>. ◻ ∎</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-samekc">12.2.1</a>.</strong> The first, second and third pairs represent the same point and the fourth does not. <span class="arithmatex">\(\left(-2,\frac{4\pi}3\right)=\left(2,\frac{4\pi}3-\pi\right)=\left(2,\frac\pi3\right)\)</span>; <span class="arithmatex">\(\left(2,\frac{7\pi}3\right)=\left(2,\frac\pi3+2\pi\right)=\left(2,\frac\pi3\right)\)</span>; but <span class="arithmatex">\(\left(-2,-\frac\pi3\right)=\left(2,\frac{2\pi}3\right)\)</span>, whose Cartesian form is <span class="arithmatex">\((-1,\sqrt3)\)</span>, not <span class="arithmatex">\((1,\sqrt3)\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-circkc">12.2.2</a>.</strong> Multiply by <span class="arithmatex">\(r\)</span>: <span class="arithmatex">\(r^2=-3r\sin\theta\)</span>, so <span class="arithmatex">\(x^2+y^2=-3y\)</span> and <span class="arithmatex">\(x^2+y^2+3y+\frac94=\frac94\)</span>, that is <span class="arithmatex">\(x^2+\left(y+\frac32\right)^2=\frac94\)</span>: the circle with center <span class="arithmatex">\(\left(0,-\frac32\right)\)</span> and radius <span class="arithmatex">\(\frac32\)</span>. This agrees with Theorem <a href="#thm-pcircles">12.2.11</a>(3) with <span class="arithmatex">\(a=0\)</span>, <span class="arithmatex">\(b=-\frac32\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-rosekc">12.2.3</a>.</strong> <span class="arithmatex">\(r=3\sin7\theta\)</span> has <span class="arithmatex">\(m=7\)</span> odd: <span class="arithmatex">\(7\)</span> petals, traced once for <span class="arithmatex">\(0\le\theta\le\pi\)</span>. <span class="arithmatex">\(r=2\cos6\theta\)</span> has <span class="arithmatex">\(m=6\)</span> even: <span class="arithmatex">\(2m=12\)</span> petals, traced once for <span class="arithmatex">\(0\le\theta\le2\pi\)</span> (Theorems <a href="#thm-rose">12.2.17</a> and <a href="#thm-period">12.2.23</a>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
