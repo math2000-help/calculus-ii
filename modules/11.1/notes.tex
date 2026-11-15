@@ -1,0 +1,542 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{11}{1}{Approximating Functions with Polynomials}
+\calcxdoc{10.3}
+\calcxdoc{10.2}
+
+\begin{document}
+
+\section{Approximating Functions with Polynomials}
+
+\begin{guide}
+How does a calculator find $\sqrt{4.2}$, $\ln1.2$ or $\sin0.3$? A computer can only add, subtract, multiply and divide, and a polynomial is built from exactly those operations. So the machine replaces the function, near a chosen point, by a polynomial. This section shows how to choose the polynomial (match as many derivatives as possible at the point), how to say \emph{how good} the approximation is (the remainder), and how to turn that into a guarantee such as ``the error is below $10^{-4}$''. In later sections the polynomials are allowed to grow without end and become power series, and the remainder studied here will decide when such a series equals the function.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item build the linear, quadratic and higher-order Taylor polynomials of a function about any center, and explain why their coefficients are forced by matching derivatives;
+  \item state and prove Taylor's Theorem with the Lagrange remainder, and the error estimate that follows from it;
+  \item bound the error of an approximation, and find how many terms guarantee a given accuracy;
+  \item explain, with an example, why a Taylor polynomial need not improve as the order grows.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{From tangent lines to polynomials}
+
+To evaluate $x^8-4x^5+1$ at a number we need only arithmetic. To evaluate $\sqrt[3]{x^4-1}$, $e^x$ or $\sin x$ in general we do not. Polynomials are the simplest functions, so we approximate a complicated function $f$, near a point $a$, by a polynomial.
+
+You already know the first step from Calculus I (linear approximation): near $a$, the tangent line
+\[
+p_1(x)=f(a)+f'(a)(x-a)
+\]
+is a good approximation to $f$. It \emph{matches $f$ in value and slope at $a$}: $p_1(a)=f(a)$ and $p_1'(a)=f'(a)$. If $f$ bends a lot near $a$ the tangent line soon leaves the graph. To follow the bending we add a quadratic term, $p_2(x)=p_1(x)+c_2(x-a)^2$, and choose $c_2$ so that $p_2$ also matches the second derivative. Since $p_2(a)=f(a)$ and $p_2'(a)=f'(a)$ whatever $c_2$ is, and $p_2''(x)=2c_2$, the new condition $p_2''(a)=f''(a)$ gives $c_2=\frac12f''(a)$. Hence
+\[
+p_2(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}2(x-a)^2 .
+\]
+
+\begin{exmp}{Linear and quadratic approximation}{linquad}
+Find the linear and the quadratic approximation to $f(x)=x^{-1/2}$ at $a=4$, and use them to estimate $\dfrac1{\sqrt{4.2}}$.
+
+\textbf{Solution.} The derivatives are $f'(x)=-\frac12x^{-3/2}$ and $f''(x)=\frac34x^{-5/2}$. At $a=4$:
+\[
+f(4)=\tfrac12,\qquad f'(4)=-\tfrac12\cdot\tfrac18=-\tfrac1{16},\qquad f''(4)=\tfrac34\cdot\tfrac1{32}=\tfrac3{128}.
+\]
+%@ ex1a | [diff(x**Q(-1,2),x,j).subs(x,4) for j in range(3)] == [Q(1,2),Q(-1,16),Q(3,128)] and Q(3,4)*Q(1,32) == Q(3,128) | \tfrac3{128}
+Therefore
+\[
+p_1(x)=\tfrac12-\tfrac1{16}(x-4),\qquad p_2(x)=\tfrac12-\tfrac1{16}(x-4)+\tfrac3{256}(x-4)^2 .
+\]
+%@ ex1b | Tay(x**Q(-1,2),4,1) == Q(1,2)-Q(1,16)*(x-4) and Tay(x**Q(-1,2),4,2) == Q(1,2)-Q(1,16)*(x-4)+Q(3,256)*(x-4)**2 and Q(3,128)/2 == Q(3,256) | \tfrac3{256}(x-4)^2
+At $x=4.2$ we have $x-4=0.2$, so $p_1(4.2)=0.5-0.0125=0.4875$ and $p_2(4.2)=0.4875+\frac3{256}(0.04)=0.48796875$. The true value is $1/\sqrt{4.2}=0.4879500\ldots$, so the errors are about $4.5\times10^{-4}$ for $p_1$ and $1.9\times10^{-5}$ for $p_2$. The quadratic term removed about $96\%$ of the error.
+%@ ex1c | Tay(x**Q(-1,2),4,1).subs(x,Q(21,5)) == Q(39,80) and Tay(x**Q(-1,2),4,2).subs(x,Q(21,5)) == Q(3123,6400) and abs(float(Q(21,5)**Q(-1,2)-Q(39,80))-4.5e-4)<1e-5 and abs(float(Q(21,5)**Q(-1,2)-Q(3123,6400))+1.87e-5)<1e-7 and abs((4.5e-4-1.87e-5)/4.5e-4-0.96)<0.005 and Q(39,80)+Q(3,256)*Q(4,100) == Q(3123,6400) | $p_2(4.2)=0.4875+\frac3{256}(0.04)=0.48796875$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Taylor polynomials}
+
+Continue in the same way. Having $p_{n-1}$, add one term $c_n(x-a)^n$ and choose $c_n$ so that the $n$-th derivative matches. The $n$-th derivative of $c_n(x-a)^n$ is the constant $n!\,c_n$, and the lower derivatives of the new term vanish at $a$, so earlier matches are not disturbed. This gives $c_n=f^{(n)}(a)/n!$.
+
+\begin{defn}{Taylor polynomial}{taylor}
+Let $f$ have derivatives up to order $n$ at $a$. The \emph{Taylor polynomial of order $n$ of $f$ centered at $a$} is
+\[
+p_n(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n .
+\]
+Here $f^{(0)}=f$ and $0!=1$. When $a=0$ it is also called the \emph{Maclaurin polynomial}.
+\end{defn}
+
+Because the new term is added on top of the old ones, $p_n(x)=p_{n-1}(x)+\frac{f^{(n)}(a)}{n!}(x-a)^n$: the polynomials form a growing sequence. The definition is not a lucky guess; the coefficients are forced.
+
+\begin{thm}{Taylor polynomials match derivatives, and only they do}{coef}
+Let $f$ have derivatives up to order $n$ at $a$. Then $p_n^{(k)}(a)=f^{(k)}(a)$ for $k=0,1,\dots,n$. Moreover, $p_n$ is the \emph{only} polynomial of degree at most $n$ with this property.
+\end{thm}
+\begin{proof}
+Every polynomial $p$ of degree at most $n$ can be written in powers of $x-a$, $p(x)=\sum_{j=0}^nc_j(x-a)^j$ (expand each power $x^i=\left((x-a)+a\right)^i$ with the binomial theorem and collect terms). Differentiating $k$ times gives $p^{(k)}(x)=\sum_{j=k}^nc_j\,j(j-1)\cdots(j-k+1)(x-a)^{j-k}$. At $x=a$ every term with $j>k$ contains the factor $(x-a)^{j-k}=0$, and the term $j=k$ is $c_k\,k!$. So $p^{(k)}(a)=k!\,c_k$ for $k=0,\dots,n$. Hence $p^{(k)}(a)=f^{(k)}(a)$ for all $k\le n$ holds if and only if $c_k=f^{(k)}(a)/k!$ for all $k\le n$, which says exactly that $p=p_n$. This proves both statements: $p_n$ has the property, and any polynomial of degree at most $n$ with the property equals $p_n$.
+\end{proof}
+
+\begin{kc}{Matching conditions}{match}
+A function has $f(1)=2$, $f'(1)=-3$, $f''(1)=4$ and $f'''(1)=-6$. Write the Taylor polynomial $p_3$ centered at $1$ and use it to estimate $f(1.1)$.
+\end{kc}
+
+\begin{exmp}{Taylor polynomials of $e^x$}{expoly}
+Find the Taylor polynomials of $f(x)=e^x$ centered at $0$, and use $p_0,\dots,p_4$ to approximate $e^{1/2}$ and $e^{-1}$.
+
+\textbf{Solution.} Every derivative of $e^x$ is $e^x$, and $e^0=1$, so $f^{(k)}(0)=1$ and $c_k=\frac1{k!}$ for all $k$. Hence
+\[
+p_n(x)=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}=\sum_{k=0}^n\frac{x^k}{k!}.
+\]
+%@ ex2a | all(diff(exp(x),x,j).subs(x,0) == 1 for j in range(0,10)) and Tay(exp(x),0,4) == 1+x+x**2/2+x**3/6+x**4/24 and sum(x**j/factorial(j) for j in range(5)) == 1+x+x**2/2+x**3/6+x**4/24 | \sum_{k=0}^n\frac{x^k}{k!}
+Evaluating (the true values are $e^{1/2}=1.6487213$ and $e^{-1}=0.3678794$):
+\begin{center}
+\begin{tabular}{@{}cllll@{}}\toprule
+$n$ & $p_n(\frac12)$ & error & $p_n(-1)$ & error\\\midrule
+0 & $1$ & $0.649$ & $1$ & $0.632$\\
+1 & $1.5$ & $0.149$ & $0$ & $0.368$\\
+2 & $1.625$ & $0.0237$ & $0.5$ & $0.132$\\
+3 & $1.645833$ & $0.00289$ & $0.333333$ & $0.0345$\\
+4 & $1.648438$ & $0.000284$ & $0.375$ & $0.00712$\\\bottomrule
+\end{tabular}
+\end{center}
+%@ ex2b | [Tay(exp(x),0,n).subs(x,Q(1,2)) for n in range(5)] == [1,Q(3,2),Q(13,8),Q(79,48),Q(211,128)] and [Tay(exp(x),0,n).subs(x,-1) for n in range(5)] == [1,0,Q(1,2),Q(1,3),Q(3,8)] and abs(float(exp(Q(1,2))-Q(211,128))-2.84e-4)<1e-6 and abs(float(exp(-1)-Q(3,8))+7.12e-3)<1e-5 and abs(float(Q(79,48))-1.645833)<1e-6 and abs(float(exp(Q(1,2)))-1.6487213)<1e-7 and abs(float(exp(-1))-0.3678794)<1e-7 and Q(211,128) == Q(1,1)+Q(1,2)+Q(1,8)+Q(1,48)+Q(1,384) | $0.375$ & $0.00712$
+The errors shrink as $n$ grows, and they are smaller at $x=\frac12$ than at $x=-1$ because $\frac12$ is closer to the center $0$. Both effects, order and distance from the center, are made precise by the remainder later in this section.
+\end{exmp}
+
+\begin{exmp}{Sine and cosine: only odd or even powers}{sincos}
+(a) Find the Taylor polynomial $p_7$ of $f(x)=\sin x$ centered at $0$. (b) Find $p_4$ for $g(x)=\cos3x$ centered at $0$.
+
+\textbf{Solution.} (a) The derivatives of $\sin x$ cycle: $\sin x,\ \cos x,\ -\sin x,\ -\cos x,\ \sin x,\dots$ At $0$ these are $0,1,0,-1,0,1,0,-1,\dots$ So $f^{(k)}(0)=0$ for even $k$, the odd ones alternate $1,-1,1,-1$, and
+\[
+p_7(x)=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}=x-\frac{x^3}6+\frac{x^5}{120}-\frac{x^7}{5040}.
+\]
+%@ ex3a | [diff(sin(x),x,j).subs(x,0) for j in range(8)] == [0,1,0,-1,0,1,0,-1] and Tay(sin(x),0,7) == x-x**3/6+x**5/120-x**7/5040 and factorial(7) == 5040 | -\frac{x^7}{5040}
+(b) By the chain rule $g'(x)=-3\sin3x$, $g''(x)=-9\cos3x$, $g'''(x)=27\sin3x$, $g^{(4)}(x)=81\cos3x$. At $0$: $g(0)=1$, $g'(0)=0$, $g''(0)=-9$, $g'''(0)=0$, $g^{(4)}(0)=81$. So
+\[
+p_4(x)=1-\frac{9}{2!}x^2+\frac{81}{4!}x^4=1-\frac92x^2+\frac{27}8x^4 .
+\]
+%@ ex3b | [diff(cos(3*x),x,j).subs(x,0) for j in range(5)] == [1,0,-9,0,81] and Tay(cos(3*x),0,4) == 1-Q(9,2)*x**2+Q(27,8)*x**4 and Q(81,24) == Q(27,8) | 1-\frac92x^2+\frac{27}8x^4
+In both parts half of the coefficients vanish, and the reason is general.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.35cm]
+  \draw[->] (-4.3,0) -- (4.5,0) node[right] {$x$};
+  \draw[->] (0,-1.7) -- (0,1.7) node[above] {$y$};
+  \foreach \t in {-3,-2,-1,1,2,3} {\draw (\t,0.05) -- (\t,-0.05);}
+  \clip (-4.2,-1.6) rectangle (4.2,1.6);
+  \draw[very thick,domain=-4.2:4.2,samples=100,variable=\x] plot ({\x},{sin(\x r)});
+  \draw[blue!70!black,thick,domain=-4.2:4.2,samples=60,variable=\x] plot ({\x},{\x});
+  \draw[red!70!black,thick,domain=-3.0:3.0,samples=80,variable=\x] plot ({\x},{\x-\x*\x*\x/6});
+  \draw[green!40!black,thick,domain=-3.3:3.3,samples=80,variable=\x] plot ({\x},{\x-\x*\x*\x/6+\x*\x*\x*\x*\x/120});
+  \node[blue!70!black] at (1.9,1.45) {$p_1$};
+  \node[red!70!black] at (3.15,-1.45) {$p_3$};
+  \node[green!40!black] at (-3.5,-0.95) {$p_5$};
+  \node at (0.9,1.25) {$\sin x$};
+\end{tikzpicture}
+\end{center}
+
+The figure shows $\sin x$ together with $p_1$, $p_3$ and $p_5$. Each higher polynomial hugs the sine curve over a longer interval around the center $0$, and each leaves the curve sooner or later.
+
+\begin{thm}{Even and odd functions}{parity}
+Let $f$ have derivatives up to order $n$ on an interval around $0$. If $f$ is even ($f(-x)=f(x)$), then $f^{(k)}(0)=0$ for every odd $k$, and $p_n$ contains only even powers of $x$. If $f$ is odd ($f(-x)=-f(x)$), then $f^{(k)}(0)=0$ for every even $k$, and $p_n$ contains only odd powers.
+\end{thm}
+\begin{proof}
+Suppose $f(-x)=\varepsilon f(x)$ with $\varepsilon=1$ (even) or $\varepsilon=-1$ (odd). Differentiate $k$ times with the chain rule; each differentiation of $f^{(j)}(-x)$ brings a factor $-1$, so $(-1)^kf^{(k)}(-x)=\varepsilon f^{(k)}(x)$. Put $x=0$: $(-1)^kf^{(k)}(0)=\varepsilon f^{(k)}(0)$. If $f$ is even and $k$ is odd this reads $-f^{(k)}(0)=f^{(k)}(0)$, so $f^{(k)}(0)=0$. If $f$ is odd and $k$ is even it reads $f^{(k)}(0)=-f^{(k)}(0)$, so again $f^{(k)}(0)=0$. The coefficient $c_k=f^{(k)}(0)/k!$ of $x^k$ in $p_n$ is therefore $0$ in those cases.
+\end{proof}
+
+So $\sin x$ (odd) has only odd powers, and $\cos3x$ (even) only even ones. A useful consequence: for an even function $p_{2m+1}=p_{2m}$, and for an odd function $p_{2m}=p_{2m-1}$, so the next derivative that matters is one order higher than it looks.
+
+\begin{exmp}{A center other than $0$: a fourth root}{center}
+Approximate $\sqrt[4]{85}$ with Taylor polynomials of $f(x)=x^{1/4}$ of orders $0,1,2,3$.
+
+\textbf{Solution.} A Taylor polynomial is accurate near its center, and we must be able to compute $f$ and its derivatives at the center exactly. Here $81=3^4$ is close to $85$, so take $a=81$. Then
+\[
+f(81)=3,\quad f'(81)=\tfrac14\cdot81^{-3/4}=\tfrac1{108},\quad f''(81)=-\tfrac3{16}\cdot81^{-7/4}=-\tfrac1{11664},
+\]
+\[
+f'''(81)=\tfrac{21}{64}\cdot81^{-11/4}=\tfrac7{3779136}.
+\]
+%@ ex4a | [diff(x**Q(1,4),x,j).subs(x,81) for j in range(4)] == [3,Q(1,108),Q(-1,11664),Q(7,3779136)] and 81**Q(3,4) == 27 and Q(3,16)*Q(1,2187) == Q(1,11664) | f'''(81)=\tfrac{21}{64}\cdot81^{-11/4}=\tfrac7{3779136}
+With $h=x-81$, the coefficients are $c_1=\frac1{108}$, $c_2=-\frac1{23328}$, $c_3=\frac7{22674816}$, and
+\[
+p_3(x)=3+\frac{h}{108}-\frac{h^2}{23328}+\frac{7h^3}{22674816}.
+\]
+%@ ex4b | Tay(x**Q(1,4),81,3) == 3+(x-81)/108-(x-81)**2/23328+Q(7,22674816)*(x-81)**3 and 2*11664 == 23328 and 6*3779136 == 22674816 | \frac{7h^3}{22674816}
+At $x=85$ we have $h=4$, and each polynomial adds one more small correction. The true value is $\sqrt[4]{85}=3.0363703$.
+\begin{center}
+\begin{tabular}{@{}clll@{}}\toprule
+$n$ & 0 & 1 & 2\\\midrule
+$p_n(85)$ & $3$ & $3.037037$ & $3.036351$\\
+error & $0.0364$ & $0.000667$ & $0.0000191$\\\bottomrule
+\end{tabular}
+\end{center}
+%@ ex4c | [Tay(x**Q(1,4),81,n).subs(x,85) for n in range(3)] == [3,Q(82,27),Q(4427,1458)] and abs(float(Tay(x**Q(1,4),81,2).subs(x,85))-3.036351)<1e-6 and abs(float(85**Q(1,4)-Tay(x**Q(1,4),81,2).subs(x,85))-1.91e-5)<1e-7 and abs(float(85**Q(1,4))-3.0363703)<1e-7 and Q(82,27)-Q(16,23328) == Q(4427,1458) | $p_n(85)$ & $3$ & $3.037037$ & $3.036351$\\
+The next polynomial gives $p_3(85)=3.036370924$, with error $6.5\times10^{-7}$. Each new term gains about a factor $30$ in accuracy, because $h=4$ is small compared with the center $81$.
+%@ ex4d | abs(float(Tay(x**Q(1,4),81,3).subs(x,85))-3.036370924)<1e-9 and abs(float(85**Q(1,4)-Tay(x**Q(1,4),81,3).subs(x,85))+6.47e-7)<1e-9 and abs(6.67e-4/1.91e-5-30)<6 and abs(1.91e-5/6.47e-7-30)<2 and Q(448,22674816) == Q(7,354294) | $p_3(85)=3.036370924$
+\end{exmp}
+
+\begin{kc}{Choosing a center}{center}
+Choose a center $a$ for approximating each number with Taylor polynomials, and say why: (a)~$\sqrt{50}$; \quad (b)~$\sqrt[3]{70}$; \quad (c)~$\ln0.9$.
+\end{kc}
+
+\begin{thm}{A polynomial is its own Taylor polynomial}{polyself}
+If $f$ is a polynomial of degree at most $d$, then for every center $a$ and every $n\ge d$ the Taylor polynomial $p_n$ equals $f$.
+\end{thm}
+\begin{proof}
+$f$ is itself a polynomial of degree at most $d\le n$, and trivially $f^{(k)}(a)=f^{(k)}(a)$ for $k=0,\dots,n$. By the uniqueness in Theorem~\ref{thm:coef}, $f=p_n$.
+\end{proof}
+
+\begin{exmp}{Rewriting a polynomial about a new center}{polyshift}
+Write $g(x)=x^3-2x^2+5x-4$ in powers of $x-2$.
+
+\textbf{Solution.} $g'(x)=3x^2-4x+5$, $g''(x)=6x-4$, $g'''(x)=6$, and $g^{(4)}=0$. At $a=2$ the values are $g(2)=6$, $g'(2)=9$, $g''(2)=8$, $g'''(2)=6$. So $p_3(x)=6+9(x-2)+\frac82(x-2)^2+\frac66(x-2)^3$, and by Theorem~\ref{thm:polyself}
+\[
+x^3-2x^2+5x-4=6+9(x-2)+4(x-2)^2+(x-2)^3 .
+\]
+%@ ex5a | [diff(x**3-2*x**2+5*x-4,x,j).subs(x,2) for j in range(4)] == [6,9,8,6] and expand(6+9*(x-2)+4*(x-2)**2+(x-2)**3) == x**3-2*x**2+5*x-4 and Q(8,2) == 4 | 6+9(x-2)+4(x-2)^2+(x-2)^3
+(Expanding the right side returns the original polynomial.) There is nothing left over, so the approximation is exact for every $x$. For example, $g(2.1)=6+0.9+0.04+0.001=6.941$.
+%@ ex5b | Q(21,10)**3-2*Q(21,10)**2+5*Q(21,10)-4 == Q(6941,1000) and 6+Q(9,10)+Q(4,100)+Q(1,1000) == Q(6941,1000) | $g(2.1)=6+0.9+0.04+0.001=6.941$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The remainder: how good is the approximation?}
+
+A calculation shows that $p_n$ is close to $f$, but how close? The \emph{error} is $f(x)-p_n(x)$ and it has a name.
+
+\begin{defn}{Remainder}{remainder}
+The \emph{remainder} of the Taylor polynomial of order $n$ is $R_n(x)=f(x)-p_n(x)$, so that $f(x)=p_n(x)+R_n(x)$. The number $\abs{R_n(x)}$ is the error in approximating $f(x)$ by $p_n(x)$.
+\end{defn}
+
+The remainder can be written in a form that lets us estimate it. The proof uses Rolle's Theorem from Calculus I: if $g$ is continuous on $[u,v]$, differentiable on $(u,v)$ and $g(u)=g(v)$, then $g'(c)=0$ for some $c$ in $(u,v)$.
+
+\begin{thm}{Taylor's Theorem (Lagrange form of the remainder)}{taylor}
+Let $f$ have continuous derivatives up to order $n+1$ on an open interval $I$ containing $a$. For every $x$ in $I$ with $x\ne a$ there is a number $c$ strictly between $a$ and $x$ such that
+\[
+R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.
+\]
+\end{thm}
+\begin{proof}
+Fix $x\ne a$ in $I$ and define the number $K$ by $R_n(x)=K(x-a)^{n+1}$, that is, $K=R_n(x)/(x-a)^{n+1}$. We must show $K=f^{(n+1)}(c)/(n+1)!$ for some $c$ between $a$ and $x$. For $t$ in $I$ let
+\[
+g(t)=f(t)-p_n(t)-K(t-a)^{n+1}.
+\]
+Then $g$ has $n+1$ derivatives on $I$. \emph{Zeros of $g$.} For $k=0,1,\dots,n$ we have $f^{(k)}(a)=p_n^{(k)}(a)$ (Theorem~\ref{thm:coef}), and the $k$-th derivative of $(t-a)^{n+1}$ is a constant times $(t-a)^{n+1-k}$, which is $0$ at $t=a$ because $n+1-k\ge1$. Hence $g^{(k)}(a)=0$ for $k=0,1,\dots,n$. Also $g(x)=f(x)-p_n(x)-R_n(x)=0$ by the choice of $K$.
+
+\emph{Applying Rolle's Theorem $n+1$ times.} Since $g(a)=g(x)=0$, Rolle's Theorem gives $c_1$ strictly between $a$ and $x$ with $g'(c_1)=0$. Now $g'(a)=0$ and $g'(c_1)=0$, so Rolle's Theorem applied to $g'$ on the interval between $a$ and $c_1$ gives $c_2$ strictly between $a$ and $c_1$ with $g''(c_2)=0$. Continue: if $g^{(k-1)}(a)=0$ and $g^{(k-1)}(c_{k-1})=0$ (with $k-1\le n$), Rolle's Theorem gives $c_k$ strictly between $a$ and $c_{k-1}$ with $g^{(k)}(c_k)=0$. After $n+1$ steps we have $c=c_{n+1}$ with $g^{(n+1)}(c)=0$, and $c$ lies between $a$ and $x$ because each $c_k$ lies between $a$ and the previous one.
+
+\emph{Reading off $K$.} The polynomial $p_n$ has degree at most $n$, so $p_n^{(n+1)}=0$, and $\frac{d^{n+1}}{dt^{n+1}}(t-a)^{n+1}=(n+1)!$. Therefore $g^{(n+1)}(t)=f^{(n+1)}(t)-K\,(n+1)!$. Putting $t=c$ gives $0=f^{(n+1)}(c)-K(n+1)!$, that is $K=f^{(n+1)}(c)/(n+1)!$, and $R_n(x)=K(x-a)^{n+1}$ is the formula claimed.
+\end{proof}
+
+For $n=0$ this is the Mean Value Theorem: $f(x)=f(a)+f'(c)(x-a)$. The remainder has the shape of the \emph{next} term of the Taylor polynomial, $\frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{n+1}$, with the derivative evaluated at an unknown point $c$ instead of at $a$.
+
+\begin{warn}[The point c is unknown]
+The theorem says that \emph{some} $c$ between $a$ and $x$ works; it does not say which. The number $c$ depends on $x$ and on $n$, and in general it cannot be found. We never use its value. We use only the fact that it lies between $a$ and $x$, which lets us bound $f^{(n+1)}(c)$.
+\end{warn}
+
+\begin{think}{The tangent line and the sign of $f''$}{sign}
+Take $n=1$. Theorem~\ref{thm:taylor} says $f(x)=f(a)+f'(a)(x-a)+\frac{f''(c)}2(x-a)^2$. What does this say about the graph of $f$ relative to its tangent line at $a$ when $f''>0$ on the interval? Use it to compare $e^x$ with $1+x$.
+\end{think}
+
+\begin{thm}{Estimate of the remainder}{estimate}
+Suppose $\abs{f^{(n+1)}(c)}\le M$ for all $c$ between $a$ and $x$ (inclusive). Then
+\[
+\abs{R_n(x)}=\abs{f(x)-p_n(x)}\le\frac{M\,\abs{x-a}^{n+1}}{(n+1)!}.
+\]
+\end{thm}
+\begin{proof}
+If $x=a$ then $R_n(a)=0$ and the bound is $0$. Otherwise, by Theorem~\ref{thm:taylor} there is $c$ between $a$ and $x$ with $\abs{R_n(x)}=\frac{\abs{f^{(n+1)}(c)}}{(n+1)!}\abs{x-a}^{n+1}$. Since $c$ lies between $a$ and $x$, $\abs{f^{(n+1)}(c)}\le M$, and replacing it by $M$ can only make the right side larger.
+\end{proof}
+
+\begin{proc}{Bounding an error}{bound}
+\begin{enumerate}[nosep]
+  \item Identify $f$, the center $a$, the point $x$ and the order $n$.
+  \item Compute $f^{(n+1)}$, the derivative \emph{one order higher} than the polynomial.
+  \item Find $M$ with $\abs{f^{(n+1)}(c)}\le M$ for all $c$ between $a$ and $x$: look for the largest value of $\abs{f^{(n+1)}}$ on that interval (use monotonicity, or the bound $\abs{\sin c},\abs{\cos c}\le1$).
+  \item Then $\abs{R_n(x)}\le M\abs{x-a}^{n+1}/(n+1)!$. Any valid $M$ gives a valid bound; a smaller $M$ gives a sharper bound.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Error of a sine approximation}{sinerr}
+Bound the error in approximating $\sin0.3$ by the Taylor polynomials of $\sin x$ centered at $0$ of orders $3$ and $4$.
+
+\textbf{Solution.} Every derivative of $\sin x$ is $\pm\sin x$ or $\pm\cos x$, so $\abs{f^{(n+1)}(c)}\le1$ and we can take $M=1$ for every $n$ and every $c$. For $n=3$: $\abs{R_3(0.3)}\le\frac{0.3^4}{4!}=0.0003375$. Now $p_3(x)=x-\frac{x^3}6$ and $p_4=p_3$, because the coefficient of $x^4$ is $0$ (Theorem~\ref{thm:parity}). So the same number can be bounded using $n=4$, which gives the sharper bound
+\[
+\abs{R_4(0.3)}\le\frac{0.3^5}{5!}=0.00002025 .
+\]
+%@ ex7a | Q(3,10)**4/factorial(4) == Q(27,80000) and abs(float(Q(3,10)**4/factorial(4))-0.0003375)<1e-9 and Tay(sin(x),0,4) == Tay(sin(x),0,3) and Q(3,10)**5/factorial(5) == Q(81,4000000) | \frac{0.3^5}{5!}=0.00002025
+With $p_3(0.3)=0.3-0.0045=0.2955$ we conclude $\sin0.3=0.2955\pm0.00003$. (The true value is $0.2955202\ldots$; the actual error is $2.02\times10^{-5}$, almost exactly the bound.)
+%@ ex7b | Tay(sin(x),0,3).subs(x,Q(3,10)) == Q(591,2000) and abs(float(sin(Q(3,10))-Q(591,2000))-2.0207e-5)<1e-8 and Q(591,2000) == Q(3,10)-Q(45,10000) | $p_3(0.3)=0.3-0.0045=0.2955$
+\end{exmp}
+
+\begin{exmp}{A bound that needs a monotonicity argument}{cuberoot}
+Approximate $\sqrt[3]9$ with the Taylor polynomial $p_2$ of $f(x)=x^{1/3}$ centered at $8$, and bound the error.
+
+\textbf{Solution.} $f(8)=2$, $f'(x)=\frac13x^{-2/3}$ gives $f'(8)=\frac1{12}$, and $f''(x)=-\frac29x^{-5/3}$ gives $f''(8)=-\frac1{144}$. So $p_2(9)=2+\frac1{12}-\frac1{144}\cdot\frac12=2+\frac{23}{288}=\frac{599}{288}\approx2.079861$.
+%@ ex8a | [diff(x**Q(1,3),x,j).subs(x,8) for j in range(3)] == [2,Q(1,12),Q(-1,144)] and Tay(x**Q(1,3),8,2).subs(x,9) == Q(599,288) and abs(float(Q(599,288))-2.079861)<1e-6 and 2+Q(1,12)-Q(1,288) == Q(599,288) | \frac{599}{288}\approx2.079861
+For the error use $n=2$, $f'''(x)=\frac{10}{27}x^{-8/3}$. On $[8,9]$ this positive function is decreasing, so its largest value is at $c=8$: $M=\frac{10}{27}\cdot8^{-8/3}=\frac{10}{27\cdot256}=\frac5{3456}$. Then
+\[
+\abs{R_2(9)}\le\frac M{3!}\cdot1^3=\frac5{20736}\approx2.41\times10^{-4}.
+\]
+%@ ex8b | simplify(diff(x**Q(1,3),x,3)-Q(10,27)*x**Q(-8,3)) == 0 and Q(10,27)*Q(1,256) == Q(5,3456) and abs(float(Q(5,20736))-2.41e-4)<1e-6 and Q(5,3456)/6 == Q(5,20736) | \frac5{20736}\approx2.41\times10^{-4}
+The true error is $\sqrt[3]9-p_2(9)=2.0800838-2.0798611=2.2\times10^{-4}$, within the bound, as it must be.
+%@ ex8c | abs(float(9**Q(1,3)-Q(599,288))-2.227e-4)<1e-6 and 9**Q(1,3)-Q(599,288) < Q(5,20736) | $\sqrt[3]9-p_2(9)=2.0800838-2.0798611=2.2\times10^{-4}$
+\end{exmp}
+
+\begin{think}{Two ways to shrink a bound}{shrink}
+In $\dfrac{M\abs{x-a}^{n+1}}{(n+1)!}$ you can change the center $a$ or the order $n$. Explain why moving the center closer to $x$ helps, and why raising $n$ usually (but not always) helps.
+\end{think}
+
+\begin{kc}{Reading the remainder}{remkc}
+Write the Lagrange form of $R_4(x)$ for $f(x)=e^x$ centered at $0$, and use $M=2$ (valid because $e^c<2$ for $c\le0.2$) to bound $\abs{R_4(0.2)}$.
+\end{kc}
+
+\begin{exmp}{How many terms are enough?}{howmany}
+How large must $n$ be so that $p_n(x)$ approximates $e^x$ with error less than $10^{-4}$ for every $x$ in $[0,1]$?
+
+\textbf{Solution.} For $0\le c\le1$ we have $e^c\le e<3$, so $\abs{f^{(n+1)}(c)}\le M=3$ and, for $0\le x\le1$, $\abs{x-0}^{n+1}\le1$. Hence $\abs{R_n(x)}\le\frac3{(n+1)!}$ on the whole interval. We need $\frac3{(n+1)!}<10^{-4}$, that is $(n+1)!>30000$. Since $7!=5040$ and $8!=40320$, the smallest suitable $n$ is $n=7$, with bound $\frac3{8!}\approx7.4\times10^{-5}$. (For $n=6$ the bound is $\frac3{7!}\approx6\times10^{-4}$, which is not small enough.) So $p_7(x)=\sum_{k=0}^7\frac{x^k}{k!}$ is accurate to within $10^{-4}$ on $[0,1]$. For instance $p_7(1)=\frac{685}{252}=2.718254$, and $e=2.718282$.
+%@ ex9 | [factorial(j) for j in (7,8)] == [5040,40320] and Q(3,5040) > Q(1,10000) and Q(3,40320) < Q(1,10000) and abs(float(Q(3,40320))-7.4e-5)<1e-6 and abs(float(E-sum(Q(1,factorial(j)) for j in range(8)))-2.786e-5)<1e-8 and sum(Q(1,factorial(j)) for j in range(8)) == Q(685,252) | $p_7(1)=\frac{685}{252}=2.718254$
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{When does the polynomial converge to the function?}
+
+For a fixed $x$, does $p_n(x)\to f(x)$ as $n\to\infty$? Two examples show that both answers occur. This question is the starting point of power series and Taylor series, which are the subject of the following sections.
+
+\begin{exmp}{The geometric function $1/(1-x)$}{geom}
+Find $p_n$ and $R_n$ for $f(x)=\frac1{1-x}$ centered at $0$, and compare $p_n(x)$ with $f(x)$ at $x=\frac12$, $x=-1$ and $x=2$.
+
+\textbf{Solution.} $f^{(k)}(x)=\frac{k!}{(1-x)^{k+1}}$, so $f^{(k)}(0)=k!$ and $c_k=1$ for all $k$:
+\[
+p_n(x)=1+x+x^2+\cdots+x^n=\frac{1-x^{n+1}}{1-x}\quad(x\ne1).
+\]
+This is the partial sum of the geometric series with first term $1$ and ratio $x$ (Theorem~\ref{10.3-thm:geoseries}). The remainder is exact, with no unknown point:
+\[
+R_n(x)=\frac1{1-x}-\frac{1-x^{n+1}}{1-x}=\frac{x^{n+1}}{1-x}.
+\]
+%@ ex6a | [diff(1/(1-x),x,j).subs(x,0) for j in range(6)] == [factorial(j) for j in range(6)] and simplify(1/(1-x)-(1-x**5)/(1-x)-x**5/(1-x)) == 0 and Tay(1/(1-x),0,4) == 1+x+x**2+x**3+x**4 and simplify(diff(1/(1-x),x,4)-factorial(4)/(1-x)**5) == 0 | R_n(x)=\frac1{1-x}-\frac{1-x^{n+1}}{1-x}=\frac{x^{n+1}}{1-x}
+\begin{center}
+\begin{tabular}{@{}cccc@{}}\toprule
+$n$ & $p_n(\frac12)$ & $p_n(-1)$ & $p_n(2)$\\\midrule
+0 & $1$ & $1$ & $1$\\
+1 & $\frac32$ & $0$ & $3$\\
+2 & $\frac74$ & $1$ & $7$\\
+3 & $\frac{15}8$ & $0$ & $15$\\
+4 & $\frac{31}{16}$ & $1$ & $31$\\
+5 & $\frac{63}{32}$ & $0$ & $63$\\\midrule
+$f(x)$ & $2$ & $\frac12$ & $-1$\\\bottomrule
+\end{tabular}
+\end{center}
+%@ ex6b | [Tay(1/(1-x),0,n).subs(x,Q(1,2)) for n in range(6)] == [1,Q(3,2),Q(7,4),Q(15,8),Q(31,16),Q(63,32)] and [Tay(1/(1-x),0,n).subs(x,-1) for n in range(6)] == [1,0,1,0,1,0] and [Tay(1/(1-x),0,n).subs(x,2) for n in range(6)] == [1,3,7,15,31,63] and (1/(1-x)).subs(x,2) == -1 | $f(x)$ & $2$ & $\frac12$ & $-1$\\\bottomrule
+\emph{At $x=\frac12$:} $R_n(\frac12)=\frac{(1/2)^{n+1}}{1/2}=\left(\frac12\right)^n\to0$, so $p_n(\frac12)\to2=f(\frac12)$. \emph{At $x=-1$:} $R_n(-1)=\frac{(-1)^{n+1}}2$ has absolute value $\frac12$ for every $n$; the polynomials alternate between $1$ and $0$ and never approach $f(-1)=\frac12$. \emph{At $x=2$:} $p_n(2)=2^{n+1}-1$ grows without bound, while $f(2)=-1$. So $p_n(x)\to f(x)$ holds for $x=\frac12$ and fails for $x=-1$ and $x=2$. It is the geometric series fact (Theorem~\ref{10.3-thm:geoseries}): $x^{n+1}\to0$ exactly when $\abs x<1$, and then $R_n(x)\to0$.
+%@ ex6c | all((1/(1-x)-Tay(1/(1-x),0,n)).subs(x,Q(1,2)) == Q(1,2)**n for n in range(8)) and all(abs((1/(1-x)-Tay(1/(1-x),0,n)).subs(x,-1)) == Q(1,2) for n in range(8)) and all(Tay(1/(1-x),0,n).subs(x,2) == 2**(n+1)-1 for n in range(8)) and 2**(5+1)-1 == 63 | $p_n(2)=2^{n+1}-1$
+\end{exmp}
+
+\begin{think}{Why does Taylor's Theorem not forbid this?}{nogood}
+In Example~\ref{ex:geom}, the polynomials $p_n(2)$ get worse as $n$ grows, although Taylor's Theorem seems to give $R_n(2)=\frac{f^{(n+1)}(c)}{(n+1)!}2^{n+1}$. Which hypothesis of the theorem fails at $x=2$? And at $x=-1$, where the hypotheses hold, why does the estimate not force $\abs{R_n(-1)}\to0$?
+\end{think}
+
+\begin{exmp}{When the remainder does go to zero: $e^x$}{expconv}
+Show that for every fixed $x$, $R_n(x)\to0$ as $n\to\infty$ for $f(x)=e^x$ centered at $0$.
+
+\textbf{Solution.} Fix $x$. All derivatives of $e^x$ equal $e^x$, and for $c$ between $0$ and $x$, $e^c\le e^{\abs x}$. So $M=e^{\abs x}$ is valid for every $n$, and Theorem~\ref{thm:estimate} gives
+\[
+\abs{R_n(x)}\le e^{\abs x}\,\frac{\abs x^{\,n+1}}{(n+1)!}.
+\]
+Let $b=\abs x+1>1$. Then $\abs x^{\,n+1}<b^{n+1}$, and $\frac{b^m}{m!}\to0$ as $m\to\infty$ (Theorem~\ref{10.2-thm:growth}(c)); in particular this holds for $m=n+1$. By the Squeeze Theorem (Theorem~\ref{10.2-thm:squeeze}), $\abs{R_n(x)}\to0$, that is, $p_n(x)\to e^x$. For $x=3$ the bound is $e^3\frac{3^{11}}{11!}\approx0.089$ already for $n=10$, and indeed $p_{10}(3)=20.0797$ while $e^3=20.0855$, a difference of $0.0059$.
+%@ ex10 | abs(float(exp(3)*Integer(3)**11/factorial(11))-0.0891)<1e-4 and abs(float(sum(Q(3**j,factorial(j)) for j in range(11)))-20.0797)<1e-4 and abs(float(exp(3))-20.0855)<1e-4 and abs(float(exp(3)-sum(Q(3**j,factorial(j)) for j in range(11)))-0.0059)<1e-4 and 3**11 == 177147 | $p_{10}(3)=20.0797$
+So for \emph{every} real $x$ the values $p_n(x)$ approach $e^x$. In the language of series, $e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$: a function equal to a ``polynomial of infinite degree''. That is the idea behind Taylor series, developed in the sections that follow. By contrast, Example~\ref{ex:geom} shows that such an equality can hold only for some $x$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Linear and quadratic approximation} (Examples~\ref{ex:b1}--\ref{ex:b2}): a square root at a perfect square; a tangent at $\frac\pi4$.
+  \item \emph{Building Taylor polynomials} (Examples~\ref{ex:b3}--\ref{ex:b4}): a product with the exponential; the sine at $\frac\pi6$.
+  \item \emph{Approximating numbers} (Examples~\ref{ex:b5}--\ref{ex:b6}): a logarithm; a fifth root with a well-chosen center.
+  \item \emph{The remainder for general $n$} (Examples~\ref{ex:b7}--\ref{ex:b8}): $e^{-2x}$ and $\ln x$.
+  \item \emph{Error bounds} (Examples~\ref{ex:b9}--\ref{ex:b10}): $e^{-0.4}$ and $\sqrt{10}$.
+  \item \emph{Accuracy on an interval; how many terms} (Examples~\ref{ex:b11}--\ref{ex:b12}): cosine on $[-\frac12,\frac12]$ and $\ln(1+x)$ on $[0,\frac12]$.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Linear and quadratic approximation}
+
+\begin{exmp}{A square root at a perfect square}{b1}
+Find the linear and quadratic approximations to $f(x)=\sqrt x$ at $a=9$ and use them to estimate $\sqrt{9.4}$.
+
+\textbf{Solution.} $f(9)=3$; $f'(x)=\frac1{2\sqrt x}$ gives $f'(9)=\frac16$; $f''(x)=-\frac14x^{-3/2}$ gives $f''(9)=-\frac1{108}$, so $c_2=-\frac1{216}$. Hence $p_1(x)=3+\frac{x-9}6$ and $p_2(x)=3+\frac{x-9}6-\frac{(x-9)^2}{216}$. With $x-9=0.4$: $p_1(9.4)=3.066667$ and $p_2(9.4)=3.066667-\frac{0.16}{216}=3.065926$. The true value is $\sqrt{9.4}=3.065942$; the errors are $7.2\times10^{-4}$ and $1.6\times10^{-5}$.
+%@ bank-1 | [diff(sqrt(x),x,j).subs(x,9) for j in range(3)] == [3,Q(1,6),Q(-1,108)] and Tay(sqrt(x),9,2) == 3+(x-9)/6-(x-9)**2/216 and abs(float(Tay(sqrt(x),9,2).subs(x,Q(47,5)))-3.065926)<1e-6 and abs(float(sqrt(Q(47,5))-Tay(sqrt(x),9,1).subs(x,Q(47,5)))+7.2e-4)<1e-5 and abs(float(sqrt(Q(47,5))-Tay(sqrt(x),9,2).subs(x,Q(47,5)))-1.6e-5)<1e-6 and Q(1,108)/2 == Q(1,216) | $p_2(9.4)=3.066667-\frac{0.16}{216}=3.065926$
+\end{exmp}
+
+\begin{exmp}{A tangent at $\frac\pi4$}{b2}
+Find the quadratic approximation to $f(x)=\tan x$ at $a=\frac\pi4$ and estimate $\tan0.8$.
+
+\textbf{Solution.} $f'(x)=\sec^2x$ and $f''(x)=2\sec^2x\tan x$. At $\frac\pi4$, $\tan=1$ and $\sec^2=2$, so $f=1$, $f'=2$, $f''=4$ and
+\[
+p_2(x)=1+2\left(x-\tfrac\pi4\right)+2\left(x-\tfrac\pi4\right)^2 .
+\]
+Here $0.8-\frac\pi4=0.014602$ (a small number, since $\frac\pi4=0.785398$), so $p_2(0.8)=1+0.029204+0.000426=1.029630$, and the true value is $\tan0.8=1.029639$.
+%@ bank-2 | [simplify(diff(tan(x),x,j).subs(x,pi/4)) for j in range(3)] == [1,2,4] and simplify(Tay(tan(x),pi/4,2)-(1+2*(x-pi/4)+2*(x-pi/4)**2)) == 0 and abs(float(1+2*(Q(4,5)-pi/4)+2*(Q(4,5)-pi/4)**2)-1.029630)<1e-6 and abs(float(tan(Q(4,5)))-1.029639)<1e-6 and abs(float(Q(4,5)-pi/4)-0.014602)<1e-6 and Q(4,2) == 2 | $p_2(0.8)=1+0.029204+0.000426=1.029630$
+\end{exmp}
+
+\subsection*{Group 2: Building Taylor polynomials}
+
+\begin{exmp}{A product with an exponential}{b3}
+Find the Taylor polynomial $p_4$ of $f(x)=xe^{2x}$ centered at $0$.
+
+\textbf{Solution.} By the product rule, $f'(x)=e^{2x}+2xe^{2x}$, $f''(x)=4e^{2x}+4xe^{2x}$, and in general $f^{(k)}(x)=(k\,2^{k-1}+2^kx)e^{2x}$, so $f^{(k)}(0)=k\,2^{k-1}$: the values are $1,4,12,32$ for $k=1,2,3,4$, and $f(0)=0$. Then $c_k=\frac{k\,2^{k-1}}{k!}=\frac{2^{k-1}}{(k-1)!}$, giving $c_1=1$, $c_2=2$, $c_3=2$, $c_4=\frac43$:
+\[
+p_4(x)=x+2x^2+2x^3+\tfrac43x^4 .
+\]
+%@ bank-3 | all(diff(x*exp(2*x),x,j).subs(x,0) == j*2**(j-1) for j in range(1,12)) and [diff(x*exp(2*x),x,j).subs(x,0) for j in range(5)] == [0,1,4,12,32] and Tay(x*exp(2*x),0,4) == x+2*x**2+2*x**3+Q(4,3)*x**4 and Q(32,24) == Q(4,3) | p_4(x)=x+2x^2+2x^3+\tfrac43x^4
+\end{exmp}
+
+\begin{exmp}{The sine centered at $\frac\pi6$}{b4}
+Find the Taylor polynomial $p_4$ of $f(x)=\sin x$ centered at $a=\frac\pi6$.
+
+\textbf{Solution.} The derivatives cycle through $\sin,\cos,-\sin,-\cos$, and at $\frac\pi6$ we have $\sin=\frac12$, $\cos=\frac{\sqrt3}2$. So $f^{(k)}(\frac\pi6)$ for $k=0,\dots,4$ is $\frac12,\ \frac{\sqrt3}2,\ -\frac12,\ -\frac{\sqrt3}2,\ \frac12$, and dividing by $k!$ gives the coefficients $\frac12,\frac{\sqrt3}2,-\frac14,-\frac{\sqrt3}{12},\frac1{48}$:
+\[
+p_4(x)=\frac12+\frac{\sqrt3}2\left(x-\tfrac\pi6\right)-\frac14\left(x-\tfrac\pi6\right)^2-\frac{\sqrt3}{12}\left(x-\tfrac\pi6\right)^3+\frac1{48}\left(x-\tfrac\pi6\right)^4 .
+\]
+%@ bank-4 | [simplify(diff(sin(x),x,j).subs(x,pi/6)) for j in range(5)] == [Q(1,2),sqrt(3)/2,-Q(1,2),-sqrt(3)/2,Q(1,2)] and simplify(Tay(sin(x),pi/6,4)-(Q(1,2)+sqrt(3)/2*(x-pi/6)-Q(1,4)*(x-pi/6)**2-sqrt(3)/12*(x-pi/6)**3+Q(1,48)*(x-pi/6)**4)) == 0 and Q(1,2)/24 == Q(1,48) | +\frac1{48}\left(x-\tfrac\pi6\right)^4
+\end{exmp}
+
+\subsection*{Group 3: Approximating numbers}
+
+\begin{exmp}{A logarithm}{b5}
+Use the Taylor polynomial $p_3$ of $\ln(1+x)$ centered at $0$ to approximate $\ln1.2$.
+
+\textbf{Solution.} $f'(x)=\frac1{1+x}$, $f''(x)=-\frac1{(1+x)^2}$, $f'''(x)=\frac2{(1+x)^3}$, so $f(0)=0$, $f'(0)=1$, $f''(0)=-1$, $f'''(0)=2$ and $p_3(x)=x-\frac{x^2}2+\frac{x^3}3$. Since $\ln1.2=\ln(1+0.2)$ we put $x=0.2$: $p_3(0.2)=0.2-0.02+0.002667=0.182667$. The true value is $0.182322$, so the error is $3.5\times10^{-4}$.
+%@ bank-5 | [diff(log(1+x),x,j).subs(x,0) for j in range(4)] == [0,1,-1,2] and Tay(log(1+x),0,3) == x-x**2/2+x**3/3 and Tay(log(1+x),0,3).subs(x,Q(1,5)) == Q(137,750) and abs(float(log(Q(6,5))-Q(137,750))+3.45e-4)<1e-6 and abs(float(Q(137,750))-0.182667)<1e-6 and Q(1,5)-Q(1,50)+Q(1,375) == Q(137,750) | $p_3(0.2)=0.2-0.02+0.002667=0.182667$
+\end{exmp}
+
+\begin{exmp}{A fifth root with a well-chosen center}{b6}
+Approximate $\sqrt[5]{30}$ using the Taylor polynomial $p_2$ of $f(x)=x^{1/5}$ at a suitable center.
+
+\textbf{Solution.} $32=2^5$ is the nearest perfect fifth power, so take $a=32$. Then $f(32)=2$, $f'(x)=\frac15x^{-4/5}$ gives $f'(32)=\frac1{5\cdot16}=\frac1{80}$, and $f''(x)=-\frac4{25}x^{-9/5}$ gives $f''(32)=-\frac4{25\cdot512}=-\frac1{3200}$. So $c_2=-\frac1{6400}$ and
+\[
+p_2(x)=2+\frac{x-32}{80}-\frac{(x-32)^2}{6400},\qquad p_2(30)=2-\frac2{80}-\frac4{6400}=1.974375 .
+\]
+%@ bank-6 | [diff(x**Q(1,5),x,j).subs(x,32) for j in range(3)] == [2,Q(1,80),Q(-1,3200)] and Tay(x**Q(1,5),32,2) == 2+(x-32)/80-(x-32)**2/6400 and Tay(x**Q(1,5),32,2).subs(x,30) == Q(3159,1600) and abs(float(Q(3159,1600))-1.974375)<1e-9 and 2-Q(2,80)-Q(4,6400) == Q(3159,1600) | p_2(30)=2-\frac2{80}-\frac4{6400}=1.974375
+The true value is $\sqrt[5]{30}=1.974350$, so the error is $2.5\times10^{-5}$. (Centering at $a=1$ instead would give no useful estimate here: $30$ is far from $1$.)
+%@ bank-6b | abs(float(30**Q(1,5))-1.974350)<1e-6 and abs(float(Q(3159,1600)-30**Q(1,5))-2.5e-5)<1e-6 and Q(3159,1600) == Q(1974375,1000000) | $\sqrt[5]{30}=1.974350$
+\end{exmp}
+
+\subsection*{Group 4: The remainder for general $n$}
+
+\begin{exmp}{The remainder of $e^{-2x}$}{b7}
+Find $R_n(x)$ for $f(x)=e^{-2x}$ centered at $0$ and bound $\abs{R_3(0.1)}$.
+
+\textbf{Solution.} $f^{(k)}(x)=(-2)^ke^{-2x}$, so $f^{(n+1)}(c)=(-2)^{n+1}e^{-2c}$ and
+\[
+R_n(x)=\frac{(-2)^{n+1}e^{-2c}}{(n+1)!}\,x^{n+1}\quad\text{for some }c\text{ between }0\text{ and }x.
+\]
+For $n=3$, $x=0.1$: $c\in(0,0.1)$ gives $e^{-2c}<1$, so $\abs{R_3(0.1)}<\frac{2^4(0.1)^4}{4!}=\frac{16\cdot10^{-4}}{24}=6.7\times10^{-5}$. Indeed $p_3(0.1)=1-0.2+0.02-0.001333=0.818667$ and $e^{-0.2}=0.818731$, an error of $6.4\times10^{-5}$.
+%@ bank-7 | all(simplify(diff(exp(-2*x),x,j)-(-2)**j*exp(-2*x)) == 0 for j in range(1,8)) and Q(16,10000)/24 == Q(1,15000) and abs(float(Q(1,15000))-6.7e-5)<1e-6 and abs(float(exp(Q(-1,5))-Tay(exp(-2*x),0,3).subs(x,Q(1,10)))-6.4e-5)<1e-6 and Tay(exp(-2*x),0,3).subs(x,Q(1,10)) == Q(307,375) | $p_3(0.1)=1-0.2+0.02-0.001333=0.818667$
+\end{exmp}
+
+\begin{exmp}{The remainder of $\ln x$ at $1$}{b8}
+Find $R_n(x)$ for $f(x)=\ln x$ centered at $1$, and bound $\abs{R_2(1.3)}$.
+
+\textbf{Solution.} $f'(x)=x^{-1}$, $f''(x)=-x^{-2}$, $f'''(x)=2x^{-3}$, and in general $f^{(k)}(x)=(-1)^{k-1}(k-1)!\,x^{-k}$. So $f^{(n+1)}(c)=(-1)^nn!\,c^{-(n+1)}$ and
+\[
+R_n(x)=\frac{(-1)^nn!}{(n+1)!\,c^{n+1}}(x-1)^{n+1}=\frac{(-1)^n(x-1)^{n+1}}{(n+1)\,c^{n+1}},\quad c\text{ between }1\text{ and }x.
+\]
+For $n=2$ and $x=1.3$: $c\ge1$ gives $c^{-3}\le1$, so $\abs{R_2(1.3)}\le\frac{0.3^3}3=0.009$. Here $p_2(1.3)=0.3-\frac{0.09}2=0.255$ and $\ln1.3=0.262364$, an error of $7.4\times10^{-3}$, within the bound.
+%@ bank-8 | simplify(diff(log(x),x,3)-2/x**3) == 0 and all(simplify(diff(log(x),x,j)-(-1)**(j-1)*factorial(j-1)/x**j) == 0 for j in range(1,8)) and Q(3,10)**3/3 == Q(9,1000) and Tay(log(x),1,2).subs(x,Q(13,10)) == Q(51,200) and abs(float(log(Q(13,10))-Q(51,200))-7.364e-3)<1e-6 and abs(float(log(Q(13,10)))-0.262364)<1e-6 and Q(3,10)-Q(9,100)/2 == Q(51,200) | $\ln1.3=0.262364$
+\end{exmp}
+
+\subsection*{Group 5: Error bounds}
+
+\begin{exmp}{A negative argument}{b9}
+Bound the error in approximating $e^{-0.4}$ by the Taylor polynomial $p_3$ of $e^x$ centered at $0$.
+
+\textbf{Solution.} Here $x=-0.4$, so $c$ lies between $-0.4$ and $0$ and $f^{(4)}(c)=e^c\le e^0=1$ (the exponential is increasing, so its largest value on the interval is at the right end). Take $M=1$:
+\[
+\abs{R_3(-0.4)}\le\frac{1\cdot0.4^4}{4!}=\frac{0.0256}{24}=\frac2{1875}\approx1.07\times10^{-3}.
+\]
+%@ bank-9a | abs(float(Q(2,1875))-1.0667e-3)<1e-6 and Q(2,5)**4/factorial(4) == Q(2,1875) | =\frac2{1875}\approx1.07\times10^{-3}
+Now $p_3(-0.4)=1-0.4+0.08-\frac{0.064}6=0.669333$ and $e^{-0.4}=0.670320$, so the true error is $9.9\times10^{-4}$, just inside the bound.
+%@ bank-9b | Tay(exp(x),0,3).subs(x,Q(-2,5)) == Q(251,375) and abs(float(Q(251,375))-0.669333)<1e-6 and abs(float(exp(Q(-2,5))-Q(251,375))-9.867e-4)<1e-7 and exp(Q(-2,5))-Q(251,375) < Q(2,1875) and Q(1,1)-Q(2,5)+Q(2,25)-Q(4,375) == Q(251,375) | $p_3(-0.4)=1-0.4+0.08-\frac{0.064}6=0.669333$
+\end{exmp}
+
+\begin{exmp}{A square root, first order}{b10}
+Use the linear approximation of $\sqrt x$ at $9$ to estimate $\sqrt{10}$, and bound the error.
+
+\textbf{Solution.} $p_1(10)=3+\frac{10-9}6=\frac{19}6=3.166667$. For $n=1$ we need $f''(x)=-\frac14x^{-3/2}$, whose absolute value $\frac1{4x^{3/2}}$ is decreasing on $[9,10]$, so its largest value is at $x=9$: $M=\frac1{4\cdot27}=\frac1{108}$. Then
+\[
+\abs{R_1(10)}\le\frac{1/108}{2!}\cdot1^2=\frac1{216}\approx4.63\times10^{-3}.
+\]
+The true value is $\sqrt{10}=3.162278$, so the actual error is $4.39\times10^{-3}$, and the bound is sharp to within about $5\%$.
+%@ bank-10 | Tay(sqrt(x),9,1).subs(x,10) == Q(19,6) and Q(1,4)*Q(1,27) == Q(1,108) and abs(float(Q(1,216))-4.63e-3)<1e-5 and abs(float(Q(19,6)-sqrt(10))-4.389e-3)<1e-6 and Q(1,108)/2 == Q(1,216) | \approx4.63\times10^{-3}
+\end{exmp}
+
+\subsection*{Group 6: Accuracy on an interval and how many terms}
+
+\begin{exmp}{Cosine on an interval}{b11}
+Find a bound on the error of $\cos x\approx1-\frac{x^2}2+\frac{x^4}{24}$ for all $x$ in $[-\frac12,\frac12]$.
+
+\textbf{Solution.} The polynomial is $p_4$ of $\cos x$ at $0$, and also $p_5$ because $\cos x$ is even (Theorem~\ref{thm:parity}). Use $n=5$: $\abs{f^{(6)}(c)}=\abs{\cos c}\le1$, so $M=1$ and
+\[
+\abs{R_5(x)}\le\frac{\abs x^6}{6!}\le\frac{(1/2)^6}{720}=\frac1{46080}\approx2.2\times10^{-5}\quad\text{for }\abs x\le\tfrac12 .
+\]
+%@ bank-11 | Tay(cos(x),0,4) == 1-x**2/2+x**4/24 and Tay(cos(x),0,5) == Tay(cos(x),0,4) and abs(float(Q(1,46080))-2.17e-5)<1e-7 and Q(1,2)**5/factorial(5) > 10*Q(1,46080) and abs(float(Q(1,3840))-2.6e-4)<1e-5 and Q(1,2)**6/factorial(6) == Q(1,46080) | \frac{(1/2)^6}{720}=\frac1{46080}
+The bound is largest at the endpoints $x=\pm\frac12$. Using $n=4$ instead would give $\frac{(1/2)^5}{120}=2.6\times10^{-4}$, more than ten times worse.
+\end{exmp}
+
+\begin{exmp}{How many terms for $\ln(1+x)$}{b12}
+How many terms of the Taylor polynomial of $f(x)=\ln(1+x)$ centered at $0$ guarantee an error below $10^{-3}$ for every $x$ in $[0,\frac12]$?
+
+\textbf{Solution.} $f^{(n+1)}(c)=\frac{(-1)^nn!}{(1+c)^{n+1}}$, so for $c\ge0$, $\abs{f^{(n+1)}(c)}\le n!=M$. Then for $0\le x\le\frac12$
+\[
+\abs{R_n(x)}\le\frac{n!}{(n+1)!}x^{n+1}=\frac{x^{n+1}}{n+1}\le\frac{(1/2)^{n+1}}{n+1}.
+\]
+For $n=6$ the bound is $\frac1{896}\approx1.12\times10^{-3}$, not below $10^{-3}$. For $n=7$ it is $\frac1{2048}\approx4.9\times10^{-4}$, which is. So $n=7$ guarantees the accuracy: $p_7(x)=x-\frac{x^2}2+\frac{x^3}3-\cdots+\frac{x^7}7$, which has seven nonzero terms. (The bound for $n=6$ does not prove that $p_6$ fails; it only fails to prove that it succeeds.)
+%@ bank-12 | simplify(diff(log(1+x),x,4)+6/(1+x)**4) == 0 and Q(1,2)**7/7 == Q(1,896) and Q(1,2)**8/8 == Q(1,2048) and Q(1,896) > Q(1,1000) and abs(float(Q(1,2048))-4.88e-4)<1e-6 and Q(1,2)**8/8 == Q(1,2048) | $\frac1{2048}\approx4.9\times10^{-4}$
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{A constant multiple}{b13}
+Prove: if $g=\lambda f$ for a constant $\lambda$, then the Taylor polynomial of $g$ of order $n$ at $a$ is $\lambda$ times that of $f$.
+
+\textbf{Plan.} Unwind the definition: write the coefficients of $g$ using $g^{(k)}=\lambda f^{(k)}$.
+
+\begin{proof}
+Differentiating a constant multiple gives $g^{(k)}(x)=\lambda f^{(k)}(x)$ for every $k$ (the Constant Multiple Rule, applied $k$ times). So the coefficient of $(x-a)^k$ in the Taylor polynomial of $g$ is $\frac{g^{(k)}(a)}{k!}=\lambda\frac{f^{(k)}(a)}{k!}$, and therefore $p_n^{g}(x)=\sum_{k=0}^n\lambda\frac{f^{(k)}(a)}{k!}(x-a)^k=\lambda\,p_n^{f}(x)$.
+\end{proof}
+%@ bank-13 | simplify(Tay(5*exp(x),0,4)-5*Tay(exp(x),0,4)) == 0 and simplify(Tay(3*sin(x),0,5)-3*Tay(sin(x),0,5)) == 0 and 5*Q(1,24) == Q(5,24) | the Constant Multiple Rule
+A common mistake is to forget the factor $\lambda$ in the coefficients, or to multiply the center. For instance the Taylor polynomial of $5e^x$ at $0$ has coefficients $\frac5{k!}$ (and $5e^x$ is not $e^{5x}$, whose coefficients are $\frac{5^k}{k!}$).
+\end{exmp}
+
+\begin{exmp}{The derivative of a Taylor polynomial}{b14}
+Prove: if $n\ge1$ and $p_n$ is the Taylor polynomial of $f$ of order $n$ at $a$, then $p_n'$ is the Taylor polynomial of $f'$ of order $n-1$ at $a$.
+
+\textbf{Plan.} Differentiate $p_n$ term by term and compare coefficients, using the formula for coefficients (Theorem~\ref{thm:coef}).
+
+\begin{proof}
+We have $p_n(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k$, so $p_n'(x)=\sum_{k=1}^nk\,\frac{f^{(k)}(a)}{k!}(x-a)^{k-1}$ (the constant term disappears). Since $\frac k{k!}=\frac1{(k-1)!}$, putting $j=k-1$ this is $\sum_{j=0}^{n-1}\frac{f^{(j+1)}(a)}{j!}(x-a)^j$. For the function $f'$ we have $(f')^{(j)}=f^{(j+1)}$, so the Taylor polynomial of $f'$ of order $n-1$ is $\sum_{j=0}^{n-1}\frac{(f')^{(j)}(a)}{j!}(x-a)^j=\sum_{j=0}^{n-1}\frac{f^{(j+1)}(a)}{j!}(x-a)^j$, the same polynomial.
+\end{proof}
+%@ bank-14 | diff(Tay(sin(x),0,5),x) == Tay(cos(x),0,4) and Tay(sin(x),0,5) == x-x**3/6+x**5/120 and Tay(cos(x),0,4) == 1-x**2/2+x**4/24 and Q(5,120) == Q(1,24) | \frac k{k!}=\frac1{(k-1)!}
+For example, differentiating $p_5(x)=x-\frac{x^3}6+\frac{x^5}{120}$ for $\sin x$ gives $1-\frac{x^2}2+\frac{x^4}{24}$, which is $p_4$ for $\cos x=\frac d{dx}\sin x$. The reverse (integrating) needs one more idea, the constant of integration, and is not claimed.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:match}.] $c_k=\frac{f^{(k)}(1)}{k!}$ gives $c_0=2$, $c_1=-3$, $c_2=\frac42=2$, $c_3=\frac{-6}6=-1$, so $p_3(x)=2-3(x-1)+2(x-1)^2-(x-1)^3$. At $x=1.1$: $p_3(1.1)=2-0.3+0.02-0.001=1.719$.
+%@ ans-match | 2-3*Q(1,10)+2*Q(1,10)**2-Q(1,10)**3 == Q(1719,1000) and Q(4,2) == 2 and Q(-6,6) == -1 | $p_3(1.1)=2-0.3+0.02-0.001=1.719$
+  \item[Knowledge Check \ref{kc:center}.] Choose a center near the point where $f$ and its derivatives are easy to evaluate exactly. (a)~$a=49$, since $\sqrt{49}=7$. (b)~$a=64$, since $\sqrt[3]{64}=4$ (and $70$ is close to $64$; the center $27$ is too far). (c)~$a=1$, since $\ln1=0$ and $0.9$ is close to $1$. (The center must be a number where the function is defined with easy values; a center like $a=0$ is impossible for $\ln x$.)
+%@ ans-center | sqrt(49) == 7 and 64**Q(1,3) == 4 and log(1) == 0 and 7**2 == 49 | $a=49$, since $\sqrt{49}=7$
+  \item[Knowledge Check \ref{kc:remkc}.] $f^{(5)}(x)=e^x$, so $R_4(x)=\frac{e^c}{5!}x^5$ with $c$ between $0$ and $x$. With $M=2$ and $x=0.2$: $\abs{R_4(0.2)}\le\frac{2\cdot0.2^5}{120}=\frac1{187500}\approx5.3\times10^{-6}$.
+%@ ans-remkc | Q(2,1)*Q(1,5)**5/factorial(5) == Q(1,187500) and abs(float(exp(Q(1,5)))-1.2214)<1e-4 and factorial(5) == 120 | \approx5.3\times10^{-6}
+  \item[Pause and think \ref{think:sign}.] With $f''>0$ on the interval, $f''(c)>0$, so $R_1(x)=\frac{f''(c)}2(x-a)^2\ge0$: $f(x)\ge f(a)+f'(a)(x-a)$. The graph lies on or above its tangent line (the function is concave up, as a parabola opening upward lies above its tangents). For $f=e^x$ and $a=0$: $e^x=1+x+\frac{e^c}2x^2\ge1+x$ for every $x$. Check: $e^{0.5}=1.6487\ge1.5$.
+%@ ans-sign | exp(Q(1,2)) > Q(3,2) and abs(float(exp(Q(1,2)))-1.6487)<1e-4 and 1+Q(1,2) == Q(3,2) | $e^{0.5}=1.6487\ge1.5$
+  \item[Pause and think \ref{think:nogood}.] The theorem needs $f$ to have continuous derivatives on an open interval $I$ containing both $a=0$ and $x=2$. Such an interval contains the point $1$, where $f=\frac1{1-x}$ is not even defined. So the hypothesis fails, and the theorem says nothing about $x=2$. At $x=-1$ the hypotheses hold (take $I=(-2,1)$). The Lagrange form gives $R_n(-1)=\frac{(-1)^{n+1}}{(1-c)^{n+2}}$ for some $c\in(-1,0)$ (namely $c=1-2^{1/(n+2)}$, since we know $\abs{R_n(-1)}=\frac12$ exactly). The estimate gives only $\abs{R_n(-1)}\le M_n/(n+1)!$ where $M_n=\sup\abs{f^{(n+1)}}=\frac{(n+1)!}{(1-c)^{n+2}}$ (largest at $c=0$) $=(n+1)!$, so the bound is $1$ for every $n$: the factorial in the numerator of $M_n$ cancels the factorial in the denominator, and the bound never shrinks. So ``$M$ is bounded independently of $n$'' is the extra fact that makes the remainder go to $0$ for $e^x$ and sine, and it fails here.
+%@ ans-nogood | all(-1 < 1-2**Q(1,j+2) and 1-2**Q(1,j+2) < 0 for j in range(8)) and all(1/(1-(1-2**Q(1,j+2)))**(j+2) == Q(1,2) for j in range(8)) and (1/(1-x)).subs(x,-1) == Q(1,2) | $R_n(-1)=\frac{(-1)^{n+1}}{(1-c)^{n+2}}$
+  \item[Pause and think \ref{think:shrink}.] The factor $\abs{x-a}^{n+1}$ is smaller when the center is closer to $x$ (for $\abs{x-a}<1$ it decreases geometrically with $n$), and $M$ is a maximum over the interval between $a$ and $x$, which also gets shorter, so $M$ usually does not increase. Raising $n$ divides the bound by the larger factorial $(n+1)!$; this wins whenever $M$ does not grow with $n$, as for $e^x$, $\sin x$, $\cos x$ (where $M$ is bounded for all $n$). But for $f=\frac1{1-x}$ we have $f^{(n+1)}=\frac{(n+1)!}{(1-x)^{n+2}}$, whose size grows like $(n+1)!$ and cancels the factorial, so raising $n$ does not help (Example~\ref{ex:geom}).
+%@ ans-shrink | Q(1,2)**5 < Q(1,2)**2 and simplify(diff(1/(1-x),x,6)-factorial(6)/(1-x)**7) == 0 | $f^{(n+1)}=\frac{(n+1)!}{(1-x)^{n+2}}$
+\end{description}
+
+\end{document}

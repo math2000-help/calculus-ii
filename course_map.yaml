@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 10, Sequences and Infinite Series (Chapter 11 is a later project)"
+  project: "Chapter 10, Sequences and Infinite Series (done), and Chapter 11, Power Series (in progress)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -24,3 +24,7 @@ modules:
   - {id: "10.6", chapter: 10, title: "Alternating Series", prereqs: ["10.5"], status: done}
   - {id: "10.7", chapter: 10, title: "The Ratio and Root Tests", prereqs: ["10.6"], status: done}
   - {id: "10.8", chapter: 10, title: "Choosing a Convergence Test", prereqs: ["10.7"], status: done}
+  - {id: "11.1", chapter: 11, title: "Approximating Functions with Polynomials", prereqs: ["10.8"], status: done}
+  - {id: "11.2", chapter: 11, title: "Properties of Power Series", prereqs: ["11.1"], status: todo}
+  - {id: "11.3", chapter: 11, title: "Taylor Series", prereqs: ["11.2"], status: todo}
+  - {id: "11.4", chapter: 11, title: "Working with Taylor Series", prereqs: ["11.3"], status: todo}
