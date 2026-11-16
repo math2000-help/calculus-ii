@@ -1,0 +1,548 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{1}{Basic Approaches}
+
+\begin{document}
+
+\section{Basic Approaches}
+
+\begin{guide}
+Before we meet new techniques of integration, we sharpen two tools you already own: \emph{substitution} and \emph{rewriting the integrand}. Substitution is the Chain Rule run backward, and this section shows exactly why it works, for indefinite and for definite integrals (where the limits must change). We then collect a table of basic formulas, derive the four trigonometric integrals that Calculus~I left out (tangent, cotangent, secant, cosecant) and prove the inverse trigonometric entries by differentiating. Finally we learn the simple rewriting moves, such as splitting a fraction, long division, completing the square, trigonometric identities and multiplying by a conjugate or by $1$ in a useful form, which often turn an unfamiliar integral into a familiar one. Later sections of this chapter add integration by parts, trigonometric integrals, trigonometric substitutions and partial fractions; each of them also begins by rewriting. Calculus~I facts used here, all by name: the Chain Rule, the Fundamental Theorem of Calculus, the derivatives of the basic and inverse trigonometric functions and of $\ln\lvert x\rvert$, and the fact that two antiderivatives on an interval differ by a constant.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item carry out a substitution in an indefinite or a definite integral (changing the limits) and explain why the method is valid;
+  \item use the table of basic integration formulas, including the four trigonometric integrals, and prove each entry;
+  \item split fractions, divide polynomials, complete the square, use identities, and multiply by a conjugate or by $1$ to prepare an integrand;
+  \item evaluate $\int\frac{dx}{x^2+bx+c}$ in each of its three cases;
+  \item check an antiderivative by differentiating it and a definite integral by a numerical value, and recognize the common errors.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The substitution method and why it works}
+
+An \emph{antiderivative} of $f$ on an interval $I$ is a function $F$ with $F'=f$ on $I$, and $\int f(x)\,dx=F(x)+C$ means ``$F(x)$ plus an arbitrary constant''. By Calculus~I (a consequence of the Mean Value Theorem), two antiderivatives of $f$ on an interval differ by a constant, so this describes all of them.
+
+\begin{thm}{The substitution rule}{subst}
+Let $g$ be differentiable on an interval $J$, let $I$ be an interval that contains $g(J)$, and let $f$ be continuous on $I$.
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Indefinite integrals.} If $F$ is an antiderivative of $f$ on $I$, then $F(g(x))$ is an antiderivative of $f(g(x))\,g'(x)$ on $J$, that is,
+  \[\int f(g(x))\,g'(x)\,dx=F(g(x))+C=\left[\int f(u)\,du\right]_{u=g(x)} .\]
+  \item \emph{Definite integrals.} If in addition $g'$ is continuous on $[a,b]\subseteq J$, then
+  \[\int_a^b f(g(x))\,g'(x)\,dx=\int_{g(a)}^{g(b)}f(u)\,du .\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Since $f$ is continuous on the interval $I$, the Fundamental Theorem of Calculus (the part that differentiates an integral) gives an antiderivative of $f$ on $I$: fix $c\in I$ and put $F(u)=\int_c^uf(s)\,ds$, so $F'=f$.
+
+(1) For $x\in J$ the number $g(x)$ lies in $I$, so $F(g(x))$ is defined, and the Chain Rule gives
+\[\frac{d}{dx}F(g(x))=F'(g(x))\,g'(x)=f(g(x))\,g'(x).\]
+So $F\circ g$ is an antiderivative of $f(g(x))g'(x)$ on $J$. Any other antiderivative on $J$ differs from it by a constant, which gives the displayed formula.
+
+(2) The function $h(x)=f(g(x))g'(x)$ is continuous on $[a,b]$, because $g$, $g'$ and $f$ are continuous. By part (1), $F\circ g$ is an antiderivative of $h$ on $[a,b]$, so the Fundamental Theorem of Calculus (the part that evaluates an integral with an antiderivative) gives
+\[\int_a^bh(x)\,dx=F(g(b))-F(g(a)).\]
+The set $g([a,b])$ is an interval (Intermediate Value Theorem) inside $I$ that contains $g(a)$ and $g(b)$; $f$ is continuous on it and $F'=f$, so the same theorem gives $\int_{g(a)}^{g(b)}f(u)\,du=F(g(b))-F(g(a))$ (also when $g(b)<g(a)$, with the convention $\int_p^q=-\int_q^p$). The two integrals are equal.
+\end{proof}
+
+Notice what the proof uses and what it does not use. It uses only the Chain Rule, so \emph{substitution is the Chain Rule read backward}. It does not need $g$ to be one-to-one or increasing, and in part (2) it shows that the new limits of integration are the \emph{values} $g(a)$ and $g(b)$. The symbols $u=g(x)$ and $du=g'(x)\,dx$ are bookkeeping that automate the theorem: $\frac{du}{dx}=g'(x)$ is written as $du=g'(x)\,dx$, and then ``replace $g(x)$ by $u$ and $g'(x)\,dx$ by $du$''.
+
+\begin{proc}{Substitution}{subst}
+\begin{enumerate}[nosep]
+  \item \emph{Choose $u=g(x)$}, usually an inside function whose derivative (up to a constant factor) also appears in the integrand.
+  \item \emph{Compute $du=g'(x)\,dx$} and rewrite \emph{everything}, including $dx$, in terms of $u$. A missing constant factor is fine (constants move across the integral sign); a leftover $x$ is not.
+  \item \emph{Indefinite integral:} integrate in $u$, then substitute $u=g(x)$ back and add $C$.\\ \emph{Definite integral:} either (A) change the limits to $u=g(a)$ and $u=g(b)$ and finish in $u$, never returning to $x$, or (B) find the antiderivative in $x$ and use the original limits. Do not mix the two.
+  \item \emph{Check:} differentiate the answer (indefinite) or compare with a numerical value (definite).
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{An indefinite substitution}{m1}
+Find $\int x^2\sqrt{x^3+7}\,dx$.
+
+\textbf{Solution.} The expression $x^3+7$ sits inside the root, and its derivative $3x^2$ appears in the integrand up to the constant factor $3$. So let $u=x^3+7$. Then $du=3x^2\,dx$, that is, $x^2\,dx=\frac13\,du$. Replacing each piece,
+\[\int x^2\sqrt{x^3+7}\,dx=\int\sqrt u\cdot\frac13\,du=\frac13\int u^{1/2}\,du=\frac13\cdot\frac23u^{3/2}+C=\frac29\,(x^3+7)^{3/2}+C .\]
+%@ m1b | Q(1,3)*Q(2,3) == Q(2,9) and Q(2,9)*Q(3,2)*3 == 1 | \frac29\,(x^3+7)^{3/2}+C .
+The antiderivative of $u^{1/2}$ is $\frac{u^{3/2}}{3/2}=\frac23u^{3/2}$ (power rule), and in the last step $u$ is replaced by $x^3+7$.
+
+\emph{Check by differentiating.} By the Chain Rule,
+\[\frac{d}{dx}\left[\frac29(x^3+7)^{3/2}\right]=\frac29\cdot\frac32(x^3+7)^{1/2}\cdot3x^2=x^2\sqrt{x^3+7},\]
+which is the original integrand.
+%@ m1a | simplify(diff(Q(2,9)*(x**3+7)**Q(3,2),x)-x**2*sqrt(x**3+7)) == 0 | \cdot3x^2=x^2\sqrt{x^3+7},
+\end{exmp}
+
+\begin{exmp}{A definite substitution: change the limits}{m2}
+Evaluate $\int_0^2\frac{x}{x^2+1}\,dx$.
+
+\textbf{Solution.} Let $u=x^2+1$, so $du=2x\,dx$ and $x\,dx=\frac12\,du$. The limits belong to $x$, so they must be converted with $u=x^2+1$: when $x=0$, $u=1$; when $x=2$, $u=5$. Then (Theorem~\ref{thm:subst}(2))
+\[\int_0^2\frac{x}{x^2+1}\,dx=\frac12\int_1^5\frac{du}{u}=\frac12\Big[\ln\lvert u\rvert\Big]_1^5=\frac12(\ln5-\ln1)=\frac12\ln5\approx0.8047 .\]
+%@ m2a | abs(float(Integral(x/(x**2+1),(x,0,2)).evalf())-0.8047) < 1e-4 and 2**2+1 == 5 and 0**2+1 == 1 and integrate(x/(x**2+1),(x,0,2)) == log(5)/2 | \frac12(\ln5-\ln1)=\frac12\ln5\approx0.8047 .
+(Here $u>0$, so $\ln\lvert u\rvert=\ln u$, and $\ln 1=0$.) The figure below shows the two integrals: the regions have different shapes but the \emph{same area}.
+
+\emph{Check.} Method (B): $\frac{d}{dx}\frac12\ln(x^2+1)=\frac12\cdot\frac{2x}{x^2+1}=\frac{x}{x^2+1}$, and $\frac12\ln(2^2+1)-\frac12\ln(0^2+1)=\frac12\ln5$. A numerical integration of the original integral gives $0.80472$, in agreement.
+%@ m2b | simplify(diff(log(x**2+1)/2,x)-x/(x**2+1)) == 0 | \frac12\cdot\frac{2x}{x^2+1}=\frac{x}{x^2+1}$, and $\frac12\ln(2^2+1)-\frac12\ln(0^2+1)=\frac12\ln5$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=3.2cm]
+  \draw[->] (-0.1,0) -- (2.4,0) node[right] {$x$};
+  \draw[->] (0,-0.03) -- (0,0.85) node[above] {$y$};
+  \fill[blue!15] (0,0) -- plot[domain=0:2,samples=50,variable=\t] ({\t},{\t/(\t*\t+1)}) -- (2,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:2.3,samples=60,variable=\t] plot ({\t},{\t/(\t*\t+1)});
+  \fill (1,0.5) circle (0.03) node[above right,font=\small] {$(1,\frac12)$};
+%@ g1-peak | (lambda x0: x0/(x0**2+1) == Q(1,2) and diff(t/(t**2+1),t).subs(t,x0) == 0)(Q(1,1)) | \fill (1,0.5) circle (0.03) node[above right,font=\small] {$(1,\frac12)$};
+  \fill (2,0.4) circle (0.03) node[above right,font=\small] {$(2,\frac25)$};
+%@ g1-end | Q(2,1)/(Q(2,1)**2+1) == Q(2,5) | \fill (2,0.4) circle (0.03) node[above right,font=\small] {$(2,\frac25)$};
+  \fill (0,0) circle (0.03) node[below left,font=\small] {$x=0$};
+%@ g1-orig | Q(0,1)/(Q(0,1)**2+1) == 0 | \fill (0,0) circle (0.03) node[below left,font=\small] {$x=0$};
+  \node[below,font=\small] at (2,-0.01) {$x=2$};
+  \node[font=\small] at (1.1,0.18) {area $\frac12\ln5$};
+  \node[font=\small] at (1.2,0.82) {$\displaystyle\int_0^2\frac{x}{x^2+1}\,dx$};
+  \begin{scope}[xshift=4.6cm,x=0.6cm]
+    \draw[->] (-0.4,0) -- (5.8,0) node[right] {$u$};
+    \draw[->] (0,-0.03) -- (0,0.85) node[above] {$y$};
+    \fill[blue!15] (1,0) -- plot[domain=1:5,samples=50,variable=\t] ({\t},{1/(2*\t)}) -- (5,0) -- cycle;
+    \draw[very thick,blue!70!black,domain=0.8:5.4,samples=60,variable=\t] plot ({\t},{1/(2*\t)});
+    \fill (1,0.5) circle (0.03) node[above right,font=\small] {$(1,\frac12)$};
+%@ g1-u1 | Q(1,1)**2+1 == 2*1 and Q(1,1)/(2*Q(1,1)) == Q(1,2) | \fill (1,0.5) circle (0.03) node[above right,font=\small] {$(1,\frac12)$};
+    \fill (5,0.1) circle (0.03) node[above right,font=\small] {$(5,\frac1{10})$};
+%@ g1-u5 | Q(2,1)**2+1 == 5 and 1/(2*Q(5,1)) == Q(1,10) | \fill (5,0.1) circle (0.03) node[above right,font=\small] {$(5,\frac1{10})$};
+    \node[below,font=\small] at (1,-0.01) {$u=1$};
+    \node[below,font=\small] at (5,-0.01) {$u=5$};
+    \node[font=\small] at (3.3,0.07) {area $\frac12\ln5$};
+    \node[font=\small] at (3.2,0.82) {$\displaystyle\int_1^5\frac{1}{2u}\,du$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{exmp}
+
+\begin{think}{Substituting with a function that is not one-to-one}{notinj}
+Use $u=x^2$ in $\int_{-1}^{1}xe^{x^2}\,dx$. Both limits become $1$, so the integral in $u$ runs from $1$ to $1$ and equals $0$. Is that answer right, even though $u=x^2$ turns the two halves of $[-1,1]$ into the same interval $[0,1]$? Which part of the proof of Theorem~\ref{thm:subst} explains why no difficulty arises?
+\end{think}
+
+\begin{exmp}{A common error: the limits are not changed}{m3}
+A student evaluates $\int_0^3x\sqrt{x^2+16}\,dx$ by substituting $u=x^2+16$ and writes $\frac12\int_0^3\sqrt u\,du=\frac12\cdot\frac23\big[u^{3/2}\big]_0^3=\frac13\cdot3\sqrt3=\sqrt3\approx1.73$. Find the mistake and give the correct value.
+%@ m3a | (lambda w: w == sqrt(3) and abs(float(w)-1.73) < 0.005)(Q(1,2)*Q(2,3)*3**Q(3,2)) | \frac12\cdot\frac23\big[u^{3/2}\big]_0^3=\frac13\cdot3\sqrt3=\sqrt3\approx1.73$.
+
+\textbf{Solution.} The limits $0$ and $3$ are values of $x$, but the integral is now in $u$, so they must be converted. This is the mistake. Correctly, $u=x^2+16$ gives $u=16$ at $x=0$ and $u=25$ at $x=3$, and $x\,dx=\frac12\,du$, so
+\[\int_0^3x\sqrt{x^2+16}\,dx=\frac12\int_{16}^{25}u^{1/2}\,du=\frac12\cdot\frac23\Big[u^{3/2}\Big]_{16}^{25}=\frac13\left(125-64\right)=\frac{61}{3}\approx20.33 ,\]
+because $25^{3/2}=125$ and $16^{3/2}=64$.
+%@ m3b | Q(1,2)*Q(2,3)*(25**Q(3,2)-16**Q(3,2)) == Q(61,3) and 25**Q(3,2) == 125 and 16**Q(3,2) == 64 and integrate(x*sqrt(x**2+16),(x,0,3)) == Q(61,3) | because $25^{3/2}=125$ and $16^{3/2}=64$.
+
+\emph{Why the first answer cannot be right.} For $0\le x\le3$ we have $\sqrt{x^2+16}\ge4$ and $\le5$, so $4x\le x\sqrt{x^2+16}\le5x$ and the integral lies between $\int_0^34x\,dx=18$ and $\int_0^35x\,dx=\frac{45}2=22.5$. The value $\sqrt3$ is far outside this range, and $\frac{61}3$ is inside it. (Using method (B) gives the same result: $\frac13(x^2+16)^{3/2}\big|_0^3=\frac13(125-64)$.)
+%@ m3c | integrate(4*x,(x,0,3)) == 18 and integrate(5*x,(x,0,3)) == Q(45,2) and 18 < Q(61,3) and Q(61,3) < Q(45,2) | the integral lies between $\int_0^34x\,dx=18$ and $\int_0^35x\,dx=\frac{45}2=22.5$.
+\end{exmp}
+
+\begin{kc}{New limits}{kclimits}
+Write $\int_1^2\frac{2x}{x^2+3}\,dx$ in terms of $u=x^2+3$, with the new limits. Do not evaluate it.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Basic integration formulas}
+
+The table collects the basic formulas. Formulas (1)--(10) are the derivative formulas of Calculus~I read backward; each is checked by differentiating its right side (the Chain Rule contributes the factor $\frac1a$ in the formulas with $ax$). Formulas (11)--(13) and (14)--(17) are proved below. Each formula holds on every interval on which its integrand is defined; $a\ne0$ in the formulas with $ax$ and in (11), and $a>0$ in (12) and (13).
+
+\begin{center}
+\begin{tabular}{rlrl}
+(1) & $\int k\,dx=kx+C$ & (2) & $\int x^p\,dx=\frac{x^{p+1}}{p+1}+C,\ p\ne-1$ \\
+%@ t12 | diff(k*x,x) == k and simplify(diff(x**(c+1)/(c+1),x)-x**c) == 0 | $\int x^p\,dx=\frac{x^{p+1}}{p+1}+C,\ p\ne-1$ \\
+(3) & $\int\cos ax\,dx=\frac1a\sin ax+C$ & (4) & $\int\sin ax\,dx=-\frac1a\cos ax+C$ \\
+%@ t34 | simplify(diff(sin(a*x)/a,x)-cos(a*x)) == 0 and simplify(diff(-cos(a*x)/a,x)-sin(a*x)) == 0 | $\int\sin ax\,dx=-\frac1a\cos ax+C$ \\
+(5) & $\int\sec^2ax\,dx=\frac1a\tan ax+C$ & (6) & $\int\csc^2ax\,dx=-\frac1a\cot ax+C$ \\
+%@ t56 | simplify(diff(tan(a*x)/a,x)-sec(a*x)**2) == 0 and simplify(diff(-cot(a*x)/a,x)-csc(a*x)**2) == 0 | $\int\csc^2ax\,dx=-\frac1a\cot ax+C$ \\
+(7) & $\int\sec ax\tan ax\,dx=\frac1a\sec ax+C$ & (8) & $\int\csc ax\cot ax\,dx=-\frac1a\csc ax+C$ \\
+%@ t78 | simplify(diff(sec(a*x)/a,x)-sec(a*x)*tan(a*x)) == 0 and simplify(diff(-csc(a*x)/a,x)-csc(a*x)*cot(a*x)) == 0 | $\int\csc ax\cot ax\,dx=-\frac1a\csc ax+C$ \\
+(9) & $\int e^{ax}\,dx=\frac1ae^{ax}+C$ & (10) & $\int\frac{dx}{x}=\ln\lvert x\rvert+C$ \\
+%@ t910 | simplify(diff(exp(a*x)/a,x)-exp(a*x)) == 0 and simplify(diff(log(x),x)-1/x) == 0 and simplify(diff(log(-x),x)-1/x) == 0 | $\int\frac{dx}{x}=\ln\lvert x\rvert+C$ \\
+(11) & $\int\frac{dx}{a^2+x^2}=\frac1a\tan^{-1}\frac xa+C$ & (12) & $\int\frac{dx}{\sqrt{a^2-x^2}}=\sin^{-1}\frac xa+C$ \\
+(13) & $\int\frac{dx}{x\sqrt{x^2-a^2}}=\frac1a\sec^{-1}\left\lvert\frac xa\right\rvert+C$ & (14) & $\int\tan ax\,dx=\frac1a\ln\lvert\sec ax\rvert+C$ \\
+(15) & $\int\cot ax\,dx=\frac1a\ln\lvert\sin ax\rvert+C$ & (16) & $\int\sec ax\,dx=\frac1a\ln\lvert\sec ax+\tan ax\rvert+C$ \\
+(17) & $\int\csc ax\,dx=-\frac1a\ln\lvert\csc ax+\cot ax\rvert+C$ & & \\
+\end{tabular}
+\end{center}
+
+The inverse trigonometric formulas are the derivative formulas for inverse sine, tangent and secant, written with the constant $a$. For (10) we recall that $\frac{d}{dx}\ln\lvert x\rvert=\frac1x$ for \emph{both} signs of $x$: for $x<0$, $\ln\lvert x\rvert=\ln(-x)$ has derivative $\frac{-1}{-x}=\frac1x$.
+
+\begin{thm}{The inverse trigonometric formulas}{invtrig}
+Let $a>0$. Then
+\[\int\frac{dx}{a^2+x^2}=\frac1a\tan^{-1}\frac xa+C\ \ (\text{all }x),\qquad\int\frac{dx}{\sqrt{a^2-x^2}}=\sin^{-1}\frac xa+C\ \ (\lvert x\rvert<a),\]
+\[\int\frac{dx}{x\sqrt{x^2-a^2}}=\frac1a\sec^{-1}\left\lvert\frac xa\right\rvert+C\ \ (\lvert x\rvert>a).\]
+\end{thm}
+\begin{proof}
+In each case we differentiate the right side and obtain the integrand.
+
+\emph{Tangent.} By the Chain Rule and $\frac{d}{dw}\tan^{-1}w=\frac1{1+w^2}$ with $w=\frac xa$, $\frac{dw}{dx}=\frac1a$:
+\[\frac{d}{dx}\left[\frac1a\tan^{-1}\frac xa\right]=\frac1a\cdot\frac1{1+x^2/a^2}\cdot\frac1a=\frac1{a^2+x^2}\]
+(multiply numerator and denominator by $a^2$).
+%@ p-tan | simplify(diff(atan(x/a)/a,x)-1/(a**2+x**2)) == 0 | =\frac1{a^2+x^2}\]
+
+\emph{Sine.} With $\frac{d}{dw}\sin^{-1}w=\frac1{\sqrt{1-w^2}}$ for $\lvert w\rvert<1$, and $w=\frac xa$, $\lvert x\rvert<a$:
+\[\frac{d}{dx}\sin^{-1}\frac xa=\frac1{\sqrt{1-x^2/a^2}}\cdot\frac1a=\frac1{a\sqrt{(a^2-x^2)/a^2}}=\frac1{a\cdot\sqrt{a^2-x^2}/a}=\frac1{\sqrt{a^2-x^2}} ,\]
+where $\sqrt{a^2}=a$ because $a>0$.
+%@ p-sin | (lambda a0, x0: simplify(diff(asin(x/a0),x).subs(x,x0)-1/sqrt(a0**2-x0**2)) == 0)(Q(3,1),Q(1,1)) | =\frac1{a\cdot\sqrt{a^2-x^2}/a}=\frac1{\sqrt{a^2-x^2}} ,\]
+
+\emph{Secant.} First we find the derivative of $\sec^{-1}w$ for $w>1$. For $w>1$, $\theta=\sec^{-1}w$ is the angle in $\left(0,\frac\pi2\right)$ with $\sec\theta=w$. On this interval $\sec$ has the derivative $\sec\theta\tan\theta>0$, so by the derivative rule for inverse functions
+\[\frac{d}{dw}\sec^{-1}w=\frac1{\sec\theta\tan\theta}=\frac1{w\sqrt{w^2-1}},\]
+because $\tan\theta>0$ and $\tan^2\theta=\sec^2\theta-1=w^2-1$.
+%@ p-asec | simplify(diff(asec(x),x).subs(x,Q(5,2))-1/(Q(5,2)*sqrt(Q(5,2)**2-1))) == 0 | \frac{d}{dw}\sec^{-1}w=\frac1{\sec\theta\tan\theta}=\frac1{w\sqrt{w^2-1}},\]
+Now let $\lvert x\rvert>a$ and $F(x)=\frac1a\sec^{-1}w(x)$ with $w(x)=\frac{\lvert x\rvert}a>1$. For $x\ne0$ the derivative of $\lvert x\rvert$ is $\frac x{\lvert x\rvert}$, so $w'(x)=\frac{x}{a\lvert x\rvert}$. By the Chain Rule, and $\sqrt{x^2/a^2-1}=\frac{\sqrt{x^2-a^2}}a$ (since $a>0$),
+\[F'(x)=\frac1a\cdot\frac1{\frac{\lvert x\rvert}a\cdot\frac{\sqrt{x^2-a^2}}a}\cdot\frac x{a\lvert x\rvert}=\frac1a\cdot\frac{a^2}{\lvert x\rvert\sqrt{x^2-a^2}}\cdot\frac{x}{a\lvert x\rvert}=\frac{x}{\lvert x\rvert^2\sqrt{x^2-a^2}}=\frac1{x\sqrt{x^2-a^2}},\]
+because $\lvert x\rvert^2=x^2$. Both signs of $x$ are covered: for $x<-a$ the integrand is negative and $F$ decreases as $x$ increases (since $\lvert x\rvert$ decreases), in agreement with the sign of $F'$.
+%@ p-sec | (lambda a0: all(abs((diff(asec(sg*x/a0)/a0,x).subs(x,x0)-1/(x0*sqrt(x0**2-a0**2))).evalf(30)) < 1e-20 for x0,sg in ((Q(5,1),1),(Q(-5,1),-1),(Q(-7,1),-1))))(Q(2,1)) | =\frac{x}{\lvert x\rvert^2\sqrt{x^2-a^2}}=\frac1{x\sqrt{x^2-a^2}},\]
+\end{proof}
+
+The absolute value in (13) matters. Without it the formula is wrong for $x<-a$ (Example~\ref{ex:b7} computes an integral over $x<0$).
+
+\begin{think}{Two antiderivatives of $\frac1x$}{twoint}
+Both $F(x)=\ln\lvert x\rvert$ and $G(x)=\ln\lvert x\rvert+1$ for $x>0$ together with $G(x)=\ln\lvert x\rvert-5$ for $x<0$ are antiderivatives of $\frac1x$ on $x\ne0$. Why does this not contradict the statement that antiderivatives differ by a constant?
+\end{think}
+
+\begin{thm}{The four trigonometric integrals}{trig4}
+For $a\ne0$, on every interval on which the integrand is defined,
+\begin{align*}
+\int\tan ax\,dx&=\frac1a\ln\lvert\sec ax\rvert+C, & \int\cot ax\,dx&=\frac1a\ln\lvert\sin ax\rvert+C,\\
+\int\sec ax\,dx&=\frac1a\ln\lvert\sec ax+\tan ax\rvert+C, & \int\csc ax\,dx&=-\frac1a\ln\lvert\csc ax+\cot ax\rvert+C .
+\end{align*}
+\end{thm}
+\begin{proof}
+We use $\int\frac{du}{u}=\ln\lvert u\rvert+C$ on an interval where $u\ne0$ (formula (10)). First take $a=1$.
+
+\emph{Tangent.} Write $\tan x=\frac{\sin x}{\cos x}$ and let $u=\cos x$, $du=-\sin x\,dx$. On an interval where $\tan x$ is defined, $\cos x\ne0$, so
+\[\int\tan x\,dx=-\int\frac{du}u=-\ln\lvert\cos x\rvert+C=\ln\left\lvert\frac1{\cos x}\right\rvert+C=\ln\lvert\sec x\rvert+C,\]
+using $-\ln\lvert p\rvert=\ln\lvert1/p\rvert$.
+
+\emph{Cotangent.} Write $\cot x=\frac{\cos x}{\sin x}$ and let $u=\sin x$, $du=\cos x\,dx$ ($\sin x\ne0$ on the interval): $\int\cot x\,dx=\int\frac{du}u=\ln\lvert\sin x\rvert+C$.
+
+\emph{Secant.} Multiply and divide by $\sec x+\tan x$:
+\[\int\sec x\,dx=\int\frac{\sec x(\sec x+\tan x)}{\sec x+\tan x}\,dx=\int\frac{\sec^2x+\sec x\tan x}{\sec x+\tan x}\,dx .\]
+Let $u=\sec x+\tan x$; then $du=(\sec x\tan x+\sec^2x)\,dx$, which is exactly the numerator times $dx$. The number $u=\frac{1+\sin x}{\cos x}$ is never $0$ where it is defined: it would need $\sin x=-1$, but then $\cos x=0$. So $\int\sec x\,dx=\int\frac{du}u=\ln\lvert\sec x+\tan x\rvert+C$.
+
+\emph{Cosecant.} Multiply and divide by $\csc x+\cot x$:
+\[\int\csc x\,dx=\int\frac{\csc x(\csc x+\cot x)}{\csc x+\cot x}\,dx=\int\frac{\csc^2x+\csc x\cot x}{\csc x+\cot x}\,dx .\]
+Let $u=\csc x+\cot x$; then $du=(-\csc x\cot x-\csc^2x)\,dx$, so the numerator times $dx$ is $-du$. Here $u=\frac{1+\cos x}{\sin x}\ne0$ (it would need $\cos x=-1$ and then $\sin x=0$). So $\int\csc x\,dx=-\int\frac{du}u=-\ln\lvert\csc x+\cot x\rvert+C$.
+
+\emph{General $a\ne0$.} Substitute $v=ax$, $dv=a\,dx$, so $dx=\frac1a\,dv$, and use the case $a=1$: for example $\int\tan ax\,dx=\frac1a\int\tan v\,dv=\frac1a\ln\lvert\sec v\rvert+C=\frac1a\ln\lvert\sec ax\rvert+C$. The other three are identical.
+\end{proof}
+%@ p-trig | all(simplify(diff(F,x)-f) == 0 for F, f in ((-log(cos(x)),tan(x)), (log(sin(x)),cot(x)), (log(sec(x)+tan(x)),sec(x)), (-log(csc(x)+cot(x)),csc(x)), (log(sec(a*x))/a,tan(a*x)), (log(sec(a*x)+tan(a*x))/a,sec(a*x)))) and simplify(diff(-log(csc(a*x)+cot(a*x))/a,x)-csc(a*x)) == 0 | -
+
+\begin{exmp}{Using the trigonometric integrals}{m4}
+(a) Evaluate $\int_0^{\pi/8}\tan2x\,dx$. (b) Find $\int\csc3x\,dx$ and check it.
+
+\textbf{Solution.} (a) By the tangent formula with $a=2$, an antiderivative is $\frac12\ln\lvert\sec2x\rvert$. On $\left[0,\frac\pi8\right]$ we have $2x\in\left[0,\frac\pi4\right]$, where $\cos2x>0$, so $\sec2x>0$. At $x=\frac\pi8$: $\sec\frac\pi4=\sqrt2$ and $\ln\sqrt2=\frac12\ln2$. At $x=0$: $\sec0=1$ and $\ln1=0$. Hence
+\[\int_0^{\pi/8}\tan2x\,dx=\frac12\Big[\ln\sec2x\Big]_0^{\pi/8}=\frac12\left(\frac12\ln2-0\right)=\frac14\ln2\approx0.1733 .\]
+\emph{Check.} On this interval $\tan2x$ increases from $0$ to $1$, so the area is less than the trapezoid area $\frac12\cdot\frac\pi8\cdot1\approx0.196$ and positive: $0.1733$ is reasonable. A numerical integration gives $0.17329$.
+%@ m4a | sec(pi/4) == sqrt(2) and abs(float(Integral(tan(2*x),(x,0,pi/8)).evalf())-0.1733) < 1e-4 and simplify(expand_log(Q(1,2)*log(sqrt(2))-log(2)/4,force=True)) == 0 | =\frac12\left(\frac12\ln2-0\right)=\frac14\ln2\approx0.1733 .
+(b) By the cosecant formula with $a=3$, $\int\csc3x\,dx=-\frac13\ln\lvert\csc3x+\cot3x\rvert+C$. \emph{Check:} $\frac{d}{dx}\left[-\frac13\ln\lvert\csc3x+\cot3x\rvert\right]=-\frac13\cdot\frac{-3\csc3x\cot3x-3\csc^23x}{\csc3x+\cot3x}$, using $\frac{d}{dx}\ln\lvert u\rvert=\frac{u'}u$; the numerator is $-3\csc3x(\cot3x+\csc3x)$, so the result is $\csc3x$.
+%@ m4b | simplify(diff(-log(csc(3*x)+cot(3*x))/3,x)-csc(3*x)) == 0 | so the result is $\csc3x$.
+\end{exmp}
+
+\begin{kc}{An integral of the cotangent}{kccot}
+Find $\int\cot5x\,dx$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Rewriting the integrand}
+
+The hardest part of an integral is often seeing which method to use. These rewriting moves do not integrate anything, but they turn the integrand into a form that does yield, and they are the first things to try with an unfamiliar integral.
+
+\begin{proc}{Rewriting an integrand}{rewrite}
+\begin{enumerate}[nosep]
+  \item \emph{Split a fraction:} $\frac{A+B}C=\frac AC+\frac BC$, then simplify each piece with the laws of exponents.
+  \item \emph{Long division:} if $\frac{p(x)}{q(x)}$ is a quotient of polynomials and $\deg p\ge\deg q$, divide to write $\frac pq=\text{quotient}+\frac{\text{remainder}}q$, where the remainder has degree less than $\deg q$.
+  \item \emph{Complete the square} in a quadratic: $x^2+bx+c=\left(x+\frac b2\right)^2+\left(c-\frac{b^2}4\right)$; if the leading coefficient is $a\ne1$, factor it out first.
+  \item \emph{Use an identity:} $\sin^2\theta=\frac{1-\cos2\theta}2$, $\cos^2\theta=\frac{1+\cos2\theta}2$, $1+\tan^2\theta=\sec^2\theta$, and so on.
+  \item \emph{Multiply by a conjugate or by $1$ in a useful form:} for example $\frac1{\sqrt A+\sqrt B}\cdot\frac{\sqrt A-\sqrt B}{\sqrt A-\sqrt B}=\frac{\sqrt A-\sqrt B}{A-B}$, or $\frac{e^x}{e^x}$ (the idea behind the integral of $\sec x$).
+\end{enumerate}
+If one rewrite leads nowhere, try another; several different routes often work.
+\end{proc}
+
+\begin{warn}[Never split a denominator]
+$\frac{A}{B+C}\ne\frac AB+\frac AC$. For example $\frac1{2^2+4}=\frac18$, but $\frac1{4}+\frac14=\frac12$. A \emph{numerator} may be split; a sum in the denominator may not.
+%@ w1 | Q(1,2**2+4) == Q(1,8) and Q(1,4)+Q(1,4) == Q(1,2) | but $\frac1{4}+\frac14=\frac12$. A \emph{numerator} may be split; a sum in the denominator may not.
+\end{warn}
+
+\begin{exmp}{Three rewriting moves}{m5}
+Evaluate (a) $\int_1^4\frac{x^2-2\sqrt x+5}{x}\,dx$, (b) $\int_0^{\pi/8}\cos^22x\,dx$, (c) $\int_0^3\frac{dx}{\sqrt{x+1}+\sqrt x}$.
+
+\textbf{Solution.} (a) \emph{Split the fraction.} Each term of the numerator is divided by $x$, and $\frac{\sqrt x}x=x^{1/2-1}=x^{-1/2}$:
+\[\int_1^4\frac{x^2-2\sqrt x+5}{x}\,dx=\int_1^4\left(x-2x^{-1/2}+\frac5x\right)dx=\left[\frac{x^2}2-4\sqrt x+5\ln x\right]_1^4 ,\]
+because $\int x^{-1/2}\,dx=2x^{1/2}$ and $x>0$ on $[1,4]$. At $x=4$ the bracket is $8-8+5\ln4=5\ln4$; at $x=1$ it is $\frac12-4+0=-\frac72$. So the integral is $5\ln4+\frac72\approx10.431$.
+%@ m5a | abs(float(Integral((x**2-2*sqrt(x)+5)/x,(x,1,4)).evalf())-10.4315) < 1e-4 and 4**2/2-4*sqrt(4) == 0 and Q(1,2)-4 == -Q(7,2) and simplify(integrate((x**2-2*sqrt(x)+5)/x,(x,1,4))-(Q(7,2)+5*log(4))) == 0 | So the integral is $5\ln4+\frac72\approx10.431$.
+
+(b) \emph{Use an identity.} With $\theta=2x$, $\cos^22x=\frac{1+\cos4x}2$. Then
+\[\int_0^{\pi/8}\cos^22x\,dx=\frac12\int_0^{\pi/8}(1+\cos4x)\,dx=\frac12\left[x+\frac{\sin4x}4\right]_0^{\pi/8}=\frac12\left(\frac\pi8+\frac{\sin(\pi/2)}4\right)=\frac\pi{16}+\frac18\approx0.3213 .\]
+Here $\int\cos4x\,dx=\frac{\sin4x}4$ is formula (3) with $a=4$, and the bracket is $0$ at $x=0$.
+%@ m5b | abs(float(Integral(cos(2*x)**2,(x,0,pi/8)).evalf())-0.3213) < 1e-4 and Q(1,2)*(pi/8+sin(pi/2)/4) == pi/16+Q(1,8) and integrate(cos(2*x)**2,(x,0,pi/8)) == pi/16+Q(1,8) | =\frac\pi{16}+\frac18\approx0.3213 .
+
+(c) \emph{Multiply by a conjugate.} Multiply numerator and denominator by $\sqrt{x+1}-\sqrt x$. The new denominator is a difference of squares, $(\sqrt{x+1})^2-(\sqrt x)^2=(x+1)-x=1$, so the integrand becomes $\sqrt{x+1}-\sqrt x$ and
+\[\int_0^3\left(\sqrt{x+1}-\sqrt x\right)dx=\frac23\Big[(x+1)^{3/2}-x^{3/2}\Big]_0^3=\frac23\left[(8-3\sqrt3)-1\right]=\frac{14}3-2\sqrt3\approx1.2026 ,\]
+since $4^{3/2}=8$ and $3^{3/2}=3\sqrt3$. \emph{Check:} a numerical integration of the original integrand gives $1.20257$.
+%@ m5c | abs(float(Integral(1/(sqrt(x+1)+sqrt(x)),(x,0,3)).evalf())-1.2026) < 1e-4 and expand((sqrt(x+1)-sqrt(x))*(sqrt(x+1)+sqrt(x))) == 1 and Q(2,3)*((8-3*sqrt(3))-1) == Q(14,3)-2*sqrt(3) and integrate(1/(sqrt(x+1)+sqrt(x)),(x,0,3)) == Q(14,3)-2*sqrt(3) | =\frac{14}3-2\sqrt3\approx1.2026 ,
+\end{exmp}
+
+\begin{exmp}{Long division, then split}{m6}
+Find $\int\frac{x^3+2x^2-x+5}{x^2+1}\,dx$.
+
+\textbf{Solution.} The degree $3$ of the numerator is at least the degree $2$ of the denominator, so we divide. The first term of the quotient is $x$, since $x\cdot(x^2+1)=x^3+x$; subtracting leaves $2x^2-2x+5$. The next term is $2$, since $2(x^2+1)=2x^2+2$; subtracting leaves $-2x+3$, of degree less than $2$, so we stop:
+\[\frac{x^3+2x^2-x+5}{x^2+1}=x+2+\frac{3-2x}{x^2+1}\qquad\text{because }(x+2)(x^2+1)+(3-2x)=x^3+2x^2-x+5 .\]
+Split the last fraction, $\frac{3-2x}{x^2+1}=\frac3{x^2+1}-\frac{2x}{x^2+1}$. The first piece is formula (11) with $a=1$. For the second let $u=x^2+1$, $du=2x\,dx$, which gives $\int\frac{2x}{x^2+1}\,dx=\ln(x^2+1)$ (and $x^2+1>0$). Therefore
+\[\int\frac{x^3+2x^2-x+5}{x^2+1}\,dx=\frac{x^2}2+2x+3\tan^{-1}x-\ln(x^2+1)+C .\]
+\emph{Check.} Differentiating gives $x+2+\frac3{x^2+1}-\frac{2x}{x^2+1}=x+2+\frac{3-2x}{x^2+1}$, the rewritten integrand.
+%@ m6a | expand((x+2)*(x**2+1)+(3-2*x)-(x**3+2*x**2-x+5)) == 0 | \qquad\text{because }(x+2)(x^2+1)+(3-2x)=x^3+2x^2-x+5 .\]
+%@ m6b | simplify(diff(x**2/2+2*x+3*atan(x)-log(x**2+1),x)-(x**3+2*x**2-x+5)/(x**2+1)) == 0 | +3\tan^{-1}x-\ln(x^2+1)+C .\]
+\end{exmp}
+
+\begin{exmp}{Two methods, two answers}{m7}
+Find $\int\frac{x}{x+3}\,dx$ in two ways, and reconcile the answers.
+
+\textbf{Solution.} \emph{Method 1: substitution.} Let $u=x+3$, so $x=u-3$ and $dx=du$. Then
+\[\int\frac{x}{x+3}\,dx=\int\frac{u-3}u\,du=\int\left(1-\frac3u\right)du=u-3\ln\lvert u\rvert+C_1=x+3-3\ln\lvert x+3\rvert+C_1 .\]
+\emph{Method 2: rewriting.} Since $x=(x+3)-3$, we have $\frac x{x+3}=1-\frac3{x+3}$ (this is what long division gives), and
+\[\int\frac{x}{x+3}\,dx=x-3\ln\lvert x+3\rvert+C_2 .\]
+\emph{Reconciling.} The two antiderivatives differ by $(x+3-3\ln\lvert x+3\rvert)-(x-3\ln\lvert x+3\rvert)=3$, a constant. Both are correct (each differentiates to $\frac x{x+3}$) because $C_2=C_1+3$ and the constant of integration is arbitrary. For a definite integral the constant cancels: $\int_0^3\frac{x}{x+3}\,dx=\left[x-3\ln(x+3)\right]_0^3=(3-3\ln6)-(-3\ln3)=3-3\ln2\approx0.9206$, and with Method 1 and the new limits $u=3$ to $u=6$ we get $\left[u-3\ln u\right]_3^6=(6-3\ln6)-(3-3\ln3)=3-3\ln2$.
+%@ m7a | simplify(diff(x+3-3*log(x+3),x)-x/(x+3)) == 0 and simplify(diff(x-3*log(x+3),x)-x/(x+3)) == 0 and simplify((x+3-3*log(x+3))-(x-3*log(x+3))) == 3 | =3$, a constant.
+%@ m7b | simplify(expand_log(integrate(x/(x+3),(x,0,3))-(3-3*log(2)),force=True)) == 0 and simplify(expand_log((6-3*log(6))-(3-3*log(3))-(3-3*log(2)),force=True)) == 0 | \left[u-3\ln u\right]_3^6=(6-3\ln6)-(3-3\ln3)=3-3\ln2$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Completing the square: the integral of $1/(x^2+bx+c)$}
+
+Completing the square rewrites $x^2+bx+c=\left(x+\frac b2\right)^2+D$ with $D=c-\frac{b^2}4=-\frac{b^2-4c}4$. (Expand the right side: $x^2+bx+\frac{b^2}4+c-\frac{b^2}4$.) The sign of $D$, that is, the sign of the discriminant $b^2-4c$, decides the answer.
+
+\begin{thm}{The integral of the reciprocal of a quadratic}{quad}
+Let $b,c$ be real, $D=c-\frac{b^2}4$ and $u=x+\frac b2$.
+\begin{enumerate}[label=(\roman*)]
+  \item If $D>0$ (no real roots): $\displaystyle\int\frac{dx}{x^2+bx+c}=\frac1{\sqrt D}\tan^{-1}\frac{x+b/2}{\sqrt D}+C$ for all $x$.
+  \item If $D=0$ (one double root $-\frac b2$): $\displaystyle\int\frac{dx}{x^2+bx+c}=-\frac1{x+b/2}+C$ on each interval not containing $-\frac b2$.
+  \item If $D<0$ (two real roots $r_{1,2}=-\frac b2\pm k$, where $k=\sqrt{-D}$): $\displaystyle\int\frac{dx}{x^2+bx+c}=\frac1{2k}\ln\left\lvert\frac{x+b/2-k}{x+b/2+k}\right\rvert+C$ on each interval not containing a root.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+In every case $x^2+bx+c=u^2+D$ and $\frac{du}{dx}=1$. We differentiate the right side.
+
+(i) By the Chain Rule and $\frac{d}{dw}\tan^{-1}w=\frac1{1+w^2}$ with $w=\frac u{\sqrt D}$:
+\[\frac{d}{dx}\left[\frac1{\sqrt D}\tan^{-1}\frac u{\sqrt D}\right]=\frac1{\sqrt D}\cdot\frac1{1+u^2/D}\cdot\frac1{\sqrt D}=\frac1{D+u^2}=\frac1{x^2+bx+c}.\]
+(ii) Here $x^2+bx+c=u^2$ and $\frac{d}{dx}\left(-\frac1u\right)=\frac1{u^2}$.
+
+(iii) Here $D=-k^2$, so $x^2+bx+c=u^2-k^2=(u-k)(u+k)$, and on an interval where $u-k\ne0$ and $u+k\ne0$ we may write $\ln\left\lvert\frac{u-k}{u+k}\right\rvert=\ln\lvert u-k\rvert-\ln\lvert u+k\rvert$. Using $\frac{d}{dx}\ln\lvert w\rvert=\frac{w'}w$,
+\[\frac{d}{dx}\,\frac1{2k}\Big(\ln\lvert u-k\rvert-\ln\lvert u+k\rvert\Big)=\frac1{2k}\left(\frac1{u-k}-\frac1{u+k}\right)=\frac1{2k}\cdot\frac{2k}{u^2-k^2}=\frac1{x^2+bx+c}.\]
+In each case the right side is an antiderivative, so the formula holds, with an arbitrary constant, on each interval named.
+\end{proof}
+%@ p-quad | simplify(diff(atan((x+b/2)/sqrt(c-b**2/4))/sqrt(c-b**2/4),x)-1/(x**2+b*x+c)) == 0 and simplify(diff(-1/(x+3),x)-1/(x**2+6*x+9)) == 0 and simplify(diff(log(x+b/2-sqrt(b**2/4-c))/(2*sqrt(b**2/4-c))-log(x+b/2+sqrt(b**2/4-c))/(2*sqrt(b**2/4-c)),x)-1/(x**2+b*x+c)) == 0 | -
+
+In case (iii) the denominator is $0$ at the two roots, so the real line splits into three intervals and the constant $C$ may be different on each (Pause and think~\ref{think:twoint}). For a definite integral, both limits must lie in the same interval. If the leading coefficient is $a\ne1$, factor it out: $\frac1{ax^2+bx+c}=\frac1a\cdot\frac1{x^2+(b/a)x+c/a}$.
+
+\begin{exmp}{Completing the square}{m8}
+(a) Evaluate $\int_{-2}^{1}\frac{dx}{x^2+4x+13}$. (b) Evaluate $\int_{-2}^{-1/2}\frac{dx}{\sqrt{5-4x-x^2}}$.
+
+\textbf{Solution.} (a) Add and subtract $\left(\frac42\right)^2=4$: $x^2+4x+13=(x^2+4x+4)+9=(x+2)^2+9$. Let $u=x+2$, $du=dx$; the limits become $u=0$ (at $x=-2$) and $u=3$ (at $x=1$). By formula (11) with $a=3$,
+\[\int_{-2}^1\frac{dx}{(x+2)^2+9}=\int_0^3\frac{du}{u^2+9}=\frac13\Big[\tan^{-1}\frac u3\Big]_0^3=\frac13\left(\tan^{-1}1-\tan^{-1}0\right)=\frac13\cdot\frac\pi4=\frac\pi{12}\approx0.2618 .\]
+\emph{Check:} a numerical integration gives $0.26180$. The figure below shows why: the quadratic $(x+2)^2+9$ never drops below $9$, so its reciprocal is a bell-shaped curve with a maximum $\frac19$ at $x=-2$.
+%@ m8a | abs(float(Integral(1/(x**2+4*x+13),(x,-2,1)).evalf())-0.2618) < 1e-4 and expand((x+2)**2+9-(x**2+4*x+13)) == 0 and Q(1,3)*(atan(1)-atan(0)) == pi/12 and integrate(1/(x**2+4*x+13),(x,-2,1)) == pi/12 | =\frac13\cdot\frac\pi4=\frac\pi{12}\approx0.2618 .
+
+(b) The quantity under the root is $5-4x-x^2=-(x^2+4x)+5=-\big((x+2)^2-4\big)+5=9-(x+2)^2$. Let $u=x+2$; the limits become $u=0$ and $u=\frac32$. By formula (12) with $a=3$,
+\[\int_0^{3/2}\frac{du}{\sqrt{9-u^2}}=\Big[\sin^{-1}\frac u3\Big]_0^{3/2}=\sin^{-1}\frac12-\sin^{-1}0=\frac\pi6\approx0.5236 .\]
+The integrand is defined for $-5<x<1$ (where $9-(x+2)^2>0$), and both limits lie in this interval.
+%@ m8b | expand(9-(x+2)**2-(5-4*x-x**2)) == 0 and Q(3,2)/3 == Q(1,2) and asin(Q(1,2)) == pi/6 and integrate(1/sqrt(5-4*x-x**2),(x,-2,Q(-1,2))) == pi/6 | =\sin^{-1}\frac12-\sin^{-1}0=\frac\pi6\approx0.5236 .
+
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=0.17cm]
+  \draw[->] (-5.6,0) -- (2.2,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,20) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=-5:1,samples=60,variable=\t] plot ({\t},{\t*\t+4*\t+13});
+  \fill (-2,9) circle (0.07) node[below left,font=\small] {$(-2,9)$};
+%@ g2-vertex | (lambda x0: diff(t**2+4*t+13,t).subs(t,x0) == 0 and x0**2+4*x0+13 == 9 and (x0+2)**2+9 == 9)(Q(-2,1)) | \fill (-2,9) circle (0.07) node[below left,font=\small] {$(-2,9)$};
+  \fill (0,13) circle (0.07) node[right,font=\small] {$(0,13)$};
+%@ g2-yint | 0**2+4*0+13 == 13 | \fill (0,13) circle (0.07) node[right,font=\small] {$(0,13)$};
+  \node[font=\small] at (-3.6,18.5) {$y=(x+2)^2+9$};
+  \draw[dashed] (-2,0) -- (-2,9);
+  \node[below,font=\small] at (-2,-0.4) {$-2$};
+  \begin{scope}[xshift=6.6cm]
+    \draw[->] (-5.6,0) -- (2.2,0) node[right] {$x$};
+    \draw[->] (0,-0.5) -- (0,23) node[above] {$180\,y$};
+    \fill[blue!15] (-2,0) -- plot[domain=-2:1,samples=40,variable=\t] ({\t},{180/(\t*\t+4*\t+13)}) -- (1,0) -- cycle;
+    \draw[very thick,blue!70!black,domain=-5:1.9,samples=70,variable=\t] plot ({\t},{180/(\t*\t+4*\t+13)});
+    \fill (-2,20) circle (0.07) node[above left,font=\small] {$(-2,\frac19)$};
+%@ g2-peak | 180*(1/(Q(-2,1)**2+4*Q(-2,1)+13)) == 20 and 1/(Q(-2,1)**2+4*Q(-2,1)+13) == Q(1,9) | \fill (-2,20) circle (0.07) node[above left,font=\small] {$(-2,\frac19)$};
+    \fill (0,13.85) circle (0.07) node[above right,font=\small] {$(0,\frac1{13})$};
+%@ g2-y13 | abs(float(180*Q(1,13))-13.85) < 0.01 and Q(1,0**2+4*0+13) == Q(1,13) | \fill (0,13.85) circle (0.07) node[above right,font=\small] {$(0,\frac1{13})$};
+    \fill (1,10) circle (0.07) node[above right,font=\small] {$(1,\frac1{18})$};
+%@ g2-end | 180*Q(1,1**2+4*1+13) == 10 and Q(1,1**2+4*1+13) == Q(1,18) | \fill (1,10) circle (0.07) node[above right,font=\small] {$(1,\frac1{18})$};
+    \node[below,font=\small] at (-2,-0.4) {$-2$};
+    \node[below,font=\small] at (1,-0.4) {$1$};
+    \node[font=\small] at (-4.2,23) {$y=\dfrac{1}{(x+2)^2+9}$};
+    \node[font=\small] at (-0.8,5) {area $\frac\pi{12}$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Left: the shifted quadratic $y=(x+2)^2+9$. Right: its reciprocal and the area $\frac\pi{12}$ found in (a); the vertical axis shows $180\,y$ so that the two curves have comparable heights, and the labels give the true values of $y$.\end{center}
+\end{exmp}
+
+\begin{kc}{Completing the square}{kc3}
+Evaluate $\int\frac{dx}{x^2-10x+34}$ and check the answer by differentiating.
+\end{kc}
+
+\begin{think}{Arctangent or logarithm?}{think3}
+The integrands $\frac1{x^2+2x+5}$ and $\frac1{x^2+2x-3}$ look alike, yet their antiderivatives look completely different. What single feature of the quadratic decides which kind of answer you get, and what does it say about the graph of $y=x^2+bx+c$?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+Substitution and rewriting handle many integrals, but not all. The product $x\,e^x$, for example, has no obvious substitution; that product is the subject of integration by parts. Powers of sine and cosine together, roots of $a^2-x^2$, and rational functions whose denominators factor are handled by trigonometric integrals, trigonometric substitutions and partial fractions. Later sections also treat integrals that cannot be done in closed form at all (numerical integration) and integrals over infinite intervals (improper integrals); you will meet the latter again when we study the convergence of infinite series, and Taylor polynomials will explain how large the error of a numerical rule can be.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Ten further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: substitution (including a definite integral with a negative interval).
+  \item Group 2: rewriting the integrand (exponentials, a conjugate in disguise).
+  \item Group 3: completing the square (logarithm case, and a linear numerator).
+  \item Group 4: table formulas on a negative interval, and long division plus completing the square.
+  \item Group 5: proofs.
+\end{itemize}
+
+\subsection*{Group 1: Substitution}
+
+\begin{exmp}{A logarithm on a negative interval}{b1}
+Evaluate $\int_{-3}^{-1}\frac{dx}x$.
+
+\textbf{Solution.} The integrand is continuous on $[-3,-1]$ (it is undefined only at $0$). An antiderivative on $x<0$ is $\ln\lvert x\rvert$, since $\frac{d}{dx}\ln\lvert x\rvert=\frac1x$. Therefore
+\[\int_{-3}^{-1}\frac{dx}x=\Big[\ln\lvert x\rvert\Big]_{-3}^{-1}=\ln1-\ln3=-\ln3\approx-1.0986 .\]
+\emph{Check.} The integrand is negative on the interval, so the answer must be negative; the interval has length $2$ and $\frac1x$ runs from $-\frac13$ to $-1$, so the answer lies between $-2$ and $-\frac23$. \emph{Common error:} writing $\ln x$ gives $\ln(-1)-\ln(-3)$, which is not defined.
+%@ b1 | integrate(1/x,(x,-3,-1)) == -log(3) and log(abs(-1))-log(abs(-3)) == -log(3) and -2 < float(-log(3)) < -Q(2,3) | =\ln1-\ln3=-\ln3\approx-1.0986 .
+\end{exmp}
+
+\begin{exmp}{A nested root}{b2}
+Evaluate $\int_1^4\frac{dx}{\sqrt x\,(1+\sqrt x)^2}$.
+
+\textbf{Solution.} Let $u=1+\sqrt x$. Then $du=\frac1{2\sqrt x}\,dx$, so $\frac{dx}{\sqrt x}=2\,du$. The limits become $u=1+1=2$ and $u=1+2=3$. Hence
+\[\int_1^4\frac{dx}{\sqrt x\,(1+\sqrt x)^2}=2\int_2^3u^{-2}\,du=2\Big[-\frac1u\Big]_2^3=2\left(-\frac13+\frac12\right)=\frac13 .\]
+\emph{Check:} numerical integration gives $0.33333$.
+%@ b2 | integrate(1/(sqrt(x)*(1+sqrt(x))**2),(x,1,4)) == Q(1,3) and 2*(-Q(1,3)+Q(1,2)) == Q(1,3) and simplify(diff(1+sqrt(x),x)-1/(2*sqrt(x))) == 0 | =2\left(-\frac13+\frac12\right)=\frac13 .
+\end{exmp}
+
+\subsection*{Group 2: Rewriting the integrand}
+
+\begin{exmp}{Exponentials in the denominator}{b3}
+Find $\int\frac{dx}{e^x-e^{-x}}$ for $x>0$.
+
+\textbf{Solution.} Multiply numerator and denominator by $e^x$: $\frac1{e^x-e^{-x}}=\frac{e^x}{e^{2x}-1}$. Let $u=e^x$, $du=e^x\,dx$. Then the integral is $\int\frac{du}{u^2-1}$. By Theorem~\ref{thm:quad}(iii) with $b=0$, $c=-1$, $k=1$, and $u>1$ because $x>0$,
+\[\int\frac{du}{u^2-1}=\frac12\ln\left\lvert\frac{u-1}{u+1}\right\rvert+C=\frac12\ln\frac{e^x-1}{e^x+1}+C .\]
+\emph{Check.} $\frac{d}{dx}\frac12\left[\ln(e^x-1)-\ln(e^x+1)\right]=\frac12\left(\frac{e^x}{e^x-1}-\frac{e^x}{e^x+1}\right)=\frac12\cdot\frac{2e^x}{e^{2x}-1}=\frac{e^x}{e^{2x}-1}$, the rewritten integrand.
+%@ b3 | simplify(diff(log((exp(x)-1)/(exp(x)+1))/2,x)-1/(exp(x)-exp(-x))) == 0 and simplify(exp(x)/(exp(2*x)-1)-1/(exp(x)-exp(-x))) == 0 | =\frac12\ln\frac{e^x-1}{e^x+1}+C .\]
+\end{exmp}
+
+\begin{exmp}{Multiplying by a conjugate}{b4}
+Evaluate $\int_0^{\pi/4}\frac{dx}{1+\sin x}$.
+
+\textbf{Solution.} Multiply numerator and denominator by $1-\sin x$. The denominator becomes $1-\sin^2x=\cos^2x$, so
+\[\frac1{1+\sin x}=\frac{1-\sin x}{\cos^2x}=\sec^2x-\sec x\tan x .\]
+Now $\int\sec^2x\,dx=\tan x$ and $\int\sec x\tan x\,dx=\sec x$ (formulas from the table), so an antiderivative is $\tan x-\sec x$ and
+\[\int_0^{\pi/4}\frac{dx}{1+\sin x}=\Big[\tan x-\sec x\Big]_0^{\pi/4}=(1-\sqrt2)-(0-1)=2-\sqrt2\approx0.5858 .\]
+\emph{Check:} numerical integration gives $0.58579$.
+%@ b4 | integrate(1/(1+sin(x)),(x,0,pi/4)) == 2-sqrt(2) and simplify(diff(tan(x)-sec(x),x)-1/(1+sin(x))) == 0 and (1-sqrt(2))-(0-1) == 2-sqrt(2) | =(1-\sqrt2)-(0-1)=2-\sqrt2\approx0.5858 .
+\end{exmp}
+
+\subsection*{Group 3: Completing the square}
+
+\begin{exmp}{A quadratic with two real roots}{b5}
+Evaluate $\int_5^7\frac{dx}{x^2-6x+8}$.
+
+\textbf{Solution.} $x^2-6x+8=(x-3)^2-1$ (add and subtract $3^2=9$). With $u=x-3$ this is $u^2-1$, the case $k=1$ of Theorem~\ref{thm:quad}(iii), so an antiderivative is $\frac12\ln\left\lvert\frac{x-4}{x-2}\right\rvert$. (Check of the factors: the roots are $2$ and $4$, and $u\mp1=x-3\mp1$.) Both limits lie in the interval $x>4$, to the right of both roots, so
+\[\int_5^7\frac{dx}{x^2-6x+8}=\frac12\left[\ln\frac{x-4}{x-2}\right]_5^7=\frac12\left(\ln\frac35-\ln\frac13\right)=\frac12\ln\frac95\approx0.2939 .\]
+\emph{Check:} numerical integration gives $0.29389$.
+%@ b5 | abs((integrate(1/(x**2-6*x+8),(x,5,7))-log(Q(9,5))/2).evalf(30)) < 1e-20 and expand((x-3)**2-1-(x**2-6*x+8)) == 0 and Q(3,5)/Q(1,3) == Q(9,5) and abs(float(log(Q(9,5))/2)-0.2939) < 1e-4 | =\frac12\left(\ln\frac35-\ln\frac13\right)=\frac12\ln\frac95\approx0.2939 .
+\end{exmp}
+
+\begin{exmp}{A linear numerator}{b6}
+Evaluate $\int_0^1\frac{6x+5}{x^2+2x+5}\,dx$.
+
+\textbf{Solution.} The derivative of the denominator is $2x+2$. Write the numerator as a multiple of it plus a constant: $6x+5=3(2x+2)-1$. Then
+\[\int_0^1\frac{6x+5}{x^2+2x+5}\,dx=3\int_0^1\frac{2x+2}{x^2+2x+5}\,dx-\int_0^1\frac{dx}{x^2+2x+5}.\]
+In the first integral let $u=x^2+2x+5>0$, $du=(2x+2)\,dx$: it equals $3\ln(x^2+2x+5)$. In the second, $x^2+2x+5=(x+1)^2+4$, and Theorem~\ref{thm:quad}(i) with $D=4$ gives $\frac12\tan^{-1}\frac{x+1}2$. So an antiderivative is $F(x)=3\ln(x^2+2x+5)-\frac12\tan^{-1}\frac{x+1}2$, and
+\[F(1)=3\ln8-\frac12\tan^{-1}1,\qquad F(0)=3\ln5-\frac12\tan^{-1}\frac12,\]
+\[F(1)-F(0)=3\ln\frac85-\frac12\left(\frac\pi4-\tan^{-1}\frac12\right)\approx1.2491 .\]
+\emph{Check.} Differentiating $F$: $\frac{3(2x+2)}{x^2+2x+5}-\frac12\cdot\frac{1/2}{1+(x+1)^2/4}=\frac{6x+6}{x^2+2x+5}-\frac{1}{x^2+2x+5}=\frac{6x+5}{x^2+2x+5}$. Numerical integration gives $1.24914$.
+%@ b6a | simplify(diff(3*log(x**2+2*x+5)-atan((x+1)/2)/2,x)-(6*x+5)/(x**2+2*x+5)) == 0 and expand(3*(2*x+2)-1-(6*x+5)) == 0 | \frac{6x+6}{x^2+2x+5}-\frac{1}{x^2+2x+5}=\frac{6x+5}{x^2+2x+5}$.
+%@ b6b | abs(float(Integral((6*x+5)/(x**2+2*x+5),(x,0,1)).evalf())-1.24914) < 1e-5 and abs(float(3*log(Q(8,5))-(pi/4-atan(Q(1,2)))/2)-1.2491) < 1e-4 and simplify(integrate((6*x+5)/(x**2+2*x+5),(x,0,1))-(3*log(Q(8,5))-(pi/4-atan(Q(1,2)))/2)) == 0 | \approx1.2491 .
+\end{exmp}
+
+\subsection*{Group 4: Table formulas and combinations}
+
+\begin{exmp}{The secant formula on a negative interval}{b7}
+Evaluate $\int_{-8}^{-5}\frac{dx}{x\sqrt{x^2-16}}$.
+
+\textbf{Solution.} Formula (13) with $a=4$ gives the antiderivative $\frac14\sec^{-1}\left\lvert\frac x4\right\rvert$, valid for $\lvert x\rvert>4$, and the interval $[-8,-5]$ lies in $x<-4$. At $x=-5$: $\left\lvert\frac{-5}4\right\rvert=\frac54$ and $\sec^{-1}\frac54=\cos^{-1}\frac45$. At $x=-8$: $\left\lvert\frac{-8}4\right\rvert=2$ and $\sec^{-1}2=\frac\pi3$. Hence
+\[\int_{-8}^{-5}\frac{dx}{x\sqrt{x^2-16}}=\frac14\left(\cos^{-1}\frac45-\frac\pi3\right)\approx\frac14(0.6435-1.0472)\approx-0.1009 .\]
+\emph{Check.} For $x<0$ the integrand is negative (a negative $x$ times a positive root), so a negative answer is right. Without the absolute value, $\frac14\sec^{-1}\frac x4$ would need $\sec^{-1}$ of a negative number, which is a different branch and gives the wrong sign. Numerical integration gives $-0.10092$.
+%@ b7 | abs(float(Integral(1/(x*sqrt(x**2-16)),(x,-8,-5)).evalf())+0.10092) < 1e-5 and abs(float((acos(Q(4,5))-pi/3)/4)+0.1009) < 1e-4 and asec(2) == pi/3 and abs((asec(Q(5,4))-acos(Q(4,5))).evalf(30)) < 1e-20 | \approx\frac14(0.6435-1.0472)\approx-0.1009 .
+\end{exmp}
+
+\begin{exmp}{Long division, then completing the square}{b8}
+Evaluate $\int_0^1\frac{x^2+x+3}{x^2+2x+2}\,dx$.
+
+\textbf{Solution.} The numerator and denominator have the same degree, so divide: $x^2+x+3=1\cdot(x^2+2x+2)+(1-x)$, hence $\frac{x^2+x+3}{x^2+2x+2}=1+\frac{1-x}{x^2+2x+2}$. The derivative of the denominator is $2x+2$, and $1-x=-\frac12(2x+2)+2$ (since $-\frac12(2x+2)=-x-1$). So
+\[\frac{x^2+x+3}{x^2+2x+2}=1-\frac12\cdot\frac{2x+2}{x^2+2x+2}+\frac2{(x+1)^2+1},\]
+using $x^2+2x+2=(x+1)^2+1$. Integrating each piece (the middle one with $u=x^2+2x+2$, which is positive):
+\[F(x)=x-\frac12\ln(x^2+2x+2)+2\tan^{-1}(x+1).\]
+Then $F(1)=1-\frac12\ln5+2\tan^{-1}2$ and $F(0)=-\frac12\ln2+2\cdot\frac\pi4$, so
+\[\int_0^1\frac{x^2+x+3}{x^2+2x+2}\,dx=1-\frac12\ln\frac52+2\left(\tan^{-1}2-\frac\pi4\right)\approx1.1854 .\]
+\emph{Check.} $F'(x)=1-\frac{x+1}{x^2+2x+2}+\frac2{x^2+2x+2}=\frac{x^2+2x+2-x-1+2}{x^2+2x+2}=\frac{x^2+x+3}{x^2+2x+2}$. Numerical integration gives $1.18536$.
+%@ b8a | simplify(diff(x-log(x**2+2*x+2)/2+2*atan(x+1),x)-(x**2+x+3)/(x**2+2*x+2)) == 0 and expand((x**2+2*x+2)+(1-x)-(x**2+x+3)) == 0 and expand(-Q(1,2)*(2*x+2)+2-(1-x)) == 0 | =\frac{x^2+x+3}{x^2+2x+2}$. Numerical integration gives $1.18536$.
+%@ b8b | abs(float(Integral((x**2+x+3)/(x**2+2*x+2),(x,0,1)).evalf())-1.18536) < 1e-5 and simplify(integrate((x**2+x+3)/(x**2+2*x+2),(x,0,1))-(1-log(Q(5,2))/2+2*(atan(2)-pi/4))) == 0 | \approx1.1854 .
+\end{exmp}
+
+\subsection*{Group 5: Proofs}
+
+\begin{exmp}{Integrals of odd functions}{b9}
+Prove that if $f$ is continuous and odd on $[-a,a]$ (that is, $f(-x)=-f(x)$), then $\int_{-a}^af(x)\,dx=0$. Use it to evaluate $\int_{-2}^2\frac{x^3}{x^4+1}\,dx$.
+
+\textbf{Plan.} Split at $0$ and substitute $u=-x$ in one half.
+
+\begin{proof}
+Write $\int_{-a}^af=\int_{-a}^0f+\int_0^af$. In the first integral let $u=-x$, so $du=-dx$; when $x=-a$, $u=a$, and when $x=0$, $u=0$. By Theorem~\ref{thm:subst} (definite form) and $f(-u)=-f(u)$,
+\[\int_{-a}^0f(x)\,dx=\int_a^0f(-u)\,(-du)=\int_0^af(-u)\,du=-\int_0^af(u)\,du .\]
+(The second step reverses the limits, which changes the sign.) Hence $\int_{-a}^af=-\int_0^af+\int_0^af=0$.
+\end{proof}
+The function $f(x)=\frac{x^3}{x^4+1}$ is continuous on $[-2,2]$ and odd, because $f(-x)=\frac{-x^3}{x^4+1}=-f(x)$, so the integral is $0$. \emph{Check:} with $u=x^4+1$ an antiderivative is $\frac14\ln(x^4+1)$, which has the same value at $x=2$ and $x=-2$.
+%@ b9 | simplify(((-x)**3/((-x)**4+1)) + x**3/(x**4+1)) == 0 and integrate(x**3/(x**4+1),(x,-2,2)) == 0 and simplify(diff(log(x**4+1)/4,x)-x**3/(x**4+1)) == 0 | so the integral is $0$. \emph{Check:} with $u=x^4+1$ an antiderivative is $\frac14\ln(x^4+1)$, which has the same value at $x=2$ and $x=-2$.
+\end{exmp}
+
+\begin{exmp}{An integral found by differentiation}{b10}
+Prove that for $a>0$, $\displaystyle\int\frac{dx}{\sqrt{x^2+a^2}}=\ln\left(x+\sqrt{x^2+a^2}\right)+C$.
+
+\textbf{Plan.} Differentiate the right side; also check that the logarithm's argument is positive.
+
+\begin{proof}
+Since $\sqrt{x^2+a^2}>\sqrt{x^2}=\lvert x\rvert\ge-x$, we have $x+\sqrt{x^2+a^2}>0$ for all $x$, so the logarithm is defined (and no absolute value is needed). By the Chain Rule,
+\[\frac{d}{dx}\ln\left(x+\sqrt{x^2+a^2}\right)=\frac{1+\frac{x}{\sqrt{x^2+a^2}}}{x+\sqrt{x^2+a^2}}=\frac{\frac{\sqrt{x^2+a^2}+x}{\sqrt{x^2+a^2}}}{x+\sqrt{x^2+a^2}}=\frac1{\sqrt{x^2+a^2}} .\]
+Thus the right side is an antiderivative of the integrand on the whole line.
+\end{proof}
+%@ b10 | simplify(diff(log(x+sqrt(x**2+a**2)),x)-1/sqrt(x**2+a**2)) == 0 and all(z+sqrt(z**2+4)>0 for z in [-10,-3,-1,0,1,3,10]) | =\frac1{\sqrt{x^2+a^2}} .\]
+For example, with $a=1$ and $x=2$ the derivative is $\frac1{\sqrt5}\approx0.4472$.
+%@ b10b | abs(float(1/sqrt(2**2+1))-0.4472) < 1e-4 and simplify(diff(log(x+sqrt(x**2+1)),x).subs(x,2)-1/sqrt(5)) == 0 | $\frac1{\sqrt5}\approx0.4472$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kclimits}.] Let $u=x^2+3$, $du=2x\,dx$. At $x=1$, $u=4$; at $x=2$, $u=7$. Then $\int_1^2\frac{2x}{x^2+3}\,dx=\int_4^7\frac{du}u=\ln7-\ln4=\ln\frac74\approx0.5596$.
+%@ ans-kclimits | abs((integrate(2*x/(x**2+3),(x,1,2))-log(Q(7,4))).evalf(30)) < 1e-20 and 1**2+3 == 4 and 2**2+3 == 7 and abs(float(log(Q(7,4)))-0.5596) < 1e-4 | =\ln7-\ln4=\ln\frac74\approx0.5596$.
+
+  \item[Knowledge Check \ref{kc:kccot}.] By the cotangent formula with $a=5$: $\int\cot5x\,dx=\frac15\ln\lvert\sin5x\rvert+C$. Check: $\frac15\cdot\frac{5\cos5x}{\sin5x}=\cot5x$.
+%@ ans-kccot | simplify(diff(log(sin(5*x))/5,x)-cot(5*x)) == 0 | \frac15\cdot\frac{5\cos5x}{\sin5x}=\cot5x$.
+
+  \item[Knowledge Check \ref{kc:kc3}.] $x^2-10x+34=(x-5)^2+9$, so $D=9>0$ and $\sqrt D=3$: $\int\frac{dx}{x^2-10x+34}=\frac13\tan^{-1}\frac{x-5}3+C$. Check: $\frac13\cdot\frac1{1+(x-5)^2/9}\cdot\frac13=\frac1{9+(x-5)^2}=\frac1{x^2-10x+34}$.
+%@ ans-kc3 | expand((x-5)**2+9-(x**2-10*x+34)) == 0 and simplify(diff(atan((x-5)/3)/3,x)-1/(x**2-10*x+34)) == 0 | =\frac1{9+(x-5)^2}=\frac1{x^2-10x+34}$.
+
+  \item[Pause and think \ref{think:notinj}.] The answer $0$ is right: the integrand $xe^{x^2}$ is odd, so its integral over $[-1,1]$ is $0$ (Example~\ref{ex:b9}). The substitution rule needs only that $u=g(x)$ is differentiable with a continuous derivative and that $f$ is continuous on the interval that $g$ maps onto; it does not need $g$ to be one-to-one. In the proof, the Chain Rule shows $F(g(x))$ is an antiderivative of $f(g(x))g'(x)$, and the Fundamental Theorem gives $F(g(1))-F(g(-1))=F(1)-F(1)=0$. Here the two halves of the integral cancel: one contributes $\frac{e-1}2$ and the other $-\frac{e-1}2$.
+%@ ans-notinj | integrate(x*exp(x**2),(x,-1,1)) == 0 and integrate(x*exp(x**2),(x,0,1)) == (E-1)/2 and integrate(x*exp(x**2),(x,-1,0)) == -(E-1)/2 | one contributes $\frac{e-1}2$ and the other $-\frac{e-1}2$.
+
+  \item[Pause and think \ref{think:twoint}.] The statement says two antiderivatives differ by a constant \emph{on an interval}. The set $x\ne0$ is two intervals, $x<0$ and $x>0$, so $F$ and $G$ may differ by a different constant on each: here by $1$ on $x>0$ and by $-5$ on $x<0$. On each interval separately they do differ by a constant.
+
+  \item[Pause and think \ref{think:think3}.] The sign of $D=c-\frac{b^2}4$, equivalently of the discriminant $b^2-4c$. For $x^2+2x+5$: $D=4>0$, no real roots, the parabola stays above the axis, and the integrand is continuous everywhere with an arctangent antiderivative $\frac12\tan^{-1}\frac{x+1}2$. For $x^2+2x-3=(x+3)(x-1)$: $D=-4<0$, two real roots $-3$ and $1$ where the integrand blows up, and the antiderivative $\frac14\ln\left\lvert\frac{x-1}{x+3}\right\rvert$ is a logarithm that is defined separately on three intervals.
+%@ ans-think3 | simplify(diff(atan((x+1)/2)/2,x)-1/(x**2+2*x+5)) == 0 and simplify(diff(log((x-1)/(x+3))/4,x)-1/(x**2+2*x-3)) == 0 and expand((x+3)*(x-1)-(x**2+2*x-3)) == 0 | is a logarithm that is defined separately on three intervals.
+\end{description}
+
+\end{document}

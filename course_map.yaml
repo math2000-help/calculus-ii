@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (in progress)"
+  project: "Chapter 8, Integration Techniques (in progress: 8.1 done), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -22,6 +22,15 @@ appendix:
     - {id: J, title: "Area in Polar Coordinates", status: done}
     - {id: K, title: "Conic Sections: Squaring, Coordinates and the Focus--Directrix Theorem", status: done}
 modules:
+  - {id: "8.1", chapter: 8, title: "Basic Approaches", prereqs: [], status: done}
+  - {id: "8.2", chapter: 8, title: "Integration by Parts", prereqs: ["8.1"], status: planned}
+  - {id: "8.3", chapter: 8, title: "Trigonometric Integrals", prereqs: ["8.2"], status: planned}
+  - {id: "8.4", chapter: 8, title: "Trigonometric Substitutions", prereqs: ["8.3"], status: planned}
+  - {id: "8.5", chapter: 8, title: "Partial Fractions", prereqs: ["8.4"], status: planned}
+  - {id: "8.6", chapter: 8, title: "Integration Strategies", prereqs: ["8.5"], status: planned}
+  - {id: "8.7", chapter: 8, title: "Other Methods of Integration", prereqs: ["8.6"], status: planned}
+  - {id: "8.8", chapter: 8, title: "Numerical Integration", prereqs: ["8.7"], status: planned}
+  - {id: "8.9", chapter: 8, title: "Improper Integrals", prereqs: ["8.8"], status: planned}
   - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
   - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
   - {id: "10.3", chapter: 10, title: "Infinite Series", prereqs: ["10.2"], status: done}
