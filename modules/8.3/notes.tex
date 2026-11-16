@@ -1,0 +1,724 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{3}{Trigonometric Integrals}
+\calcxdoc{8.1}
+\calcxdoc{8.2}
+
+\begin{document}
+
+\section{Trigonometric Integrals}
+
+\begin{guide}
+Integrals of powers and products of the six trigonometric functions turn up everywhere: in areas and volumes, in the trigonometric substitutions of the next section, and in the study of waves and vibrations. They look different from one another, but a small number of ideas handles all of them. For $\sin^mx\cos^nx$ and $\tan^mx\sec^nx$ the idea is to \emph{split off one factor} that is the derivative of a function of the rest, and then use a Pythagorean identity so that a substitution $u=\cos x$, $u=\sin x$, $u=\tan x$ or $u=\sec x$ applies. When that is impossible (both powers even, or an even power of tangent with an odd power of secant), we use the power-reducing identities or a reduction formula, which comes from integration by parts. For products such as $\sin3x\cos5x$ the product-to-sum identities turn a product into a sum. We prove every identity from the angle-addition formulas, prove every method, and end with the \emph{orthogonality relations} for sines and cosines, which are the starting point of Fourier series. Calculus~I facts used, all by name: the derivatives of the six trigonometric functions, the Chain Rule, the Fundamental Theorem of Calculus, the Pythagorean identity $\sin^2x+\cos^2x=1$ and the angle-addition formulas for sine and cosine (from precalculus), and the fact that two antiderivatives on an interval differ by a constant. From Section~8.1 we use substitution (Theorem~\ref{8.1-thm:subst}), the table of basic formulas and the four trigonometric integrals (Theorem~\ref{8.1-thm:trig4}); from Section~8.2 we use integration by parts (Theorem~\ref{8.2-thm:parts}) and the reduction formulas for $\sin^nx$ and $\cos^nx$ (Theorem~\ref{8.2-thm:redtrig}). No appendix section is needed.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item derive the double-angle, power-reducing and product-to-sum identities from the angle-addition formulas;
+  \item integrate $\sin^mx\cos^nx$ by splitting off a factor (an odd power) or by power-reducing identities (both powers even);
+  \item integrate $\tan^mx\sec^nx$ and $\cot^mx\csc^nx$, and say which case needs a reduction formula and why;
+  \item state and prove the reduction formulas for $\tan^nx$, $\sec^nx$, $\cot^nx$ and $\csc^nx$, and evaluate $\int\sec^3x\,dx$;
+  \item integrate products $\sin mx\cos nx$, $\sin mx\sin nx$, $\cos mx\cos nx$ and prove the orthogonality relations on an interval of length $2\pi$;
+  \item check every answer by differentiating, and recognize answers that differ by a constant and the common errors.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The identities we use, proved}
+
+Every method in this section is an identity followed by a substitution, so we first make sure of the identities. We start from the Pythagorean identity and the \emph{angle-addition formulas}, which we take as known:
+\[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\qquad\cos(A\pm B)=\cos A\cos B\mp\sin A\sin B .\]
+
+\begin{thm}{Trigonometric identities}{ident}
+For all real numbers $x$, $A$ and $B$ (where the quantities are defined):
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Pythagorean.} $\sin^2x+\cos^2x=1$, $\;1+\tan^2x=\sec^2x$, $\;1+\cot^2x=\csc^2x$.
+  \item \emph{Double-angle.} $\sin2x=2\sin x\cos x$ and $\cos2x=\cos^2x-\sin^2x=2\cos^2x-1=1-2\sin^2x$.
+  \item \emph{Power-reducing.} $\displaystyle\sin^2x=\frac{1-\cos2x}2,\qquad\cos^2x=\frac{1+\cos2x}2$.
+  \item \emph{Product-to-sum.}
+  \[\sin A\cos B=\tfrac12\big[\sin(A-B)+\sin(A+B)\big],\qquad\sin A\sin B=\tfrac12\big[\cos(A-B)-\cos(A+B)\big],\]
+  \[\cos A\cos B=\tfrac12\big[\cos(A-B)+\cos(A+B)\big].\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) The first identity is the one we assumed (it also follows from the angle-addition formula: with $B=A$, $\cos(A-A)=\cos0=1$ equals $\cos^2A+\sin^2A$). Where $\cos x\ne0$, divide it by $\cos^2x$: $\frac{\sin^2x}{\cos^2x}+1=\frac1{\cos^2x}$, which is $\tan^2x+1=\sec^2x$. Where $\sin x\ne0$, divide by $\sin^2x$: $1+\cot^2x=\csc^2x$.
+
+(2) Put $A=B=x$ in the formulas for $\sin(A+B)$ and $\cos(A+B)$: $\sin2x=\sin x\cos x+\cos x\sin x=2\sin x\cos x$ and $\cos2x=\cos x\cos x-\sin x\sin x=\cos^2x-\sin^2x$. Replacing $\sin^2x$ by $1-\cos^2x$ gives $\cos2x=2\cos^2x-1$, and replacing $\cos^2x$ by $1-\sin^2x$ gives $\cos2x=1-2\sin^2x$.
+
+(3) Solve $\cos2x=2\cos^2x-1$ for $\cos^2x$ and $\cos2x=1-2\sin^2x$ for $\sin^2x$.
+
+(4) Add and subtract the formulas for $\sin(A+B)$ and $\sin(A-B)$: $\sin(A+B)+\sin(A-B)=2\sin A\cos B$, which is the first identity. Add and subtract the formulas for $\cos(A-B)=\cos A\cos B+\sin A\sin B$ and $\cos(A+B)=\cos A\cos B-\sin A\sin B$: the sum is $2\cos A\cos B$ and the difference $\cos(A-B)-\cos(A+B)$ is $2\sin A\sin B$. Divide by $2$.
+\end{proof}
+%@ t1-ident | simplify(sin(2*x)-2*sin(x)*cos(x)) == 0 and simplify(cos(2*x)-(2*cos(x)**2-1)) == 0 and simplify(cos(2*x)-(1-2*sin(x)**2)) == 0 and simplify(sin(x)**2-(1-cos(2*x))/2) == 0 and simplify(cos(x)**2-(1+cos(2*x))/2) == 0 and simplify(1+tan(x)**2-sec(x)**2) == 0 and simplify(1+cot(x)**2-csc(x)**2) == 0 and simplify(expand_trig(sin(a)*cos(b)-(sin(a-b)+sin(a+b))/2)) == 0 and simplify(expand_trig(sin(a)*sin(b)-(cos(a-b)-cos(a+b))/2)) == 0 and simplify(expand_trig(cos(a)*cos(b)-(cos(a-b)+cos(a+b))/2)) == 0 | \end{proof}
+
+The power-reducing identities lower an exponent at the price of doubling the angle, and the product-to-sum identities turn a product into a sum; both are exactly what an integral needs.
+
+\begin{think}{Which sign?}{sign}
+The two power-reducing identities differ by one sign. Without looking at the theorem, decide which of $\frac{1\pm\cos2x}2$ equals $\sin^2x$ and which equals $\cos^2x$, by testing a single value of $x$ in each.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Powers of sine and cosine}
+
+Section~8.2 gave the reduction formulas for $\int\sin^nx\,dx$ and $\int\cos^nx\,dx$ (Theorem~\ref{8.2-thm:redtrig}). Here we treat the general product $\sin^mx\cos^nx$ and the first method that needs no integration by parts. The idea: if one of the exponents is odd, set one factor aside, because that factor is $\pm$ the derivative of the other function; the remaining even power converts to the other function by $\sin^2x=1-\cos^2x$.
+
+\begin{thm}{Integrals of $\sin^mx\cos^nx$}{sincos}
+Let $m$ and $n$ be integers, on an interval where the integrand is defined.
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{$m$ odd and positive}, $m=2j+1$ with $j\ge0$. With $u=\cos x$,
+  \[\int\sin^mx\cos^nx\,dx=-\int\big(1-u^2\big)^ju^n\,du .\]
+  \item \emph{$n$ odd and positive}, $n=2j+1$ with $j\ge0$. With $u=\sin x$,
+  \[\int\sin^mx\cos^nx\,dx=\int u^m\big(1-u^2\big)^j\,du .\]
+  \item \emph{$m$ and $n$ both even and nonnegative.} The integral equals a sum of constant multiples of integrals $\int\cos^i2x\,dx$ with $0\le i\le\frac{m+n}2$, each of which can be evaluated by (2) when $i$ is odd and by repeating this step when $i$ is even.
+\end{enumerate}
+In (1) and (2) the right-hand side is a finite sum of powers of $u$ (expand $(1-u^2)^j$ by the binomial theorem), so each term is integrated by formula~(2) of Section~8.1, or gives $\ln\lvert u\rvert$ when the exponent is $-1$. After integrating, substitute back $u=\cos x$ or $u=\sin x$.
+\end{thm}
+\begin{proof}
+(1) Write $\sin^mx=\sin^{2j}x\sin x=\big(\sin^2x\big)^j\sin x=\big(1-\cos^2x\big)^j\sin x$ by Theorem~\ref{thm:ident}(1). Then $\sin^mx\cos^nx\,dx=\big(1-\cos^2x\big)^j\cos^nx\,(\sin x\,dx)$. Let $u=\cos x$, so $du=-\sin x\,dx$; by the substitution rule (Theorem~\ref{8.1-thm:subst}) the integral becomes $-\int(1-u^2)^ju^n\,du$.
+
+(2) Write $\cos^nx=\big(1-\sin^2x\big)^j\cos x$ and let $u=\sin x$, $du=\cos x\,dx$.
+
+(3) Since $m$ and $n$ are even, $\sin^mx\cos^nx=\big(\sin^2x\big)^{m/2}\big(\cos^2x\big)^{n/2}=\left(\frac{1-\cos2x}2\right)^{m/2}\left(\frac{1+\cos2x}2\right)^{n/2}$ by Theorem~\ref{thm:ident}(3). Multiplying out, this is a polynomial in $\cos2x$ of degree $d=\frac{m+n}2$, say $\sum_{i=0}^dc_i\cos^i2x$. We show by strong induction on $d$ that every integral $\int\cos^i2x\,dx$ with $i\le d$ can be evaluated. If $i=0$ the integral is $x$. If $i$ is odd, $i=2l+1$, write $\cos^i2x=\big(1-\sin^22x\big)^l\cos2x$ and let $w=\sin2x$, $dw=2\cos2x\,dx$: the integral is $\frac12\int(1-w^2)^l\,dw$, a polynomial. If $i\ge2$ is even, let $w=2x$ and use Theorem~\ref{thm:ident}(3): $\int\cos^i2x\,dx=\frac12\int\cos^iw\,dw=\frac12\int\left(\frac{1+\cos2w}2\right)^{i/2}dw$, which is a polynomial in $\cos2w$ of degree $\frac i2\le\frac d2<d$ (because $d\ge1$ here), and the induction hypothesis applies to it.
+\end{proof}
+%@ t2-check | all(simplify(diff(-integrate((1-u0**2)**jj*u0**nn,u0).subs(u0,cos(x)),x)-sin(x)**(2*jj+1)*cos(x)**nn) == 0 for jj in range(0,2) for nn in range(-3,3) for u0 in [Symbol('u0')] if nn != -1) | \end{proof}
+
+\begin{proc}{Powers of sine and cosine}{sincos}
+\begin{enumerate}[nosep]
+  \item If the power of $\sin x$ is odd, set aside one factor $\sin x$, convert the rest to $\cos x$ with $\sin^2x=1-\cos^2x$, and let $u=\cos x$.
+  \item If the power of $\cos x$ is odd, set aside one factor $\cos x$, convert the rest to $\sin x$ with $\cos^2x=1-\sin^2x$, and let $u=\sin x$. (If both are odd, either works; take the smaller power of the one you convert.)
+  \item If both powers are even, use $\sin^2x=\frac{1-\cos2x}2$ and $\cos^2x=\frac{1+\cos2x}2$, expand, and repeat with the powers of $\cos2x$. Remember that $\int\cos^22x\,dx$ again needs the power-reducing identity, with $4x$.
+  \item A single power $\sin^nx$ or $\cos^nx$ may be done by Theorem~\ref{8.2-thm:redtrig}; the formulas of Section~8.2 are best for large $n$.
+  \item Check by differentiating.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A square of the sine of a multiple angle}{m1}
+Find $\int\sin^23x\,dx$, and compare with the reduction formula of Section~8.2.
+
+\textbf{Solution.} Both powers are even (the power of $\cos$ is $0$), so we use $\sin^2w=\frac{1-\cos2w}2$ with $w=3x$:
+\[\int\sin^23x\,dx=\int\frac{1-\cos6x}2\,dx=\frac x2-\frac12\cdot\frac{\sin6x}6+C=\frac x2-\frac{\sin6x}{12}+C .\]
+%@ m1a | simplify(diff(x/2-sin(6*x)/12,x)-sin(3*x)**2) == 0 | =\frac x2-\frac12\cdot\frac{\sin6x}6+C=\frac x2-\frac{\sin6x}{12}+C .\]
+Here $\int\cos6x\,dx=\frac{\sin6x}6$ is formula (3) of Section~8.1 with $a=6$.
+
+\emph{Compare.} Theorem~\ref{8.2-thm:redtrig} with $n=2$ and $w=3x$ gives $\int\sin^2w\,dw=-\frac{\sin w\cos w}2+\frac w2$, so $\int\sin^23x\,dx=\frac13\left(-\frac{\sin3x\cos3x}2+\frac{3x}2\right)=\frac x2-\frac{\sin3x\cos3x}6$. This agrees with the first answer, because $\sin6x=2\sin3x\cos3x$ (Theorem~\ref{thm:ident}(2)) gives $\frac{\sin6x}{12}=\frac{\sin3x\cos3x}6$.
+%@ m1b | simplify(Q(1,3)*(-sin(3*x)*cos(3*x)/2+3*x/2)-(x/2-sin(3*x)*cos(3*x)/6)) == 0 and simplify(sin(6*x)/12-sin(3*x)*cos(3*x)/6) == 0 | gives $\frac{\sin6x}{12}=\frac{\sin3x\cos3x}6$.
+\emph{Check by an area.} Over one period of $\sin3x$ ($0\le x\le\frac{2\pi}3$) the average of $\sin^23x$ is $\frac12$, so $\int_0^{2\pi/3}\sin^23x\,dx$ should be $\frac12\cdot\frac{2\pi}3=\frac\pi3$. The antiderivative gives $\frac{\pi}3-\frac{\sin4\pi}{12}-0=\frac\pi3$.
+%@ m1c | simplify((x/2-sin(6*x)/12).subs(x,2*pi/3)-(x/2-sin(6*x)/12).subs(x,0)-pi/3) == 0 | The antiderivative gives $\frac{\pi}3-\frac{\sin4\pi}{12}-0=\frac\pi3$.
+\end{exmp}
+
+\begin{exmp}{An odd power of sine, and the area under the curve}{m2}
+Evaluate $\displaystyle\int_0^{\pi/2}\sin^3x\cos^2x\,dx$. This is the area under $y=\sin^3x\cos^2x$ (Figure~1).
+
+\textbf{Solution.} The power of $\sin x$ is odd, $m=3=2\cdot1+1$ (so $j=1$) and $n=2$. Set aside one $\sin x$ and convert $\sin^2x=1-\cos^2x$ (Pythagorean identity):
+\[\sin^3x\cos^2x=\sin^2x\cos^2x\cdot\sin x=\big(1-\cos^2x\big)\cos^2x\sin x .\]
+Let $u=\cos x$, $du=-\sin x\,dx$. Then $\int\sin^3x\cos^2x\,dx=-\int\big(1-u^2\big)u^2\,du=-\int\big(u^2-u^4\big)du=-\frac{u^3}3+\frac{u^5}5+C$, so
+\[\int\sin^3x\cos^2x\,dx=-\frac{\cos^3x}3+\frac{\cos^5x}5+C .\]
+%@ m2a | simplify(diff(-cos(x)**3/3+cos(x)**5/5,x)-sin(x)**3*cos(x)**2) == 0 | =-\frac{\cos^3x}3+\frac{\cos^5x}5+C .\]
+\emph{Check by differentiating.} By the Chain Rule, $\frac{d}{dx}\left[-\frac{\cos^3x}3+\frac{\cos^5x}5\right]=\cos^2x\sin x-\cos^4x\sin x=\cos^2x\sin x\big(1-\cos^2x\big)=\sin^3x\cos^2x$.
+
+\emph{The definite integral.} At $x=\frac\pi2$ we have $\cos x=0$, so the antiderivative is $0$; at $x=0$ we have $\cos x=1$, so it is $-\frac13+\frac15=-\frac2{15}$. Hence
+\[\int_0^{\pi/2}\sin^3x\cos^2x\,dx=0-\left(-\frac2{15}\right)=\frac2{15}\approx0.1333 .\]
+%@ m2b | integrate(sin(x)**3*cos(x)**2,(x,0,pi/2)) == Q(2,15) and (-Q(1,3)+Q(1,5)) == -Q(2,15) | =0-\left(-\frac2{15}\right)=\frac2{15}\approx0.1333 .\]
+\emph{Plausibility.} The curve starts at $0$, rises to a maximum and returns to $0$. Its maximum is at $\tan^2x=\frac32$ (set the derivative $\sin^2x\cos x\left(3\cos^2x-2\sin^2x\right)$ equal to $0$), where $\sin^2x=\frac35$, $\cos^2x=\frac25$, and the height is $\frac25\left(\frac35\right)^{3/2}\approx0.1859$. The area is less than $0.1859\cdot\frac\pi2\approx0.292$, and $0.1333$ is a sensible fraction of it.
+%@ m2c | (lambda x0: simplify(diff(sin(t)**3*cos(t)**2,t).subs(t,x0)) == 0 and abs(float(x0)-0.88608) < 1e-5 and abs(float(sin(x0)**3*cos(x0)**2)-0.18590) < 1e-5 and simplify(sin(x0)**3*cos(x0)**2-Q(2,5)*Q(3,5)**Q(3,2)) == 0)(atan(sqrt(Q(3,2)))) | and $0.1333$ is a sensible fraction of it.
+
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=18cm]
+  \draw[->] (-0.05,0) -- (1.75,0) node[right] {$x$};
+  \draw[->] (0,-0.01) -- (0,0.235) node[above] {$y$};
+  \fill[blue!15] (0,0) -- plot[domain=0:1.5708,samples=60,variable=\t] ({\t},{sin(\t r)*sin(\t r)*sin(\t r)*cos(\t r)*cos(\t r)}) -- (1.5708,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:1.6,samples=80,variable=\t] plot ({\t},{sin(\t r)*sin(\t r)*sin(\t r)*cos(\t r)*cos(\t r)});
+  \fill (0.88608,0.18590) circle (1.6pt) node[above,font=\small] {$(0.886,\,0.186)$};
+%@ g1-peak | (lambda x0: simplify(diff(sin(t)**3*cos(t)**2,t).subs(t,x0)) == 0 and abs(float(x0)-0.88608) < 1e-5 and abs(float(sin(x0)**3*cos(x0)**2)-0.18590) < 1e-5 and simplify(sin(x0)**2-Q(3,5)) == 0)(atan(sqrt(Q(3,2)))) | \fill (0.88608,0.18590) circle (1.6pt) node[above,font=\small] {$(0.886,\,0.186)$};
+  \fill (1.5708,0) circle (1.6pt) node[below,font=\small] {$\frac\pi2$};
+%@ g1-end | sin(pi/2)**3*cos(pi/2)**2 == 0 and abs(float(pi/2)-1.5708) < 1e-4 | \fill (1.5708,0) circle (1.6pt) node[below,font=\small] {$\frac\pi2$};
+  \node[font=\small] at (1.0,0.06) {area $2/15$};
+%@ g1-area | abs(float(Q(2,15))-0.1333) < 1e-4 and integrate(sin(t)**3*cos(t)**2,(t,0,pi/2)) == Q(2,15) | \node[font=\small] at (1.0,0.06) {area $2/15$};
+  \node[font=\small,anchor=west] at (1.62,0.1) {$y=\sin^3x\cos^2x$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 1. The region under $y=\sin^3x\cos^2x$ on $\left[0,\frac\pi2\right]$. The maximum is at $\tan x=\sqrt{3/2}$, and the area is $\frac2{15}$.\end{center}
+\end{exmp}
+
+\begin{kc}{An odd power of cosine}{kcodd}
+Evaluate $\int\sin^2x\cos^3x\,dx$. Say which factor you set aside, and check by differentiating.
+\end{kc}
+
+\begin{exmp}{Both powers even}{m3}
+Find $\int\sin^2x\cos^4x\,dx$.
+
+\textbf{Solution.} Both powers are even. Group $\sin^2x\cos^4x=\big(\sin x\cos x\big)^2\cos^2x$ and use $\sin x\cos x=\frac12\sin2x$ (double angle) and $\cos^2x=\frac{1+\cos2x}2$:
+\[\sin^2x\cos^4x=\frac{\sin^22x}4\cdot\frac{1+\cos2x}2=\frac18\sin^22x+\frac18\sin^22x\cos2x .\]
+For the first term use $\sin^22x=\frac{1-\cos4x}2$. For the second term the power of $\sin2x$ is $2$ but there is a factor $\cos2x$ to the first power: let $w=\sin2x$, $dw=2\cos2x\,dx$. Therefore
+\[\int\sin^2x\cos^4x\,dx=\frac1{16}\int(1-\cos4x)\,dx+\frac18\cdot\frac12\int w^2\,dw=\frac x{16}-\frac{\sin4x}{64}+\frac{\sin^32x}{48}+C .\]
+%@ m3a | simplify(diff(x/16-sin(4*x)/64+sin(2*x)**3/48,x)-sin(x)**2*cos(x)**4) == 0 and simplify(sin(x)**2*cos(x)**4-(sin(2*x)**2/8+sin(2*x)**2*cos(2*x)/8)) == 0 | =\frac x{16}-\frac{\sin4x}{64}+\frac{\sin^32x}{48}+C .\]
+(The coefficients: $\frac18\cdot\frac12\cdot\frac{w^3}3=\frac{w^3}{48}$ and $\frac1{16}\cdot\frac{\sin4x}4=\frac{\sin4x}{64}$.)
+
+\emph{Check by differentiating.} $\frac{d}{dx}\left[\frac x{16}-\frac{\sin4x}{64}+\frac{\sin^32x}{48}\right]=\frac1{16}-\frac{\cos4x}{16}+\frac{\sin^22x\cos2x}8$. Since $1-\cos4x=2\sin^22x$, the first two terms give $\frac{\sin^22x}8$, and the sum is $\frac{\sin^22x}8(1+\cos2x)=\frac{\sin^22x}8\cdot2\cos^2x=\frac{4\sin^2x\cos^2x\cdot\cos^2x}4=\sin^2x\cos^4x$.
+%@ m3b | simplify(diff(x/16-sin(4*x)/64+sin(2*x)**3/48,x)-(Q(1,16)-cos(4*x)/16+sin(2*x)**2*cos(2*x)/8)) == 0 and simplify(sin(2*x)**2*(1+cos(2*x))/8-sin(x)**2*cos(x)**4) == 0 | $\frac{\sin^22x}8(1+\cos2x)=\frac{\sin^22x}8\cdot2\cos^2x=\frac{4\sin^2x\cos^2x\cdot\cos^2x}4=\sin^2x\cos^4x$.
+\end{exmp}
+
+\begin{exmp}{An even power under a root: the absolute value}{m4}
+Evaluate (a) $\displaystyle\int_0^{\pi}\big(1-\cos2x\big)^{3/2}\,dx$ and (b) $\displaystyle\int_0^{2\pi}\big(1-\cos2x\big)^{3/2}\,dx$.
+
+\textbf{Solution.} By the power-reducing identity, $1-\cos2x=2\sin^2x$. A power $\frac32$ of a square needs care: for $a\ge0$ we have $\big(a^2\big)^{3/2}=a^3$, but for a number $s$ of either sign $\big(s^2\big)^{3/2}=\lvert s\rvert^3$. Hence
+\[\big(1-\cos2x\big)^{3/2}=\big(2\sin^2x\big)^{3/2}=2\sqrt2\,\lvert\sin x\rvert^3 .\]
+(a) On $[0,\pi]$ we have $\sin x\ge0$, so $\lvert\sin x\rvert^3=\sin^3x$. By Theorem~\ref{thm:sincos}(1) (or Section~8.2, $n=3$), an antiderivative of $\sin^3x$ is $-\cos x+\frac{\cos^3x}3$, whose change over $[0,\pi]$ is $\left(1-\frac13\right)-\left(-1+\frac13\right)=\frac43$. So
+\[\int_0^\pi\big(1-\cos2x\big)^{3/2}dx=2\sqrt2\cdot\frac43=\frac{8\sqrt2}3\approx3.7712 .\]
+%@ m4a | integrate(sin(x)**3,(x,0,pi)) == Q(4,3) and abs(float(Integral((1-cos(2*x))**Q(3,2),(x,0,pi)).evalf())-3.7712) < 1e-3 and simplify(2*sqrt(2)*Q(4,3)-8*sqrt(2)/3) == 0 | =\frac{8\sqrt2}3\approx3.7712 .\]
+(b) On $[\pi,2\pi]$ we have $\sin x\le0$, so $\lvert\sin x\rvert^3=-\sin^3x$, and the integral over $[\pi,2\pi]$ is again $\frac{8\sqrt2}3$ (the graph is the same shape, by the symmetry $\lvert\sin(x+\pi)\rvert=\lvert\sin x\rvert$). The total is $\frac{16\sqrt2}3\approx7.5425$. If we had used $\sin^3x$ without the absolute value we would have found $\int_0^{2\pi}\sin^3x\,dx=0$, which is impossible for a positive integrand.
+%@ m4b | all(abs(float((1-cos(2*xv))**Q(3,2)-2*sqrt(2)*Abs(sin(xv))**3)) < 1e-9 for xv in [Q(7,2),Q(5,1),Q(11,2)]) and abs(float(16*sqrt(2)/3)-7.5425) < 1e-3 and integrate(sin(x)**3,(x,0,2*pi)) == 0 and simplify(16*sqrt(2)/3-2*(8*sqrt(2)/3)) == 0 | which is impossible for a positive integrand.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Reduction formulas for $\tan^nx$ and $\sec^nx$}
+
+Section~8.2 reduced $\sin^nx$ and $\cos^nx$ to lower powers. The same can be done for the tangent and the secant. The tangent formula comes from the identity $\tan^2x=\sec^2x-1$ and a substitution; the secant formula needs integration by parts.
+
+\begin{thm}{Reduction formulas for $\tan^nx$ and $\sec^nx$}{redtan}
+For every integer $n\ge2$, on any interval where the functions are defined,
+\[\int\tan^nx\,dx=\frac{\tan^{n-1}x}{n-1}-\int\tan^{n-2}x\,dx,\]
+\[\int\sec^nx\,dx=\frac{\sec^{n-2}x\tan x}{n-1}+\frac{n-2}{n-1}\int\sec^{n-2}x\,dx .\]
+Consequently every $\int\tan^nx\,dx$ reduces to $\int1\,dx=x$ or to $\int\tan x\,dx=\ln\lvert\sec x\rvert$, and every $\int\sec^nx\,dx$ with $n$ odd reduces to $\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert$ (Theorem~\ref{8.1-thm:trig4}). In particular
+\[\int\sec^3x\,dx=\frac12\sec x\tan x+\frac12\ln\lvert\sec x+\tan x\rvert+C .\]
+\end{thm}
+\begin{proof}
+\emph{Tangent.} By Theorem~\ref{thm:ident}(1),
+\[\tan^nx=\tan^{n-2}x\tan^2x=\tan^{n-2}x\big(\sec^2x-1\big)=\tan^{n-2}x\sec^2x-\tan^{n-2}x .\]
+In the first term let $u=\tan x$, $du=\sec^2x\,dx$; since $n\ge2$ the exponent $n-2\ge0$ is not $-1$, so $\int u^{n-2}\,du=\frac{u^{n-1}}{n-1}$. This gives the formula.
+
+\emph{Secant.} Write $\sec^nx=\sec^{n-2}x\cdot\sec^2x$ and use parts (Theorem~\ref{8.2-thm:parts}) with $u=\sec^{n-2}x$ and $dv=\sec^2x\,dx$. By the Chain Rule, $du=(n-2)\sec^{n-3}x\cdot\sec x\tan x\,dx=(n-2)\sec^{n-2}x\tan x\,dx$, and $v=\tan x$. Hence
+\[\int\sec^nx\,dx=\sec^{n-2}x\tan x-(n-2)\int\sec^{n-2}x\tan^2x\,dx .\]
+Replace $\tan^2x=\sec^2x-1$: the last integral is $\int\sec^nx\,dx-\int\sec^{n-2}x\,dx$. So
+\[\int\sec^nx\,dx=\sec^{n-2}x\tan x-(n-2)\int\sec^nx\,dx+(n-2)\int\sec^{n-2}x\,dx .\]
+The unknown integral appears on both sides. Add $(n-2)\int\sec^nx\,dx$ to both sides:
+\[(n-1)\int\sec^nx\,dx=\sec^{n-2}x\tan x+(n-2)\int\sec^{n-2}x\,dx .\]
+Divide by $n-1\ne0$.
+
+\emph{The consequences.} Applying the tangent formula repeatedly lowers the exponent by $2$ each time, ending at $\tan^0x=1$ (when $n$ is even) or $\tan^1x$ (when $n$ is odd). Applying the secant formula to odd $n$ ends at $\sec^1x$. For $n=3$: $\int\sec^3x\,dx=\frac{\sec x\tan x}2+\frac12\int\sec x\,dx$, and $\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert+C$.
+\end{proof}
+%@ t3-check | all(simplify(diff(tan(x)**(nn-1)/(nn-1),x)-tan(x)**(nn-2)-tan(x)**nn) == 0 and simplify(diff(sec(x)**(nn-2)*tan(x)/(nn-1),x)+Q(nn-2,nn-1)*sec(x)**(nn-2)-sec(x)**nn) == 0 for nn in range(2,9)) and simplify(diff(sec(x)*tan(x)/2+log(sec(x)+tan(x))/2,x)-sec(x)**3) == 0 | and $\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert+C$.
+
+\begin{exmp}{Reduction formulas for $\tan^4x$ and $\sec^5x$}{m5}
+Find (a) $\int\tan^4x\,dx$ and (b) $\int\sec^5x\,dx$.
+
+\textbf{Solution.} (a) Apply Theorem~\ref{thm:redtan} with $n=4$, then $n=2$:
+\[\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx,\qquad\int\tan^2x\,dx=\tan x-\int\tan^0x\,dx=\tan x-x .\]
+Substituting the second result into the first,
+\[\int\tan^4x\,dx=\frac{\tan^3x}3-\tan x+x+C .\]
+%@ m5a | simplify(diff(tan(x)**3/3-tan(x)+x,x)-tan(x)**4) == 0 and simplify(diff(tan(x)-x,x)-tan(x)**2) == 0 | \int\tan^4x\,dx=\frac{\tan^3x}3-\tan x+x+C .\]
+\emph{Check.} $\frac{d}{dx}\left[\frac{\tan^3x}3-\tan x+x\right]=\tan^2x\sec^2x-\sec^2x+1=\tan^2x\sec^2x-\tan^2x=\tan^2x\big(\sec^2x-1\big)=\tan^4x$.
+
+(b) With $n=5$, then $n=3$:
+\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx .\]
+Now insert $\int\sec^3x\,dx=\frac{\sec x\tan x}2+\frac12\ln\lvert\sec x+\tan x\rvert$:
+\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\left(\frac{\sec x\tan x}2+\frac12\ln\lvert\sec x+\tan x\rvert\right)+C .\]
+Multiplying out,
+\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac{3\sec x\tan x}8+\frac38\ln\lvert\sec x+\tan x\rvert+C .\]
+%@ m5b | simplify(diff(sec(x)**3*tan(x)/4+3*sec(x)*tan(x)/8+3*log(sec(x)+tan(x))/8,x)-sec(x)**5) == 0 and Q(3,4)*Q(1,2) == Q(3,8) | \int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac{3\sec x\tan x}8+\frac38\ln\lvert\sec x+\tan x\rvert+C .\]
+\end{exmp}
+
+\begin{kc}{A reduction formula for the tangent}{kcred}
+Use Theorem~\ref{thm:redtan} to evaluate $\int\tan^3x\,dx$, and check your answer by differentiating.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Products $\tan^mx\sec^nx$}
+
+For a product of tangent and secant we split off a factor that is the derivative of one of them: $\frac{d}{dx}\tan x=\sec^2x$ and $\frac{d}{dx}\sec x=\sec x\tan x$.
+
+\begin{thm}{Integrals of $\tan^mx\sec^nx$}{tansec}
+Let $m,n\ge0$ be integers, on an interval where the integrand is defined.
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{$n$ even and positive}, $n=2j+2$ with $j\ge0$. With $u=\tan x$,
+  \[\int\tan^mx\sec^nx\,dx=\int u^m\big(1+u^2\big)^j\,du .\]
+  \item \emph{$m$ odd and $n\ge1$}, $m=2i+1$ with $i\ge0$. With $u=\sec x$,
+  \[\int\tan^mx\sec^nx\,dx=\int\big(u^2-1\big)^iu^{n-1}\,du .\]
+  \item \emph{$m$ even and $n$ odd.} Writing $\tan^2x=\sec^2x-1$ turns the integrand into a sum of constant multiples of odd powers $\sec^{n+2l}x$, each of which is integrated by Theorem~\ref{thm:redtan}.
+  \item \emph{$n=0$.} $\int\tan^mx\,dx$ is given by Theorem~\ref{thm:redtan}.
+\end{enumerate}
+These four cases cover every pair $m,n\ge0$.
+\end{thm}
+\begin{proof}
+(1) Write $\sec^nx=\sec^{2j}x\sec^2x=\big(1+\tan^2x\big)^j\sec^2x$ (Theorem~\ref{thm:ident}(1)). Then
+\[\tan^mx\sec^nx\,dx=\tan^mx\big(1+\tan^2x\big)^j\,\big(\sec^2x\,dx\big);\]
+let $u=\tan x$, $du=\sec^2x\,dx$ and use Theorem~\ref{8.1-thm:subst}.
+
+(2) Write $\tan^mx\sec^nx=\tan^{2i}x\,\sec^{n-1}x\cdot\big(\sec x\tan x\big)=\big(\sec^2x-1\big)^i\sec^{n-1}x\cdot\big(\sec x\tan x\big)$; let $u=\sec x$, $du=\sec x\tan x\,dx$. This needs $n\ge1$ so that a factor $\sec x$ is available.
+
+(3) With $m=2i$ the integrand is $\big(\sec^2x-1\big)^i\sec^nx$. By the binomial theorem this is
+\[\sum_{l=0}^i(-1)^{i-l}\binom il\sec^{n+2l}x,\]
+and each exponent $n+2l$ is odd.
+
+(4) is Theorem~\ref{thm:redtan}. Cases: if $n\ge2$ is even, (1) applies; if $n$ is odd and $m$ is odd, (2); if $n$ is odd and $m$ is even, (3); if $n=0$, (4); and $n=1$ with $m$ odd is in (2) (with $n-1=0$). Nothing else remains.
+\end{proof}
+%@ t4-check | all(simplify(diff(integrate(u0**mm*(1+u0**2)**jj,u0).subs(u0,tan(x)),x)-tan(x)**mm*sec(x)**(2*jj+2)) == 0 and simplify(diff(integrate((u0**2-1)**jj*u0**(nn-1),u0).subs(u0,sec(x)),x)-tan(x)**(2*jj+1)*sec(x)**nn) == 0 for jj in range(0,2) for mm in range(0,3) for nn in range(1,4) for u0 in [Symbol('u0')]) | Nothing else remains.
+
+\begin{proc}{Powers of tangent and secant}{tansec}
+\begin{enumerate}[nosep]
+  \item \emph{Even power of secant ($n\ge2$).} Set aside $\sec^2x$, write the rest of the secant power as a polynomial in $\tan^2x$, and let $u=\tan x$.
+  \item \emph{Odd power of tangent ($n\ge1$).} Set aside $\sec x\tan x$, write the remaining even power of tangent as a polynomial in $\sec^2x$, and let $u=\sec x$.
+  \item \emph{Even power of tangent and odd power of secant.} Replace $\tan^2x$ by $\sec^2x-1$, expand, and use the reduction formula for each odd power of secant.
+  \item \emph{No secant ($n=0$).} Use the reduction formula for $\tan^mx$.
+  \item If both cases (1) and (2) apply, either works; check by differentiating, and expect answers that differ by a constant.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{The two substitution cases}{m6}
+Find (a) $\int\tan^2x\sec^4x\,dx$ and (b) $\int\tan^5x\sec^3x\,dx$.
+
+\textbf{Solution.} (a) The power of secant is $4$, which is even, so set aside $\sec^2x$ and write the rest as $\sec^2x=1+\tan^2x$:
+\[\tan^2x\sec^4x=\tan^2x\big(1+\tan^2x\big)\sec^2x .\]
+Let $u=\tan x$, $du=\sec^2x\,dx$:
+\[\int\tan^2x\sec^4x\,dx=\int u^2\big(1+u^2\big)du=\frac{u^3}3+\frac{u^5}5+C=\frac{\tan^3x}3+\frac{\tan^5x}5+C .\]
+%@ m6a | simplify(diff(tan(x)**3/3+tan(x)**5/5,x)-tan(x)**2*sec(x)**4) == 0 | =\frac{\tan^3x}3+\frac{\tan^5x}5+C .\]
+\emph{Check.} The derivative is $\tan^2x\sec^2x+\tan^4x\sec^2x=\tan^2x\sec^2x\big(1+\tan^2x\big)=\tan^2x\sec^4x$.
+
+(b) The power of tangent is $5$, which is odd, and the power of secant is $3\ge1$. Set aside $\sec x\tan x$: $\tan^5x\sec^3x=\tan^4x\sec^2x\cdot\sec x\tan x=\big(\sec^2x-1\big)^2\sec^2x\cdot\sec x\tan x$. Let $u=\sec x$, $du=\sec x\tan x\,dx$:
+\[\int\tan^5x\sec^3x\,dx=\int\big(u^2-1\big)^2u^2\,du=\int\big(u^6-2u^4+u^2\big)du=\frac{u^7}7-\frac{2u^5}5+\frac{u^3}3+C .\]
+Substituting back,
+\[\int\tan^5x\sec^3x\,dx=\frac{\sec^7x}7-\frac{2\sec^5x}5+\frac{\sec^3x}3+C .\]
+%@ m6b | simplify(diff(sec(x)**7/7-2*sec(x)**5/5+sec(x)**3/3,x)-tan(x)**5*sec(x)**3) == 0 and expand((x**2-1)**2*x**2-(x**6-2*x**4+x**2)) == 0 | \int\tan^5x\sec^3x\,dx=\frac{\sec^7x}7-\frac{2\sec^5x}5+\frac{\sec^3x}3+C .\]
+\emph{Check.} The derivative of $\frac{\sec^7x}7$ is $\sec^6x\cdot\sec x\tan x=\sec^7x\tan x$; of $-\frac{2\sec^5x}5$ it is $-2\sec^5x\tan x$; of $\frac{\sec^3x}3$ it is $\sec^3x\tan x$. The sum is $\sec^3x\tan x\big(\sec^4x-2\sec^2x+1\big)=\sec^3x\tan x\big(\sec^2x-1\big)^2=\sec^3x\tan x\cdot\tan^4x=\tan^5x\sec^3x$.
+%@ m6c | simplify(sec(x)**3*tan(x)*(sec(x)**2-1)**2-tan(x)**5*sec(x)**3) == 0 and simplify(sec(x)**7*tan(x)-2*sec(x)**5*tan(x)+sec(x)**3*tan(x)-tan(x)**5*sec(x)**3) == 0 | $\sec^3x\tan x\big(\sec^4x-2\sec^2x+1\big)=\sec^3x\tan x\big(\sec^2x-1\big)^2=\sec^3x\tan x\cdot\tan^4x=\tan^5x\sec^3x$.
+\end{exmp}
+
+\begin{think}{Why does the third case need more?}{whyparts}
+In $\int\tan^2x\sec x\,dx$ the tangent power is even and the secant power is odd. Try $u=\sec x$, and then try $u=\tan x$. What goes wrong each time, and why is that not an accident?
+\end{think}
+
+\begin{exmp}{An even power of tangent with an odd power of secant}{m7}
+Find $\int\tan^2x\sec^3x\,dx$, and evaluate $\int_0^{\pi/4}\tan^2x\sec^3x\,dx$.
+
+\textbf{Solution.} The tangent power is even and the secant power is odd, so we rewrite $\tan^2x=\sec^2x-1$ (Theorem~\ref{thm:tansec}(3)):
+\[\int\tan^2x\sec^3x\,dx=\int\big(\sec^2x-1\big)\sec^3x\,dx=\int\sec^5x\,dx-\int\sec^3x\,dx .\]
+By Theorem~\ref{thm:redtan} with $n=5$, $\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx$. Substituting,
+\[\int\tan^2x\sec^3x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx-\int\sec^3x\,dx=\frac{\sec^3x\tan x}4-\frac14\int\sec^3x\,dx .\]
+Now use $\int\sec^3x\,dx=\frac12\sec x\tan x+\frac12\ln\lvert\sec x+\tan x\rvert$:
+\[\int\tan^2x\sec^3x\,dx=\frac{\sec^3x\tan x}4-\frac{\sec x\tan x}8-\frac18\ln\lvert\sec x+\tan x\rvert+C .\]
+%@ m7a | simplify(diff(sec(x)**3*tan(x)/4-sec(x)*tan(x)/8-log(sec(x)+tan(x))/8,x)-tan(x)**2*sec(x)**3) == 0 and Q(1,4)*Q(1,2) == Q(1,8) | \frac{\sec^3x\tan x}4-\frac{\sec x\tan x}8-\frac18\ln\lvert\sec x+\tan x\rvert+C .\]
+\emph{The definite integral.} At $x=\frac\pi4$: $\sec\frac\pi4=\sqrt2$, $\tan\frac\pi4=1$, so $\sec^3\frac\pi4=2\sqrt2$, and the antiderivative is $\frac{2\sqrt2}4-\frac{\sqrt2}8-\frac18\ln\left(\sqrt2+1\right)=\frac{3\sqrt2}8-\frac18\ln\left(1+\sqrt2\right)$. At $x=0$: $\tan0=0$ and $\ln\lvert\sec0+0\rvert=\ln1=0$, so it is $0$. Hence
+\[\int_0^{\pi/4}\tan^2x\sec^3x\,dx=\frac{3\sqrt2-\ln\left(1+\sqrt2\right)}8\approx0.4202 .\]
+%@ m7b | abs((integrate(tan(x)**2*sec(x)**3,(x,0,pi/4))-(3*sqrt(2)-log(1+sqrt(2)))/8).evalf(30)) < 1e-20 and abs(float((3*sqrt(2)-log(1+sqrt(2)))/8)-0.4202) < 1e-4 and simplify(sqrt(2)**3/4-sqrt(2)/8-3*sqrt(2)/8) == 0 | \frac{3\sqrt2-\ln\left(1+\sqrt2\right)}8\approx0.4202 .\]
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Powers of cotangent and cosecant}
+
+The cotangent and cosecant behave like the tangent and secant, with $\frac{d}{dx}\cot x=-\csc^2x$ and $\frac{d}{dx}\csc x=-\csc x\cot x$, so each substitution has a minus sign.
+
+\begin{thm}{Cotangent and cosecant}{cotcsc}
+Let $n\ge2$ and $m\ge0$ be integers, on an interval where the functions are defined.
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Reduction formulas.}
+  \[\int\cot^nx\,dx=-\frac{\cot^{n-1}x}{n-1}-\int\cot^{n-2}x\,dx,\]
+  \[\int\csc^nx\,dx=-\frac{\csc^{n-2}x\cot x}{n-1}+\frac{n-2}{n-1}\int\csc^{n-2}x\,dx .\]
+  In particular $\displaystyle\int\csc^3x\,dx=-\frac12\csc x\cot x-\frac12\ln\lvert\csc x+\cot x\rvert+C$.
+  \item \emph{$n$ even and positive}, $n=2j+2$. With $u=\cot x$: $\displaystyle\int\cot^mx\csc^nx\,dx=-\int u^m\big(1+u^2\big)^j\,du$.
+  \item \emph{$m$ odd and $n\ge1$}, $m=2i+1$. With $u=\csc x$: $\displaystyle\int\cot^mx\csc^nx\,dx=-\int\big(u^2-1\big)^iu^{n-1}\,du$.
+  \item \emph{$m$ even and $n$ odd.} Replace $\cot^2x=\csc^2x-1$, expand, and use (1).
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) \emph{Cotangent.} $\cot^nx=\cot^{n-2}x\big(\csc^2x-1\big)$ by Theorem~\ref{thm:ident}(1). In $\int\cot^{n-2}x\csc^2x\,dx$ let $u=\cot x$, $du=-\csc^2x\,dx$: it equals $-\frac{u^{n-1}}{n-1}$. \emph{Cosecant.} Parts with $u=\csc^{n-2}x$, $dv=\csc^2x\,dx$: $du=-(n-2)\csc^{n-2}x\cot x\,dx$ (since $\frac{d}{dx}\csc x=-\csc x\cot x$) and $v=-\cot x$. Then
+\[\int\csc^nx\,dx=-\csc^{n-2}x\cot x-(n-2)\int\csc^{n-2}x\cot^2x\,dx .\]
+Replace $\cot^2x=\csc^2x-1$:
+\[\int\csc^nx\,dx=-\csc^{n-2}x\cot x-(n-2)\int\csc^nx\,dx+(n-2)\int\csc^{n-2}x\,dx .\]
+Add $(n-2)\int\csc^nx\,dx$ to both sides and divide by $n-1$. For $n=3$ use $\int\csc x\,dx=-\ln\lvert\csc x+\cot x\rvert$ (Theorem~\ref{8.1-thm:trig4}).
+
+(2) $\cot^mx\csc^nx\,dx=\cot^mx\big(1+\cot^2x\big)^j\big(\csc^2x\,dx\big)$ and $du=-\csc^2x\,dx$.
+
+(3) $\cot^mx\csc^nx=\big(\csc^2x-1\big)^i\csc^{n-1}x\cdot\big(\csc x\cot x\big)$ and $du=-\csc x\cot x\,dx$ for $u=\csc x$.
+
+(4) is the same expansion as in Theorem~\ref{thm:tansec}(3).
+\end{proof}
+%@ t5-check | all(simplify(diff(-cot(x)**(nn-1)/(nn-1),x)-cot(x)**(nn-2)-cot(x)**nn) == 0 and simplify(diff(-csc(x)**(nn-2)*cot(x)/(nn-1),x)+Q(nn-2,nn-1)*csc(x)**(nn-2)-csc(x)**nn) == 0 for nn in range(2,9)) and simplify(diff(-csc(x)*cot(x)/2-log(csc(x)+cot(x))/2,x)-csc(x)**3) == 0 | (4) is the same expansion as in Theorem~\ref{thm:tansec}(3).
+
+\begin{exmp}{Cotangent and cosecant}{m8}
+Find (a) $\int\cot^4x\csc^4x\,dx$ and (b) $\int\cot^3x\,dx$.
+
+\textbf{Solution.} (a) The power of $\csc x$ is $4$, even: set aside $\csc^2x$ and write $\csc^2x=1+\cot^2x$. Let $u=\cot x$, $du=-\csc^2x\,dx$:
+\[\int\cot^4x\csc^4x\,dx=-\int u^4\big(1+u^2\big)du=-\frac{u^5}5-\frac{u^7}7+C=-\frac{\cot^5x}5-\frac{\cot^7x}7+C .\]
+%@ m8a | simplify(diff(-cot(x)**5/5-cot(x)**7/7,x)-cot(x)**4*csc(x)**4) == 0 | =-\frac{\cot^5x}5-\frac{\cot^7x}7+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{\cot^5x}5-\frac{\cot^7x}7\right]=\cot^4x\csc^2x+\cot^6x\csc^2x=\cot^4x\csc^2x\big(1+\cot^2x\big)=\cot^4x\csc^4x$.
+
+(b) By Theorem~\ref{thm:cotcsc}(1) with $n=3$, and $\int\cot x\,dx=\ln\lvert\sin x\rvert$ (formula (15) of Section~8.1):
+\[\int\cot^3x\,dx=-\frac{\cot^2x}2-\int\cot x\,dx=-\frac{\cot^2x}2-\ln\lvert\sin x\rvert+C .\]
+%@ m8b | simplify(diff(-cot(x)**2/2-log(sin(x)),x)-cot(x)**3) == 0 | =-\frac{\cot^2x}2-\int\cot x\,dx=-\frac{\cot^2x}2-\ln\lvert\sin x\rvert+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{\cot^2x}2-\ln\lvert\sin x\rvert\right]=\cot x\csc^2x-\cot x=\cot x\big(\csc^2x-1\big)=\cot^3x$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Products with different angles: $\sin mx\cos nx$ and relatives}
+
+A product such as $\sin3x\cos5x$ has no odd power to split off and no Pythagorean identity to use; but the product-to-sum identities (Theorem~\ref{thm:ident}(4)) turn it into a sum of single sines or cosines, which are in the table of Section~8.1.
+
+\begin{thm}{Products of sines and cosines of different multiples}{prod}
+Let $a$ and $b$ be real numbers with $a^2\ne b^2$ (that is, $a\ne b$ and $a\ne-b$). Then
+\[\int\sin ax\cos bx\,dx=-\frac{\cos(a-b)x}{2(a-b)}-\frac{\cos(a+b)x}{2(a+b)}+C,\]
+\[\int\sin ax\sin bx\,dx=\frac{\sin(a-b)x}{2(a-b)}-\frac{\sin(a+b)x}{2(a+b)}+C,\]
+\[\int\cos ax\cos bx\,dx=\frac{\sin(a-b)x}{2(a-b)}+\frac{\sin(a+b)x}{2(a+b)}+C .\]
+If $a=b\ne0$, then $\int\sin ax\cos ax\,dx=-\frac{\cos2ax}{4a}+C$, $\int\sin^2ax\,dx=\frac x2-\frac{\sin2ax}{4a}+C$ and $\int\cos^2ax\,dx=\frac x2+\frac{\sin2ax}{4a}+C$.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:ident}(4), $\sin ax\cos bx=\frac12\big[\sin(a-b)x+\sin(a+b)x\big]$. Since $a-b\ne0$ and $a+b\ne0$, formula (4) of Section~8.1 (with the constants $a-b$ and $a+b$ in place of $a$) gives $\int\sin cx\,dx=-\frac{\cos cx}c$ for $c=a\mp b$. The sine--sine and cosine--cosine formulas follow in the same way from $\sin ax\sin bx=\frac12\big[\cos(a-b)x-\cos(a+b)x\big]$ and $\cos ax\cos bx=\frac12\big[\cos(a-b)x+\cos(a+b)x\big]$, with formula (3): $\int\cos cx\,dx=\frac{\sin cx}c$. If $a=b$ the term with $a-b=0$ is $\sin0=0$ in the first case and the constant $\cos0=1$ in the others, and the double-angle and power-reducing identities give the three formulas: $\sin ax\cos ax=\frac12\sin2ax$, $\sin^2ax=\frac{1-\cos2ax}2$, $\cos^2ax=\frac{1+\cos2ax}2$.
+\end{proof}
+%@ t6-check | simplify(diff(-cos((a-b)*x)/(2*(a-b))-cos((a+b)*x)/(2*(a+b)),x)-sin(a*x)*cos(b*x)) == 0 and simplify(diff(sin((a-b)*x)/(2*(a-b))-sin((a+b)*x)/(2*(a+b)),x)-sin(a*x)*sin(b*x)) == 0 and simplify(diff(sin((a-b)*x)/(2*(a-b))+sin((a+b)*x)/(2*(a+b)),x)-cos(a*x)*cos(b*x)) == 0 and simplify(diff(-cos(2*a*x)/(4*a),x)-sin(a*x)*cos(a*x)) == 0 and simplify(diff(x/2-sin(2*a*x)/(4*a),x)-sin(a*x)**2) == 0 and simplify(diff(x/2+sin(2*a*x)/(4*a),x)-cos(a*x)**2) == 0 | and the double-angle and power-reducing identities give the three formulas: $\sin ax\cos ax=\frac12\sin2ax$, $\sin^2ax=\frac{1-\cos2ax}2$, $\cos^2ax=\frac{1+\cos2ax}2$.
+
+\begin{exmp}{Products of sines and cosines}{m9}
+Find (a) $\int\sin5x\cos2x\,dx$ and (b) $\int_0^{\pi/4}\cos3x\cos x\,dx$.
+
+\textbf{Solution.} (a) By the product-to-sum identity with $A=5x$, $B=2x$: $\sin5x\cos2x=\frac12\big[\sin3x+\sin7x\big]$. Integrating each term with formula (4) of Section~8.1,
+\[\int\sin5x\cos2x\,dx=\frac12\left(-\frac{\cos3x}3-\frac{\cos7x}7\right)+C=-\frac{\cos3x}6-\frac{\cos7x}{14}+C .\]
+%@ m9a | simplify(diff(-cos(3*x)/6-cos(7*x)/14,x)-sin(5*x)*cos(2*x)) == 0 and simplify(sin(5*x)*cos(2*x)-(sin(3*x)+sin(7*x))/2) == 0 | =-\frac{\cos3x}6-\frac{\cos7x}{14}+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{\cos3x}6-\frac{\cos7x}{14}\right]=\frac{\sin3x}2+\frac{\sin7x}2=\sin5x\cos2x$ by the same identity read backward.
+
+(b) $\cos3x\cos x=\frac12\big[\cos2x+\cos4x\big]$, so an antiderivative is $\frac12\left(\frac{\sin2x}2+\frac{\sin4x}4\right)=\frac{\sin2x}4+\frac{\sin4x}8$. At $x=\frac\pi4$: $\frac{\sin\frac\pi2}4+\frac{\sin\pi}8=\frac14+0$. At $x=0$: $0$. Hence
+\[\int_0^{\pi/4}\cos3x\cos x\,dx=\frac14 .\]
+%@ m9b | integrate(cos(3*x)*cos(x),(x,0,pi/4)) == Q(1,4) and simplify(expand_trig(cos(3*x)*cos(x)-(cos(2*x)+cos(4*x))/2)) == 0 | \int_0^{\pi/4}\cos3x\cos x\,dx=\frac14 .\]
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Orthogonality of sines and cosines}
+
+The next theorem is the most important special case of the product formulas. It says that when $m$ and $n$ are different whole numbers, the functions $\sin mx$ and $\sin nx$ are ``perpendicular'' on an interval of length $2\pi$, in the sense that the integral of their product is zero. (Compare the dot product of two perpendicular vectors; the integral $\int fg$ plays the role of the dot product of the functions $f$ and $g$.)
+
+\begin{thm}{Orthogonality relations}{orth}
+Let $m$ and $n$ be positive integers and let $a$ be any real number. On $[a,a+2\pi]$, and in particular on $[-\pi,\pi]$ and $[0,2\pi]$:
+\begin{enumerate}[label=(\arabic*)]
+  \item $\displaystyle\int\sin mx\,dx=0$ and $\displaystyle\int\cos mx\,dx=0$, while $\displaystyle\int1\,dx=2\pi$.
+  \item $\displaystyle\int\sin mx\cos nx\,dx=0$ for all $m,n$.
+  \item $\displaystyle\int\sin mx\sin nx\,dx=\begin{cases}0&m\ne n\\\pi&m=n\end{cases}$.
+  \item $\displaystyle\int\cos mx\cos nx\,dx=\begin{cases}0&m\ne n\\\pi&m=n\end{cases}$.
+\end{enumerate}
+(All integrals are over $[a,a+2\pi]$.)
+\end{thm}
+\begin{proof}
+(1) Let $k$ be a nonzero integer. By formula (3) of Section~8.1,
+\[\int_a^{a+2\pi}\cos kx\,dx=\frac{\sin k(a+2\pi)-\sin ka}k .\]
+Since $k$ is an integer, $k(a+2\pi)=ka+2\pi k$ differs from $ka$ by a whole number of full turns, so $\sin k(a+2\pi)=\sin ka$ and the integral is $0$. In the same way $\int_a^{a+2\pi}\sin kx\,dx=-\frac{\cos k(a+2\pi)-\cos ka}k=0$. Finally $\int_a^{a+2\pi}1\,dx=2\pi$.
+
+(2) By Theorem~\ref{thm:ident}(4), $\sin mx\cos nx=\frac12\big[\sin(m-n)x+\sin(m+n)x\big]$. The number $m+n$ is a positive integer, so $\int\sin(m+n)x\,dx=0$ by (1). If $m\ne n$, then $m-n$ is a nonzero integer and $\int\sin(m-n)x\,dx=0$ by (1) as well. If $m=n$ the term is $\sin0=0$. So the integral is $0$.
+
+(3) $\sin mx\sin nx=\frac12\big[\cos(m-n)x-\cos(m+n)x\big]$. If $m\ne n$, both $m-n$ and $m+n$ are nonzero integers, so both integrals vanish by (1). If $m=n$, the first term is $\cos0=1$, and $\int_a^{a+2\pi}\frac12\big[1-\cos2mx\big]\,dx=\frac12\cdot2\pi-0=\pi$.
+
+(4) $\cos mx\cos nx=\frac12\big[\cos(m-n)x+\cos(m+n)x\big]$. If $m\ne n$ both integrals vanish by (1); if $m=n$, then $\int\frac12\big[1+\cos2mx\big]\,dx=\pi$.
+\end{proof}
+%@ t7-check | all(simplify(integrate(sin(i0*x)*cos(l0*x),(x,-pi,pi))) == 0 and simplify(integrate(sin(i0*x)*sin(l0*x),(x,-pi,pi))-(pi if i0 == l0 else 0)) == 0 and simplify(integrate(cos(i0*x)*cos(l0*x),(x,-pi,pi))-(pi if i0 == l0 else 0)) == 0 for i0 in range(1,4) for l0 in range(1,4)) and simplify(integrate(sin(3*x)*sin(2*x),(x,0,2*pi))) == 0 and simplify(integrate(cos(2*x)*cos(2*x),(x,0,2*pi))) == pi | if $m=n$, then $\int\frac12\big[1+\cos2mx\big]\,dx=\pi$.
+
+\emph{A picture of orthogonality.} Figure~2 shows $y=\sin x\sin2x$ on $[-\pi,\pi]$, the case $m=1$, $n=2$. The graph is positive on $\left(-\frac\pi2,0\right)$ and $\left(0,\frac\pi2\right)$ and negative on the two outer intervals. Each of the four lobes has area $\frac23$, so the signed areas cancel exactly: $\frac23+\frac23-\frac23-\frac23=0$. The theorem says this cancellation happens for \emph{every} pair $m\ne n$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=3cm]
+  \draw[->] (-3.5,0) -- (3.6,0) node[right] {$x$};
+  \draw[->] (0,-0.95) -- (0,0.95) node[above] {$y$};
+  \fill[blue!18] (-1.5708,0) -- plot[domain=-1.5708:1.5708,samples=60,variable=\t] ({\t},{sin(\t r)*sin(2*\t r)}) -- (1.5708,0) -- cycle;
+  \fill[red!18] (1.5708,0) -- plot[domain=1.5708:3.1416,samples=40,variable=\t] ({\t},{sin(\t r)*sin(2*\t r)}) -- (3.1416,0) -- cycle;
+  \fill[red!18] (-3.1416,0) -- plot[domain=-3.1416:-1.5708,samples=40,variable=\t] ({\t},{sin(\t r)*sin(2*\t r)}) -- (-1.5708,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=-3.1416:3.1416,samples=120,variable=\t] plot ({\t},{sin(\t r)*sin(2*\t r)});
+  \fill (0.9553,0.7698) circle (1.6pt) node[above,font=\small] {$(0.955,\,0.770)$};
+%@ g2-peak | (lambda x0: simplify(diff(sin(t)*sin(2*t),t).subs(t,x0)) == 0 and abs(float(x0)-0.9553) < 1e-4 and abs(float(sin(x0)*sin(2*x0))-0.7698) < 1e-4 and simplify(sin(x0)*sin(2*x0)-4*sqrt(3)/9) == 0)(acos(1/sqrt(3))) | \fill (0.9553,0.7698) circle (1.6pt) node[above,font=\small] {$(0.955,\,0.770)$};
+  \fill (2.1863,-0.7698) circle (1.6pt) node[below,font=\small] {$(2.186,\,-0.770)$};
+%@ g2-trough | (lambda x0: simplify(diff(sin(t)*sin(2*t),t).subs(t,x0)) == 0 and abs(float(x0)-2.1863) < 1e-4 and abs(float(sin(x0)*sin(2*x0))+0.7698) < 1e-4 and simplify(sin(x0)*sin(2*x0)+4*sqrt(3)/9) == 0)(pi-acos(1/sqrt(3))) | \fill (2.1863,-0.7698) circle (1.6pt) node[below,font=\small] {$(2.186,\,-0.770)$};
+  \fill (1.5708,0) circle (1.6pt) node[above right,font=\small] {$\frac\pi2$};
+%@ g2-zero | sin(pi/2)*sin(2*(pi/2)) == 0 and abs(float(pi/2)-1.5708) < 1e-4 | \fill (1.5708,0) circle (1.6pt) node[above right,font=\small] {$\frac\pi2$};
+  \fill (-1.5708,0) circle (1.6pt) node[above left,font=\small] {$-\frac\pi2$};
+%@ g2-zero2 | sin(-pi/2)*sin(2*(-pi/2)) == 0 and abs(float(-pi/2)+1.5708) < 1e-4 | \fill (-1.5708,0) circle (1.6pt) node[above left,font=\small] {$-\frac\pi2$};
+  \node[font=\small] at (0.95,0.3) {$+\frac23$};
+%@ g2-pos | integrate(sin(t)*sin(2*t),(t,0,pi/2)) == Q(2,3) | \node[font=\small] at (0.95,0.3) {$+\frac23$};
+  \node[font=\small] at (-0.95,0.3) {$+\frac23$};
+%@ g2-pos2 | integrate(sin(t)*sin(2*t),(t,-pi/2,0)) == Q(2,3) | \node[font=\small] at (-0.95,0.3) {$+\frac23$};
+  \node[font=\small] at (2.19,-0.3) {$-\frac23$};
+%@ g2-neg | integrate(sin(t)*sin(2*t),(t,pi/2,pi)) == -Q(2,3) | \node[font=\small] at (2.19,-0.3) {$-\frac23$};
+  \node[font=\small] at (-2.19,-0.3) {$-\frac23$};
+%@ g2-neg2 | integrate(sin(t)*sin(2*t),(t,-pi,-pi/2)) == -Q(2,3) and (Q(2,3)+Q(2,3)-Q(2,3)-Q(2,3)) == 0 | \node[font=\small] at (-2.19,-0.3) {$-\frac23$};
+  \node[below,font=\small] at (3.1416,0) {$\pi$};
+  \node[below,font=\small] at (-3.1416,0) {$-\pi$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 2. The graph of $y=\sin x\sin2x$ on $[-\pi,\pi]$. The four signed areas $\frac23$, $\frac23$, $-\frac23$, $-\frac23$ add to $0$.\end{center}
+
+\emph{Symmetry gives part (2) at once.} The function $\sin mx\cos nx$ is \emph{odd} (replacing $x$ by $-x$ changes its sign, because $\sin$ is odd and $\cos$ is even). The integral of an odd function over $[-\pi,\pi]$ is $0$: with $x=-s$ in $\int_{-\pi}^0f(x)\,dx$ we get $\int_{\pi}^{0}f(-s)(-ds)=\int_0^\pi f(-s)\,ds=-\int_0^\pi f(s)\,ds$ (Theorem~\ref{8.1-thm:subst}), which cancels $\int_0^\pi f(x)\,dx$. This argument works only on an interval symmetric about $0$; the proof above works on every interval of length $2\pi$.
+
+\begin{warn}[Orthogonality needs a full period]
+The interval matters. On $\left[0,\frac\pi2\right]$ the functions $\sin x$ and $\sin2x$ are \emph{not} orthogonal: $\int_0^{\pi/2}\sin x\sin2x\,dx=\frac23\ne0$. Theorem~\ref{thm:orth} holds on an interval whose length is $2\pi$ (or, for sines with sines and cosines with cosines, on $[0,\pi]$; see the bank).
+\end{warn}
+
+\begin{kc}{Using orthogonality}{kcorth}
+Without computing an antiderivative, find $\int_{-\pi}^{\pi}\sin4x\cos3x\,dx$ and $\int_{-\pi}^{\pi}\sin^24x\,dx$. Which parts of Theorem~\ref{thm:orth} do you use?
+\end{kc}
+
+\begin{think}{Why not half a period?}{halfper}
+The proof of Theorem~\ref{thm:orth} used $\sin k(a+2\pi)=\sin ka$ for every integer $k$. Find where the proof fails on $\left[0,\frac\pi2\right]$, and use Theorem~\ref{thm:prod} to see why the integral of $\sin x\sin2x$ over $\left[0,\frac\pi2\right]$ is not $0$.
+\end{think}
+
+\begin{exmp}{Reading off coefficients with orthogonality}{m10}
+(a) Suppose $f(x)=4-3\cos x+5\sin2x+2\cos3x$. Compute $\int_{-\pi}^{\pi}f(x)\cos3x\,dx$ and explain how it identifies the coefficient $2$. (b) For $f(x)=x$ on $[-\pi,\pi]$, compute $b_n=\frac1\pi\int_{-\pi}^{\pi}x\sin nx\,dx$ for a positive integer $n$.
+
+\textbf{Solution.} (a) Multiply $f$ by $\cos3x$ and integrate term by term over $[-\pi,\pi]$. By Theorem~\ref{thm:orth}: $\int4\cos3x\,dx=0$ by (1); $\int-3\cos x\cos3x\,dx=0$ by (4) with $m=1\ne3$; $\int5\sin2x\cos3x\,dx=0$ by (2); and $\int2\cos^23x\,dx=2\pi$ by (4) with $m=n=3$. Hence
+\[\int_{-\pi}^{\pi}f(x)\cos3x\,dx=2\pi .\]
+%@ m10a | integrate((4-3*cos(x)+5*sin(2*x)+2*cos(3*x))*cos(3*x),(x,-pi,pi)) == 2*pi | \int_{-\pi}^{\pi}f(x)\cos3x\,dx=2\pi .\]
+Every term except the one containing $\cos3x$ dropped out, and that term gave $\pi$ times its coefficient. So the coefficient of $\cos3x$ is $\frac1\pi\int_{-\pi}^{\pi}f(x)\cos3x\,dx=2$. In the same way $\frac1\pi\int_{-\pi}^{\pi}f(x)\sin2x\,dx=5$, and $\frac1\pi\int_{-\pi}^\pi f(x)\cos x\,dx=-3$.
+%@ m10b | integrate((4-3*cos(x)+5*sin(2*x)+2*cos(3*x))*sin(2*x),(x,-pi,pi))/pi == 5 and integrate((4-3*cos(x)+5*sin(2*x)+2*cos(3*x))*cos(x),(x,-pi,pi))/pi == -3 | and $\frac1\pi\int_{-\pi}^\pi f(x)\cos x\,dx=-3$.
+(b) Here we cannot use orthogonality, since $x$ is not a combination of sines and cosines; we integrate by parts (Theorem~\ref{8.2-thm:parts}) with $u=x$, $dv=\sin nx\,dx$, $du=dx$, $v=-\frac{\cos nx}n$:
+\[\int x\sin nx\,dx=-\frac{x\cos nx}n+\frac1n\int\cos nx\,dx=-\frac{x\cos nx}n+\frac{\sin nx}{n^2}+C .\]
+At $x=\pi$ the antiderivative is $-\frac{\pi\cos n\pi}n+0$ and at $x=-\pi$ it is $\frac{\pi\cos n\pi}n+0$ (because $\cos(-n\pi)=\cos n\pi$ and $\sin(\pm n\pi)=0$). With $\cos n\pi=(-1)^n$,
+\[\int_{-\pi}^{\pi}x\sin nx\,dx=-\frac{2\pi(-1)^n}n,\qquad b_n=\frac{2(-1)^{n+1}}n .\]
+%@ m10c | all(integrate(x*sin(nn*x),(x,-pi,pi))/pi == Q(2*(-1)**(nn+1),nn) for nn in range(1,6)) and simplify(diff(-x*cos(3*x)/3+sin(3*x)/9,x)-x*sin(3*x)) == 0 | \int_{-\pi}^{\pi}x\sin nx\,dx=-\frac{2\pi(-1)^n}n,\qquad b_n=\frac{2(-1)^{n+1}}n .\]
+So $b_1=2$, $b_2=-1$, $b_3=\frac23$, $b_4=-\frac12$. (A later course shows that $2\sin x-\sin2x+\frac23\sin3x-\cdots$ is the \emph{Fourier series} of $x$ on $(-\pi,\pi)$.)
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Pitfalls: errors and answers that look different}
+
+\begin{exmp}{Three common errors}{m11}
+Each ``solution'' below is wrong. Find what is wrong by differentiating the answer, and correct it. (a) $\int\sin^2x\,dx=\frac{\sin^3x}3+C$. (b) $\int\tan^3x\,dx=\frac{\tan^4x}4+C$. (c) $\int\sin3x\cos2x\,dx=\left(-\frac{\cos3x}3\right)\left(\frac{\sin2x}2\right)+C$.
+
+\textbf{Solution.} (a) The power rule $\int u^2\,du=\frac{u^3}3$ is valid only when $du$ is present, that is, when the integrand is $u^2u'$. Differentiating, $\frac{d}{dx}\frac{\sin^3x}3=\sin^2x\cos x\ne\sin^2x$. The correct method is the power-reducing identity: $\int\sin^2x\,dx=\int\frac{1-\cos2x}2\,dx=\frac x2-\frac{\sin2x}4+C$.
+%@ m11a | simplify(diff(sin(x)**3/3,x)-sin(x)**2*cos(x)) == 0 and simplify(diff(x/2-sin(2*x)/4,x)-sin(x)**2) == 0 | =\int\frac{1-\cos2x}2\,dx=\frac x2-\frac{\sin2x}4+C$.
+(b) Here $\frac{d}{dx}\frac{\tan^4x}4=\tan^3x\sec^2x$, which has an extra factor $\sec^2x$: the substitution $u=\tan x$ needs $du=\sec^2x\,dx$ to be in the integrand, and it is not. The correct integral is by the reduction formula: $\int\tan^3x\,dx=\frac{\tan^2x}2-\int\tan x\,dx=\frac{\tan^2x}2-\ln\lvert\sec x\rvert+C$.
+%@ m11b | simplify(diff(tan(x)**4/4,x)-tan(x)**3*sec(x)**2) == 0 and simplify(diff(tan(x)**2/2-log(sec(x)),x)-tan(x)**3) == 0 | =\frac{\tan^2x}2-\int\tan x\,dx=\frac{\tan^2x}2-\ln\lvert\sec x\rvert+C$.
+(c) The integral of a product is \emph{not} the product of the integrals. Differentiating the proposed answer by the Product Rule gives $\frac{\sin3x\sin2x}2-\frac{\cos3x\cos2x}3$; at $x=\frac\pi2$ this is $0$, while the integrand $\sin\frac{3\pi}2\cos\pi$ equals $1$. The correct method is product-to-sum: $\sin3x\cos2x=\frac12\big[\sin x+\sin5x\big]$, so the integral is $-\frac{\cos x}2-\frac{\cos5x}{10}+C$.
+%@ m11c | simplify(diff(-cos(3*x)*sin(2*x)/6,x)-(sin(3*x)*sin(2*x)/2-cos(3*x)*cos(2*x)/3)) == 0 and diff(-cos(3*x)*sin(2*x)/6,x).subs(x,pi/2) == 0 and (sin(3*x)*cos(2*x)).subs(x,pi/2) == 1 and simplify(diff(-cos(x)/2-cos(5*x)/10,x)-sin(3*x)*cos(2*x)) == 0 | so the integral is $-\frac{\cos x}2-\frac{\cos5x}{10}+C$.
+\end{exmp}
+
+\begin{exmp}{Two methods, answers that differ by a constant}{m12}
+Find $\int\tan x\sec^2x\,dx$ with the substitution $u=\tan x$ and with $u=\sec x$, and reconcile the answers.
+
+\textbf{Solution.} \emph{With $u=\tan x$:} $du=\sec^2x\,dx$, so $\int\tan x\sec^2x\,dx=\int u\,du=\frac{\tan^2x}2+C_1$. \emph{With $u=\sec x$:} write $\tan x\sec^2x=\sec x\cdot\big(\sec x\tan x\big)$ and $du=\sec x\tan x\,dx$, so the integral is $\int u\,du=\frac{\sec^2x}2+C_2$.
+
+\emph{Reconcile.} The answers look different, but $\sec^2x=1+\tan^2x$ gives
+\[\frac{\sec^2x}2=\frac{1+\tan^2x}2=\frac{\tan^2x}2+\frac12 .\]
+%@ m12a | simplify(diff(tan(x)**2/2,x)-tan(x)*sec(x)**2) == 0 and simplify(diff(sec(x)**2/2,x)-tan(x)*sec(x)**2) == 0 and simplify(sec(x)**2/2-tan(x)**2/2) == Q(1,2) | =\frac{1+\tan^2x}2=\frac{\tan^2x}2+\frac12 .\]
+They differ by the constant $\frac12$, as two antiderivatives on an interval must. A constant is absorbed into $C$, and for a definite integral it cancels: $\left[\frac{\tan^2x}2\right]_0^{\pi/4}=\frac12-0=\frac12$ and $\left[\frac{\sec^2x}2\right]_0^{\pi/4}=1-\frac12=\frac12$. Figure~3 shows the two antiderivatives: one curve is the other raised by $\frac12$.
+%@ m12b | integrate(tan(x)*sec(x)**2,(x,0,pi/4)) == Q(1,2) and (tan(pi/4)**2/2-tan(0)**2/2) == Q(1,2) and (sec(pi/4)**2/2-sec(0)**2/2) == Q(1,2) | Figure~3 shows the two antiderivatives: one curve is the other raised by $\frac12$.
+
+\begin{center}
+\begin{tikzpicture}[x=3cm,y=1.1cm]
+  \draw[->] (-1.4,0) -- (1.45,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,4.2) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-1.2:1.2,samples=80,variable=\t] plot ({\t},{0.5*tan(\t r)*tan(\t r)});
+  \draw[very thick,red!70!black,domain=-1.2:1.2,samples=80,variable=\t] plot ({\t},{0.5/(cos(\t r)*cos(\t r))});
+  \draw[dashed] (0.7854,0) -- (0.7854,1);
+  \fill (0.7854,0.5) circle (1.6pt) node[below right,font=\small] {$\left(\frac\pi4,\frac12\right)$};
+%@ g3-blue | tan(pi/4)**2/2 == Q(1,2) and abs(float(pi/4)-0.7854) < 1e-4 | \fill (0.7854,0.5) circle (1.6pt) node[below right,font=\small] {$\left(\frac\pi4,\frac12\right)$};
+  \fill (0.7854,1) circle (1.6pt) node[above left,font=\small] {$\left(\frac\pi4,1\right)$};
+%@ g3-red | sec(pi/4)**2/2 == 1 and abs(float(pi/4)-0.7854) < 1e-4 | \fill (0.7854,1) circle (1.6pt) node[above left,font=\small] {$\left(\frac\pi4,1\right)$};
+  \fill (0,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+%@ g3-o | tan(0)**2/2 == 0 and sec(0)**2/2-tan(0)**2/2 == Q(1,2) | \fill (0,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+  \fill (0,0.5) circle (1.6pt);
+  \draw[gray] (0,0.5) -- (-0.5,1.5) node[above,font=\small] {$\left(0,\frac12\right)$};
+%@ g3-o2 | sec(0)**2/2 == Q(1,2) | \draw[gray] (0,0.5) -- (-0.5,1.5) node[above,font=\small] {$\left(0,\frac12\right)$};
+  \node[blue!70!black,font=\small,anchor=east] at (-1.25,3.0) {$y=\frac12\tan^2x$};
+  \node[red!70!black,font=\small,anchor=east] at (-1.25,3.9) {$y=\frac12\sec^2x$};
+  \node[below,font=\small] at (1.0,0) {$1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 3. The antiderivatives $\frac12\tan^2x$ and $\frac12\sec^2x$ of $\tan x\sec^2x$ differ by the constant $\frac12$ (compare the heights at $x=0$ and at $x=\frac\pi4$).\end{center}
+\end{exmp}
+
+\begin{remark}[Reconciling answers]
+Two correct trigonometric answers rarely match term by term, because identities rewrite the same function in several ways (compare the closing remark in Section~8.2, and Example~\ref{8.2-ex:m12}). Differentiate both: each must give the integrand. Or subtract them and use an identity to see that the difference is constant. For instance the answer $\frac{\sec^6x}6-\frac{\sec^4x}4$ for $\int\tan^3x\sec^4x\,dx$ by $u=\sec x$ equals $\frac{\tan^4x}4+\frac{\tan^6x}6-\frac1{12}$, where $\frac{\tan^4x}4+\frac{\tan^6x}6$ is the answer by $u=\tan x$.
+\end{remark}
+%@ r1 | simplify(sec(x)**6/6-sec(x)**4/4-(tan(x)**4/4+tan(x)**6/6)) == -Q(1,12) and simplify(diff(sec(x)**6/6-sec(x)**4/4,x)-tan(x)**3*sec(x)**4) == 0 and simplify(diff(tan(x)**4/4+tan(x)**6/6,x)-tan(x)**3*sec(x)**4) == 0 | equals $\frac{\tan^4x}4+\frac{\tan^6x}6-\frac1{12}$, where $\frac{\tan^4x}4+\frac{\tan^6x}6$ is the answer by $u=\tan x$.
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+The reduction formulas of this section are exactly what is needed after a trigonometric substitution, the next technique of this chapter, which turns integrals with $\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$ and $\sqrt{x^2-a^2}$ into integrals of powers of sine, tangent and secant. The orthogonality relations are the starting point of Fourier series, which write a periodic function as a sum of sines and cosines and are studied in later courses, alongside the power series and Taylor series of the later chapters. Integrals of $\sec^3x$ also arise in the length of a parabola and in the length of a spiral.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: odd powers of sine and cosine (including a negative power).
+  \item Group 2: even powers and the power-reducing identities.
+  \item Group 3: powers of tangent and secant.
+  \item Group 4: powers of cotangent and cosecant.
+  \item Group 5: products of sines and cosines of different multiples.
+  \item Group 6: rewriting the integrand first.
+  \item Group 7: proofs.
+\end{itemize}
+
+\subsection*{Group 1: Odd powers of sine and cosine}
+
+\begin{exmp}{A negative power of the cosine}{b1}
+Find $\int\frac{\sin^3x}{\cos^4x}\,dx$ on an interval where $\cos x\ne0$.
+
+\textbf{Solution.} The power of $\sin x$ is odd. Write $\frac{\sin^3x}{\cos^4x}=\big(1-\cos^2x\big)\cos^{-4}x\cdot\sin x$ and let $u=\cos x$, $du=-\sin x\,dx$:
+\[\int\frac{\sin^3x}{\cos^4x}\,dx=-\int\big(1-u^2\big)u^{-4}\,du=-\int\big(u^{-4}-u^{-2}\big)du .\]
+Integrating term by term (formula (2) of Section~8.1),
+\[-\int\big(u^{-4}-u^{-2}\big)du=-\left(-\frac{u^{-3}}3+u^{-1}\right)+C=\frac{u^{-3}}3-u^{-1}+C .\]
+Since $u^{-1}=\sec x$, the answer is
+\[\int\frac{\sin^3x}{\cos^4x}\,dx=\frac{\sec^3x}3-\sec x+C .\]
+%@ b1 | simplify(diff(sec(x)**3/3-sec(x),x)-sin(x)**3/cos(x)**4) == 0 | \int\frac{\sin^3x}{\cos^4x}\,dx=\frac{\sec^3x}3-\sec x+C .\]
+\emph{Check.} $\frac{d}{dx}\left[\frac{\sec^3x}3-\sec x\right]=\sec^3x\tan x-\sec x\tan x=\sec x\tan x\big(\sec^2x-1\big)=\sec x\tan^3x=\frac{\sin^3x}{\cos^4x}$.
+\end{exmp}
+
+\begin{exmp}{A fifth power of the cosine of a multiple angle}{b2}
+Find $\int\sin^22x\cos^52x\,dx$.
+
+\textbf{Solution.} The power of $\cos2x$ is odd. Set aside one $\cos2x$ and write $\cos^42x=\big(1-\sin^22x\big)^2$. Let $w=\sin2x$, $dw=2\cos2x\,dx$, so $\cos2x\,dx=\frac12\,dw$:
+\[\int\sin^22x\cos^52x\,dx=\frac12\int w^2\big(1-w^2\big)^2dw=\frac12\int\big(w^2-2w^4+w^6\big)dw .\]
+Integrating term by term,
+\[\frac12\int\big(w^2-2w^4+w^6\big)dw=\frac12\left(\frac{w^3}3-\frac{2w^5}5+\frac{w^7}7\right)+C .\]
+Substituting $w=\sin2x$,
+\[\int\sin^22x\cos^52x\,dx=\frac{\sin^32x}6-\frac{\sin^52x}5+\frac{\sin^72x}{14}+C .\]
+%@ b2 | simplify(diff(sin(2*x)**3/6-sin(2*x)**5/5+sin(2*x)**7/14,x)-sin(2*x)**2*cos(2*x)**5) == 0 and expand(x**2*(1-x**2)**2-(x**2-2*x**4+x**6)) == 0 | \int\sin^22x\cos^52x\,dx=\frac{\sin^32x}6-\frac{\sin^52x}5+\frac{\sin^72x}{14}+C .\]
+\emph{Check.} By the Chain Rule the three terms differentiate to $\sin^22x\cos2x$, $-2\sin^42x\cos2x$ and $\sin^62x\cos2x$, whose sum is $\sin^22x\cos2x\big(1-2\sin^22x+\sin^42x\big)=\sin^22x\cos2x\cdot\cos^42x$.
+\end{exmp}
+
+\subsection*{Group 2: Even powers and power-reducing identities}
+
+\begin{exmp}{A fourth power of a multiple angle}{b3}
+Find $\int\cos^43x\,dx$.
+
+\textbf{Solution.} Use $\cos^2w=\frac{1+\cos2w}2$ with $w=3x$ twice. First, $\cos^43x=\left(\frac{1+\cos6x}2\right)^2=\frac14\big(1+2\cos6x+\cos^26x\big)$. Then $\cos^26x=\frac{1+\cos12x}2$, so
+\[\cos^43x=\frac14\left(\frac32+2\cos6x+\frac{\cos12x}2\right)=\frac38+\frac{\cos6x}2+\frac{\cos12x}8 .\]
+Integrating with formula (3) of Section~8.1,
+\[\int\cos^43x\,dx=\frac{3x}8+\frac{\sin6x}{12}+\frac{\sin12x}{96}+C .\]
+%@ b3 | simplify(diff(3*x/8+sin(6*x)/12+sin(12*x)/96,x)-cos(3*x)**4) == 0 and simplify(cos(3*x)**4-(Q(3,8)+cos(6*x)/2+cos(12*x)/8)) == 0 | \int\cos^43x\,dx=\frac{3x}8+\frac{\sin6x}{12}+\frac{\sin12x}{96}+C .\]
+(Here $\frac12\cdot\frac{\sin6x}6=\frac{\sin6x}{12}$ and $\frac18\cdot\frac{\sin12x}{12}=\frac{\sin12x}{96}$.) \emph{Check.} The derivative is $\frac38+\frac{\cos6x}2+\frac{\cos12x}8$, which is $\cos^43x$ by the expansion above.
+\end{exmp}
+
+\begin{exmp}{A definite integral of $\sin^4x\cos^4x$}{b4}
+Evaluate $\displaystyle\int_0^{\pi/2}\sin^4x\cos^4x\,dx$.
+
+\textbf{Solution.} Both powers are even and equal, so combine them: $\sin^4x\cos^4x=\big(\sin x\cos x\big)^4=\left(\frac{\sin2x}2\right)^4=\frac{\sin^42x}{16}$. Now $\sin^2w=\frac{1-\cos2w}2$ twice with $w=2x$: $\sin^42x=\frac14\big(1-2\cos4x+\cos^24x\big)=\frac14\left(\frac32-2\cos4x+\frac{\cos8x}2\right)=\frac38-\frac{\cos4x}2+\frac{\cos8x}8$. An antiderivative of $\sin^42x$ is $\frac{3x}8-\frac{\sin4x}8+\frac{\sin8x}{64}$. At $x=\frac\pi2$: $\frac{3\pi}{16}-\frac{\sin2\pi}8+\frac{\sin4\pi}{64}=\frac{3\pi}{16}$; at $x=0$: $0$. Hence
+\[\int_0^{\pi/2}\sin^4x\cos^4x\,dx=\frac1{16}\cdot\frac{3\pi}{16}=\frac{3\pi}{256}\approx0.0368 .\]
+%@ b4 | simplify(sin(2*x)**4-(Q(3,8)-cos(4*x)/2+cos(8*x)/8)) == 0 and integrate(sin(x)**4*cos(x)**4,(x,0,pi/2)) == 3*pi/256 | \int_0^{\pi/2}\sin^4x\cos^4x\,dx=\frac1{16}\cdot\frac{3\pi}{16}=\frac{3\pi}{256}\approx0.0368 .\]
+\end{exmp}
+
+\subsection*{Group 3: Powers of tangent and secant}
+
+\begin{exmp}{An even power of secant on an interval}{b5}
+Evaluate $\displaystyle\int_0^{\pi/4}\sec^6x\,dx$.
+
+\textbf{Solution.} The power of secant is even, $6=2\cdot2+2$. Set aside $\sec^2x$ and write $\sec^4x=\big(1+\tan^2x\big)^2$. Let $u=\tan x$, $du=\sec^2x\,dx$; the limits change: $x=0$ gives $u=0$ and $x=\frac\pi4$ gives $u=1$ (Theorem~\ref{8.1-thm:subst}).
+\[\int_0^{\pi/4}\sec^6x\,dx=\int_0^1\big(1+u^2\big)^2du=\int_0^1\big(1+2u^2+u^4\big)du=\Big[u+\frac{2u^3}3+\frac{u^5}5\Big]_0^1=1+\frac23+\frac15=\frac{28}{15} .\]
+%@ b5 | integrate(sec(x)**6,(x,0,pi/4)) == Q(28,15) and (1+Q(2,3)+Q(1,5)) == Q(28,15) | =1+\frac23+\frac15=\frac{28}{15} .\]
+\emph{Plausibility.} $\sec x$ rises from $1$ to $\sqrt2$ on this interval, so $\sec^6x$ rises from $1$ to $8$ and the integral over a length $\frac\pi4\approx0.785$ lies between $0.785$ and $6.28$; $\frac{28}{15}\approx1.867$ is in that range.
+\end{exmp}
+
+\begin{exmp}{A sixth power of the tangent}{b6}
+Find $\int\tan^6x\,dx$.
+
+\textbf{Solution.} Apply Theorem~\ref{thm:redtan} three times: $\int\tan^6x\,dx=\frac{\tan^5x}5-\int\tan^4x\,dx$, then $\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx$, then $\int\tan^2x\,dx=\tan x-x$. Substituting from the bottom up,
+\[\int\tan^6x\,dx=\frac{\tan^5x}5-\left(\frac{\tan^3x}3-\big(\tan x-x\big)\right)=\frac{\tan^5x}5-\frac{\tan^3x}3+\tan x-x+C .\]
+%@ b6 | simplify(diff(tan(x)**5/5-tan(x)**3/3+tan(x)-x,x)-tan(x)**6) == 0 | =\frac{\tan^5x}5-\frac{\tan^3x}3+\tan x-x+C .\]
+\emph{Check.} The derivative is $\tan^4x\sec^2x-\tan^2x\sec^2x+\sec^2x-1=\sec^2x\big(\tan^4x-\tan^2x+1\big)-1$. Writing $\sec^2x=1+\tan^2x$ gives $\big(1+\tan^2x\big)\big(\tan^4x-\tan^2x+1\big)-1=\tan^6x+1-1=\tan^6x$.
+%@ b6c | expand((1+x**2)*(x**4-x**2+1)-1-x**6) == 0 and simplify(sec(x)**2-1-tan(x)**2) == 0 | gives $\big(1+\tan^2x\big)\big(\tan^4x-\tan^2x+1\big)-1=\tan^6x+1-1=\tan^6x$.
+\end{exmp}
+
+\subsection*{Group 4: Powers of cotangent and cosecant}
+
+\begin{exmp}{An odd power of cotangent}{b7}
+Find $\int\cot^3x\csc^3x\,dx$.
+
+\textbf{Solution.} The power of $\cot x$ is odd, so set aside $\csc x\cot x$ and write $\cot^2x=\csc^2x-1$: $\cot^3x\csc^3x=\big(\csc^2x-1\big)\csc^2x\cdot\csc x\cot x$. Let $u=\csc x$, $du=-\csc x\cot x\,dx$:
+\[\int\cot^3x\csc^3x\,dx=-\int\big(u^2-1\big)u^2\,du=-\int\big(u^4-u^2\big)du .\]
+Integrating term by term and substituting back $u=\csc x$,
+\[-\int\big(u^4-u^2\big)du=-\frac{u^5}5+\frac{u^3}3+C=-\frac{\csc^5x}5+\frac{\csc^3x}3+C .\]
+%@ b7 | simplify(diff(-csc(x)**5/5+csc(x)**3/3,x)-cot(x)**3*csc(x)**3) == 0 | =-\frac{u^5}5+\frac{u^3}3+C=-\frac{\csc^5x}5+\frac{\csc^3x}3+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{\csc^5x}5+\frac{\csc^3x}3\right]=\csc^5x\cot x-\csc^3x\cot x=\csc^3x\cot x\big(\csc^2x-1\big)=\csc^3x\cot^3x$.
+\end{exmp}
+
+\begin{exmp}{The cube of the cosecant on an interval}{b8}
+Evaluate $\displaystyle\int_{\pi/6}^{\pi/2}\csc^3x\,dx$.
+
+\textbf{Solution.} By Theorem~\ref{thm:cotcsc}(1), an antiderivative is $F(x)=-\frac12\csc x\cot x-\frac12\ln\lvert\csc x+\cot x\rvert$, valid on $\left[\frac\pi6,\frac\pi2\right]$ where $\sin x>0$. At $x=\frac\pi2$: $\csc=1$, $\cot=0$, so $F=0-\frac12\ln1=0$. At $x=\frac\pi6$: $\csc=2$, $\cot=\sqrt3$, so $F=-\frac12\cdot2\sqrt3-\frac12\ln\left(2+\sqrt3\right)=-\sqrt3-\frac12\ln\left(2+\sqrt3\right)$. Hence
+\[\int_{\pi/6}^{\pi/2}\csc^3x\,dx=0-\left(-\sqrt3-\frac12\ln\left(2+\sqrt3\right)\right)=\sqrt3+\frac12\ln\left(2+\sqrt3\right)\approx2.3905 .\]
+%@ b8 | abs((integrate(csc(x)**3,(x,pi/6,pi/2))-(sqrt(3)+log(2+sqrt(3))/2)).evalf(30)) < 1e-20 and abs(float(sqrt(3)+log(2+sqrt(3))/2)-2.3905) < 1e-4 and simplify(csc(pi/6)*cot(pi/6)/2-sqrt(3)) == 0 | =\sqrt3+\frac12\ln\left(2+\sqrt3\right)\approx2.3905 .\]
+\emph{Plausibility.} On the interval, $\csc x$ decreases from $2$ to $1$, so $\csc^3x$ decreases from $8$ to $1$; the interval has length $\frac\pi3\approx1.047$, so the integral lies between $1.05$ and $8.4$, and $2.39$ is reasonable.
+\end{exmp}
+
+\subsection*{Group 5: Products with different angles}
+
+\begin{exmp}{A sine times a cosine}{b9}
+Find $\int\sin6x\cos x\,dx$.
+
+\textbf{Solution.} With $A=6x$, $B=x$: $\sin6x\cos x=\frac12\big[\sin5x+\sin7x\big]$ (Theorem~\ref{thm:ident}(4)). Then
+\[\int\sin6x\cos x\,dx=\frac12\left(-\frac{\cos5x}5-\frac{\cos7x}7\right)+C=-\frac{\cos5x}{10}-\frac{\cos7x}{14}+C .\]
+%@ b9 | simplify(diff(-cos(5*x)/10-cos(7*x)/14,x)-sin(6*x)*cos(x)) == 0 | =-\frac{\cos5x}{10}-\frac{\cos7x}{14}+C .\]
+\emph{Check.} The derivative is $\frac{\sin5x}2+\frac{\sin7x}2=\sin6x\cos x$.
+\end{exmp}
+
+\begin{exmp}{A product of cosines on an interval}{b10}
+Evaluate $\displaystyle\int_0^{\pi/3}\cos5x\cos2x\,dx$.
+
+\textbf{Solution.} $\cos5x\cos2x=\frac12\big[\cos3x+\cos7x\big]$, so an antiderivative is $\frac12\left(\frac{\sin3x}3+\frac{\sin7x}7\right)$. At $x=\frac\pi3$: $\sin\pi=0$ and $\sin\frac{7\pi}3=\sin\left(2\pi+\frac\pi3\right)=\sin\frac\pi3=\frac{\sqrt3}2$, so the value is $\frac12\left(0+\frac{\sqrt3}{14}\right)=\frac{\sqrt3}{28}$. At $x=0$ it is $0$. Hence
+\[\int_0^{\pi/3}\cos5x\cos2x\,dx=\frac{\sqrt3}{28}\approx0.0619 .\]
+%@ b10 | simplify(integrate(cos(5*x)*cos(2*x),(x,0,pi/3))-sqrt(3)/28) == 0 and abs(float(sqrt(3)/28)-0.0619) < 1e-4 and simplify(sin(7*pi/3)-sqrt(3)/2) == 0 | \int_0^{\pi/3}\cos5x\cos2x\,dx=\frac{\sqrt3}{28}\approx0.0619 .\]
+\end{exmp}
+
+\subsection*{Group 6: Rewriting the integrand first}
+
+\begin{exmp}{Expanding a square}{b11}
+Find $\int(\sin x+\cos x)^2\,dx$.
+
+\textbf{Solution.} Expand: $(\sin x+\cos x)^2=\sin^2x+2\sin x\cos x+\cos^2x=1+\sin2x$, using $\sin^2x+\cos^2x=1$ and the double-angle identity. Then
+\[\int(\sin x+\cos x)^2\,dx=\int(1+\sin2x)\,dx=x-\frac{\cos2x}2+C .\]
+%@ b11 | simplify(diff(x-cos(2*x)/2,x)-(sin(x)+cos(x))**2) == 0 | =x-\frac{\cos2x}2+C .\]
+\emph{Check.} The derivative is $1+\sin2x=(\sin x+\cos x)^2$. (An answer that looks different, $x+\sin^2x+C$, is also correct, since $-\frac{\cos2x}2=\sin^2x-\frac12$.)
+%@ b11b | simplify(diff(x+sin(x)**2,x)-(sin(x)+cos(x))**2) == 0 and simplify(-cos(2*x)/2-(sin(x)**2-Q(1,2))) == 0 | since $-\frac{\cos2x}2=\sin^2x-\frac12$.)
+\end{exmp}
+
+\begin{exmp}{Multiplying by a conjugate}{b12}
+Find $\int\frac{dx}{1-\sin x}$ on an interval where $\cos x\ne0$, and evaluate $\int_0^{\pi/4}\frac{dx}{1-\sin x}$.
+
+\textbf{Solution.} Multiply numerator and denominator by $1+\sin x$, which is nonzero where $\cos x\ne0$:
+\[\frac1{1-\sin x}=\frac{1+\sin x}{(1-\sin x)(1+\sin x)}=\frac{1+\sin x}{1-\sin^2x}=\frac{1+\sin x}{\cos^2x}=\sec^2x+\sec x\tan x .\]
+Both terms are in the table of Section~8.1 (formulas (5) and (7)), so
+\[\int\frac{dx}{1-\sin x}=\tan x+\sec x+C .\]
+%@ b12 | simplify(diff(tan(x)+sec(x),x)-1/(1-sin(x))) == 0 and simplify((1+sin(x))/cos(x)**2-sec(x)**2-sec(x)*tan(x)) == 0 | \int\frac{dx}{1-\sin x}=\tan x+\sec x+C .\]
+For the definite integral, $\big[\tan x+\sec x\big]_0^{\pi/4}=(1+\sqrt2)-(0+1)=\sqrt2\approx1.4142$.
+%@ b12b | simplify(integrate(1/(1-sin(x)),(x,0,pi/4))-sqrt(2)) == 0 and abs(float(sqrt(2))-1.4142) < 1e-4 | $\big[\tan x+\sec x\big]_0^{\pi/4}=(1+\sqrt2)-(0+1)=\sqrt2\approx1.4142$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Orthogonality on $[0,\pi]$}{b13}
+Let $m$ and $n$ be positive integers. Prove that $\int_0^\pi\sin mx\sin nx\,dx=0$ if $m\ne n$ and $=\frac\pi2$ if $m=n$, and that $\int_0^\pi\cos mx\cos nx\,dx=0$ if $m\ne n$. Check with $m=2$, $n=5$, and show that the corresponding statement for $\sin mx\cos nx$ needs a condition on $m+n$.
+
+\textbf{Proof.} \emph{Plan:} product-to-sum, then integrate, then use $\sin k\pi=0$ for integers $k$. By Theorem~\ref{thm:ident}(4), $\sin mx\sin nx=\frac12\big[\cos(m-n)x-\cos(m+n)x\big]$. If $m\ne n$, then $m-n$ and $m+n$ are nonzero integers, and
+\[\int_0^\pi\sin mx\sin nx\,dx=\frac12\left[\frac{\sin(m-n)x}{m-n}-\frac{\sin(m+n)x}{m+n}\right]_0^\pi,\]
+which is $\frac12\left(\frac{\sin(m-n)\pi}{m-n}-\frac{\sin(m+n)\pi}{m+n}\right)=0$
+because $\sin k\pi=0$ for every integer $k$ and the bracket is $0$ at $x=0$. If $m=n$, then $\sin^2mx=\frac{1-\cos2mx}2$ and $\int_0^\pi\frac{1-\cos2mx}2\,dx=\frac\pi2-\frac{\sin2m\pi}{4m}=\frac\pi2$. The cosine statement is the same with $\cos mx\cos nx=\frac12\big[\cos(m-n)x+\cos(m+n)x\big]$. For $m=2$, $n=5$: $\int_0^\pi\sin2x\sin5x\,dx=\frac12\left[\frac{\sin(-3x)}{-3}-\frac{\sin7x}7\right]_0^\pi=0$.
+%@ b13a | integrate(sin(2*x)*sin(5*x),(x,0,pi)) == 0 and integrate(sin(3*x)**2,(x,0,pi)) == pi/2 and integrate(cos(2*x)*cos(5*x),(x,0,pi)) == 0 | \int_0^\pi\sin2x\sin5x\,dx=\frac12\left[\frac{\sin(-3x)}{-3}-\frac{\sin7x}7\right]_0^\pi=0$.
+\emph{A common mistake.} For $\sin mx\cos nx$ the integral over $[0,\pi]$ is $\frac12\int_0^\pi\big[\sin(m-n)x+\sin(m+n)x\big]dx$, and $\int_0^\pi\sin kx\,dx=\frac{1-\cos k\pi}k$ is $0$ only for \emph{even} $k$. So it vanishes when $m+n$ (and then $m-n$) is even, but not always: $\int_0^\pi\sin x\cos2x\,dx=-\frac23$, while $\int_0^\pi\sin x\cos3x\,dx=0$.
+%@ b13b | integrate(sin(x)*cos(2*x),(x,0,pi)) == -Q(2,3) and integrate(sin(x)*cos(3*x),(x,0,pi)) == 0 | while $\int_0^\pi\sin x\cos3x\,dx=0$.
+\end{exmp}
+
+\begin{exmp}{A two-index reduction formula}{b14}
+For integers $m\ge0$ and $n\ge2$ let $I(m,n)=\int_0^{\pi/2}\sin^mx\cos^nx\,dx$. Prove that $I(m,n)=\frac{n-1}{m+n}\,I(m,n-2)$, and use it to evaluate $I(2,4)$.
+
+\textbf{Proof.} \emph{Plan:} parts with $u=\cos^{n-1}x$ and $dv=\sin^mx\cos x\,dx$, then a Pythagorean identity, then solve for $I(m,n)$. We have $du=-(n-1)\cos^{n-2}x\sin x\,dx$ and $v=\frac{\sin^{m+1}x}{m+1}$ (here $m+1\ge1$). The definite form of Theorem~\ref{8.2-thm:parts} applies, since the functions are smooth, and gives
+\[I(m,n)=\left[\frac{\cos^{n-1}x\sin^{m+1}x}{m+1}\right]_0^{\pi/2}+\frac{n-1}{m+1}\int_0^{\pi/2}\cos^{n-2}x\sin^{m+2}x\,dx .\]
+The bracket is $0$ at both ends: at $x=\frac\pi2$ because $\cos^{n-1}\frac\pi2=0$ (as $n-1\ge1$), and at $x=0$ because $\sin^{m+1}0=0$ (as $m+1\ge1$). In the integral write $\sin^{m+2}x=\sin^mx\big(1-\cos^2x\big)$, so it equals $I(m,n-2)-I(m,n)$. Therefore $I(m,n)=\frac{n-1}{m+1}\big[I(m,n-2)-I(m,n)\big]$. Multiply by $m+1$ and collect $I(m,n)$: $\big(m+1+n-1\big)I(m,n)=(n-1)\,I(m,n-2)$, that is $I(m,n)=\frac{n-1}{m+n}I(m,n-2)$.
+
+\emph{Application.} $I(2,4)=\frac36I(2,2)=\frac12\cdot\frac14I(2,0)=\frac18\int_0^{\pi/2}\sin^2x\,dx=\frac18\cdot\frac\pi4=\frac\pi{32}\approx0.0982$, because $\int_0^{\pi/2}\sin^2x\,dx=\frac12\left[x-\frac{\sin2x}2\right]_0^{\pi/2}=\frac\pi4$.
+%@ b14 | all(simplify(integrate(sin(x)**m0*cos(x)**n0,(x,0,pi/2))-Q(n0-1,m0+n0)*integrate(sin(x)**m0*cos(x)**(n0-2),(x,0,pi/2))) == 0 for m0 in range(0,3) for n0 in range(2,5)) and integrate(sin(x)**2,(x,0,pi/2)) == pi/4 and integrate(sin(x)**2*cos(x)**4,(x,0,pi/2)) == pi/32 | because $\int_0^{\pi/2}\sin^2x\,dx=\frac12\left[x-\frac{\sin2x}2\right]_0^{\pi/2}=\frac\pi4$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kcodd}.] The power of $\cos x$ is odd, so set aside one $\cos x$ and write $\cos^2x=1-\sin^2x$: $\sin^2x\cos^3x=\sin^2x\big(1-\sin^2x\big)\cos x$. With $u=\sin x$, $du=\cos x\,dx$: $\int u^2\big(1-u^2\big)du=\frac{u^3}3-\frac{u^5}5$. So $\int\sin^2x\cos^3x\,dx=\frac{\sin^3x}3-\frac{\sin^5x}5+C$. Check: the derivative is $\sin^2x\cos x-\sin^4x\cos x=\sin^2x\cos x\big(1-\sin^2x\big)=\sin^2x\cos^3x$.
+%@ ans-kcodd | simplify(diff(sin(x)**3/3-sin(x)**5/5,x)-sin(x)**2*cos(x)**3) == 0 | $\sin^2x\cos x-\sin^4x\cos x=\sin^2x\cos x\big(1-\sin^2x\big)=\sin^2x\cos^3x$.
+
+  \item[Knowledge Check \ref{kc:kcred}.] By Theorem~\ref{thm:redtan} with $n=3$: $\int\tan^3x\,dx=\frac{\tan^2x}2-\int\tan x\,dx=\frac{\tan^2x}2-\ln\lvert\sec x\rvert+C$. Check: the derivative is $\tan x\sec^2x-\tan x=\tan x\big(\sec^2x-1\big)=\tan^3x$.
+%@ ans-kcred | simplify(diff(tan(x)**2/2-log(sec(x)),x)-tan(x)**3) == 0 | the derivative is $\tan x\sec^2x-\tan x=\tan x\big(\sec^2x-1\big)=\tan^3x$.
+
+  \item[Knowledge Check \ref{kc:kcorth}.] By Theorem~\ref{thm:orth}(2), $\int_{-\pi}^{\pi}\sin4x\cos3x\,dx=0$ (sine times cosine is always $0$; also, the integrand is odd). By Theorem~\ref{thm:orth}(3) with $m=n=4$, $\int_{-\pi}^{\pi}\sin^24x\,dx=\pi$.
+%@ ans-kcorth | integrate(sin(4*x)*cos(3*x),(x,-pi,pi)) == 0 and integrate(sin(4*x)**2,(x,-pi,pi)) == pi | $\int_{-\pi}^{\pi}\sin^24x\,dx=\pi$.
+
+  \item[Pause and think \ref{think:sign}.] At $x=0$ we have $\sin^20=0$ and $\cos^20=1$. Since $\cos0=1$, the expression $\frac{1-\cos0}2=0$ matches $\sin^2$, and $\frac{1+\cos0}2=1$ matches $\cos^2$. So $\sin^2x=\frac{1-\cos2x}2$ and $\cos^2x=\frac{1+\cos2x}2$ (``sine is minus''). A second test at $x=\frac\pi2$ agrees: $\sin^2\frac\pi2=1=\frac{1-\cos\pi}2$.
+
+  \item[Pause and think \ref{think:whyparts}.] With $u=\sec x$, $du=\sec x\tan x\,dx$, the integrand $\tan^2x\sec x\,dx=\tan x\cdot\big(\sec x\tan x\,dx\big)=\tan x\,du$, and $\tan x=\pm\sqrt{u^2-1}$ is not a polynomial in $u$. With $u=\tan x$, $du=\sec^2x\,dx$, we would need $\sec x\,dx=\frac{du}{\sec x}=\frac{du}{\sqrt{1+u^2}}$, again a square root. Not an accident: the case $m=0$, $n=1$, $\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert$, has a logarithm in its answer, and no polynomial integral in $u$ can produce it; the reduction formula (parts) is what creates the logarithm, through $\int\sec x\,dx$.
+
+  \item[Pause and think \ref{think:halfper}.] On $\left[0,\frac\pi2\right]$ the antiderivatives are evaluated at $\frac\pi2$ and $0$, and $\sin k\frac\pi2$ is not $0$ for odd $k$, so the step ``$\sin k(a+2\pi)=\sin ka$'' (which needs a whole number of full turns) is gone. By Theorem~\ref{thm:prod}, $\int_0^{\pi/2}\sin x\sin2x\,dx=\frac12\left[\sin x-\frac{\sin3x}3\right]_0^{\pi/2}=\frac12\left(1+\frac13\right)=\frac23$, because $\sin\frac{3\pi}2=-1$.
+%@ ans-halfper | integrate(sin(x)*sin(2*x),(x,0,pi/2)) == Q(2,3) and sin(3*pi/2) == -1 | because $\sin\frac{3\pi}2=-1$.
+\end{description}
+
+\end{document}
