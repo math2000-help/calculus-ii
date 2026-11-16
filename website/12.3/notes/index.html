@@ -1,0 +1,2586 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../12.2/notes/">
+      
+      
+        <link rel="next" href="../../appendix/appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tangent-lines-at-the-pole" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tangent lines at the pole
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#area-of-a-region-bounded-by-a-polar-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area of a region bounded by a polar curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#area-between-two-polar-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area between two polar curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arc-length-in-polar-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arc length in polar coordinates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-area-inside-one-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Area inside one curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-petals-and-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Petals and loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-between-two-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Between two curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-limits-from-intersections" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Limits from intersections
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-arc-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Arc length
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-tangent-lines-and-partial-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Tangent lines and partial areas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tangent-lines-at-the-pole" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Tangent lines at the pole
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#area-of-a-region-bounded-by-a-polar-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area of a region bounded by a polar curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#area-between-two-polar-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area between two polar curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arc-length-in-polar-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arc length in polar coordinates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-area-inside-one-curve" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Area inside one curve
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-petals-and-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Petals and loops
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-between-two-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Between two curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-limits-from-intersections" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Limits from intersections
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-arc-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Arc length
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-tangent-lines-and-partial-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Tangent lines and partial areas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="123-calculus-in-polar-coordinates">12.3 Calculus in Polar Coordinates<a class="headerlink" href="#123-calculus-in-polar-coordinates" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>The area of a disc of radius <span class="arithmatex">\(\rho\)</span> is <span class="arithmatex">\(\pi\rho^2\)</span>, so a <em>sector</em> of angle <span class="arithmatex">\(\varphi\)</span> has area <span class="arithmatex">\(\frac12\rho^2\varphi\)</span>. A region bounded by a polar curve is, to a good approximation, a fan of thin sectors, one for each direction, with the radius of each sector given by the curve. Adding the sectors gives an integral, and the same idea of “a polar curve is a parametric curve” gives its tangent lines and its length. Polar coordinates make areas of cardioids, petals and spirals easy, and they make one thing hard: a region is described by a <em>direction</em> and a <em>distance</em>, so the limits of integration must follow the directions in which the region exists, not the point where a curve “looks” like it starts. This section proves the formulas for tangent lines at the pole, for the area of a region, for the area between two curves and for arc length, and it spends as much time on choosing the limits correctly (where two curves meet, where a curve is traced twice, where the radial coordinate is negative) as on computing the integrals.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>find the tangent lines to a polar curve at the pole, and the slope at any other point (Section 12.2);</p>
+</li>
+<li>
+<p>set up and evaluate the area of a region bounded by one polar curve and two rays, including one petal or one loop of a curve whose radial coordinate changes sign;</p>
+</li>
+<li>
+<p>find the area inside one curve and outside another, or inside both, by finding the limits from the intersection points (including the origin) and deciding which curve is farther from the pole in each direction;</p>
+</li>
+<li>
+<p>recognize when an integral over too long an interval counts a region twice;</p>
+</li>
+<li>
+<p>set up and evaluate the length of a polar curve traced once;</p>
+</li>
+<li>
+<p>prove each of these formulas.</p>
+</li>
+</ul>
+<h2 id="tangent-lines-at-the-pole">Tangent lines at the pole<a class="headerlink" href="#tangent-lines-at-the-pole" title="Permanent link">&para;</a></h2>
+<p>By Theorem <a href="../../12.2/notes/#thm-polslope">12.2.29</a> the slope of <span class="arithmatex">\(r=f(\theta)\)</span> is <span class="arithmatex">\(\frac{f'\sin\theta+f\cos\theta}{f'\cos\theta-f\sin\theta}\)</span>. At a point where <span class="arithmatex">\(f(\theta_0)=0\)</span> the curve is at the origin, and the formula simplifies.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.3.1: Tangent line at the pole</p>
+<p><span id="thm-pole"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be differentiable with <span class="arithmatex">\(f(\theta_0)=0\)</span> and <span class="arithmatex">\(f'(\theta_0)\ne0\)</span>. Then the curve <span class="arithmatex">\(r=f(\theta)\)</span> passes through the pole at <span class="arithmatex">\(\theta=\theta_0\)</span>, and the tangent line there is the line through the pole at the angle <span class="arithmatex">\(\theta_0\)</span>: the line <span class="arithmatex">\(y=(\tan\theta_0)\,x\)</span> if <span class="arithmatex">\(\cos\theta_0\ne0\)</span>, and the <span class="arithmatex">\(y\)</span>-axis if <span class="arithmatex">\(\cos\theta_0=0\)</span>.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="../../12.2/notes/#thm-polpar">12.2.13</a>, at <span class="arithmatex">\(\theta=\theta_0\)</span> the velocity vector is <span class="arithmatex">\(\bigl(x',y'\bigr)=\bigl(f'\cos\theta_0-0,\ f'\sin\theta_0+0\bigr)=f'(\theta_0)\,(\cos\theta_0,\sin\theta_0)\)</span>, which is not the zero vector. A curve whose velocity at a point is a nonzero vector has that vector as a direction of its tangent line (Theorem <a href="../../12.1/notes/#thm-slope">12.1.12</a>), and here the vector points along the ray at angle <span class="arithmatex">\(\theta_0\)</span> (or its opposite, if <span class="arithmatex">\(f'(\theta_0)&lt;0\)</span>). So the tangent line is the line through the origin with direction <span class="arithmatex">\((\cos\theta_0,\sin\theta_0)\)</span>. If <span class="arithmatex">\(\cos\theta_0\ne0\)</span> its slope is <span class="arithmatex">\(\frac{\sin\theta_0}{\cos\theta_0}=\tan\theta_0\)</span>; if <span class="arithmatex">\(\cos\theta_0=0\)</span> the direction is vertical. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.2: Tangent lines of a three-petal rose at the pole</p>
+<p><span id="ex-pole"></span></p>
+<p>Find the tangent lines at the pole of <span class="arithmatex">\(r=2\cos3\theta\)</span> and mark the tips of the petals.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f(\theta)=2\cos3\theta\)</span> is <span class="arithmatex">\(0\)</span> when <span class="arithmatex">\(3\theta=\frac\pi2+\pi k\)</span>, that is <span class="arithmatex">\(\theta=\frac\pi6+\frac{\pi k}3\)</span>. The curve is traced once for <span class="arithmatex">\(0\le\theta&lt;\pi\)</span> (Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a>: three petals, odd), so we need the values <span class="arithmatex">\(\theta=\frac\pi6,\frac\pi2,\frac{5\pi}6\)</span>. There <span class="arithmatex">\(f'(\theta)=-6\sin3\theta\)</span> equals <span class="arithmatex">\(-6\sin\frac\pi2=-6\)</span>, <span class="arithmatex">\(-6\sin\frac{3\pi}2=6\)</span>, <span class="arithmatex">\(-6\sin\frac{5\pi}2=-6\)</span>: never <span class="arithmatex">\(0\)</span>, so Theorem <a href="#thm-pole">12.3.1</a> applies. The tangent lines at the pole are the lines at the angles <span class="arithmatex">\(\frac\pi6,\frac\pi2,\frac{5\pi}6\)</span>: <span class="arithmatex">\(y=\frac{x}{\sqrt3}\)</span>, the <span class="arithmatex">\(y\)</span>-axis (since <span class="arithmatex">\(\cos\frac\pi2=0\)</span>), and <span class="arithmatex">\(y=-\frac x{\sqrt3}\)</span>. The petals are centered where <span class="arithmatex">\(\abs f\)</span> is largest, at <span class="arithmatex">\(\theta=0,\frac\pi3,\frac{2\pi}3\)</span>: the tips are <span class="arithmatex">\(P(2,0)=(2,0)\)</span>, <span class="arithmatex">\(P\left(-2,\frac\pi3\right)=\left(-1,-\sqrt3\right)\)</span> and <span class="arithmatex">\(P\left(2,\frac{2\pi}3\right)=\left(-1,\sqrt3\right)\)</span>, the last two because <span class="arithmatex">\(\cos\pi=-1\)</span> and <span class="arithmatex">\(\cos2\pi=1\)</span>.</p>
+<p><img alt="Diagram: \(\theta=\frac\pi6\); $\theta=\frac{5\pi" class="calc-figure" src="../figures/notes-fig1.svg" width="409" /></p>
+</div>
+<h2 id="area-of-a-region-bounded-by-a-polar-curve">Area of a region bounded by a polar curve<a class="headerlink" href="#area-of-a-region-bounded-by-a-polar-curve" title="Permanent link">&para;</a></h2>
+<p>For <span class="arithmatex">\(f\ge0\)</span> and <span class="arithmatex">\(\alpha&lt;\beta\)</span> with <span class="arithmatex">\(\beta-\alpha\le2\pi\)</span>, let <span class="arithmatex">\(R(f;\alpha,\beta)\)</span> be the region swept out by the segments from the pole to the curve:</p>
+<div class="arithmatex">\[R(f)=\{P(s,\theta):\ 0\le s\le f(\theta),\ \alpha\le\theta\le\beta\}.\]</div>
+<p>If <span class="arithmatex">\(\beta-\alpha=2\pi\)</span> we also assume <span class="arithmatex">\(f(\beta)=f(\alpha)\)</span>, so that the curve closes up. The area is the area of Calculus I, with the properties (A1)–(A4) stated in Appendix J. Appendix J also proves that a sector of radius <span class="arithmatex">\(\rho\)</span> and angle <span class="arithmatex">\(\varphi\)</span> has area <span class="arithmatex">\(\frac12\rho^2\varphi\)</span> (Theorem <a href="../../appendix/appendix/#thm-sector">J.1</a>) and that a polar curve itself has area zero (Theorem <a href="../../appendix/appendix/#thm-zeroarea">J.2</a>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.3.3: Area in polar coordinates</p>
+<p><span id="thm-area"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be continuous and <span class="arithmatex">\(f\ge0\)</span> on <span class="arithmatex">\([\alpha,\beta]\)</span>, <span class="arithmatex">\(0&lt;\beta-\alpha\le2\pi\)</span>. Then <span class="arithmatex">\(R(f)\)</span> has area</p>
+<div class="arithmatex">\[A=\frac12\int_\alpha^\beta f(\theta)^2\,d\theta .\]</div>
+<p>If instead <span class="arithmatex">\(f\le0\)</span> on <span class="arithmatex">\([\alpha,\beta]\)</span>, the points <span class="arithmatex">\(P(s,\theta)\)</span> with <span class="arithmatex">\(f(\theta)\le s\le0\)</span> fill the reflection of <span class="arithmatex">\(R(-f)\)</span> through the pole and have the same area <span class="arithmatex">\(\frac12\int_\alpha^\beta f^2\,d\theta\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\Pi:\ \alpha=\theta_0&lt;\theta_1&lt;\cdots&lt;\theta_n=\beta\)</span> be a partition, <span class="arithmatex">\(\Delta\theta_k=\theta_k-\theta_{k-1}\)</span>, and let <span class="arithmatex">\(m_k\)</span> and <span class="arithmatex">\(M_k\)</span> be the least and the greatest value of <span class="arithmatex">\(f\)</span> on <span class="arithmatex">\([\theta_{k-1},\theta_k]\)</span> (they exist because <span class="arithmatex">\(f\)</span> is continuous). The part <span class="arithmatex">\(R_k\)</span> of <span class="arithmatex">\(R(f)\)</span> over <span class="arithmatex">\([\theta_{k-1},\theta_k]\)</span> contains the sector of radius <span class="arithmatex">\(m_k\)</span> and angle <span class="arithmatex">\(\Delta\theta_k\)</span>, and is contained in the sector of radius <span class="arithmatex">\(M_k\)</span> and the same angle. Neighboring sectors share only a segment of a ray (and, if <span class="arithmatex">\(\beta-\alpha=2\pi\)</span>, the first and last share the ray at <span class="arithmatex">\(\alpha\)</span>), and a segment has area zero (Appendix J, (A2)). Hence, by (A1), (A2) and Theorem <a href="../../appendix/appendix/#thm-sector">J.1</a>,</p>
+<div class="arithmatex">\[\sum_{k=1}^n\tfrac12m_k^2\,\Delta\theta_k\ \le\ \operatorname{area}\bigl(R(f)\bigr)\ \le\ \sum_{k=1}^n\tfrac12M_k^2\,\Delta\theta_k .\]</div>
+<p>Because <span class="arithmatex">\(f\ge0\)</span>, <span class="arithmatex">\(m_k^2\)</span> and <span class="arithmatex">\(M_k^2\)</span> are the least and greatest values of <span class="arithmatex">\(f^2\)</span> on the subinterval, so the two sums are the lower sum <span class="arithmatex">\(L(\Pi)\)</span> and the upper sum <span class="arithmatex">\(U(\Pi)\)</span> of the continuous function <span class="arithmatex">\(\frac12f^2\)</span>. As the mesh of <span class="arithmatex">\(\Pi\)</span> tends to <span class="arithmatex">\(0\)</span>, both tend to <span class="arithmatex">\(\frac12\int_\alpha^\beta f^2\,d\theta\)</span> (Calculus I). The area is squeezed between them, so it equals that number. For <span class="arithmatex">\(f\le0\)</span>, the point <span class="arithmatex">\(P(s,\theta)\)</span> with <span class="arithmatex">\(f(\theta)\le s\le0\)</span> is <span class="arithmatex">\(P(-s,\theta+\pi)\)</span> with <span class="arithmatex">\(0\le-s\le-f(\theta)\)</span>, the reflection through the pole of the point <span class="arithmatex">\(P(-s,\theta)\)</span> of <span class="arithmatex">\(R(-f)\)</span>; reflections preserve area (A3) and <span class="arithmatex">\((-f)^2=f^2\)</span>. ◻ ∎</p>
+<p><img alt="Diagram: blue: lower sum \(\approx2.47\)\red: upper sum \(\approx3.53\)\area \(\approx2.99\)" class="calc-figure" src="../figures/notes-fig2.svg" width="347" /></p>
+<p>The picture shows the proof for the curve <span class="arithmatex">\(r=1.2+0.9\theta\)</span> (<span class="arithmatex">\(0\le\theta\le\frac\pi2\)</span>) with <span class="arithmatex">\(n=4\)</span>: the blue sectors have radius <span class="arithmatex">\(m_k\)</span> (inside the region) and the red ones radius <span class="arithmatex">\(M_k\)</span> (covering it). The region lies between them, and the two total areas converge to the area as <span class="arithmatex">\(n\to\infty\)</span>.</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.3.1: Why <span class="arithmatex">\(\frac12f^2\)</span>?</p>
+<p><span id="think-half"></span></p>
+<p>The area formula has <span class="arithmatex">\(f^2\)</span> and a factor <span class="arithmatex">\(\frac12\)</span>, whereas the arc length formula and Calculus I areas have no square. Explain, using a sector of small angle <span class="arithmatex">\(d\theta\)</span> and radius <span class="arithmatex">\(f\)</span>, why the integrand must have the dimension of length squared.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>A sector of radius <span class="arithmatex">\(f\)</span> and small angle <span class="arithmatex">\(d\theta\)</span> is almost a triangle with base the arc <span class="arithmatex">\(f\,d\theta\)</span> and height <span class="arithmatex">\(f\)</span>, whose area is <span class="arithmatex">\(\frac12\cdot f\,d\theta\cdot f=\frac12f^2\,d\theta\)</span>. The angle <span class="arithmatex">\(d\theta\)</span> is a pure number (radians), so <span class="arithmatex">\(f^2\,d\theta\)</span> has the dimension of length squared, as an area must. The arc length integrand <span class="arithmatex">\(\sqrt{f^2+f'^2}\)</span> is a length times <span class="arithmatex">\(d\theta\)</span> (a length), and a Calculus I area <span class="arithmatex">\(\int f\,dx\)</span> has two lengths, <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(dx\)</span>. Exactly: the chord triangle of angle <span class="arithmatex">\(\varphi\)</span> has area <span class="arithmatex">\(\frac12\rho^2\sin\varphi\)</span>, which is <span class="arithmatex">\(\frac12\rho^2\varphi\)</span> to first order.</p>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limits of integration: three ways to go wrong</p>
+<p>(1) <em>The curve is traced more than once.</em> The integral over an interval longer than the one that traces the curve once counts the region more than once (Example <a href="#ex-dbl">12.3.7</a>). Use Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a> for the interval. (2) <em>The radial coordinate changes sign.</em> Theorem <a href="#thm-area">12.3.3</a> applies on each interval where <span class="arithmatex">\(f\)</span> has one sign; split at the zeros of <span class="arithmatex">\(f\)</span> (Example <a href="#ex-limacon">12.3.6</a>). (3) <em>Two regions.</em> “Inside” means “between the pole and the curve <em>in each direction</em>”; the limits must be the directions in which the region lies (Examples <a href="#ex-between">12.3.10</a>–<a href="#ex-lens">12.3.14</a>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.4: Area inside a cardioid</p>
+<p><span id="ex-card"></span></p>
+<p>Find the area enclosed by <span class="arithmatex">\(r=1+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=1+\cos\theta\ge0\)</span>, and the cardioid is traced once for <span class="arithmatex">\(0\le\theta\le2\pi\)</span> (Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a>), so Theorem <a href="#thm-area">12.3.3</a> gives <span class="arithmatex">\(A=\frac12\int_0^{2\pi}(1+\cos\theta)^2d\theta\)</span>. Expand: <span class="arithmatex">\((1+\cos\theta)^2=1+2\cos\theta+\cos^2\theta\)</span>, and <span class="arithmatex">\(\cos^2\theta=\frac{1+\cos2\theta}2\)</span> (a power-reducing identity), so <span class="arithmatex">\((1+\cos\theta)^2=\frac32+2\cos\theta+\frac12\cos2\theta\)</span>. An antiderivative is <span class="arithmatex">\(\frac32\theta+2\sin\theta+\frac14\sin2\theta\)</span>; at <span class="arithmatex">\(2\pi\)</span> it is <span class="arithmatex">\(3\pi+0+0\)</span> and at <span class="arithmatex">\(0\)</span> it is <span class="arithmatex">\(0\)</span>, so the integral is <span class="arithmatex">\(3\pi\)</span> and <span class="arithmatex">\(A=\frac12\cdot3\pi=\frac{3\pi}2\approx4.71\)</span>. <em>Check.</em> The cardioid lies between the circle of radius <span class="arithmatex">\(1\)</span> (area <span class="arithmatex">\(\pi\approx3.14\)</span>) and the circle of radius <span class="arithmatex">\(2\)</span> (area <span class="arithmatex">\(4\pi\approx12.6\)</span>), and <span class="arithmatex">\(4.71\)</span> does.</p>
+<p><img alt="Diagram: $A=\frac{3\pi" class="calc-figure" src="../figures/notes-fig3.svg" width="382" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.3.1: Setting up an area</p>
+<p><span id="kc-setupkc"></span></p>
+<p>Write, but do not evaluate, the integral for the area enclosed by <span class="arithmatex">\(r=2-2\cos\theta\)</span>, and give the interval of <span class="arithmatex">\(\theta\)</span> you used and why.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.5: One petal and the whole rose</p>
+<p><span id="ex-petals"></span></p>
+<p>Find the area of one petal of <span class="arithmatex">\(r=2\cos2\theta\)</span> and the area enclosed by the whole rose.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f\ge0\)</span> exactly when <span class="arithmatex">\(\cos2\theta\ge0\)</span>, that is <span class="arithmatex">\(-\frac\pi2\le2\theta\le\frac\pi2\)</span> (mod <span class="arithmatex">\(2\pi\)</span>), so the petal along the positive <span class="arithmatex">\(x\)</span>-axis is traced for <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span>, and <span class="arithmatex">\(f=0\)</span> at both ends (the petal starts and ends at the pole). By Theorem <a href="#thm-area">12.3.3</a>, <span class="arithmatex">\(A_{\text{petal}}=\frac12\int_{-\pi/4}^{\pi/4}4\cos^22\theta\,d\theta=\int_{-\pi/4}^{\pi/4}(1+\cos4\theta)\,d\theta\)</span>, using <span class="arithmatex">\(2\cos^22\theta=1+\cos4\theta\)</span> (so <span class="arithmatex">\(\frac12\cdot4\cos^22\theta=2\cos^22\theta\)</span>). An antiderivative is <span class="arithmatex">\(\theta+\frac14\sin4\theta\)</span>; at <span class="arithmatex">\(\frac\pi4\)</span> it is <span class="arithmatex">\(\frac\pi4+\frac14\sin\pi=\frac\pi4\)</span> and at <span class="arithmatex">\(-\frac\pi4\)</span> it is <span class="arithmatex">\(-\frac\pi4\)</span>, so <span class="arithmatex">\(A_{\text{petal}}=\frac\pi2\)</span>. The rose has four petals (Theorem <a href="../../12.2/notes/#thm-rose">12.2.17</a>), congruent by rotation (A3), so the area enclosed is <span class="arithmatex">\(4\cdot\frac\pi2=2\pi\)</span>. <em>Check</em> with one integral over the interval that traces the whole rose once, <span class="arithmatex">\(0\le\theta\le2\pi\)</span> (Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a>): <span class="arithmatex">\(\frac12\int_0^{2\pi}4\cos^22\theta\,d\theta=\int_0^{2\pi}(1+\cos4\theta)\,d\theta=2\pi\)</span>. (On this interval <span class="arithmatex">\(f\)</span> is negative on two of the petals; by the second statement of Theorem <a href="#thm-area">12.3.3</a> each of them still contributes <span class="arithmatex">\(\frac12\int f^2\)</span>.)</p>
+<p><img alt="Diagram: \(\theta=\frac\pi4\); \(\theta=-\frac\pi4\); \(\frac\pi2\)" class="calc-figure" src="../figures/notes-fig4.svg" width="394" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.3.2: One petal</p>
+<p><span id="kc-petalkc"></span></p>
+<p>Give the limits of <span class="arithmatex">\(\theta\)</span> for one petal of <span class="arithmatex">\(r=\sin3\theta\)</span> and the area of that petal.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.6: A limaçon with an inner loop</p>
+<p><span id="ex-limacon"></span></p>
+<p>For <span class="arithmatex">\(r=1+2\cos\theta\)</span> find the area of the inner loop, the area enclosed by the outer loop (which contains the inner one), and the area between the loops.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=1+2\cos\theta\)</span> is <span class="arithmatex">\(0\)</span> when <span class="arithmatex">\(\cos\theta=-\frac12\)</span>, that is <span class="arithmatex">\(\theta=\frac{2\pi}3,\frac{4\pi}3\)</span>. For <span class="arithmatex">\(-\frac{2\pi}3&lt;\theta&lt;\frac{2\pi}3\)</span> we have <span class="arithmatex">\(f&gt;0\)</span> (the outer loop), and for <span class="arithmatex">\(\frac{2\pi}3&lt;\theta&lt;\frac{4\pi}3\)</span> we have <span class="arithmatex">\(f&lt;0\)</span> (the inner loop, drawn on the far side of the pole). First, <span class="arithmatex">\(\frac12f^2=\frac12\left(1+4\cos\theta+4\cos^2\theta\right)=\frac32+2\cos\theta+\cos2\theta\)</span>, using <span class="arithmatex">\(4\cos^2\theta=2+2\cos2\theta\)</span>. An antiderivative is <span class="arithmatex">\(F(\theta)=\frac32\theta+2\sin\theta+\frac12\sin2\theta\)</span>. <em>Inner loop</em> (<span class="arithmatex">\(f\le0\)</span>, second statement of Theorem <a href="#thm-area">12.3.3</a>): <span class="arithmatex">\(F\left(\frac{4\pi}3\right)-F\left(\frac{2\pi}3\right)=\left[2\pi-\sqrt3+\frac12\cdot\frac{\sqrt3}2\right]-\left[\pi+\sqrt3-\frac12\cdot\frac{\sqrt3}2\right]=\pi-\frac{3\sqrt3}2\approx0.54\)</span> (we used <span class="arithmatex">\(\sin\frac{4\pi}3=-\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{8\pi}3=\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{2\pi}3=\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{4\pi}3=-\frac{\sqrt3}2\)</span>). <em>Outer loop</em> (<span class="arithmatex">\(f\ge0\)</span>): <span class="arithmatex">\(F\left(\frac{2\pi}3\right)-F\left(-\frac{2\pi}3\right)=\left[\pi+\sqrt3+\frac12\sin\frac{4\pi}3\right]-\left[-\pi-\sqrt3-\frac12\sin\frac{4\pi}3\right]\)</span>, and <span class="arithmatex">\(\sin\frac{4\pi}3=-\frac{\sqrt3}2\)</span>, so this is <span class="arithmatex">\(2\pi+2\sqrt3-\frac{\sqrt3}2=2\pi+\frac{3\sqrt3}2\approx8.88\)</span>. The region swept by the outer loop <em>contains</em> the inner loop. <em>Between the loops:</em> <span class="arithmatex">\(\left(2\pi+\frac{3\sqrt3}2\right)-\left(\pi-\frac{3\sqrt3}2\right)=\pi+3\sqrt3\approx8.34\)</span>. <em>Check.</em> The integral over the whole interval <span class="arithmatex">\([0,2\pi]\)</span> is <span class="arithmatex">\(\frac12\int f^2=3\pi\)</span>: it is the outer-loop area plus the inner-loop area, <span class="arithmatex">\(2\pi+\frac{3\sqrt3}2+\pi-\frac{3\sqrt3}2=3\pi\)</span>, so it counts the inner loop twice (once as part of the outer region and once on its own) and is <em>not</em> the area between the loops.</p>
+<p><img alt="Diagram: outer: \(-2\pi/3\le\theta\le2\pi/3\); inner: \(2\pi/3\le\theta\le4\pi/3\)" class="calc-figure" src="../figures/notes-fig5.svg" width="347" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.7: A limit that double-counts</p>
+<p><span id="ex-dbl"></span></p>
+<p>(a) Find the area of the disc bounded by <span class="arithmatex">\(r=2\sin\theta\)</span>. (b) Find the area enclosed by one loop of the lemniscate <span class="arithmatex">\(r^2=4\cos2\theta\)</span>.</p>
+<p><strong>Solution.</strong> (a) The circle <span class="arithmatex">\(r=2\sin\theta\)</span> has radius <span class="arithmatex">\(1\)</span> and center <span class="arithmatex">\((0,1)\)</span> (Theorem <a href="../../12.2/notes/#thm-pcircles">12.2.11</a>), so the area must be <span class="arithmatex">\(\pi\)</span>. Since <span class="arithmatex">\(f\ge0\)</span> exactly for <span class="arithmatex">\(0\le\theta\le\pi\)</span>, the circle is traced once on <span class="arithmatex">\([0,\pi]\)</span> (for <span class="arithmatex">\(\pi&lt;\theta&lt;2\pi\)</span> the radial coordinate is negative and the same points are traced again, Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a>), and <span class="arithmatex">\(A=\frac12\int_0^\pi4\sin^2\theta\,d\theta=\int_0^\pi(1-\cos2\theta)\,d\theta=\left[\theta-\frac12\sin2\theta\right]_0^\pi=\pi\)</span> (<span class="arithmatex">\(2\sin^2\theta=1-\cos2\theta\)</span>). The “obvious” interval <span class="arithmatex">\(0\le\theta\le2\pi\)</span> gives <span class="arithmatex">\(\frac12\int_0^{2\pi}4\sin^2\theta\,d\theta=2\pi\)</span>, twice the area: the disc was counted twice. (b) <span class="arithmatex">\(r^2=4\cos2\theta\)</span> requires <span class="arithmatex">\(\cos2\theta\ge0\)</span>, so <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span> for the loop through <span class="arithmatex">\((2,0)\)</span> (the other loop is the reflection of this one through the pole), with <span class="arithmatex">\(r=f(\theta)=2\sqrt{\cos2\theta}\)</span>. Then <span class="arithmatex">\(\frac12f^2=2\cos2\theta\)</span> and <span class="arithmatex">\(A=\int_{-\pi/4}^{\pi/4}2\cos2\theta\,d\theta=\left[\sin2\theta\right]_{-\pi/4}^{\pi/4}=1-(-1)=2\)</span>. (The integral of <span class="arithmatex">\(\frac12r^2\)</span> never needs the square root.) The area enclosed by the whole lemniscate is <span class="arithmatex">\(4\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.3.2: When is it counted twice?</p>
+<p><span id="think-twice"></span></p>
+<p>For which values of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> does <span class="arithmatex">\(\frac12\int_a^br^2\,d\theta\)</span> give twice the area of the region enclosed by <span class="arithmatex">\(r=\cos\theta\)</span>? Is it ever more than twice?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The circle <span class="arithmatex">\(r=\cos\theta\)</span> has radius <span class="arithmatex">\(\frac12\)</span>, so area <span class="arithmatex">\(\frac\pi4\)</span>, and it is traced once on any interval of length <span class="arithmatex">\(\pi\)</span>. On <span class="arithmatex">\([0,2\pi]\)</span>, or any interval of length <span class="arithmatex">\(2\pi\)</span>, the integral gives <span class="arithmatex">\(\frac12\int\cos^2\theta\,d\theta=\frac\pi2\)</span>, twice the area. It is more than twice on longer intervals: on an interval of length <span class="arithmatex">\(3\pi\)</span> it is three times the area, and in general <span class="arithmatex">\(k\)</span> times for length <span class="arithmatex">\(k\pi\)</span>. For lengths that are not multiples of <span class="arithmatex">\(\pi\)</span> the integral is the area of the part of the disc that is swept, counted with multiplicity.</p>
+</details>
+</div>
+<h2 id="area-between-two-polar-curves">Area between two polar curves<a class="headerlink" href="#area-between-two-polar-curves" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.3.8: Area between two polar curves</p>
+<p><span id="thm-between"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> be continuous on <span class="arithmatex">\([\alpha,\beta]\)</span> with <span class="arithmatex">\(0\le g\le f\)</span> and <span class="arithmatex">\(0&lt;\beta-\alpha\le2\pi\)</span> (if <span class="arithmatex">\(\beta-\alpha=2\pi\)</span>, assume that <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> take equal values at <span class="arithmatex">\(\alpha\)</span> and <span class="arithmatex">\(\beta\)</span>). The region between the two curves, <span class="arithmatex">\(R(f,g)=\{P(s,\theta):\ g(\theta)\le s\le f(\theta),\ \alpha\le\theta\le\beta\}\)</span>, has area</p>
+<div class="arithmatex">\[A=\frac12\int_\alpha^\beta\left(f(\theta)^2-g(\theta)^2\right)d\theta .\]</div>
+<p>Moreover the region inside both curves, <span class="arithmatex">\(\{P(s,\theta):0\le s\le\min(f,g)\}\)</span> (for <span class="arithmatex">\(f,g\ge0\)</span>), has area <span class="arithmatex">\(\frac12\int_\alpha^\beta\min(f,g)^2\,d\theta\)</span>.</p>
+</div>
+<p><em>Proof.</em> A point <span class="arithmatex">\(P(s,\theta)\)</span> with <span class="arithmatex">\(s&gt;0\)</span> and <span class="arithmatex">\(\theta\)</span> in the half-open interval <span class="arithmatex">\([\alpha,\alpha+2\pi)\)</span> has only that one representation there (Theorem <a href="../../12.2/notes/#thm-reps">12.2.3</a>). The set <span class="arithmatex">\(R(f)\)</span> is the union of <span class="arithmatex">\(R(g)\)</span> (<span class="arithmatex">\(s\le g\)</span>) and <span class="arithmatex">\(R(f,g)\)</span> (<span class="arithmatex">\(g\le s\)</span>). A point in both has <span class="arithmatex">\(s=g(\theta)\)</span>, so it lies on the curve <span class="arithmatex">\(C_g=\{P(g(\theta),\theta)\}\)</span>, which has area zero (Theorem <a href="../../appendix/appendix/#thm-zeroarea">J.2</a>). By (A2), <span class="arithmatex">\(\operatorname{area}R(f)=\operatorname{area}R(g)+\operatorname{area}R(f,g)\)</span>, and by Theorem <a href="#thm-area">12.3.3</a> applied to <span class="arithmatex">\(f\)</span> and to <span class="arithmatex">\(g\)</span>,</p>
+<div class="arithmatex">\[\operatorname{area}R(f,g)=\tfrac12\int_\alpha^\beta f^2\,d\theta-\tfrac12\int_\alpha^\beta g^2\,d\theta=\tfrac12\int_\alpha^\beta\left(f^2-g^2\right)d\theta .\]</div>
+<p>For the second statement, <span class="arithmatex">\(P(s,\theta)\)</span> lies in both <span class="arithmatex">\(R(f)\)</span> and <span class="arithmatex">\(R(g)\)</span> if and only if <span class="arithmatex">\(s\le f(\theta)\)</span> and <span class="arithmatex">\(s\le g(\theta)\)</span>, that is <span class="arithmatex">\(s\le\min(f(\theta),g(\theta))\)</span>. This is the region <span class="arithmatex">\(R(\min(f,g))\)</span>, and <span class="arithmatex">\(\min(f,g)\)</span> is continuous and <span class="arithmatex">\(\ge0\)</span>, so Theorem <a href="#thm-area">12.3.3</a> gives its area. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.3.9: Area inside or outside two curves</p>
+<p><span id="proc-between"></span></p>
+<ol>
+<li>
+<p>Draw both curves. For each direction <span class="arithmatex">\(\theta\)</span>, decide which curve is farther from the pole, and over which directions the region exists. (Use the interval of <span class="arithmatex">\(\theta\)</span> that traces each curve once, Theorem <a href="../../12.2/notes/#thm-period">12.2.23</a>.)</p>
+</li>
+<li>
+<p>Find the directions where the curves meet: solve (A) and (B) of Theorem <a href="../../12.2/notes/#thm-inter">12.2.25</a> and check the pole. The regions change at those directions.</p>
+</li>
+<li>
+<p>On each interval of directions, integrate <span class="arithmatex">\(\frac12(\text{outer}^2-\text{inner}^2)\)</span> (“outside one, inside the other”) or <span class="arithmatex">\(\frac12\min^2\)</span> (“inside both”).</p>
+</li>
+<li>
+<p>Check the answer against a quick estimate or against symmetry.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.10: Inside one circle, outside a cardioid</p>
+<p><span id="ex-between"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=3\sin\theta\)</span> and outside <span class="arithmatex">\(r=1+\sin\theta\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> (A): <span class="arithmatex">\(3\sin\theta=1+\sin\theta\)</span> gives <span class="arithmatex">\(\sin\theta=\frac12\)</span>, so <span class="arithmatex">\(\theta=\frac\pi6,\frac{5\pi}6\)</span>, with <span class="arithmatex">\(r=\frac32\)</span>: the points <span class="arithmatex">\(\left(\frac{3\sqrt3}4,\frac34\right)\)</span> and <span class="arithmatex">\(\left(-\frac{3\sqrt3}4,\frac34\right)\)</span>. (B): <span class="arithmatex">\(3\sin\theta=-(1+\sin(\theta+\pi))=-1+\sin\theta\)</span> gives <span class="arithmatex">\(\sin\theta=-\frac12\)</span>, <span class="arithmatex">\(\theta=\frac{7\pi}6,\frac{11\pi}6\)</span>, and the points <span class="arithmatex">\(P\left(-\frac32,\theta\right)\)</span> are the same two points. <em>Pole.</em> The circle passes through it (<span class="arithmatex">\(\theta=0\)</span>) and so does the cardioid (<span class="arithmatex">\(\theta=\frac{3\pi}2\)</span>); it is an endpoint of the region, not an interior intersection. <em>Which curve is outside.</em> The circle is traced once for <span class="arithmatex">\(0\le\theta\le\pi\)</span>, and <span class="arithmatex">\(3\sin\theta&gt;1+\sin\theta\)</span> exactly when <span class="arithmatex">\(\sin\theta&gt;\frac12\)</span>, that is for <span class="arithmatex">\(\frac\pi6&lt;\theta&lt;\frac{5\pi}6\)</span>; elsewhere in <span class="arithmatex">\([0,\pi]\)</span> the circle is inside the cardioid, so there is no region. By Theorem <a href="#thm-between">12.3.8</a>,</p>
+<div class="arithmatex">\[A=\frac12\int_{\pi/6}^{5\pi/6}\left(9\sin^2\theta-(1+\sin\theta)^2\right)d\theta=\int_{\pi/6}^{5\pi/6}\left(\frac32-2\cos2\theta-\sin\theta\right)d\theta,\]</div>
+<p>because <span class="arithmatex">\(9\sin^2\theta-(1+\sin\theta)^2=8\sin^2\theta-2\sin\theta-1\)</span> and <span class="arithmatex">\(8\sin^2\theta=4-4\cos2\theta\)</span> give <span class="arithmatex">\(3-4\cos2\theta-2\sin\theta\)</span>, which we halve. An antiderivative is <span class="arithmatex">\(\frac32\theta-\sin2\theta+\cos\theta\)</span>: at <span class="arithmatex">\(\frac{5\pi}6\)</span> it is <span class="arithmatex">\(\frac{5\pi}4+\frac{\sqrt3}2-\frac{\sqrt3}2=\frac{5\pi}4\)</span> and at <span class="arithmatex">\(\frac\pi6\)</span> it is <span class="arithmatex">\(\frac\pi4-\frac{\sqrt3}2+\frac{\sqrt3}2=\frac\pi4\)</span>, so <span class="arithmatex">\(A=\pi\)</span>.</p>
+<p><img alt="Diagram: \(r=3\sin\theta\); \(r=1+\sin\theta\)" class="calc-figure" src="../figures/notes-fig6.svg" width="347" /></p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.3.3: A signed difference</p>
+<p><span id="think-signed"></span></p>
+<p>In Example <a href="#ex-between">12.3.10</a> the integrand <span class="arithmatex">\(\frac12\left(9\sin^2\theta-(1+\sin\theta)^2\right)\)</span> was integrated only over <span class="arithmatex">\(\left[\frac\pi6,\frac{5\pi}6\right]\)</span>. What would <span class="arithmatex">\(\frac12\int_0^\pi\left(9\sin^2\theta-(1+\sin\theta)^2\right)d\theta\)</span> measure, and why is it not an area?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>On <span class="arithmatex">\([0,\pi]\)</span> the circle <span class="arithmatex">\(r=3\sin\theta\)</span> is traced once and the cardioid <span class="arithmatex">\(r=1+\sin\theta\)</span> sweeps its upper half, so the integral is <span class="arithmatex">\(\operatorname{area}(\text{disc})-\operatorname{area}(\text{upper half of the cardioid})=\frac{9\pi}4-\left(\frac{3\pi}4+2\right)=\frac{3\pi}2-2\approx2.71\)</span>. It is not the area of the region inside the circle and outside the cardioid (<span class="arithmatex">\(\pi\approx3.14\)</span>) because for <span class="arithmatex">\(0\le\theta&lt;\frac\pi6\)</span> and <span class="arithmatex">\(\frac{5\pi}6&lt;\theta\le\pi\)</span> the cardioid is outside the circle, the integrand is negative, and those pieces are subtracted instead of being left out.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.11: Inside both of two circles</p>
+<p><span id="ex-both"></span></p>
+<p>Find the area inside both <span class="arithmatex">\(r=2\cos\theta\)</span> and <span class="arithmatex">\(r=2\sin\theta\)</span>.</p>
+<p><strong>Solution.</strong> Both circles have radius <span class="arithmatex">\(1\)</span> (centers <span class="arithmatex">\((1,0)\)</span> and <span class="arithmatex">\((0,1)\)</span>). (A): <span class="arithmatex">\(2\cos\theta=2\sin\theta\)</span> gives <span class="arithmatex">\(\theta=\frac\pi4\)</span> (in <span class="arithmatex">\([0,\pi]\)</span>, where <span class="arithmatex">\(2\sin\theta\)</span> traces its circle once; the other circle is traced for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span>, so only <span class="arithmatex">\(0\le\theta\le\frac\pi2\)</span> matters). The point is <span class="arithmatex">\(\left(\sqrt2\cos\frac\pi4,\sqrt2\sin\frac\pi4\right)=(1,1)\)</span>. Both circles pass through the pole. For <span class="arithmatex">\(0\le\theta\le\frac\pi4\)</span> the smaller radial coordinate is <span class="arithmatex">\(2\sin\theta\)</span>, and for <span class="arithmatex">\(\frac\pi4\le\theta\le\frac\pi2\)</span> it is <span class="arithmatex">\(2\cos\theta\)</span>. By Theorem <a href="#thm-between">12.3.8</a>,</p>
+<div class="arithmatex">\[A=\frac12\int_0^{\pi/4}4\sin^2\theta\,d\theta+\frac12\int_{\pi/4}^{\pi/2}4\cos^2\theta\,d\theta=2\cdot\int_0^{\pi/4}2\sin^2\theta\,d\theta,\]</div>
+<p>the two integrals being equal (substitute <span class="arithmatex">\(\theta\mapsto\frac\pi2-\theta\)</span>). Now <span class="arithmatex">\(2\sin^2\theta=1-\cos2\theta\)</span>, and <span class="arithmatex">\(\int_0^{\pi/4}(1-\cos2\theta)\,d\theta=\left[\theta-\frac12\sin2\theta\right]_0^{\pi/4}=\frac\pi4-\frac12\)</span>. So <span class="arithmatex">\(A=2\left(\frac\pi4-\frac12\right)=\frac\pi2-1\approx0.57\)</span>. <em>Check</em> by geometry: two unit circles whose centers are <span class="arithmatex">\(\sqrt2\)</span> apart overlap in a lens of area <span class="arithmatex">\(2\arccos\frac{\sqrt2}2-\frac{\sqrt2}2\sqrt{4-2}=\frac\pi2-1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.12: Inside both of two cardioids: the hidden intersection matters</p>
+<p><span id="ex-cards"></span></p>
+<p>Find the area inside both <span class="arithmatex">\(r=1+\cos\theta\)</span> and <span class="arithmatex">\(r=1-\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> In Example <a href="../../12.2/notes/#ex-int1">12.2.27</a> we found that the curves meet at <span class="arithmatex">\((0,1)\)</span> and <span class="arithmatex">\((0,-1)\)</span> (equation (A), <span class="arithmatex">\(\theta=\frac\pi2,\frac{3\pi}2\)</span>) and at the pole (reached at <span class="arithmatex">\(\theta=\pi\)</span> by the first curve and at <span class="arithmatex">\(\theta=0\)</span> by the second, so (A) and (B) do not see it). Each cardioid is traced once for <span class="arithmatex">\(0\le\theta\le2\pi\)</span> and <span class="arithmatex">\(f,g\ge0\)</span>, so by Theorem <a href="#thm-between">12.3.8</a> the area is <span class="arithmatex">\(\frac12\int_0^{2\pi}\min(f,g)^2\,d\theta\)</span>, with <span class="arithmatex">\(\min(1+\cos\theta,1-\cos\theta)=1-\abs{\cos\theta}\)</span>. The integrand <span class="arithmatex">\(\left(1-\abs{\cos\theta}\right)^2\)</span> is symmetric about both axes (it is unchanged by <span class="arithmatex">\(\theta\mapsto-\theta\)</span> and by <span class="arithmatex">\(\theta\mapsto\pi-\theta\)</span>), so the integral over <span class="arithmatex">\([0,2\pi]\)</span> is <span class="arithmatex">\(4\)</span> times the integral over <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span>, where <span class="arithmatex">\(\abs{\cos\theta}=\cos\theta\)</span>:</p>
+<div class="arithmatex">\[A=4\cdot\frac12\int_0^{\pi/2}(1-\cos\theta)^2d\theta=2\int_0^{\pi/2}\left(\frac32-2\cos\theta+\frac12\cos2\theta\right)d\theta=2\left[\frac32\theta-2\sin\theta+\frac14\sin2\theta\right]_0^{\pi/2},\]</div>
+<p>because <span class="arithmatex">\((1-\cos\theta)^2=1-2\cos\theta+\cos^2\theta=\frac32-2\cos\theta+\frac12\cos2\theta\)</span>. The bracket is <span class="arithmatex">\(\frac{3\pi}4-2+0\)</span>, so <span class="arithmatex">\(A=\frac{3\pi}2-4\approx0.71\)</span>. <em>Check.</em> Each cardioid has area <span class="arithmatex">\(\frac{3\pi}2\approx4.71\)</span> (Example <a href="#ex-card">12.3.4</a>), and the overlap is a small central region, <span class="arithmatex">\(0.71\)</span>. A solution that used only the intersection points <span class="arithmatex">\((0,\pm1)\)</span> found by (A), and not the pole, would have no way of knowing that <span class="arithmatex">\(\min(f,g)\)</span> is <span class="arithmatex">\(1-\cos\theta\)</span> on the right and <span class="arithmatex">\(1+\cos\theta\)</span> on the left.</p>
+<p><img alt="Diagram: \(r=1+\cos\theta\); \(r=1-\cos\theta\)" class="calc-figure" src="../figures/notes-fig7.svg" width="445" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.13: Inside a circle, outside another: a curve that is not there</p>
+<p><span id="ex-outside"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=2\)</span> and outside <span class="arithmatex">\(r=4\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> The circle <span class="arithmatex">\(r=4\cos\theta\)</span> has center <span class="arithmatex">\((2,0)\)</span> and radius <span class="arithmatex">\(2\)</span> and is traced once for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span> (where <span class="arithmatex">\(4\cos\theta\ge0\)</span>). <em>Intersections.</em> (A): <span class="arithmatex">\(4\cos\theta=2\)</span>, <span class="arithmatex">\(\theta=\pm\frac\pi3\)</span>, giving <span class="arithmatex">\((1,\pm\sqrt3)\)</span>. (B): <span class="arithmatex">\(4\cos\theta=-2\)</span>, <span class="arithmatex">\(\theta=\pm\frac{2\pi}3\)</span>, and the points <span class="arithmatex">\(P(-2,\pm\frac{2\pi}3)\)</span> are the same two points. The disc <span class="arithmatex">\(r\le2\)</span> and the circle meet only there (the pole is on the circle <span class="arithmatex">\(r=4\cos\theta\)</span> but inside the disc). <em>The directions.</em> For <span class="arithmatex">\(\frac\pi3\le\theta\le\frac\pi2\)</span> the region lies between <span class="arithmatex">\(r=4\cos\theta\)</span> (inner) and <span class="arithmatex">\(r=2\)</span> (outer); the same holds for <span class="arithmatex">\(-\frac\pi2\le\theta\le-\frac\pi3\)</span>. For <span class="arithmatex">\(\frac\pi2\le\theta\le\frac{3\pi}2\)</span> <em>no point of the circle <span class="arithmatex">\(r=4\cos\theta\)</span> lies in these directions</em> (the circle is in the half-plane <span class="arithmatex">\(x\ge0\)</span>), so the whole half-disc belongs to the region. The area is the sum:</p>
+<div class="arithmatex">\[A=\underbrace{\frac12\int_{\pi/2}^{3\pi/2}2^2\,d\theta}_{\text{half-disc}}+2\cdot\frac12\int_{\pi/3}^{\pi/2}\left(4-16\cos^2\theta\right)d\theta=2\pi+\int_{\pi/3}^{\pi/2}\left(-4-8\cos2\theta\right)d\theta,\]</div>
+<p>using <span class="arithmatex">\(16\cos^2\theta=8+8\cos2\theta\)</span>. The integral is <span class="arithmatex">\(\left[-4\theta-4\sin2\theta\right]_{\pi/3}^{\pi/2}=\left(-2\pi-0\right)-\left(-\frac{4\pi}3-2\sqrt3\right)=-\frac{2\pi}3+2\sqrt3\)</span>, so <span class="arithmatex">\(A=2\pi-\frac{2\pi}3+2\sqrt3=\frac{4\pi}3+2\sqrt3\approx7.65\)</span>. <em>Check</em> by geometry: the disc has area <span class="arithmatex">\(4\pi\)</span> and the two discs overlap in a lens of area <span class="arithmatex">\(2\cdot4\arccos\frac12-1\cdot\sqrt{16-4}=\frac{8\pi}3-2\sqrt3\)</span> (the circles have radius <span class="arithmatex">\(2\)</span> and centers <span class="arithmatex">\(2\)</span> apart); <span class="arithmatex">\(4\pi-\left(\frac{8\pi}3-2\sqrt3\right)=\frac{4\pi}3+2\sqrt3\)</span>. The tempting integral <span class="arithmatex">\(\frac12\int_{\pi/3}^{5\pi/3}\left(4-16\cos^2\theta\right)d\theta\)</span> gives the <em>negative</em> number <span class="arithmatex">\(-\frac{8\pi}3+2\sqrt3\)</span>: it subtracts the circle in directions where there is no circle.</p>
+<p><img alt="Diagram: \(r=2\); \(r=4\cos\theta\)" class="calc-figure" src="../figures/notes-fig8.svg" width="477" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.14: Common part of a circle and a cardioid</p>
+<p><span id="ex-lens"></span></p>
+<p>Find the area inside both <span class="arithmatex">\(r=3\cos\theta\)</span> and <span class="arithmatex">\(r=1+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> (A): <span class="arithmatex">\(3\cos\theta=1+\cos\theta\)</span>, <span class="arithmatex">\(\cos\theta=\frac12\)</span>, <span class="arithmatex">\(\theta=\pm\frac\pi3\)</span>, <span class="arithmatex">\(r=\frac32\)</span>: the points <span class="arithmatex">\(\left(\frac34,\pm\frac{3\sqrt3}4\right)\)</span>. (B): <span class="arithmatex">\(3\cos\theta=-(1-\cos\theta)\)</span> gives <span class="arithmatex">\(\cos\theta=-\frac12\)</span>, and the points <span class="arithmatex">\(P\left(-\frac32,\frac{2\pi}3\right)\)</span>, <span class="arithmatex">\(P\left(-\frac32,\frac{4\pi}3\right)\)</span> are the same two points. <em>Pole.</em> The circle passes through it at <span class="arithmatex">\(\theta=\pm\frac\pi2\)</span>, the cardioid at <span class="arithmatex">\(\theta=\pi\)</span>: it is a common point, but it is the boundary of the region. <em>Which is inside.</em> The circle is traced once for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span>, and in the other directions it has no points, so the region exists only for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span>. For <span class="arithmatex">\(0\le\theta\le\frac\pi3\)</span> we have <span class="arithmatex">\(3\cos\theta\ge1+\cos\theta\)</span>: the cardioid is inside. For <span class="arithmatex">\(\frac\pi3\le\theta\le\frac\pi2\)</span> the circle is inside. The region is symmetric about the <span class="arithmatex">\(x\)</span>-axis, so</p>
+<div class="arithmatex">\[A=2\left[\frac12\int_0^{\pi/3}(1+\cos\theta)^2d\theta+\frac12\int_{\pi/3}^{\pi/2}9\cos^2\theta\,d\theta\right]=I_1+I_2 .\]</div>
+<p>Since <span class="arithmatex">\((1+\cos\theta)^2=\frac32+2\cos\theta+\frac12\cos2\theta\)</span>, <span class="arithmatex">\(I_1=\left[\frac32\theta+2\sin\theta+\frac14\sin2\theta\right]_0^{\pi/3}=\frac\pi2+\sqrt3+\frac{\sqrt3}8=\frac\pi2+\frac{9\sqrt3}8\)</span>. Since <span class="arithmatex">\(9\cos^2\theta=\frac92+\frac92\cos2\theta\)</span>, <span class="arithmatex">\(I_2=\left[\frac92\theta+\frac94\sin2\theta\right]_{\pi/3}^{\pi/2}=\frac{9\pi}4-\left(\frac{3\pi}2+\frac{9\sqrt3}8\right)=\frac{3\pi}4-\frac{9\sqrt3}8\)</span>. Therefore <span class="arithmatex">\(A=I_1+I_2=\frac\pi2+\frac{3\pi}4=\frac{5\pi}4\approx3.93\)</span>: the irrational parts cancel. <em>Check.</em> The circle has area <span class="arithmatex">\(\frac{9\pi}4\approx7.07\)</span>, the cardioid <span class="arithmatex">\(\frac{3\pi}2\approx4.71\)</span>; the common part <span class="arithmatex">\(3.93\)</span> is smaller than both.</p>
+<p><img alt="Diagram: \(r=3\cos\theta\); \(r=1+\cos\theta\)" class="calc-figure" src="../figures/notes-fig9.svg" width="361" /></p>
+</div>
+<h2 id="arc-length-in-polar-coordinates">Arc length in polar coordinates<a class="headerlink" href="#arc-length-in-polar-coordinates" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.3.15: Arc length of a polar curve</p>
+<p><span id="thm-arclen"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> have a continuous derivative on <span class="arithmatex">\([\alpha,\beta]\)</span>. The speed of the curve <span class="arithmatex">\(r=f(\theta)\)</span>, <span class="arithmatex">\(\alpha\le\theta\le\beta\)</span>, is <span class="arithmatex">\(\sqrt{f(\theta)^2+f'(\theta)^2}\)</span>, and its length, counted once for each time a piece of the curve is traced, is</p>
+<div class="arithmatex">\[L=\int_\alpha^\beta\sqrt{f(\theta)^2+f'(\theta)^2}\;d\theta .\]</div>
+<p>If the curve is traced once (distinct values of <span class="arithmatex">\(\theta\)</span> in <span class="arithmatex">\([\alpha,\beta)\)</span> give distinct points), <span class="arithmatex">\(L\)</span> is the length of the curve as a set of points.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="../../12.2/notes/#thm-polpar">12.2.13</a> the curve is parametric with <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta\)</span> and <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta\)</span>, both continuous. Expanding the squares,</p>
+<div class="arithmatex">\[x'^2+y'^2=f'^2\cos^2\theta-2f'f\sin\theta\cos\theta+f^2\sin^2\theta+f'^2\sin^2\theta+2f'f\sin\theta\cos\theta+f^2\cos^2\theta=f'^2+f^2,\]</div>
+<p>since the cross terms cancel and <span class="arithmatex">\(\sin^2\theta+\cos^2\theta=1\)</span>. Theorem <a href="../../12.1/notes/#thm-arclen">12.1.19</a> gives <span class="arithmatex">\(L=\int_\alpha^\beta\sqrt{x'^2+y'^2}\,d\theta\)</span>, which is the stated formula. For a curve traced once, Remark (2) after that theorem and Theorem <a href="../../appendix/appendix/#thm-invariance">I.4</a> show that the length does not depend on the parametrization, so it is the length of the point set. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.16: The length of a cardioid</p>
+<p><span id="ex-cardlen"></span></p>
+<p>Find the length of <span class="arithmatex">\(r=1+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=1+\cos\theta\)</span> and <span class="arithmatex">\(f'=-\sin\theta\)</span>, so <span class="arithmatex">\(f^2+f'^2=1+2\cos\theta+\cos^2\theta+\sin^2\theta=2+2\cos\theta=4\cos^2\frac\theta2\)</span>, by <span class="arithmatex">\(1+\cos\theta=2\cos^2\frac\theta2\)</span> (half-angle identity). Hence the speed is <span class="arithmatex">\(2\abs{\cos\frac\theta2}\)</span>, which equals <span class="arithmatex">\(2\cos\frac\theta2\)</span> for <span class="arithmatex">\(0\le\theta\le\pi\)</span> (where <span class="arithmatex">\(\frac\theta2\in\left[0,\frac\pi2\right]\)</span>) and <span class="arithmatex">\(-2\cos\frac\theta2\)</span> for <span class="arithmatex">\(\pi\le\theta\le2\pi\)</span>. The cardioid is traced once on <span class="arithmatex">\([0,2\pi]\)</span>, and the two halves are mirror images, so <span class="arithmatex">\(L=2\int_0^\pi2\cos\frac\theta2\,d\theta=2\left[4\sin\frac\theta2\right]_0^\pi=8\)</span>. <em>Check.</em> The length lies between the circumferences of the circles of radius <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(2\)</span> (<span class="arithmatex">\(6.28\)</span> and <span class="arithmatex">\(12.57\)</span>). <em>A common mistake:</em> <span class="arithmatex">\(\int_0^{2\pi}2\cos\frac\theta2\,d\theta=0\)</span>, because the speed is <span class="arithmatex">\(2\abs{\cos(\theta/2)}\)</span>, not <span class="arithmatex">\(2\cos(\theta/2)\)</span>; a length cannot be <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.17: Two spirals</p>
+<p><span id="ex-spiral"></span></p>
+<p>Find the length of (a) <span class="arithmatex">\(r=\theta\)</span>, <span class="arithmatex">\(0\le\theta\le2\pi\)</span>, and (b) <span class="arithmatex">\(r=e^\theta\)</span>, <span class="arithmatex">\(0\le\theta\le\pi\)</span>.</p>
+<p><strong>Solution.</strong> Both curves are traced once because <span class="arithmatex">\(r\)</span> is strictly increasing, so distinct angles give distinct distances from the pole. (a) <span class="arithmatex">\(f=\theta\)</span>, <span class="arithmatex">\(f'=1\)</span>, so <span class="arithmatex">\(L=\int_0^{2\pi}\sqrt{\theta^2+1}\,d\theta\)</span>. Substitute <span class="arithmatex">\(\theta=\tan u\)</span>, <span class="arithmatex">\(d\theta=\sec^2u\,du\)</span>, <span class="arithmatex">\(\sqrt{\tan^2u+1}=\sec u\)</span> (for <span class="arithmatex">\(u\in\left[0,\frac\pi2\right)\)</span>): <span class="arithmatex">\(\int\sec^3u\,du=\frac12\left(\sec u\tan u+\ln\abs{\sec u+\tan u}\right)\)</span> (integration by parts, from the table of trigonometric integrals). With <span class="arithmatex">\(\tan u=\theta\)</span> and <span class="arithmatex">\(\sec u=\sqrt{1+\theta^2}\)</span>,</p>
+<div class="arithmatex">\[L=\frac12\left[\theta\sqrt{1+\theta^2}+\ln\left(\theta+\sqrt{1+\theta^2}\right)\right]_0^{2\pi}=\frac12\left(2\pi\sqrt{1+4\pi^2}+\ln\left(2\pi+\sqrt{1+4\pi^2}\right)\right)\approx21.26.\]</div>
+<p><em>Check.</em> Numerical integration of <span class="arithmatex">\(\sqrt{\theta^2+1}\)</span> over <span class="arithmatex">\([0,2\pi]\)</span> gives <span class="arithmatex">\(21.256\)</span>, and the length is more than the straight distance <span class="arithmatex">\(2\pi\approx6.28\)</span> from the pole to <span class="arithmatex">\((2\pi,0)\)</span>, as it must be. (b) <span class="arithmatex">\(f=f'=e^\theta\)</span>, so <span class="arithmatex">\(f^2+f'^2=2e^{2\theta}\)</span> and <span class="arithmatex">\(L=\int_0^\pi\sqrt2\,e^\theta\,d\theta=\sqrt2\left(e^\pi-1\right)\approx31.31\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.3.3: Setting up a length</p>
+<p><span id="kc-lenkc"></span></p>
+<p>Set up and evaluate the length of <span class="arithmatex">\(r=\theta^2\)</span> for <span class="arithmatex">\(0\le\theta\le1\)</span>.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>The area formula <span class="arithmatex">\(\frac12\int f^2\,d\theta\)</span> and the length formula <span class="arithmatex">\(\int\sqrt{f^2+f'^2}\,d\theta\)</span> are the polar versions of the integrals of Calculus I. A surface of revolution made by revolving a polar curve about the <span class="arithmatex">\(x\)</span>-axis or the <span class="arithmatex">\(y\)</span>-axis has area given by the formula of Theorem <a href="../../12.1/notes/#thm-surface">12.1.24</a> with the polar speed above and the radius of revolution <span class="arithmatex">\(y=f(\theta)\sin\theta\)</span> or <span class="arithmatex">\(x=f(\theta)\cos\theta\)</span>; this is the natural next question for the cardioid and the spiral. In Section 12.4 the circle, ellipse, parabola and hyperbola are described by one polar equation <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}\)</span>, and the area formula of this section will give the area swept by a planet moving in such an orbit (Kepler’s second law). In later chapters, area in polar coordinates becomes the area element <span class="arithmatex">\(r\,dr\,d\theta\)</span> of a double integral in a plane, and <span class="arithmatex">\(dA=\frac12r^2\,d\theta\)</span> appears again in the study of vector-valued functions.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Twenty further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Area inside one curve</em> (Examples <a href="#ex-b1">12.3.18</a>–<a href="#ex-b3">12.3.20</a>): a circle with the wrong-looking interval; a scaled cardioid; a spiral.</p>
+</li>
+<li>
+<p><em>Petals and loops</em> (Examples <a href="#ex-b4">12.3.21</a>–<a href="#ex-b6">12.3.23</a>): a four-petal rose; a dimpled limaçon; the inner loop of a limaçon.</p>
+</li>
+<li>
+<p><em>Between two curves</em> (Examples <a href="#ex-b7">12.3.24</a>–<a href="#ex-b9">12.3.26</a>): a cardioid outside a circle; a circle outside a circle; two curves that never meet.</p>
+</li>
+<li>
+<p><em>Limits from intersections</em> (Examples <a href="#ex-b10">12.3.27</a>–<a href="#ex-b12">12.3.29</a>): a disc and a circle; petals outside a circle; a lemniscate outside a circle.</p>
+</li>
+<li>
+<p><em>Arc length</em> (Examples <a href="#ex-b13">12.3.30</a>–<a href="#ex-b15">12.3.32</a>): a circle; a spiral toward the pole; a small cardioid.</p>
+</li>
+<li>
+<p><em>Tangent lines and partial areas</em> (Examples <a href="#ex-b16">12.3.33</a>–<a href="#ex-b17">12.3.34</a>): tangent lines at the pole; the part of a cardioid in the first quadrant.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b18">12.3.35</a>–<a href="#ex-b20">12.3.37</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-area-inside-one-curve">Group 1: Area inside one curve<a class="headerlink" href="#group-1-area-inside-one-curve" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.18: A circle, and the right interval</p>
+<p><span id="ex-b1"></span></p>
+<p>Find the area enclosed by <span class="arithmatex">\(r=4\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=4\cos\theta\ge0\)</span> for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span>, and the circle is traced once on this interval. Then <span class="arithmatex">\(A=\frac12\int_{-\pi/2}^{\pi/2}16\cos^2\theta\,d\theta=\int_{-\pi/2}^{\pi/2}\left(4+4\cos2\theta\right)d\theta\)</span>, using <span class="arithmatex">\(8\cos^2\theta=4+4\cos2\theta\)</span>. The antiderivative <span class="arithmatex">\(4\theta+2\sin2\theta\)</span> equals <span class="arithmatex">\(2\pi+0\)</span> at <span class="arithmatex">\(\frac\pi2\)</span> and <span class="arithmatex">\(-2\pi\)</span> at <span class="arithmatex">\(-\frac\pi2\)</span>, so <span class="arithmatex">\(A=4\pi\)</span>. <em>Check.</em> The circle has center <span class="arithmatex">\((2,0)\)</span> and radius <span class="arithmatex">\(2\)</span> (Theorem <a href="../../12.2/notes/#thm-pcircles">12.2.11</a>), area <span class="arithmatex">\(\pi\cdot2^2=4\pi\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.19: A scaled cardioid</p>
+<p><span id="ex-b2"></span></p>
+<p>Find the area enclosed by <span class="arithmatex">\(r=2-2\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=2-2\cos\theta\ge0\)</span>, traced once on <span class="arithmatex">\([0,2\pi]\)</span>. <span class="arithmatex">\(A=\frac12\int_0^{2\pi}4(1-\cos\theta)^2d\theta=2\int_0^{2\pi}\left(\frac32-2\cos\theta+\frac12\cos2\theta\right)d\theta\)</span>, since <span class="arithmatex">\((1-\cos\theta)^2=1-2\cos\theta+\cos^2\theta\)</span> and <span class="arithmatex">\(\cos^2\theta=\frac{1+\cos2\theta}2\)</span>. The antiderivative <span class="arithmatex">\(\frac32\theta-2\sin\theta+\frac14\sin2\theta\)</span> is <span class="arithmatex">\(3\pi\)</span> at <span class="arithmatex">\(2\pi\)</span> and <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(0\)</span>, so <span class="arithmatex">\(A=2\cdot3\pi=6\pi\approx18.85\)</span>. <em>Check.</em> Doubling every radial coordinate multiplies areas by <span class="arithmatex">\(4\)</span>, and the cardioid <span class="arithmatex">\(r=1+\cos\theta\)</span> has area <span class="arithmatex">\(\frac{3\pi}2\)</span> (Example <a href="#ex-card">12.3.4</a>); the reflection <span class="arithmatex">\(\theta\mapsto\theta+\pi\)</span> does not change areas: <span class="arithmatex">\(4\cdot\frac{3\pi}2=6\pi\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.20: The region under a spiral</p>
+<p><span id="ex-b3"></span></p>
+<p>Find the area of the region bounded by the spiral <span class="arithmatex">\(r=\theta\)</span>, <span class="arithmatex">\(0\le\theta\le\pi\)</span>, and the polar axis.</p>
+<p><strong>Solution.</strong> The region is swept by the segments from the pole to the spiral, for <span class="arithmatex">\(0\le\theta\le\pi\)</span>; it is bounded by the spiral and the segment from the pole to <span class="arithmatex">\((\pi,0)\)</span> on the polar axis. Here <span class="arithmatex">\(f=\theta\ge0\)</span> and <span class="arithmatex">\(\pi-0\le2\pi\)</span>, so Theorem <a href="#thm-area">12.3.3</a> applies: <span class="arithmatex">\(A=\frac12\int_0^\pi\theta^2\,d\theta=\frac12\cdot\frac{\pi^3}3=\frac{\pi^3}6\approx5.17\)</span>. <em>Check.</em> The region lies in the upper half-plane inside the half-disc of radius <span class="arithmatex">\(\pi\)</span>, of area <span class="arithmatex">\(\frac{\pi\cdot\pi^2}2\approx15.5\)</span>, and <span class="arithmatex">\(5.17\)</span> is one third of that: the integral of <span class="arithmatex">\(\theta^2\)</span> is one third of the integral of <span class="arithmatex">\(\pi^2\)</span>.</p>
+</div>
+<h2 id="group-2-petals-and-loops">Group 2: Petals and loops<a class="headerlink" href="#group-2-petals-and-loops" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.21: A four-petal rose</p>
+<p><span id="ex-b4"></span></p>
+<p>Find the area of one petal and of the whole rose <span class="arithmatex">\(r=3\sin2\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f\ge0\)</span> for <span class="arithmatex">\(0\le\theta\le\frac\pi2\)</span> (where <span class="arithmatex">\(\sin2\theta\ge0\)</span>), <span class="arithmatex">\(f=0\)</span> at both ends: that is one petal, in the first quadrant. Then <span class="arithmatex">\(A_{\text{petal}}=\frac12\int_0^{\pi/2}9\sin^22\theta\,d\theta=\frac94\int_0^{\pi/2}(1-\cos4\theta)\,d\theta=\frac94\left[\theta-\frac14\sin4\theta\right]_0^{\pi/2}=\frac94\cdot\frac\pi2=\frac{9\pi}8\)</span>, using <span class="arithmatex">\(\sin^22\theta=\frac{1-\cos4\theta}2\)</span>. There are four congruent petals (Theorem <a href="../../12.2/notes/#thm-rose">12.2.17</a>: <span class="arithmatex">\(2\cdot2=4\)</span>), so the whole rose has area <span class="arithmatex">\(4\cdot\frac{9\pi}8=\frac{9\pi}2\approx14.14\)</span>. <em>Check.</em> <span class="arithmatex">\(\frac12\int_0^{2\pi}9\sin^22\theta\,d\theta=\frac94\cdot2\pi=\frac{9\pi}2\)</span>, and the interval <span class="arithmatex">\([0,2\pi]\)</span> traces the rose once.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.22: A limaçon without an inner loop</p>
+<p><span id="ex-b5"></span></p>
+<p>Find the area enclosed by <span class="arithmatex">\(r=2+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=2+\cos\theta\ge1&gt;0\)</span>, traced once on <span class="arithmatex">\([0,2\pi]\)</span>. <span class="arithmatex">\(A=\frac12\int_0^{2\pi}\left(4+4\cos\theta+\cos^2\theta\right)d\theta=\frac12\int_0^{2\pi}\left(\frac92+4\cos\theta+\frac12\cos2\theta\right)d\theta\)</span> (by <span class="arithmatex">\(\cos^2\theta=\frac{1+\cos2\theta}2\)</span>). The antiderivative <span class="arithmatex">\(\frac92\theta+4\sin\theta+\frac14\sin2\theta\)</span> is <span class="arithmatex">\(9\pi\)</span> at <span class="arithmatex">\(2\pi\)</span> and <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(0\)</span>. So <span class="arithmatex">\(A=\frac{9\pi}2\approx14.14\)</span>. <em>Check.</em> The curve lies between the circles of radii <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(3\)</span>, of areas <span class="arithmatex">\(\pi\)</span> and <span class="arithmatex">\(9\pi\)</span>, and its area is the average of the squares of <span class="arithmatex">\(2+\cos\theta\)</span> over a turn: <span class="arithmatex">\(\frac12\cdot2\pi\cdot\left(4+\frac12\right)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.23: The inner loop of a limaçon</p>
+<p><span id="ex-b6"></span></p>
+<p>Find the area of the inner loop of <span class="arithmatex">\(r=2+4\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=0\)</span> when <span class="arithmatex">\(\cos\theta=-\frac12\)</span>, <span class="arithmatex">\(\theta=\frac{2\pi}3,\frac{4\pi}3\)</span>, and <span class="arithmatex">\(f&lt;0\)</span> between them: this is the inner loop. <span class="arithmatex">\(\frac12f^2=\frac12\left(4+16\cos\theta+16\cos^2\theta\right)=6+8\cos\theta+4\cos2\theta\)</span> (using <span class="arithmatex">\(8\cos^2\theta=4+4\cos2\theta\)</span>), with antiderivative <span class="arithmatex">\(F=6\theta+8\sin\theta+2\sin2\theta\)</span>. <span class="arithmatex">\(F\left(\frac{4\pi}3\right)=8\pi-4\sqrt3+\sqrt3=8\pi-3\sqrt3\)</span> (as <span class="arithmatex">\(\sin\frac{4\pi}3=-\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{8\pi}3=\frac{\sqrt3}2\)</span>) and <span class="arithmatex">\(F\left(\frac{2\pi}3\right)=4\pi+4\sqrt3-\sqrt3=4\pi+3\sqrt3\)</span> (<span class="arithmatex">\(\sin\frac{2\pi}3=\frac{\sqrt3}2\)</span>, <span class="arithmatex">\(\sin\frac{4\pi}3=-\frac{\sqrt3}2\)</span>). So <span class="arithmatex">\(A=F\left(\frac{4\pi}3\right)-F\left(\frac{2\pi}3\right)=4\pi-6\sqrt3\approx2.17\)</span>. <em>Check.</em> It is <span class="arithmatex">\(4\)</span> times the inner loop of <span class="arithmatex">\(r=1+2\cos\theta\)</span>, which is <span class="arithmatex">\(\pi-\frac{3\sqrt3}2\)</span> (Example <a href="#ex-limacon">12.3.6</a>), because every radial coordinate is doubled.</p>
+</div>
+<h2 id="group-3-between-two-curves">Group 3: Between two curves<a class="headerlink" href="#group-3-between-two-curves" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.24: Inside a cardioid, outside a circle</p>
+<p><span id="ex-b7"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=2+2\cos\theta\)</span> and outside <span class="arithmatex">\(r=2\)</span>.</p>
+<p><strong>Solution.</strong> (A): <span class="arithmatex">\(2+2\cos\theta=2\)</span> gives <span class="arithmatex">\(\theta=\pm\frac\pi2\)</span>. (B): <span class="arithmatex">\(2+2\cos\theta=-2\)</span> has no solution (<span class="arithmatex">\(\cos\theta=-2\)</span>). The pole is on the cardioid (<span class="arithmatex">\(\theta=\pi\)</span>) but not on the circle, so it is not an intersection. The cardioid is outside the circle exactly when <span class="arithmatex">\(2+2\cos\theta&gt;2\)</span>, i.e. for <span class="arithmatex">\(-\frac\pi2&lt;\theta&lt;\frac\pi2\)</span>. Then <span class="arithmatex">\(A=\frac12\int_{-\pi/2}^{\pi/2}\left[(2+2\cos\theta)^2-4\right]d\theta=\int_{-\pi/2}^{\pi/2}\left(4\cos\theta+2\cos^2\theta\right)d\theta\)</span>, because <span class="arithmatex">\((2+2\cos\theta)^2-4=8\cos\theta+4\cos^2\theta\)</span>. With <span class="arithmatex">\(2\cos^2\theta=1+\cos2\theta\)</span>, the integrand is <span class="arithmatex">\(4\cos\theta+1+\cos2\theta\)</span>, with antiderivative <span class="arithmatex">\(4\sin\theta+\theta+\frac12\sin2\theta\)</span>. At <span class="arithmatex">\(\frac\pi2\)</span> it is <span class="arithmatex">\(4+\frac\pi2\)</span> and at <span class="arithmatex">\(-\frac\pi2\)</span> it is <span class="arithmatex">\(-4-\frac\pi2\)</span>, so <span class="arithmatex">\(A=8+\pi\approx11.14\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.25: Inside a circle, outside a smaller circle</p>
+<p><span id="ex-b8"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=6\cos\theta\)</span> and outside <span class="arithmatex">\(r=3\)</span>.</p>
+<p><strong>Solution.</strong> The large circle (<span class="arithmatex">\(r=6\cos\theta\)</span>, center <span class="arithmatex">\((3,0)\)</span>, radius <span class="arithmatex">\(3\)</span>) is traced once for <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span> and has no points in the other directions. (A): <span class="arithmatex">\(6\cos\theta=3\)</span>, <span class="arithmatex">\(\theta=\pm\frac\pi3\)</span>; (B): <span class="arithmatex">\(6\cos\theta=-3\)</span> gives the same points. The large circle is outside <span class="arithmatex">\(r=3\)</span> for <span class="arithmatex">\(|\theta|&lt;\frac\pi3\)</span> and inside it for <span class="arithmatex">\(\frac\pi3&lt;|\theta|\le\frac\pi2\)</span>. Hence <span class="arithmatex">\(A=2\cdot\frac12\int_0^{\pi/3}\left(36\cos^2\theta-9\right)d\theta=\int_0^{\pi/3}\left(9+18\cos2\theta\right)d\theta\)</span> (as <span class="arithmatex">\(36\cos^2\theta=18+18\cos2\theta\)</span>) <span class="arithmatex">\(=\left[9\theta+9\sin2\theta\right]_0^{\pi/3}=3\pi+\frac{9\sqrt3}2\approx17.22\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.26: No intersection: the limits are the whole turn</p>
+<p><span id="ex-b9"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=3\)</span> and outside <span class="arithmatex">\(r=1+\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> The cardioid has <span class="arithmatex">\(0\le1+\cos\theta\le2&lt;3\)</span>, so it lies strictly inside the circle: (A) has no solution, and (B) <span class="arithmatex">\(1+\cos\theta=-3\)</span> does not either. The region is the whole disc minus the cardioid’s interior, for every direction, so the limits are <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(2\pi\)</span>: <span class="arithmatex">\(A=\frac12\int_0^{2\pi}\left(9-(1+\cos\theta)^2\right)d\theta=\frac12\cdot18\pi-\frac12\cdot3\pi=9\pi-\frac{3\pi}2=\frac{15\pi}2\)</span>, using <span class="arithmatex">\(\frac12\int_0^{2\pi}(1+\cos\theta)^2d\theta=\frac{3\pi}2\)</span> (Example <a href="#ex-card">12.3.4</a>). <em>Check.</em> <span class="arithmatex">\(\pi\cdot3^2-\frac{3\pi}2\)</span>.</p>
+</div>
+<h2 id="group-4-limits-from-intersections">Group 4: Limits from intersections<a class="headerlink" href="#group-4-limits-from-intersections" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.27: Inside a disc and a circle</p>
+<p><span id="ex-b10"></span></p>
+<p>Find the area inside both <span class="arithmatex">\(r=2\)</span> and <span class="arithmatex">\(r=4\sin\theta\)</span>.</p>
+<p><strong>Solution.</strong> The circle <span class="arithmatex">\(r=4\sin\theta\)</span> (center <span class="arithmatex">\((0,2)\)</span>, radius <span class="arithmatex">\(2\)</span>) is traced once on <span class="arithmatex">\([0,\pi]\)</span>. (A): <span class="arithmatex">\(4\sin\theta=2\)</span>, <span class="arithmatex">\(\theta=\frac\pi6,\frac{5\pi}6\)</span>; (B) gives the same points. For <span class="arithmatex">\(0\le\theta\le\frac\pi6\)</span> the smaller radial coordinate is <span class="arithmatex">\(4\sin\theta\)</span>; for <span class="arithmatex">\(\frac\pi6\le\theta\le\frac{5\pi}6\)</span> it is <span class="arithmatex">\(2\)</span>; for <span class="arithmatex">\(\frac{5\pi}6\le\theta\le\pi\)</span> it is <span class="arithmatex">\(4\sin\theta\)</span> again. By Theorem <a href="#thm-between">12.3.8</a>, <span class="arithmatex">\(A=2\cdot\frac12\int_0^{\pi/6}16\sin^2\theta\,d\theta+\frac12\int_{\pi/6}^{5\pi/6}4\,d\theta\)</span> (the two outer pieces are equal by the symmetry <span class="arithmatex">\(\theta\mapsto\pi-\theta\)</span>). First, <span class="arithmatex">\(16\sin^2\theta=8-8\cos2\theta\)</span>, so <span class="arithmatex">\(\int_0^{\pi/6}16\sin^2\theta\,d\theta=\left[8\theta-4\sin2\theta\right]_0^{\pi/6}=\frac{4\pi}3-2\sqrt3\)</span>. Second, <span class="arithmatex">\(\frac12\cdot4\cdot\frac{4\pi}6=\frac{4\pi}3\)</span>. So <span class="arithmatex">\(A=\frac{4\pi}3-2\sqrt3+\frac{4\pi}3=\frac{8\pi}3-2\sqrt3\approx4.91\)</span>. <em>Check.</em> Two circles of radius <span class="arithmatex">\(2\)</span> with centers <span class="arithmatex">\(2\)</span> apart overlap in a lens of area <span class="arithmatex">\(2\cdot4\arccos\frac12-\sqrt{16-4}=\frac{8\pi}3-2\sqrt3\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.28: Four petals, outside a circle</p>
+<p><span id="ex-b11"></span></p>
+<p>Find the area inside <span class="arithmatex">\(r=2\cos2\theta\)</span> and outside <span class="arithmatex">\(r=1\)</span> (all four petals).</p>
+<p><strong>Solution.</strong> Take the petal <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span>, where <span class="arithmatex">\(f=2\cos2\theta\ge0\)</span>. It is outside the unit circle when <span class="arithmatex">\(2\cos2\theta&gt;1\)</span>, i.e. <span class="arithmatex">\(\cos2\theta&gt;\frac12\)</span>, i.e. <span class="arithmatex">\(|2\theta|&lt;\frac\pi3\)</span>: for <span class="arithmatex">\(-\frac\pi6&lt;\theta&lt;\frac\pi6\)</span> (the intersection points are the eight points of Example <a href="../../12.2/notes/#ex-int2">12.2.28</a>; on this petal they are at <span class="arithmatex">\(\theta=\pm\frac\pi6\)</span>). The area of the part of the petal outside the circle is <span class="arithmatex">\(\frac12\int_{-\pi/6}^{\pi/6}\left(4\cos^22\theta-1\right)d\theta=\frac12\int_{-\pi/6}^{\pi/6}\left(1+2\cos4\theta\right)d\theta\)</span>, because <span class="arithmatex">\(4\cos^22\theta=2+2\cos4\theta\)</span>. The antiderivative is <span class="arithmatex">\(\theta+\frac12\sin4\theta\)</span>, equal to <span class="arithmatex">\(\frac\pi6+\frac12\sin\frac{2\pi}3=\frac\pi6+\frac{\sqrt3}4\)</span> at <span class="arithmatex">\(\frac\pi6\)</span> and the negative of that at <span class="arithmatex">\(-\frac\pi6\)</span>. So one petal contributes <span class="arithmatex">\(\frac12\cdot2\left(\frac\pi6+\frac{\sqrt3}4\right)=\frac\pi6+\frac{\sqrt3}4\)</span>, and the four petals give <span class="arithmatex">\(A=\frac{2\pi}3+\sqrt3\approx3.83\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.29: A lemniscate outside a circle</p>
+<p><span id="ex-b12"></span></p>
+<p>Find the area inside the lemniscate <span class="arithmatex">\(r^2=8\cos2\theta\)</span> and outside the circle <span class="arithmatex">\(r=2\)</span>.</p>
+<p><strong>Solution.</strong> The lemniscate has two loops, one for <span class="arithmatex">\(-\frac\pi4\le\theta\le\frac\pi4\)</span> and one for <span class="arithmatex">\(\frac{3\pi}4\le\theta\le\frac{5\pi}4\)</span>, reflections of each other through the pole; on the first, <span class="arithmatex">\(f=\sqrt{8\cos2\theta}\)</span>. The curves meet where <span class="arithmatex">\(8\cos2\theta=4\)</span>, <span class="arithmatex">\(\cos2\theta=\frac12\)</span>, so <span class="arithmatex">\(\theta=\pm\frac\pi6\)</span> (and <span class="arithmatex">\(\pm\frac{5\pi}6\)</span> on the other loop). On the right loop, <span class="arithmatex">\(f&gt;2\)</span> exactly for <span class="arithmatex">\(-\frac\pi6&lt;\theta&lt;\frac\pi6\)</span>. The area of the part of one loop outside the circle is <span class="arithmatex">\(\frac12\int_{-\pi/6}^{\pi/6}\left(8\cos2\theta-4\right)d\theta=\left[2\sin2\theta-2\theta\right]_{-\pi/6}^{\pi/6}=2\left(\sqrt3-\frac\pi3\right)=2\sqrt3-\frac{2\pi}3\)</span>, because <span class="arithmatex">\(\frac12\cdot8\cos2\theta=4\cos2\theta\)</span> has antiderivative <span class="arithmatex">\(2\sin2\theta\)</span> and <span class="arithmatex">\(\sin\frac\pi3=\frac{\sqrt3}2\)</span>. Two loops: <span class="arithmatex">\(A=4\sqrt3-\frac{4\pi}3\approx2.74\)</span>.</p>
+</div>
+<h2 id="group-5-arc-length">Group 5: Arc length<a class="headerlink" href="#group-5-arc-length" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.30: The circumference of a circle, in polar form</p>
+<p><span id="ex-b13"></span></p>
+<p>Find the length of <span class="arithmatex">\(r=4\cos\theta\)</span>, <span class="arithmatex">\(-\frac\pi2\le\theta\le\frac\pi2\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=4\cos\theta\)</span>, <span class="arithmatex">\(f'=-4\sin\theta\)</span>, so <span class="arithmatex">\(f^2+f'^2=16\cos^2\theta+16\sin^2\theta=16\)</span> and the speed is <span class="arithmatex">\(4\)</span>. The circle is traced once on this interval, so <span class="arithmatex">\(L=\int_{-\pi/2}^{\pi/2}4\,d\theta=4\pi\)</span>. <em>Check.</em> The circle has radius <span class="arithmatex">\(2\)</span>, so the circumference is <span class="arithmatex">\(2\pi\cdot2=4\pi\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.31: A spiral toward the pole, of finite length</p>
+<p><span id="ex-b14"></span></p>
+<p>Find the length of <span class="arithmatex">\(r=e^{-\theta}\)</span> for <span class="arithmatex">\(0\le\theta&lt;\infty\)</span>.</p>
+<p><strong>Solution.</strong> The curve winds around the pole infinitely often. For <span class="arithmatex">\(0\le\theta\le b\)</span>: <span class="arithmatex">\(f=e^{-\theta}\)</span>, <span class="arithmatex">\(f'=-e^{-\theta}\)</span>, <span class="arithmatex">\(f^2+f'^2=2e^{-2\theta}\)</span>, the speed is <span class="arithmatex">\(\sqrt2\,e^{-\theta}\)</span>, and the curve is traced once (<span class="arithmatex">\(r\)</span> is strictly decreasing). Then <span class="arithmatex">\(L(b)=\int_0^b\sqrt2\,e^{-\theta}d\theta=\sqrt2\left(1-e^{-b}\right)\)</span>, and as <span class="arithmatex">\(b\to\infty\)</span>, <span class="arithmatex">\(L(b)\to\sqrt2\approx1.414\)</span>. The length is finite although the spiral winds around the pole infinitely often.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.32: A half-size cardioid</p>
+<p><span id="ex-b15"></span></p>
+<p>Find the length of <span class="arithmatex">\(r=\frac{1+\cos\theta}2\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=\frac{1+\cos\theta}2\)</span>, <span class="arithmatex">\(f'=-\frac{\sin\theta}2\)</span>, so <span class="arithmatex">\(f^2+f'^2=\frac{1+2\cos\theta+\cos^2\theta+\sin^2\theta}4=\frac{2+2\cos\theta}4=\cos^2\frac\theta2\)</span> by the half-angle identity <span class="arithmatex">\(1+\cos\theta=2\cos^2\frac\theta2\)</span>. The speed is <span class="arithmatex">\(\abs{\cos\frac\theta2}\)</span>, equal to <span class="arithmatex">\(\cos\frac\theta2\)</span> for <span class="arithmatex">\(0\le\theta\le\pi\)</span>. The curve is traced once on <span class="arithmatex">\([0,2\pi]\)</span> and symmetric about the <span class="arithmatex">\(x\)</span>-axis, so <span class="arithmatex">\(L=2\int_0^\pi\cos\frac\theta2\,d\theta=2\left[2\sin\frac\theta2\right]_0^\pi=4\)</span>. <em>Check.</em> Halving all lengths halves the length <span class="arithmatex">\(8\)</span> of <span class="arithmatex">\(r=1+\cos\theta\)</span> (Example <a href="#ex-cardlen">12.3.16</a>).</p>
+</div>
+<h2 id="group-6-tangent-lines-and-partial-areas">Group 6: Tangent lines and partial areas<a class="headerlink" href="#group-6-tangent-lines-and-partial-areas" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.33: Tangent lines at the pole of a limaçon</p>
+<p><span id="ex-b16"></span></p>
+<p>Find the tangent lines at the pole to <span class="arithmatex">\(r=1+2\cos\theta\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f=0\)</span> for <span class="arithmatex">\(\theta=\frac{2\pi}3,\frac{4\pi}3\)</span> (the two ends of the inner loop). <span class="arithmatex">\(f'=-2\sin\theta\)</span> equals <span class="arithmatex">\(-2\cdot\frac{\sqrt3}2=-\sqrt3\ne0\)</span> and <span class="arithmatex">\(-2\cdot\left(-\frac{\sqrt3}2\right)=\sqrt3\ne0\)</span> there, so Theorem <a href="#thm-pole">12.3.1</a> applies: the tangent lines are the lines through the pole at those angles, with slopes <span class="arithmatex">\(\tan\frac{2\pi}3=-\sqrt3\)</span> and <span class="arithmatex">\(\tan\frac{4\pi}3=\sqrt3\)</span>: <span class="arithmatex">\(y=-\sqrt3\,x\)</span> and <span class="arithmatex">\(y=\sqrt3\,x\)</span>. They form the corner of the inner loop at the pole.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.34: Part of a cardioid in the first quadrant</p>
+<p><span id="ex-b17"></span></p>
+<p>Find the area of the part of <span class="arithmatex">\(r=1+\cos\theta\)</span> that lies in the first quadrant.</p>
+<p><strong>Solution.</strong> The first quadrant consists of the directions <span class="arithmatex">\(0\le\theta\le\frac\pi2\)</span>, and for these directions the region inside the cardioid is <span class="arithmatex">\(R(f;0,\frac\pi2)\)</span>. By Theorem <a href="#thm-area">12.3.3</a>, <span class="arithmatex">\(A=\frac12\int_0^{\pi/2}(1+\cos\theta)^2d\theta=\frac12\left[\frac32\theta+2\sin\theta+\frac14\sin2\theta\right]_0^{\pi/2}=\frac12\left(\frac{3\pi}4+2\right)=\frac{3\pi}8+1\approx2.18\)</span>. <em>Check.</em> This is less than half of the whole area (<span class="arithmatex">\(\frac{3\pi}2\approx4.71\)</span>): the upper half has area <span class="arithmatex">\(2.36\)</span>, and the second quadrant contributes the small remainder <span class="arithmatex">\(0.18\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.35: The area formula agrees with a triangle</p>
+<p><span id="ex-b18"></span></p>
+<p>Prove that for the line <span class="arithmatex">\(x=d\)</span> (<span class="arithmatex">\(d&gt;0\)</span>), the region swept by the segments from the pole to the line, for <span class="arithmatex">\(0\le\theta\le\varphi&lt;\frac\pi2\)</span>, has area <span class="arithmatex">\(\frac12d^2\tan\varphi\)</span> by the area formula, and check that this is the area of a right triangle.</p>
+<p><strong>Plan.</strong> Write the line as <span class="arithmatex">\(r=d\sec\theta\)</span>, integrate <span class="arithmatex">\(\frac12r^2\)</span>, and compare with <span class="arithmatex">\(\frac12\cdot\text{base}\cdot\text{height}\)</span>.</p>
+<p><em>Proof.</em> A point <span class="arithmatex">\(P(r,\theta)\)</span> is on the line <span class="arithmatex">\(x=d\)</span> if and only if <span class="arithmatex">\(r\cos\theta=d\)</span>, i.e. <span class="arithmatex">\(r=d\sec\theta\)</span> (for <span class="arithmatex">\(\cos\theta\ne0\)</span>). This function is continuous and positive on <span class="arithmatex">\([0,\varphi]\)</span>, so Theorem <a href="#thm-area">12.3.3</a> gives <span class="arithmatex">\(A=\frac12\int_0^\varphi d^2\sec^2\theta\,d\theta=\frac12d^2\left[\tan\theta\right]_0^\varphi=\frac12d^2\tan\varphi\)</span>, since <span class="arithmatex">\(\frac d{d\theta}\tan\theta=\sec^2\theta\)</span>. The region is the right triangle with vertices <span class="arithmatex">\((0,0)\)</span>, <span class="arithmatex">\((d,0)\)</span> and <span class="arithmatex">\((d,d\tan\varphi)\)</span>, with base <span class="arithmatex">\(d\)</span> and height <span class="arithmatex">\(d\tan\varphi\)</span>, whose area is <span class="arithmatex">\(\frac12\cdot d\cdot d\tan\varphi\)</span>, the same number. ◻ ∎</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.36: Why the integrand is <span class="arithmatex">\(\frac12f^2\)</span> for every curve</p>
+<p><span id="ex-b19"></span></p>
+<p>Let <span class="arithmatex">\(x=f(\theta)\cos\theta\)</span>, <span class="arithmatex">\(y=f(\theta)\sin\theta\)</span>. Prove that <span class="arithmatex">\(x\,y'-y\,x'=f^2\)</span>, and use it to explain the factor <span class="arithmatex">\(\frac12f^2\)</span>.</p>
+<p><strong>Plan.</strong> Use the derivatives of Theorem <a href="../../12.2/notes/#thm-polpar">12.2.13</a> and simplify with <span class="arithmatex">\(\sin^2\theta+\cos^2\theta=1\)</span>.</p>
+<p><em>Proof.</em> With <span class="arithmatex">\(x'=f'\cos\theta-f\sin\theta\)</span> and <span class="arithmatex">\(y'=f'\sin\theta+f\cos\theta\)</span>,</p>
+<div class="arithmatex">\[\begin{aligned}
+x\,y'-y\,x'&amp;=f\cos\theta\,\left(f'\sin\theta+f\cos\theta\right)-f\sin\theta\,\left(f'\cos\theta-f\sin\theta\right)\\
+&amp;=ff'\sin\theta\cos\theta+f^2\cos^2\theta-ff'\sin\theta\cos\theta+f^2\sin^2\theta=f^2\left(\cos^2\theta+\sin^2\theta\right)=f^2.
+\end{aligned}\]</div>
+<p>Now the triangle with vertices the pole, <span class="arithmatex">\(P(\theta)\)</span> and <span class="arithmatex">\(P(\theta+h)\)</span> has area <span class="arithmatex">\(\frac12\abs{x(\theta)y(\theta+h)-y(\theta)x(\theta+h)}\)</span> (half the absolute value of a <span class="arithmatex">\(2\times2\)</span> determinant), and <span class="arithmatex">\(x(\theta)\left[y+hy'+o(h)\right]-y(\theta)\left[x+hx'+o(h)\right]=h\left(xy'-yx'\right)+o(h)=hf^2+o(h)\)</span>, so the thin triangle has area <span class="arithmatex">\(\frac12f^2\,h+o(h)\)</span>: the same <span class="arithmatex">\(\frac12f^2\,d\theta\)</span> as the sector. ◻ ∎</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.3.37: Every cardioid <span class="arithmatex">\(r=a(1+\cos\theta)\)</span></p>
+<p><span id="ex-b20"></span></p>
+<p>Prove that for every <span class="arithmatex">\(a&gt;0\)</span> the cardioid <span class="arithmatex">\(r=a(1+\cos\theta)\)</span> has area <span class="arithmatex">\(\frac{3\pi a^2}2\)</span> and length <span class="arithmatex">\(8a\)</span>.</p>
+<p><strong>Plan.</strong> Factor <span class="arithmatex">\(a\)</span> out of the integrands, and reuse Examples <a href="#ex-card">12.3.4</a> and <a href="#ex-cardlen">12.3.16</a>.</p>
+<p><em>Proof.</em> <em>Area.</em> <span class="arithmatex">\(f=a(1+\cos\theta)\ge0\)</span> is traced once on <span class="arithmatex">\([0,2\pi]\)</span>, so <span class="arithmatex">\(A=\frac12\int_0^{2\pi}a^2(1+\cos\theta)^2d\theta=a^2\cdot\frac12\int_0^{2\pi}(1+\cos\theta)^2d\theta=\frac{3\pi a^2}2\)</span> by Example <a href="#ex-card">12.3.4</a>. <em>Length.</em> <span class="arithmatex">\(f'=-a\sin\theta\)</span>, so <span class="arithmatex">\(f^2+f'^2=a^2\left(2+2\cos\theta\right)=4a^2\cos^2\frac\theta2\)</span> and the speed is <span class="arithmatex">\(2a\cos\frac\theta2\)</span> on <span class="arithmatex">\([0,\pi]\)</span> (<span class="arithmatex">\(a&gt;0\)</span>). The cardioid is traced once and is symmetric about the <span class="arithmatex">\(x\)</span>-axis, so <span class="arithmatex">\(L=2\int_0^\pi2a\cos\frac\theta2\,d\theta=2\left[4a\sin\frac\theta2\right]_0^\pi=8a\)</span>. Scaling by <span class="arithmatex">\(a\)</span> multiplies lengths by <span class="arithmatex">\(a\)</span> and areas by <span class="arithmatex">\(a^2\)</span>, as it must. ◻ ∎</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-setupkc">12.3.1</a>.</strong> <span class="arithmatex">\(A=\frac12\int_0^{2\pi}(2-2\cos\theta)^2\,d\theta\)</span>. The radial coordinate <span class="arithmatex">\(2-2\cos\theta\ge0\)</span> is never negative, and the cardioid is traced once for <span class="arithmatex">\(0\le\theta\le2\pi\)</span>; a shorter interval would miss part of the curve and a longer one would count it twice. (The value is <span class="arithmatex">\(6\pi\)</span>, Example <a href="#ex-b2">12.3.19</a>.)</p>
+<p><strong>Knowledge Check <a href="#kc-petalkc">12.3.2</a>.</strong> <span class="arithmatex">\(r=3\sin3\theta\)</span> is replaced by <span class="arithmatex">\(r=\sin3\theta\)</span>: it is <span class="arithmatex">\(\ge0\)</span> for <span class="arithmatex">\(0\le\theta\le\frac\pi3\)</span> (where <span class="arithmatex">\(0\le3\theta\le\pi\)</span>), and <span class="arithmatex">\(0\)</span> at both ends, so this is one petal. Its area is <span class="arithmatex">\(\frac12\int_0^{\pi/3}\sin^23\theta\,d\theta=\frac14\int_0^{\pi/3}(1-\cos6\theta)\,d\theta=\frac14\left[\theta-\frac16\sin6\theta\right]_0^{\pi/3}=\frac\pi{12}\)</span>, using <span class="arithmatex">\(\sin^23\theta=\frac{1-\cos6\theta}2\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-lenkc">12.3.3</a>.</strong> <span class="arithmatex">\(f=\theta^2\)</span>, <span class="arithmatex">\(f'=2\theta\)</span>, <span class="arithmatex">\(f^2+f'^2=\theta^4+4\theta^2=\theta^2\left(\theta^2+4\right)\)</span>, speed <span class="arithmatex">\(\theta\sqrt{\theta^2+4}\)</span> for <span class="arithmatex">\(\theta\ge0\)</span>. With <span class="arithmatex">\(u=\theta^2+4\)</span>, <span class="arithmatex">\(du=2\theta\,d\theta\)</span>: <span class="arithmatex">\(L=\int_0^1\theta\sqrt{\theta^2+4}\,d\theta=\left[\frac13\left(\theta^2+4\right)^{3/2}\right]_0^1=\frac{5\sqrt5-8}3\approx1.06\)</span>. The curve is traced once since <span class="arithmatex">\(r\)</span> is increasing.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
