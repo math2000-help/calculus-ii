@@ -1,0 +1,2829 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../12.3/notes/">
+      
+      
+        <link rel="next" href="../../appendix/appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-parabola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The parabola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-reflection-property-of-the-parabola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The reflection property of the parabola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ellipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The ellipse
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hyperbola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The hyperbola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eccentricity-and-the-directrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eccentricity and the directrix
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translated-conics-and-the-general-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Translated conics and the general equation
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-equations-of-conics" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Polar equations of conics
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-parabolas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Parabolas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-ellipses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Ellipses
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-hyperbolas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Hyperbolas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-eccentricity-and-the-directrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Eccentricity and the directrix
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-polar-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Polar equations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-parabola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The parabola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-reflection-property-of-the-parabola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The reflection property of the parabola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ellipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The ellipse
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hyperbola" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The hyperbola
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eccentricity-and-the-directrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Eccentricity and the directrix
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#translated-conics-and-the-general-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Translated conics and the general equation
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-equations-of-conics" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Polar equations of conics
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-parabolas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Parabolas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-ellipses" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Ellipses
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-hyperbolas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Hyperbolas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-eccentricity-and-the-directrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Eccentricity and the directrix
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-polar-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Polar equations
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="124-conic-sections">12.4 Conic Sections<a class="headerlink" href="#124-conic-sections" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>Slice a double cone with a plane that misses its vertex and you get a circle, an ellipse, a parabola or a hyperbola. The Greeks studied these curves in that way, as “conic sections”. We define them by <em>distances</em> instead, because distances lead straight to equations. A parabola is the set of points equally far from a point and a line; an ellipse is the set of points whose distances from two points add up to a constant; a hyperbola is the set of points whose distances from two points differ by a constant. One idea ties the three together: the distance from a point to a fixed point is a constant multiple <span class="arithmatex">\(e\)</span> of its distance to a fixed line, and the number <span class="arithmatex">\(e\)</span> alone decides which conic we get. This section finds the equation of each conic from its definition (every step reversible), proves the asymptotes of the hyperbola and the reflection property of the parabola, proves the eccentricity theorem, moves conics around by completing the square, and writes all of them as one polar equation with a focus at the pole (Section 12.2). The polar form is the one used for orbits, and the area formula of Section 12.3 gives the area of an orbit. Squaring an equation can add or lose points; Appendix K handles that once and for all.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>state the focus–directrix definition of the parabola and the distance definitions of the ellipse and the hyperbola, and derive their equations;</p>
+</li>
+<li>
+<p>find the vertices, foci, directrices, axes, asymptotes and eccentricity of a conic from its equation, and write the equation from such data;</p>
+</li>
+<li>
+<p>identify and sketch a conic given by <span class="arithmatex">\(Ax^2+Cy^2+Dx+Ey+F=0\)</span> by completing the square, including the degenerate cases;</p>
+</li>
+<li>
+<p>use the eccentricity to decide the type of a conic and to write it in polar coordinates with a focus at the pole, and convert between polar and Cartesian forms;</p>
+</li>
+<li>
+<p>use the reflection property of the parabola;</p>
+</li>
+<li>
+<p>prove each of these statements.</p>
+</li>
+</ul>
+<h2 id="the-parabola">The parabola<a class="headerlink" href="#the-parabola" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.4.1: Parabola</p>
+<p><span id="def-dparab"></span></p>
+<p>Let <span class="arithmatex">\(F\)</span> be a point and <span class="arithmatex">\(\ell\)</span> a line not through <span class="arithmatex">\(F\)</span>. The <em>parabola</em> with <em>focus</em> <span class="arithmatex">\(F\)</span> and <em>directrix</em> <span class="arithmatex">\(\ell\)</span> is the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF\rvert=\operatorname{dist}(P,\ell)\)</span>, where <span class="arithmatex">\(\operatorname{dist}(P,\ell)\)</span> is the perpendicular distance from <span class="arithmatex">\(P\)</span> to <span class="arithmatex">\(\ell\)</span>. The line through <span class="arithmatex">\(F\)</span> perpendicular to <span class="arithmatex">\(\ell\)</span> is the <em>axis</em>, and the point where the parabola crosses its axis is the <em>vertex</em>.</p>
+</div>
+<p>To find an equation we place the focus on a coordinate axis, so that the directrix is perpendicular to it. Appendix K (Theorem <a href="../../appendix/appendix/#thm-coords">K.4</a>) shows that no generality is lost: moving the plane by a rotation and a translation does not change distances.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.2: Equation of a parabola</p>
+<p><span id="thm-parab"></span></p>
+<p>Let <span class="arithmatex">\(p\ne0\)</span>. The parabola with focus <span class="arithmatex">\(F=(0,p)\)</span> and directrix <span class="arithmatex">\(y=-p\)</span> is the set of points with</p>
+<div class="arithmatex">\[x^2=4py .\]</div>
+<p>Its vertex is <span class="arithmatex">\((0,0)\)</span> and its axis is the <span class="arithmatex">\(y\)</span>-axis; it opens upward if <span class="arithmatex">\(p&gt;0\)</span> and downward if <span class="arithmatex">\(p&lt;0\)</span>. The parabola with focus <span class="arithmatex">\((p,0)\)</span> and directrix <span class="arithmatex">\(x=-p\)</span> is <span class="arithmatex">\(y^2=4px\)</span>: its axis is the <span class="arithmatex">\(x\)</span>-axis, and it opens to the right if <span class="arithmatex">\(p&gt;0\)</span> and to the left if <span class="arithmatex">\(p&lt;0\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(P=(x,y)\)</span>. Then <span class="arithmatex">\(\lvert PF\rvert=\sqrt{x^2+(y-p)^2}\ge0\)</span> and <span class="arithmatex">\(\operatorname{dist}(P,\ell)=\lvert y+p\rvert\ge0\)</span>. Both sides are nonnegative, so by Theorem <a href="../../appendix/appendix/#thm-sqlemma">K.1</a> the equation <span class="arithmatex">\(\lvert PF\rvert=\operatorname{dist}(P,\ell)\)</span> is equivalent to the equation of the squares, and no point is gained or lost:</p>
+<div class="arithmatex">\[x^2+(y-p)^2=(y+p)^2\iff x^2+y^2-2py+p^2=y^2+2py+p^2\iff x^2=4py .\]</div>
+<p>On the axis <span class="arithmatex">\(x=0\)</span> we get <span class="arithmatex">\(4py=0\)</span>, so <span class="arithmatex">\(y=0\)</span> (since <span class="arithmatex">\(p\ne0\)</span>): the vertex is <span class="arithmatex">\((0,0)\)</span>. If <span class="arithmatex">\(p&gt;0\)</span> then <span class="arithmatex">\(y=\frac{x^2}{4p}\ge0\)</span> and the curve lies above the vertex; if <span class="arithmatex">\(p&lt;0\)</span> it lies below. The second statement is the first with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged (a reflection in the line <span class="arithmatex">\(y=x\)</span>, which preserves distances). ◻ ∎</p>
+<p>The number <span class="arithmatex">\(\lvert p\rvert\)</span> is the distance from the vertex to the focus (and to the directrix). The chord through the focus perpendicular to the axis, the <em>latus rectum</em>, has length <span class="arithmatex">\(4\lvert p\rvert\)</span>: for <span class="arithmatex">\(x^2=4py\)</span>, <span class="arithmatex">\(y=p\)</span> gives <span class="arithmatex">\(x^2=4p^2\)</span>, so <span class="arithmatex">\(x=\pm2p\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.3: Focus, directrix and a check for <span class="arithmatex">\(2y^2=-9x\)</span></p>
+<p><span id="ex-par"></span></p>
+<p>Find the vertex, axis, focus and directrix of <span class="arithmatex">\(2y^2=-9x\)</span>, the length of its latus rectum, and sketch it.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(2\)</span>: <span class="arithmatex">\(y^2=-\frac92x\)</span>. Compare with <span class="arithmatex">\(y^2=4px\)</span> (Theorem <a href="#thm-parab">12.4.2</a>): <span class="arithmatex">\(4p=-\frac92\)</span>, so <span class="arithmatex">\(p=-\frac98&lt;0\)</span> and the parabola opens to the left. The vertex is <span class="arithmatex">\((0,0)\)</span> and the axis is the <span class="arithmatex">\(x\)</span>-axis. The focus is <span class="arithmatex">\((p,0)=\left(-\frac98,0\right)\)</span> and the directrix is <span class="arithmatex">\(x=-p=\frac98\)</span>. The latus rectum is the chord <span class="arithmatex">\(x=-\frac98\)</span>: then <span class="arithmatex">\(y^2=-\frac92\left(-\frac98\right)=\frac{81}{16}\)</span>, so <span class="arithmatex">\(y=\pm\frac94\)</span>, and its length is <span class="arithmatex">\(2\cdot\frac94=\frac92=4\lvert p\rvert\)</span>. <em>Check with the definition.</em> Take <span class="arithmatex">\(y=3\)</span>: then <span class="arithmatex">\(x=-\frac{2y^2}9=-2\)</span>, so <span class="arithmatex">\(P=(-2,3)\)</span> is on the parabola. <span class="arithmatex">\(\lvert PF\rvert=\sqrt{\left(-2+\frac98\right)^2+3^2}=\sqrt{\frac{49}{64}+\frac{576}{64}}=\sqrt{\frac{625}{64}}=\frac{25}8\)</span>, and the distance from <span class="arithmatex">\(P\)</span> to the line <span class="arithmatex">\(x=\frac98\)</span> is <span class="arithmatex">\(\frac98-(-2)=\frac{25}8\)</span>. They agree.</p>
+<p><img alt="Diagram: \(PF=PL=25/8\)" class="calc-figure" src="../figures/notes-fig1.svg" width="363" /></p>
+<p>The two points on the line <span class="arithmatex">\(x=-\frac98\)</span> mark the latus rectum.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.4.1: Reading a parabola</p>
+<p><span id="kc-kcpar"></span></p>
+<p>Find the focus and the directrix of <span class="arithmatex">\(x^2=-24y\)</span>, and say in which direction it opens.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.4.1: Why must <span class="arithmatex">\(F\)</span> be off the line?</p>
+<p><span id="think-parline"></span></p>
+<p>Definition <a href="#def-dparab">12.4.1</a> requires that <span class="arithmatex">\(F\)</span> is not on <span class="arithmatex">\(\ell\)</span>. What set of points satisfies <span class="arithmatex">\(\lvert PF\rvert=\operatorname{dist}(P,\ell)\)</span> if <span class="arithmatex">\(F\)</span> is on <span class="arithmatex">\(\ell\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>If <span class="arithmatex">\(F\)</span> is on <span class="arithmatex">\(\ell\)</span>, then for every <span class="arithmatex">\(P\)</span> we have <span class="arithmatex">\(\lvert PF\rvert\ge\operatorname{dist}(P,\ell)\)</span>, because the perpendicular distance is the shortest distance from <span class="arithmatex">\(P\)</span> to any point of <span class="arithmatex">\(\ell\)</span>, and <span class="arithmatex">\(F\)</span> is a point of <span class="arithmatex">\(\ell\)</span>. Equality holds exactly when <span class="arithmatex">\(PF\)</span> is perpendicular to <span class="arithmatex">\(\ell\)</span>, that is, when <span class="arithmatex">\(P\)</span> lies on the line through <span class="arithmatex">\(F\)</span> perpendicular to <span class="arithmatex">\(\ell\)</span>. So the set is a <em>line</em>, not a parabola. This is the degenerate case <span class="arithmatex">\(d=0\)</span> of Theorem <a href="#thm-ed">12.4.17</a>.</p>
+</details>
+</div>
+<h2 id="the-reflection-property-of-the-parabola">The reflection property of the parabola<a class="headerlink" href="#the-reflection-property-of-the-parabola" title="Permanent link">&para;</a></h2>
+<p>A mirror is a curve; a ray of light that strikes it is turned by the <em>law of reflection</em>: the angle of incidence equals the angle of reflection. In terms of the tangent line <span class="arithmatex">\(T\)</span> at the point <span class="arithmatex">\(P\)</span> where the ray strikes, the law says that <em>the reflected ray is the mirror image, in <span class="arithmatex">\(T\)</span>, of the continuation of the incoming ray beyond <span class="arithmatex">\(P\)</span></em> (the mirror image of a point <span class="arithmatex">\(Q\)</span> in <span class="arithmatex">\(T\)</span> is the point <span class="arithmatex">\(Q'\)</span> such that <span class="arithmatex">\(T\)</span> is the perpendicular bisector of <span class="arithmatex">\(QQ'\)</span>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.4: Reflection property of the parabola</p>
+<p><span id="thm-refl"></span></p>
+<p>Let <span class="arithmatex">\(x^2=4py\)</span> with <span class="arithmatex">\(p&gt;0\)</span>, with focus <span class="arithmatex">\(F=(0,p)\)</span> and directrix <span class="arithmatex">\(y=-p\)</span>. Let <span class="arithmatex">\(P=(x_0,y_0)\)</span> be a point of the parabola and <span class="arithmatex">\(L=(x_0,-p)\)</span> the point of the directrix directly below it. Then the tangent line <span class="arithmatex">\(T\)</span> at <span class="arithmatex">\(P\)</span> is the perpendicular bisector of the segment <span class="arithmatex">\(FL\)</span>. Consequently:</p>
+<p><strong>(a)</strong> a ray traveling parallel to the axis, toward the vertex, hits the parabola at <span class="arithmatex">\(P\)</span> and is reflected along the ray from <span class="arithmatex">\(P\)</span> through the focus <span class="arithmatex">\(F\)</span>;</p>
+<p><strong>(b)</strong> a ray from the focus hits the parabola at <span class="arithmatex">\(P\)</span> and is reflected parallel to the axis, away from the vertex.</p>
+</div>
+<p><em>Proof.</em> <em><span class="arithmatex">\(T\)</span> is the perpendicular bisector of <span class="arithmatex">\(FL\)</span>.</em> By the definition of the parabola, <span class="arithmatex">\(\lvert PF\rvert=\lvert PL\rvert\)</span>, because <span class="arithmatex">\(L\)</span> is the foot of the perpendicular from <span class="arithmatex">\(P\)</span> to the directrix. A point equally far from the two ends of a segment lies on its perpendicular bisector <span class="arithmatex">\(m\)</span>, so <span class="arithmatex">\(P\)</span> lies on <span class="arithmatex">\(m\)</span>. If <span class="arithmatex">\(x_0\ne0\)</span>, the segment <span class="arithmatex">\(FL\)</span> from <span class="arithmatex">\((0,p)\)</span> to <span class="arithmatex">\((x_0,-p)\)</span> has slope <span class="arithmatex">\(\frac{-p-p}{x_0-0}=-\frac{2p}{x_0}\)</span>, so <span class="arithmatex">\(m\)</span> has the negative reciprocal slope <span class="arithmatex">\(\frac{x_0}{2p}\)</span>. The tangent line at <span class="arithmatex">\(P\)</span> has slope <span class="arithmatex">\(\frac d{dx}\frac{x^2}{4p}\Big|_{x=x_0}=\frac{x_0}{2p}\)</span>. Two lines through <span class="arithmatex">\(P\)</span> with the same slope coincide, so <span class="arithmatex">\(T=m\)</span>. If <span class="arithmatex">\(x_0=0\)</span>, then <span class="arithmatex">\(P\)</span> is the vertex, <span class="arithmatex">\(FL\)</span> is the vertical segment from <span class="arithmatex">\((0,p)\)</span> to <span class="arithmatex">\((0,-p)\)</span>, whose perpendicular bisector is the <span class="arithmatex">\(x\)</span>-axis, and the tangent line at the vertex is also the <span class="arithmatex">\(x\)</span>-axis (<span class="arithmatex">\(\frac{d}{dx}\frac{x^2}{4p}=0\)</span> at <span class="arithmatex">\(0\)</span>).</p>
+<p><em>(a)</em> A ray traveling parallel to the axis toward the vertex travels downward along a vertical line <span class="arithmatex">\(x=x_0\)</span> and hits the parabola at <span class="arithmatex">\(P\)</span> from the inside (the side of the focus). Its continuation beyond <span class="arithmatex">\(P\)</span> is the ray from <span class="arithmatex">\(P\)</span> through <span class="arithmatex">\(L\)</span>. The mirror image in <span class="arithmatex">\(T\)</span> of <span class="arithmatex">\(L\)</span> is <span class="arithmatex">\(F\)</span>, because <span class="arithmatex">\(T\)</span> is the perpendicular bisector of <span class="arithmatex">\(FL\)</span>; the mirror image of <span class="arithmatex">\(P\)</span>, which is on <span class="arithmatex">\(T\)</span>, is <span class="arithmatex">\(P\)</span>. So the mirror image of the ray <span class="arithmatex">\(PL\)</span> is the ray <span class="arithmatex">\(PF\)</span>, and that is the reflected ray.</p>
+<p><em>(b)</em> A ray from <span class="arithmatex">\(F\)</span> arrives at <span class="arithmatex">\(P\)</span> along the ray <span class="arithmatex">\(FP\)</span>; its continuation beyond <span class="arithmatex">\(P\)</span> is the ray from <span class="arithmatex">\(P\)</span> pointing away from <span class="arithmatex">\(F\)</span>, which is the opposite of the ray <span class="arithmatex">\(PF\)</span>. The mirror image in <span class="arithmatex">\(T\)</span> of the ray <span class="arithmatex">\(PF\)</span> is the ray <span class="arithmatex">\(PL\)</span>, so the mirror image of its opposite is the opposite of the ray <span class="arithmatex">\(PL\)</span>: the ray from <span class="arithmatex">\(P\)</span> pointing straight up. ◻ ∎</p>
+<p><img alt="Diagram: tangent \(T\); incoming; reflected" class="calc-figure" src="../figures/notes-fig2.svg" width="447" /></p>
+<p>The picture shows <span class="arithmatex">\(p=1\)</span> and <span class="arithmatex">\(P=\left(3,\frac94\right)\)</span>: the tangent line <span class="arithmatex">\(y=\frac32x-\frac94\)</span> passes through the midpoint <span class="arithmatex">\(M=\left(\frac32,0\right)\)</span> of <span class="arithmatex">\(FL\)</span> and is perpendicular to it (slopes <span class="arithmatex">\(\frac32\)</span> and <span class="arithmatex">\(-\frac23\)</span>).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.5: Where to put the receiver of a dish</p>
+<p><span id="ex-dish"></span></p>
+<p>A satellite dish is made by turning a parabola about its axis. A cross-section through the axis is the parabola <span class="arithmatex">\(y=\frac{x^2}{4p}\)</span> (vertex at the origin, axis the <span class="arithmatex">\(y\)</span>-axis), and the dish is <span class="arithmatex">\(2.4\)</span> m wide and <span class="arithmatex">\(0.45\)</span> m deep. How far above the vertex should the receiver be, and why?</p>
+<p><strong>Solution.</strong> The rim is the point <span class="arithmatex">\((1.2,0.45)\)</span>. It lies on <span class="arithmatex">\(x^2=4py\)</span>, so <span class="arithmatex">\(1.44=4p\cdot0.45=1.8p\)</span>, giving <span class="arithmatex">\(p=\frac{1.44}{1.8}=0.8\)</span>. The focus is <span class="arithmatex">\(F=(0,0.8)\)</span>: the receiver should be <span class="arithmatex">\(0.8\)</span> m above the vertex, which is <span class="arithmatex">\(0.8-0.45=0.35\)</span> m above the plane of the rim. Why: signals from a distant satellite arrive almost parallel to the axis, and by Theorem <a href="#thm-refl">12.4.4</a>(a) every such ray, wherever it hits the dish, is reflected through <span class="arithmatex">\(F\)</span>. <em>Check at the rim.</em> For <span class="arithmatex">\(P=(1.2,0.45)\)</span> the point <span class="arithmatex">\(L=(1.2,-0.8)\)</span>, and <span class="arithmatex">\(\lvert PF\rvert=\sqrt{1.2^2+0.35^2}=\sqrt{1.5625}=1.25\)</span> and <span class="arithmatex">\(\lvert PL\rvert=0.45+0.8=1.25\)</span>, equal as the definition requires.</p>
+</div>
+<h2 id="the-ellipse">The ellipse<a class="headerlink" href="#the-ellipse" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.4.6: Ellipse</p>
+<p><span id="def-dell"></span></p>
+<p>Let <span class="arithmatex">\(F_1\)</span> and <span class="arithmatex">\(F_2\)</span> be two points at distance <span class="arithmatex">\(2c&gt;0\)</span> from each other, and let <span class="arithmatex">\(a&gt;c\)</span>. The <em>ellipse</em> with <em>foci</em> <span class="arithmatex">\(F_1,F_2\)</span> and <em>major axis</em> of length <span class="arithmatex">\(2a\)</span> is the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF_1\rvert+\lvert PF_2\rvert=2a\)</span>. Its <em>center</em> is the midpoint of <span class="arithmatex">\(F_1F_2\)</span>. (With <span class="arithmatex">\(c=0\)</span> the two foci coincide and the set is a circle of radius <span class="arithmatex">\(a\)</span>. If <span class="arithmatex">\(2a=2c\)</span> the set is the segment <span class="arithmatex">\(F_1F_2\)</span>, and if <span class="arithmatex">\(2a&lt;2c\)</span> it is empty, which is why <span class="arithmatex">\(a&gt;c\)</span> is assumed.)</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.7: Equation of an ellipse</p>
+<p><span id="thm-ellipse"></span></p>
+<p>Let <span class="arithmatex">\(a&gt;c&gt;0\)</span> and <span class="arithmatex">\(b=\sqrt{a^2-c^2}\)</span>, so <span class="arithmatex">\(a^2=b^2+c^2\)</span>. The ellipse with foci <span class="arithmatex">\(F_1=(-c,0)\)</span> and <span class="arithmatex">\(F_2=(c,0)\)</span> and major axis <span class="arithmatex">\(2a\)</span> is the set of points with</p>
+<div class="arithmatex">\[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .\]</div>
+<p>For every point <span class="arithmatex">\(P=(x,y)\)</span> of the ellipse, <span class="arithmatex">\(\lvert PF_1\rvert=a+\frac ca\,x\)</span> and <span class="arithmatex">\(\lvert PF_2\rvert=a-\frac ca\,x\)</span>. The ellipse crosses the <span class="arithmatex">\(x\)</span>-axis at the <em>vertices</em> <span class="arithmatex">\((\pm a,0)\)</span> and the <span class="arithmatex">\(y\)</span>-axis at the <em>minor-axis vertices</em> <span class="arithmatex">\((0,\pm b)\)</span>; the <em>major axis</em> has length <span class="arithmatex">\(2a\)</span> and the <em>minor axis</em> has length <span class="arithmatex">\(2b\)</span>. If the foci are <span class="arithmatex">\((0,\pm c)\)</span>, the equation is <span class="arithmatex">\(\frac{y^2}{a^2}+\frac{x^2}{b^2}=1\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(u=\lvert PF_1\rvert\)</span> and <span class="arithmatex">\(v=\lvert PF_2\rvert\)</span>.</p>
+<p><em>Distances <span class="arithmatex">\(\Rightarrow\)</span> equation.</em> Suppose <span class="arithmatex">\(u+v=2a\)</span>. By Theorem <a href="../../appendix/appendix/#thm-focalradii">K.3</a>(i), <span class="arithmatex">\(u=a+\frac ca x\)</span> and <span class="arithmatex">\(v=a-\frac ca x\)</span>. Squaring <span class="arithmatex">\(u=a+\frac cax\)</span> (a true equation stays true when squared): <span class="arithmatex">\((x+c)^2+y^2=a^2+2cx+\frac{c^2}{a^2}x^2\)</span>, that is <span class="arithmatex">\(x^2+2cx+c^2+y^2=a^2+2cx+\frac{c^2}{a^2}x^2\)</span>. Cancel <span class="arithmatex">\(2cx\)</span> and collect: <span class="arithmatex">\(x^2\left(1-\frac{c^2}{a^2}\right)+y^2=a^2-c^2\)</span>, that is <span class="arithmatex">\(\frac{b^2}{a^2}x^2+y^2=b^2\)</span>. Divide by <span class="arithmatex">\(b^2&gt;0\)</span>: <span class="arithmatex">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span>.</p>
+<p><em>Equation <span class="arithmatex">\(\Rightarrow\)</span> distances.</em> Suppose <span class="arithmatex">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span>. Then <span class="arithmatex">\(x^2\le a^2\)</span>, so <span class="arithmatex">\(\left\lvert\frac cax\right\rvert\le c&lt;a\)</span>, and therefore <span class="arithmatex">\(a+\frac cax&gt;0\)</span> and <span class="arithmatex">\(a-\frac cax&gt;0\)</span>. Also <span class="arithmatex">\(y^2=b^2-\frac{b^2}{a^2}x^2=a^2-c^2-\left(1-\frac{c^2}{a^2}\right)x^2\)</span>. Then</p>
+<div class="arithmatex">\[u^2=(x+c)^2+y^2=x^2+2cx+c^2+a^2-c^2-x^2+\frac{c^2}{a^2}x^2=a^2+2cx+\frac{c^2}{a^2}x^2=\left(a+\frac cax\right)^2 .\]</div>
+<p>Since <span class="arithmatex">\(u\ge0\)</span> and <span class="arithmatex">\(a+\frac cax&gt;0\)</span>, <span class="arithmatex">\(u=a+\frac cax\)</span>. In the same way <span class="arithmatex">\(v^2=\left(a-\frac cax\right)^2\)</span> and <span class="arithmatex">\(v=a-\frac cax\)</span>. Adding, <span class="arithmatex">\(u+v=2a\)</span>.</p>
+<p>The vertices and minor-axis vertices are the intercepts (<span class="arithmatex">\(y=0\)</span> gives <span class="arithmatex">\(x=\pm a\)</span>; <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(y=\pm b\)</span>). The last statement is the first with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.8: An ellipse: everything from the equation</p>
+<p><span id="ex-ell"></span></p>
+<p>Find the vertices, minor-axis vertices, foci, axes, eccentricity and directrices of <span class="arithmatex">\(7x^2+16y^2=112\)</span>, and sketch it.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(112\)</span>: <span class="arithmatex">\(\frac{x^2}{16}+\frac{y^2}7=1\)</span>. The larger denominator is under <span class="arithmatex">\(x^2\)</span>, so the foci are on the <span class="arithmatex">\(x\)</span>-axis and (Theorem <a href="#thm-ellipse">12.4.7</a>) <span class="arithmatex">\(a^2=16\)</span>, <span class="arithmatex">\(b^2=7\)</span>: <span class="arithmatex">\(a=4\)</span>, <span class="arithmatex">\(b=\sqrt7\approx2.65\)</span>. Then <span class="arithmatex">\(c^2=a^2-b^2=9\)</span>, <span class="arithmatex">\(c=3\)</span>. The vertices are <span class="arithmatex">\((\pm4,0)\)</span>, the minor-axis vertices <span class="arithmatex">\((0,\pm\sqrt7)\)</span> and the foci <span class="arithmatex">\((\pm3,0)\)</span>. The major axis has length <span class="arithmatex">\(2a=8\)</span> and the minor axis <span class="arithmatex">\(2b=2\sqrt7\)</span>. The eccentricity (Definition <a href="#def-ecc">12.4.15</a> below) is <span class="arithmatex">\(e=\frac ca=\frac34\)</span> and the directrices are <span class="arithmatex">\(x=\pm\frac ae=\pm\frac{16}3\)</span>. <em>Check.</em> The minor-axis vertex <span class="arithmatex">\(\left(0,\sqrt7\right)\)</span> is at distance <span class="arithmatex">\(\sqrt{3^2+7}=4\)</span> from each focus, and <span class="arithmatex">\(4+4=8=2a\)</span>, as the definition requires.</p>
+<p><img alt="Diagram: \(4\); \(4\)" class="calc-figure" src="../figures/notes-fig3.svg" width="513" /></p>
+<p>The dashed segments join the minor-axis vertex to the foci. Each has length <span class="arithmatex">\(a=4\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.4.2: Parameters of an ellipse</p>
+<p><span id="kc-kcell"></span></p>
+<p>An ellipse centered at the origin with foci on the <span class="arithmatex">\(x\)</span>-axis has <span class="arithmatex">\(a=10\)</span> and eccentricity <span class="arithmatex">\(e=\frac35\)</span>. Find <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span> and the directrices.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.4.2: Squeezing an ellipse</p>
+<p><span id="think-squeeze"></span></p>
+<p>Keep <span class="arithmatex">\(a\)</span> fixed in <span class="arithmatex">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span> and let the foci <span class="arithmatex">\((\pm c,0)\)</span> move: first <span class="arithmatex">\(c\to0\)</span>, then <span class="arithmatex">\(c\to a\)</span>. What does the ellipse look like in each limit, and what happens to <span class="arithmatex">\(b\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Since <span class="arithmatex">\(b^2=a^2-c^2\)</span>: as <span class="arithmatex">\(c\to0\)</span> the foci merge at the center, <span class="arithmatex">\(b\to a\)</span> and the ellipse becomes a circle of radius <span class="arithmatex">\(a\)</span> (<span class="arithmatex">\(e\to0\)</span>). As <span class="arithmatex">\(c\to a\)</span> the foci approach the vertices <span class="arithmatex">\((\pm a,0)\)</span>, <span class="arithmatex">\(b\to0\)</span>, and the ellipse flattens to the segment from <span class="arithmatex">\((-a,0)\)</span> to <span class="arithmatex">\((a,0)\)</span> (<span class="arithmatex">\(e\to1\)</span>): then <span class="arithmatex">\(\lvert PF_1\rvert+\lvert PF_2\rvert=2a\)</span> is the distance <span class="arithmatex">\(\lvert F_1F_2\rvert\)</span>, which happens only for <span class="arithmatex">\(P\)</span> on the segment between the foci.</p>
+</details>
+</div>
+<h2 id="the-hyperbola">The hyperbola<a class="headerlink" href="#the-hyperbola" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.4.9: Hyperbola</p>
+<p><span id="def-dhyp"></span></p>
+<p>Let <span class="arithmatex">\(F_1\)</span> and <span class="arithmatex">\(F_2\)</span> be points at distance <span class="arithmatex">\(2c&gt;0\)</span> and let <span class="arithmatex">\(0&lt;a&lt;c\)</span>. The <em>hyperbola</em> with <em>foci</em> <span class="arithmatex">\(F_1,F_2\)</span> is the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\bigl\lvert\lvert PF_1\rvert-\lvert PF_2\rvert\bigr\rvert=2a\)</span>. Its <em>center</em> is the midpoint of <span class="arithmatex">\(F_1F_2\)</span> and its <em>vertices</em> are the two points of the hyperbola on the line <span class="arithmatex">\(F_1F_2\)</span>.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.10: Equation of a hyperbola</p>
+<p><span id="thm-hyper"></span></p>
+<p>Let <span class="arithmatex">\(c&gt;a&gt;0\)</span> and <span class="arithmatex">\(b=\sqrt{c^2-a^2}\)</span>, so <span class="arithmatex">\(b^2=c^2-a^2\)</span>. The hyperbola with foci <span class="arithmatex">\((\pm c,0)\)</span> and <span class="arithmatex">\(\bigl\lvert\lvert PF_1\rvert-\lvert PF_2\rvert\bigr\rvert=2a\)</span> is the set of points with</p>
+<div class="arithmatex">\[\frac{x^2}{a^2}-\frac{y^2}{b^2}=1 .\]</div>
+<p>It has two branches (<span class="arithmatex">\(x\ge a\)</span> and <span class="arithmatex">\(x\le-a\)</span>), vertices <span class="arithmatex">\((\pm a,0)\)</span> and no <span class="arithmatex">\(y\)</span>-intercept. For every point, <span class="arithmatex">\(\lvert PF_1\rvert=\left\lvert a+\frac cax\right\rvert\)</span> and <span class="arithmatex">\(\lvert PF_2\rvert=\left\lvert a-\frac cax\right\rvert\)</span>. If the foci are <span class="arithmatex">\((0,\pm c)\)</span>, the equation is <span class="arithmatex">\(\frac{y^2}{a^2}-\frac{x^2}{b^2}=1\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(u=\lvert PF_1\rvert\)</span> and <span class="arithmatex">\(v=\lvert PF_2\rvert\)</span>.</p>
+<p><em>Distances <span class="arithmatex">\(\Rightarrow\)</span> equation.</em> If <span class="arithmatex">\(\lvert u-v\rvert=2a\)</span>, then <span class="arithmatex">\(u-v=2a\)</span> or <span class="arithmatex">\(v-u=2a\)</span>. By Theorem <a href="../../appendix/appendix/#thm-focalradii">K.3</a>(ii) and (iii), in both cases <span class="arithmatex">\(u=\pm\left(a+\frac cax\right)\)</span>, so <span class="arithmatex">\(u^2=\left(a+\frac cax\right)^2\)</span>: <span class="arithmatex">\(x^2+2cx+c^2+y^2=a^2+2cx+\frac{c^2}{a^2}x^2\)</span>. Cancel <span class="arithmatex">\(2cx\)</span> and collect: <span class="arithmatex">\(x^2\left(1-\frac{c^2}{a^2}\right)+y^2=a^2-c^2\)</span>. Now <span class="arithmatex">\(1-\frac{c^2}{a^2}=-\frac{b^2}{a^2}\)</span> and <span class="arithmatex">\(a^2-c^2=-b^2\)</span>, so <span class="arithmatex">\(-\frac{b^2}{a^2}x^2+y^2=-b^2\)</span>; divide by <span class="arithmatex">\(-b^2&lt;0\)</span>: <span class="arithmatex">\(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\)</span>.</p>
+<p><em>Equation <span class="arithmatex">\(\Rightarrow\)</span> distances.</em> Suppose <span class="arithmatex">\(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\)</span>. Then <span class="arithmatex">\(x^2\ge a^2\)</span> and <span class="arithmatex">\(y^2=b^2\left(\frac{x^2}{a^2}-1\right)=(c^2-a^2)\frac{x^2}{a^2}-(c^2-a^2)\)</span>. Then</p>
+<div class="arithmatex">\[u^2=x^2+2cx+c^2+y^2=x^2+2cx+c^2+\frac{c^2}{a^2}x^2-x^2-c^2+a^2=a^2+2cx+\frac{c^2}{a^2}x^2=\left(a+\frac cax\right)^2 ,\]</div>
+<p>and in the same way <span class="arithmatex">\(v^2=\left(a-\frac cax\right)^2\)</span>. So <span class="arithmatex">\(u=\left\lvert a+\frac cax\right\rvert\)</span> and <span class="arithmatex">\(v=\left\lvert a-\frac cax\right\rvert\)</span>. If <span class="arithmatex">\(x\ge a\)</span>, then <span class="arithmatex">\(\frac cax\ge c&gt;a\)</span>, so <span class="arithmatex">\(a+\frac cax&gt;0\)</span> and <span class="arithmatex">\(a-\frac cax&lt;0\)</span>, whence <span class="arithmatex">\(u=a+\frac cax\)</span>, <span class="arithmatex">\(v=\frac cax-a\)</span> and <span class="arithmatex">\(u-v=2a\)</span>. If <span class="arithmatex">\(x\le-a\)</span>, then <span class="arithmatex">\(\frac cax\le-c&lt;-a\)</span>, so <span class="arithmatex">\(a+\frac cax&lt;0\)</span> and <span class="arithmatex">\(a-\frac cax&gt;0\)</span>, whence <span class="arithmatex">\(u=-a-\frac cax\)</span>, <span class="arithmatex">\(v=a-\frac cax\)</span> and <span class="arithmatex">\(v-u=2a\)</span>. In both cases <span class="arithmatex">\(\lvert u-v\rvert=2a\)</span>.</p>
+<p>Setting <span class="arithmatex">\(y=0\)</span> gives <span class="arithmatex">\(x=\pm a\)</span>; setting <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(y^2=-b^2&lt;0\)</span>, impossible. The last statement is the first with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged. ◻ ∎</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.4.11: Asymptote</p>
+<p><span id="def-dasym"></span></p>
+<p>A line <span class="arithmatex">\(y=mx+k\)</span> is an <em>asymptote</em> of a curve as <span class="arithmatex">\(x\to\infty\)</span> if the curve contains points <span class="arithmatex">\((x,y(x))\)</span> for all large <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y(x)-(mx+k)\to0\)</span> as <span class="arithmatex">\(x\to\infty\)</span>; the definition as <span class="arithmatex">\(x\to-\infty\)</span> is the same.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.12: Asymptotes of a hyperbola</p>
+<p><span id="thm-asym"></span></p>
+<p>The hyperbola <span class="arithmatex">\(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\)</span> has the two asymptotes <span class="arithmatex">\(y=\frac bax\)</span> and <span class="arithmatex">\(y=-\frac bax\)</span>, and no others (and the same two lines are asymptotes in both directions, <span class="arithmatex">\(x\to\infty\)</span> and <span class="arithmatex">\(x\to-\infty\)</span>). The hyperbola <span class="arithmatex">\(\frac{y^2}{a^2}-\frac{x^2}{b^2}=1\)</span> has the asymptotes <span class="arithmatex">\(y=\pm\frac abx\)</span>.</p>
+</div>
+<p><em>Proof.</em> On the upper half of the right branch, <span class="arithmatex">\(y=\frac ba\sqrt{x^2-a^2}\)</span> for <span class="arithmatex">\(x\ge a\)</span>. Then</p>
+<div class="arithmatex">\[\frac bax-y=\frac ba\left(x-\sqrt{x^2-a^2}\right)=\frac ba\cdot\frac{x^2-\left(x^2-a^2\right)}{x+\sqrt{x^2-a^2}}=\frac{ab}{x+\sqrt{x^2-a^2}},\]</div>
+<p>(multiplying and dividing by <span class="arithmatex">\(x+\sqrt{x^2-a^2}\)</span>), which is positive and tends to <span class="arithmatex">\(0\)</span> as <span class="arithmatex">\(x\to\infty\)</span>, because the denominator exceeds <span class="arithmatex">\(x\)</span>. So <span class="arithmatex">\(y=\frac bax\)</span> is an asymptote. The hyperbola is symmetric about both axes, which gives <span class="arithmatex">\(y=-\frac bax\)</span> for the lower half of the right branch, and the left branch as <span class="arithmatex">\(x\to-\infty\)</span>.</p>
+<p><em>No other line.</em> Suppose <span class="arithmatex">\(y-(mx+k)\to0\)</span> along the upper half of the right branch as <span class="arithmatex">\(x\to\infty\)</span>. Dividing by <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(\frac yx-m-\frac kx\to0\)</span>, so <span class="arithmatex">\(m=\lim\frac yx=\lim\frac ba\sqrt{1-\frac{a^2}{x^2}}=\frac ba\)</span>. Then <span class="arithmatex">\(k=\lim\left(y-\frac bax\right)=0\)</span> by the computation above. The same argument handles the other three pieces, giving <span class="arithmatex">\(-\frac ba\)</span> and <span class="arithmatex">\(0\)</span>. A vertical line cannot be an asymptote of the form <span class="arithmatex">\(y=mx+k\)</span> and on the hyperbola <span class="arithmatex">\(\lvert y\rvert=\frac ba\sqrt{x^2-a^2}\)</span> stays bounded when <span class="arithmatex">\(x\)</span> stays bounded, so <span class="arithmatex">\(y\)</span> cannot tend to infinity near a vertical line. The last statement is the first with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged: <span class="arithmatex">\(x=\frac ba y\)</span> means <span class="arithmatex">\(y=\frac abx\)</span>. ◻ ∎</p>
+<p>The rectangle with corners <span class="arithmatex">\((\pm a,\pm b)\)</span> is the <em>central rectangle</em>: its diagonals lie on the asymptotes, and its diagonal has length <span class="arithmatex">\(2\sqrt{a^2+b^2}=2c\)</span>, so the foci lie on the circle through its corners.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.13: A hyperbola with its asymptotes</p>
+<p><span id="ex-hyp"></span></p>
+<p>Find the vertices, foci, asymptotes, eccentricity and directrices of <span class="arithmatex">\(9y^2-16x^2=144\)</span> and sketch it. Check a point.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(144\)</span>: <span class="arithmatex">\(\frac{y^2}{16}-\frac{x^2}9=1\)</span>. The <span class="arithmatex">\(y^2\)</span>-term is positive, so the vertices are on the <span class="arithmatex">\(y\)</span>-axis (Theorem <a href="#thm-hyper">12.4.10</a>) and <span class="arithmatex">\(a^2=16\)</span>, <span class="arithmatex">\(b^2=9\)</span>: <span class="arithmatex">\(a=4\)</span>, <span class="arithmatex">\(b=3\)</span>, <span class="arithmatex">\(c^2=a^2+b^2=25\)</span>, <span class="arithmatex">\(c=5\)</span>. Vertices <span class="arithmatex">\((0,\pm4)\)</span>, foci <span class="arithmatex">\((0,\pm5)\)</span>, asymptotes <span class="arithmatex">\(y=\pm\frac abx=\pm\frac43x\)</span> (they pass through the corners <span class="arithmatex">\((\pm3,\pm4)\)</span> of the central rectangle), eccentricity <span class="arithmatex">\(e=\frac ca=\frac54\)</span> and directrices <span class="arithmatex">\(y=\pm\frac ae=\pm\frac{16}5\)</span>. <em>Check.</em> The point <span class="arithmatex">\(\left(\frac94,5\right)\)</span> satisfies <span class="arithmatex">\(\frac{25}{16}-\frac{81/16}9=\frac{25}{16}-\frac9{16}=1\)</span>. Its distances to the foci <span class="arithmatex">\((0,\pm5)\)</span> are <span class="arithmatex">\(\frac94\)</span> and <span class="arithmatex">\(\sqrt{\frac{81}{16}+100}=\frac{41}4\)</span>, and their difference is <span class="arithmatex">\(\frac{41}4-\frac94=8=2a\)</span>.</p>
+<p><img alt="Diagram: \(y=16/5\); \(y=\frac43x\)" class="calc-figure" src="../figures/notes-fig4.svg" width="461" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.14: Equations from data: ellipse, hyperbola and a focus–directrix condition</p>
+<p><span id="ex-data"></span></p>
+<p>(a) Find the ellipse centered at the origin with foci <span class="arithmatex">\((0,\pm3)\)</span> and directrices <span class="arithmatex">\(y=\pm\frac{25}3\)</span>. (b) Find the hyperbola centered at the origin with vertices <span class="arithmatex">\((0,\pm6)\)</span> and eccentricity <span class="arithmatex">\(e=\frac53\)</span>, and its directrices and asymptotes. (c) Find the set of points <span class="arithmatex">\(P=(x,y)\)</span> with <span class="arithmatex">\(\lvert PF\rvert=2\operatorname{dist}(P,\ell)\)</span> for <span class="arithmatex">\(F=(4,0)\)</span> and <span class="arithmatex">\(\ell:\ x=1\)</span>.</p>
+<p><strong>Solution.</strong> (a) The foci are on the <span class="arithmatex">\(y\)</span>-axis, so the ellipse is <span class="arithmatex">\(\frac{y^2}{a^2}+\frac{x^2}{b^2}=1\)</span> with <span class="arithmatex">\(c=3\)</span>. The directrices are <span class="arithmatex">\(y=\pm\frac ae\)</span> (Theorem <a href="#thm-dirprop">12.4.16</a> below) and <span class="arithmatex">\(e=\frac ca\)</span>, so <span class="arithmatex">\(\frac ae=\frac{a^2}c=\frac{25}3\)</span>, giving <span class="arithmatex">\(a^2=c\cdot\frac{25}3=25\)</span> and <span class="arithmatex">\(a=5\)</span>. Then <span class="arithmatex">\(b^2=a^2-c^2=25-9=16\)</span>. The ellipse is <span class="arithmatex">\(\frac{y^2}{25}+\frac{x^2}{16}=1\)</span>, with <span class="arithmatex">\(e=\frac35\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((0,5)\)</span> is at distance <span class="arithmatex">\(5-3=2\)</span> from the focus <span class="arithmatex">\((0,3)\)</span> and <span class="arithmatex">\(\frac{25}3-5=\frac{10}3\)</span> from the directrix, and <span class="arithmatex">\(\frac35\cdot\frac{10}3=2\)</span>.</p>
+<p>(b) The foci are on the <span class="arithmatex">\(y\)</span>-axis (the vertices are), so the hyperbola is <span class="arithmatex">\(\frac{y^2}{a^2}-\frac{x^2}{b^2}=1\)</span> with <span class="arithmatex">\(a=6\)</span>. From <span class="arithmatex">\(e=\frac ca\)</span>, <span class="arithmatex">\(c=ae=6\cdot\frac53=10\)</span>, so <span class="arithmatex">\(b^2=c^2-a^2=100-36=64\)</span>. The hyperbola is <span class="arithmatex">\(\frac{y^2}{36}-\frac{x^2}{64}=1\)</span>. The directrices are <span class="arithmatex">\(y=\pm\frac ae=\pm\frac{18}5\)</span> and the asymptotes are <span class="arithmatex">\(y=\pm\frac abx=\pm\frac34x\)</span> (Theorem <a href="#thm-asym">12.4.12</a>). <em>Check.</em> The vertex <span class="arithmatex">\((0,6)\)</span> is at distance <span class="arithmatex">\(10-6=4\)</span> from the focus <span class="arithmatex">\((0,10)\)</span> and <span class="arithmatex">\(6-\frac{18}5=\frac{12}5\)</span> from the directrix, and <span class="arithmatex">\(\frac53\cdot\frac{12}5=4\)</span>.</p>
+<p>(c) The condition is <span class="arithmatex">\(\sqrt{(x-4)^2+y^2}=2\lvert x-1\rvert\)</span>. Both sides are nonnegative, so by Theorem <a href="../../appendix/appendix/#thm-sqlemma">K.1</a> it is equivalent to <span class="arithmatex">\((x-4)^2+y^2=4(x-1)^2\)</span>. Expand: <span class="arithmatex">\(x^2-8x+16+y^2=4x^2-8x+4\)</span>; the terms <span class="arithmatex">\(-8x\)</span> cancel, leaving <span class="arithmatex">\(y^2+12=3x^2\)</span>, that is <span class="arithmatex">\(3x^2-y^2=12\)</span>, or <span class="arithmatex">\(\frac{x^2}4-\frac{y^2}{12}=1\)</span>. This is a hyperbola with <span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(b^2=12\)</span>, <span class="arithmatex">\(c^2=16\)</span>, <span class="arithmatex">\(c=4\)</span> and <span class="arithmatex">\(e=\frac ca=2\)</span>: its focus is <span class="arithmatex">\((c,0)=F\)</span> and its directrix is <span class="arithmatex">\(x=\frac ae=1=\ell\)</span>, as it must be.</p>
+</div>
+<h2 id="eccentricity-and-the-directrix">Eccentricity and the directrix<a class="headerlink" href="#eccentricity-and-the-directrix" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 12.4.15: Eccentricity</p>
+<p><span id="def-ecc"></span></p>
+<p>For an ellipse or a hyperbola with parameters <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(c\)</span> (Theorems <a href="#thm-ellipse">12.4.7</a> and <a href="#thm-hyper">12.4.10</a>), the <em>eccentricity</em> is <span class="arithmatex">\(e=\frac ca\)</span>. Thus <span class="arithmatex">\(0&lt;e&lt;1\)</span> for an ellipse and <span class="arithmatex">\(e&gt;1\)</span> for a hyperbola; a parabola has <span class="arithmatex">\(e=1\)</span>. (A circle has <span class="arithmatex">\(c=0\)</span>, so <span class="arithmatex">\(e=0\)</span>.)</p>
+</div>
+<p>For an ellipse, <span class="arithmatex">\(\frac ba=\sqrt{1-e^2}\)</span>: if <span class="arithmatex">\(e\)</span> is near <span class="arithmatex">\(0\)</span> the ellipse is nearly a circle, and if <span class="arithmatex">\(e\)</span> is near <span class="arithmatex">\(1\)</span> it is long and thin.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.16: The directrix property of the ellipse and the hyperbola</p>
+<p><span id="thm-dirprop"></span></p>
+<p>Let <span class="arithmatex">\(C\)</span> be the ellipse of Theorem <a href="#thm-ellipse">12.4.7</a> or the hyperbola of Theorem <a href="#thm-hyper">12.4.10</a>, with <span class="arithmatex">\(e=\frac ca\)</span>, foci <span class="arithmatex">\(F_1=(-c,0)\)</span>, <span class="arithmatex">\(F_2=(c,0)\)</span> and the two vertical lines <span class="arithmatex">\(\ell_1:\ x=-\frac ae\)</span> and <span class="arithmatex">\(\ell_2:\ x=\frac ae\)</span> (the <em>directrices</em>). Then for every point <span class="arithmatex">\(P\)</span> of <span class="arithmatex">\(C\)</span>,</p>
+<div class="arithmatex">\[\lvert PF_1\rvert=e\operatorname{dist}(P,\ell_1)\qquad\text{and}\qquad\lvert PF_2\rvert=e\operatorname{dist}(P,\ell_2).\]</div>
+<p>The same holds for foci <span class="arithmatex">\((0,\pm c)\)</span> and directrices <span class="arithmatex">\(y=\pm\frac ae\)</span>.</p>
+</div>
+<p><em>Proof.</em> By Theorems <a href="#thm-ellipse">12.4.7</a> and <a href="#thm-hyper">12.4.10</a>, <span class="arithmatex">\(\lvert PF_2\rvert=\left\lvert a-\frac cax\right\rvert=\lvert a-ex\rvert\)</span> (for the ellipse <span class="arithmatex">\(a-ex&gt;0\)</span> and the absolute value is not needed). Factor out <span class="arithmatex">\(e\)</span>: <span class="arithmatex">\(\lvert a-ex\rvert=e\left\lvert\frac ae-x\right\rvert=e\operatorname{dist}(P,\ell_2)\)</span>, because the distance from <span class="arithmatex">\(P=(x,y)\)</span> to the vertical line <span class="arithmatex">\(x=\frac ae\)</span> is <span class="arithmatex">\(\left\lvert x-\frac ae\right\rvert\)</span>. Likewise <span class="arithmatex">\(\lvert PF_1\rvert=\lvert a+ex\rvert=e\left\lvert x+\frac ae\right\rvert=e\operatorname{dist}(P,\ell_1)\)</span>. The last statement is the same with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged. ◻ ∎</p>
+<p>So every ellipse and hyperbola has <em>two</em> foci and <em>two</em> directrices, and each focus goes with the nearer directrix. The next theorem is the converse: a focus, a line and a number <span class="arithmatex">\(e\)</span> determine a conic.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.17: The Eccentricity–Directrix Theorem</p>
+<p><span id="thm-ed"></span></p>
+<p>Let <span class="arithmatex">\(F\)</span> be a point, <span class="arithmatex">\(\ell\)</span> a line not through <span class="arithmatex">\(F\)</span>, <span class="arithmatex">\(d=\operatorname{dist}(F,\ell)&gt;0\)</span> and <span class="arithmatex">\(e&gt;0\)</span>. Let <span class="arithmatex">\(C\)</span> be the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span>. Then</p>
+<p><strong>(1)</strong> if <span class="arithmatex">\(e=1\)</span>, <span class="arithmatex">\(C\)</span> is a parabola with focus <span class="arithmatex">\(F\)</span> and directrix <span class="arithmatex">\(\ell\)</span>;</p>
+<p><strong>(2)</strong> if <span class="arithmatex">\(0&lt;e&lt;1\)</span>, <span class="arithmatex">\(C\)</span> is an ellipse of eccentricity <span class="arithmatex">\(e\)</span>, with <span class="arithmatex">\(F\)</span> as one focus and <span class="arithmatex">\(\ell\)</span> as the directrix nearer to it; here <span class="arithmatex">\(a=\frac{ed}{1-e^2}\)</span> and <span class="arithmatex">\(c=ae\)</span>;</p>
+<p><strong>(3)</strong> if <span class="arithmatex">\(e&gt;1\)</span>, <span class="arithmatex">\(C\)</span> is a hyperbola of eccentricity <span class="arithmatex">\(e\)</span>, with <span class="arithmatex">\(F\)</span> as one focus and <span class="arithmatex">\(\ell\)</span> as the directrix nearer to it; here <span class="arithmatex">\(a=\frac{ed}{e^2-1}\)</span> and <span class="arithmatex">\(c=ae\)</span>.</p>
+<p>In particular the value of <span class="arithmatex">\(e\)</span> alone decides the type of the conic.</p>
+</div>
+<p><em>Proof.</em> <em>Every ellipse and hyperbola is such a set.</em> This is Theorem <a href="#thm-dirprop">12.4.16</a> (with <span class="arithmatex">\(e=\frac ca\)</span>), and a parabola is such a set with <span class="arithmatex">\(e=1\)</span> by Definition <a href="#def-dparab">12.4.1</a>.</p>
+<p><em>Every such set is a conic.</em> By Theorem <a href="../../appendix/appendix/#thm-coords">K.4</a> we may move the plane so that <span class="arithmatex">\(F=(0,0)\)</span> and <span class="arithmatex">\(\ell\)</span> is the line <span class="arithmatex">\(x=d\)</span>. For <span class="arithmatex">\(P=(x,y)\)</span> we have <span class="arithmatex">\(\lvert PF\rvert=\sqrt{x^2+y^2}\ge0\)</span> and <span class="arithmatex">\(e\operatorname{dist}(P,\ell)=e\lvert d-x\rvert\ge0\)</span>, so by Theorem <a href="../../appendix/appendix/#thm-sqlemma">K.1</a> the condition is equivalent to <span class="arithmatex">\(x^2+y^2=e^2(d-x)^2\)</span>, that is</p>
+<div class="arithmatex">\[(1-e^2)\,x^2+2e^2d\,x+y^2=e^2d^2 .\]</div>
+<p>If <span class="arithmatex">\(e=1\)</span> this is <span class="arithmatex">\(y^2=-2d\left(x-\frac d2\right)\)</span>, the parabola of Theorem <a href="#thm-parab">12.4.2</a> with vertex <span class="arithmatex">\(\left(\frac d2,0\right)\)</span> and <span class="arithmatex">\(p=-\frac d2\)</span>; its focus is <span class="arithmatex">\(\left(\frac d2+p,0\right)=(0,0)\)</span> and its directrix <span class="arithmatex">\(x=\frac d2-p=d\)</span>. If <span class="arithmatex">\(e&lt;1\)</span> or <span class="arithmatex">\(e&gt;1\)</span>, the coefficient <span class="arithmatex">\(1-e^2\)</span> is positive or negative, and completing the square in <span class="arithmatex">\(x\)</span> gives the equation of an ellipse <span class="arithmatex">\(\frac{(x+c)^2}{a^2}+\frac{y^2}{b^2}=1\)</span> or of a hyperbola <span class="arithmatex">\(\frac{(x-c)^2}{a^2}-\frac{y^2}{b^2}=1\)</span> with <span class="arithmatex">\(a,c\)</span> as stated, <span class="arithmatex">\(c=ae\)</span> and <span class="arithmatex">\(b^2=\pm(a^2-c^2)\)</span>; the focus <span class="arithmatex">\((0,0)\)</span> and the directrix <span class="arithmatex">\(x=d\)</span> are then the right (resp. left) focus and its nearer directrix, and <span class="arithmatex">\(\frac ca=e\)</span>. This computation, with every step and every reason, is Theorem <a href="../../appendix/appendix/#thm-edthm">K.5</a> in Appendix K, so each of the three cases is proved. The worked computation below shows what it looks like with numbers. ◻ ∎</p>
+<p><strong>A worked instance.</strong> Take <span class="arithmatex">\(F=(0,0)\)</span>, <span class="arithmatex">\(\ell:\ x=3\)</span> and <span class="arithmatex">\(e=2\)</span>. Then <span class="arithmatex">\(x^2+y^2=4(3-x)^2=4x^2-24x+36\)</span>, so <span class="arithmatex">\(-3x^2+24x+y^2=36\)</span>. Complete the square: <span class="arithmatex">\(-3x^2+24x=-3(x-4)^2+48\)</span>, so <span class="arithmatex">\(-3(x-4)^2+y^2=-12\)</span>, that is <span class="arithmatex">\(\frac{(x-4)^2}{4}-\frac{y^2}{12}=1\)</span>. This is the hyperbola with center <span class="arithmatex">\((4,0)\)</span>, <span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(b^2=12\)</span>, <span class="arithmatex">\(c=4=ae\)</span>, and indeed <span class="arithmatex">\(a=\frac{ed}{e^2-1}=\frac63=2\)</span>. Its foci are <span class="arithmatex">\((4\mp4,0)=(0,0)\)</span> and <span class="arithmatex">\((8,0)\)</span>, and its directrix nearer to <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(x=4-\frac ae=3\)</span>.</p>
+<p><img alt="Diagram: \(e=\frac12\); \(e=1\); \(e=2\)" class="calc-figure" src="../figures/notes-fig5.svg" width="402" /></p>
+<p>The three curves of the picture have the same focus <span class="arithmatex">\(F\)</span> and the same directrix <span class="arithmatex">\(x=2\)</span> (<span class="arithmatex">\(d=2\)</span>) and differ only in <span class="arithmatex">\(e\)</span>: <span class="arithmatex">\(r=\frac{1}{1+\frac12\cos\theta}\)</span> (ellipse, vertices <span class="arithmatex">\(\left(\frac23,0\right)\)</span> and <span class="arithmatex">\((-2,0)\)</span>), <span class="arithmatex">\(r=\frac{2}{1+\cos\theta}\)</span> (parabola, vertex <span class="arithmatex">\((1,0)\)</span>) and <span class="arithmatex">\(r=\frac{4}{1+2\cos\theta}\)</span> (the hyperbola branch around <span class="arithmatex">\(F\)</span>, vertex <span class="arithmatex">\(\left(\frac43,0\right)\)</span>).</p>
+<h2 id="translated-conics-and-the-general-equation">Translated conics and the general equation<a class="headerlink" href="#translated-conics-and-the-general-equation" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.18: Translating a conic</p>
+<p><span id="thm-transl"></span></p>
+<p>Let <span class="arithmatex">\(C_0\)</span> be a parabola, ellipse or hyperbola with equation <span class="arithmatex">\(f(x,y)=0\)</span>, and let <span class="arithmatex">\(C\)</span> be its image under the translation <span class="arithmatex">\((x,y)\mapsto(x+h,y+k)\)</span>. Then <span class="arithmatex">\(C\)</span> has the equation <span class="arithmatex">\(f(x-h,y-k)=0\)</span>. The foci, vertices, center, directrices and asymptotes of <span class="arithmatex">\(C\)</span> are the images of those of <span class="arithmatex">\(C_0\)</span>, and <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span>, <span class="arithmatex">\(e\)</span> and <span class="arithmatex">\(p\)</span> are unchanged.</p>
+</div>
+<p><em>Proof.</em> A point <span class="arithmatex">\((x,y)\)</span> is in <span class="arithmatex">\(C\)</span> if and only if <span class="arithmatex">\((x-h,y-k)\)</span> is in <span class="arithmatex">\(C_0\)</span>, that is, if and only if <span class="arithmatex">\(f(x-h,y-k)=0\)</span>. A translation preserves distances and carries lines to lines (Theorem <a href="../../appendix/appendix/#thm-coords">K.4</a>), so the conditions that define the focus, directrix and vertex, the distances <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span>, <span class="arithmatex">\(p\)</span> and the ratio <span class="arithmatex">\(e\)</span>, and the property of being an asymptote (the vertical gap in Definition <a href="#def-dasym">12.4.11</a> is unchanged by a translation) all carry over. ◻ ∎</p>
+<div class="admonition note">
+<p class="admonition-title">Standard forms of translated conics</p>
+<ul>
+<li>
+<p><em>Parabola.</em> <span class="arithmatex">\((x-h)^2=4p(y-k)\)</span>: vertex <span class="arithmatex">\((h,k)\)</span>, focus <span class="arithmatex">\((h,k+p)\)</span>, directrix <span class="arithmatex">\(y=k-p\)</span>. <span class="arithmatex">\((y-k)^2=4p(x-h)\)</span>: vertex <span class="arithmatex">\((h,k)\)</span>, focus <span class="arithmatex">\((h+p,k)\)</span>, directrix <span class="arithmatex">\(x=h-p\)</span>.</p>
+</li>
+<li>
+<p><em>Ellipse.</em> <span class="arithmatex">\(\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1\)</span> with <span class="arithmatex">\(a&gt;b\)</span>: center <span class="arithmatex">\((h,k)\)</span>, vertices <span class="arithmatex">\((h\pm a,k)\)</span>, foci <span class="arithmatex">\((h\pm c,k)\)</span>, directrices <span class="arithmatex">\(x=h\pm\frac ae\)</span>. If <span class="arithmatex">\(a&gt;b\)</span> is under <span class="arithmatex">\((y-k)^2\)</span>, exchange the roles: vertices <span class="arithmatex">\((h,k\pm a)\)</span>, foci <span class="arithmatex">\((h,k\pm c)\)</span>, directrices <span class="arithmatex">\(y=k\pm\frac ae\)</span>. Always <span class="arithmatex">\(c^2=a^2-b^2\)</span>.</p>
+</li>
+<li>
+<p><em>Hyperbola.</em> <span class="arithmatex">\(\frac{(x-h)^2}{a^2}-\frac{(y-k)^2}{b^2}=1\)</span>: vertices <span class="arithmatex">\((h\pm a,k)\)</span>, foci <span class="arithmatex">\((h\pm c,k)\)</span>, asymptotes <span class="arithmatex">\(y-k=\pm\frac ba(x-h)\)</span>, directrices <span class="arithmatex">\(x=h\pm\frac ae\)</span>. <span class="arithmatex">\(\frac{(y-k)^2}{a^2}-\frac{(x-h)^2}{b^2}=1\)</span>: vertices <span class="arithmatex">\((h,k\pm a)\)</span>, foci <span class="arithmatex">\((h,k\pm c)\)</span>, asymptotes <span class="arithmatex">\(y-k=\pm\frac ab(x-h)\)</span>, directrices <span class="arithmatex">\(y=k\pm\frac ae\)</span>. Always <span class="arithmatex">\(c^2=a^2+b^2\)</span>.</p>
+</li>
+</ul>
+</div>
+<p>A conic with its axes parallel to the coordinate axes is described by an equation <span class="arithmatex">\(Ax^2+Cy^2+Dx+Ey+F=0\)</span> with no <span class="arithmatex">\(xy\)</span> term. Completing the square puts it into one of the standard forms, or shows that it is a degenerate set.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.19: Classification of <span class="arithmatex">\(Ax^2+Cy^2+Dx+Ey+F=0\)</span></p>
+<p><span id="thm-classify"></span></p>
+<p>Let <span class="arithmatex">\(A,C,D,E,F\)</span> be real numbers with <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(C\)</span> not both <span class="arithmatex">\(0\)</span>.</p>
+<p><strong>(i)</strong> If <span class="arithmatex">\(AC&gt;0\)</span>, the solution set is an ellipse (a circle if <span class="arithmatex">\(A=C\)</span>), a single point, or empty.</p>
+<p><strong>(ii)</strong> If <span class="arithmatex">\(AC&lt;0\)</span>, the solution set is a hyperbola or a pair of intersecting lines.</p>
+<p><strong>(iii)</strong> If <span class="arithmatex">\(AC=0\)</span>, say <span class="arithmatex">\(A=0\ne C\)</span> (the case <span class="arithmatex">\(C=0\ne A\)</span> is the same with <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged), the solution set is a parabola if <span class="arithmatex">\(D\ne0\)</span>; if <span class="arithmatex">\(D=0\)</span> it is a pair of parallel lines, a single line, or empty.</p>
+</div>
+<p><em>Proof.</em> <em>(i) and (ii): <span class="arithmatex">\(AC\ne0\)</span>.</em> Put <span class="arithmatex">\(h=-\frac D{2A}\)</span>, <span class="arithmatex">\(k=-\frac E{2C}\)</span>. Completing the square, <span class="arithmatex">\(A\left(x^2+\frac DAx\right)=A(x-h)^2-Ah^2\)</span> and similarly for <span class="arithmatex">\(y\)</span>, so the equation is equivalent to</p>
+<div class="arithmatex">\[A(x-h)^2+C(y-k)^2=K,\qquad K=Ah^2+Ck^2-F .\]</div>
+<p>If <span class="arithmatex">\(AC&gt;0\)</span> then <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(C\)</span> have the same sign; multiplying the whole equation by <span class="arithmatex">\(-1\)</span> if necessary, assume <span class="arithmatex">\(A,C&gt;0\)</span>. If <span class="arithmatex">\(K&gt;0\)</span>, dividing by <span class="arithmatex">\(K\)</span> gives <span class="arithmatex">\(\frac{(x-h)^2}{K/A}+\frac{(y-k)^2}{K/C}=1\)</span>, an ellipse centered at <span class="arithmatex">\((h,k)\)</span> (a circle if <span class="arithmatex">\(A=C\)</span>). If <span class="arithmatex">\(K=0\)</span>, a sum of two nonnegative terms is <span class="arithmatex">\(0\)</span> only if both vanish: the point <span class="arithmatex">\((h,k)\)</span>. If <span class="arithmatex">\(K&lt;0\)</span>, a sum of nonnegative terms cannot be negative: no points. If <span class="arithmatex">\(AC&lt;0\)</span> and <span class="arithmatex">\(K\ne0\)</span>, dividing by <span class="arithmatex">\(K\)</span> gives <span class="arithmatex">\(\frac{(x-h)^2}{K/A}+\frac{(y-k)^2}{K/C}=1\)</span> in which <span class="arithmatex">\(\frac KA\)</span> and <span class="arithmatex">\(\frac KC\)</span> have opposite signs. If <span class="arithmatex">\(\frac KA&gt;0&gt;\frac KC\)</span> this is <span class="arithmatex">\(\frac{(x-h)^2}{K/A}-\frac{(y-k)^2}{-K/C}=1\)</span>, a hyperbola with horizontal axis; if <span class="arithmatex">\(\frac KA&lt;0&lt;\frac KC\)</span> it is <span class="arithmatex">\(\frac{(y-k)^2}{K/C}-\frac{(x-h)^2}{-K/A}=1\)</span>, a hyperbola with vertical axis. If <span class="arithmatex">\(K=0\)</span>, then <span class="arithmatex">\((y-k)^2=-\frac AC(x-h)^2\)</span> with <span class="arithmatex">\(-\frac AC&gt;0\)</span>, that is <span class="arithmatex">\(y-k=\pm\sqrt{-A/C}\,(x-h)\)</span>: two lines through <span class="arithmatex">\((h,k)\)</span>.</p>
+<p><em>(iii) <span class="arithmatex">\(A=0\ne C\)</span>.</em> Put <span class="arithmatex">\(k=-\frac E{2C}\)</span>. Then <span class="arithmatex">\(Cy^2+Ey=C(y-k)^2-Ck^2\)</span>, and the equation is equivalent to <span class="arithmatex">\(C(y-k)^2=-Dx+K'\)</span> with <span class="arithmatex">\(K'=Ck^2-F\)</span>. If <span class="arithmatex">\(D\ne0\)</span>, this is <span class="arithmatex">\((y-k)^2=-\frac DC\left(x-\frac{K'}D\right)\)</span>, which is <span class="arithmatex">\((y-k)^2=4p(x-x_0)\)</span> with <span class="arithmatex">\(4p=-\frac DC\)</span> and <span class="arithmatex">\(x_0=\frac{K'}D\)</span>: a parabola with vertex <span class="arithmatex">\((x_0,k)\)</span> (Theorems <a href="#thm-parab">12.4.2</a> and <a href="#thm-transl">12.4.18</a>). If <span class="arithmatex">\(D=0\)</span>, then <span class="arithmatex">\((y-k)^2=\frac{K'}C\)</span>: two lines <span class="arithmatex">\(y=k\pm\sqrt{K'/C}\)</span> if <span class="arithmatex">\(\frac{K'}C&gt;0\)</span>, the line <span class="arithmatex">\(y=k\)</span> if <span class="arithmatex">\(K'=0\)</span>, and no points if <span class="arithmatex">\(\frac{K'}C&lt;0\)</span>. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.4.20: Identify and sketch a conic <span class="arithmatex">\(Ax^2+Cy^2+Dx+Ey+F=0\)</span></p>
+<p><span id="proc-ident"></span></p>
+<ol>
+<li>
+<p>Decide the type from the signs: <span class="arithmatex">\(AC&gt;0\)</span> ellipse, <span class="arithmatex">\(AC&lt;0\)</span> hyperbola, <span class="arithmatex">\(AC=0\)</span> parabola (Theorem <a href="#thm-classify">12.4.19</a>); the last depends on step 3.</p>
+</li>
+<li>
+<p>Group the <span class="arithmatex">\(x\)</span>-terms and the <span class="arithmatex">\(y\)</span>-terms; <em>factor out the coefficient of the square</em> before completing it: <span class="arithmatex">\(A\left(x^2+\frac DAx\right)=A(x-h)^2-Ah^2\)</span>.</p>
+</li>
+<li>
+<p>Collect the constants on the right. If the right side is <span class="arithmatex">\(0\)</span> or has the wrong sign, the set is degenerate (a point, two lines, empty), as in Theorem <a href="#thm-classify">12.4.19</a>. Otherwise divide to make the right side <span class="arithmatex">\(1\)</span>.</p>
+</li>
+<li>
+<p>Read <span class="arithmatex">\(h\)</span>, <span class="arithmatex">\(k\)</span>, <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span> (and <span class="arithmatex">\(p\)</span>) from the standard forms, then <span class="arithmatex">\(c\)</span>, <span class="arithmatex">\(e\)</span> and the vertices, foci, directrices and asymptotes.</p>
+</li>
+<li>
+<p>Sketch: center or vertex, axes, the central rectangle, asymptotes, foci. Check one point in the <em>original</em> equation.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.21: A translated ellipse</p>
+<p><span id="ex-shell"></span></p>
+<p>Identify <span class="arithmatex">\(9x^2+16y^2-36x+96y+36=0\)</span> and find its center, vertices, foci, eccentricity and directrices. Sketch it.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(AC=144&gt;0\)</span>, so it is an ellipse or degenerate. Group: <span class="arithmatex">\(9\left(x^2-4x\right)+16\left(y^2+6y\right)=-36\)</span>. Complete the squares: <span class="arithmatex">\(x^2-4x=(x-2)^2-4\)</span> and <span class="arithmatex">\(y^2+6y=(y+3)^2-9\)</span>, so <span class="arithmatex">\(9(x-2)^2-36+16(y+3)^2-144=-36\)</span>, that is <span class="arithmatex">\(9(x-2)^2+16(y+3)^2=144\)</span>. Divide by <span class="arithmatex">\(144\)</span>: <span class="arithmatex">\(\frac{(x-2)^2}{16}+\frac{(y+3)^2}9=1\)</span>. The right side is positive, so it is a genuine ellipse with center <span class="arithmatex">\((2,-3)\)</span>, <span class="arithmatex">\(a=4\)</span> (horizontal), <span class="arithmatex">\(b=3\)</span>, <span class="arithmatex">\(c=\sqrt{16-9}=\sqrt7\approx2.65\)</span>, <span class="arithmatex">\(e=\frac{\sqrt7}4\approx0.66\)</span>. The vertices are <span class="arithmatex">\((2\pm4,-3)=(6,-3),(-2,-3)\)</span>; the minor-axis vertices are <span class="arithmatex">\((2,-3\pm3)=(2,0),(2,-6)\)</span>; the foci are <span class="arithmatex">\(\left(2\pm\sqrt7,-3\right)\approx(4.65,-3),(-0.65,-3)\)</span>; the directrices are <span class="arithmatex">\(x=2\pm\frac ae=2\pm\frac{16}{\sqrt7}\approx8.05,\,-4.05\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((6,-3)\)</span> satisfies the original equation: <span class="arithmatex">\(9\cdot36+16\cdot9-216-288+36=324+144-216-288+36=0\)</span>.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig6.svg" width="467" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.22: A hyperbola and its asymptotes from a general equation</p>
+<p><span id="ex-shyp"></span></p>
+<p>Identify <span class="arithmatex">\(x^2-4y^2-6x-16y-11=0\)</span>. Find its center, vertices, foci, asymptotes and directrices, and sketch it.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(AC=-4&lt;0\)</span>, so it is a hyperbola or two lines. Group: <span class="arithmatex">\(\left(x^2-6x\right)-4\left(y^2+4y\right)=11\)</span>. Complete the squares (the factor <span class="arithmatex">\(-4\)</span> must be taken out first, so the <span class="arithmatex">\(4\)</span> completing <span class="arithmatex">\(y^2+4y\)</span> is multiplied by <span class="arithmatex">\(-4\)</span>): <span class="arithmatex">\(x^2-6x=(x-3)^2-9\)</span> and <span class="arithmatex">\(y^2+4y=(y+2)^2-4\)</span>, so <span class="arithmatex">\((x-3)^2-9-4(y+2)^2+16=11\)</span>, that is <span class="arithmatex">\((x-3)^2-4(y+2)^2=4\)</span>. Divide by <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\(\frac{(x-3)^2}4-(y+2)^2=1\)</span>. The right side is <span class="arithmatex">\(1\ne0\)</span>, so it is a hyperbola with center <span class="arithmatex">\((3,-2)\)</span>, horizontal axis, <span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(b=1\)</span>, <span class="arithmatex">\(c=\sqrt{a^2+b^2}=\sqrt5\)</span>, <span class="arithmatex">\(e=\frac{\sqrt5}2\)</span>. The vertices are <span class="arithmatex">\((3\pm2,-2)=(1,-2),(5,-2)\)</span>; the foci are <span class="arithmatex">\(\left(3\pm\sqrt5,-2\right)\approx(5.24,-2),(0.76,-2)\)</span>; the asymptotes are <span class="arithmatex">\(y+2=\pm\frac ba(x-3)=\pm\frac12(x-3)\)</span>, that is <span class="arithmatex">\(y=\frac x2-\frac72\)</span> and <span class="arithmatex">\(y=-\frac x2-\frac12\)</span>; the directrices are <span class="arithmatex">\(x=3\pm\frac ae=3\pm\frac4{\sqrt5}\approx4.79,\,1.21\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((5,-2)\)</span>: <span class="arithmatex">\(25-16-30+32-11=0\)</span>, and the asymptote <span class="arithmatex">\(y=\frac x2-\frac72\)</span> passes through the center <span class="arithmatex">\((3,-2)\)</span>: <span class="arithmatex">\(\frac32-\frac72=-2\)</span>.</p>
+<p><img alt="Diagram: \(y=\frac x2-\frac72\); \(y=-\frac x2-\frac12\)" class="calc-figure" src="../figures/notes-fig7.svg" width="406" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.23: A parabola from a general equation</p>
+<p><span id="ex-spar"></span></p>
+<p>Identify <span class="arithmatex">\(y^2-8y-12x+40=0\)</span> and find its vertex, axis, focus, directrix and latus rectum.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(A=0\)</span> and <span class="arithmatex">\(C=1\)</span>, so it is a parabola (the <span class="arithmatex">\(x\)</span>-term is of first degree, <span class="arithmatex">\(D=-12\ne0\)</span>; Theorem <a href="#thm-classify">12.4.19</a>(iii)). Complete the square in <span class="arithmatex">\(y\)</span>: <span class="arithmatex">\(y^2-8y=(y-4)^2-16\)</span>, so <span class="arithmatex">\((y-4)^2-16-12x+40=0\)</span>, that is <span class="arithmatex">\((y-4)^2=12x-24=12(x-2)\)</span>. Compare with <span class="arithmatex">\((y-k)^2=4p(x-h)\)</span>: <span class="arithmatex">\(h=2\)</span>, <span class="arithmatex">\(k=4\)</span>, <span class="arithmatex">\(4p=12\)</span>, <span class="arithmatex">\(p=3&gt;0\)</span>. The vertex is <span class="arithmatex">\((2,4)\)</span>, the axis is the line <span class="arithmatex">\(y=4\)</span>, the parabola opens to the right, the focus is <span class="arithmatex">\((h+p,k)=(5,4)\)</span> and the directrix is <span class="arithmatex">\(x=h-p=-1\)</span>. The latus rectum is the chord <span class="arithmatex">\(x=5\)</span>: <span class="arithmatex">\((y-4)^2=36\)</span>, so <span class="arithmatex">\(y=10\)</span> or <span class="arithmatex">\(y=-2\)</span>: its endpoints are <span class="arithmatex">\((5,10)\)</span> and <span class="arithmatex">\((5,-2)\)</span>, and its length is <span class="arithmatex">\(12=4p\)</span>. <em>Check.</em> The point <span class="arithmatex">\((5,10)\)</span> is on the curve: <span class="arithmatex">\(100-80-60+40=0\)</span>, and its distance to the focus <span class="arithmatex">\((5,4)\)</span> is <span class="arithmatex">\(6\)</span>, the distance to the directrix <span class="arithmatex">\(x=-1\)</span> is <span class="arithmatex">\(5-(-1)=6\)</span>.</p>
+</div>
+<h2 id="polar-equations-of-conics">Polar equations of conics<a class="headerlink" href="#polar-equations-of-conics" title="Permanent link">&para;</a></h2>
+<p>Polar coordinates (Section 12.2) describe a conic most simply when a <em>focus is at the pole</em>, because then <span class="arithmatex">\(\lvert PF\rvert\)</span> is just the radial coordinate. Each point has many polar representations, and <span class="arithmatex">\(r\)</span> may be negative; “<span class="arithmatex">\(P\)</span> is on the curve <span class="arithmatex">\(r=g(\theta)\)</span>” means that <em>some</em> pair of polar coordinates of <span class="arithmatex">\(P\)</span> satisfies the equation.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 12.4.24: Polar equations of conics</p>
+<p><span id="thm-polar"></span></p>
+<p>Let <span class="arithmatex">\(d&gt;0\)</span> and <span class="arithmatex">\(e&gt;0\)</span>, and let <span class="arithmatex">\(F\)</span> be the pole. The set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span> is the curve</p>
+<div class="arithmatex">\[r=\frac{ed}{1+e\cos\theta}\quad\text{if }\ell\text{ is the line }x=d,\qquad r=\frac{ed}{1-e\cos\theta}\quad\text{if }\ell\text{ is }x=-d,\]</div>
+<div class="arithmatex">\[r=\frac{ed}{1+e\sin\theta}\quad\text{if }\ell\text{ is the line }y=d,\qquad r=\frac{ed}{1-e\sin\theta}\quad\text{if }\ell\text{ is }y=-d.\]</div>
+<p>By Theorem <a href="#thm-ed">12.4.17</a> it is a parabola if <span class="arithmatex">\(e=1\)</span>, an ellipse if <span class="arithmatex">\(0&lt;e&lt;1\)</span> and a hyperbola if <span class="arithmatex">\(e&gt;1\)</span>. The curve is traced by any interval of <span class="arithmatex">\(\theta\)</span> of length <span class="arithmatex">\(2\pi\)</span> (omitting the angles where the denominator is <span class="arithmatex">\(0\)</span>).</p>
+</div>
+<p><em>Proof.</em> First let <span class="arithmatex">\(\ell\)</span> be the line <span class="arithmatex">\(x=d\)</span>.</p>
+<p><em>The graph lies on the conic.</em> Let <span class="arithmatex">\(P\)</span> have polar coordinates <span class="arithmatex">\((r,\theta)\)</span> with <span class="arithmatex">\(r(1+e\cos\theta)=ed\)</span>. Then <span class="arithmatex">\(r=e(d-r\cos\theta)\)</span>, and since <span class="arithmatex">\(r\cos\theta=x\)</span> is the <span class="arithmatex">\(x\)</span>-coordinate of <span class="arithmatex">\(P\)</span>, <span class="arithmatex">\(r=e(d-x)\)</span>. Take absolute values: <span class="arithmatex">\(\lvert r\rvert=e\lvert d-x\rvert\)</span>. Now <span class="arithmatex">\(\lvert PF\rvert=\lvert r\rvert\)</span> (Section 12.2) and <span class="arithmatex">\(\operatorname{dist}(P,\ell)=\lvert d-x\rvert\)</span>, so <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span>.</p>
+<p><em>The conic lies on the graph.</em> Let <span class="arithmatex">\(P\)</span> satisfy <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span>. Then <span class="arithmatex">\(P\ne F\)</span>, because <span class="arithmatex">\(F\)</span> gives <span class="arithmatex">\(0=e\,d\)</span>, which is false. Write <span class="arithmatex">\(P=(r,\theta)\)</span> with <span class="arithmatex">\(r=\lvert PF\rvert&gt;0\)</span> and <span class="arithmatex">\(\theta\)</span> the direction of the ray <span class="arithmatex">\(FP\)</span>, so <span class="arithmatex">\(x=r\cos\theta\)</span>. The condition is <span class="arithmatex">\(r=e\lvert d-r\cos\theta\rvert\)</span>, so either (1) <span class="arithmatex">\(r=e(d-r\cos\theta)\)</span> or (2) <span class="arithmatex">\(r=-e(d-r\cos\theta)\)</span>. In case (1), <span class="arithmatex">\(r(1+e\cos\theta)=ed\)</span> and <span class="arithmatex">\(P\)</span> is on the graph. In case (2), <span class="arithmatex">\(r(1-e\cos\theta)=-ed\)</span>. The same point <span class="arithmatex">\(P\)</span> has the coordinates <span class="arithmatex">\((r',\theta')=(-r,\theta+\pi)\)</span>, and <span class="arithmatex">\(\cos\theta'=-\cos\theta\)</span>, so <span class="arithmatex">\(r'(1+e\cos\theta')=-r(1-e\cos\theta)=ed\)</span>: again <span class="arithmatex">\(P\)</span> is on the graph.</p>
+<p><em>The other three equations.</em> The reflection in the <span class="arithmatex">\(y\)</span>-axis preserves distances and sends <span class="arithmatex">\(F\)</span> to <span class="arithmatex">\(F\)</span>, the line <span class="arithmatex">\(x=d\)</span> to <span class="arithmatex">\(x=-d\)</span>, and the point with polar coordinates <span class="arithmatex">\((r,\theta)\)</span> to <span class="arithmatex">\((r,\pi-\theta)\)</span>. A point <span class="arithmatex">\((r,\theta)\)</span> is on the new curve if and only if <span class="arithmatex">\((r,\pi-\theta)\)</span> is on the old one: <span class="arithmatex">\(r=\frac{ed}{1+e\cos(\pi-\theta)}=\frac{ed}{1-e\cos\theta}\)</span>. The rotation through <span class="arithmatex">\(\frac\pi2\)</span> sends <span class="arithmatex">\(x=d\)</span> to <span class="arithmatex">\(y=d\)</span> and <span class="arithmatex">\((r,\theta)\)</span> to <span class="arithmatex">\(\left(r,\theta+\frac\pi2\right)\)</span>, so the new curve is <span class="arithmatex">\(r=\frac{ed}{1+e\cos\left(\theta-\frac\pi2\right)}=\frac{ed}{1+e\sin\theta}\)</span>. The rotation through <span class="arithmatex">\(-\frac\pi2\)</span> sends <span class="arithmatex">\(x=d\)</span> to <span class="arithmatex">\(y=-d\)</span> and gives <span class="arithmatex">\(r=\frac{ed}{1+e\cos\left(\theta+\frac\pi2\right)}=\frac{ed}{1-e\sin\theta}\)</span>. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 12.4.25: Reading a conic from its polar equation</p>
+<p><span id="proc-polread"></span></p>
+<p>Let the equation be <span class="arithmatex">\(r=\dfrac{N}{M\pm K\cos\theta}\)</span> or <span class="arithmatex">\(r=\dfrac{N}{M\pm K\sin\theta}\)</span> with <span class="arithmatex">\(M\ne0\)</span>.</p>
+<ol>
+<li>
+<p>Divide the numerator and denominator by <span class="arithmatex">\(M\)</span> so that the denominator is <span class="arithmatex">\(1\pm e\cos\theta\)</span> (or <span class="arithmatex">\(1\pm e\sin\theta\)</span>): <span class="arithmatex">\(e=\frac KM\)</span> and <span class="arithmatex">\(ed=\frac NM\)</span>, so <span class="arithmatex">\(d=\frac{ed}e\)</span>.</p>
+</li>
+<li>
+<p>The type is decided by <span class="arithmatex">\(e\)</span>: ellipse if <span class="arithmatex">\(e&lt;1\)</span>, parabola if <span class="arithmatex">\(e=1\)</span>, hyperbola if <span class="arithmatex">\(e&gt;1\)</span>. The focus is the pole.</p>
+</li>
+<li>
+<p>The directrix nearest the pole is <span class="arithmatex">\(x=d\)</span> for <span class="arithmatex">\(+\cos\)</span>, <span class="arithmatex">\(x=-d\)</span> for <span class="arithmatex">\(-\cos\)</span>, <span class="arithmatex">\(y=d\)</span> for <span class="arithmatex">\(+\sin\)</span>, <span class="arithmatex">\(y=-d\)</span> for <span class="arithmatex">\(-\sin\)</span>.</p>
+</li>
+<li>
+<p>The vertices come from <span class="arithmatex">\(\theta=0,\pi\)</span> (for <span class="arithmatex">\(\cos\)</span>) or <span class="arithmatex">\(\theta=\frac\pi2,\frac{3\pi}2\)</span> (for <span class="arithmatex">\(\sin\)</span>): compute <span class="arithmatex">\(r\)</span> and convert to Cartesian coordinates (a negative <span class="arithmatex">\(r\)</span> points in the opposite direction). A parabola has one vertex (the other angle makes the denominator <span class="arithmatex">\(0\)</span>).</p>
+</li>
+<li>
+<p>If <span class="arithmatex">\(e\ne1\)</span>: <span class="arithmatex">\(a=\frac{ed}{\lvert1-e^2\rvert}\)</span>, <span class="arithmatex">\(c=ae\)</span>, <span class="arithmatex">\(b^2=\lvert a^2-c^2\rvert\)</span>. The center is the midpoint of the vertices, the other focus is the reflection of the pole in the center, and the other directrix is the reflection of the first directrix in the center.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.26: An ellipse from its polar equation</p>
+<p><span id="ex-polell"></span></p>
+<p>Find the type, directrices, vertices, foci and axes of <span class="arithmatex">\(r=\dfrac{10}{5-3\cos\theta}\)</span> and sketch it.</p>
+<p><strong>Solution.</strong> Divide numerator and denominator by <span class="arithmatex">\(5\)</span>: <span class="arithmatex">\(r=\dfrac{2}{1-\frac35\cos\theta}\)</span>. So <span class="arithmatex">\(e=\frac35&lt;1\)</span>: an ellipse, with a focus at the pole. Also <span class="arithmatex">\(ed=2\)</span>, so <span class="arithmatex">\(d=\frac{2}{3/5}=\frac{10}3\)</span>; the sign in front of <span class="arithmatex">\(\cos\theta\)</span> is <span class="arithmatex">\(-\)</span>, so the directrix nearest the pole is <span class="arithmatex">\(x=-\frac{10}3\)</span>. <em>Vertices.</em> <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\frac{10}{5-3}=5\)</span>, the point <span class="arithmatex">\((5,0)\)</span>. <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\(r=\frac{10}{5+3}=\frac54\)</span>, the point <span class="arithmatex">\(\left(\frac54,\pi\right)\)</span>, which is <span class="arithmatex">\(\left(-\frac54,0\right)\)</span>. <em>Axes.</em> The major axis has length <span class="arithmatex">\(5+\frac54=\frac{25}4\)</span>, so <span class="arithmatex">\(a=\frac{25}8\)</span> (the formula <span class="arithmatex">\(a=\frac{ed}{1-e^2}=\frac{2}{16/25}=\frac{25}8\)</span> agrees). The center is the midpoint <span class="arithmatex">\(\left(\frac{5-5/4}{2},0\right)=\left(\frac{15}8,0\right)\)</span> and <span class="arithmatex">\(c=ae=\frac{25}8\cdot\frac35=\frac{15}8\)</span> is its distance to the pole, as it should be. Then <span class="arithmatex">\(b^2=a^2-c^2=\frac{625-225}{64}=\frac{25}4\)</span>, <span class="arithmatex">\(b=\frac52\)</span>. The foci are the pole <span class="arithmatex">\((0,0)\)</span> and the reflection of the pole in the center, <span class="arithmatex">\(\left(\frac{15}4,0\right)\)</span>; the other directrix is the reflection of <span class="arithmatex">\(x=-\frac{10}3\)</span> in <span class="arithmatex">\(x=\frac{15}8\)</span>: <span class="arithmatex">\(x=\frac{15}4+\frac{10}3=\frac{85}{12}\)</span>. <em>Check.</em> At <span class="arithmatex">\(\theta=\frac\pi2\)</span>, <span class="arithmatex">\(r=\frac{10}5=2\)</span>, the point <span class="arithmatex">\((0,2)\)</span>: <span class="arithmatex">\(\lvert PF\rvert=2\)</span>, its distance to the directrix <span class="arithmatex">\(x=-\frac{10}3\)</span> is <span class="arithmatex">\(\frac{10}3\)</span>, and <span class="arithmatex">\(e\cdot\frac{10}3=2\)</span>. It is also on the ellipse <span class="arithmatex">\(\frac{(x-15/8)^2}{(25/8)^2}+\frac{y^2}{(5/2)^2}=1\)</span>: <span class="arithmatex">\(\frac{(15/8)^2}{(25/8)^2}+\frac{4}{25/4}=\frac9{25}+\frac{16}{25}=1\)</span>.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig8.svg" width="477" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 12.4.3: Which conic?</p>
+<p><span id="kc-kcpolar"></span></p>
+<p>Without graphing, find the eccentricity, the type and the directrix of <span class="arithmatex">\(r=\dfrac{5}{2-\cos\theta}\)</span>, and the Cartesian coordinates of its vertices.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.27: A hyperbola from its polar equation</p>
+<p><span id="ex-polhyp"></span></p>
+<p>Find the type, vertices, center, foci, directrices and asymptotes of <span class="arithmatex">\(r=\dfrac{16}{3+5\sin\theta}\)</span> and sketch it.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(3\)</span>: <span class="arithmatex">\(r=\dfrac{16/3}{1+\frac53\sin\theta}\)</span>, so <span class="arithmatex">\(e=\frac53&gt;1\)</span>: a hyperbola with a focus at the pole, <span class="arithmatex">\(ed=\frac{16}3\)</span> and <span class="arithmatex">\(d=\frac{16}5\)</span>. The sign is <span class="arithmatex">\(+\sin\theta\)</span>, so the directrix nearest the pole is <span class="arithmatex">\(y=\frac{16}5\)</span>. <em>Vertices.</em> <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(r=\frac{16}{3+5}=2\)</span>, the point <span class="arithmatex">\((0,2)\)</span>. <span class="arithmatex">\(\theta=\frac{3\pi}2\)</span>: <span class="arithmatex">\(r=\frac{16}{3-5}=-8\)</span>, a negative value: the point is <span class="arithmatex">\(8\)</span> units from the pole in the direction <em>opposite</em> to <span class="arithmatex">\(\frac{3\pi}2\)</span>, namely <span class="arithmatex">\((0,8)\)</span> (indeed <span class="arithmatex">\((r\cos\theta,r\sin\theta)=(-8\cdot0,-8\cdot(-1))=(0,8)\)</span>). <em>Center and axes.</em> The center is the midpoint <span class="arithmatex">\((0,5)\)</span> of the vertices, <span class="arithmatex">\(2a=8-2=6\)</span>, so <span class="arithmatex">\(a=3\)</span> (check: <span class="arithmatex">\(a=\frac{ed}{e^2-1}=\frac{16/3}{16/9}=3\)</span>), <span class="arithmatex">\(c=ae=5\)</span> (the distance from the center to the pole), <span class="arithmatex">\(b^2=c^2-a^2=16\)</span>, <span class="arithmatex">\(b=4\)</span>. The other focus is the reflection of the pole in the center, <span class="arithmatex">\((0,10)\)</span>; the other directrix is the reflection of <span class="arithmatex">\(y=\frac{16}5\)</span> in <span class="arithmatex">\(y=5\)</span>, that is <span class="arithmatex">\(y=10-\frac{16}5=\frac{34}5\)</span>. <em>Asymptotes.</em> The axis is vertical, so they are <span class="arithmatex">\(y-5=\pm\frac abx=\pm\frac34x\)</span>. (As a check, <span class="arithmatex">\(r\to\pm\infty\)</span> when <span class="arithmatex">\(3+5\sin\theta=0\)</span>, <span class="arithmatex">\(\sin\theta=-\frac35\)</span>, <span class="arithmatex">\(\cos\theta=\pm\frac45\)</span>, <span class="arithmatex">\(\tan\theta=\mp\frac34\)</span>: the curve goes off in directions parallel to the asymptotes.) <em>Check.</em> The vertex <span class="arithmatex">\((0,8)\)</span> has <span class="arithmatex">\(\lvert PF\rvert=8\)</span> and distance <span class="arithmatex">\(8-\frac{16}5=\frac{24}5\)</span> to the directrix, and <span class="arithmatex">\(\frac53\cdot\frac{24}5=8\)</span>. The vertex <span class="arithmatex">\((0,2)\)</span> has <span class="arithmatex">\(\lvert PF\rvert=2\)</span> and distance <span class="arithmatex">\(\frac{16}5-2=\frac65\)</span>, and <span class="arithmatex">\(\frac53\cdot\frac65=2\)</span>.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig9.svg" width="480" /></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.28: Between polar and Cartesian forms</p>
+<p><span id="ex-conv"></span></p>
+<p>(a) Convert <span class="arithmatex">\(r=\dfrac9{5+4\cos\theta}\)</span> to Cartesian coordinates and identify the curve. (b) The hyperbola <span class="arithmatex">\(\frac{x^2}9-\frac{y^2}{16}=1\)</span> has a focus at <span class="arithmatex">\((5,0)\)</span>. Find its polar equation with that focus as the pole and the polar axis along the positive <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> (a) Clear the denominator: <span class="arithmatex">\(5r+4r\cos\theta=9\)</span>, so <span class="arithmatex">\(5r=9-4x\)</span> (using <span class="arithmatex">\(x=r\cos\theta\)</span>). Square, using <span class="arithmatex">\(r^2=x^2+y^2\)</span>: <span class="arithmatex">\(25\left(x^2+y^2\right)=(9-4x)^2=81-72x+16x^2\)</span>, so <span class="arithmatex">\(9x^2+72x+25y^2=81\)</span>. Complete the square: <span class="arithmatex">\(9\left(x^2+8x\right)=9(x+4)^2-144\)</span>, so <span class="arithmatex">\(9(x+4)^2+25y^2=225\)</span>, that is <span class="arithmatex">\(\frac{(x+4)^2}{25}+\frac{y^2}9=1\)</span>: an ellipse with center <span class="arithmatex">\((-4,0)\)</span>, <span class="arithmatex">\(a=5\)</span>, <span class="arithmatex">\(b=3\)</span>, <span class="arithmatex">\(c=4\)</span>, <span class="arithmatex">\(e=\frac45\)</span>. The pole is the focus <span class="arithmatex">\((-4+4,0)=(0,0)\)</span>. (Squaring adds no points here: if <span class="arithmatex">\(25(x^2+y^2)=(9-4x)^2\)</span>, the number <span class="arithmatex">\(r=\frac{9-4x}5\)</span> has <span class="arithmatex">\(r^2=x^2+y^2\)</span>, so <span class="arithmatex">\(\lvert r\rvert\)</span> is the distance from the pole to <span class="arithmatex">\((x,y)\)</span> and the point has polar coordinates <span class="arithmatex">\((r,\theta)\)</span> for a suitable <span class="arithmatex">\(\theta\)</span>, possibly after adding <span class="arithmatex">\(\pi\)</span>, with <span class="arithmatex">\(5r+4r\cos\theta=9\)</span>.) <em>Check with the formula:</em> <span class="arithmatex">\(r=\frac{9/5}{1+\frac45\cos\theta}\)</span> has <span class="arithmatex">\(e=\frac45\)</span> and <span class="arithmatex">\(ed=\frac95\)</span>, so the directrix is <span class="arithmatex">\(x=\frac94\)</span>, which is <span class="arithmatex">\(-4+\frac ae=-4+\frac{25}4=\frac94\)</span>. (b) The center is <span class="arithmatex">\((0,0)\)</span>, <span class="arithmatex">\(a=3\)</span>, <span class="arithmatex">\(b=4\)</span>, <span class="arithmatex">\(c=5\)</span>, <span class="arithmatex">\(e=\frac53\)</span>. In the pole’s coordinates <span class="arithmatex">\(x'=x-5\)</span>, the hyperbola is <span class="arithmatex">\(\frac{(x'+5)^2}9-\frac{y^2}{16}=1\)</span>. The right directrix is <span class="arithmatex">\(x=\frac ae=\frac95\)</span>, which is <span class="arithmatex">\(x'=\frac95-5=-\frac{16}5\)</span>: to the <em>left</em> of the pole at distance <span class="arithmatex">\(d=\frac{16}5\)</span>. So the form is <span class="arithmatex">\(r=\frac{ed}{1-e\cos\theta}\)</span> with <span class="arithmatex">\(ed=\frac53\cdot\frac{16}5=\frac{16}3\)</span>:</p>
+<div class="arithmatex">\[r=\frac{16/3}{1-\frac53\cos\theta}=\frac{16}{3-5\cos\theta}.\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\(r=\frac{16}8=2\)</span>, the point <span class="arithmatex">\((-2,0)\)</span> in the new coordinates, that is <span class="arithmatex">\((3,0)\)</span> in the old: the vertex. <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\frac{16}{-2}=-8\)</span>, the point <span class="arithmatex">\(-8\)</span> units from the pole opposite to <span class="arithmatex">\(\theta=0\)</span>, namely <span class="arithmatex">\(x'=-8\)</span>, <span class="arithmatex">\(x=-3\)</span>, the other vertex.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 12.4.3: Two branches from one equation</p>
+<p><span id="think-branches"></span></p>
+<p>For <span class="arithmatex">\(e&gt;1\)</span> the equation <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}\)</span> gives one value of <span class="arithmatex">\(r\)</span> for each <span class="arithmatex">\(\theta\)</span>, yet its graph has two branches. Which values of <span class="arithmatex">\(\theta\)</span> must be omitted, what happens to <span class="arithmatex">\(r\)</span> near them, and which branch is traced by the values of <span class="arithmatex">\(\theta\)</span> for which <span class="arithmatex">\(r&lt;0\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The denominator <span class="arithmatex">\(1+e\cos\theta\)</span> is <span class="arithmatex">\(0\)</span> when <span class="arithmatex">\(\cos\theta=-\frac1e\)</span>, which has two solutions <span class="arithmatex">\(\pm\theta_0\)</span> in <span class="arithmatex">\(\left(\frac\pi2,\pi\right)\)</span> (since <span class="arithmatex">\(\frac1e&lt;1\)</span>). Omit them. As <span class="arithmatex">\(\theta\)</span> approaches either one, <span class="arithmatex">\(\lvert r\rvert\to\infty\)</span>: the curve goes off to infinity in the direction of an asymptote. For <span class="arithmatex">\(-\theta_0&lt;\theta&lt;\theta_0\)</span> the denominator is positive and <span class="arithmatex">\(r&gt;0\)</span>: this is the branch around the pole (its vertex is at <span class="arithmatex">\(\theta=0\)</span>). For <span class="arithmatex">\(\theta_0&lt;\theta&lt;2\pi-\theta_0\)</span> the denominator is negative, <span class="arithmatex">\(r&lt;0\)</span>, and each point is plotted in the direction opposite to <span class="arithmatex">\(\theta\)</span>: this is the other branch, on the far side of the directrix (its vertex is the point for <span class="arithmatex">\(\theta=\pi\)</span>, where <span class="arithmatex">\(r=\frac{ed}{1-e}&lt;0\)</span> puts it at <span class="arithmatex">\(x=\frac{ed}{e-1}&gt;0\)</span>).</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.29: The orbit of a satellite</p>
+<p><span id="ex-orbit"></span></p>
+<p>A satellite orbits the Earth in an ellipse with the center of the Earth at one focus. Its closest distance to the center of the Earth is <span class="arithmatex">\(7000\)</span> km and its farthest distance is <span class="arithmatex">\(15000\)</span> km. (a) Find the eccentricity and a polar equation of the orbit with the center of the Earth as the pole and the polar axis through the closest point. (b) Use the area formula of Section 12.3 to find the area enclosed by the orbit, and compare it with <span class="arithmatex">\(\pi ab\)</span>. (c) Find the distance from the center of the Earth at <span class="arithmatex">\(\theta=\frac\pi2\)</span>.</p>
+<p><strong>Solution.</strong> (a) The closest and farthest points are the two vertices, so <span class="arithmatex">\(2a=7000+15000=22000\)</span> and <span class="arithmatex">\(a=11000\)</span> km. The focus is at distance <span class="arithmatex">\(7000\)</span> from the nearer vertex, so <span class="arithmatex">\(c=a-7000=4000\)</span> km and <span class="arithmatex">\(e=\frac ca=\frac4{11}\)</span>. Also <span class="arithmatex">\(b^2=a^2-c^2=121\cdot10^6-16\cdot10^6=105\cdot10^6\)</span>. The nearest vertex is at <span class="arithmatex">\(\theta=0\)</span>, so the directrix is <span class="arithmatex">\(x=d&gt;0\)</span> and the equation is <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}\)</span>. We need <span class="arithmatex">\(ed\)</span>. By Theorem <a href="#thm-polar">12.4.24</a> and Procedure <a href="#proc-polread">12.4.25</a>, step 5, <span class="arithmatex">\(a=\frac{ed}{1-e^2}\)</span>, so <span class="arithmatex">\(ed=a\left(1-e^2\right)=11000\cdot\frac{105}{121}=\frac{105000}{11}\)</span>. Therefore</p>
+<div class="arithmatex">\[r=\frac{105000/11}{1+\frac4{11}\cos\theta}=\frac{105000}{11+4\cos\theta}\ \text{km.}\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\frac{105000}{15}=7000\)</span>; <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\(r=\frac{105000}7=15000\)</span>. (b) The orbit is a closed curve, <span class="arithmatex">\(r=f(\theta)&gt;0\)</span> for <span class="arithmatex">\(0\le\theta\le2\pi\)</span> with <span class="arithmatex">\(f(0)=f(2\pi)\)</span>, so the region it encloses has area <span class="arithmatex">\(A=\frac12\int_0^{2\pi}f(\theta)^2\,d\theta\)</span> (Theorem <a href="../../12.3/notes/#thm-area">12.3.3</a>), the polar area of Section 12.3. Numerically <span class="arithmatex">\(A\approx3.5411\times10^8\)</span> km<span class="arithmatex">\(^2\)</span>. The area of an ellipse is <span class="arithmatex">\(\pi ab\)</span> (Calculus I), with <span class="arithmatex">\(b=\sqrt{105\cdot10^6}=1000\sqrt{105}\approx10247\)</span> km: <span class="arithmatex">\(\pi\cdot11000\cdot10247\approx3.5411\times10^8\)</span> km<span class="arithmatex">\(^2\)</span>. The two agree. (c) At <span class="arithmatex">\(\theta=\frac\pi2\)</span>, <span class="arithmatex">\(r=\frac{105000}{11}\approx9545\)</span> km. This is the semi-latus rectum <span class="arithmatex">\(ed\)</span>, the distance from the focus to the curve along the line through the focus perpendicular to the axis.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig10.svg" width="565" /></p>
+<p>Kepler’s laws of planetary motion are the statements that planets move in ellipses with the sun at a focus, that the line from the sun to a planet sweeps out equal areas in equal times, and that the square of the period is proportional to the cube of <span class="arithmatex">\(a\)</span>. The first is the polar equation above; the second is a statement about the integral <span class="arithmatex">\(\frac12\int r^2\,d\theta\)</span> of Section 12.3; for this satellite the part of the orbit between <span class="arithmatex">\(\theta=0\)</span> and <span class="arithmatex">\(\theta=\frac\pi2\)</span> sweeps about <span class="arithmatex">\(13.7\%\)</span> of the area, so it takes about <span class="arithmatex">\(13.7\%\)</span> of the period. Proving that orbits are conics from Newton’s law of gravitation is done with vector-valued functions in a later chapter.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>Everything in this section describes conics whose axes are parallel to the coordinate axes (a term <span class="arithmatex">\(xy\)</span> in the equation would mean a rotated conic, which is treated with a rotation of the axes in a later course). The polar equation <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}\)</span> is the form in which planetary orbits, comet paths and satellite trajectories are written, and it is the starting point for Kepler’s laws and for the vector-valued functions of a later chapter. In three dimensions, rotating a parabola, an ellipse or a hyperbola about its axis gives a paraboloid, an ellipsoid or a hyperboloid, and the plane sections of a cone that gave the conics their name reappear as the traces of quadric surfaces; both are studied in a later chapter.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Parabolas</em> (Examples <a href="#ex-b1">12.4.30</a>–<a href="#ex-b2">12.4.31</a>): from focus and directrix; from a general equation.</p>
+</li>
+<li>
+<p><em>Ellipses</em> (Examples <a href="#ex-b3">12.4.32</a>–<a href="#ex-b4">12.4.33</a>): from foci and the major axis; from a general equation with a vertical major axis.</p>
+</li>
+<li>
+<p><em>Hyperbolas</em> (Examples <a href="#ex-b5">12.4.34</a>–<a href="#ex-b6">12.4.35</a>): from vertices and asymptotes; from a general equation.</p>
+</li>
+<li>
+<p><em>Eccentricity and the directrix</em> (Examples <a href="#ex-b7">12.4.36</a>–<a href="#ex-b8">12.4.37</a>): the equation from a focus, a directrix and <span class="arithmatex">\(e\)</span>.</p>
+</li>
+<li>
+<p><em>Polar equations</em> (Examples <a href="#ex-b9">12.4.38</a>–<a href="#ex-b10">12.4.39</a>): a parabola to Cartesian form; a polar equation from the data.</p>
+</li>
+<li>
+<p><em>Applications</em> (Examples <a href="#ex-b11">12.4.40</a>–<a href="#ex-b12">12.4.41</a>): a satellite dish; the orbit of a comet.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">12.4.42</a>–<a href="#ex-b14">12.4.43</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-parabolas">Group 1: Parabolas<a class="headerlink" href="#group-1-parabolas" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.30: From focus and directrix</p>
+<p><span id="ex-b1"></span></p>
+<p>Find the equation of the parabola with focus <span class="arithmatex">\((1,5)\)</span> and directrix <span class="arithmatex">\(y=-1\)</span>, and check it.</p>
+<p><strong>Solution.</strong> The axis is the vertical line through the focus perpendicular to the directrix, <span class="arithmatex">\(x=1\)</span>, and it meets the directrix at <span class="arithmatex">\((1,-1)\)</span>. The vertex is the midpoint of the focus and this foot: <span class="arithmatex">\(\left(1,\frac{5+(-1)}2\right)=(1,2)\)</span>. The distance from the vertex to the focus is <span class="arithmatex">\(p=5-2=3&gt;0\)</span>, and the focus is above the vertex, so the parabola opens upward: <span class="arithmatex">\((x-1)^2=4p(y-2)=12(y-2)\)</span>. <em>Check.</em> The point <span class="arithmatex">\((7,5)\)</span> is on the curve: <span class="arithmatex">\((7-1)^2=36=12\cdot3\)</span>. Its distance to the focus is <span class="arithmatex">\(\sqrt{6^2+0^2}=6\)</span> and its distance to the directrix is <span class="arithmatex">\(5-(-1)=6\)</span>. They are equal, so the equation is correct.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.31: From a general equation</p>
+<p><span id="ex-b2"></span></p>
+<p>Find the vertex, focus, directrix and axis of <span class="arithmatex">\(x^2+6x+8y+1=0\)</span>.</p>
+<p><strong>Solution.</strong> Only <span class="arithmatex">\(x\)</span> is squared, so it is a parabola with a vertical axis (Theorem <a href="#thm-classify">12.4.19</a>(iii)). Complete the square in <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(x^2+6x=(x+3)^2-9\)</span>. Then <span class="arithmatex">\((x+3)^2-9+8y+1=0\)</span>, so <span class="arithmatex">\((x+3)^2=-8y+8=-8(y-1)\)</span>. Compare with <span class="arithmatex">\((x-h)^2=4p(y-k)\)</span>: <span class="arithmatex">\(h=-3\)</span>, <span class="arithmatex">\(k=1\)</span>, <span class="arithmatex">\(4p=-8\)</span>, <span class="arithmatex">\(p=-2&lt;0\)</span>, so the parabola opens downward. The vertex is <span class="arithmatex">\((-3,1)\)</span>, the axis is <span class="arithmatex">\(x=-3\)</span>, the focus is <span class="arithmatex">\((h,k+p)=(-3,-1)\)</span> and the directrix is <span class="arithmatex">\(y=k-p=3\)</span>. <em>Check.</em> The point <span class="arithmatex">\((1,-1)\)</span>: <span class="arithmatex">\(1+6-8+1=0\)</span>. Its distance to the focus <span class="arithmatex">\((-3,-1)\)</span> is <span class="arithmatex">\(4\)</span> and its distance to the directrix <span class="arithmatex">\(y=3\)</span> is <span class="arithmatex">\(3-(-1)=4\)</span>, so it is on the parabola.</p>
+</div>
+<h2 id="group-2-ellipses">Group 2: Ellipses<a class="headerlink" href="#group-2-ellipses" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.32: From the foci and the length of the major axis</p>
+<p><span id="ex-b3"></span></p>
+<p>Find the equation of the ellipse with foci <span class="arithmatex">\((-3,2)\)</span> and <span class="arithmatex">\((5,2)\)</span> whose major axis has length <span class="arithmatex">\(10\)</span>.</p>
+<p><strong>Solution.</strong> The center is the midpoint of the foci, <span class="arithmatex">\((1,2)\)</span>, and the major axis is horizontal. The distance from the center to a focus is <span class="arithmatex">\(c=5-1=4\)</span>, and <span class="arithmatex">\(2a=10\)</span> gives <span class="arithmatex">\(a=5\)</span>. Then <span class="arithmatex">\(b^2=a^2-c^2=25-16=9\)</span>. The equation is <span class="arithmatex">\(\frac{(x-1)^2}{25}+\frac{(y-2)^2}{9}=1\)</span>. <em>Check.</em> The point <span class="arithmatex">\((1,5)\)</span>: <span class="arithmatex">\(\frac{0}{25}+\frac99=1\)</span>. Its distances to the foci are <span class="arithmatex">\(\sqrt{4^2+3^2}=5\)</span> and <span class="arithmatex">\(\sqrt{(-4)^2+3^2}=5\)</span>, and the sum is <span class="arithmatex">\(10=2a\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.33: An ellipse with a vertical major axis</p>
+<p><span id="ex-b4"></span></p>
+<p>Find the center, vertices, foci, eccentricity and directrices of <span class="arithmatex">\(4x^2+y^2-16x+6y+9=0\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(AC=4&gt;0\)</span>: an ellipse or a degenerate set. Group: <span class="arithmatex">\(4\left(x^2-4x\right)+\left(y^2+6y\right)=-9\)</span>. Complete the squares: <span class="arithmatex">\(x^2-4x=(x-2)^2-4\)</span> and <span class="arithmatex">\(y^2+6y=(y+3)^2-9\)</span>, so <span class="arithmatex">\(4(x-2)^2-16+(y+3)^2-9=-9\)</span>, that is <span class="arithmatex">\(4(x-2)^2+(y+3)^2=16\)</span>. Divide by <span class="arithmatex">\(16\)</span>: <span class="arithmatex">\(\frac{(x-2)^2}{4}+\frac{(y+3)^2}{16}=1\)</span>. The larger denominator is under <span class="arithmatex">\(y\)</span>, so the major axis is vertical: <span class="arithmatex">\(a=4\)</span>, <span class="arithmatex">\(b=2\)</span>, center <span class="arithmatex">\((2,-3)\)</span>. Then <span class="arithmatex">\(c=\sqrt{16-4}=2\sqrt3\)</span> and <span class="arithmatex">\(e=\frac ca=\frac{\sqrt3}2\)</span>. The vertices are <span class="arithmatex">\((2,-3\pm4)=(2,1),(2,-7)\)</span>; the foci are <span class="arithmatex">\(\left(2,-3\pm2\sqrt3\right)\)</span>; the directrices are <span class="arithmatex">\(y=-3\pm\frac ae=-3\pm\frac8{\sqrt3}\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((2,1)\)</span>: <span class="arithmatex">\(16+1-32+6+9=0\)</span>.</p>
+</div>
+<h2 id="group-3-hyperbolas">Group 3: Hyperbolas<a class="headerlink" href="#group-3-hyperbolas" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.34: From the vertices and the asymptotes</p>
+<p><span id="ex-b5"></span></p>
+<p>A hyperbola has vertices <span class="arithmatex">\((\pm4,0)\)</span> and asymptotes <span class="arithmatex">\(y=\pm\frac34x\)</span>. Find its equation, foci, eccentricity and directrices.</p>
+<p><strong>Solution.</strong> The vertices are on the <span class="arithmatex">\(x\)</span>-axis, so <span class="arithmatex">\(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\)</span> with <span class="arithmatex">\(a=4\)</span>. The asymptotes are <span class="arithmatex">\(y=\pm\frac bax\)</span>, so <span class="arithmatex">\(\frac b4=\frac34\)</span> and <span class="arithmatex">\(b=3\)</span>. The equation is <span class="arithmatex">\(\frac{x^2}{16}-\frac{y^2}9=1\)</span>. Then <span class="arithmatex">\(c=\sqrt{a^2+b^2}=5\)</span>, the foci are <span class="arithmatex">\((\pm5,0)\)</span>, <span class="arithmatex">\(e=\frac54\)</span>, and the directrices are <span class="arithmatex">\(x=\pm\frac ae=\pm\frac{16}5\)</span>. <em>Check.</em> The point <span class="arithmatex">\(\left(8,3\sqrt3\right)\)</span>: <span class="arithmatex">\(\frac{64}{16}-\frac{27}9=4-3=1\)</span>. Its distance to the focus <span class="arithmatex">\((5,0)\)</span> is <span class="arithmatex">\(\sqrt{3^2+27}=6\)</span>; its distance to the directrix <span class="arithmatex">\(x=\frac{16}5\)</span> is <span class="arithmatex">\(8-\frac{16}5=\frac{24}5\)</span>; and <span class="arithmatex">\(e\cdot\frac{24}5=\frac54\cdot\frac{24}5=6\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.35: A hyperbola from a general equation</p>
+<p><span id="ex-b6"></span></p>
+<p>Find the center, vertices, foci and asymptotes of <span class="arithmatex">\(4x^2-y^2+8x+4y-4=0\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(AC=-4&lt;0\)</span>: a hyperbola or two lines. Group: <span class="arithmatex">\(4\left(x^2+2x\right)-\left(y^2-4y\right)=4\)</span>; the minus sign in front of the second group stays outside. Complete the squares: <span class="arithmatex">\(x^2+2x=(x+1)^2-1\)</span> and <span class="arithmatex">\(y^2-4y=(y-2)^2-4\)</span>, so <span class="arithmatex">\(4(x+1)^2-4-(y-2)^2+4=4\)</span>, that is <span class="arithmatex">\(4(x+1)^2-(y-2)^2=4\)</span>. Divide by <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\((x+1)^2-\frac{(y-2)^2}4=1\)</span>. This is a hyperbola with center <span class="arithmatex">\((-1,2)\)</span>, horizontal axis, <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=2\)</span>, <span class="arithmatex">\(c=\sqrt{1+4}=\sqrt5\)</span>. The vertices are <span class="arithmatex">\((-1\pm1,2)=(0,2),(-2,2)\)</span>, the foci are <span class="arithmatex">\(\left(-1\pm\sqrt5,2\right)\)</span>, and the asymptotes are <span class="arithmatex">\(y-2=\pm\frac ba(x+1)=\pm2(x+1)\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((0,2)\)</span>: <span class="arithmatex">\(0-4+0+8-4=0\)</span>.</p>
+</div>
+<h2 id="group-4-eccentricity-and-the-directrix">Group 4: Eccentricity and the directrix<a class="headerlink" href="#group-4-eccentricity-and-the-directrix" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.36: The conic with a given focus, directrix and <span class="arithmatex">\(e&lt;1\)</span></p>
+<p><span id="ex-b7"></span></p>
+<p>Find the equation of the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF\rvert=\frac12\operatorname{dist}(P,\ell)\)</span>, where <span class="arithmatex">\(F=(2,0)\)</span> and <span class="arithmatex">\(\ell\)</span> is the line <span class="arithmatex">\(x=8\)</span>.</p>
+<p><strong>Solution.</strong> Both sides are nonnegative, so square (Theorem <a href="../../appendix/appendix/#thm-sqlemma">K.1</a>): <span class="arithmatex">\((x-2)^2+y^2=\frac14(x-8)^2\)</span>. Multiply by <span class="arithmatex">\(4\)</span>: <span class="arithmatex">\(4x^2-16x+16+4y^2=x^2-16x+64\)</span>, so <span class="arithmatex">\(3x^2+4y^2=48\)</span>, that is <span class="arithmatex">\(\frac{x^2}{16}+\frac{y^2}{12}=1\)</span>. Since <span class="arithmatex">\(e=\frac12&lt;1\)</span>, this is an ellipse (Theorem <a href="#thm-ed">12.4.17</a>) with <span class="arithmatex">\(a=4\)</span>, <span class="arithmatex">\(b^2=12\)</span>, <span class="arithmatex">\(c=\sqrt{16-12}=2\)</span> and <span class="arithmatex">\(e=\frac ca=\frac12\)</span>, as it should be. The focus <span class="arithmatex">\((2,0)=(c,0)\)</span> and the directrix <span class="arithmatex">\(x=\frac ae=8\)</span> agree with the data. <em>Check.</em> The point <span class="arithmatex">\(\left(0,2\sqrt3\right)\)</span>: <span class="arithmatex">\(\frac{12}{12}=1\)</span>. Its distance to <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(\sqrt{4+12}=4\)</span>, its distance to <span class="arithmatex">\(\ell\)</span> is <span class="arithmatex">\(8\)</span>, and <span class="arithmatex">\(\frac12\cdot8=4\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.37: The conic with <span class="arithmatex">\(e=2\)</span>, and its parameters</p>
+<p><span id="ex-b8"></span></p>
+<p>Find the equation of the set of points <span class="arithmatex">\(P\)</span> with <span class="arithmatex">\(\lvert PF\rvert=2\operatorname{dist}(P,\ell)\)</span>, where <span class="arithmatex">\(F=(0,3)\)</span> and <span class="arithmatex">\(\ell\)</span> is the line <span class="arithmatex">\(y=-1\)</span>. Identify the conic and find its center, vertices and foci.</p>
+<p><strong>Solution.</strong> Square (both sides are nonnegative): <span class="arithmatex">\(x^2+(y-3)^2=4(y+1)^2\)</span>, so <span class="arithmatex">\(x^2+y^2-6y+9=4y^2+8y+4\)</span>, that is <span class="arithmatex">\(x^2-3y^2-14y+5=0\)</span>. Complete the square in <span class="arithmatex">\(y\)</span>: <span class="arithmatex">\(-3y^2-14y=-3\left(y^2+\frac{14}3y\right)=-3\left(y+\frac73\right)^2+\frac{49}3\)</span>. So <span class="arithmatex">\(x^2-3\left(y+\frac73\right)^2=-5-\frac{49}3=-\frac{64}3\)</span>. Multiply by <span class="arithmatex">\(-\frac3{64}\)</span>: <span class="arithmatex">\(\frac{\left(y+7/3\right)^2}{64/9}-\frac{x^2}{64/3}=1\)</span>. As <span class="arithmatex">\(e=2&gt;1\)</span> this is a hyperbola with vertical axis, center <span class="arithmatex">\(\left(0,-\frac73\right)\)</span>, <span class="arithmatex">\(a^2=\frac{64}9\)</span>, <span class="arithmatex">\(a=\frac83\)</span>, <span class="arithmatex">\(b^2=\frac{64}3\)</span>, <span class="arithmatex">\(c^2=\frac{64}9+\frac{192}9=\frac{256}9\)</span>, <span class="arithmatex">\(c=\frac{16}3=ae\)</span> (as Theorem <a href="#thm-ed">12.4.17</a> predicts). The vertices are <span class="arithmatex">\(\left(0,-\frac73\pm\frac83\right)=\left(0,\frac13\right),(0,-5)\)</span>; the foci are <span class="arithmatex">\(\left(0,-\frac73\pm\frac{16}3\right)=(0,3),\left(0,-\frac{23}3\right)\)</span>, and <span class="arithmatex">\((0,3)=F\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\(\left(0,\frac13\right)\)</span>: its distance to <span class="arithmatex">\(F\)</span> is <span class="arithmatex">\(3-\frac13=\frac83\)</span>, its distance to <span class="arithmatex">\(\ell\)</span> is <span class="arithmatex">\(\frac13+1=\frac43\)</span>, and <span class="arithmatex">\(2\cdot\frac43=\frac83\)</span>.</p>
+</div>
+<h2 id="group-5-polar-equations">Group 5: Polar equations<a class="headerlink" href="#group-5-polar-equations" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.38: A parabola in polar form</p>
+<p><span id="ex-b9"></span></p>
+<p>Convert <span class="arithmatex">\(r=\dfrac6{2+2\sin\theta}\)</span> to Cartesian form and find the vertex, focus and directrix.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(2\)</span>: <span class="arithmatex">\(r=\frac3{1+\sin\theta}\)</span>, so <span class="arithmatex">\(e=1\)</span> and <span class="arithmatex">\(ed=3\)</span>: a parabola with focus at the pole and directrix <span class="arithmatex">\(y=3\)</span> (Theorem <a href="#thm-polar">12.4.24</a>). Cartesian form: <span class="arithmatex">\(r+r\sin\theta=3\)</span>, so <span class="arithmatex">\(r=3-y\)</span>. Square, with <span class="arithmatex">\(r^2=x^2+y^2\)</span>: <span class="arithmatex">\(x^2+y^2=9-6y+y^2\)</span>, so <span class="arithmatex">\(x^2=-6\left(y-\frac32\right)\)</span>. (If a point satisfies this, then <span class="arithmatex">\(r=\pm(3-y)\)</span>; the sign <span class="arithmatex">\(-\)</span> is the same point with the polar coordinates <span class="arithmatex">\((-r,\theta+\pi)\)</span>, as in the proof of Theorem <a href="#thm-polar">12.4.24</a>.) Compare with <span class="arithmatex">\(x^2=4p(y-k)\)</span>: <span class="arithmatex">\(4p=-6\)</span>, <span class="arithmatex">\(p=-\frac32\)</span>, vertex <span class="arithmatex">\(\left(0,\frac32\right)\)</span>, focus <span class="arithmatex">\(\left(0,\frac32+p\right)=(0,0)\)</span>, the pole, and directrix <span class="arithmatex">\(y=\frac32-p=3\)</span>. <em>Check.</em> At <span class="arithmatex">\(\theta=\frac\pi2\)</span>, <span class="arithmatex">\(r=\frac64=\frac32\)</span>: the point <span class="arithmatex">\(\left(0,\frac32\right)\)</span>, the vertex.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.39: A polar equation from the data</p>
+<p><span id="ex-b10"></span></p>
+<p>An ellipse has a focus at the pole, the directrix <span class="arithmatex">\(y=-4\)</span> and eccentricity <span class="arithmatex">\(\frac12\)</span>. Find its polar equation, its vertices, its center and its semi-axes.</p>
+<p><strong>Solution.</strong> The directrix is below the pole, <span class="arithmatex">\(y=-d\)</span> with <span class="arithmatex">\(d=4\)</span>, so <span class="arithmatex">\(r=\frac{ed}{1-e\sin\theta}\)</span> (Theorem <a href="#thm-polar">12.4.24</a>). With <span class="arithmatex">\(ed=\frac12\cdot4=2\)</span>: <span class="arithmatex">\(r=\frac2{1-\frac12\sin\theta}=\frac4{2-\sin\theta}\)</span>. The vertices are at <span class="arithmatex">\(\theta=\frac\pi2\)</span>: <span class="arithmatex">\(r=\frac4{2-1}=4\)</span>, the point <span class="arithmatex">\((0,4)\)</span>; and at <span class="arithmatex">\(\theta=\frac{3\pi}2\)</span>: <span class="arithmatex">\(r=\frac4{2+1}=\frac43\)</span>, the point <span class="arithmatex">\(\left(0,-\frac43\right)\)</span>. The major axis is vertical, <span class="arithmatex">\(2a=4+\frac43=\frac{16}3\)</span>, so <span class="arithmatex">\(a=\frac83\)</span> (also <span class="arithmatex">\(a=\frac{ed}{1-e^2}=\frac{2}{3/4}=\frac83\)</span>). The center is the midpoint <span class="arithmatex">\(\left(0,\frac{4-4/3}2\right)=\left(0,\frac43\right)\)</span>, <span class="arithmatex">\(c=ae=\frac43\)</span> is its distance to the pole, and <span class="arithmatex">\(b^2=a^2-c^2=\frac{64}9-\frac{16}9=\frac{16}3\)</span>. <em>Check.</em> At <span class="arithmatex">\(\theta=0\)</span>, <span class="arithmatex">\(r=\frac42=2\)</span>: the point <span class="arithmatex">\((2,0)\)</span> has <span class="arithmatex">\(\lvert PF\rvert=2\)</span> and distance <span class="arithmatex">\(4\)</span> to the directrix, and <span class="arithmatex">\(\frac12\cdot4=2\)</span>.</p>
+</div>
+<h2 id="group-6-applications">Group 6: Applications<a class="headerlink" href="#group-6-applications" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.40: A satellite dish</p>
+<p><span id="ex-b11"></span></p>
+<p>A satellite dish is a paraboloid obtained by rotating a parabola about its axis. It is <span class="arithmatex">\(80\)</span> cm across the rim and <span class="arithmatex">\(10\)</span> cm deep. How far from the vertex should the receiver be placed?</p>
+<p><strong>Solution.</strong> Put the vertex at the origin with the axis along the <span class="arithmatex">\(y\)</span>-axis, so the dish is the parabola <span class="arithmatex">\(x^2=4py\)</span>. The rim point is <span class="arithmatex">\((40,10)\)</span> (half the width, and the depth). Then <span class="arithmatex">\(1600=4p\cdot10\)</span>, so <span class="arithmatex">\(p=40\)</span>. By the reflection property (Theorem <a href="#thm-refl">12.4.4</a>) all incoming rays parallel to the axis are reflected through the focus <span class="arithmatex">\((0,p)=(0,40)\)</span>, so the receiver goes on the axis <span class="arithmatex">\(40\)</span> cm from the vertex, which is <span class="arithmatex">\(40-10=30\)</span> cm above the plane of the rim.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.41: The orbit of a comet</p>
+<p><span id="ex-b12"></span></p>
+<p>A comet moves in an ellipse with the sun at a focus. Its closest and farthest distances from the sun are <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(8\)</span> (in units of <span class="arithmatex">\(10^8\)</span> km). Find a polar equation of the orbit with the sun at the pole and the closest point at <span class="arithmatex">\(\theta=0\)</span>, the distance at <span class="arithmatex">\(\theta=\frac\pi2\)</span>, and the area enclosed.</p>
+<p><strong>Solution.</strong> The distances are those to the vertices, so <span class="arithmatex">\(2a=2+8=10\)</span>, <span class="arithmatex">\(a=5\)</span>. The sun is <span class="arithmatex">\(2\)</span> from the nearer vertex, so <span class="arithmatex">\(c=a-2=3\)</span> and <span class="arithmatex">\(e=\frac35\)</span>. Then <span class="arithmatex">\(b^2=25-9=16\)</span>, <span class="arithmatex">\(b=4\)</span>, and <span class="arithmatex">\(ed=a\left(1-e^2\right)=5\cdot\frac{16}{25}=\frac{16}5\)</span>. The nearest vertex is at <span class="arithmatex">\(\theta=0\)</span>, so <span class="arithmatex">\(r=\frac{ed}{1+e\cos\theta}=\frac{16/5}{1+\frac35\cos\theta}=\frac{16}{5+3\cos\theta}\)</span>. At <span class="arithmatex">\(\theta=\frac\pi2\)</span>, <span class="arithmatex">\(r=\frac{16}5=3.2\)</span>. The area is <span class="arithmatex">\(\pi ab=20\pi\approx62.8\)</span> (in units of <span class="arithmatex">\(10^{16}\)</span> km<span class="arithmatex">\(^2\)</span>). <em>Check.</em> <span class="arithmatex">\(\theta=0\)</span>: <span class="arithmatex">\(r=\frac{16}8=2\)</span>; <span class="arithmatex">\(\theta=\pi\)</span>: <span class="arithmatex">\(r=\frac{16}2=8\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.42: The product of the distances to the asymptotes</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove that for every point <span class="arithmatex">\(P\)</span> on the hyperbola <span class="arithmatex">\(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\)</span> the product of the distances from <span class="arithmatex">\(P\)</span> to the two asymptotes is the constant <span class="arithmatex">\(\frac{a^2b^2}{a^2+b^2}\)</span>.</p>
+<p><strong>Proof.</strong> The asymptotes are <span class="arithmatex">\(y=\pm\frac bax\)</span>, that is <span class="arithmatex">\(bx-ay=0\)</span> and <span class="arithmatex">\(bx+ay=0\)</span>. The distance from <span class="arithmatex">\(P=(x_0,y_0)\)</span> to the line <span class="arithmatex">\(Ax+By+C=0\)</span> is <span class="arithmatex">\(\frac{\lvert Ax_0+By_0+C\rvert}{\sqrt{A^2+B^2}}\)</span>, so the two distances are <span class="arithmatex">\(\frac{\lvert bx_0-ay_0\rvert}{\sqrt{a^2+b^2}}\)</span> and <span class="arithmatex">\(\frac{\lvert bx_0+ay_0\rvert}{\sqrt{a^2+b^2}}\)</span>. Their product is <span class="arithmatex">\(\frac{\lvert b^2x_0^2-a^2y_0^2\rvert}{a^2+b^2}\)</span>, because <span class="arithmatex">\((bx_0-ay_0)(bx_0+ay_0)=b^2x_0^2-a^2y_0^2\)</span>. Now <span class="arithmatex">\(P\)</span> is on the hyperbola; multiply <span class="arithmatex">\(\frac{x_0^2}{a^2}-\frac{y_0^2}{b^2}=1\)</span> by <span class="arithmatex">\(a^2b^2\)</span>: <span class="arithmatex">\(b^2x_0^2-a^2y_0^2=a^2b^2&gt;0\)</span>. Hence the product is <span class="arithmatex">\(\frac{a^2b^2}{a^2+b^2}\)</span>. <em>Numerical check.</em> For <span class="arithmatex">\(a=4\)</span>, <span class="arithmatex">\(b=3\)</span> and <span class="arithmatex">\(P=\left(5,\frac94\right)\)</span> (on the hyperbola: <span class="arithmatex">\(\frac{25}{16}-\frac{81/16}{9}=1\)</span>) the distances are <span class="arithmatex">\(\frac{\lvert15-9\rvert}5=\frac65\)</span> and <span class="arithmatex">\(\frac{\lvert15+9\rvert}5=\frac{24}5\)</span>, with product <span class="arithmatex">\(\frac{144}{25}=\frac{16\cdot9}{25}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 12.4.43: The latus rectum of an ellipse</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that the chord of the ellipse <span class="arithmatex">\(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\)</span> through a focus <span class="arithmatex">\((c,0)\)</span> perpendicular to the major axis has length <span class="arithmatex">\(\frac{2b^2}a\)</span>.</p>
+<p><strong>Proof.</strong> The chord lies on the line <span class="arithmatex">\(x=c\)</span>. Substitute: <span class="arithmatex">\(\frac{c^2}{a^2}+\frac{y^2}{b^2}=1\)</span>, so <span class="arithmatex">\(y^2=b^2\left(1-\frac{c^2}{a^2}\right)=\frac{b^2\left(a^2-c^2\right)}{a^2}=\frac{b^4}{a^2}\)</span>, because <span class="arithmatex">\(a^2-c^2=b^2\)</span> (Theorem <a href="#thm-ellipse">12.4.7</a>). Therefore <span class="arithmatex">\(y=\pm\frac{b^2}a\)</span>; the endpoints are <span class="arithmatex">\(\left(c,\frac{b^2}a\right)\)</span> and <span class="arithmatex">\(\left(c,-\frac{b^2}a\right)\)</span>, and the chord has length <span class="arithmatex">\(\frac{2b^2}a\)</span>. <em>Numerical check.</em> For <span class="arithmatex">\(a=5\)</span>, <span class="arithmatex">\(b=4\)</span>, <span class="arithmatex">\(c=3\)</span>: <span class="arithmatex">\(y^2=16\left(1-\frac9{25}\right)=\frac{256}{25}=\left(\frac{16}5\right)^2\)</span> and <span class="arithmatex">\(\frac{2b^2}a=\frac{32}5=2\cdot\frac{16}5\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcpar">12.4.1</a>.</strong> Compare <span class="arithmatex">\(x^2=-24y\)</span> with <span class="arithmatex">\(x^2=4py\)</span>: <span class="arithmatex">\(4p=-24\)</span>, <span class="arithmatex">\(p=-6\)</span>. The focus is <span class="arithmatex">\((0,p)=(0,-6)\)</span>, the directrix is <span class="arithmatex">\(y=-p=6\)</span>, and since <span class="arithmatex">\(p&lt;0\)</span> the parabola opens downward.</p>
+<p><strong>Knowledge Check <a href="#kc-kcell">12.4.2</a>.</strong> <span class="arithmatex">\(c=ae=10\cdot\frac35=6\)</span>, <span class="arithmatex">\(b=\sqrt{a^2-c^2}=\sqrt{100-36}=8\)</span>, and the directrices are <span class="arithmatex">\(x=\pm\frac ae=\pm\frac{10}{3/5}=\pm\frac{50}3\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcpolar">12.4.3</a>.</strong> Divide by <span class="arithmatex">\(2\)</span>: <span class="arithmatex">\(r=\frac{5/2}{1-\frac12\cos\theta}\)</span>. So <span class="arithmatex">\(e=\frac12&lt;1\)</span>: an ellipse. <span class="arithmatex">\(ed=\frac52\)</span>, so <span class="arithmatex">\(d=5\)</span>, and the sign is <span class="arithmatex">\(-\cos\theta\)</span>: the directrix is <span class="arithmatex">\(x=-5\)</span>. The vertices: <span class="arithmatex">\(\theta=0\)</span>, <span class="arithmatex">\(r=\frac{5}{2-1}=5\)</span>, the point <span class="arithmatex">\((5,0)\)</span>; <span class="arithmatex">\(\theta=\pi\)</span>, <span class="arithmatex">\(r=\frac5{2+1}=\frac53\)</span> at the angle <span class="arithmatex">\(\pi\)</span>, the point <span class="arithmatex">\(\left(-\frac53,0\right)\)</span>. Check: <span class="arithmatex">\(2a=5+\frac53=\frac{20}3\)</span>, and <span class="arithmatex">\(a=\frac{ed}{1-e^2}=\frac{5/2}{3/4}=\frac{10}3\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>

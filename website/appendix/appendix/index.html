@@ -10,7 +10,7 @@
       
       
       
-        <link rel="prev" href="../../12.3/notes/">
+        <link rel="prev" href="../../12.4/notes/">
       
       
       
@@ -1662,6 +1662,90 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -1856,6 +1940,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#appendix-k-conic-sections-squaring-coordinates-and-the-focusdirectrix-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix K. Conic Sections: Squaring, Coordinates and the Focus–Directrix Theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2019,6 +2114,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Appendix J. Area in Polar Coordinates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-k-conic-sections-squaring-coordinates-and-the-focusdirectrix-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Appendix K. Conic Sections: Squaring, Coordinates and the Focus–Directrix Theorem
       </span>
     </span>
   </a>
@@ -2659,6 +2765,68 @@
 <p class="admonition-title">Example J.3: The two facts for a circle and a spiral</p>
 <p><span id="ex-sectorex"></span></p>
 <p>(a) A sector of radius <span class="arithmatex">\(6\)</span> and angle <span class="arithmatex">\(\frac\pi3\)</span> has area <span class="arithmatex">\(\frac12\cdot36\cdot\frac\pi3=6\pi\)</span>, one sixth of the disc (<span class="arithmatex">\(36\pi\)</span>), as it should. (b) For the spiral <span class="arithmatex">\(r=\theta\)</span>, <span class="arithmatex">\(0\le\theta\le2\pi\)</span>, the annular sector between the radii <span class="arithmatex">\(m=\theta_{k-1}\)</span> and <span class="arithmatex">\(M=\theta_k\)</span> over <span class="arithmatex">\([\theta_{k-1},\theta_k]\)</span> has area <span class="arithmatex">\(\frac12\left(\theta_k^2-\theta_{k-1}^2\right)\Delta\theta_k\)</span>; for <span class="arithmatex">\(n=4\)</span> subintervals of length <span class="arithmatex">\(\frac\pi2\)</span> these add to <span class="arithmatex">\(\frac12\left((2\pi)^2-0\right)\cdot\frac\pi2=\pi^3\approx31.0\)</span>, and the sum <span class="arithmatex">\(U-L\)</span> shrinks like <span class="arithmatex">\(\frac1n\)</span>: for general <span class="arithmatex">\(n\)</span> it is <span class="arithmatex">\(\frac12(2\pi)^2\cdot\frac{2\pi}n=\frac{4\pi^3}n\)</span>.</p>
+</div>
+<h2 id="appendix-k-conic-sections-squaring-coordinates-and-the-focusdirectrix-theorem">Appendix K. Conic Sections: Squaring, Coordinates and the Focus–Directrix Theorem<a class="headerlink" href="#appendix-k-conic-sections-squaring-coordinates-and-the-focusdirectrix-theorem" title="Permanent link">&para;</a></h2>
+<p>Section 12.4 defines the parabola, the ellipse and the hyperbola by distances, finds their equations by squaring, and unifies the three curves by one number, the eccentricity. Squaring is dangerous: it can <em>add</em> points that do not satisfy the original condition, or hide the fact that a step is not reversible. This section proves four things. (K.1) Exactly when squaring an equation neither gains nor loses solutions. (K.2) An identity for the sum and the difference of the distances from a point to two foci, which turns the two “string” definitions into equations without any loss. (K.3) That the foci and directrix may be placed where we like, because moving the plane rigidly preserves distances. (K.4) The Eccentricity–Directrix Theorem, with every step of the algebra and the reason why the three cases <span class="arithmatex">\(e&lt;1\)</span>, <span class="arithmatex">\(e=1\)</span> and <span class="arithmatex">\(e&gt;1\)</span> give the three conics.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem K.1: Squaring without gaining or losing points</p>
+<p><span id="thm-sqlemma"></span></p>
+<p>Let <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> be real numbers. Then <span class="arithmatex">\(A=B\)</span> if and only if <span class="arithmatex">\(A^2=B^2\)</span> and <span class="arithmatex">\(AB\ge0\)</span>. In particular, if <span class="arithmatex">\(A\ge0\)</span> and <span class="arithmatex">\(B\ge0\)</span>, then <span class="arithmatex">\(A=B\)</span> if and only if <span class="arithmatex">\(A^2=B^2\)</span>.</p>
+</div>
+<p><em>Proof.</em> If <span class="arithmatex">\(A=B\)</span>, then <span class="arithmatex">\(A^2=B^2\)</span> and <span class="arithmatex">\(AB=A^2\ge0\)</span>. Conversely, suppose <span class="arithmatex">\(A^2=B^2\)</span> and <span class="arithmatex">\(AB\ge0\)</span>. Then <span class="arithmatex">\((A-B)(A+B)=A^2-B^2=0\)</span>, so <span class="arithmatex">\(B=A\)</span> or <span class="arithmatex">\(B=-A\)</span>. If <span class="arithmatex">\(B=-A\)</span>, then <span class="arithmatex">\(AB=-A^2\ge0\)</span> forces <span class="arithmatex">\(A=0\)</span>, hence <span class="arithmatex">\(B=0=A\)</span>. In every case <span class="arithmatex">\(A=B\)</span>. For the last statement: if <span class="arithmatex">\(A\ge0\)</span> and <span class="arithmatex">\(B\ge0\)</span> then <span class="arithmatex">\(AB\ge0\)</span> automatically. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example K.2: Squaring adds a point</p>
+<p><span id="ex-sqex"></span></p>
+<p>Solve <span class="arithmatex">\(\sqrt{x+2}=x\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="arithmatex">\(A=\sqrt{x+2}\)</span> and <span class="arithmatex">\(B=x\)</span>. Squaring gives <span class="arithmatex">\(x+2=x^2\)</span>, that is <span class="arithmatex">\(x^2-x-2=(x-2)(x+1)=0\)</span>, so <span class="arithmatex">\(x=2\)</span> or <span class="arithmatex">\(x=-1\)</span>. By Theorem <a href="#thm-sqlemma">K.1</a> we must also have <span class="arithmatex">\(AB\ge0\)</span>. For <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(A=2\)</span>, <span class="arithmatex">\(B=2\)</span>, <span class="arithmatex">\(AB=4\ge0\)</span>, and indeed <span class="arithmatex">\(\sqrt4=2\)</span>. For <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(A=\sqrt1=1\)</span>, <span class="arithmatex">\(B=-1\)</span>, <span class="arithmatex">\(AB=-1&lt;0\)</span>, and indeed <span class="arithmatex">\(\sqrt1\ne-1\)</span>. So the squared equation has the extra solution <span class="arithmatex">\(x=-1\)</span> and the original equation has only <span class="arithmatex">\(x=2\)</span>.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem K.3: Sum and difference of distances to two foci</p>
+<p><span id="thm-focalradii"></span></p>
+<p>Let <span class="arithmatex">\(c&gt;0\)</span>, <span class="arithmatex">\(a&gt;0\)</span>, <span class="arithmatex">\(F_1=(-c,0)\)</span>, <span class="arithmatex">\(F_2=(c,0)\)</span>, <span class="arithmatex">\(P=(x,y)\)</span>, <span class="arithmatex">\(u=\lvert PF_1\rvert\)</span> and <span class="arithmatex">\(v=\lvert PF_2\rvert\)</span>. Then <span class="arithmatex">\(u^2-v^2=4cx\)</span>, and</p>
+<p><strong>(i)</strong> <span class="arithmatex">\(u+v=2a\)</span> if and only if <span class="arithmatex">\(u=a+\frac ca\,x\)</span> and <span class="arithmatex">\(v=a-\frac ca\,x\)</span>;</p>
+<p><strong>(ii)</strong> <span class="arithmatex">\(u-v=2a\)</span> if and only if <span class="arithmatex">\(u=\frac ca\,x+a\)</span> and <span class="arithmatex">\(v=\frac ca\,x-a\)</span>;</p>
+<p><strong>(iii)</strong> <span class="arithmatex">\(v-u=2a\)</span> if and only if <span class="arithmatex">\(u=-\frac ca\,x-a\)</span> and <span class="arithmatex">\(v=-\frac ca\,x+a\)</span>.</p>
+</div>
+<p><em>Proof.</em> <span class="arithmatex">\(u^2=(x+c)^2+y^2\)</span> and <span class="arithmatex">\(v^2=(x-c)^2+y^2\)</span>, so <span class="arithmatex">\(u^2-v^2=(x+c)^2-(x-c)^2=4cx\)</span> (the terms <span class="arithmatex">\(y^2\)</span> cancel). Also <span class="arithmatex">\(u^2-v^2=(u-v)(u+v)\)</span>.</p>
+<p>(i) If <span class="arithmatex">\(u+v=2a\)</span>, then <span class="arithmatex">\((u-v)(2a)=4cx\)</span>, so <span class="arithmatex">\(u-v=\frac{2cx}a\)</span> (we divide by <span class="arithmatex">\(2a\ne0\)</span>). Adding and subtracting <span class="arithmatex">\(u+v=2a\)</span> and <span class="arithmatex">\(u-v=\frac{2cx}a\)</span> gives <span class="arithmatex">\(u=a+\frac{cx}a\)</span> and <span class="arithmatex">\(v=a-\frac{cx}a\)</span>. Conversely, adding the two formulas gives <span class="arithmatex">\(u+v=2a\)</span>.</p>
+<p>(ii) If <span class="arithmatex">\(u-v=2a\)</span>, then <span class="arithmatex">\(2a(u+v)=4cx\)</span>, so <span class="arithmatex">\(u+v=\frac{2cx}a\)</span>. Adding and subtracting <span class="arithmatex">\(u-v=2a\)</span> gives <span class="arithmatex">\(u=\frac{cx}a+a\)</span> and <span class="arithmatex">\(v=\frac{cx}a-a\)</span>. Conversely, subtracting the two formulas gives <span class="arithmatex">\(u-v=2a\)</span>.</p>
+<p>(iii) If <span class="arithmatex">\(v-u=2a\)</span>, then <span class="arithmatex">\((u-v)(u+v)=4cx\)</span> gives <span class="arithmatex">\(-2a(u+v)=4cx\)</span>, so <span class="arithmatex">\(u+v=-\frac{2cx}a\)</span>. Adding and subtracting <span class="arithmatex">\(u-v=-2a\)</span> gives <span class="arithmatex">\(u=-\frac{cx}a-a\)</span> and <span class="arithmatex">\(v=-\frac{cx}a+a\)</span>. Conversely, subtracting the two formulas gives <span class="arithmatex">\(v-u=2a\)</span>. ◻ ∎</p>
+<p>No squaring of a square root appears in this proof: the only squares are <span class="arithmatex">\(u^2\)</span> and <span class="arithmatex">\(v^2\)</span>, which are polynomials in <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>, so nothing is gained or lost. Section 12.4 uses it to turn <span class="arithmatex">\(u+v=2a\)</span> and <span class="arithmatex">\(\lvert u-v\rvert=2a\)</span> into equations in <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem K.4: Placing the coordinates</p>
+<p><span id="thm-coords"></span></p>
+<p>A <em>rigid motion</em> is a map of the plane that is a composition of translations <span class="arithmatex">\((x,y)\mapsto(x+h,y+k)\)</span>, rotations about the origin <span class="arithmatex">\((x,y)\mapsto(x\cos\varphi-y\sin\varphi,\ x\sin\varphi+y\cos\varphi)\)</span> and the reflection <span class="arithmatex">\((x,y)\mapsto(x,-y)\)</span>. A rigid motion preserves the distance between any two points, maps lines to lines, and preserves the distance from a point to a line. Given a point <span class="arithmatex">\(F\)</span> and a line <span class="arithmatex">\(\ell\)</span> not through <span class="arithmatex">\(F\)</span>, let <span class="arithmatex">\(d&gt;0\)</span> be the distance from <span class="arithmatex">\(F\)</span> to <span class="arithmatex">\(\ell\)</span>. There is a rigid motion that carries <span class="arithmatex">\(F\)</span> to <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\(\ell\)</span> to the line <span class="arithmatex">\(x=d\)</span>.</p>
+</div>
+<p><em>Proof.</em> For two points with coordinate differences <span class="arithmatex">\(\Delta x,\Delta y\)</span>, a translation leaves <span class="arithmatex">\(\Delta x,\Delta y\)</span> unchanged. A rotation changes them to <span class="arithmatex">\(\Delta x\cos\varphi-\Delta y\sin\varphi\)</span> and <span class="arithmatex">\(\Delta x\sin\varphi+\Delta y\cos\varphi\)</span>, and</p>
+<div class="arithmatex">\[(\Delta x\cos\varphi-\Delta y\sin\varphi)^2+(\Delta x\sin\varphi+\Delta y\cos\varphi)^2=(\Delta x)^2+(\Delta y)^2\,(\cos^2\varphi+\sin^2\varphi)=(\Delta x)^2+(\Delta y)^2,\]</div>
+<p>because the cross terms <span class="arithmatex">\(\mp2\Delta x\Delta y\sin\varphi\cos\varphi\)</span> cancel. A reflection changes the sign of <span class="arithmatex">\(\Delta y\)</span> only. So all three preserve distances. Each is given by formulas linear in <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> (plus constants), so a line <span class="arithmatex">\(\alpha x+\beta y=\gamma\)</span> goes to a line. The distance from a point to a line is the smallest distance from the point to a point of the line; a rigid motion carries the points of the line onto the points of the image line and preserves distances, so it preserves that smallest value.</p>
+<p>Now translate <span class="arithmatex">\(F\)</span> to the origin. Let <span class="arithmatex">\(Q\)</span> be the foot of the perpendicular from the origin to the image of <span class="arithmatex">\(\ell\)</span>; <span class="arithmatex">\(\lvert OQ\rvert=d\)</span>. Rotate about the origin so that <span class="arithmatex">\(Q\)</span> lies on the positive <span class="arithmatex">\(x\)</span>-axis, at <span class="arithmatex">\((d,0)\)</span>. The image of <span class="arithmatex">\(\ell\)</span> is the line through <span class="arithmatex">\((d,0)\)</span> perpendicular to <span class="arithmatex">\(OQ\)</span>, the <span class="arithmatex">\(x\)</span>-axis, that is, the line <span class="arithmatex">\(x=d\)</span>. ◻ ∎</p>
+<p>Consequently, if <span class="arithmatex">\(\Phi\)</span> is such a rigid motion, a point <span class="arithmatex">\(P\)</span> satisfies <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span> if and only if <span class="arithmatex">\(\Phi(P)\)</span> satisfies <span class="arithmatex">\(\lvert\Phi(P)\,(0,0)\rvert=e\operatorname{dist}(\Phi(P),\,x=d)\)</span>. The conic for <span class="arithmatex">\((F,\ell,e)\)</span> is carried onto the conic for <span class="arithmatex">\(((0,0),\,x=d,\,e)\)</span>, so it is enough to study the second one.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem K.5: The Eccentricity–Directrix Theorem</p>
+<p><span id="thm-edthm"></span></p>
+<p>Let <span class="arithmatex">\(d&gt;0\)</span> and <span class="arithmatex">\(e&gt;0\)</span>, and let <span class="arithmatex">\(C\)</span> be the set of points <span class="arithmatex">\(P=(x,y)\)</span> with <span class="arithmatex">\(\lvert PF\rvert=e\operatorname{dist}(P,\ell)\)</span>, where <span class="arithmatex">\(F=(0,0)\)</span> and <span class="arithmatex">\(\ell\)</span> is the line <span class="arithmatex">\(x=d\)</span>. Then:</p>
+<p><strong>(1)</strong> If <span class="arithmatex">\(e=1\)</span>, <span class="arithmatex">\(C\)</span> is the parabola <span class="arithmatex">\(y^2=-2d\left(x-\frac d2\right)\)</span> with focus <span class="arithmatex">\(F\)</span> and directrix <span class="arithmatex">\(\ell\)</span>.</p>
+<p><strong>(2)</strong> If <span class="arithmatex">\(0&lt;e&lt;1\)</span>, put <span class="arithmatex">\(a=\frac{ed}{1-e^2}\)</span>, <span class="arithmatex">\(c=ae\)</span> and <span class="arithmatex">\(b=a\sqrt{1-e^2}\)</span>. Then <span class="arithmatex">\(a^2=b^2+c^2\)</span> and <span class="arithmatex">\(C=\left\{(x,y):\ \frac{(x+c)^2}{a^2}+\frac{y^2}{b^2}=1\right\}\)</span>: an ellipse with center <span class="arithmatex">\((-c,0)\)</span>, foci <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\((-2c,0)\)</span>, and <span class="arithmatex">\(\ell\)</span> is at distance <span class="arithmatex">\(\frac ae\)</span> from the center.</p>
+<p><strong>(3)</strong> If <span class="arithmatex">\(e&gt;1\)</span>, put <span class="arithmatex">\(a=\frac{ed}{e^2-1}\)</span>, <span class="arithmatex">\(c=ae\)</span> and <span class="arithmatex">\(b=a\sqrt{e^2-1}\)</span>. Then <span class="arithmatex">\(b^2=c^2-a^2\)</span> and <span class="arithmatex">\(C=\left\{(x,y):\ \frac{(x-c)^2}{a^2}-\frac{y^2}{b^2}=1\right\}\)</span>: a hyperbola with center <span class="arithmatex">\((c,0)\)</span>, foci <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\((2c,0)\)</span>, and <span class="arithmatex">\(\ell\)</span> is at distance <span class="arithmatex">\(\frac ae\)</span> from the center.</p>
+<p>Exactly one of the cases <span class="arithmatex">\(e&lt;1\)</span>, <span class="arithmatex">\(e=1\)</span>, <span class="arithmatex">\(e&gt;1\)</span> occurs, so every focus–directrix set is a parabola, an ellipse or a hyperbola, and which one is decided by <span class="arithmatex">\(e\)</span> alone. By Theorem <a href="#thm-coords">K.4</a> the same holds for any focus <span class="arithmatex">\(F\)</span> and any line <span class="arithmatex">\(\ell\)</span> not through <span class="arithmatex">\(F\)</span>, with <span class="arithmatex">\(d=\operatorname{dist}(F,\ell)\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>Step 1: the equation.</em> For <span class="arithmatex">\(P=(x,y)\)</span>, <span class="arithmatex">\(\lvert PF\rvert=\sqrt{x^2+y^2}\ge0\)</span> and <span class="arithmatex">\(\operatorname{dist}(P,\ell)=\lvert d-x\rvert\)</span>, so <span class="arithmatex">\(e\operatorname{dist}(P,\ell)\ge0\)</span>. By Theorem <a href="#thm-sqlemma">K.1</a> the condition is equivalent to <span class="arithmatex">\(x^2+y^2=e^2(d-x)^2\)</span>, with no point gained or lost. Expanding <span class="arithmatex">\(e^2(d-x)^2=e^2d^2-2e^2dx+e^2x^2\)</span> and collecting terms,</p>
+<div class="arithmatex">\[(1-e^2)\,x^2+2e^2d\,x+y^2=e^2d^2 .\tag{$\star$}\]</div>
+<p><em>Step 2: <span class="arithmatex">\(e=1\)</span>.</em> Then <span class="arithmatex">\((\star)\)</span> reads <span class="arithmatex">\(2dx+y^2=d^2\)</span>, that is <span class="arithmatex">\(y^2=-2dx+d^2=-2d\left(x-\frac d2\right)\)</span>.</p>
+<p><em>Step 3: <span class="arithmatex">\(e&lt;1\)</span>.</em> Then <span class="arithmatex">\(1-e^2&gt;0\)</span>. Complete the square in <span class="arithmatex">\(x\)</span>:</p>
+<div class="arithmatex">\[(1-e^2)\left[x^2+\frac{2e^2d}{1-e^2}\,x\right]=(1-e^2)\left(x+\frac{e^2d}{1-e^2}\right)^2-\frac{e^4d^2}{1-e^2}.\]</div>
+<p>With <span class="arithmatex">\(c=\frac{e^2d}{1-e^2}\)</span> (this equals <span class="arithmatex">\(ae\)</span>, because <span class="arithmatex">\(a=\frac{ed}{1-e^2}\)</span>), <span class="arithmatex">\((\star)\)</span> becomes <span class="arithmatex">\((1-e^2)(x+c)^2+y^2=e^2d^2+\frac{e^4d^2}{1-e^2}=\frac{e^2d^2(1-e^2)+e^4d^2}{1-e^2}=\frac{e^2d^2}{1-e^2}\)</span>. Divide by this positive number. Since <span class="arithmatex">\(a^2=\frac{e^2d^2}{(1-e^2)^2}\)</span> we have <span class="arithmatex">\(\frac{1-e^2}{e^2d^2/(1-e^2)}=\frac1{a^2}\)</span>, and the second coefficient is <span class="arithmatex">\(\frac{1-e^2}{e^2d^2}=\frac1{b^2}\)</span> with <span class="arithmatex">\(b^2=\frac{e^2d^2}{1-e^2}=a^2(1-e^2)\)</span>. So <span class="arithmatex">\((\star)\)</span> is equivalent to <span class="arithmatex">\(\frac{(x+c)^2}{a^2}+\frac{y^2}{b^2}=1\)</span>. Moreover <span class="arithmatex">\(a^2-b^2=a^2e^2=c^2\)</span>. By Theorem <a href="#thm-focalradii">K.3</a> and the standard-position equation of the ellipse (translated by <span class="arithmatex">\((-c,0)\)</span>), this is the set of points whose distances to <span class="arithmatex">\((-c-c,0)=(-2c,0)\)</span> and <span class="arithmatex">\((-c+c,0)=(0,0)\)</span> add to <span class="arithmatex">\(2a\)</span>. The distance from the center <span class="arithmatex">\((-c,0)\)</span> to <span class="arithmatex">\(\ell\)</span> is <span class="arithmatex">\(d+c=d+\frac{e^2d}{1-e^2}=\frac d{1-e^2}=\frac ae\)</span>.</p>
+<p><em>Step 4: <span class="arithmatex">\(e&gt;1\)</span>.</em> Now <span class="arithmatex">\(e^2-1&gt;0\)</span>. Multiply <span class="arithmatex">\((\star)\)</span> by <span class="arithmatex">\(-1\)</span>: <span class="arithmatex">\((e^2-1)x^2-2e^2dx-y^2=-e^2d^2\)</span>. Complete the square: <span class="arithmatex">\((e^2-1)\left[x^2-\frac{2e^2d}{e^2-1}x\right]=(e^2-1)(x-c)^2-\frac{e^4d^2}{e^2-1}\)</span> with <span class="arithmatex">\(c=\frac{e^2d}{e^2-1}=ae\)</span>, where <span class="arithmatex">\(a=\frac{ed}{e^2-1}\)</span>. Then <span class="arithmatex">\((e^2-1)(x-c)^2-y^2=\frac{e^4d^2}{e^2-1}-e^2d^2=\frac{e^2d^2\left(e^2-(e^2-1)\right)}{e^2-1}=\frac{e^2d^2}{e^2-1}\)</span>. Dividing by this positive number gives <span class="arithmatex">\(\frac{(x-c)^2}{a^2}-\frac{y^2}{b^2}=1\)</span>, where <span class="arithmatex">\(a^2=\frac{e^2d^2}{(e^2-1)^2}\)</span> and <span class="arithmatex">\(b^2=\frac{e^2d^2}{e^2-1}=a^2(e^2-1)=c^2-a^2\)</span>. This is the hyperbola with center <span class="arithmatex">\((c,0)\)</span> and foci <span class="arithmatex">\((c\mp c,0)=(0,0),(2c,0)\)</span>. The distance from the center to <span class="arithmatex">\(\ell\)</span> is <span class="arithmatex">\(c-d=\frac{e^2d}{e^2-1}-d=\frac d{e^2-1}=\frac ae\)</span>.</p>
+<p>Every step was an equivalence (Theorem <a href="#thm-sqlemma">K.1</a>, an identity for completing the square, division by a nonzero number), so <span class="arithmatex">\(C\)</span> is exactly the solution set of the final equation. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example K.6: Ellipse from a focus, a directrix and <span class="arithmatex">\(e=\frac12\)</span></p>
+<p><span id="ex-kex"></span></p>
+<p>Find the conic <span class="arithmatex">\(\lvert PF\rvert=\frac12\operatorname{dist}(P,\ell)\)</span> for <span class="arithmatex">\(F=(0,0)\)</span> and <span class="arithmatex">\(\ell:\ x=4\)</span>, and read off its center, foci and directrices.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(e=\frac12&lt;1\)</span>, <span class="arithmatex">\(d=4\)</span>. Step 1: <span class="arithmatex">\(x^2+y^2=\frac14(4-x)^2=\frac14\left(16-8x+x^2\right)\)</span>, so <span class="arithmatex">\(\frac34x^2+2x+y^2=4\)</span>, which is <span class="arithmatex">\((\star)\)</span> with <span class="arithmatex">\(1-e^2=\frac34\)</span> and <span class="arithmatex">\(2e^2d=2\)</span>. Complete the square: <span class="arithmatex">\(\frac34\left(x^2+\frac83x\right)=\frac34\left(x+\frac43\right)^2-\frac43\)</span>, so <span class="arithmatex">\(\frac34\left(x+\frac43\right)^2+y^2=\frac{16}3\)</span>, and dividing by <span class="arithmatex">\(\frac{16}3\)</span>,</p>
+<div class="arithmatex">\[\frac{\left(x+\frac43\right)^2}{64/9}+\frac{y^2}{16/3}=1,\qquad a=\frac83,\ b^2=\frac{16}3,\ c=\frac43 .\]</div>
+<p>The center is <span class="arithmatex">\(\left(-\frac43,0\right)\)</span>, the foci are <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\(\left(-\frac83,0\right)\)</span>, the vertices are <span class="arithmatex">\(\left(-\frac43\pm\frac83,0\right)=(4/3,0)\)</span> and <span class="arithmatex">\((-4,0)\)</span>. The formulas of the theorem agree: <span class="arithmatex">\(a=\frac{ed}{1-e^2}=\frac{2}{3/4}=\frac83\)</span>, <span class="arithmatex">\(c=ae=\frac43\)</span>, <span class="arithmatex">\(b^2=a^2(1-e^2)=\frac{64}9\cdot\frac34=\frac{16}3\)</span>. The second directrix is the mirror image of <span class="arithmatex">\(x=4\)</span> in the center: <span class="arithmatex">\(x=-\frac43-\frac ae=-\frac43-\frac{16}3=-\frac{20}3\)</span>. <em>Check.</em> The vertex <span class="arithmatex">\((4/3,0)\)</span> must satisfy the definition: <span class="arithmatex">\(\lvert PF\rvert=\frac43\)</span> and <span class="arithmatex">\(\operatorname{dist}(P,\ell)=4-\frac43=\frac83\)</span>, and <span class="arithmatex">\(\frac12\cdot\frac83=\frac43\)</span>.</p>
 </div>
 
 
