@@ -1,0 +1,684 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{2}{Integration by Parts}
+\calcxdoc{8.1}
+
+\begin{document}
+
+\section{Integration by Parts}
+
+\begin{guide}
+Substitution (Theorem~\ref{8.1-thm:subst}) is the Chain Rule read backward. In this section we read the \emph{Product Rule} backward and obtain \emph{integration by parts}, the standard tool for products such as $xe^x$, $x\sin x$ and $e^x\sin x$, and for single functions such as $\ln x$, $\tan^{-1}x$ and $\sin^{-1}x$ whose derivatives are simpler than the functions themselves. We prove the formula for indefinite and definite integrals, draw the picture behind it, and learn how to choose the two factors (the heuristic LIATE, and what to do when it fails). We then prove the formulas that parts produces: the integrals of $\ln x$, $\tan^{-1}x$ and $\sin^{-1}x$, reduction formulas for $x^ne^{ax}$, $\sin^nx$ and $\cos^nx$, the ``cyclic'' integrals $e^{ax}\sin bx$ and $e^{ax}\cos bx$, and the tabular method for a polynomial times a function that is easy to integrate repeatedly. Calculus~I facts used, all by name: the Product Rule, the Chain Rule, the Fundamental Theorem of Calculus, the derivatives of $\ln x$, $\tan^{-1}x$ and $\sin^{-1}x$, and the fact that two antiderivatives on an interval differ by a constant. From Section~8.1 we use substitution (Theorem~\ref{8.1-thm:subst}), the table of basic formulas, and long division and completing the square (Procedure~\ref{8.1-proc:rewrite}).
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item state and prove the integration by parts formula, in its indefinite and definite forms, and explain it with areas;
+  \item choose $u$ and $dv$ with the LIATE heuristic, recognize when it fails, and repair the choice;
+  \item integrate $\ln x$, $\tan^{-1}x$ and $\sin^{-1}x$, and use repeated parts and the reduction formulas for $x^ne^{ax}$, $\sin^nx$ and $\cos^nx$;
+  \item solve the ``cyclic'' integrals $\int e^{ax}\sin bx\,dx$ and $\int e^{ax}\cos bx\,dx$, and use the tabular method with a proof of why it works;
+  \item combine parts with substitution, check every answer by differentiating, and avoid the common errors.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The formula and why it works}
+
+The Product Rule says $(uv)'=u'v+uv'$. Integrating both sides and rearranging gives a rule for integrating a product $uv'$, provided we can integrate $vu'$. The theorem states this carefully, with the hypotheses needed for the definite form.
+
+\begin{thm}{Integration by parts}{parts}
+Let $u$ and $v$ be differentiable functions on an interval $I$.
+\begin{enumerate}[label=(\arabic*)]
+  \item \emph{Indefinite form.} If $vu'$ has an antiderivative on $I$, then so does $uv'$, and
+  \[\int u\,v'\,dx=uv-\int v\,u'\,dx .\]
+  In the shorter notation $dv=v'(x)\,dx$, $du=u'(x)\,dx$ this reads $\displaystyle\int u\,dv=uv-\int v\,du$.
+  \item \emph{Definite form.} If $u'$ and $v'$ are continuous on $[a,b]\subseteq I$, then
+  \[\int_a^bu\,v'\,dx=\Big[uv\Big]_a^b-\int_a^bv\,u'\,dx,\qquad\text{where }\Big[uv\Big]_a^b=u(b)v(b)-u(a)v(a).\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Let $H$ be an antiderivative of $vu'$ on $I$, so $H'=vu'$. By the Product Rule $(uv)'=u'v+uv'$, so
+\[\frac{d}{dx}\big(uv-H\big)=u'v+uv'-vu'=uv' .\]
+Hence $uv-H$ is an antiderivative of $uv'$ on $I$. Any other antiderivative differs from it by a constant, so $\int uv'\,dx=uv-\int vu'\,dx$, where the second integral stands for $H+C$.
+
+(2) The functions $u$, $v$, $u'$ and $v'$ are continuous on $[a,b]$, so $(uv)'=u'v+uv'$ is continuous there. The Fundamental Theorem of Calculus (the part that evaluates an integral with an antiderivative) gives
+\[\int_a^b\big(u'v+uv'\big)\,dx=u(b)v(b)-u(a)v(a).\]
+Both $u'v$ and $uv'$ are continuous, so both integrals exist and the integral of the sum is the sum of the integrals. Subtracting $\int_a^bvu'\,dx$ from both sides gives the formula.
+\end{proof}
+
+Why the name? We split the integrand $uv'$ into two \emph{parts}: $u$, which we will differentiate, and $dv=v'\,dx$, which we will integrate. The goal is that the \emph{new} integral $\int v\,du$ is simpler than the one we started with, or is one we can already do. Notice that integration by parts does not evaluate the integral; it \emph{trades} it for another.
+
+\emph{A picture.} Suppose $u(x)$ and $v(x)$ are nonnegative and increase with $x$ on $[a,b]$. Then the point $(u(x),v(x))$ traces a rising curve in a $uv$-plane. The area under the curve, between the curve and the $u$-axis, is $\int v\,du$; the area to the left of the curve, between the curve and the $v$-axis, is $\int u\,dv$. Together with the small rectangle $[0,u(a)]\times[0,v(a)]$ these two areas fill the big rectangle $[0,u(b)]\times[0,v(b)]$, so
+\[\int_a^bu\,dv+\int_a^bv\,du=u(b)v(b)-u(a)v(a),\]
+which is the definite formula in the form $\int u\,dv=\big[uv\big]-\int v\,du$. Figure~1 shows $u=x$, $v=x^2$ for $0\le x\le2$, that is, the curve $v=u^2$ from $(0,0)$ to $(2,4)$: the two areas are $\frac83$ and $\frac{16}3$ and they add up to $2\cdot4=8$. The picture illustrates the formula; the proof above is what establishes it.
+
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=1.1cm]
+  \draw[->] (-0.1,0) -- (2.5,0) node[right] {$u$};
+  \draw[->] (0,-0.1) -- (0,4.6) node[above] {$v$};
+  \fill[blue!15] (0,0) -- plot[domain=0:2,samples=40,variable=\t] ({\t},{\t*\t}) -- (2,0) -- cycle;
+  \fill[orange!25] (0,0) -- plot[domain=0:2,samples=40,variable=\t] ({\t},{\t*\t}) -- (2,4) -- (0,4) -- cycle;
+  \draw[very thick,red!70!black,domain=0:2.1,samples=50,variable=\t] plot ({\t},{\t*\t});
+  \draw[dashed] (2,0) -- (2,4) -- (0,4);
+  \fill (2,4) circle (1.6pt) node[above right,font=\small] {$(2,4)$};
+%@ f1-end | 2**2 == 4 | \fill (2,4) circle (1.6pt) node[above right,font=\small] {$(2,4)$};
+  \fill (0,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+%@ f1-orig | 0**2 == 0 | \fill (0,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+  \node[font=\small] at (1.5,0.62) {$\displaystyle\int_0^2v\,du=\frac83$};
+%@ f1-a1 | integrate(t**2,(t,0,2)) == Q(8,3) | \node[font=\small] at (1.5,0.62) {$\displaystyle\int_0^2v\,du=\frac83$};
+  \node[font=\small] at (0.55,3.0) {$\displaystyle\int_0^4u\,dv=\frac{16}3$};
+%@ f1-a2 | integrate(sqrt(t),(t,0,4)) == Q(16,3) and Q(8,3)+Q(16,3) == 2*4 | \node[font=\small] at (0.55,3.0) {$\displaystyle\int_0^4u\,dv=\frac{16}3$};
+  \node[below,font=\small] at (2,-0.05) {$u=2$};
+  \node[left,font=\small] at (-0.05,4) {$v=4$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 1. The curve $v=u^2$ for $0\le u\le2$. Blue: the area under the curve, $\int v\,du$. Orange: the area to the left of the curve, $\int u\,dv$. Together they fill the rectangle of area $2\cdot4=8$.\end{center}
+
+\begin{proc}{Integration by parts}{parts}
+\begin{enumerate}[nosep]
+  \item \emph{Split} the integrand into $u$ (to be differentiated) and $dv$ (everything else, including $dx$, to be integrated). Section ``Choosing $u$ and $dv$'' below gives a heuristic.
+  \item \emph{Table.} Write $u=\dots$, $dv=\dots\,dx$, then $du=u'\,dx$ and $v=$ \emph{one} antiderivative of $dv$ (no constant is needed; see Example~\ref{ex:m1}).
+  \item \emph{Apply} $\int u\,dv=uv-\int v\,du$. Watch the minus sign, and remember that $uv$ is the \emph{product} of $u$ with $v$, not with $dv$.
+  \item \emph{Finish} the new integral (by another round of parts, a substitution, or a table formula), then add $C$.
+  \item \emph{Definite integrals:} evaluate $\big[uv\big]_a^b$ and the new integral between the same limits, both in the variable $x$. Do not change limits unless you also substitute.
+  \item \emph{Check} by differentiating the answer.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A first integral by parts}{m1}
+Find $\int x\cos2x\,dx$.
+
+\textbf{Solution.} The integrand is a product. The factor $x$ becomes simpler when differentiated (its derivative is $1$), and $\cos2x$ is easy to integrate, so we take $u=x$ and $dv=\cos2x\,dx$. Then $du=dx$, and $v=\int\cos2x\,dx=\frac12\sin2x$ (formula (3) of Section~8.1 with $a=2$).
+\[\begin{array}{ll}u=x&dv=\cos2x\,dx\\[2pt]du=dx&v=\tfrac12\sin2x\end{array}\]
+Parts gives
+\[\int x\cos2x\,dx=x\cdot\tfrac12\sin2x-\int\tfrac12\sin2x\,dx=\tfrac12x\sin2x-\tfrac12\left(-\tfrac12\cos2x\right)+C=\tfrac12x\sin2x+\tfrac14\cos2x+C .\]
+%@ m1a | simplify(diff(x*sin(2*x)/2+cos(2*x)/4,x)-x*cos(2*x)) == 0 and Q(1,2)*Q(1,2) == Q(1,4) | =\tfrac12x\sin2x+\tfrac14\cos2x+C .\]
+Here $\int\sin2x\,dx=-\frac12\cos2x$ (formula (4) with $a=2$), and the two minus signs combine to a plus.
+
+\emph{Check by differentiating.} By the Product Rule and the Chain Rule,
+\[\frac{d}{dx}\left[\tfrac12x\sin2x+\tfrac14\cos2x\right]=\tfrac12\sin2x+\tfrac12x\cdot2\cos2x-\tfrac14\cdot2\sin2x=x\cos2x,\]
+%@ m1b | simplify(diff(Q(1,2)*x*sin(2*x)+Q(1,4)*cos(2*x),x)-(Q(1,2)*sin(2*x)+x*cos(2*x)-Q(1,2)*sin(2*x))) == 0 and simplify(Q(1,2)*sin(2*x)+Q(1,2)*x*2*cos(2*x)-Q(1,4)*2*sin(2*x)-x*cos(2*x)) == 0 | \tfrac12\sin2x+\tfrac12x\cdot2\cos2x-\tfrac14\cdot2\sin2x=x\cos2x,\]
+because the two terms in $\sin2x$ cancel.
+
+\emph{Why no constant is needed in $v$.} Suppose we had taken the antiderivative $v=\frac12\sin2x+5$ instead. Then
+\[x\left(\tfrac12\sin2x+5\right)-\int\left(\tfrac12\sin2x+5\right)dx=\tfrac12x\sin2x+5x+\tfrac14\cos2x-5x+C=\tfrac12x\sin2x+\tfrac14\cos2x+C,\]
+%@ m1c | simplify(x*(sin(2*x)/2+5)-(-cos(2*x)/4+5*x)-(x*sin(2*x)/2+cos(2*x)/4)) == 0 | +5x+\tfrac14\cos2x-5x+C=\tfrac12x\sin2x+\tfrac14\cos2x+C,\]
+the same answer: the extra $5$ contributes $5x$ in the first term and $-5x$ in the second. In general, replacing $v$ by $v+K$ adds $Ku$ to $uv$ and $K\int u'\,dx=Ku$ is subtracted, so $K$ cancels.
+\end{exmp}
+
+\begin{kc}{Your first integral by parts}{kcfirst}
+Evaluate $\int xe^{-3x}\,dx$. State your choice of $u$ and $dv$ and check by differentiating.
+\end{kc}
+
+\begin{think}{Does $0=1$?}{zero}
+Apply parts to $\int\frac{dx}{x}$ with $u=\frac1x$ and $dv=dx$. Then $du=-\frac1{x^2}\,dx$, $v=x$, and
+\[\int\frac{dx}{x}=\frac1x\cdot x-\int x\left(-\frac1{x^2}\right)dx=1+\int\frac{dx}{x}.\]
+Subtracting $\int\frac{dx}x$ from both sides seems to give $0=1$. Where is the flaw? (Think about what the symbol $\int\cdots dx$ stands for.)
+\end{think}
+
+\begin{exmp}{A definite integral and the area it measures}{m2}
+Evaluate $\int_0^1xe^{-2x}\,dx$. This is the area of the region under $y=xe^{-2x}$ for $0\le x\le1$ (Figure~2).
+
+\textbf{Solution.} Take $u=x$ and $dv=e^{-2x}\,dx$. Then $du=dx$ and $v=-\frac12e^{-2x}$ (formula (9) with $a=-2$). Using the definite form of Theorem~\ref{thm:parts}, with both integrals written in $x$ and the limits $0$ and $1$,
+\[\int_0^1xe^{-2x}\,dx=\Big[-\tfrac12xe^{-2x}\Big]_0^1-\int_0^1\left(-\tfrac12e^{-2x}\right)dx=-\tfrac12e^{-2}-0+\tfrac12\int_0^1e^{-2x}\,dx .\]
+The boundary term is $-\frac12\cdot1\cdot e^{-2}-\left(-\frac12\cdot0\cdot e^0\right)=-\frac12e^{-2}$. The remaining integral is
+\[\tfrac12\int_0^1e^{-2x}\,dx=\tfrac12\Big[-\tfrac12e^{-2x}\Big]_0^1=-\tfrac14e^{-2}+\tfrac14 .\]
+Adding the two pieces,
+\[\int_0^1xe^{-2x}\,dx=-\tfrac12e^{-2}-\tfrac14e^{-2}+\tfrac14=\frac{1-3e^{-2}}4\approx0.1485 .\]
+%@ m2a | abs(float(Integral(x*exp(-2*x),(x,0,1)).evalf())-0.1485) < 1e-4 and simplify(integrate(x*exp(-2*x),(x,0,1))-(1-3*exp(-2))/4) == 0 | =\frac{1-3e^{-2}}4\approx0.1485 .\]
+\emph{Check.} Differentiating $F(x)=-\frac12xe^{-2x}-\frac14e^{-2x}=-\frac{(2x+1)e^{-2x}}4$ gives $-\frac12e^{-2x}+xe^{-2x}+\frac12e^{-2x}=xe^{-2x}$, and $F(1)-F(0)=-\frac34e^{-2}+\frac14$, the same value. The number is plausible: on $[0,1]$ the height never exceeds $\frac1{2e}\approx0.184$ (at $x=\frac12$), so the area is less than $0.184\cdot1$, and $0.1485$ is below that bound.
+%@ m2b | abs(float(1/(2*E))-0.184) < 1e-3 and 0.1485 < 0.184 and simplify(diff(-(2*x+1)*exp(-2*x)/4,x)-x*exp(-2*x)) == 0 and simplify(-(2*1+1)*exp(-2)/4+(2*0+1)/Integer(4)-(1-3*exp(-2))/4) == 0 | so the area is less than $0.184\cdot1$, and $0.1485$ is below that bound.
+
+\begin{center}
+\begin{tikzpicture}[x=5cm,y=12cm]
+  \draw[->] (-0.05,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.01) -- (0,0.24) node[above] {$y$};
+  \fill[blue!15] (0,0) -- plot[domain=0:1,samples=50,variable=\t] ({\t},{\t*exp(-2*\t)}) -- (1,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:1.25,samples=70,variable=\t] plot ({\t},{\t*exp(-2*\t)});
+  \fill (0.5,0.18394) circle (1.6pt) node[above,font=\small] {$(\frac12,\frac1{2e})$};
+%@ g2-peak | (lambda x0: diff(t*exp(-2*t),t).subs(t,x0) == 0 and abs(float(x0*exp(-2*x0))-0.18394) < 1e-5 and simplify(x0*exp(-2*x0)-1/(2*E)) == 0)(Q(1,2)) | \fill (0.5,0.18394) circle (1.6pt) node[above,font=\small] {$(\frac12,\frac1{2e})$};
+  \fill (1,0.13534) circle (1.6pt) node[above right,font=\small] {$(1,e^{-2})$};
+%@ g2-end | abs(float(1*exp(-2*1))-0.13534) < 1e-5 and simplify(1*exp(-2*1)-exp(-2)) == 0 | \fill (1,0.13534) circle (1.6pt) node[above right,font=\small] {$(1,e^{-2})$};
+  \node[below,font=\small] at (1,-0.005) {$x=1$};
+  \node[font=\small] at (0.5,0.06) {area $\frac14-\frac34e^{-2}\approx0.1485$};
+%@ g2-area | abs(float(Q(1,4)-Q(3,4)*exp(-2))-0.1485) < 1e-4 and simplify(Q(1,4)-Q(3,4)*exp(-2)-(1-3*exp(-2))/4) == 0 | \node[font=\small] at (0.5,0.06) {area $\frac14-\frac34e^{-2}\approx0.1485$};
+  \node[font=\small] at (1.05,0.21) {$y=xe^{-2x}$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 2. The region under $y=xe^{-2x}$ on $[0,1]$. Its area is $\int_0^1xe^{-2x}\,dx=\frac14-\frac34e^{-2}$.\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Integrals of $\ln x$, $\tan^{-1}x$ and $\sin^{-1}x$}
+
+A single function has no obvious ``product'', but we can always write $f(x)=f(x)\cdot1$ and take $u=f(x)$, $dv=dx$. This works when $f'$ is simpler than $f$, as it is for the logarithm and the inverse trigonometric functions. (Section~8.1 could not integrate these functions; no substitution helps.)
+
+\begin{thm}{Integrals of the logarithm and the inverse tangent and sine}{inv}
+\begin{align*}
+&\int\ln x\,dx=x\ln x-x+C\quad(x>0),\\
+&\int\tan^{-1}x\,dx=x\tan^{-1}x-\tfrac12\ln\left(1+x^2\right)+C\quad(\text{all }x),\\
+&\int\sin^{-1}x\,dx=x\sin^{-1}x+\sqrt{1-x^2}+C\quad(-1<x<1).
+\end{align*}
+\end{thm}
+\begin{proof}
+In each case take $dv=dx$, so $v=x$, and apply Theorem~\ref{thm:parts}(1).
+
+\emph{Logarithm.} Let $u=\ln x$, so $du=\frac1x\,dx$ (Calculus~I). Then
+\[\int\ln x\,dx=x\ln x-\int x\cdot\frac1x\,dx=x\ln x-\int1\,dx=x\ln x-x+C .\]
+%@ p-ln | simplify(diff(x*log(x)-x,x)-log(x)) == 0 | =x\ln x-\int1\,dx=x\ln x-x+C .\]
+
+\emph{Inverse tangent.} Let $u=\tan^{-1}x$, so $du=\frac{dx}{1+x^2}$. Then
+\[\int\tan^{-1}x\,dx=x\tan^{-1}x-\int\frac{x}{1+x^2}\,dx .\]
+In the last integral let $w=1+x^2$, so $dw=2x\,dx$ and $x\,dx=\frac12\,dw$ (Theorem~\ref{8.1-thm:subst}). Since $w>0$,
+\[\int\frac{x}{1+x^2}\,dx=\frac12\int\frac{dw}{w}=\frac12\ln w=\frac12\ln\left(1+x^2\right).\]
+Hence $\int\tan^{-1}x\,dx=x\tan^{-1}x-\frac12\ln\left(1+x^2\right)+C$.
+%@ p-atan | simplify(diff(x*atan(x)-log(1+x**2)/2,x)-atan(x)) == 0 | $\int\tan^{-1}x\,dx=x\tan^{-1}x-\frac12\ln\left(1+x^2\right)+C$.
+
+\emph{Inverse sine.} Let $u=\sin^{-1}x$ for $\lvert x\rvert<1$, so $du=\frac{dx}{\sqrt{1-x^2}}$. Then
+\[\int\sin^{-1}x\,dx=x\sin^{-1}x-\int\frac{x}{\sqrt{1-x^2}}\,dx .\]
+Let $w=1-x^2$, so $dw=-2x\,dx$ and $x\,dx=-\frac12\,dw$. Then
+\[\int\frac{x}{\sqrt{1-x^2}}\,dx=-\frac12\int w^{-1/2}\,dw=-\frac12\cdot2w^{1/2}=-\sqrt{1-x^2}.\]
+Therefore $\int\sin^{-1}x\,dx=x\sin^{-1}x+\sqrt{1-x^2}+C$ (the two minus signs give a plus).
+%@ p-asin | simplify(diff(x*asin(x)+sqrt(1-x**2),x)-asin(x)) == 0 | $\int\sin^{-1}x\,dx=x\sin^{-1}x+\sqrt{1-x^2}+C$ (the two minus signs give a plus).
+\end{proof}
+
+The antiderivative $x\sin^{-1}x+\sqrt{1-x^2}$ is continuous on $[-1,1]$, so the formula can also be used for definite integrals with limits $\pm1$. The same idea (take $dv=dx$) integrates $\ln(ax)$, $\tan^{-1}(ax)$, $\sin^{-1}(ax)$ and $\cos^{-1}x$, and Example~\ref{ex:m3} shows it combined with a second factor.
+
+\begin{exmp}{An inverse tangent times a power}{m3}
+Find $\int x\tan^{-1}x\,dx$.
+
+\textbf{Solution.} The derivative of $\tan^{-1}x$ is a rational function, but its antiderivative is more complicated, while $x$ is easy to integrate. So take $u=\tan^{-1}x$ and $dv=x\,dx$. Then $du=\frac{dx}{1+x^2}$ and $v=\frac{x^2}2$. By Theorem~\ref{thm:parts},
+\[\int x\tan^{-1}x\,dx=\frac{x^2}2\tan^{-1}x-\frac12\int\frac{x^2}{1+x^2}\,dx .\]
+The new integrand has numerator and denominator of the same degree, so we divide (Procedure~\ref{8.1-proc:rewrite}): $x^2=(x^2+1)-1$, so $\frac{x^2}{1+x^2}=1-\frac1{1+x^2}$. Then
+\[\frac12\int\frac{x^2}{1+x^2}\,dx=\frac12\int\left(1-\frac1{1+x^2}\right)dx=\frac12\left(x-\tan^{-1}x\right),\]
+using $\int\frac{dx}{1+x^2}=\tan^{-1}x$ (formula (11) with $a=1$). Subtracting it from the first term,
+\[\int x\tan^{-1}x\,dx=\frac{x^2}2\tan^{-1}x-\frac x2+\frac12\tan^{-1}x+C=\frac{x^2+1}2\tan^{-1}x-\frac x2+C .\]
+%@ m3a | simplify(x**2/(1+x**2)-(1-1/(1+x**2))) == 0 and simplify(diff((x**2+1)*atan(x)/2-x/2,x)-x*atan(x)) == 0 | =\frac{x^2+1}2\tan^{-1}x-\frac x2+C .\]
+\emph{Check.} $\frac{d}{dx}\left[\frac{x^2+1}2\tan^{-1}x-\frac x2\right]=x\tan^{-1}x+\frac{x^2+1}2\cdot\frac1{1+x^2}-\frac12=x\tan^{-1}x+\frac12-\frac12=x\tan^{-1}x$.
+%@ m3b | simplify(x*atan(x)+(x**2+1)/2/(1+x**2)-Q(1,2)-x*atan(x)) == 0 and simplify(diff((x**2+1)*atan(x)/2-x/2,x)-(x*atan(x)+Q(1,2)-Q(1,2))) == 0 | =x\tan^{-1}x+\frac12-\frac12=x\tan^{-1}x$.
+\end{exmp}
+
+\begin{kc}{An inverse sine}{kcasin}
+Evaluate $\int_0^{1/2}\sin^{-1}x\,dx$ and give a decimal value.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Choosing $u$ and $dv$: the heuristic LIATE}
+
+Parts only helps if two things hold: we can find $v=\int dv$, and $\int v\,du$ is simpler than (or at least no harder than) $\int u\,dv$. A well-known rule of thumb is to take $u$ to be the \emph{first} of the following types that occurs in the integrand:
+
+\begin{center}
+\textbf{L}ogarithmic \ \ $\to$ \ \ \textbf{I}nverse trigonometric \ \ $\to$ \ \ \textbf{A}lgebraic (powers and polynomials) \ \ $\to$ \ \ \textbf{T}rigonometric \ \ $\to$ \ \ \textbf{E}xponential.
+\end{center}
+
+The reason is the behavior under differentiation and integration. Differentiating a logarithm or an inverse trigonometric function produces an \emph{algebraic} function, which is simpler; differentiating a power lowers its degree; but sines, cosines and exponentials reproduce themselves under both operations, so they make good choices for $dv$. (Some books use the order LIPET, which swaps the last two letters; for a product of a sine and an exponential either order works, see the cyclic case below.) LIATE is a \emph{heuristic}, a guide that usually works and is not a theorem: it can fail, and sometimes two choices both work.
+
+\begin{exmp}{Two choices that both work}{m4}
+Find $\int x\ln x\,dx$ for $x>0$ in two ways.
+
+\textbf{Solution.} \emph{LIATE choice.} $\ln x$ comes before $x$ in the list, so $u=\ln x$, $dv=x\,dx$, $du=\frac{dx}x$, $v=\frac{x^2}2$:
+\[\int x\ln x\,dx=\frac{x^2}2\ln x-\int\frac{x^2}2\cdot\frac1x\,dx=\frac{x^2}2\ln x-\frac12\int x\,dx=\frac{x^2}2\ln x-\frac{x^2}4+C .\]
+%@ m4a | simplify(diff(x**2*log(x)/2-x**2/4,x)-x*log(x)) == 0 | =\frac{x^2}2\ln x-\frac12\int x\,dx=\frac{x^2}2\ln x-\frac{x^2}4+C .\]
+\emph{The other choice.} Take $u=x$, $dv=\ln x\,dx$. Then $du=dx$ and $v=x\ln x-x$ (Theorem~\ref{thm:inv}). Writing $I=\int x\ln x\,dx$,
+\[I=x\left(x\ln x-x\right)-\int\left(x\ln x-x\right)dx=x^2\ln x-x^2-I+\frac{x^2}2 .\]
+The unknown $I$ appears on both sides (compare the cyclic case below). Adding $I$ to both sides and dividing by $2$,
+\[I=\frac{x^2}2\ln x-\frac{x^2}4\quad(+\,C).\]
+%@ m4b | expand(x*(x*log(x)-x)+x**2/2-(x**2*log(x)-x**2/2)) == 0 and simplify((x**2*log(x)-x**2+x**2/2)/2-(x**2*log(x)/2-x**2/4)) == 0 | I=\frac{x^2}2\ln x-\frac{x^2}4\quad(+\,C).\]
+Both choices give the same answer, but the second is longer: it needs the integral of $\ln x$ first and then an equation to solve. LIATE picked the economical route. A \emph{bad} choice makes things worse: for $\int xe^x\,dx$ the choice $u=e^x$, $dv=x\,dx$ leads to $\frac{x^2}2e^x-\frac12\int x^2e^x\,dx$, and the power of $x$ has \emph{gone up}.
+\end{exmp}
+
+\begin{exmp}{When LIATE fails}{m5}
+Find $\int x^3e^{x^2}\,dx$.
+
+\textbf{Solution.} LIATE puts the algebraic factor $x^3$ before the exponential, suggesting $u=x^3$, $dv=e^{x^2}\,dx$. But $e^{x^2}$ has no antiderivative that we can write with the functions we know (a later chapter on power series shows how to represent it), so $v$ cannot be found: the heuristic fails. The fix is to put \emph{part of the algebraic factor into $dv$}: write $x^3e^{x^2}\,dx=x^2\cdot\left(xe^{x^2}\,dx\right)$ and take $u=x^2$, $dv=xe^{x^2}\,dx$. By substitution ($w=x^2$, $dw=2x\,dx$, Theorem~\ref{8.1-thm:subst}), $v=\int xe^{x^2}\,dx=\frac12e^{x^2}$, and $du=2x\,dx$. Then
+\[\int x^3e^{x^2}\,dx=\frac{x^2}2e^{x^2}-\int\frac12e^{x^2}\cdot2x\,dx=\frac{x^2}2e^{x^2}-\int xe^{x^2}\,dx=\frac{x^2}2e^{x^2}-\frac12e^{x^2}+C=\frac{x^2-1}2\,e^{x^2}+C .\]
+%@ m5a | simplify(diff(exp(x**2)*(x**2-1)/2,x)-x**3*exp(x**2)) == 0 and simplify(diff(exp(x**2)/2,x)-x*exp(x**2)) == 0 | =\frac{x^2}2e^{x^2}-\frac12e^{x^2}+C=\frac{x^2-1}2\,e^{x^2}+C .\]
+\emph{A second route.} Substitute first: with $w=x^2$, $x^3e^{x^2}\,dx=x^2e^{x^2}\cdot x\,dx=\frac12we^w\,dw$, and $\frac12\int we^w\,dw=\frac12\left(we^w-e^w\right)=\frac{x^2-1}2e^{x^2}$ by parts with $u=w$, $dv=e^w\,dw$. The two routes agree. \emph{Check:} $\frac{d}{dx}\left[\frac{x^2-1}2e^{x^2}\right]=xe^{x^2}+\frac{x^2-1}2\cdot2xe^{x^2}=x^3e^{x^2}$.
+%@ m5b | simplify(diff((x**2-1)*exp(x**2)/2,x)-(x*exp(x**2)+(x**2-1)/2*2*x*exp(x**2))) == 0 and simplify(x*exp(x**2)+(x**2-1)/2*2*x*exp(x**2)-x**3*exp(x**2)) == 0 | =xe^{x^2}+\frac{x^2-1}2\cdot2xe^{x^2}=x^3e^{x^2}$.
+\end{exmp}
+
+\begin{think}{Why logarithms first?}{liate}
+$\int\ln x\,dx$ is itself a perfectly good integral, yet LIATE puts $\ln x$ at the very front of the list, to be differentiated, and not integrated. Explain the ranking: what happens to $\ln x$ under differentiation, and what would happen to it as a choice for $dv$ in $\int x^3\ln x\,dx$?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Repeated parts and reduction formulas}
+
+When the algebraic factor is $x^n$ with $n\ge2$, one round of parts only lowers the power by one, so we integrate by parts again, and again, until the power reaches $0$.
+
+\begin{exmp}{Parts twice}{m6}
+Find $\int x^2\sin3x\,dx$.
+
+\textbf{Solution.} \emph{Round 1.} Take $u=x^2$ (algebraic before trigonometric), $dv=\sin3x\,dx$. Then $du=2x\,dx$ and $v=-\frac13\cos3x$ (formula (4) with $a=3$):
+\[\int x^2\sin3x\,dx=-\frac13x^2\cos3x-\int\left(-\frac13\cos3x\right)2x\,dx=-\frac13x^2\cos3x+\frac23\int x\cos3x\,dx .\]
+\emph{Round 2.} The new integral has $x$ to the first power. Take $u=x$, $dv=\cos3x\,dx$, so $du=dx$, $v=\frac13\sin3x$:
+\[\int x\cos3x\,dx=\frac13x\sin3x-\frac13\int\sin3x\,dx=\frac13x\sin3x+\frac19\cos3x+C_1,\]
+because $\int\sin3x\,dx=-\frac13\cos3x$. \emph{Assemble.} Substituting into Round 1 and multiplying out $\frac23$,
+\[\int x^2\sin3x\,dx=-\frac13x^2\cos3x+\frac23\left(\frac13x\sin3x+\frac19\cos3x\right)+C=-\frac13x^2\cos3x+\frac29x\sin3x+\frac2{27}\cos3x+C .\]
+%@ m6a | simplify(diff(-x**2*cos(3*x)/3+2*x*sin(3*x)/9+2*cos(3*x)/27,x)-x**2*sin(3*x)) == 0 and Q(2,3)*Q(1,3) == Q(2,9) and Q(2,3)*Q(1,9) == Q(2,27) | =-\frac13x^2\cos3x+\frac29x\sin3x+\frac2{27}\cos3x+C .\]
+\emph{Check.} Differentiate term by term: $\frac{d}{dx}\left[-\frac13x^2\cos3x\right]=-\frac23x\cos3x+x^2\sin3x$, $\frac{d}{dx}\left[\frac29x\sin3x\right]=\frac29\sin3x+\frac23x\cos3x$, $\frac{d}{dx}\left[\frac2{27}\cos3x\right]=-\frac29\sin3x$. The terms in $x\cos3x$ cancel, the terms in $\sin3x$ cancel, and $x^2\sin3x$ remains.
+%@ m6b | simplify(diff(-x**2*cos(3*x)/3,x)-(-Q(2,3)*x*cos(3*x)+x**2*sin(3*x))) == 0 and simplify(diff(Q(2,9)*x*sin(3*x),x)-(Q(2,9)*sin(3*x)+Q(2,3)*x*cos(3*x))) == 0 and simplify(diff(Q(2,27)*cos(3*x),x)+Q(2,9)*sin(3*x)) == 0 | $\frac{d}{dx}\left[\frac2{27}\cos3x\right]=-\frac29\sin3x$. The terms in $x\cos3x$ cancel, the terms in $\sin3x$ cancel, and $x^2\sin3x$ remains.
+\end{exmp}
+
+The pattern $\int x^ne^{ax}\,dx$ can be handled once and for all by a \emph{reduction formula}: an identity that expresses an integral involving $n$ in terms of a similar integral with a smaller $n$.
+
+\begin{thm}{Reduction formula for $x^ne^{ax}$}{redexp}
+Let $a\ne0$ and let $n\ge1$ be an integer. Then
+\[\int x^ne^{ax}\,dx=\frac{x^ne^{ax}}a-\frac na\int x^{n-1}e^{ax}\,dx .\]
+Consequently, for every integer $n\ge0$,
+\[\int x^ne^{ax}\,dx=e^{ax}\sum_{k=0}^{n}(-1)^{n-k}\,\frac{n!}{k!}\,\frac{x^k}{a^{\,n-k+1}}+C .\]
+\end{thm}
+\begin{proof}
+Take $u=x^n$ and $dv=e^{ax}\,dx$. Then $du=nx^{n-1}\,dx$ and $v=\frac1ae^{ax}$, and Theorem~\ref{thm:parts} gives
+\[\int x^ne^{ax}\,dx=x^n\cdot\frac{e^{ax}}a-\int\frac{e^{ax}}a\cdot nx^{n-1}\,dx=\frac{x^ne^{ax}}a-\frac na\int x^{n-1}e^{ax}\,dx .\]
+For the second formula we use induction on $n$. For $n=0$ the sum has the single term $k=0$, equal to $(-1)^0\frac{0!}{0!}\frac{1}{a}=\frac1a$, and $\int e^{ax}\,dx=\frac{e^{ax}}a+C$. Suppose the formula holds for $n$. By the reduction formula for $n+1$ and the induction hypothesis,
+\[\int x^{n+1}e^{ax}\,dx=\frac{x^{n+1}e^{ax}}a-\frac{n+1}a\,e^{ax}\sum_{k=0}^{n}(-1)^{n-k}\frac{n!}{k!}\frac{x^k}{a^{\,n-k+1}}
+=e^{ax}\left[\frac{x^{n+1}}a+\sum_{k=0}^{n}(-1)^{n+1-k}\frac{(n+1)!}{k!}\frac{x^k}{a^{\,n+1-k+1}}\right]+C .\]
+(We used $-(-1)^{n-k}=(-1)^{n+1-k}$, $(n+1)\,n!=(n+1)!$ and $\frac1a\cdot\frac1{a^{n-k+1}}=\frac1{a^{n+1-k+1}}$.) The term $\frac{x^{n+1}}a$ is exactly the missing term $k=n+1$ of the formula for $n+1$, since $(-1)^0\frac{(n+1)!}{(n+1)!}\frac{x^{n+1}}{a^1}=\frac{x^{n+1}}a$. So the formula holds for $n+1$.
+\end{proof}
+%@ t3-check | all(simplify(diff(exp(a*x)*sum((-1)**(nn-jj)*factorial(nn)/factorial(jj)*x**jj/a**(nn-jj+1) for jj in range(nn+1)),x)-x**nn*exp(a*x)) == 0 for nn in range(0,7)) and simplify(diff(exp(a*x)*sum((-1)**(2-jj)*factorial(2)/factorial(jj)*x**jj/a**(2-jj+1) for jj in range(3)),x)-x**2*exp(a*x)) == 0 | \end{proof}
+
+For $a=1$ the closed formula gives $\int x^2e^x\,dx=e^x\left(x^2-2x+2\right)+C$ and $\int x^3e^x\,dx=e^x\left(x^3-3x^2+6x-6\right)+C$. Integrals of this kind appear later when the error in a Taylor polynomial is estimated.
+
+Sines and cosines have reduction formulas in the exponent. The proof uses parts once and the Pythagorean identity.
+
+\begin{thm}{Reduction formulas for $\sin^nx$ and $\cos^nx$}{redtrig}
+For every integer $n\ge2$,
+\[\int\sin^nx\,dx=-\frac{\sin^{n-1}x\cos x}n+\frac{n-1}n\int\sin^{n-2}x\,dx,\qquad\int\cos^nx\,dx=\frac{\cos^{n-1}x\sin x}n+\frac{n-1}n\int\cos^{n-2}x\,dx .\]
+In particular, $\displaystyle\int_0^{\pi/2}\sin^nx\,dx=\frac{n-1}n\int_0^{\pi/2}\sin^{n-2}x\,dx$ and the same holds with $\cos$ in place of $\sin$.
+\end{thm}
+\begin{proof}
+\emph{Sine.} Write $\sin^nx=\sin^{n-1}x\cdot\sin x$ and take $u=\sin^{n-1}x$, $dv=\sin x\,dx$. Then $du=(n-1)\sin^{n-2}x\cos x\,dx$ and $v=-\cos x$, so
+\[\int\sin^nx\,dx=-\sin^{n-1}x\cos x+(n-1)\int\sin^{n-2}x\cos^2x\,dx .\]
+Now $\cos^2x=1-\sin^2x$, so $\sin^{n-2}x\cos^2x=\sin^{n-2}x-\sin^nx$ and
+\[\int\sin^nx\,dx=-\sin^{n-1}x\cos x+(n-1)\int\sin^{n-2}x\,dx-(n-1)\int\sin^nx\,dx .\]
+The unknown integral $\int\sin^nx\,dx$ appears on both sides. Adding $(n-1)\int\sin^nx\,dx$ to both sides gives $n\int\sin^nx\,dx=-\sin^{n-1}x\cos x+(n-1)\int\sin^{n-2}x\,dx$, and dividing by $n$ gives the formula. (Each integral sign stands for one fixed antiderivative; all constants are collected in the final $+C$.)
+
+\emph{Cosine.} Take $u=\cos^{n-1}x$, $dv=\cos x\,dx$, so $du=-(n-1)\cos^{n-2}x\sin x\,dx$ and $v=\sin x$:
+\[\int\cos^nx\,dx=\cos^{n-1}x\sin x+(n-1)\int\cos^{n-2}x\sin^2x\,dx=\cos^{n-1}x\sin x+(n-1)\int\cos^{n-2}x\,dx-(n-1)\int\cos^nx\,dx,\]
+using $\sin^2x=1-\cos^2x$. Adding $(n-1)\int\cos^nx\,dx$ to both sides and dividing by $n$ gives the formula.
+
+\emph{Definite form.} For $n\ge2$ the boundary terms vanish on $\left[0,\frac\pi2\right]$. For the sine, $-\sin^{n-1}x\cos x$ equals $-1\cdot0=0$ at $x=\frac\pi2$ (because $\sin\frac\pi2=1$ and $\cos\frac\pi2=0$) and $-0^{n-1}\cdot1=0$ at $x=0$ (because $n-1\ge1$). For the cosine, $\cos^{n-1}x\sin x$ equals $0^{n-1}\cdot1=0$ at $x=\frac\pi2$ and $1\cdot0=0$ at $x=0$. With the boundary terms gone, the formulas give the last statement.
+\end{proof}
+%@ t4-check | all(simplify(diff(-sin(x)**(nn-1)*cos(x)/nn,x)+(Q(nn-1,nn))*sin(x)**(nn-2)-sin(x)**nn) == 0 and simplify(diff(cos(x)**(nn-1)*sin(x)/nn,x)+(Q(nn-1,nn))*cos(x)**(nn-2)-cos(x)**nn) == 0 for nn in range(2,9)) and integrate(sin(x)**4,(x,0,pi/2)) == Q(3,4)*integrate(sin(x)**2,(x,0,pi/2)) and integrate(cos(x)**5,(x,0,pi/2)) == Q(4,5)*integrate(cos(x)**3,(x,0,pi/2)) | \end{proof}
+The formulas hold with $\sin^{n-2}x$ and $\cos^{n-2}x$ replaced by $1$ when $n=2$: $\int\sin^2x\,dx=-\frac{\sin x\cos x}2+\frac x2+C$. A later section of this chapter uses these formulas for products of powers of sine and cosine, and adds the corresponding formulas for the tangent and the secant.
+
+\begin{kc}{A reduction formula}{kcred}
+Use the reduction formula for $\cos^nx$ to evaluate $\int\cos^3x\,dx$. Then show that your answer equals $\sin x-\frac13\sin^3x$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The cyclic case: $e^{ax}\sin bx$ and $e^{ax}\cos bx$}
+
+Neither factor of $e^{ax}\sin bx$ gets simpler under differentiation, and the Pythagorean trick of the last proof has a relative here: after two rounds of parts the \emph{original integral} comes back, with a coefficient different from $1$, and we solve for it.
+
+\begin{thm}{The cyclic integrals}{cyc}
+Let $a$ and $b$ be real numbers, not both $0$. Then
+\[\int e^{ax}\sin bx\,dx=\frac{e^{ax}\left(a\sin bx-b\cos bx\right)}{a^2+b^2}+C,\qquad\int e^{ax}\cos bx\,dx=\frac{e^{ax}\left(a\cos bx+b\sin bx\right)}{a^2+b^2}+C .\]
+\end{thm}
+\begin{proof}
+If $b=0$ then $a\ne0$, $\sin bx=0$ and $\cos bx=1$, and the formulas say $0+C$ and $\frac{e^{ax}}a+C$, which are correct. Let $b\ne0$ and write $S=\int e^{ax}\sin bx\,dx$ and $K=\int e^{ax}\cos bx\,dx$. In the first round take $u=e^{ax}$, $dv=\sin bx\,dx$, so $du=ae^{ax}\,dx$ and $v=-\frac1b\cos bx$:
+\[S=-\frac{e^{ax}\cos bx}b+\frac ab\int e^{ax}\cos bx\,dx=-\frac{e^{ax}\cos bx}b+\frac abK .\]
+In the second round, for $K$, again take $u=e^{ax}$ (the \emph{same type} of choice), $dv=\cos bx\,dx$, so $v=\frac1b\sin bx$:
+\[K=\frac{e^{ax}\sin bx}b-\frac ab\int e^{ax}\sin bx\,dx=\frac{e^{ax}\sin bx}b-\frac abS .\]
+Substituting this expression for $K$ into the equation for $S$,
+\[S=-\frac{e^{ax}\cos bx}b+\frac ab\left(\frac{e^{ax}\sin bx}b-\frac abS\right)=\frac{e^{ax}\left(a\sin bx-b\cos bx\right)}{b^2}-\frac{a^2}{b^2}S .\]
+Moving the last term to the left, $\left(1+\frac{a^2}{b^2}\right)S=\frac{a^2+b^2}{b^2}S=\frac{e^{ax}\left(a\sin bx-b\cos bx\right)}{b^2}$, and dividing by $\frac{a^2+b^2}{b^2}\ne0$ gives the first formula (plus a constant). For the second, substitute the first formula into $K=\frac{e^{ax}\sin bx}b-\frac abS$:
+\[K=\frac{e^{ax}\sin bx}b-\frac{a\,e^{ax}\left(a\sin bx-b\cos bx\right)}{b\left(a^2+b^2\right)}=\frac{e^{ax}\left[\left(a^2+b^2\right)\sin bx-a^2\sin bx+ab\cos bx\right]}{b\left(a^2+b^2\right)}=\frac{e^{ax}\left(a\cos bx+b\sin bx\right)}{a^2+b^2}.\]
+\end{proof}
+%@ t5-check | simplify(diff(exp(a*x)*(a*sin(b*x)-b*cos(b*x))/(a**2+b**2),x)-exp(a*x)*sin(b*x)) == 0 and simplify(diff(exp(a*x)*(a*cos(b*x)+b*sin(b*x))/(a**2+b**2),x)-exp(a*x)*cos(b*x)) == 0 | \end{proof}
+
+\begin{warn}[Choose the same type twice]
+In the second round of the cyclic case, the choice of $u$ must be the \emph{same type} as in the first round (here, the exponential both times). If in the second round you take $u=\cos bx$ and $dv=e^{ax}\,dx$ instead, you simply undo the first round and obtain the true but useless statement $S=S$. If the first round used $u=\sin bx$, then both rounds must use trigonometric $u$.
+\end{warn}
+
+\begin{exmp}{A cyclic integral}{m7}
+Find $\int e^{2x}\cos3x\,dx$.
+
+\textbf{Solution.} Let $I=\int e^{2x}\cos3x\,dx$ and $J=\int e^{2x}\sin3x\,dx$. \emph{Round 1.} $u=e^{2x}$, $dv=\cos3x\,dx$, so $du=2e^{2x}\,dx$, $v=\frac13\sin3x$:
+\[I=\frac13e^{2x}\sin3x-\frac23J .\]
+\emph{Round 2.} For $J$, again $u=e^{2x}$, $dv=\sin3x\,dx$, so $du=2e^{2x}\,dx$, $v=-\frac13\cos3x$:
+\[J=-\frac13e^{2x}\cos3x+\frac23I .\]
+\emph{Substitute and solve.} Replacing $J$ in the first equation,
+\[I=\frac13e^{2x}\sin3x-\frac23\left(-\frac13e^{2x}\cos3x+\frac23I\right)=\frac13e^{2x}\sin3x+\frac29e^{2x}\cos3x-\frac49I .\]
+Add $\frac49I$ to both sides: $\frac{13}9I=\frac{e^{2x}}9\left(3\sin3x+2\cos3x\right)$. Multiply by $\frac9{13}$:
+\[\int e^{2x}\cos3x\,dx=\frac{e^{2x}\left(2\cos3x+3\sin3x\right)}{13}+C .\]
+%@ m7a | simplify(diff(exp(2*x)*(2*cos(3*x)+3*sin(3*x))/13,x)-exp(2*x)*cos(3*x)) == 0 and Q(4,9)+1 == Q(13,9) and Q(1,9)*Q(9,13) == Q(1,13) | =\frac{e^{2x}\left(2\cos3x+3\sin3x\right)}{13}+C .\]
+This agrees with Theorem~\ref{thm:cyc} for $a=2$, $b=3$, $a^2+b^2=13$. \emph{Check.} $\frac{d}{dx}\frac{e^{2x}(2\cos3x+3\sin3x)}{13}=\frac{e^{2x}\left[2(2\cos3x+3\sin3x)+(-6\sin3x+9\cos3x)\right]}{13}=\frac{13e^{2x}\cos3x}{13}$.
+%@ m7b | simplify(2*(2*cos(3*x)+3*sin(3*x))+(-6*sin(3*x)+9*cos(3*x))-13*cos(3*x)) == 0 and simplify(diff(exp(2*x)*(2*cos(3*x)+3*sin(3*x))/13,x)-13*exp(2*x)*cos(3*x)/13) == 0 | =\frac{13e^{2x}\cos3x}{13}$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The tabular method for a polynomial times an easy function}
+
+When the integrand is $p(x)\,g(x)$ with $p$ a polynomial and $g$ a function that can be integrated over and over, repeated parts always follows the same pattern: differentiate $p$ until it vanishes, integrate $g$ as many times, and add up the products with alternating signs. The \emph{tabular method} (also called tabular integration) records this pattern in a table. The theorem says exactly what the table computes and why it ends.
+
+Let $g$ be continuous on an interval. Choose antiderivatives $G_1,G_2,\dots$ \emph{step by step}: $G_1'=g$, $G_2'=G_1$, $G_3'=G_2$, and so on, each with no added constant (so $G_{k}$ is a $k$-fold antiderivative of $g$). It is convenient to also write $G_0=g$.
+
+\begin{thm}{The tabular method}{tab}
+Let $p$ be a polynomial of degree $n$ and $g$, $G_1,G_2,\dots,G_{n+1}$ as above. Then
+\[\int p(x)\,g(x)\,dx=\sum_{j=0}^{n}(-1)^jp^{(j)}(x)\,G_{j+1}(x)+C=pG_1-p'G_2+p''G_3-\cdots+(-1)^np^{(n)}G_{n+1}+C .\]
+\end{thm}
+\begin{proof}
+Let $A_j=p^{(j)}G_j$ for $j=0,1,\dots,n+1$, so that $A_0=pg$. By the Product Rule, since $\left(p^{(j)}\right)'=p^{(j+1)}$ and $G_{j+1}'=G_j$,
+\[\frac{d}{dx}\left(p^{(j)}G_{j+1}\right)=p^{(j+1)}G_{j+1}+p^{(j)}G_j=A_{j+1}+A_j .\]
+Multiply by $(-1)^j$ and add for $j=0,1,\dots,n$. The sum of the derivatives of the terms telescopes:
+\[\frac{d}{dx}\sum_{j=0}^n(-1)^jp^{(j)}G_{j+1}=\sum_{j=0}^n(-1)^j\left(A_j+A_{j+1}\right)=\left(A_0+A_1\right)-\left(A_1+A_2\right)+\cdots+(-1)^n\left(A_n+A_{n+1}\right)=A_0+(-1)^nA_{n+1},\]
+because every other $A_j$ appears once with each sign. But $A_{n+1}=p^{(n+1)}G_{n+1}=0$, since a polynomial of degree $n$ has $p^{(n+1)}=0$. Hence the derivative of the sum is $A_0=pg$, so the sum is an antiderivative of $pg$, and every antiderivative differs from it by a constant.
+\end{proof}
+
+\emph{Why a polynomial?} The telescoping argument works for any smooth $p$, but then the leftover term $(-1)^{n}A_{n+1}$ is $(-1)^{n}p^{(n+1)}G_{n+1}$, which is zero only when $p^{(n+1)}=0$. For a general factor the process does not stop, so the method needs a polynomial (or a polynomial times a factor that is handled as part of $g$).
+
+\emph{The table.} Make rows $j=0,1,\dots,n$ listing $p^{(j)}$ and $G_{j+1}$, and add the products with signs $+,-,+,-,\dots$ (the diagonal products of ``differentiate'' and ``integrate'' columns in the usual picture):
+\[\begin{array}{c|c|c}\text{sign}&p^{(j)}&G_{j+1}\\\hline+&p&G_1\\-&p'&G_2\\+&p''&G_3\\\vdots&\vdots&\vdots\end{array}\]
+The answer is the sum of (sign)$\times p^{(j)}\times G_{j+1}$ over the rows. The table stops after the row in which $p^{(j)}$ is the constant (the last nonzero derivative).
+
+\begin{exmp}{The tabular method}{m8}
+Find $\int\left(x^3-2x\right)e^{2x}\,dx$.
+
+\textbf{Solution.} Here $p(x)=x^3-2x$ has degree $3$ and $g(x)=e^{2x}$. Differentiate $p$ until it vanishes, and integrate $g$ repeatedly (each antiderivative of $e^{2x}$ is $\frac12$ of the previous one, by formula (9)):
+\[\begin{array}{c|c|c}\text{sign}&p^{(j)}&G_{j+1}\\\hline+&x^3-2x&\frac12e^{2x}\\-&3x^2-2&\frac14e^{2x}\\+&6x&\frac18e^{2x}\\-&6&\frac1{16}e^{2x}\end{array}\]
+The next derivative is $0$, so the table stops. Adding the signed products,
+\[\int\left(x^3-2x\right)e^{2x}\,dx=\left(x^3-2x\right)\frac{e^{2x}}2-\left(3x^2-2\right)\frac{e^{2x}}4+6x\,\frac{e^{2x}}8-6\,\frac{e^{2x}}{16}+C .\]
+Factor out $e^{2x}$ and combine like terms: $\frac{x^3}2-x-\frac{3x^2}4+\frac12+\frac{3x}4-\frac38=\frac{x^3}2-\frac{3x^2}4-\frac x4+\frac18$, so
+\[\int\left(x^3-2x\right)e^{2x}\,dx=e^{2x}\left(\frac{x^3}2-\frac{3x^2}4-\frac x4+\frac18\right)+C .\]
+%@ m8a | simplify(x**3/2-x-Q(3,4)*x**2+Q(1,2)+Q(3,4)*x-Q(3,8)-(x**3/2-Q(3,4)*x**2-x/4+Q(1,8))) == 0 and simplify(diff(exp(2*x)*(x**3/2-Q(3,4)*x**2-x/4+Q(1,8)),x)-(x**3-2*x)*exp(2*x)) == 0 | =e^{2x}\left(\frac{x^3}2-\frac{3x^2}4-\frac x4+\frac18\right)+C .\]
+\emph{Check by differentiating.} By the Product Rule, $\frac{d}{dx}\left[e^{2x}q(x)\right]=e^{2x}\left(2q+q'\right)$ with $q=\frac{x^3}2-\frac{3x^2}4-\frac x4+\frac18$ and $q'=\frac{3x^2}2-\frac{3x}2-\frac14$. Then $2q+q'=x^3-\frac{3x^2}2-\frac x2+\frac14+\frac{3x^2}2-\frac{3x}2-\frac14=x^3-2x$.
+%@ m8b | simplify(2*(x**3/2-Q(3,4)*x**2-x/4+Q(1,8))+(Q(3,2)*x**2-Q(3,2)*x-Q(1,4))-(x**3-2*x)) == 0 and expand(diff(x**3/2-Q(3,4)*x**2-x/4+Q(1,8),x)-(Q(3,2)*x**2-Q(3,2)*x-Q(1,4))) == 0 | =x^3-\frac{3x^2}2-\frac x2+\frac14+\frac{3x^2}2-\frac{3x}2-\frac14=x^3-2x$.
+\end{exmp}
+
+\begin{think}{When the table cannot be used}{notab}
+Can you use the tabular method for $\int x^2\ln x\,dx$ by placing $x^2$ in the ``differentiate'' column and $\ln x$ in the ``integrate'' column? What are the first two entries of the column of $G_{k}$, and why is the method not an efficient choice here? What does LIATE suggest instead?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Parts together with substitution}
+
+Many integrals need both techniques, in either order. A substitution (Theorem~\ref{8.1-thm:subst}) may produce an integral that parts handles, and parts may leave an integral that a substitution finishes, as in the proof of Theorem~\ref{thm:inv}.
+
+\begin{exmp}{Substitution first, then parts}{m9}
+Find $\int e^{3\sqrt x}\,dx$ for $x>0$.
+
+\textbf{Solution.} The square root inside the exponential suggests $w=\sqrt x$. Then $x=w^2$ and $dx=2w\,dw$, so
+\[\int e^{3\sqrt x}\,dx=\int e^{3w}\cdot2w\,dw=2\int we^{3w}\,dw .\]
+Now integrate by parts: $u=w$, $dv=e^{3w}\,dw$, $du=dw$, $v=\frac13e^{3w}$:
+\[2\int we^{3w}\,dw=2\left(\frac w3e^{3w}-\frac13\int e^{3w}\,dw\right)=2\left(\frac w3e^{3w}-\frac19e^{3w}\right)+C=\frac29e^{3w}\left(3w-1\right)+C .\]
+Return to $x$ with $w=\sqrt x$:
+\[\int e^{3\sqrt x}\,dx=\frac29\,e^{3\sqrt x}\left(3\sqrt x-1\right)+C .\]
+%@ m9a | simplify(diff(Q(2,9)*exp(3*sqrt(x))*(3*sqrt(x)-1),x)-exp(3*sqrt(x))) == 0 and Q(2,1)*Q(1,3) == Q(2,3) and expand(2*(x/3-Q(1,9))-Q(2,9)*(3*x-1)) == 0 | \frac29\,e^{3\sqrt x}\left(3\sqrt x-1\right)+C .\]
+\emph{Check.} With $F=\frac29e^{3\sqrt x}\left(3\sqrt x-1\right)$ and $\frac{d}{dx}\sqrt x=\frac1{2\sqrt x}$: $F'=\frac29\left[\frac{3}{2\sqrt x}e^{3\sqrt x}\left(3\sqrt x-1\right)+e^{3\sqrt x}\cdot\frac3{2\sqrt x}\right]=\frac29\cdot\frac{3e^{3\sqrt x}}{2\sqrt x}\cdot3\sqrt x=e^{3\sqrt x}$.
+%@ m9b | simplify(Q(2,9)*(3/(2*sqrt(x))*exp(3*sqrt(x))*(3*sqrt(x)-1)+exp(3*sqrt(x))*3/(2*sqrt(x)))-exp(3*sqrt(x))) == 0 | =e^{3\sqrt x}$.
+\end{exmp}
+
+\begin{exmp}{A challenging integral: parts, then substitution}{m10}
+Find $\int x^2\sin^{-1}x\,dx$ for $-1<x<1$, and evaluate $\int_0^1x^2\sin^{-1}x\,dx$.
+
+\textbf{Solution.} $\sin^{-1}x$ comes first in LIATE, so $u=\sin^{-1}x$, $dv=x^2\,dx$, $du=\frac{dx}{\sqrt{1-x^2}}$, $v=\frac{x^3}3$:
+\[\int x^2\sin^{-1}x\,dx=\frac{x^3}3\sin^{-1}x-\frac13\int\frac{x^3}{\sqrt{1-x^2}}\,dx .\]
+For the new integral let $w=1-x^2$, so $x^2=1-w$ and $x\,dx=-\frac12\,dw$. Write $x^3\,dx=x^2\cdot x\,dx=(1-w)\left(-\frac12\,dw\right)$. Then
+\[\int\frac{x^3}{\sqrt{1-x^2}}\,dx=-\frac12\int\frac{1-w}{\sqrt w}\,dw=-\frac12\int\left(w^{-1/2}-w^{1/2}\right)dw=-\frac12\left(2w^{1/2}-\frac23w^{3/2}\right)=-\sqrt w+\frac13w^{3/2}.\]
+Back in $x$: $-\sqrt{1-x^2}+\frac13\left(1-x^2\right)^{3/2}$. Therefore
+\[\int x^2\sin^{-1}x\,dx=\frac{x^3}3\sin^{-1}x+\frac13\sqrt{1-x^2}-\frac19\left(1-x^2\right)^{3/2}+C .\]
+%@ m10a | simplify(diff(-sqrt(1-x**2)+(1-x**2)**Q(3,2)/3,x)-x**3/sqrt(1-x**2)) == 0 and simplify(diff(x**3*asin(x)/3+sqrt(1-x**2)/3-(1-x**2)**Q(3,2)/9,x)-x**2*asin(x)) == 0 | \frac{x^3}3\sin^{-1}x+\frac13\sqrt{1-x^2}-\frac19\left(1-x^2\right)^{3/2}+C .\]
+\emph{Check by differentiating.} With $F$ the right side, $F'=x^2\sin^{-1}x+\frac{x^3}{3\sqrt{1-x^2}}-\frac{x}{3\sqrt{1-x^2}}+\frac x3\sqrt{1-x^2}$. Since $x^3-x=-x\left(1-x^2\right)$, the second and third terms combine to $-\frac{x\left(1-x^2\right)}{3\sqrt{1-x^2}}=-\frac x3\sqrt{1-x^2}$, which cancels the last term, so $F'=x^2\sin^{-1}x$.
+%@ m10b | simplify(x**3/(3*sqrt(1-x**2))-x/(3*sqrt(1-x**2))+x*sqrt(1-x**2)/3) == 0 and simplify(x**3/(3*sqrt(1-x**2))-x/(3*sqrt(1-x**2))+x*sqrt(1-x**2)/3+x**2*asin(x)-x**2*asin(x)) == 0 | which cancels the last term, so $F'=x^2\sin^{-1}x$.
+\emph{The definite integral.} $F$ is continuous on $[0,1]$ (the integrand is continuous there too, since $\sin^{-1}$ is continuous at $1$), so the Fundamental Theorem gives $F(1)-F(0)$ with $F(1)=\frac13\cdot\frac\pi2+0-0=\frac\pi6$ and $F(0)=0+\frac13-\frac19=\frac29$:
+\[\int_0^1x^2\sin^{-1}x\,dx=\frac\pi6-\frac29\approx0.3014 .\]
+%@ m10c | abs(float(Integral(x**2*asin(x),(x,0,1)).evalf())-0.3014) < 1e-4 and Q(1,3)-Q(1,9) == Q(2,9) and simplify(integrate(x**2*asin(x),(x,0,1))-(pi/6-Q(2,9))) == 0 | \int_0^1x^2\sin^{-1}x\,dx=\frac\pi6-\frac29\approx0.3014 .\]
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Pitfalls: errors and answers that look different}
+
+\begin{exmp}{Two common errors}{m11}
+Two students try to integrate by parts. Find each mistake, give the correct antiderivative, and show how differentiating would have caught the error. (a)~$\int x\sin x\,dx$ with $u=x$, $dv=\sin x\,dx$: the student writes $v=\cos x$ and obtains $x\cos x-\sin x+C$. (b)~$\int xe^{2x}\,dx$ with $u=x$, $dv=e^{2x}\,dx$: the student writes $v=e^{2x}$ and obtains $xe^{2x}-\frac12e^{2x}+C$.
+
+\textbf{Solution.} (a) \emph{The mistake} is the sign of $v$: an antiderivative of $\sin x$ is $-\cos x$, not $\cos x$. With the correct $v=-\cos x$,
+\[\int x\sin x\,dx=x(-\cos x)-\int(-\cos x)\,dx=-x\cos x+\sin x+C .\]
+%@ m11a | simplify(diff(-x*cos(x)+sin(x),x)-x*sin(x)) == 0 | =x(-\cos x)-\int(-\cos x)\,dx=-x\cos x+\sin x+C .\]
+\emph{Check of the wrong answer:} $\frac{d}{dx}\left[x\cos x-\sin x\right]=\cos x-x\sin x-\cos x=-x\sin x$, the \emph{negative} of the integrand, so the antiderivative is wrong. A sign error in $v$ usually shows up as an overall sign error like this.
+%@ m11b | simplify(diff(x*cos(x)-sin(x),x)+x*sin(x)) == 0 | =\cos x-x\sin x-\cos x=-x\sin x$, the \emph{negative} of the integrand, so the antiderivative is wrong. A sign error in $v$ usually shows up as an overall sign error like this.
+(b) \emph{The mistake} is that $v$ is not an antiderivative of $e^{2x}$ (the Chain Rule factor $\frac12$ is missing): $\frac{d}{dx}e^{2x}=2e^{2x}\ne e^{2x}$. The correct $v=\frac12e^{2x}$ gives
+\[\int xe^{2x}\,dx=x\cdot\frac12e^{2x}-\int\frac12e^{2x}\,dx=\frac12xe^{2x}-\frac14e^{2x}+C .\]
+%@ m11c | simplify(diff(x*exp(2*x)/2-exp(2*x)/4,x)-x*exp(2*x)) == 0 | =x\cdot\frac12e^{2x}-\int\frac12e^{2x}\,dx=\frac12xe^{2x}-\frac14e^{2x}+C .\]
+\emph{Check of the wrong answer:} $\frac{d}{dx}\left[xe^{2x}-\frac12e^{2x}\right]=e^{2x}+2xe^{2x}-e^{2x}=2xe^{2x}$, which is \emph{twice} the integrand. In both parts, the habit that prevents the error is to \emph{always differentiate $v$} to confirm that $v'=$ the factor you called $dv/dx$.
+%@ m11d | simplify(diff(x*exp(2*x)-exp(2*x)/2,x)-2*x*exp(2*x)) == 0 | =e^{2x}+2xe^{2x}-e^{2x}=2xe^{2x}$, which is \emph{twice} the integrand. In both parts, the habit that prevents the error is to \emph{always differentiate $v$} to confirm that $v'=$ the factor you called $dv/dx$.
+\end{exmp}
+
+Another frequent slip is forgetting the minus sign in front of $\int v\,du$, or dropping it when $v$ is negative; in Example~\ref{ex:m11}(a) two minus signs combine to a plus.
+
+\begin{exmp}{Two methods, answers that differ by a constant}{m12}
+Find $\int\sin x\cos x\,dx$ by parts and by substitution, and reconcile the answers.
+
+\textbf{Solution.} \emph{By parts.} Let $I=\int\sin x\cos x\,dx$ and take $u=\sin x$, $dv=\cos x\,dx$, so $du=\cos x\,dx$ and $v=\sin x$:
+\[I=\sin^2x-\int\sin x\cos x\,dx=\sin^2x-I\quad\Longrightarrow\quad2I=\sin^2x\quad\Longrightarrow\quad I=\frac{\sin^2x}2+C_1 .\]
+\emph{By substitution.} Let $w=\cos x$, $dw=-\sin x\,dx$ (Theorem~\ref{8.1-thm:subst}):
+\[I=-\int w\,dw=-\frac{w^2}2+C_2=-\frac{\cos^2x}2+C_2 .\]
+\emph{Reconcile.} The two antiderivatives look different. But $\cos^2x=1-\sin^2x$, so
+\[-\frac{\cos^2x}2=-\frac{1-\sin^2x}2=\frac{\sin^2x}2-\frac12 .\]
+They differ by the constant $\frac12$, as two antiderivatives of the same function on an interval must. A third form comes from the identity $\sin x\cos x=\frac12\sin2x$: $\int\frac12\sin2x\,dx=-\frac14\cos2x$, and $-\frac14\cos2x=-\frac14\left(1-2\sin^2x\right)=\frac{\sin^2x}2-\frac14$, which differs from the first by $\frac14$.
+%@ m12a | simplify(diff(sin(x)**2/2,x)-sin(x)*cos(x)) == 0 and simplify(diff(-cos(x)**2/2,x)-sin(x)*cos(x)) == 0 and simplify(sin(x)**2/2-(-cos(x)**2/2)) == Q(1,2) and simplify((-cos(2*x)/4)-(sin(x)**2/2)) == -Q(1,4) | which differs from the first by $\frac14$.
+\emph{Why it never matters for definite integrals.} Any antiderivative gives the same value: $\left[\frac{\sin^2x}2\right]_0^{\pi/2}=\frac12-0=\frac12$ and $\left[-\frac{\cos^2x}2\right]_0^{\pi/2}=0-\left(-\frac12\right)=\frac12$. Figure~3 shows the two antiderivatives: one curve is the other shifted up by $\frac12$.
+%@ m12b | integrate(sin(x)*cos(x),(x,0,pi/2)) == Q(1,2) and (sin(pi/2)**2/2-sin(0)**2/2) == Q(1,2) and (-cos(pi/2)**2/2+cos(0)**2/2) == Q(1,2) | \left[\frac{\sin^2x}2\right]_0^{\pi/2}=\frac12-0=\frac12$ and $\left[-\frac{\cos^2x}2\right]_0^{\pi/2}=0-\left(-\frac12\right)=\frac12$. Figure~3 shows the two antiderivatives: one curve is the other shifted up by $\frac12$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=3.2cm]
+  \draw[->] (-0.2,0) -- (6.8,0) node[right] {$x$};
+  \draw[->] (0,-0.62) -- (0,0.68) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:6.283,samples=80,variable=\t] plot ({\t},{sin(\t r)*sin(\t r)/2});
+  \draw[very thick,red!70!black,domain=0:6.283,samples=80,variable=\t] plot ({\t},{-cos(\t r)*cos(\t r)/2});
+  \draw[dashed] (1.5708,0) -- (1.5708,0.5);
+  \fill (1.5708,0.5) circle (1.6pt) node[above right,font=\small] {$(\frac\pi2,\frac12)$};
+%@ g3-top | (lambda x0: sin(x0)**2/2 == Q(1,2) and abs(float(x0)-1.5708) < 1e-4)(pi/2) | \fill (1.5708,0.5) circle (1.6pt) node[above right,font=\small] {$(\frac\pi2,\frac12)$};
+  \fill (1.5708,0) circle (1.6pt) node[below right,font=\small] {$(\frac\pi2,0)$};
+%@ g3-mid | (lambda x0: -cos(x0)**2/2 == 0 and abs(float(x0)-1.5708) < 1e-4)(pi/2) | \fill (1.5708,0) circle (1.6pt) node[below right,font=\small] {$(\frac\pi2,0)$};
+  \fill (0,-0.5) circle (1.6pt) node[below left,font=\small] {$(0,-\frac12)$};
+%@ g3-low | -cos(0)**2/2 == -Q(1,2) and sin(0)**2/2 == 0 | \fill (0,-0.5) circle (1.6pt) node[below left,font=\small] {$(0,-\frac12)$};
+  \node[blue!70!black,font=\small] at (4.2,0.62) {$y=\frac12\sin^2x$};
+  \node[red!70!black,font=\small] at (4.2,-0.57) {$y=-\frac12\cos^2x$};
+  \node[below,font=\small] at (3.1416,-0.01) {$\pi$};
+  \node[below,font=\small] at (6.283,-0.01) {$2\pi$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 3. Two antiderivatives of $\sin x\cos x$ differ by the constant $\frac12$ (compare the heights $\frac12$ and $0$ at $x=\frac\pi2$).\end{center}
+\end{exmp}
+
+\begin{remark}[Reconciling answers]
+When two correct methods give answers that look different, do not expect them to match term by term. Differentiate each (both must give the integrand), or subtract them and use an identity to see that the difference is constant. The same happens in Section~8.1 (Example~\ref{8.1-ex:m7}), and in general after trigonometric identities, long division or a different substitution. A constant, say $\frac12$, can be absorbed into the arbitrary constant $C$.
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+Integration by parts is the most flexible technique of this chapter. A later section of this chapter applies the reduction formulas of this section to products of powers of sine and cosine, and extends them to powers of tangent and secant; the next technique after that, trigonometric substitution, produces exactly such integrals. Parts is also the tool behind several results of later chapters: the integral form of the error in a Taylor polynomial is derived by repeated integration by parts, integrals of $x^ne^x$ appear in estimates of those errors, and integrals of $x^ne^{-x}$ over an infinite interval lead to factorials (see the section on improper integrals). Wallis's formula for $\pi$ comes from the reduction formula for $\sin^nx$ (Example~\ref{ex:b14} in the bank below).
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: repeated parts with a polynomial factor.
+  \item Group 2: a logarithm and an inverse function (the factor $dv=dx$ trick).
+  \item Group 3: cyclic integrals, including one after a substitution.
+  \item Group 4: definite integrals.
+  \item Group 5: parts combined with substitution or powers of a logarithm.
+  \item Group 6: reduction formulas.
+  \item Group 7: proofs.
+\end{itemize}
+
+\subsection*{Group 1: Polynomial times exponential or trigonometric}
+
+\begin{exmp}{A linear factor}{b1}
+Find $\int(2x+5)e^{4x}\,dx$.
+
+\textbf{Solution.} $u=2x+5$ (algebraic before exponential), $dv=e^{4x}\,dx$, so $du=2\,dx$, $v=\frac14e^{4x}$:
+\[\int(2x+5)e^{4x}\,dx=\frac{(2x+5)e^{4x}}4-\frac12\int e^{4x}\,dx=\frac{(2x+5)e^{4x}}4-\frac{e^{4x}}8+C .\]
+Combine over $8$: $\frac{2(2x+5)-1}8e^{4x}$, so the answer is
+\[\int(2x+5)e^{4x}\,dx=\frac{e^{4x}(4x+9)}8+C .\]
+\emph{Check.} $\frac{d}{dx}\frac{e^{4x}(4x+9)}8=\frac{e^{4x}\left[4(4x+9)+4\right]}8=\frac{e^{4x}(16x+40)}8=(2x+5)e^{4x}$.
+%@ b1 | simplify(diff(exp(4*x)*(4*x+9)/8,x)-(2*x+5)*exp(4*x)) == 0 and 2*(2*x+5)-1-(4*x+9) == 0 and 4*(4*x+9)+4 == 16*x+40 | =\frac{e^{4x}\left[4(4x+9)+4\right]}8=\frac{e^{4x}(16x+40)}8=(2x+5)e^{4x}$.
+\end{exmp}
+
+\begin{exmp}{A quadratic times a cosine, by the table}{b2}
+Find $\int\left(x^2-3x\right)\cos2x\,dx$.
+
+\textbf{Solution.} $p=x^2-3x$ and $g=\cos2x$. By Theorem~\ref{thm:tab}, differentiate $p$ and integrate $g$ repeatedly: $p'=2x-3$, $p''=2$, and $G_1=\frac12\sin2x$, $G_2=-\frac14\cos2x$, $G_3=-\frac18\sin2x$.
+\[\begin{array}{c|c|c}\text{sign}&p^{(j)}&G_{j+1}\\\hline+&x^2-3x&\frac12\sin2x\\-&2x-3&-\frac14\cos2x\\+&2&-\frac18\sin2x\end{array}\]
+Adding the signed products,
+\[\int\left(x^2-3x\right)\cos2x\,dx=\frac{(x^2-3x)\sin2x}2+\frac{(2x-3)\cos2x}4-\frac{\sin2x}4+C .\]
+\emph{Check.} The derivative of the first term is $\frac{(2x-3)\sin2x}2+(x^2-3x)\cos2x$; of the second, $\frac{\cos2x}2-\frac{(2x-3)\sin2x}2$; of the third, $-\frac{\cos2x}2$. The $\sin2x$ terms cancel, the $\cos2x$ terms cancel, and $(x^2-3x)\cos2x$ remains.
+%@ b2 | simplify(diff((x**2-3*x)*sin(2*x)/2+(2*x-3)*cos(2*x)/4-sin(2*x)/4,x)-(x**2-3*x)*cos(2*x)) == 0 and simplify(integrate(cos(2*x),x)-sin(2*x)/2) == 0 and simplify(integrate(sin(2*x)/2,x)+cos(2*x)/4) == 0 | the $\cos2x$ terms cancel, and $(x^2-3x)\cos2x$ remains.
+\end{exmp}
+
+\subsection*{Group 2: Logarithms and inverse functions}
+
+\begin{exmp}{A logarithm over a power}{b3}
+Find $\int\frac{\ln x}{x^2}\,dx$ for $x>0$.
+
+\textbf{Solution.} $u=\ln x$ (logarithm first), $dv=x^{-2}\,dx$, so $du=\frac{dx}x$, $v=-\frac1x$:
+\[\int\frac{\ln x}{x^2}\,dx=-\frac{\ln x}x+\int\frac1x\cdot\frac1x\,dx=-\frac{\ln x}x+\int x^{-2}\,dx=-\frac{\ln x}x-\frac1x+C=-\frac{1+\ln x}x+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{1+\ln x}x\right]=-\frac{\frac1x\cdot x-(1+\ln x)}{x^2}=\frac{\ln x}{x^2}$.
+%@ b3 | simplify(diff(-(1+log(x))/x,x)-log(x)/x**2) == 0 and simplify(-((1/x)*x-(1+log(x)))/x**2-log(x)/x**2) == 0 | =-\frac{\frac1x\cdot x-(1+\ln x)}{x^2}=\frac{\ln x}{x^2}$.
+\end{exmp}
+
+\begin{exmp}{An inverse sine with a scaled argument}{b4}
+Find $\int\sin^{-1}(3x)\,dx$ for $\lvert x\rvert<\frac13$.
+
+\textbf{Solution.} $u=\sin^{-1}3x$, $dv=dx$, so $du=\frac{3\,dx}{\sqrt{1-9x^2}}$ (Chain Rule) and $v=x$:
+\[\int\sin^{-1}3x\,dx=x\sin^{-1}3x-\int\frac{3x}{\sqrt{1-9x^2}}\,dx .\]
+Let $w=1-9x^2$, $dw=-18x\,dx$, so $3x\,dx=-\frac16\,dw$:
+\[\int\frac{3x}{\sqrt{1-9x^2}}\,dx=-\frac16\int w^{-1/2}\,dw=-\frac13\sqrt w=-\frac13\sqrt{1-9x^2} .\]
+Therefore
+\[\int\sin^{-1}3x\,dx=x\sin^{-1}3x+\frac13\sqrt{1-9x^2}+C .\]
+\emph{Check.} $\frac{d}{dx}\left[\frac13\sqrt{1-9x^2}\right]=\frac13\cdot\frac{-18x}{2\sqrt{1-9x^2}}=-\frac{3x}{\sqrt{1-9x^2}}$, which cancels the second term of $\frac{d}{dx}\left[x\sin^{-1}3x\right]=\sin^{-1}3x+\frac{3x}{\sqrt{1-9x^2}}$.
+%@ b4 | simplify(diff(x*asin(3*x)+sqrt(1-9*x**2)/3,x)-asin(3*x)) == 0 and simplify(diff(sqrt(1-9*x**2)/3,x)+3*x/sqrt(1-9*x**2)) == 0 | \frac{d}{dx}\left[x\sin^{-1}3x\right]=\sin^{-1}3x+\frac{3x}{\sqrt{1-9x^2}}$.
+\end{exmp}
+
+\subsection*{Group 3: Cyclic integrals}
+
+\begin{exmp}{A decaying exponential times a sine}{b5}
+Find $\int e^{-3x}\sin2x\,dx$.
+
+\textbf{Solution.} This is Theorem~\ref{thm:cyc} with $a=-3$, $b=2$, $a^2+b^2=13$:
+\[\int e^{-3x}\sin2x\,dx=\frac{e^{-3x}\left(-3\sin2x-2\cos2x\right)}{13}+C=-\frac{e^{-3x}\left(3\sin2x+2\cos2x\right)}{13}+C .\]
+\emph{Check.} $\frac{d}{dx}\left[-\frac{e^{-3x}(3\sin2x+2\cos2x)}{13}\right]=-\frac{e^{-3x}\left[-3(3\sin2x+2\cos2x)+6\cos2x-4\sin2x\right]}{13}=-\frac{e^{-3x}\left(-13\sin2x\right)}{13}=e^{-3x}\sin2x$.
+%@ b5 | simplify(diff(-exp(-3*x)*(3*sin(2*x)+2*cos(2*x))/13,x)-exp(-3*x)*sin(2*x)) == 0 and simplify(-3*(3*sin(2*x)+2*cos(2*x))+6*cos(2*x)-4*sin(2*x)+13*sin(2*x)) == 0 | =-\frac{e^{-3x}\left(-13\sin2x\right)}{13}=e^{-3x}\sin2x$.
+\end{exmp}
+
+\begin{exmp}{A cyclic integral after a substitution}{b6}
+Find $\int\sin(\ln x)\,dx$ for $x>0$.
+
+\textbf{Solution.} Let $w=\ln x$, so $x=e^w$ and $dx=e^w\,dw$: $\int\sin(\ln x)\,dx=\int e^w\sin w\,dw$. By Theorem~\ref{thm:cyc} with $a=b=1$ (so $a^2+b^2=2$),
+\[\int e^w\sin w\,dw=\frac{e^w(\sin w-\cos w)}2+C .\]
+Return to $x$ with $e^w=x$ and $w=\ln x$:
+\[\int\sin(\ln x)\,dx=\frac{x\left(\sin(\ln x)-\cos(\ln x)\right)}2+C .\]
+\emph{Check.} $\frac{d}{dx}$ of this is $\frac12\left[\sin(\ln x)-\cos(\ln x)\right]+\frac x2\left[\frac{\cos(\ln x)}x+\frac{\sin(\ln x)}x\right]=\sin(\ln x)$.
+%@ b6 | simplify(diff(x*(sin(log(x))-cos(log(x)))/2,x)-sin(log(x))) == 0 and simplify(Q(1,2)*(sin(log(x))-cos(log(x)))+Q(1,2)*(cos(log(x))+sin(log(x)))-sin(log(x))) == 0 | \frac x2\left[\frac{\cos(\ln x)}x+\frac{\sin(\ln x)}x\right]=\sin(\ln x)$.
+\end{exmp}
+
+\subsection*{Group 4: Definite integrals}
+
+\begin{exmp}{Parts twice on an interval}{b7}
+Evaluate $\int_0^{\pi/2}x^2\cos x\,dx$.
+
+\textbf{Solution.} By the table, with $p=x^2$ and $g=\cos x$ ($G_1=\sin x$, $G_2=-\cos x$, $G_3=-\sin x$), an antiderivative is $x^2\sin x-2x(-\cos x)+2(-\sin x)=x^2\sin x+2x\cos x-2\sin x$. Evaluate:
+\[\Big[x^2\sin x+2x\cos x-2\sin x\Big]_0^{\pi/2}=\left(\frac{\pi^2}4+0-2\right)-(0+0-0)=\frac{\pi^2}4-2\approx0.4674 .\]
+\emph{Check.} The integrand is positive on $\left(0,\frac\pi2\right]$, and $0\le x^2\cos x\le\frac{\pi^2}4\cdot1$ gives an upper bound far above $0.47$, so the sign and size are plausible.
+%@ b7 | integrate(x**2*cos(x),(x,0,pi/2)) == pi**2/4-2 and abs(float(pi**2/4-2)-0.4674) < 1e-4 and simplify(diff(x**2*sin(x)+2*x*cos(x)-2*sin(x),x)-x**2*cos(x)) == 0 | =\frac{\pi^2}4-2\approx0.4674 .\]
+\end{exmp}
+
+\begin{exmp}{Area under an inverse tangent}{b8}
+Evaluate $\int_0^{\sqrt3}\tan^{-1}x\,dx$.
+
+\textbf{Solution.} By Theorem~\ref{thm:inv}, an antiderivative is $x\tan^{-1}x-\frac12\ln\left(1+x^2\right)$. At $x=\sqrt3$: $\tan^{-1}\sqrt3=\frac\pi3$ and $1+3=4$, so the value is $\frac{\sqrt3\,\pi}3-\frac12\ln4=\frac{\pi\sqrt3}3-\ln2$ (using $\frac12\ln4=\ln2$). At $x=0$ it is $0$. Hence
+\[\int_0^{\sqrt3}\tan^{-1}x\,dx=\frac{\pi\sqrt3}3-\ln2\approx1.8138-0.6931=1.1207 .\]
+%@ b8 | abs((integrate(atan(x),(x,0,sqrt(3)))-(pi*sqrt(3)/3-log(2))).evalf(30)) < 1e-20 and abs(float(pi*sqrt(3)/3-log(2))-1.1207) < 1e-4 | =\frac{\pi\sqrt3}3-\ln2\approx1.8138-0.6931=1.1207 .\]
+\end{exmp}
+
+\subsection*{Group 5: Parts with substitution or logarithm powers}
+
+\begin{exmp}{Substitute $w=x^2$, then parts}{b9}
+Find $\int x^3\cos\left(x^2\right)\,dx$.
+
+\textbf{Solution.} Let $w=x^2$, $dw=2x\,dx$, so $x^3\,dx=x^2\cdot x\,dx=\frac12w\,dw$:
+\[\int x^3\cos\left(x^2\right)dx=\frac12\int w\cos w\,dw .\]
+By parts, $u=w$, $dv=\cos w\,dw$: $\int w\cos w\,dw=w\sin w-\int\sin w\,dw=w\sin w+\cos w+C$. So
+\[\int x^3\cos\left(x^2\right)dx=\frac{x^2\sin\left(x^2\right)+\cos\left(x^2\right)}2+C .\]
+\emph{Check.} $\frac{d}{dx}\frac{x^2\sin x^2+\cos x^2}2=\frac{2x\sin x^2+2x^3\cos x^2-2x\sin x^2}2=x^3\cos x^2$.
+%@ b9 | simplify(diff((x**2*sin(x**2)+cos(x**2))/2,x)-x**3*cos(x**2)) == 0 and simplify(2*x*sin(x**2)+2*x**3*cos(x**2)-2*x*sin(x**2)-2*x**3*cos(x**2)) == 0 | =\frac{2x\sin x^2+2x^3\cos x^2-2x\sin x^2}2=x^3\cos x^2$.
+\end{exmp}
+
+\begin{exmp}{A squared logarithm on an interval}{b10}
+Evaluate $\int_1^e\frac{(\ln x)^2}{x^2}\,dx$.
+
+\textbf{Solution.} $u=(\ln x)^2$, $dv=x^{-2}\,dx$, so $du=\frac{2\ln x}x\,dx$, $v=-\frac1x$:
+\[\int\frac{(\ln x)^2}{x^2}\,dx=-\frac{(\ln x)^2}x+2\int\frac{\ln x}{x^2}\,dx .\]
+The last integral is Example~\ref{ex:b3}: $-\frac{1+\ln x}x$. So an antiderivative is $F(x)=-\frac{(\ln x)^2}x-\frac{2(1+\ln x)}x$. At $x=e$ ($\ln e=1$): $F(e)=-\frac1e-\frac4e=-\frac5e$. At $x=1$ ($\ln1=0$): $F(1)=0-2=-2$. Therefore
+\[\int_1^e\frac{(\ln x)^2}{x^2}\,dx=F(e)-F(1)=2-\frac5e\approx0.1606 .\]
+%@ b10 | abs((integrate(log(x)**2/x**2,(x,1,E))-(2-5/E)).evalf(30)) < 1e-20 and abs(float(2-5/E)-0.1606) < 1e-4 and simplify(diff(-log(x)**2/x-2*(1+log(x))/x,x)-log(x)**2/x**2) == 0 | =2-\frac5e\approx0.1606 .\]
+\end{exmp}
+
+\subsection*{Group 6: Reduction formulas}
+
+\begin{exmp}{The fourth power of the sine}{b11}
+Find $\int\sin^4x\,dx$.
+
+\textbf{Solution.} Theorem~\ref{thm:redtrig} with $n=4$, then with $n=2$:
+\[\int\sin^4x\,dx=-\frac{\sin^3x\cos x}4+\frac34\int\sin^2x\,dx,\qquad\int\sin^2x\,dx=-\frac{\sin x\cos x}2+\frac x2 .\]
+Substituting the second into the first and multiplying out $\frac34$,
+\[\int\sin^4x\,dx=-\frac{\sin^3x\cos x}4-\frac{3\sin x\cos x}8+\frac{3x}8+C .\]
+\emph{Check by a second method.} Using $\sin^2x=\frac{1-\cos2x}2$, $\sin^4x=\frac{1-2\cos2x+\cos^22x}4$ and $\cos^22x=\frac{1+\cos4x}2$ give $\sin^4x=\frac38-\frac12\cos2x+\frac18\cos4x$, whose antiderivative is $\frac{3x}8-\frac{\sin2x}4+\frac{\sin4x}{32}$. The two answers differ by $0$ (they are the same function).
+%@ b11 | simplify(diff(-sin(x)**3*cos(x)/4-3*sin(x)*cos(x)/8+3*x/8,x)-sin(x)**4) == 0 and simplify((-sin(x)**3*cos(x)/4-3*sin(x)*cos(x)/8+3*x/8)-(3*x/8-sin(2*x)/4+sin(4*x)/32)) == 0 | The two answers differ by $0$ (they are the same function).
+\end{exmp}
+
+\begin{exmp}{A fourth power times an exponential}{b12}
+Evaluate $\int_0^1x^4e^x\,dx$.
+
+\textbf{Solution.} By Theorem~\ref{thm:redexp} with $a=1$, $n=4$, an antiderivative is $F(x)=e^x\left(x^4-4x^3+12x^2-24x+24\right)$ (the coefficients are $\frac{4!}{k!}$ with alternating signs: $1,4,12,24,24$). Then $F(1)=e(1-4+12-24+24)=9e$ and $F(0)=24$, so
+\[\int_0^1x^4e^x\,dx=9e-24\approx0.4645 .\]
+\emph{Check.} On $[0,1]$, $0\le x^4e^x\le e$ and the integrand is small except near $x=1$; $0.46$ is below $\int_0^1e\,x^4\,dx=\frac e5\approx0.54$, as it must be, since $e^x\le e$.
+%@ b12 | simplify(diff(exp(x)*(x**4-4*x**3+12*x**2-24*x+24),x)-x**4*exp(x)) == 0 and integrate(x**4*exp(x),(x,0,1)) == 9*E-24 and abs(float(9*E-24)-0.4645) < 1e-4 and float(9*E-24) < float(E/5) | as it must be, since $e^x\le e$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{An integral identity for $f f''$}{b13}
+Let $f$ be twice differentiable on $[a,b]$ with $f''$ continuous and $f(a)=f(b)=0$. Prove that $\int_a^bf(x)f''(x)\,dx=-\int_a^b\left(f'(x)\right)^2dx$, and use it to check it for $f=\sin x$ on $[0,\pi]$.
+
+\textbf{Proof.} Take $u=f$, $dv=f''\,dx$, so $du=f'\,dx$ and $v=f'$ (both $f'$ and $f''$ are continuous, so the definite form of Theorem~\ref{thm:parts} applies):
+\[\int_a^bff''\,dx=\Big[ff'\Big]_a^b-\int_a^b\left(f'\right)^2dx=f(b)f'(b)-f(a)f'(a)-\int_a^b\left(f'\right)^2dx=-\int_a^b\left(f'\right)^2dx,\]
+because $f(a)=f(b)=0$. For $f=\sin x$ on $[0,\pi]$ we have $f(0)=f(\pi)=0$, $f''=-\sin x$ and $f'=\cos x$, so $\int_0^\pi\sin x\cdot(-\sin x)\,dx=-\int_0^\pi\cos^2x\,dx$. Both sides equal $-\frac\pi2$.
+%@ b13 | integrate(sin(x)*(-sin(x)),(x,0,pi)) == -pi/2 and integrate(-cos(x)**2,(x,0,pi)) == -pi/2 and sin(0) == 0 and sin(pi) == 0 | Both sides equal $-\frac\pi2$.
+\end{exmp}
+
+\begin{exmp}{Wallis's integrals}{b14}
+Let $W_m=\int_0^{\pi/2}\sin^{2m}x\,dx$ for $m\ge0$. Prove that $W_m=\frac\pi2\cdot\frac{1\cdot3\cdot5\cdots(2m-1)}{2\cdot4\cdot6\cdots(2m)}$ (an empty product is $1$), and evaluate $W_3$.
+
+\textbf{Proof.} By induction on $m$. For $m=0$: $W_0=\int_0^{\pi/2}1\,dx=\frac\pi2$, which is $\frac\pi2$ times the empty quotient $1$. Suppose the formula holds for $m-1$ where $m\ge1$. By the definite form in Theorem~\ref{thm:redtrig} with $n=2m\ge2$,
+\[W_m=\frac{2m-1}{2m}\,W_{m-1}=\frac{2m-1}{2m}\cdot\frac\pi2\cdot\frac{1\cdot3\cdots(2m-3)}{2\cdot4\cdots(2m-2)}=\frac\pi2\cdot\frac{1\cdot3\cdots(2m-3)(2m-1)}{2\cdot4\cdots(2m-2)(2m)},\]
+which is the formula for $m$. For $m=3$:
+\[W_3=\frac\pi2\cdot\frac{1\cdot3\cdot5}{2\cdot4\cdot6}=\frac\pi2\cdot\frac{15}{48}=\frac{5\pi}{32}\approx0.4909 .\]
+%@ b14 | integrate(sin(x)**6,(x,0,pi/2)) == 5*pi/32 and Q(5,6)*Q(3,4)*Q(1,2)*(pi/2) == 5*pi/32 and all(integrate(sin(x)**(2*mm),(x,0,pi/2)) == (pi/2)*prod([Q(2*kk-1,2*kk) for kk in range(1,mm+1)]) for mm in range(0,6)) | =\frac\pi2\cdot\frac{15}{48}=\frac{5\pi}{32}\approx0.4909 .\]
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kcfirst}.] Take $u=x$, $dv=e^{-3x}\,dx$, so $du=dx$, $v=-\frac13e^{-3x}$. Then $\int xe^{-3x}\,dx=-\frac13xe^{-3x}+\frac13\int e^{-3x}\,dx=-\frac13xe^{-3x}-\frac19e^{-3x}+C$. Check: the derivative is $-\frac13e^{-3x}+xe^{-3x}+\frac13e^{-3x}=xe^{-3x}$.
+%@ ans-kcfirst | simplify(diff(-x*exp(-3*x)/3-exp(-3*x)/9,x)-x*exp(-3*x)) == 0 | +xe^{-3x}+\frac13e^{-3x}=xe^{-3x}$.
+
+  \item[Knowledge Check \ref{kc:kcasin}.] By Theorem~\ref{thm:inv}, an antiderivative of $\sin^{-1}x$ is $x\sin^{-1}x+\sqrt{1-x^2}$. At $\frac12$: $\frac12\cdot\frac\pi6+\frac{\sqrt3}2=\frac\pi{12}+\frac{\sqrt3}2$. At $0$: $0+1=1$. So $\int_0^{1/2}\sin^{-1}x\,dx=\frac\pi{12}+\frac{\sqrt3}2-1\approx0.1278$.
+%@ ans-kcasin | abs((integrate(asin(x),(x,0,Q(1,2)))-(pi/12+sqrt(3)/2-1)).evalf(30)) < 1e-20 and abs(float(pi/12+sqrt(3)/2-1)-0.1278) < 1e-4 | =\frac\pi{12}+\frac{\sqrt3}2-1\approx0.1278$.
+
+  \item[Knowledge Check \ref{kc:kcred}.] With $n=3$: $\int\cos^3x\,dx=\frac{\cos^2x\sin x}3+\frac23\int\cos x\,dx=\frac{\cos^2x\sin x}3+\frac23\sin x+C$. Replace $\cos^2x=1-\sin^2x$: $\frac{\sin x-\sin^3x}3+\frac{2\sin x}3=\sin x-\frac13\sin^3x$.
+%@ ans-kcred | simplify(cos(x)**2*sin(x)/3+2*sin(x)/3-(sin(x)-sin(x)**3/3)) == 0 and simplify(diff(sin(x)-sin(x)**3/3,x)-cos(x)**3) == 0 | \frac{\sin x-\sin^3x}3+\frac{2\sin x}3=\sin x-\frac13\sin^3x$.
+
+  \item[Pause and think \ref{think:zero}.] The symbol $\int\frac{dx}x$ stands for a whole family of antiderivatives, not one number, so cancelling it from both sides is only valid up to a constant: the true statement is $\int\frac{dx}x=1+\int\frac{dx}x$ \emph{as families}, which says $0=1+C$ for some $C$ (namely $C=-1$). No contradiction arises.
+
+  \item[Pause and think \ref{think:liate}.] A logarithm is hard to integrate (it needs parts itself) but easy to differentiate, and its derivative $\frac1x$ is algebraic and simpler. If $\ln x$ is put into $dv$ you must first integrate it, getting $x\ln x-x$, which is more complicated, so the second integral is no easier.
+
+  \item[Pause and think \ref{think:notab}.] The columns can be made, but they are unpleasant: $G_1=x\ln x-x$ and $G_2=\frac{x^2\ln x}2-\frac{3x^2}4$, and the table needs $G_3$ as well, so the work is longer than necessary. (If $\ln x$ is in the \emph{differentiate} column, the table never ends, since $\ln x,\frac1x,-\frac1{x^2},\dots$ never reach $0$.) LIATE suggests $u=\ln x$, $dv=x^2\,dx$, which gives $\int x^2\ln x\,dx=\frac{x^3\ln x}3-\frac{x^3}9+C$ in one round.
+%@ ans-notab | simplify(integrate(x*log(x)-x,x)-(x**2*log(x)/2-Q(3,4)*x**2)) == 0 and simplify(x**2*(x*log(x)-x)-2*x*(x**2*log(x)/2-Q(3,4)*x**2)+2*(x**3*log(x)/6-Q(11,36)*x**3)-(x**3*log(x)/3-x**3/9)) == 0 and simplify(diff(x**3*log(x)/3-x**3/9,x)-x**2*log(x)) == 0 | in one round.
+\end{description}
+
+\end{document}
