@@ -5,7 +5,7 @@
 \begin{document}
 
 \begin{guide}
-Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel's theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at $x=\pm1$. Section H, written for Section 11.4, proves that power series can be multiplied and divided by the rules used to compute the series of $e^x\sin x$ and $\tan x$. Section I, written for Section 12.1, proves that the length of a curve that is traced once, and the other integrals computed from a parametrization, do not depend on which parametrization is used. Nothing here is needed to \emph{use} the facts, only to see why they are true.
+Chapter 10 leans on a few facts that its sections state and use but that need more care than a lecture allows: a bounded nondecreasing sequence converges, limits obey the usual laws, and a sequence squeezed between two sequences with the same limit has that limit. This appendix proves them. Section A starts from one assumption about the real numbers (completeness) and proves the Monotone Convergence Theorem from it. Section B uses the $\varepsilon$--$N$ definition of a limit to prove the limit facts for sequences. Section C adds four facts needed by the sections on series: limits and inequalities, subsequences, and the limit at infinity of a monotone function (which settles when an improper integral of a positive function converges). Section E proves the limits of $n$-th roots (such as $n^{1/n}\to1$) that the Root Test needs. Section F, written for Chapter 11, proves the facts about power series that the section on their properties states: the radius of convergence exists, and a power series can be differentiated and integrated term by term inside its interval of convergence. Section G, also written for Chapter 11, proves the two facts about endpoints that the section on Taylor series uses: Abel's theorem (the sum of a power series at an endpoint where it converges is the limit of the function from inside) and the behavior of the binomial series at $x=\pm1$. Section H, written for Section 11.4, proves that power series can be multiplied and divided by the rules used to compute the series of $e^x\sin x$ and $\tan x$. Section I, written for Section 12.1, proves that the length of a curve that is traced once, and the other integrals computed from a parametrization, do not depend on which parametrization is used. Section J, written for Section 12.3, states plainly which properties of area are assumed, proves the formula for the area of a sector from them, and shows that a polar curve $r=f(\theta)$ itself has no area; the area formulas of Section 12.3 are built on these two facts. Nothing here is needed to \emph{use} the facts, only to see why they are true.
 \end{guide}
 
 % =====================================================================
@@ -819,6 +819,51 @@ The half circle is parametrized by $\gamma(t)=(\cos t,\sin t)$, $0\le t\le\pi$, 
 \]
 %@ I-half | integrate(1,(t,0,pi)) == pi and integrate(2*t,(t,0,sqrt(pi))) == pi and (lambda p: simplify(sqrt(diff(cos(p**2),p)**2+diff(sin(p**2),p)**2)-2*p) == 0)(Symbol('p',positive=True)) and integrate(1,(t,0,pi)) == pi | \int_0^\pi1\,dt=\pi=\int_0^{\sqrt\pi}2s\,ds,
 as Theorem~\ref{thm:invariance} predicts. If instead the circle is run twice, $0\le t\le4\pi$, the formula gives $4\pi$: that parametrization is not one-to-one, and the theorem does not apply.
+\end{exmp}
+
+% =====================================================================
+\section{Area in Polar Coordinates}
+
+Section 12.3 finds the area of a region in polar coordinates by cutting it into thin sectors and squeezing its area between sums of sector areas. Two facts are taken from this section: the area of a sector, $\frac12\rho^2\varphi$ (Theorem~\ref{thm:sector}), and the fact that a polar curve has no area of its own (Theorem~\ref{thm:zeroarea}), so that two regions that share only a boundary curve have areas that add. Everything else in the area proofs of Section 12.3 is the definition of the integral.
+
+\textbf{What is assumed about area.} Area is the quantity of Calculus I: the area of the region between the graphs of two continuous functions is $\int(\text{top}-\text{bottom})\,dx$, and a region that can be cut into finitely many such pieces has the sum of their areas. We use only the following properties, which are \emph{not} proved here; they are the standard properties of that notion of area.
+\begin{enumerate}[nosep]
+  \item[(A1)] \emph{Monotone.} If a region $R$ is contained in a region $R'$, then $\operatorname{area}(R)\le\operatorname{area}(R')$.
+  \item[(A2)] \emph{Additive.} If $R=R_1\cup R_2$ and $R_1\cap R_2$ has area zero, then $\operatorname{area}(R)=\operatorname{area}(R_1)+\operatorname{area}(R_2)$. Here a set has \emph{area zero} if, for every $\varepsilon>0$, it lies in a region of area less than $\varepsilon$. A point, a line segment and an arc of a circle have area zero (each is, after a rotation, a graph $y=g(x)$ of a continuous function over an interval, and the region between two copies of a graph has area $\int(g-g)\,dx=0$).
+  \item[(A3)] \emph{Congruent regions have equal area.} Rotations, reflections (in particular the reflection in the origin, which is the rotation through $\pi$) and translations do not change area.
+  \item[(A4)] A disc of radius $\rho$ has area $\pi\rho^2$ (it is $\int_{-\rho}^{\rho}2\sqrt{\rho^2-x^2}\,dx$).
+\end{enumerate}
+
+\textbf{Sectors.} For $\rho>0$, $\alpha$ real and $0\le\varphi\le2\pi$, the \emph{sector} $S(\rho;\alpha,\alpha+\varphi)$ is the set of points $P(s,\theta)$ with $0\le s\le\rho$ and $\alpha\le\theta\le\alpha+\varphi$.
+
+\begin{thm}{Area of a sector}{sector}
+The sector of radius $\rho$ and angle $\varphi$, $0\le\varphi\le2\pi$, has area $\frac12\rho^2\varphi$.
+\end{thm}
+\begin{proof}
+Let $a(\varphi)$ be the area of the sector of angle $\varphi$. By (A3), $a(\varphi)$ does not depend on the starting angle $\alpha$ (rotate the sector). We prove four things.
+
+\emph{(i) Additivity.} If $\varphi_1+\varphi_2\le2\pi$, then $S(\rho;\alpha,\alpha+\varphi_1+\varphi_2)$ is the union of $S(\rho;\alpha,\alpha+\varphi_1)$ and $S(\rho;\alpha+\varphi_1,\alpha+\varphi_1+\varphi_2)$, which share only the radius at the angle $\alpha+\varphi_1$ (and, if $\varphi_1+\varphi_2=2\pi$, the radius at $\alpha$); a segment has area zero. By (A2), $a(\varphi_1+\varphi_2)=a(\varphi_1)+a(\varphi_2)$.
+
+\emph{(ii) Monotone.} If $\varphi\le\varphi'$, the sector of angle $\varphi$ is contained in the sector of angle $\varphi'$ with the same $\alpha$, so $a(\varphi)\le a(\varphi')$ by (A1).
+
+\emph{(iii) The full sector.} For $\varphi=2\pi$ the sector is the disc of radius $\rho$, so $a(2\pi)=\pi\rho^2$ by (A4).
+
+\emph{(iv) Rational multiples of $2\pi$.} Let $q\ge1$ be an integer. The full disc is the union of $q$ sectors of angle $\frac{2\pi}q$ (one after the other), so by (i) and (iii), $q\,a\!\left(\frac{2\pi}q\right)=\pi\rho^2$, that is $a\!\left(\frac{2\pi}q\right)=\frac{\pi\rho^2}q$. For an integer $p$ with $0\le p\le q$, (i) gives $a\!\left(\frac{2\pi p}q\right)=p\cdot\frac{\pi\rho^2}q=\frac12\rho^2\cdot\frac{2\pi p}q$. So the formula holds for every angle that is a rational multiple of $2\pi$.
+%@ J-rat | (lambda pp, qq: pp*(pi*r**2/qq) == Q(1,2)*r**2*(2*pi*pp/qq))(3,8) and 8*(pi*r**2/8) == pi*r**2 | $a\!\left(\frac{2\pi p}q\right)=p\cdot\frac{\pi\rho^2}q=\frac12\rho^2\cdot\frac{2\pi p}q$.
+
+\emph{(v) Every angle.} Let $0<\varphi<2\pi$. Choose rational multiples $s<\varphi<s'$ of $2\pi$ in $[0,2\pi]$. By (ii) and (iv), $\frac12\rho^2s=a(s)\le a(\varphi)\le a(s')=\frac12\rho^2s'$. Rational multiples of $2\pi$ come arbitrarily close to $\varphi$ from both sides, so letting $s\uparrow\varphi$ and $s'\downarrow\varphi$ gives $a(\varphi)=\frac12\rho^2\varphi$. (For $\varphi=0$ the sector is a segment, of area $0$; for $\varphi=2\pi$ see (iii).)
+\end{proof}
+
+\begin{thm}{A polar curve has area zero}{zeroarea}
+Let $f$ be continuous and $f\ge0$ on $[\alpha,\beta]$, with $\beta-\alpha\le2\pi$. Then the curve $C=\{P(f(\theta),\theta):\alpha\le\theta\le\beta\}$ has area zero.
+\end{thm}
+\begin{proof}
+Let $\varepsilon>0$. The function $\frac12f^2$ is continuous on $[\alpha,\beta]$, so the upper and lower sums of a partition $\Pi$ differ by less than $\varepsilon$ once the mesh of $\Pi$ is small enough (Calculus I). Take such a partition $\alpha=\theta_0<\cdots<\theta_n=\beta$, and let $m_k$ and $M_k$ be the minimum and maximum of $f$ on $[\theta_{k-1},\theta_k]$. The part of $C$ over $[\theta_{k-1},\theta_k]$ lies in the \emph{annular sector} $A_k=\{P(s,\theta):m_k\le s\le M_k,\ \theta_{k-1}\le\theta\le\theta_k\}$. The sector of radius $M_k$ is the union of the sector of radius $m_k$ and $A_k$, which share only an arc of a circle (area zero by (A2)), so by (A2) and Theorem~\ref{thm:sector}, $\operatorname{area}(A_k)=\frac12\left(M_k^2-m_k^2\right)\Delta\theta_k$. Neighboring $A_k$ share only a segment, so the union of the $A_k$, a region that contains $C$, has area $\sum_k\frac12\left(M_k^2-m_k^2\right)\Delta\theta_k=U(\Pi)-L(\Pi)<\varepsilon$, where $L$ and $U$ are the lower and upper sums of $\frac12f^2$ (because $f\ge0$, $m_k^2$ and $M_k^2$ are the least and greatest values of $f^2$ on the interval).
+\end{proof}
+
+\begin{exmp}{The two facts for a circle and a spiral}{sectorex}
+(a) A sector of radius $6$ and angle $\frac\pi3$ has area $\frac12\cdot36\cdot\frac\pi3=6\pi$, one sixth of the disc ($36\pi$), as it should. (b) For the spiral $r=\theta$, $0\le\theta\le2\pi$, the annular sector between the radii $m=\theta_{k-1}$ and $M=\theta_k$ over $[\theta_{k-1},\theta_k]$ has area $\frac12\left(\theta_k^2-\theta_{k-1}^2\right)\Delta\theta_k$; for $n=4$ subintervals of length $\frac\pi2$ these add to $\frac12\left((2\pi)^2-0\right)\cdot\frac\pi2=\pi^3\approx31.0$, and the sum $U-L$ shrinks like $\frac1n$: for general $n$ it is $\frac12(2\pi)^2\cdot\frac{2\pi}n=\frac{4\pi^3}n$.
+%@ J-ex | Q(1,2)*36*pi/3 == 6*pi and 6*pi*6 == pi*36 and Q(1,2)*((2*pi)**2-0)*(pi/2) == pi**3 and abs(float(pi**3)-31.0)<0.01 and Q(1,2)*(2*pi)**2*(2*pi)/4 == pi**3 | the sum $U-L$ shrinks like $\frac1n$: for general $n$ it is $\frac12(2\pi)^2\cdot\frac{2\pi}n=\frac{4\pi^3}n$.
 \end{exmp}
 
 
