@@ -866,5 +866,100 @@ Let $\varepsilon>0$. The function $\frac12f^2$ is continuous on $[\alpha,\beta]$
 %@ J-ex | Q(1,2)*36*pi/3 == 6*pi and 6*pi*6 == pi*36 and Q(1,2)*((2*pi)**2-0)*(pi/2) == pi**3 and abs(float(pi**3)-31.0)<0.01 and Q(1,2)*(2*pi)**2*(2*pi)/4 == pi**3 | the sum $U-L$ shrinks like $\frac1n$: for general $n$ it is $\frac12(2\pi)^2\cdot\frac{2\pi}n=\frac{4\pi^3}n$.
 \end{exmp}
 
+% =====================================================================
+\section{Conic Sections: Squaring, Coordinates and the Focus--Directrix Theorem}
+
+Section 12.4 defines the parabola, the ellipse and the hyperbola by distances, finds their equations by squaring, and unifies the three curves by one number, the eccentricity. Squaring is dangerous: it can \emph{add} points that do not satisfy the original condition, or hide the fact that a step is not reversible. This section proves four things. (K.1) Exactly when squaring an equation neither gains nor loses solutions. (K.2) An identity for the sum and the difference of the distances from a point to two foci, which turns the two ``string'' definitions into equations without any loss. (K.3) That the foci and directrix may be placed where we like, because moving the plane rigidly preserves distances. (K.4) The Eccentricity--Directrix Theorem, with every step of the algebra and the reason why the three cases $e<1$, $e=1$ and $e>1$ give the three conics.
+
+\begin{thm}{Squaring without gaining or losing points}{sqlemma}
+Let $A$ and $B$ be real numbers. Then $A=B$ if and only if $A^2=B^2$ and $AB\ge0$. In particular, if $A\ge0$ and $B\ge0$, then $A=B$ if and only if $A^2=B^2$.
+\end{thm}
+\begin{proof}
+If $A=B$, then $A^2=B^2$ and $AB=A^2\ge0$. Conversely, suppose $A^2=B^2$ and $AB\ge0$. Then $(A-B)(A+B)=A^2-B^2=0$, so $B=A$ or $B=-A$. If $B=-A$, then $AB=-A^2\ge0$ forces $A=0$, hence $B=0=A$. In every case $A=B$. For the last statement: if $A\ge0$ and $B\ge0$ then $AB\ge0$ automatically.
+\end{proof}
+
+\begin{exmp}{Squaring adds a point}{sqex}
+Solve $\sqrt{x+2}=x$. 
+
+\textbf{Solution.} Put $A=\sqrt{x+2}$ and $B=x$. Squaring gives $x+2=x^2$, that is $x^2-x-2=(x-2)(x+1)=0$, so $x=2$ or $x=-1$. By Theorem~\ref{thm:sqlemma} we must also have $AB\ge0$. For $x=2$: $A=2$, $B=2$, $AB=4\ge0$, and indeed $\sqrt4=2$. For $x=-1$: $A=\sqrt1=1$, $B=-1$, $AB=-1<0$, and indeed $\sqrt1\ne-1$. So the squared equation has the extra solution $x=-1$ and the original equation has only $x=2$.
+%@ sqex | solveset(x+2-x**2,x,S.Reals) == FiniteSet(-1,2) and sqrt(2+2) == 2 and sqrt(-1+2)*(-1) == -1 and solveset(sqrt(x+2)-x,x,S.Reals) == FiniteSet(2) and (-1+2)-(-1)**2 == 0 | and the original equation has only $x=2$.
+\end{exmp}
+
+\begin{thm}{Sum and difference of distances to two foci}{focalradii}
+Let $c>0$, $a>0$, $F_1=(-c,0)$, $F_2=(c,0)$, $P=(x,y)$, $u=\lvert PF_1\rvert$ and $v=\lvert PF_2\rvert$. Then $u^2-v^2=4cx$, and
+\begin{enumerate}[label=(\roman*)]
+  \item $u+v=2a$ if and only if $u=a+\frac ca\,x$ and $v=a-\frac ca\,x$;
+  \item $u-v=2a$ if and only if $u=\frac ca\,x+a$ and $v=\frac ca\,x-a$;
+  \item $v-u=2a$ if and only if $u=-\frac ca\,x-a$ and $v=-\frac ca\,x+a$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+$u^2=(x+c)^2+y^2$ and $v^2=(x-c)^2+y^2$, so $u^2-v^2=(x+c)^2-(x-c)^2=4cx$ (the terms $y^2$ cancel). Also $u^2-v^2=(u-v)(u+v)$.
+
+(i) If $u+v=2a$, then $(u-v)(2a)=4cx$, so $u-v=\frac{2cx}a$ (we divide by $2a\ne0$). Adding and subtracting $u+v=2a$ and $u-v=\frac{2cx}a$ gives $u=a+\frac{cx}a$ and $v=a-\frac{cx}a$. Conversely, adding the two formulas gives $u+v=2a$.
+
+(ii) If $u-v=2a$, then $2a(u+v)=4cx$, so $u+v=\frac{2cx}a$. Adding and subtracting $u-v=2a$ gives $u=\frac{cx}a+a$ and $v=\frac{cx}a-a$. Conversely, subtracting the two formulas gives $u-v=2a$.
+
+(iii) If $v-u=2a$, then $(u-v)(u+v)=4cx$ gives $-2a(u+v)=4cx$, so $u+v=-\frac{2cx}a$. Adding and subtracting $u-v=-2a$ gives $u=-\frac{cx}a-a$ and $v=-\frac{cx}a+a$. Conversely, subtracting the two formulas gives $v-u=2a$.
+\end{proof}
+
+No squaring of a square root appears in this proof: the only squares are $u^2$ and $v^2$, which are polynomials in $x$ and $y$, so nothing is gained or lost. Section 12.4 uses it to turn $u+v=2a$ and $\lvert u-v\rvert=2a$ into equations in $x$ and $y$.
+
+\begin{thm}{Placing the coordinates}{coords}
+A \emph{rigid motion} is a map of the plane that is a composition of translations $(x,y)\mapsto(x+h,y+k)$, rotations about the origin $(x,y)\mapsto(x\cos\varphi-y\sin\varphi,\ x\sin\varphi+y\cos\varphi)$ and the reflection $(x,y)\mapsto(x,-y)$. A rigid motion preserves the distance between any two points, maps lines to lines, and preserves the distance from a point to a line. Given a point $F$ and a line $\ell$ not through $F$, let $d>0$ be the distance from $F$ to $\ell$. There is a rigid motion that carries $F$ to $(0,0)$ and $\ell$ to the line $x=d$.
+\end{thm}
+\begin{proof}
+For two points with coordinate differences $\Delta x,\Delta y$, a translation leaves $\Delta x,\Delta y$ unchanged. A rotation changes them to $\Delta x\cos\varphi-\Delta y\sin\varphi$ and $\Delta x\sin\varphi+\Delta y\cos\varphi$, and
+\[
+(\Delta x\cos\varphi-\Delta y\sin\varphi)^2+(\Delta x\sin\varphi+\Delta y\cos\varphi)^2=(\Delta x)^2+(\Delta y)^2\,(\cos^2\varphi+\sin^2\varphi)=(\Delta x)^2+(\Delta y)^2,
+\]
+because the cross terms $\mp2\Delta x\Delta y\sin\varphi\cos\varphi$ cancel. A reflection changes the sign of $\Delta y$ only. So all three preserve distances. Each is given by formulas linear in $x$ and $y$ (plus constants), so a line $\alpha x+\beta y=\gamma$ goes to a line. The distance from a point to a line is the smallest distance from the point to a point of the line; a rigid motion carries the points of the line onto the points of the image line and preserves distances, so it preserves that smallest value.
+
+Now translate $F$ to the origin. Let $Q$ be the foot of the perpendicular from the origin to the image of $\ell$; $\lvert OQ\rvert=d$. Rotate about the origin so that $Q$ lies on the positive $x$-axis, at $(d,0)$. The image of $\ell$ is the line through $(d,0)$ perpendicular to $OQ$, the $x$-axis, that is, the line $x=d$.
+\end{proof}
+
+Consequently, if $\Phi$ is such a rigid motion, a point $P$ satisfies $\lvert PF\rvert=e\operatorname{dist}(P,\ell)$ if and only if $\Phi(P)$ satisfies $\lvert\Phi(P)\,(0,0)\rvert=e\operatorname{dist}(\Phi(P),\,x=d)$. The conic for $(F,\ell,e)$ is carried onto the conic for $((0,0),\,x=d,\,e)$, so it is enough to study the second one.
+
+\begin{thm}{The Eccentricity--Directrix Theorem}{edthm}
+Let $d>0$ and $e>0$, and let $C$ be the set of points $P=(x,y)$ with $\lvert PF\rvert=e\operatorname{dist}(P,\ell)$, where $F=(0,0)$ and $\ell$ is the line $x=d$. Then:
+\begin{enumerate}[label=(\arabic*)]
+  \item If $e=1$, $C$ is the parabola $y^2=-2d\left(x-\frac d2\right)$ with focus $F$ and directrix $\ell$.
+  \item If $0<e<1$, put $a=\frac{ed}{1-e^2}$, $c=ae$ and $b=a\sqrt{1-e^2}$. Then $a^2=b^2+c^2$ and $C=\left\{(x,y):\ \frac{(x+c)^2}{a^2}+\frac{y^2}{b^2}=1\right\}$: an ellipse with center $(-c,0)$, foci $(0,0)$ and $(-2c,0)$, and $\ell$ is at distance $\frac ae$ from the center.
+  \item If $e>1$, put $a=\frac{ed}{e^2-1}$, $c=ae$ and $b=a\sqrt{e^2-1}$. Then $b^2=c^2-a^2$ and $C=\left\{(x,y):\ \frac{(x-c)^2}{a^2}-\frac{y^2}{b^2}=1\right\}$: a hyperbola with center $(c,0)$, foci $(0,0)$ and $(2c,0)$, and $\ell$ is at distance $\frac ae$ from the center.
+\end{enumerate}
+Exactly one of the cases $e<1$, $e=1$, $e>1$ occurs, so every focus--directrix set is a parabola, an ellipse or a hyperbola, and which one is decided by $e$ alone. By Theorem~\ref{thm:coords} the same holds for any focus $F$ and any line $\ell$ not through $F$, with $d=\operatorname{dist}(F,\ell)$.
+\end{thm}
+\begin{proof}
+\emph{Step 1: the equation.} For $P=(x,y)$, $\lvert PF\rvert=\sqrt{x^2+y^2}\ge0$ and $\operatorname{dist}(P,\ell)=\lvert d-x\rvert$, so $e\operatorname{dist}(P,\ell)\ge0$. By Theorem~\ref{thm:sqlemma} the condition is equivalent to $x^2+y^2=e^2(d-x)^2$, with no point gained or lost. Expanding $e^2(d-x)^2=e^2d^2-2e^2dx+e^2x^2$ and collecting terms,
+\[
+(1-e^2)\,x^2+2e^2d\,x+y^2=e^2d^2 .\tag{$\star$}
+\]
+
+\emph{Step 2: $e=1$.} Then $(\star)$ reads $2dx+y^2=d^2$, that is $y^2=-2dx+d^2=-2d\left(x-\frac d2\right)$.
+
+\emph{Step 3: $e<1$.} Then $1-e^2>0$. Complete the square in $x$:
+\[
+(1-e^2)\left[x^2+\frac{2e^2d}{1-e^2}\,x\right]=(1-e^2)\left(x+\frac{e^2d}{1-e^2}\right)^2-\frac{e^4d^2}{1-e^2}.
+\]
+With $c=\frac{e^2d}{1-e^2}$ (this equals $ae$, because $a=\frac{ed}{1-e^2}$), $(\star)$ becomes $(1-e^2)(x+c)^2+y^2=e^2d^2+\frac{e^4d^2}{1-e^2}=\frac{e^2d^2(1-e^2)+e^4d^2}{1-e^2}=\frac{e^2d^2}{1-e^2}$. Divide by this positive number. Since $a^2=\frac{e^2d^2}{(1-e^2)^2}$ we have $\frac{1-e^2}{e^2d^2/(1-e^2)}=\frac1{a^2}$, and the second coefficient is $\frac{1-e^2}{e^2d^2}=\frac1{b^2}$ with $b^2=\frac{e^2d^2}{1-e^2}=a^2(1-e^2)$. So $(\star)$ is equivalent to $\frac{(x+c)^2}{a^2}+\frac{y^2}{b^2}=1$. Moreover $a^2-b^2=a^2e^2=c^2$. By Theorem~\ref{thm:focalradii} and the standard-position equation of the ellipse (translated by $(-c,0)$), this is the set of points whose distances to $(-c-c,0)=(-2c,0)$ and $(-c+c,0)=(0,0)$ add to $2a$. The distance from the center $(-c,0)$ to $\ell$ is $d+c=d+\frac{e^2d}{1-e^2}=\frac d{1-e^2}=\frac ae$.
+
+\emph{Step 4: $e>1$.} Now $e^2-1>0$. Multiply $(\star)$ by $-1$: $(e^2-1)x^2-2e^2dx-y^2=-e^2d^2$. Complete the square: $(e^2-1)\left[x^2-\frac{2e^2d}{e^2-1}x\right]=(e^2-1)(x-c)^2-\frac{e^4d^2}{e^2-1}$ with $c=\frac{e^2d}{e^2-1}=ae$, where $a=\frac{ed}{e^2-1}$. Then $(e^2-1)(x-c)^2-y^2=\frac{e^4d^2}{e^2-1}-e^2d^2=\frac{e^2d^2\left(e^2-(e^2-1)\right)}{e^2-1}=\frac{e^2d^2}{e^2-1}$. Dividing by this positive number gives $\frac{(x-c)^2}{a^2}-\frac{y^2}{b^2}=1$, where $a^2=\frac{e^2d^2}{(e^2-1)^2}$ and $b^2=\frac{e^2d^2}{e^2-1}=a^2(e^2-1)=c^2-a^2$. This is the hyperbola with center $(c,0)$ and foci $(c\mp c,0)=(0,0),(2c,0)$. The distance from the center to $\ell$ is $c-d=\frac{e^2d}{e^2-1}-d=\frac d{e^2-1}=\frac ae$.
+
+Every step was an equivalence (Theorem~\ref{thm:sqlemma}, an identity for completing the square, division by a nonzero number), so $C$ is exactly the solution set of the final equation.
+\end{proof}
+
+\begin{exmp}{Ellipse from a focus, a directrix and $e=\frac12$}{kex}
+Find the conic $\lvert PF\rvert=\frac12\operatorname{dist}(P,\ell)$ for $F=(0,0)$ and $\ell:\ x=4$, and read off its center, foci and directrices.
+
+\textbf{Solution.} Here $e=\frac12<1$, $d=4$. Step 1: $x^2+y^2=\frac14(4-x)^2=\frac14\left(16-8x+x^2\right)$, so $\frac34x^2+2x+y^2=4$, which is $(\star)$ with $1-e^2=\frac34$ and $2e^2d=2$. Complete the square: $\frac34\left(x^2+\frac83x\right)=\frac34\left(x+\frac43\right)^2-\frac43$, so $\frac34\left(x+\frac43\right)^2+y^2=\frac{16}3$, and dividing by $\frac{16}3$,
+\[
+\frac{\left(x+\frac43\right)^2}{64/9}+\frac{y^2}{16/3}=1,\qquad a=\frac83,\ b^2=\frac{16}3,\ c=\frac43 .
+\]
+The center is $\left(-\frac43,0\right)$, the foci are $(0,0)$ and $\left(-\frac83,0\right)$, the vertices are $\left(-\frac43\pm\frac83,0\right)=(4/3,0)$ and $(-4,0)$. The formulas of the theorem agree: $a=\frac{ed}{1-e^2}=\frac{2}{3/4}=\frac83$, $c=ae=\frac43$, $b^2=a^2(1-e^2)=\frac{64}9\cdot\frac34=\frac{16}3$. The second directrix is the mirror image of $x=4$ in the center: $x=-\frac43-\frac ae=-\frac43-\frac{16}3=-\frac{20}3$.
+%@ kex | (lambda e,d: 1-e**2 == Q(3,4) and 2*e**2*d == 2 and e*d/(1-e**2) == Q(8,3) and e*d/(1-e**2)*e == Q(4,3) and (e*d/(1-e**2))**2*(1-e**2) == Q(16,3) and -Q(4,3)-e*d/(1-e**2)/e == -Q(20,3))(Q(1,2),4) | $x=-\frac43-\frac ae=-\frac43-\frac{16}3=-\frac{20}3$.
+\emph{Check.} The vertex $(4/3,0)$ must satisfy the definition: $\lvert PF\rvert=\frac43$ and $\operatorname{dist}(P,\ell)=4-\frac43=\frac83$, and $\frac12\cdot\frac83=\frac43$.
+%@ kex-chk | Q(1,2)*(4-Q(4,3)) == Q(4,3) and Q(1,2)*(4-(-4)) == 4 | and $\frac12\cdot\frac83=\frac43$.
+\end{exmp}
+
 
 \end{document}

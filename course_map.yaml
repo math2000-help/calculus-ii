@@ -20,6 +20,7 @@ appendix:
     - {id: H, title: "Multiplying and Dividing Power Series", status: done}
     - {id: I, title: "Parametrizations and Arc Length", status: done}
     - {id: J, title: "Area in Polar Coordinates", status: done}
+    - {id: K, title: "Conic Sections: Squaring, Coordinates and the Focus--Directrix Theorem", status: done}
 modules:
   - {id: "10.1", chapter: 10, title: "An Overview", prereqs: [], status: done}
   - {id: "10.2", chapter: 10, title: "Sequences", prereqs: ["10.1"], status: done}
@@ -36,4 +37,4 @@ modules:
   - {id: "12.1", chapter: 12, title: "Parametric Equations", prereqs: ["11.4"], status: done}
   - {id: "12.2", chapter: 12, title: "Polar Coordinates", prereqs: ["12.1"], status: done}
   - {id: "12.3", chapter: 12, title: "Calculus in Polar Coordinates", prereqs: ["12.2"], status: done}
-  - {id: "12.4", chapter: 12, title: "Conic Sections", prereqs: ["12.3"], status: planned}
+  - {id: "12.4", chapter: 12, title: "Conic Sections", prereqs: ["12.3"], status: done}
