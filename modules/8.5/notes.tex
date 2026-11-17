@@ -1,0 +1,615 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{5}{Partial Fractions}
+\calcxdoc{8.1}
+\calcxdoc{8.2}
+\calcxdoc{8.3}
+\calcxdoc{8.4}
+\calcxapp
+
+\begin{document}
+
+\section{Partial Fractions}
+
+\begin{guide}
+A \emph{rational function} is a quotient of two polynomials. The integral $\int\frac{7x+5}{(x-1)(x+2)}\,dx$ cannot be found by a substitution or by parts, yet it is easy once we notice that $\frac{7x+5}{(x-1)(x+2)}=\frac4{x-1}+\frac3{x+2}$: each piece is a logarithm. The method of partial fractions undoes the addition of fractions that you learned in algebra. This section answers three questions. \emph{Can it always be done?} Yes (Theorem~\ref{thm:pfd}), and the decomposition is unique; the proof uses only the division of polynomials, and one fact about real polynomials, proved in Appendix~L (Theorem~\ref{app-thm:realfactor}). \emph{How do we find the numerators?} By equating coefficients, by substituting numbers, and by the cover-up shortcut (Theorem~\ref{thm:coef}). \emph{How do we integrate the pieces?} The linear pieces give powers and logarithms; the quadratic pieces give a logarithm and an inverse tangent, and repeated quadratic factors need the reduction formula of Section~8.4 (Theorem~\ref{thm:pieces}). The last part of the section shows when a substitution turns an integral that is not rational into one that is.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item divide first when the numerator has degree at least that of the denominator, and say why (Theorem~\ref{thm:div});
+  \item write the form of the partial fraction decomposition for each of the four kinds of factor (distinct linear, repeated linear, irreducible quadratic, repeated irreducible quadratic) and say why that form always works and is unique;
+  \item find the unknown numerators by equating coefficients, by substituting values, by the cover-up method and by the derivative trick, and know when each is quicker;
+  \item integrate $\frac A{(x-r)^n}$ and $\frac{Bx+C}{(x^2+bx+c)^n}$, separating the logarithm from the inverse tangent, and use the reduction formula for $n\ge2$;
+  \item evaluate definite integrals of rational functions and check the sign and size of the answer;
+  \item recognize when partial fractions are not needed, and when a substitution such as $u=e^x$ makes an integrand rational;
+  \item check every antiderivative by differentiating it.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{The idea}
+
+In algebra, $\frac4{x-1}+\frac3{x+2}=\frac{4(x+2)+3(x-1)}{(x-1)(x+2)}=\frac{7x+5}{(x-1)(x+2)}$. To integrate the right side we must run this backward. Each term on the left is a case of $\int\frac{dx}{x-r}=\ln\lvert x-r\rvert+C$ (the table of Section~8.1), so the whole integral is immediate. Figure~1 shows what the decomposition means: the graph of the rational function is the \emph{sum} of the graphs of its pieces.
+
+\begin{exmp}{The idea: undoing the addition of fractions}{m1}
+Evaluate $\displaystyle\int\frac{7x+5}{(x-1)(x+2)}\,dx$.
+
+\textbf{Solution.} Look for numbers $A$ and $B$ with
+\[\frac{7x+5}{(x-1)(x+2)}=\frac A{x-1}+\frac B{x+2}.\]
+Multiply both sides by $(x-1)(x+2)$ (allowed for $x\ne1,-2$): $7x+5=A(x+2)+B(x-1)$. This is true for all $x\ne1,-2$, and both sides are polynomials, so it is true for \emph{every} $x$ (both sides have degree at most $1$, and two such polynomials that agree at more than one point are the same polynomial). Put $x=1$: $12=3A$, so $A=4$. Put $x=-2$: $-9=-3B$, so $B=3$. Check by adding back: $4(x+2)+3(x-1)=7x+5$. Then
+\[\int\frac{7x+5}{(x-1)(x+2)}\,dx=4\int\frac{dx}{x-1}+3\int\frac{dx}{x+2}=4\ln\lvert x-1\rvert+3\ln\lvert x+2\rvert+C .\]
+%@ m1 | expand(4*(x+2)+3*(x-1)-(7*x+5)) == 0 and apart((7*x+5)/((x-1)*(x+2)),x) == 4/(x-1)+3/(x+2) and all(abs((diff(4*log(sqrt((x-1)**2))+3*log(sqrt((x+2)**2)),x)-(7*x+5)/((x-1)*(x+2))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(5,1),-Q(1,2),Q(3,1))) | =4\ln\lvert x-1\rvert+3\ln\lvert x+2\rvert+C .\]
+\emph{Check.} $\frac d{dx}\left(4\ln\lvert x-1\rvert+3\ln\lvert x+2\rvert\right)=\frac4{x-1}+\frac3{x+2}=\frac{7x+5}{(x-1)(x+2)}$.
+
+\begin{center}
+\begin{tikzpicture}
+  % (a) the function
+  \begin{scope}[x=0.7cm,y=0.5cm]
+    \draw[->] (-4.3,0) -- (4.3,0) node[right] {$x$};
+    \draw[->] (0,-5.3) -- (0,5.6) node[above] {$y$};
+    \draw[dashed,gray] (-2,-5) -- (-2,5);
+    \draw[dashed,gray] (1,-5) -- (1,5);
+    \begin{scope}
+      \clip (-4.3,-5) rectangle (4.3,5);
+      \draw[thick,blue!70!black] plot[domain=-4:-2.06,samples=60] (\x,{(7*\x+5)/((\x-1)*(\x+2))});
+      \draw[thick,blue!70!black] plot[domain=-1.94:0.94,samples=80] (\x,{(7*\x+5)/((\x-1)*(\x+2))});
+      \draw[thick,blue!70!black] plot[domain=1.06:4,samples=60] (\x,{(7*\x+5)/((\x-1)*(\x+2))});
+    \end{scope}
+    \fill (0,-2.5) circle (1.5pt) node[right=3pt,font=\small] {$(0,\,-\frac52)$};
+%@ f1-a | Q(7*0+5,(0-1)*(0+2)) == -Q(5,2) and Q(4,0-1)+Q(3,0+2) == -Q(5,2) | \fill (0,-2.5) circle (1.5pt) node[right=3pt,font=\small] {$(0,\,-\frac52)$};
+    \node[below,font=\small] at (-2,-5) {$x=-2$};
+    \node[below,font=\small] at (1,-5) {$x=1$};
+    \node[font=\small,blue!70!black,anchor=south west] at (2.4,4.2) {$f(x)$};
+    \node[font=\small\bfseries] at (0,-6.7) {(a) the function $f(x)=\frac{7x+5}{(x-1)(x+2)}$};
+  \end{scope}
+  % (b) the pieces, for x > 1
+  \begin{scope}[xshift=6.6cm,yshift=-2.5cm,x=0.9cm,y=0.8cm]
+    \draw[->] (0.4,0) -- (5.4,0) node[right] {$x$};
+    \draw[->] (0.4,0) -- (0.4,5.4) node[above] {$y$};
+    \draw[dashed,gray] (1,0) -- (1,5);
+    \node[below,font=\small] at (1,0) {$x=1$};
+    \begin{scope}
+      \clip (0.4,0) rectangle (5.3,5);
+      \draw[thick,blue!70!black] plot[domain=1.05:5,samples=80] (\x,{(7*\x+5)/((\x-1)*(\x+2))});
+      \draw[thick,red!70!black] plot[domain=1.05:5,samples=80] (\x,{4/(\x-1)});
+      \draw[thick,green!50!black] plot[domain=1.05:5,samples=40] (\x,{3/(\x+2)});
+    \end{scope}
+    \draw[dotted] (3,0) -- (3,2.6);
+    \fill (3,2.6) circle (1.5pt) node[above right,font=\small,blue!70!black] {$\frac{13}5$};
+%@ f1-b | Q(7*3+5,(3-1)*(3+2)) == Q(13,5) and Q(4,3-1)+Q(3,3+2) == Q(13,5) | \fill (3,2.6) circle (1.5pt) node[above right,font=\small,blue!70!black] {$\frac{13}5$};
+    \fill (3,2) circle (1.5pt) node[below left,font=\small,red!70!black] {$2$};
+%@ f1-c | Q(4,3-1) == 2 and 2 == 2 | \fill (3,2) circle (1.5pt) node[below left,font=\small,red!70!black] {$2$};
+    \fill (3,0.6) circle (1.5pt) node[above right,font=\small,green!50!black] {$\frac35$};
+%@ f1-d | Q(3,3+2) == Q(3,5) and Q(4,3-1)+Q(3,3+2) == Q(13,5) | \fill (3,0.6) circle (1.5pt) node[above right,font=\small,green!50!black] {$\frac35$};
+    \node[below,font=\small] at (3,0) {$3$};
+    % legend above the panel
+    \node[font=\small,blue!70!black,anchor=west] at (0.7,5.8) {$f(x)$};
+    \node[font=\small,red!70!black,anchor=west] at (2.1,5.8) {$\frac{4}{x-1}$};
+    \node[font=\small,green!50!black,anchor=west] at (3.5,5.8) {$\frac3{x+2}$};
+    \node[font=\small\bfseries] at (2.9,-1.1) {(b) the pieces, for $x>1$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 1. (a) The function $f(x)=\frac{7x+5}{(x-1)(x+2)}$ (blue) with its vertical asymptotes $x=-2$ and $x=1$ (dashed); the graph is cut off at $y=\pm5$. (b) For $x>1$, the graph of $f$ (blue) is the sum of the graphs of its partial fractions $\frac4{x-1}$ (red) and $\frac3{x+2}$ (green); at $x=3$ the heights are $2$ and $\frac35$, and $\frac42+\frac35=\frac{13}5$. Near $x=1$ the red piece blows up and the green one stays small; near $x=-2$ the roles are reversed. That is why each numerator can be found by looking at one asymptote at a time.\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Step 0: divide when the numerator is too large}
+
+A \emph{proper} rational function $\frac PD$ has $\deg P<\deg D$; otherwise it is \emph{improper}. Adding fractions never produces an improper term out of proper ones, so an improper function must first be split into a polynomial plus a proper function. That is the division of polynomials.
+
+\begin{thm}{Division of polynomials}{div}
+Let $N$ and $D$ be polynomials with $D\ne0$. There are polynomials $Q$ and $R$, with $\deg R<\deg D$ (or $R=0$), such that $N=QD+R$. They are unique. In particular, if $\deg N\ge\deg D$ then $\deg Q=\deg N-\deg D$, and
+\[\frac ND=Q+\frac RD .\]
+\end{thm}
+\begin{proof}
+\emph{Existence,} by induction on $\deg N$. If $N=0$ or $\deg N<\deg D$, take $Q=0$ and $R=N$. Suppose $\deg N=n\ge d=\deg D$ and that the claim holds for all numerators of smaller degree. Let $\alpha x^n$ and $\delta x^d$ be the leading terms of $N$ and $D$ ($\delta\ne0$). The polynomial $N_1=N-\frac\alpha\delta x^{n-d}D$ has no $x^n$ term (the two leading terms cancel), so $\deg N_1<n$. By the induction hypothesis $N_1=Q_1D+R$ with $\deg R<d$. Then $N=\left(Q_1+\frac\alpha\delta x^{n-d}\right)D+R$.
+
+\emph{Uniqueness.} If $N=QD+R=Q'D+R'$ with $\deg R,\deg R'<d$, then $(Q-Q')D=R'-R$. The right side has degree less than $d$. If $Q\ne Q'$ the left side has degree $\deg(Q-Q')+d\ge d$, which is impossible. So $Q=Q'$, and then $R=R'$. The degree of $Q$ follows from the construction (each step lowers the degree of the numerator, and the first step contributes the term $\frac\alpha\delta x^{n-d}$ of highest degree). Dividing $N=QD+R$ by $D$ gives $\frac ND=Q+\frac RD$.
+\end{proof}
+
+The algorithm in the proof is long division: at each step remove the leading term. A quotient polynomial integrates term by term, so only $\frac RD$ needs partial fractions.
+
+\begin{exmp}{Division first}{m2}
+Evaluate $\displaystyle\int\frac{x^3+2x^2-6}{x^2-x-2}\,dx$.
+
+\textbf{Solution.} The numerator has degree $3\ge2$, so divide. First term: $x^3\div x^2=x$, and $x\,(x^2-x-2)=x^3-x^2-2x$. Subtract: $(x^3+2x^2-6)-(x^3-x^2-2x)=3x^2+2x-6$. Next term: $3x^2\div x^2=3$, and $3(x^2-x-2)=3x^2-3x-6$. Subtract: $(3x^2+2x-6)-(3x^2-3x-6)=5x$. The degree of $5x$ is less than $2$, so we stop:
+\[\frac{x^3+2x^2-6}{x^2-x-2}=x+3+\frac{5x}{x^2-x-2}.\]
+%@ m2a | expand((x+3)*(x**2-x-2)+5*x-(x**3+2*x**2-6)) == 0 and div(x**3+2*x**2-6,x**2-x-2,x) == (x+3,5*x) | \frac{x^3+2x^2-6}{x^2-x-2}=x+3+\frac{5x}{x^2-x-2}.\]
+Factor $x^2-x-2=(x-2)(x+1)$ and write $\frac{5x}{(x-2)(x+1)}=\frac A{x-2}+\frac B{x+1}$, so $5x=A(x+1)+B(x-2)$. At $x=2$: $10=3A$, $A=\frac{10}3$. At $x=-1$: $-5=-3B$, $B=\frac53$. Therefore
+\[\int\frac{x^3+2x^2-6}{x^2-x-2}\,dx=\int\left(x+3+\frac{10/3}{x-2}+\frac{5/3}{x+1}\right)dx=\frac{x^2}2+3x+\frac{10}3\ln\lvert x-2\rvert+\frac53\ln\lvert x+1\rvert+C .\]
+%@ m2b | apart((x**3+2*x**2-6)/(x**2-x-2),x) == x+3+Q(10,3)/(x-2)+Q(5,3)/(x+1) and all(abs((diff(x**2/2+3*x+Q(10,3)*log(sqrt((x-2)**2))+Q(5,3)*log(sqrt((x+1)**2)),x)-(x**3+2*x**2-6)/(x**2-x-2)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(5,1))) | =\frac{x^2}2+3x+\frac{10}3\ln\lvert x-2\rvert+\frac53\ln\lvert x+1\rvert+C .\]
+\emph{Check.} The derivative of the right side is $x+3+\frac{10/3}{x-2}+\frac{5/3}{x+1}$, which is $x+3+\frac{5x}{x^2-x-2}$ by the partial fractions above, and that equals the integrand by the division.
+\end{exmp}
+
+\begin{kc}{Is division needed?}{kcdiv}
+For each integrand say whether to divide first, and if so find the quotient and remainder: (a) $\dfrac{x^2+1}{x^2-4}$; (b) $\dfrac{3x+2}{x^2-4}$; (c) $\dfrac{x^3}{x^2+1}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The decomposition theorem}
+
+Which fractions do we add up? The denominator tells us. By Theorem~\ref{app-thm:realfactor} every real polynomial is a constant times a product of real linear factors and real quadratic factors with no real root; collecting equal factors, a monic denominator is
+\[D(x)=(x-r_1)^{m_1}\cdots(x-r_s)^{m_s}\,\left(x^2+b_1x+c_1\right)^{n_1}\cdots\left(x^2+b_tx+c_t\right)^{n_t},\]
+with the $r_i$ distinct, the quadratics distinct, and $b_j^2-4c_j<0$. The linear factors are of two kinds: appearing once ($m=1$) or repeated. The same is true of the quadratic factors. Each prime factor $p$ of power $m$ contributes $m$ fractions, with denominators $p,p^2,\dots,p^m$, and the numerators have degree less than that of $p$: a constant over a linear factor, and $Bx+C$ over a quadratic one.
+
+The proof of the next theorem needs one property of irreducible factors: they behave like prime numbers. Call a nonconstant polynomial $p$ \emph{irreducible} if its only divisors are constants and constant multiples of $p$. A linear polynomial is irreducible (a divisor has degree $0$ or $1$). A quadratic $x^2+bx+c$ with $b^2-4c<0$ is irreducible, since a divisor of degree $1$ would give a real root.
+
+\begin{thm}{Euclid's lemma for polynomials}{euclid}
+Let $p$ be an irreducible polynomial and $A,B$ polynomials. If $p$ divides $AB$, then $p$ divides $A$ or $p$ divides $B$.
+\end{thm}
+\begin{proof}
+Suppose $p$ does not divide $A$; we show that $p$ divides $B$. Among all nonzero polynomials of the form $Up+VA$ ($U,V$ polynomials) choose one, $g$, of least degree. Divide $p$ by $g$ (Theorem~\ref{thm:div}): $p=Qg+R$ with $\deg R<\deg g$. Then $R=p-Qg=p-Q(Up+VA)=(1-QU)p+(-QV)A$ is of the same form, and has smaller degree than $g$, so $R=0$ by the choice of $g$. Thus $g$ divides $p$. In the same way $g$ divides $A$. Since $p$ is irreducible, $g$ is a constant or a constant multiple of $p$; the second would make $p$ divide $A$, which is excluded. So $g$ is a nonzero constant, and, dividing by it, $1=U_1p+V_1A$ for some polynomials $U_1,V_1$. Multiply by $B$: $B=U_1pB+V_1AB$. Both terms on the right are divisible by $p$ (the second because $p$ divides $AB$). Hence $p$ divides $B$.
+\end{proof}
+
+\begin{thm}{The partial fraction decomposition}{pfd}
+Let $D$ be as above and let $P$ be a polynomial with $\deg P<\deg D$. Then there are real numbers $A_{ik}$ $(1\le i\le s,\ 1\le k\le m_i)$ and $B_{jk},C_{jk}$ $(1\le j\le t,\ 1\le k\le n_j)$ such that
+\[\frac{P(x)}{D(x)}=\sum_{i=1}^s\sum_{k=1}^{m_i}\frac{A_{ik}}{(x-r_i)^k}+\sum_{j=1}^t\sum_{k=1}^{n_j}\frac{B_{jk}x+C_{jk}}{\left(x^2+b_jx+c_j\right)^k}\]
+for all $x$ where $D(x)\ne0$, and these numbers are unique. The number of unknowns is $\sum m_i+2\sum n_j=\deg D$.
+\end{thm}
+
+\begin{proof}
+Let $\mathcal V$ be the set of all lists of real coefficients as in the theorem; it is a vector space of dimension $\sum m_i+2\sum n_j=\deg D$ (each linear factor power $m_i$ contributes $m_i$ numbers, each quadratic $2n_j$). Let $\mathcal W$ be the vector space of polynomials of degree less than $\deg D$ (together with $0$); its dimension is also $\deg D$ (the coefficients of $1,x,\dots,x^{\deg D-1}$). Given a list $c\in\mathcal V$, multiply the right side of the decomposition by $D$. A term $\frac{N}{p^k}$ with $\deg N<\deg p$ becomes $N\cdot\frac D{p^k}$, a polynomial (because $p^k$ divides $D$ for $k\le$ the power of $p$ in $D$) of degree less than $\deg p+\deg D-k\deg p\le\deg D$. So $c\mapsto\Phi(c)=$ (sum of these polynomials) is a linear map $\Phi:\mathcal V\to\mathcal W$. The theorem says: for every $P\in\mathcal W$ there is exactly one $c$ with $\Phi(c)=P$. Since $\dim\mathcal V=\dim\mathcal W$, it is enough to show that $\Phi$ is one-to-one, that is, that $\Phi(c)=0$ forces $c=0$ (a one-to-one linear map between spaces of the same finite dimension is onto, by the rank--nullity theorem of linear algebra).
+
+Suppose $\Phi(c)=0$, so $\sum_p\sum_k\frac{N_{p,k}}{p^k}=0$ for all $x$ with $D(x)\ne0$, where $p$ runs through the distinct irreducible factors of $D$ and $N_{p,k}$ is the numerator over $p^k$ ($\deg N_{p,k}<\deg p$). Assume not all $N_{p,k}$ are $0$. Choose a factor $p$ and the largest $k_0$ with $N_{p,k_0}\ne0$ (and, for the other factors, nothing is claimed). Let $E$ be the product of all the \emph{other} prime powers $q^{n_q}$ in $D$. Multiply the identity by $p^{k_0}E$:
+\[0=\sum_{k\le k_0}p^{k_0-k}E\,N_{p,k}+\sum_{q\ne p}\sum_k p^{k_0}\,\frac{E}{q^k}\,N_{q,k}.\]
+(Terms with $k>k_0$ have $N_{p,k}=0$.) Every term of the first sum with $k<k_0$ contains the factor $p$ because $k_0-k\ge1$; every term of the second sum contains $p^{k_0}$ and $k_0\ge1$, and $\frac E{q^k}$ is a polynomial. The only term without an evident factor $p$ is $EN_{p,k_0}$. Hence $p$ divides $EN_{p,k_0}$. By Theorem~\ref{thm:euclid}, $p$ divides $N_{p,k_0}$ or $p$ divides $E$. The first is impossible: $N_{p,k_0}\ne0$ has degree less than $\deg p$. For the second, $E$ is a product of irreducible polynomials $q\ne p$; applying Theorem~\ref{thm:euclid} again and again, $p$ would divide one of them, say $q$; then $q$ is a constant multiple of $p$ (the divisors of the irreducible $q$ are only constants and its own multiples), and since both are monic, $q=p$, contradicting $q\ne p$. This contradiction shows that all $N_{p,k}$ vanish, so $c=0$ and $\Phi$ is one-to-one.
+\end{proof}
+
+\begin{center}\small\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{0.2\textwidth}p{0.3\textwidth}p{0.4\textwidth}}
+\textbf{Factor of $D$} & \textbf{Terms to include} & \textbf{Example}\\ \hline
+$x-r$ & $\dfrac A{x-r}$ & $\dfrac{A}{x-3}$\\
+$(x-r)^m$ & $\dfrac A{x-r}+\dfrac B{(x-r)^2}+\cdots+\dfrac Z{(x-r)^m}$ & $(x+1)^3$: $\dfrac A{x+1}+\dfrac B{(x+1)^2}+\dfrac C{(x+1)^3}$\\
+$x^2+bx+c$, $b^2-4c<0$ & $\dfrac{Bx+C}{x^2+bx+c}$ & $\dfrac{Bx+C}{x^2+4}$\\
+$(x^2+bx+c)^n$ & $\dfrac{B_1x+C_1}{x^2+bx+c}+\cdots+\dfrac{B_nx+C_n}{(x^2+bx+c)^n}$ & $(x^2+1)^2$: $\dfrac{Bx+C}{x^2+1}+\dfrac{Dx+E}{(x^2+1)^2}$\\
+\end{tabular}
+\end{center}
+
+\begin{kc}{The form of the decomposition}{kcform}
+Write the \emph{form} of the partial fraction decomposition (do not find the numbers) of (a) $\dfrac{x+2}{x(x-3)(x+5)}$; (b) $\dfrac{3x-1}{x^2(x^2+1)}$; (c) $\dfrac{x^2}{(x-1)^3(x^2+x+1)^2}$.
+\end{kc}
+
+\begin{think}{Why $Bx+C$ over a quadratic?}{numer}
+A student writes $\frac{1}{x(x^2+1)}=\frac Ax+\frac B{x^2+1}$ with constant numerators, and cannot find $A$ and $B$. Why does this fail? How many unknowns does Theorem~\ref{thm:pfd} give, and how many does the student's form have?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Finding the numerators}
+
+Once the form is chosen, multiply by $D$ to get a polynomial identity, and find the unknowns in one of three ways. \emph{Equating coefficients} compares the coefficients of each power of $x$ and gives a linear system. \emph{Substituting values} puts convenient numbers (the roots of $D$ first) into the identity. The \emph{cover-up method} is substituting a root of $D$ in a smart way; the theorem below says exactly what it computes.
+
+\begin{thm}{Cover-up and the derivative trick}{coef}
+Let $\frac PD$ be proper, let $D=(x-r)^m E$ with $E(r)\ne0$, and put $G(x)=\dfrac{P(x)}{E(x)}$. In the decomposition of Theorem~\ref{thm:pfd}, the numerators over the powers of $x-r$ are
+\[A_m=G(r),\qquad A_{m-j}=\frac{G^{(j)}(r)}{j!}\quad(j=1,\dots,m-1).\]
+In particular, for a simple root ($m=1$), $A_1=\dfrac{P(r)}{E(r)}=\dfrac{P(r)}{D'(r)}$: \emph{cover up} the factor $x-r$ in $D$ and evaluate the rest of the fraction at $r$.
+\end{thm}
+\begin{proof}
+Multiply the decomposition by $(x-r)^m$. The terms over powers of $x-r$ become $A_m+A_{m-1}(x-r)+\dots+A_1(x-r)^{m-1}$. Every other term of the decomposition has a denominator that is a power of a different irreducible factor, so after multiplication it has the form $(x-r)^m\times$ (a fraction whose denominator does not vanish at $r$). Collecting these terms into one fraction $H$, whose denominator does not vanish at $r$ (so $H$ has derivatives of all orders near $r$), we get, for $x$ near $r$ and $x\ne r$,
+\[G(x)=\frac{P(x)}{E(x)}=A_m+A_{m-1}(x-r)+\dots+A_1(x-r)^{m-1}+(x-r)^mH(x).\]
+Differentiate $j$ times, $0\le j\le m-1$, and put $x=r$. The polynomial part gives $j!\,A_{m-j}$. By the product rule every term of the $j$-th derivative of $(x-r)^mH(x)$ contains a factor $(x-r)^{m-i}$ with $i\le j<m$, so it is $0$ at $r$. Hence $G^{(j)}(r)=j!\,A_{m-j}$. For $m=1$: $D=(x-r)E$ gives $D'=E+(x-r)E'$, so $D'(r)=E(r)$.
+\end{proof}
+
+\begin{exmp}{Three distinct linear factors, the cover-up method, and a definite integral}{m3}
+Evaluate $\displaystyle\int_0^2\frac{5x+7}{(x+1)(x+2)(x+3)}\,dx$ and check the sign and size of the answer.
+
+\textbf{Solution.} The degree $1$ of the numerator is less than $3$, so no division is needed. Write
+\[\frac{5x+7}{(x+1)(x+2)(x+3)}=\frac A{x+1}+\frac B{x+2}+\frac C{x+3}.\]
+Cover-up (Theorem~\ref{thm:coef}, $m=1$): $A$ is the fraction with $x+1$ covered up, evaluated at $x=-1$: $A=\frac{5(-1)+7}{(1)(2)}=1$. For $B$ cover up $x+2$ and put $x=-2$: $B=\frac{5(-2)+7}{(-1)(1)}=3$. For $C$ cover up $x+3$ and put $x=-3$: $C=\frac{5(-3)+7}{(-2)(-1)}=-4$. Check at $x=0$: the left side is $\frac76$, the right side is $1+\frac32-\frac43=\frac{6+9-8}6=\frac76$. An antiderivative is $\ln\lvert x+1\rvert+3\ln\lvert x+2\rvert-4\ln\lvert x+3\rvert$, and on $[0,2]$ all three arguments are positive, so
+\[\int_0^2\ldots\,dx=\Big[\ln(x+1)+3\ln(x+2)-4\ln(x+3)\Big]_0^2=\big(\ln3+3\ln4-4\ln5\big)-\big(0+3\ln2-4\ln3\big).\]
+%@ m3a | apart((5*x+7)/((x+1)*(x+2)*(x+3)),x) == 1/(x+1)+3/(x+2)-4/(x+3) and Q(5*(-1)+7,1*2) == 1 and Q(5*(-2)+7,(-1)*1) == 3 and Q(5*(-3)+7,(-2)*(-1)) == -4 and Q(7,6) == 1+Q(3,2)-Q(4,3) | =\big(\ln3+3\ln4-4\ln5\big)-\big(0+3\ln2-4\ln3\big).\]
+With $3\ln4=6\ln2$ this is $5\ln3+3\ln2-4\ln5=\ln\dfrac{3^5\cdot2^3}{5^4}=\ln\dfrac{1944}{625}\approx1.1348$.
+%@ m3b | simplify((log(3)+3*log(4)-4*log(5))-(3*log(2)-4*log(3))-(5*log(3)+3*log(2)-4*log(5))) == 0 and simplify(5*log(3)+3*log(2)-4*log(5)-log(Q(1944,625))) == 0 and abs(Integral((5*x+7)/((x+1)*(x+2)*(x+3)),(x,0,2)).evalf(30)-log(Q(1944,625)).evalf(30)) < 1e-20 and abs(log(Q(1944,625)).evalf()-1.1348) < 1e-4 | \ln\dfrac{1944}{625}\approx1.1348$.
+\emph{Sign and size.} The integrand is positive on $[0,2]$ (every factor is positive), so the integral must be positive. At $x=0$ it equals $\frac76\approx1.17$ and at $x=2$ it equals $\frac{17}{60}\approx0.28$, and it decreases between them, so the area is between $2\cdot0.28=0.57$ and $2\cdot1.17=2.33$; the value $1.13$ is in that range (the trapezoid with these end heights has area $1.45$, and the curve is bowed below its chord). Figure~2 shows the region.
+
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=1.6cm]
+  \draw[->] (-1.4,0) -- (2.8,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.3) node[above] {$y$};
+  \draw[dashed] (-1,0) -- (-1,2.2);
+  \fill[blue!15] (0,0) -- plot[domain=0:2,samples=40] (\x,{(5*\x+7)/((\x+1)*(\x+2)*(\x+3))}) -- (2,0) -- cycle;
+  \draw[thick,blue!70!black] plot[domain=-0.6:2.6,samples=50] (\x,{(5*\x+7)/((\x+1)*(\x+2)*(\x+3))});
+  \fill (0,1.1667) circle (1.5pt) node[above right,font=\small] {$(0,\,\frac76)$};
+%@ f2-a | Q(5*0+7,(0+1)*(0+2)*(0+3)) == Q(7,6) and abs(Q(7,6).evalf()-1.1667) < 1e-4 | \fill (0,1.1667) circle (1.5pt) node[above right,font=\small] {$(0,\,\frac76)$};
+  \fill (2,0.2833) circle (1.5pt) node[above right,font=\small] {$(2,\,\frac{17}{60})$};
+%@ f2-b | Q(5*2+7,(2+1)*(2+2)*(2+3)) == Q(17,60) and abs(Q(17,60).evalf()-0.2833) < 1e-4 | \fill (2,0.2833) circle (1.5pt) node[above right,font=\small] {$(2,\,\frac{17}{60})$};
+  \fill (-1,0) circle (1.5pt) node[below,font=\small] {$-1$};
+%@ f2-c | (x+1).subs(x,-1) == 0 | \fill (-1,0) circle (1.5pt) node[below,font=\small] {$-1$};
+  \fill (2,0) circle (1.5pt) node[below,font=\small] {$2$};
+%@ f2-d | (x-2).subs(x,2) == 0 | \fill (2,0) circle (1.5pt) node[below,font=\small] {$2$};
+  \node[font=\small] at (0.9,0.45) {area $=\ln\frac{1944}{625}$};
+  \node[font=\small,anchor=west] at (0.2,1.9) {$y=\frac{5x+7}{(x+1)(x+2)(x+3)}$};
+  \node[font=\small,anchor=east] at (-1.05,1.0) {$x=-1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 2. The region under $y=\frac{5x+7}{(x+1)(x+2)(x+3)}$ for $0\le x\le2$. It has area $\ln\frac{1944}{625}\approx1.135$. The dashed line $x=-1$ is a vertical asymptote of the graph, where the factor $x+1$ vanishes; the region stays to its right.\end{center}
+\end{exmp}
+
+\begin{exmp}{A repeated linear factor and the derivative trick}{m4}
+Evaluate $\displaystyle\int\frac{x^2+7x+1}{(x-1)^2(x+2)}\,dx$.
+
+\textbf{Solution.} The form is
+\[\frac{x^2+7x+1}{(x-1)^2(x+2)}=\frac A{x-1}+\frac B{(x-1)^2}+\frac C{x+2}.\]
+Use Theorem~\ref{thm:coef}. For the simple root $-2$ cover up $x+2$: $C=\frac{4-14+1}{(-3)^2}=\frac{-9}9=-1$. For the double root $1$, $E=x+2$ and $G(x)=\frac{x^2+7x+1}{x+2}$. Then $B=G(1)=\frac93=3$, and $A=G'(1)$ with
+\[G'(x)=\frac{(2x+7)(x+2)-(x^2+7x+1)\cdot1}{(x+2)^2},\qquad G'(1)=\frac{9\cdot3-9}{9}=2 .\]
+So $A=2$, $B=3$, $C=-1$. Check at $x=0$: left $\frac1{(1)(2)}=\frac12$; right $\frac2{-1}+\frac3{1}+\frac{-1}2=-2+3-\frac12=\frac12$. Integrate each piece (Theorem~\ref{thm:pieces}(1)):
+\[\int\left(\frac2{x-1}+\frac3{(x-1)^2}-\frac1{x+2}\right)dx=2\ln\lvert x-1\rvert-\frac3{x-1}-\ln\lvert x+2\rvert+C .\]
+%@ m4 | apart((x**2+7*x+1)/((x-1)**2*(x+2)),x) == 2/(x-1)+3/(x-1)**2-1/(x+2) and diff((x**2+7*x+1)/(x+2),x).subs(x,1) == 2 and ((x**2+7*x+1)/(x+2)).subs(x,1) == 3 and ((x**2+7*x+1)/(x-1)**2).subs(x,-2) == -1 and Q(1,2) == Q(2,-1)+3-Q(1,2) and all(abs((diff(2*log(sqrt((x-1)**2))-3/(x-1)-log(sqrt((x+2)**2)),x)-(x**2+7*x+1)/((x-1)**2*(x+2))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(4,1),Q(1,2),Q(3,1))) | =2\ln\lvert x-1\rvert-\frac3{x-1}-\ln\lvert x+2\rvert+C .\]
+\emph{Check.} $\frac d{dx}\left(-\frac3{x-1}\right)=\frac3{(x-1)^2}$, and the other two terms differentiate to $\frac2{x-1}$ and $-\frac1{x+2}$, which are the pieces.
+\end{exmp}
+
+\begin{kc}{Cover-up}{kccover}
+Use the cover-up method to find $A$, $B$, $C$ in $\dfrac{3x^2+x+2}{x(x-1)(x+2)}=\dfrac Ax+\dfrac B{x-1}+\dfrac C{x+2}$, and check at $x=2$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Integrating the pieces}
+
+Theorem~\ref{thm:pfd} reduces every rational integral to two kinds of integrals: $\int\frac{dx}{(x-r)^n}$ and $\int\frac{Bx+C}{(x^2+bx+c)^n}\,dx$. The first is a power or a logarithm. For the second, complete the square as in Section~8.4 (Theorem~\ref{8.4-thm:square}): with $u=x+\frac b2$ and $a^2=c-\frac{b^2}4>0$ we have $x^2+bx+c=u^2+a^2$, and $Bx+C=Bu+K$ with $K=C-\frac{Bb}2$. Split into the part with $u$ (a logarithm or a power) and the part with $K$ (an inverse tangent or its reduction).
+
+\begin{thm}{Integrals of the pieces}{pieces}
+\begin{enumerate}[label=(\arabic*)]
+  \item $\displaystyle\int\frac{dx}{x-r}=\ln\lvert x-r\rvert+C$, and for $n\ge2$, $\displaystyle\int\frac{dx}{(x-r)^n}=-\frac1{(n-1)(x-r)^{n-1}}+C$, on each interval not containing $r$.
+  \item Let $b^2-4c<0$, $a=\sqrt{c-b^2/4}$, $u=x+\frac b2$, $K=C-\frac{Bb}2$. Then for all $x$
+  \[\int\frac{Bx+C}{x^2+bx+c}\,dx=\frac B2\ln\left(x^2+bx+c\right)+\frac Ka\tan^{-1}\frac ua+C_0 .\]
+  \item With the same notation, for $n\ge2$,
+  \[\int\frac{Bx+C}{(x^2+bx+c)^n}\,dx=-\frac{B}{2(n-1)\left(x^2+bx+c\right)^{n-1}}+K\,I_n(u)+C_0,\]
+  where $I_n(u)=\displaystyle\int\frac{du}{(u^2+a^2)^n}$ satisfies $I_1(u)=\frac1a\tan^{-1}\frac ua$ and
+  \[I_{n+1}(u)=\frac{u}{2na^2\,(u^2+a^2)^n}+\frac{2n-1}{2na^2}\,I_n(u)\qquad(n\ge1).\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) The first formula is in the table of Section~8.1; the second is the power rule, since $\frac d{dx}\left[-\frac1{(n-1)(x-r)^{n-1}}\right]=(x-r)^{-n}$.
+
+(2) With $u=x+\frac b2$, $du=dx$, $x^2+bx+c=u^2+a^2$ and $Bx+C=Bu+K$ (indeed $Bu+K=Bx+\frac{Bb}2+C-\frac{Bb}2$):
+\[\int\frac{Bx+C}{x^2+bx+c}\,dx=B\int\frac{u\,du}{u^2+a^2}+K\int\frac{du}{u^2+a^2}.\]
+For the first integral put $w=u^2+a^2$, $dw=2u\,du$: $\int\frac{u\,du}{u^2+a^2}=\frac12\ln(u^2+a^2)$, with no absolute value because $u^2+a^2>0$. The second is $\frac1a\tan^{-1}\frac ua$ (Theorem~\ref{8.1-thm:invtrig}, or Theorem~\ref{8.1-thm:quad}(i)).
+
+(3) In the same way the first integral is, for $n\ge2$, $\int\frac{u\,du}{(u^2+a^2)^n}=\frac12\int w^{-n}\,dw=-\frac{1}{2(n-1)\,w^{n-1}}$. The reduction formula for $I_n$ is Example~\ref{8.4-ex:b14} (proved there by the tangent substitution and the reduction formula for $\cos^{2n}\theta$ of Theorem~\ref{8.2-thm:redtrig}), applied with the variable $u$ in place of $x$.
+\end{proof}
+
+\begin{exmp}{An irreducible quadratic factor}{m5}
+Evaluate $\displaystyle\int\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}\,dx$.
+
+\textbf{Solution.} The quadratic has $b^2-4c=4-20=-16<0$, so it is irreducible. The form is $\dfrac A{x-1}+\dfrac{Bx+C}{x^2+2x+5}$. Cover up $x-1$ and put $x=1$: $A=\frac{5+5+6}{1+2+5}=\frac{16}8=2$. Multiply out: $5x^2+5x+6=2(x^2+2x+5)+(Bx+C)(x-1)$. Compare the coefficients of $x^2$: $5=2+B$, so $B=3$. Compare the constants: $6=10-C$, so $C=4$. Check with the coefficients of $x$: $5=4+(C-B)=4+1$. So
+\[\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}=\frac2{x-1}+\frac{3x+4}{x^2+2x+5}.\]
+For the second term, $u=x+1$, $a^2=5-1=4$, $a=2$, and $3x+4=3u+1$, so $K=C-\frac{Bb}2=4-3=1$. By Theorem~\ref{thm:pieces}(2),
+\[\int\frac{3x+4}{x^2+2x+5}\,dx=\frac32\ln\left(x^2+2x+5\right)+\frac12\tan^{-1}\frac{x+1}2+C_0 .\]
+Altogether
+\[\int\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}\,dx=2\ln\lvert x-1\rvert+\frac32\ln\left(x^2+2x+5\right)+\frac12\tan^{-1}\frac{x+1}2+C .\]
+%@ m5 | apart((5*x**2+5*x+6)/((x-1)*(x**2+2*x+5)),x) == 2/(x-1)+(3*x+4)/(x**2+2*x+5) and Q(5+5+6,1+2+5) == 2 and expand(2*(x**2+2*x+5)+(3*x+4)*(x-1)-(5*x**2+5*x+6)) == 0 and 4-4*5 == -16 and all(abs((diff(2*log(sqrt((x-1)**2))+Q(3,2)*log(x**2+2*x+5)+atan((x+1)/2)/2,x)-(5*x**2+5*x+6)/((x-1)*(x**2+2*x+5))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(4,1))) | +\frac12\tan^{-1}\frac{x+1}2+C .\]
+\emph{Check.} Differentiate: $\frac2{x-1}+\frac32\cdot\frac{2x+2}{x^2+2x+5}+\frac12\cdot\frac{1/2}{1+\left(\frac{x+1}2\right)^2}=\frac2{x-1}+\frac{3x+3}{x^2+2x+5}+\frac{1}{x^2+2x+5}$, because $\frac14\cdot\frac{1}{1+(x+1)^2/4}=\frac1{4+(x+1)^2}=\frac1{x^2+2x+5}$. The last two terms add to $\frac{3x+4}{x^2+2x+5}$.
+\end{exmp}
+
+\begin{think}{Why every power?}{allpowers}
+Why does the decomposition of $\frac P{(x-1)^2}$ need both $\frac A{x-1}$ and $\frac B{(x-1)^2}$? What goes wrong if we use only $\frac B{(x-1)^2}$ with $P(x)=x$? Count unknowns.
+\end{think}
+
+\begin{exmp}{A repeated irreducible quadratic factor}{m6}
+Evaluate $\displaystyle\int\frac{2x^3+4x^2+3x+1}{x\,(x^2+1)^2}\,dx$.
+
+\textbf{Solution.} The degree $3$ is less than $5$. The form (Theorem~\ref{thm:pfd}; the quadratic $x^2+1$ is repeated, so both powers appear) is
+\[\frac{2x^3+4x^2+3x+1}{x(x^2+1)^2}=\frac Ax+\frac{Bx+C}{x^2+1}+\frac{Dx+E}{(x^2+1)^2}.\]
+Multiply by $x(x^2+1)^2$ and expand:
+\[2x^3+4x^2+3x+1=A(x^2+1)^2+(Bx+C)\,x\,(x^2+1)+(Dx+E)\,x .\]
+Put $x=0$: $1=A$. Now compare coefficients, with $A=1$, since $A(x^2+1)^2=x^4+2x^2+1$ and $(Bx+C)x(x^2+1)=Bx^4+Cx^3+Bx^2+Cx$ and $(Dx+E)x=Dx^2+Ex$:
+\[x^4:\ 0=1+B;\quad x^3:\ 2=C;\quad x^2:\ 4=2+B+D;\quad x:\ 3=C+E;\quad x^0:\ 1=A.\]
+So $B=-1$, $C=2$, $D=4-2-B=3$, $E=3-C=1$. Thus
+\[\frac{2x^3+4x^2+3x+1}{x(x^2+1)^2}=\frac1x-\frac{x-2}{x^2+1}+\frac{3x+1}{(x^2+1)^2}.\]
+%@ m6a | apart((2*x**3+4*x**2+3*x+1)/(x*(x**2+1)**2),x) == 1/x-(x-2)/(x**2+1)+(3*x+1)/(x**2+1)**2 and expand((x**2+1)**2+(-x+2)*x*(x**2+1)+(3*x+1)*x-(2*x**3+4*x**2+3*x+1)) == 0 | =\frac1x-\frac{x-2}{x^2+1}+\frac{3x+1}{(x^2+1)^2}.\]
+Integrate each piece. The first is $\ln\lvert x\rvert$. For the second, $-\frac{x-2}{x^2+1}=-\frac x{x^2+1}+\frac2{x^2+1}$ gives $-\frac12\ln(x^2+1)+2\tan^{-1}x$. For the third, here $b=0$, $c=1$, $a=1$, $u=x$, $B=3$, $K=1$, $n=2$. By Theorem~\ref{thm:pieces}(3), $\int\frac{3x\,dx}{(x^2+1)^2}=-\frac3{2(x^2+1)}$ and, with the reduction formula for $n=1$ ($a=1$),
+\[I_2(x)=\frac{x}{2(x^2+1)}+\frac12\,I_1(x)=\frac x{2(x^2+1)}+\frac12\tan^{-1}x .\]
+Adding the pieces,
+\[\int\ldots\,dx=\ln\lvert x\rvert-\frac12\ln(x^2+1)+2\tan^{-1}x-\frac3{2(x^2+1)}+\frac x{2(x^2+1)}+\frac12\tan^{-1}x+C ,\]
+that is
+\[\ln\lvert x\rvert-\frac12\ln\left(x^2+1\right)+\frac52\tan^{-1}x+\frac{x-3}{2(x^2+1)}+C .\]
+%@ m6b | all(abs((diff(log(sqrt((x)**2))-log(x**2+1)/2+Q(5,2)*atan(x)+(x-3)/(2*(x**2+1)),x)-(2*x**3+4*x**2+3*x+1)/(x*(x**2+1)**2)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(2,1),Q(1,3),Q(3,1))) and simplify(diff(x/(2*(x**2+1))+atan(x)/2,x)-1/(x**2+1)**2) == 0 | \frac52\tan^{-1}x+\frac{x-3}{2(x^2+1)}+C .\]
+\emph{Check.} Differentiate the answer. The quotient rule gives $\frac{d}{dx}\frac{x-3}{2(x^2+1)}=\frac{(x^2+1)-2x(x-3)}{2(x^2+1)^2}=\frac{-x^2+6x+1}{2(x^2+1)^2}$. The other terms give $\frac1x-\frac x{x^2+1}+\frac5{2(x^2+1)}$. Over the common denominator $2(x^2+1)^2$ the last term and the quotient-rule term add to $\frac{5(x^2+1)-x^2+6x+1}{2(x^2+1)^2}=\frac{2x^2+3x+3}{(x^2+1)^2}$, which equals $\frac2{x^2+1}+\frac{3x+1}{(x^2+1)^2}$. So the derivative is $\frac1x-\frac x{x^2+1}+\frac2{x^2+1}+\frac{3x+1}{(x^2+1)^2}$, the three pieces.
+%@ m6c | simplify(diff((x-3)/(2*(x**2+1)),x)-(-x**2+6*x+1)/(2*(x**2+1)**2)) == 0 and simplify(5*(x**2+1)/(2*(x**2+1)**2)+(-x**2+6*x+1)/(2*(x**2+1)**2)-(2*x**2+3*x+3)/(x**2+1)**2) == 0 and simplify(2/(x**2+1)+(3*x+1)/(x**2+1)**2-(2*x**2+3*x+3)/(x**2+1)**2) == 0 | which equals $\frac2{x^2+1}+\frac{3x+1}{(x^2+1)^2}$.
+\end{exmp}
+
+\begin{proc}{Integrating a rational function}{pfproc}
+To evaluate $\int\frac{N(x)}{D(x)}\,dx$:
+\begin{enumerate}[nosep]
+  \item If $\deg N\ge\deg D$, divide (Theorem~\ref{thm:div}): $\frac ND=Q+\frac RD$ with $\deg R<\deg D$.
+  \item Factor $D$ into linear factors and irreducible quadratics (find a root by trying the divisors of the constant term, then divide it out; a quadratic with $b^2-4c<0$ stays). If $D$ is already a derivative-of-the-bottom situation, stop and use a substitution (Example~\ref{ex:m10}).
+  \item Write the form of Theorem~\ref{thm:pfd}: one fraction for each power of each factor, a constant over a linear factor, $Bx+C$ over a quadratic.
+  \item Find the numerators: cover-up and the derivative trick for the linear factors (Theorem~\ref{thm:coef}), then equate coefficients or substitute for the rest. Check by adding back, or at one more value of $x$.
+  \item Integrate the pieces with Theorem~\ref{thm:pieces}, and integrate $Q$ term by term.
+  \item Differentiate the answer. For a definite integral, check the sign and size.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Equating coefficients and substituting values: three ways, one answer}{m7}
+Decompose $\dfrac{x^2+3x+7}{(x+1)(x^2+4)}$ and integrate it.
+
+\textbf{Solution.} The form is $\frac A{x+1}+\frac{Bx+C}{x^2+4}$, so $x^2+3x+7=A(x^2+4)+(Bx+C)(x+1)$.
+
+\emph{Method 1: equate all coefficients.} Expanding, $A(x^2+4)+(Bx+C)(x+1)=(A+B)x^2+(B+C)x+(4A+C)$. So
+\[x^2:\ A+B=1,\qquad x:\ B+C=3,\qquad x^0:\ 4A+C=7.\]
+From the first, $B=1-A$. The second gives $C=3-B=2+A$. The third becomes $4A+2+A=7$, so $A=1$, $B=0$, $C=3$.
+
+\emph{Method 2: substitute values.} Put $x=-1$: $1-3+7=5=5A$, so $A=1$. Put $x=0$: $7=4A+C=4+C$, so $C=3$. Put $x=1$: $11=5A+2(B+C)=5+2B+6$, so $B=0$.
+
+\emph{Method 3: cover-up and one coefficient.} $A=\frac{(-1)^2+3(-1)+7}{(-1)^2+4}=\frac55=1$ by Theorem~\ref{thm:coef}; then $x^2+3x+7-(x^2+4)=3x+3=(Bx+C)(x+1)$, so $Bx+C=3$.
+
+All three agree: $\dfrac{x^2+3x+7}{(x+1)(x^2+4)}=\dfrac1{x+1}+\dfrac3{x^2+4}$. Check at $x=0$: $\frac74=1+\frac34$. By Theorem~\ref{thm:pieces}(2) with $B=0$, $a=2$, $K=3$:
+\[\int\frac{x^2+3x+7}{(x+1)(x^2+4)}\,dx=\ln\lvert x+1\rvert+\frac32\tan^{-1}\frac x2+C .\]
+%@ m7 | apart((x**2+3*x+7)/((x+1)*(x**2+4)),x) == 1/(x+1)+3/(x**2+4) and expand((1+0)*(x**2+4)+(0*x+3)*(x+1)-(x**2+3*x+7)) == 0 and 1-3+7 == 5*1 and 7 == 4*1+3 and 11 == 5*1+2*(0+3) and Q(7,4) == 1+Q(3,4) and all(abs((diff(log(sqrt((x+1)**2))+Q(3,2)*atan(x/2),x)-(x**2+3*x+7)/((x+1)*(x**2+4))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(5,1))) | =\ln\lvert x+1\rvert+\frac32\tan^{-1}\frac x2+C .\]
+Equating all the coefficients always works, because Theorem~\ref{thm:pfd} says the system has exactly one solution. Substituting the roots of $D$ and the cover-up method are shortcuts that usually need less algebra.
+\end{exmp}
+
+\begin{exmp}{Two forms of the same antiderivative}{m8}
+Evaluate $\displaystyle\int\frac{3}{(x-1)(2x+1)}\,dx$ on $x>1$, in two ways, and compare.
+
+\textbf{Solution.} \emph{First way.} The form is $\frac A{x-1}+\frac B{2x+1}$. Cover up $x-1$ at $x=1$: $A=\frac3{3}=1$. Cover up $2x+1$ at $x=-\frac12$: $B=\frac3{-3/2}=-2$. Then $\frac1{x-1}-\frac2{2x+1}$ (check at $x=2$: $\frac3{5}$ and $1-\frac25=\frac35$), and
+\[\int\left(\frac1{x-1}-\frac2{2x+1}\right)dx=\ln(x-1)-\ln(2x+1)+C_1 .\]
+(Use $u=2x+1$ for the second term: $\int\frac{2\,dx}{2x+1}=\ln\lvert2x+1\rvert$.)
+
+\emph{Second way.} Factor the $2$ out of the second factor: $\frac3{(x-1)(2x+1)}=\frac{3/2}{(x-1)(x+\frac12)}$, and $\frac1{(x-1)(x+\frac12)}=\frac{2/3}{x-1}-\frac{2/3}{x+\frac12}$ by cover-up. So the integrand is $\frac1{x-1}-\frac1{x+1/2}$ and
+\[\int\left(\frac1{x-1}-\frac1{x+1/2}\right)dx=\ln(x-1)-\ln\left(x+\tfrac12\right)+C_2 .\]
+\emph{Comparison.} The two answers look different. Since $\ln(2x+1)=\ln2+\ln\left(x+\frac12\right)$, the first answer is $\ln(x-1)-\ln\left(x+\frac12\right)-\ln2+C_1$. They are both antiderivatives of the same function on an interval, so they differ by a constant, and they do: $C_2=C_1-\ln2$. Neither is wrong. (For $x<-\frac12$ or other intervals the absolute values must be restored.)
+%@ m8 | simplify(apart(3/((x-1)*(2*x+1)),x)-(1/(x-1)-2/(2*x+1))) == 0 and Q(3,3) == 1 and Q(3,1)/(-Q(3,2)) == -2 and Q(3,5) == 1-Q(2,5) and simplify(3/((x-1)*(2*x+1))-(1/(x-1)-1/(x+Q(1,2)))) == 0 and all(abs((log(v+Q(1,2))-log(2*v+1)+log(2)).evalf(30)) < 1e-20 for v in (Q(2,1),Q(5,1),Q(7,3))) | $C_2=C_1-\ln2$. Neither is wrong.
+\end{exmp}
+
+\begin{exmp}{An application: logistic growth}{m9}
+A population $P(t)$ (in thousands) grows according to $\dfrac{dP}{dt}=\dfrac{P(50-P)}{500}$ with $P(0)=5$. Find $P(t)$ and the time at which $P=25$.
+
+\textbf{Solution.} Separate: $\dfrac{dP}{P(50-P)}=\dfrac{dt}{500}$ (for $0<P<50$). Partial fractions: $\frac1{P(50-P)}=\frac AP+\frac B{50-P}$ gives $1=A(50-P)+BP$; at $P=0$: $A=\frac1{50}$; at $P=50$: $B=\frac1{50}$. So
+\[\frac1{50}\int\left(\frac1P+\frac1{50-P}\right)dP=\frac1{50}\Big(\ln P-\ln(50-P)\Big)=\frac1{50}\ln\frac P{50-P}=\frac t{500}+C .\]
+(The integral of $\frac1{50-P}$ is $-\ln\lvert50-P\rvert$, by the substitution $w=50-P$.) Multiply by $50$: $\ln\frac P{50-P}=\frac t{10}+C_1$. At $t=0$, $P=5$: $\ln\frac5{45}=C_1=-\ln9$. So $\frac P{50-P}=\frac{e^{t/10}}9$; solving, $9P=(50-P)e^{t/10}$, $P\,(9+e^{t/10})=50e^{t/10}$, and
+\[P(t)=\frac{50\,e^{t/10}}{9+e^{t/10}}=\frac{50}{1+9e^{-t/10}} .\]
+%@ m9a | apart(1/(Symbol('P')*(50-Symbol('P'))),Symbol('P')) == Q(1,50)/Symbol('P')-Q(1,50)/(Symbol('P')-50) and simplify(diff(50/(1+9*exp(-t/10)),t)-(50/(1+9*exp(-t/10)))*(50-50/(1+9*exp(-t/10)))/500) == 0 and (50/(1+9*exp(-t/10))).subs(t,0) == 5 | P(t)=\frac{50\,e^{t/10}}{9+e^{t/10}}=\frac{50}{1+9e^{-t/10}} .\]
+Check the differential equation: with $P=\frac{50}{1+9e^{-t/10}}$ we get $50-P=\frac{450e^{-t/10}}{1+9e^{-t/10}}$ and $\frac{dP}{dt}=\frac{45e^{-t/10}}{(1+9e^{-t/10})^2}=\frac{P(50-P)}{500}$. Now $P=25$ means $\frac P{50-P}=1$, so $e^{t/10}=9$ and $t=10\ln9\approx21.97$.
+%@ m9b | simplify(50-50/(1+9*exp(-t/10))-450*exp(-t/10)/(1+9*exp(-t/10))) == 0 and simplify(diff(50/(1+9*exp(-t/10)),t)-45*exp(-t/10)/(1+9*exp(-t/10))**2) == 0 and (50/(1+9*exp(-t/10))).subs(t,10*log(9)) == 25 and abs((10*log(9)).evalf()-21.97) < 0.01 | $t=10\ln9\approx21.97$.
+The population grows slowly at first, fastest when it is half of the limit $50$, and then levels off at $50$ thousand (the limit of $P$ as $t\to\infty$ is $50$). Figure~3 shows the curve.
+
+\begin{center}
+\begin{tikzpicture}[x=0.16cm,y=0.075cm]
+  \draw[->] (-1,0) -- (52,0) node[right] {$t$};
+  \draw[->] (0,-3) -- (0,58) node[above] {$P$};
+  \draw[dashed] (0,50) -- (50,50);
+  \draw[dashed] (0,25) -- (21.97,25);
+  \draw[dashed] (21.97,0) -- (21.97,25);
+  \draw[thick,blue!70!black] plot[domain=0:50,samples=60] (\x,{50/(1+9*exp(-\x/10)});
+  \fill (0,5) circle (1.5pt) node[left,font=\small] {$5$};
+%@ f3-a | (50/(1+9*exp(-t/10))).subs(t,0) == 5 | \fill (0,5) circle (1.5pt) node[left,font=\small] {$5$};
+  \fill (21.97,25) circle (1.5pt) node[above left,font=\small] {$(21.97,\,25)$};
+%@ f3-b | (50/(1+9*exp(-t/10))).subs(t,10*log(9)) == 25 and abs((10*log(9)).evalf()-21.97) < 0.01 | \fill (21.97,25) circle (1.5pt) node[above left,font=\small] {$(21.97,\,25)$};
+  \node[font=\small,anchor=south east] at (50,50) {$P=50$};
+  \node[font=\small,anchor=north west] at (30,20) {$P=\frac{50}{1+9e^{-t/10}}$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 3. The solution $P(t)=\frac{50}{1+9e^{-t/10}}$ starts at $P(0)=5$, passes through $(10\ln9,\,25)\approx(21.97,\,25)$, where growth is fastest, and approaches the dashed horizontal asymptote $P=50$.\end{center}
+\end{exmp}
+
+\begin{exmp}{When partial fractions are not needed}{m10}
+Evaluate (a) $\displaystyle\int\frac{6x^2}{x^3+5}\,dx$; (b) $\displaystyle\int\frac{dx}{x^2+6x+13}$; (c) $\displaystyle\int\frac{x\,dx}{x^2-9}$ on $x>3$.
+
+\textbf{Solution.} (a) The numerator is a multiple of the derivative of the denominator: $\frac d{dx}(x^3+5)=3x^2$. Put $u=x^3+5$, $du=3x^2\,dx$, so $6x^2\,dx=2\,du$ and $\int\frac{2\,du}u=2\ln\lvert u\rvert=2\ln\lvert x^3+5\rvert+C$. Partial fractions would factor $x^3+5$ into a linear and a quadratic factor with ugly roots and give the same answer with much more work.
+
+(b) The denominator is irreducible ($36-52<0$) and the numerator is constant, so complete the square: $x^2+6x+13=(x+3)^2+4$, and by Theorem~\ref{8.1-thm:quad}(i) with $D=13-9=4$, the integral is $\frac12\tan^{-1}\frac{x+3}2+C$.
+
+(c) Here $u=x^2-9$, $du=2x\,dx$ gives $\frac12\ln(x^2-9)+C$. Partial fractions give the same result in a different form: $\frac x{(x-3)(x+3)}=\frac{1/2}{x-3}+\frac{1/2}{x+3}$ (cover-up: $\frac3{6}$ and $\frac{-3}{-6}$), so $\frac12\ln(x-3)+\frac12\ln(x+3)=\frac12\ln\left((x-3)(x+3)\right)=\frac12\ln(x^2-9)$, the same function exactly.
+%@ m10 | all(abs((diff(2*log(sqrt((x**3+5)**2)),x)-6*x**2/(x**3+5)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(1,2),Q(1,1),Q(2,1))) and 36-52 == -16 and 13-9 == 4 and all(abs((diff(atan((x+3)/2)/2,x)-1/(x**2+6*x+13)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(5,1),Q(0,1),Q(2,1))) and apart(x/(x**2-9),x) == Q(1,2)/(x-3)+Q(1,2)/(x+3) and all(abs((diff(log(x**2-9)/2,x)-x/(x**2-9)).subs(x,v).evalf(30)) < 1e-20 for v in (Q(4,1),Q(7,2),Q(5,1))) and all(abs((log(v-3)/2+log(v+3)/2-log(v**2-9)/2).evalf(30)) < 1e-20 for v in (Q(4,1),Q(7,2),Q(5,1))) | the same function exactly.
+\end{exmp}
+
+\begin{think}{Always decompose?}{when}
+Before using partial fractions, what two questions can you ask about an integrand $\frac ND$ that might save you the work? Apply them to $\dfrac{2x+3}{x^2+3x+5}$ and to $\dfrac{x}{x^4+1}$.
+\end{think}
+
+\subsection*{Making an integrand rational}
+
+Not every integrand that leads to partial fractions starts as a rational function. A substitution may turn it into one. If $e^x$ is the only appearance of $x$, put $u=e^x$ ($dx=\frac{du}u$). If the integrand is a rational function of $\sin x$ and $\cos x$, the substitution $t=\tan\frac x2$ makes it a rational function of $t$ (Example~\ref{ex:b14}), and so every such integral can in principle be done by partial fractions; it is often not the shortest route, and the section on integration strategies compares the methods. For $\sqrt[n]{ax+b}$, put $u=\sqrt[n]{ax+b}$.
+
+\begin{exmp}{A substitution that produces a rational function}{m11}
+Evaluate $\displaystyle\int\frac{dx}{1+e^x}$.
+
+\textbf{Solution.} Let $u=e^x$, so $du=e^x\,dx=u\,dx$ and $dx=\frac{du}u$. Then
+\[\int\frac{dx}{1+e^x}=\int\frac{du}{u(1+u)} .\]
+This is rational and proper. Cover-up: $\frac1{u(1+u)}=\frac Au+\frac B{1+u}$, $A=\frac11=1$ (at $u=0$), $B=\frac1{-1}=-1$ (at $u=-1$). So $\int\left(\frac1u-\frac1{1+u}\right)du=\ln u-\ln(1+u)=\ln\frac u{1+u}$, since $u>0$. Back in $x$: $\ln\frac{e^x}{1+e^x}=x-\ln(1+e^x)$. Therefore
+\[\int\frac{dx}{1+e^x}=x-\ln\left(1+e^x\right)+C .\]
+%@ m11 | apart(1/(Symbol('u')*(1+Symbol('u'))),Symbol('u')) == 1/Symbol('u')-1/(1+Symbol('u')) and all(abs((log(exp(v)/(1+exp(v)))-(v-log(1+exp(v)))).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(0,1),Q(2,1))) and all(abs((diff(x-log(1+exp(x)),x)-1/(1+exp(x))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(2,1),Q(1,2),Q(3,1))) | \int\frac{dx}{1+e^x}=x-\ln\left(1+e^x\right)+C .\]
+\emph{Check.} $\frac d{dx}\left(x-\ln(1+e^x)\right)=1-\frac{e^x}{1+e^x}=\frac1{1+e^x}$.
+\end{exmp}
+
+\begin{exmp}{A challenging example: division, a repeated factor and a quadratic}{m12}
+Evaluate $\displaystyle\int\frac{x^5+x^4+3x^3+3x^2+10}{x^4-4x+3}\,dx$.
+
+\textbf{Solution.} \emph{Divide.} The numerator has degree $5>4$. $x^5\div x^4=x$ and $x(x^4-4x+3)=x^5-4x^2+3x$; the difference is $x^4+3x^3+7x^2-3x+10$. Then $x^4\div x^4=1$ and $1\cdot(x^4-4x+3)$; the difference is $3x^3+7x^2+x+7$. So the quotient is $x+1$ and the remainder is $R=3x^3+7x^2+x+7$ (degree $3<4$).
+
+\emph{Factor the denominator.} $D(1)=1-4+3=0$, so $x-1$ is a factor; $D=(x-1)(x^3+x^2+x-3)$ by division. The cubic is again $0$ at $x=1$: $x^3+x^2+x-3=(x-1)(x^2+2x+3)$. So $D=(x-1)^2(x^2+2x+3)$, and $x^2+2x+3$ has $b^2-4c=4-12=-8<0$.
+
+\emph{Form.} $\dfrac R D=\dfrac A{x-1}+\dfrac B{(x-1)^2}+\dfrac{Fx+H}{x^2+2x+3}$.
+
+\emph{Numerators.} With $E=x^2+2x+3$ and $G=\frac RE$ (Theorem~\ref{thm:coef}): $B=G(1)=\frac{3+7+1+7}{6}=3$, and $G'(x)=\frac{R'E-RE'}{E^2}$ with $R'=9x^2+14x+1$, $E'=2x+2$, so $G'(1)=\frac{24\cdot6-18\cdot4}{36}=\frac{72}{36}=2=A$. Equate the $x^3$ coefficients in $R=A(x-1)E+BE+(Fx+H)(x-1)^2$: $3=A+F$, so $F=1$. Equate the constants: $7=-3A+3B+H=-6+9+H$, so $H=4$. Check at $x=0$: $R(0)=7$ and $A(-1)(3)+B(3)+H(1)=-6+9+4=7$. So
+\[\frac{x^5+x^4+3x^3+3x^2+10}{x^4-4x+3}=x+1+\frac2{x-1}+\frac3{(x-1)^2}+\frac{x+4}{x^2+2x+3}.\]
+%@ m12a | div(x**5+x**4+3*x**3+3*x**2+10,x**4-4*x+3,x) == (x+1,3*x**3+7*x**2+x+7) and expand((x-1)**2*(x**2+2*x+3)-(x**4-4*x+3)) == 0 and 4-12 == -8 and (3*x**3+7*x**2+x+7).subs(x,1)/(x**2+2*x+3).subs(x,1) == 3 and diff((3*x**3+7*x**2+x+7)/(x**2+2*x+3),x).subs(x,1) == 2 and expand(2*(x-1)*(x**2+2*x+3)+3*(x**2+2*x+3)+(x+4)*(x-1)**2-(3*x**3+7*x**2+x+7)) == 0 and apart((x**5+x**4+3*x**3+3*x**2+10)/(x**4-4*x+3),x) == x+1+2/(x-1)+3/(x-1)**2+(x+4)/(x**2+2*x+3) | +\frac{x+4}{x^2+2x+3}.\]
+\emph{Integrate.} The polynomial part gives $\frac{x^2}2+x$. The two linear pieces give $2\ln\lvert x-1\rvert-\frac3{x-1}$. For the quadratic piece, $u=x+1$, $a^2=3-1=2$, $x+4=u+3$, so $B=1$, $K=4-\frac12\cdot2=3$, and Theorem~\ref{thm:pieces}(2) gives $\frac12\ln(x^2+2x+3)+\frac3{\sqrt2}\tan^{-1}\frac{x+1}{\sqrt2}$. So
+\[\int\ldots\,dx=\frac{x^2}2+x+2\ln\lvert x-1\rvert-\frac3{x-1}+\frac12\ln\left(x^2+2x+3\right)+\frac3{\sqrt2}\tan^{-1}\frac{x+1}{\sqrt2}+C .\]
+%@ m12b | all(abs((diff(x**2/2+x+2*log(sqrt((x-1)**2))-3/(x-1)+log(x**2+2*x+3)/2+3*atan((x+1)/sqrt(2))/sqrt(2),x)-(x**5+x**4+3*x**3+3*x**2+10)/(x**4-4*x+3)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(3,1),Q(5,1))) | +\frac3{\sqrt2}\tan^{-1}\frac{x+1}{\sqrt2}+C .\]
+\emph{Check.} The derivative of the quadratic piece's antiderivative is $\frac{x+1}{x^2+2x+3}+\frac3{\sqrt2}\cdot\frac{1/\sqrt2}{1+(x+1)^2/2}=\frac{x+1}{x^2+2x+3}+\frac{3}{x^2+2x+3}=\frac{x+4}{x^2+2x+3}$, because $\frac32\cdot\frac{1}{1+(x+1)^2/2}=\frac{3}{2+(x+1)^2}$. The other terms differentiate to $x+1$, $\frac2{x-1}$ and $\frac3{(x-1)^2}$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+Partial fractions complete the toolkit for rational functions: \emph{every} rational function has an elementary antiderivative made of a polynomial, logarithms, inverse tangents and rational functions. The next section, on integration strategies, asks which method to try first, and the questions of Procedure~\ref{proc:pfproc} (is it already a substitution? is it improper?) are the first on that list. The decomposition is also the tool for improper integrals of rational functions in the section on improper integrals, where the logarithms decide convergence. In the chapters on series, the geometric series is a rational function expanded in powers of $x$, and the Taylor series of $\tan^{-1}x$ comes from integrating $\frac1{1+x^2}$ term by term; partial fractions help to expand rational functions in power series, and they are also the main tool for the Laplace transform in a later course on differential equations. For repeated factors, the cover-up and the derivative trick are the beginning of the theory of residues in complex analysis.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: distinct linear factors.
+  \item Group 2: repeated linear factors.
+  \item Group 3: irreducible and repeated irreducible quadratic factors.
+  \item Group 4: division first.
+  \item Group 5: definite integrals and applications.
+  \item Group 6: substitutions that produce rational functions.
+  \item Group 7: proofs.
+\end{itemize}
+
+\subsection*{Group 1: Distinct linear factors}
+
+\begin{exmp}{A quadratic denominator}{b1}
+Find $\displaystyle\int\frac{7x-7}{x^2+x-12}\,dx$.
+
+\textbf{Solution.} Factor: $x^2+x-12=(x-3)(x+4)$ (the numbers $4$ and $-3$ have product $-12$ and sum $1$). The numerator has degree $1<2$. Write $\frac{7x-7}{(x-3)(x+4)}=\frac A{x-3}+\frac B{x+4}$. Cover-up: $A=\frac{7\cdot3-7}{3+4}=\frac{14}7=2$ and $B=\frac{7(-4)-7}{-4-3}=\frac{-35}{-7}=5$. Check by adding back: $2(x+4)+5(x-3)=7x-7$. Then
+\[\int\frac{7x-7}{x^2+x-12}\,dx=2\ln\lvert x-3\rvert+5\ln\lvert x+4\rvert+C .\]
+%@ b1 | apart((7*x-7)/(x**2+x-12),x) == 2/(x-3)+5/(x+4) and factor(x**2+x-12) == (x-3)*(x+4) and expand(2*(x+4)+5*(x-3)-(7*x-7)) == 0 and all(abs((diff(2*log(sqrt((x-3)**2))+5*log(sqrt((x+4)**2)),x)-(7*x-7)/(x**2+x-12)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(6,1),Q(1,1),Q(5,1))) | =2\ln\lvert x-3\rvert+5\ln\lvert x+4\rvert+C .\]
+\end{exmp}
+
+\begin{exmp}{Three factors and a definite integral}{b2}
+Evaluate $\displaystyle\int_1^3\frac{4x+2}{x(x+1)(x+2)}\,dx$.
+
+\textbf{Solution.} Write $\frac{4x+2}{x(x+1)(x+2)}=\frac Ax+\frac B{x+1}+\frac C{x+2}$. Cover-up: $A=\frac{2}{(1)(2)}=1$ at $x=0$; $B=\frac{-4+2}{(-1)(1)}=2$ at $x=-1$; $C=\frac{-8+2}{(-2)(-1)}=-3$ at $x=-2$. Check at $x=1$: $\frac66=1$ and $1+\frac22-\frac33=1$. On $[1,3]$ all arguments are positive:
+\begin{align*}\Big[\ln x+2\ln(x+1)-3\ln(x+2)\Big]_1^3&=(\ln3+2\ln4-3\ln5)-(0+2\ln2-3\ln3)\\&=4\ln3+2\ln2-3\ln5=\ln\frac{324}{125}\approx0.9524 .\end{align*}
+%@ b2 | simplify(apart((4*x+2)/(x*(x+1)*(x+2)),x)-(1/x+2/(x+1)-3/(x+2))) == 0 and simplify((log(3)+2*log(4)-3*log(5))-(2*log(2)-3*log(3))-(4*log(3)+2*log(2)-3*log(5))) == 0 and simplify(4*log(3)+2*log(2)-3*log(5)-log(Q(324,125))) == 0 and abs(Integral((4*x+2)/(x*(x+1)*(x+2)),(x,1,3)).evalf(30)-log(Q(324,125)).evalf(30)) < 1e-20 and abs(log(Q(324,125)).evalf()-0.9524) < 1e-4 | \ln\frac{324}{125}\approx0.9524 .\end{align*}
+\emph{Sign and size.} The integrand is positive; it equals $1$ at $x=1$ and $\frac{14}{60}\approx0.23$ at $x=3$ and decreases, so the integral lies between $2\cdot0.23=0.47$ and $2\cdot1=2$; $0.95$ is plausible.
+\end{exmp}
+
+\subsection*{Group 2: Repeated linear factors}
+
+\begin{exmp}{A single repeated factor}{b3}
+Find $\displaystyle\int\frac{3x-1}{(x-2)^2}\,dx$.
+
+\textbf{Solution.} Form: $\frac A{x-2}+\frac B{(x-2)^2}$, so $3x-1=A(x-2)+B$. At $x=2$: $5=B$. The coefficient of $x$: $3=A$. So $\frac{3x-1}{(x-2)^2}=\frac3{x-2}+\frac5{(x-2)^2}$. (Equivalently, $u=x-2$ gives $3u+5$ in the numerator.) Then
+\[\int\frac{3x-1}{(x-2)^2}\,dx=3\ln\lvert x-2\rvert-\frac5{x-2}+C .\]
+%@ b3 | apart((3*x-1)/(x-2)**2,x) == 3/(x-2)+5/(x-2)**2 and all(abs((diff(3*log(sqrt((x-2)**2))-5/(x-2),x)-(3*x-1)/(x-2)**2).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(1,1),Q(1,2),Q(5,1))) | =3\ln\lvert x-2\rvert-\frac5{x-2}+C .\]
+\end{exmp}
+
+\begin{exmp}{A double root at $0$ and a simple root}{b4}
+Find $\displaystyle\int\frac{4x^2-5x+2}{x^2(x-1)}\,dx$.
+
+\textbf{Solution.} Form: $\frac Ax+\frac B{x^2}+\frac C{x-1}$. For $C$ cover up $x-1$ and put $x=1$: $C=\frac{4-5+2}{1}=1$. For the double root $0$, $E=x-1$ and $G=\frac{4x^2-5x+2}{x-1}$ (Theorem~\ref{thm:coef}): $B=G(0)=\frac2{-1}=-2$, and $G'(x)=\frac{(8x-5)(x-1)-(4x^2-5x+2)}{(x-1)^2}$, so $A=G'(0)=\frac{(-5)(-1)-2}{1}=3$. Check at $x=2$: left $\frac{16-10+2}{4}=2$; right $\frac32-\frac24+1=2$. Then $\int\left(\frac3x-\frac2{x^2}+\frac1{x-1}\right)dx$:
+\[\int\frac{4x^2-5x+2}{x^2(x-1)}\,dx=3\ln\lvert x\rvert+\frac2x+\ln\lvert x-1\rvert+C .\]
+%@ b4 | apart((4*x**2-5*x+2)/(x**2*(x-1)),x) == 3/x-2/x**2+1/(x-1) and diff((4*x**2-5*x+2)/(x-1),x).subs(x,0) == 3 and ((4*x**2-5*x+2)/(x-1)).subs(x,0) == -2 and Q(8,4) == 2 and all(abs((diff(3*log(sqrt((x)**2))+2/x+log(sqrt((x-1)**2)),x)-(4*x**2-5*x+2)/(x**2*(x-1))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(2,1),Q(1,2),Q(3,1))) and Q(3,2)-Q(2,4)+1 == 2 | =3\ln\lvert x\rvert+\frac2x+\ln\lvert x-1\rvert+C .\]
+\end{exmp}
+
+\subsection*{Group 3: Quadratic factors}
+
+\begin{exmp}{A linear factor and an irreducible quadratic}{b5}
+Find $\displaystyle\int\frac{x^2+x+12}{x(x^2+4)}\,dx$.
+
+\textbf{Solution.} Form: $\frac Ax+\frac{Bx+C}{x^2+4}$. Cover-up at $x=0$: $A=\frac{12}4=3$. Then $x^2+x+12=3(x^2+4)+(Bx+C)x$; compare $x^2$: $1=3+B$, so $B=-2$; compare $x$: $1=C$. Check at $x=1$: left $\frac{14}5$; right $3+\frac{-2+1}5=\frac{14}5$. So the integrand is $\frac3x+\frac{-2x+1}{x^2+4}$. With $b=0$, $a=2$, $B=-2$, $K=1$, Theorem~\ref{thm:pieces}(2) gives $-\ln(x^2+4)+\frac12\tan^{-1}\frac x2$ for the second term:
+\[\int\frac{x^2+x+12}{x(x^2+4)}\,dx=3\ln\lvert x\rvert-\ln\left(x^2+4\right)+\frac12\tan^{-1}\frac x2+C .\]
+%@ b5 | simplify(apart((x**2+x+12)/(x*(x**2+4)),x)-(3/x+(-2*x+1)/(x**2+4))) == 0 and expand(3*(x**2+4)+(-2*x+1)*x-(x**2+x+12)) == 0 and Q(14,5) == 3+Q(-2+1,5) and all(abs((diff(3*log(sqrt((x)**2))-log(x**2+4)+atan(x/2)/2,x)-(x**2+x+12)/(x*(x**2+4))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(5,1))) | =3\ln\lvert x\rvert-\ln\left(x^2+4\right)+\frac12\tan^{-1}\frac x2+C .\]
+\end{exmp}
+
+\begin{exmp}{A repeated shifted quadratic, no decomposition needed}{b6}
+Find $\displaystyle\int\frac{x+3}{(x^2+2x+2)^2}\,dx$.
+
+\textbf{Solution.} The integrand is already a single term of the form in Theorem~\ref{thm:pfd}, so no decomposition is needed: $b=2$, $c=2$, $a^2=c-\frac{b^2}4=1$, $u=x+1$, and $x+3=u+2$, so $B=1$, $K=2$, $n=2$. By Theorem~\ref{thm:pieces}(3): $\int\frac{u\,du}{(u^2+1)^2}=-\frac1{2(u^2+1)}$ and, by the reduction formula with $n=1$, $a=1$: $I_2=\frac u{2(u^2+1)}+\frac12\tan^{-1}u$. So the integral is $-\frac1{2(u^2+1)}+2I_2=-\frac1{2(u^2+1)}+\frac u{u^2+1}+\tan^{-1}u$, and with $u=x+1$, $u^2+1=x^2+2x+2$:
+\[\int\frac{x+3}{(x^2+2x+2)^2}\,dx=\frac{2x+1}{2\,(x^2+2x+2)}+\tan^{-1}(x+1)+C .\]
+%@ b6 | all(abs((diff((2*x+1)/(2*(x**2+2*x+2))+atan(x+1),x)-(x+3)/(x**2+2*x+2)**2).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(0,1),Q(2,1))) and simplify((-1/(2*((x+1)**2+1))+(x+1)/((x+1)**2+1))-(2*x+1)/(2*(x**2+2*x+2))) == 0 and expand((x+1)**2+1-(x**2+2*x+2)) == 0 | =\frac{2x+1}{2\,(x^2+2x+2)}+\tan^{-1}(x+1)+C .\]
+\emph{Check.} Write $q=x^2+2x+2$, $q'=2x+2$. By the quotient rule $\frac d{dx}\frac{2x+1}{2q}=\frac{4q-2(2x+1)q'}{4q^2}=\frac{2q-(2x+1)(2x+2)}{2q^2}=\frac{(2x^2+4x+4)-(4x^2+6x+2)}{2q^2}=\frac{1-x-x^2}{q^2}$. Also $\frac d{dx}\tan^{-1}(x+1)=\frac1{1+(x+1)^2}=\frac1q=\frac{q}{q^2}=\frac{x^2+2x+2}{q^2}$. The sum is $\frac{(1-x-x^2)+(x^2+2x+2)}{q^2}=\frac{x+3}{q^2}$.
+%@ b6c | simplify(diff((2*x+1)/(2*(x**2+2*x+2)),x)-(1-x-x**2)/(x**2+2*x+2)**2) == 0 and expand((2*(x**2+2*x+2)-(2*x+1)*(2*x+2))-(2*(1-x-x**2))) == 0 and simplify((1-x-x**2)+(x**2+2*x+2)-(x+3)) == 0 | The sum is $\frac{(1-x-x^2)+(x^2+2x+2)}{q^2}=\frac{x+3}{q^2}$.
+\end{exmp}
+
+\subsection*{Group 4: Division first}
+
+\begin{exmp}{Equal degrees}{b7}
+Find $\displaystyle\int\frac{x^4+1}{x^2-1}\,dx$ on each interval not containing $\pm1$.
+
+\textbf{Solution.} Divide: $x^4\div x^2=x^2$ and $x^2(x^2-1)=x^4-x^2$; the difference is $x^2+1$; then $x^2\div x^2=1$ and $1\cdot(x^2-1)$ leaves $2$. So $\frac{x^4+1}{x^2-1}=x^2+1+\frac2{x^2-1}$. Cover-up for $\frac2{(x-1)(x+1)}$: the coefficient of $\frac1{x-1}$ is $\frac2{1+1}=1$ (at $x=1$) and that of $\frac1{x+1}$ is $\frac2{-1-1}=-1$ (at $x=-1$), so $\frac2{x^2-1}=\frac1{x-1}-\frac1{x+1}$. Therefore
+\[\int\frac{x^4+1}{x^2-1}\,dx=\frac{x^3}3+x+\ln\left\lvert\frac{x-1}{x+1}\right\rvert+C .\]
+%@ b7 | div(x**4+1,x**2-1,x) == (x**2+1,2) and apart((x**4+1)/(x**2-1),x) == x**2+1+1/(x-1)-1/(x+1) and Q(2,1+1) == 1 and Q(2,-1-1) == -1 and all(abs((diff(x**3/3+x+log(sqrt(((x-1)/(x+1))**2)),x)-(x**4+1)/(x**2-1)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(4,1))) | \int\frac{x^4+1}{x^2-1}\,dx=\frac{x^3}3+x+\ln\left\lvert\frac{x-1}{x+1}\right\rvert+C .\]
+\end{exmp}
+
+\begin{exmp}{Division, then a substitution}{b8}
+Find $\displaystyle\int\frac{x^3}{x^2+4}\,dx$.
+
+\textbf{Solution.} Divide: $x^3=x\,(x^2+4)-4x$, so $\frac{x^3}{x^2+4}=x-\frac{4x}{x^2+4}$. The remainder $\frac{4x}{x^2+4}$ is already in the form of Theorem~\ref{thm:pieces}(2) with $B=4$, $K=0$, so no decomposition is needed (or $u=x^2+4$, $du=2x\,dx$): its integral is $2\ln(x^2+4)$. Therefore
+\[\int\frac{x^3}{x^2+4}\,dx=\frac{x^2}2-2\ln\left(x^2+4\right)+C .\]
+%@ b8 | div(x**3,x**2+4,x) == (x,-4*x) and all(abs((diff(x**2/2-2*log(x**2+4),x)-x**3/(x**2+4)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(5,1))) | \int\frac{x^3}{x^2+4}\,dx=\frac{x^2}2-2\ln\left(x^2+4\right)+C .\]
+\end{exmp}
+
+\subsection*{Group 5: Definite integrals and applications}
+
+\begin{exmp}{A definite integral with a quadratic factor}{b9}
+Evaluate $\displaystyle\int_0^1\frac{dx}{(x+1)(x^2+1)}$.
+
+\textbf{Solution.} Form: $\frac A{x+1}+\frac{Bx+C}{x^2+1}$, so $1=A(x^2+1)+(Bx+C)(x+1)$. At $x=-1$: $1=2A$, $A=\frac12$. Compare $x^2$: $0=A+B$, so $B=-\frac12$. Compare the constants: $1=A+C$, so $C=\frac12$. Check at $x=1$: $\frac14$ and $\frac14+\frac{-\frac12+\frac12}{2}=\frac14$. So the integrand is $\frac{1/2}{x+1}+\frac{-\frac12x+\frac12}{x^2+1}$, with antiderivative $\frac12\ln(x+1)-\frac14\ln(x^2+1)+\frac12\tan^{-1}x$ (here $a=1$, $K=\frac12$). Then
+\[\int_0^1\ldots\,dx=\left(\frac12\ln2-\frac14\ln2+\frac12\cdot\frac\pi4\right)-0=\frac14\ln2+\frac\pi8\approx0.5660 .\]
+%@ b9 | simplify(apart(1/((x+1)*(x**2+1)),x)-(Q(1,2)/(x+1)+(-x/2+Q(1,2))/(x**2+1))) == 0 and Q(1,4) == Q(1,4)+Q(-1+1,4) and abs(Integral(1/((x+1)*(x**2+1)),(x,0,1)).evalf(30)-(log(2)/4+pi/8).evalf(30)) < 1e-20 and abs((log(2)/4+pi/8).evalf()-0.5660) < 1e-4 | \frac14\ln2+\frac\pi8\approx0.5660 .\]
+\emph{Sign and size.} The integrand is positive, equals $1$ at $0$ and $\frac14$ at $1$, and is convex-decreasing in between, so the area is less than that of the trapezoid, $\frac12\left(1+\frac14\right)=0.625$, and more than $\frac14$. The value $0.566$ fits.
+\end{exmp}
+
+\begin{exmp}{A second-order reaction}{b10}
+In a reaction $A+B\to$ product the amount $x(t)$ of product satisfies $\dfrac{dx}{dt}=0.02\,(10-x)(5-x)$ with $x(0)=0$ (units: moles per litre, and $t$ in minutes). Find the time at which $x=4$.
+
+\textbf{Solution.} Separate: $\frac{dx}{(10-x)(5-x)}=0.02\,dt$ for $0\le x<5$. Partial fractions: $\frac1{(10-x)(5-x)}=\frac A{10-x}+\frac B{5-x}$, so $1=A(5-x)+B(10-x)$. At $x=5$: $1=5B$, $B=\frac15$. At $x=10$: $1=-5A$, $A=-\frac15$. Check: $\frac15\left(\frac1{5-x}-\frac1{10-x}\right)=\frac15\cdot\frac{5}{(5-x)(10-x)}$. The integral over $0\to4$ is
+\[\frac15\Big[-\ln(5-x)+\ln(10-x)\Big]_0^4=\frac15\Big[\ln\frac{10-x}{5-x}\Big]_0^4=\frac15\left(\ln6-\ln2\right)=\frac{\ln3}5 .\]
+So $0.02\,t=\frac{\ln3}5$ and $t=\frac{\ln3}{5\cdot0.02}=10\ln3\approx10.99$ minutes.
+%@ b10 | simplify(apart(1/((10-x)*(5-x)),x)-(Q(1,5)/(5-x)-Q(1,5)/(10-x))) == 0 and abs(Integral(1/((10-x)*(5-x)),(x,0,4)).evalf(30)-(log(3)/5).evalf(30)) < 1e-20 and simplify(log(6)-log(2)-log(3)) == 0 and log(3)/5/Q(2,100) == 10*log(3) and abs((10*log(3)).evalf()-10.99) < 0.01 | $t=\frac{\ln3}{5\cdot0.02}=10\ln3\approx10.99$ minutes.
+\end{exmp}
+
+\subsection*{Group 6: Substitutions that produce a rational function}
+
+\begin{exmp}{An exponential}{b11}
+Find $\displaystyle\int\frac{e^x}{e^{2x}-3e^x+2}\,dx$.
+
+\textbf{Solution.} Let $u=e^x$, $du=e^x\,dx$. Then the integral is $\int\frac{du}{u^2-3u+2}=\int\frac{du}{(u-1)(u-2)}$. Cover-up: $\frac1{(u-1)(u-2)}=\frac A{u-2}+\frac B{u-1}$ with $A=\frac1{2-1}=1$ and $B=\frac1{1-2}=-1$. So the integral is $\ln\lvert u-2\rvert-\ln\lvert u-1\rvert$, and in terms of $x$,
+\[\int\frac{e^x}{e^{2x}-3e^x+2}\,dx=\ln\left\lvert\frac{e^x-2}{e^x-1}\right\rvert+C\quad(x\ne0,\ x\ne\ln2).\]
+%@ b11 | apart(1/((Symbol('u')-1)*(Symbol('u')-2)),Symbol('u')) == 1/(Symbol('u')-2)-1/(Symbol('u')-1) and all(abs((diff(log(sqrt(((exp(x)-2)/(exp(x)-1))**2)),x)-exp(x)/(exp(2*x)-3*exp(x)+2)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(1,1),Q(1,2),Q(2,1))) | \ln\left\lvert\frac{e^x-2}{e^x-1}\right\rvert+C\quad(x\ne0,\ x\ne\ln2).\]
+\end{exmp}
+
+\begin{exmp}{A sine and a cosine}{b12}
+Find $\displaystyle\int\frac{\cos x}{\sin^2x+\sin x-2}\,dx$ on an interval where $\sin x\ne1$.
+
+\textbf{Solution.} Let $u=\sin x$, $du=\cos x\,dx$. Then $\int\frac{du}{u^2+u-2}=\int\frac{du}{(u+2)(u-1)}$. Cover-up: $\frac1{(u+2)(u-1)}=\frac A{u+2}+\frac B{u-1}$, $A=\frac1{-3}$ at $u=-2$ and $B=\frac13$ at $u=1$. So the integral is $\frac13\left(\ln\lvert u-1\rvert-\ln\lvert u+2\rvert\right)$. Since $-1\le u\le1$, $u+2>0$ and $u-1\le0$, so $\lvert u-1\rvert=1-u$:
+\[\int\frac{\cos x}{\sin^2x+\sin x-2}\,dx=\frac13\ln\frac{1-\sin x}{\sin x+2}+C .\]
+%@ b12 | apart(1/((Symbol('u')+2)*(Symbol('u')-1)),Symbol('u')) == -Q(1,3)/(Symbol('u')+2)+Q(1,3)/(Symbol('u')-1) and all(abs((diff(log((1-sin(x))/(sin(x)+2))/3,x)-cos(x)/(sin(x)**2+sin(x)-2)).subs(x,v).evalf(30)) < 1e-20 for v in (Q(1,2),Q(7,10),-Q(1,1),Q(5,2))) | =\frac13\ln\frac{1-\sin x}{\sin x+2}+C .\]
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Distinct real roots: a formula for every numerator}{b13}
+Let $D=(x-r_1)\cdots(x-r_n)$ with distinct real $r_i$ and let $\deg P<n$. Prove that
+\[\frac{P(x)}{D(x)}=\sum_{i=1}^n\frac{P(r_i)}{D'(r_i)}\cdot\frac1{x-r_i},\qquad\int\frac PD\,dx=\sum_{i=1}^n\frac{P(r_i)}{D'(r_i)}\ln\lvert x-r_i\rvert+C .\]
+Then evaluate $\displaystyle\int\frac{x^2+2}{x^3-x}\,dx$.
+
+\textbf{Proof.} All the factors are linear and distinct, so by Theorem~\ref{thm:pfd}, $\frac PD=\sum_i\frac{A_i}{x-r_i}$ for unique numbers $A_i$. By Theorem~\ref{thm:coef} with $m=1$, $A_i=\frac{P(r_i)}{D'(r_i)}$. This is the first formula; integrating each term with Theorem~\ref{thm:pieces}(1) gives the second. $\blacksquare$
+
+\emph{Application.} $D=x^3-x=x(x-1)(x+1)$, $D'=3x^2-1$, $P=x^2+2$. The roots $0,1,-1$ give $\frac{P(0)}{D'(0)}=\frac2{-1}=-2$, $\frac{P(1)}{D'(1)}=\frac32$, $\frac{P(-1)}{D'(-1)}=\frac32$. So
+\[\int\frac{x^2+2}{x^3-x}\,dx=-2\ln\lvert x\rvert+\frac32\ln\lvert x-1\rvert+\frac32\ln\lvert x+1\rvert+C .\]
+%@ b13 | apart((x**2+2)/(x**3-x),x) == -2/x+Q(3,2)/(x-1)+Q(3,2)/(x+1) and all(((x**2+2)/diff(x**3-x,x)).subs(x,rr) == vv for rr,vv in ((0,-2),(1,Q(3,2)),(-1,Q(3,2)))) and all(abs((diff(-2*log(sqrt((x)**2))+Q(3,2)*log(sqrt((x-1)**2))+Q(3,2)*log(sqrt((x+1)**2)),x)-(x**2+2)/(x**3-x)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(3,1),Q(1,2),Q(3,1))) | +\frac32\ln\lvert x-1\rvert+\frac32\ln\lvert x+1\rvert+C .\]
+\end{exmp}
+
+\begin{exmp}{The substitution $t=\tan\frac x2$}{b14}
+Prove that for $-\pi<x<\pi$ and $t=\tan\frac x2$,
+\[\cos x=\frac{1-t^2}{1+t^2},\qquad\sin x=\frac{2t}{1+t^2},\qquad dx=\frac{2\,dt}{1+t^2}.\]
+Then evaluate $\displaystyle\int\frac{dx}{2+\cos x}$.
+
+\textbf{Proof.} Since $\frac x2\in\left(-\frac\pi2,\frac\pi2\right)$, $\cos\frac x2>0$ and $\sec^2\frac x2=1+t^2$, so $\cos^2\frac x2=\frac1{1+t^2}$ and $\sin^2\frac x2=t^2\cos^2\frac x2=\frac{t^2}{1+t^2}$. The double-angle formulas give $\cos x=\cos^2\frac x2-\sin^2\frac x2=\frac{1-t^2}{1+t^2}$ and $\sin x=2\sin\frac x2\cos\frac x2=2t\cos^2\frac x2=\frac{2t}{1+t^2}$. Finally $x=2\tan^{-1}t$ (the inverse of $t=\tan\frac x2$ on this interval), so $dx=\frac{2\,dt}{1+t^2}$. $\blacksquare$
+
+\emph{Application.} $2+\cos x=\frac{2(1+t^2)+1-t^2}{1+t^2}=\frac{t^2+3}{1+t^2}$, so
+\begin{align*}\int\frac{dx}{2+\cos x}&=\int\frac{1+t^2}{t^2+3}\cdot\frac{2\,dt}{1+t^2}=\int\frac{2\,dt}{t^2+3}\\&=\frac2{\sqrt3}\tan^{-1}\frac t{\sqrt3}+C=\frac2{\sqrt3}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt3}\right)+C\quad(-\pi<x<\pi).\end{align*}
+%@ b14 | all(abs((cos(v)-(1-tan(v/2)**2)/(1+tan(v/2)**2)).evalf(30)) < 1e-20 and abs((sin(v)-2*tan(v/2)/(1+tan(v/2)**2)).evalf(30)) < 1e-20 and abs((2+cos(v)-(tan(v/2)**2+3)/(1+tan(v/2)**2)).evalf(30)) < 1e-20 and abs((diff(2*atan(tan(x/2)/sqrt(3))/sqrt(3),x)-1/(2+cos(x))).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(5,2),-Q(1,1),Q(1,2),Q(3,1))) | \frac2{\sqrt3}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt3}\right)+C\quad(-\pi<x<\pi).\end{align*}
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kcdiv}.] (a) Yes, the degrees are equal: $\frac{x^2+1}{x^2-4}=1+\frac5{x^2-4}$ (since $x^2+1=(x^2-4)+5$). (b) No: the numerator has degree $1<2$. (c) Yes: $x^3=x\,(x^2+1)-x$, so $\frac{x^3}{x^2+1}=x-\frac x{x^2+1}$.
+%@ ans-kcdiv | apart((x**2+1)/(x**2-4),x) == 1+Q(5,4)/(x-2)-Q(5,4)/(x+2) and expand((x**2-4)+5-(x**2+1)) == 0 and div(x**3,x**2+1,x) == (x,-x) | so $\frac{x^3}{x^2+1}=x-\frac x{x^2+1}$.
+
+  \item[Knowledge Check \ref{kc:kcform}.] (a) $\frac Ax+\frac B{x-3}+\frac C{x+5}$. (b) $\frac Ax+\frac B{x^2}+\frac{Cx+D}{x^2+1}$. (c) $\frac A{x-1}+\frac B{(x-1)^2}+\frac C{(x-1)^3}+\frac{Dx+E}{x^2+x+1}+\frac{Fx+G}{(x^2+x+1)^2}$. The numbers of unknowns are $3$, $4$ and $7$, equal to the degrees $3$, $4$ and $3+4=7$ of the denominators, as Theorem~\ref{thm:pfd} says ($x^2+x+1$ has $b^2-4c=-3<0$).
+%@ ans-kcform | 1+1+1 == 3 and 1+1+2 == 4 and 3+2*2 == 7 and 1-4*1 == -3 | $x^2+x+1$ has $b^2-4c=-3<0$).
+
+  \item[Knowledge Check \ref{kc:kccover}.] Cover up $x$ at $x=0$: $A=\frac{2}{(-1)(2)}=-1$. Cover up $x-1$ at $x=1$: $B=\frac{3+1+2}{(1)(3)}=2$. Cover up $x+2$ at $x=-2$: $C=\frac{12-2+2}{(-2)(-3)}=2$. Check at $x=2$: left $\frac{12+2+2}{2\cdot1\cdot4}=2$; right $-\frac12+2+\frac24=2$.
+%@ ans-kccover | apart((3*x**2+x+2)/(x*(x-1)*(x+2)),x) == -1/x+2/(x-1)+2/(x+2) and Q(2,(-1)*2) == -1 and Q(3+1+2,1*3) == 2 and Q(12-2+2,(-2)*(-3)) == 2 and Q(12+2+2,2*1*4) == 2 and -Q(1,2)+2+Q(2,4) == 2 | right $-\frac12+2+\frac24=2$.
+
+  \item[Pause and think \ref{think:numer}.] With constant numerators $1=A(x^2+1)+Bx$. At $x=0$ this gives $A=1$; comparing the coefficients of $x^2$ gives $A=0$, a contradiction. The denominator $x(x^2+1)$ has degree $3$, so Theorem~\ref{thm:pfd} gives three unknowns ($\frac Ax+\frac{Bx+C}{x^2+1}$), and the numerators $1\cdot$ (any polynomial of degree $<3$) form a space of dimension $3$; the student's form has only two unknowns and cannot reach every such polynomial. The correct decomposition is $\frac1x-\frac x{x^2+1}$.
+%@ ans-numer | apart(1/(x*(x**2+1)),x) == 1/x-x/(x**2+1) and expand(1*(x**2+1)+(-1)*x*x-1) == 0 | The correct decomposition is $\frac1x-\frac x{x^2+1}$.
+
+  \item[Pause and think \ref{think:allpowers}.] Using only $\frac B{(x-1)^2}$ gives $\frac{x}{(x-1)^2}=\frac B{(x-1)^2}$, so $x=B$: a constant cannot equal $x$ for all $x$. The denominator has degree $2$, so there are $2$ unknowns, and the polynomials of degree $<2$ (such as $x$) form a space of dimension $2$; one unknown cannot reach all of them. With both terms, $x=A(x-1)+B$ gives $A=1$, $B=1$: $\frac x{(x-1)^2}=\frac1{x-1}+\frac1{(x-1)^2}$.
+%@ ans-allpowers | apart(x/(x-1)**2,x) == 1/(x-1)+1/(x-1)**2 and expand(1*(x-1)+1-x) == 0 | $\frac x{(x-1)^2}=\frac1{x-1}+\frac1{(x-1)^2}$.
+
+  \item[Pause and think \ref{think:when}.] Ask: (1) Is it improper (then divide)? (2) Is the numerator the derivative of the denominator, or can a substitution simplify it, or is the denominator a single irreducible quadratic (then complete the square)? For $\frac{2x+3}{x^2+3x+5}$ the numerator is exactly the derivative $2x+3$ of the denominator, so the integral is $\ln(x^2+3x+5)+C$, with no decomposition. For $\frac x{x^4+1}$, $u=x^2$, $du=2x\,dx$ gives $\frac12\int\frac{du}{u^2+1}=\frac12\tan^{-1}(x^2)+C$ (factoring $x^4+1$ into real quadratics would be much harder).
+%@ ans-when | all(abs((diff(log(x**2+3*x+5),x)-(2*x+3)/(x**2+3*x+5)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(2,1),Q(1,2),Q(3,1))) and all(abs((diff(atan(x**2)/2,x)-x/(x**4+1)).subs(x,v).evalf(30)) < 1e-20 for v in (-Q(2,1),Q(1,2),Q(3,1))) | would be much harder).
+\end{description}
+
+\end{document}

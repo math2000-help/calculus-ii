@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 8, Integration Techniques (in progress: 8.1 to 8.4 done), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
+  project: "Chapter 8, Integration Techniques (in progress: 8.1 to 8.5 done), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -21,12 +21,13 @@ appendix:
     - {id: I, title: "Parametrizations and Arc Length", status: done}
     - {id: J, title: "Area in Polar Coordinates", status: done}
     - {id: K, title: "Conic Sections: Squaring, Coordinates and the Focus--Directrix Theorem", status: done}
+    - {id: L, title: "Real Polynomials: the Fundamental Theorem of Algebra and Factorization", status: done}
 modules:
   - {id: "8.1", chapter: 8, title: "Basic Approaches", prereqs: [], status: done}
   - {id: "8.2", chapter: 8, title: "Integration by Parts", prereqs: ["8.1"], status: done}
   - {id: "8.3", chapter: 8, title: "Trigonometric Integrals", prereqs: ["8.2"], status: done}
   - {id: "8.4", chapter: 8, title: "Trigonometric Substitutions", prereqs: ["8.3"], status: done}
-  - {id: "8.5", chapter: 8, title: "Partial Fractions", prereqs: ["8.4"], status: planned}
+  - {id: "8.5", chapter: 8, title: "Partial Fractions", prereqs: ["8.4"], status: done}
   - {id: "8.6", chapter: 8, title: "Integration Strategies", prereqs: ["8.5"], status: planned}
   - {id: "8.7", chapter: 8, title: "Other Methods of Integration", prereqs: ["8.6"], status: planned}
   - {id: "8.8", chapter: 8, title: "Numerical Integration", prereqs: ["8.7"], status: planned}
