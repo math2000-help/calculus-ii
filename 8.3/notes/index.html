@@ -1,0 +1,3315 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../8.2/notes/">
+      
+      
+        <link rel="next" href="../../8.4/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-identities-we-use-proved" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The identities we use, proved
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powers-of-sine-and-cosine" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Powers of sine and cosine
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduction-formulas-for-tannx-and-secnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reduction formulas for <span class="arithmatex">\(\tan^nx\)</span> and <span class="arithmatex">\(\sec^nx\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-tanmxsecnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Products <span class="arithmatex">\(\tan^mx\sec^nx\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powers-of-cotangent-and-cosecant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Powers of cotangent and cosecant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-with-different-angles-sin-mxcos-nx-and-relatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Products with different angles: <span class="arithmatex">\(\sin mx\cos nx\)</span> and relatives
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orthogonality-of-sines-and-cosines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Orthogonality of sines and cosines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-errors-and-answers-that-look-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pitfalls: errors and answers that look different
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-odd-powers-of-sine-and-cosine" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Odd powers of sine and cosine
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-even-powers-and-power-reducing-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Even powers and power-reducing identities
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-powers-of-tangent-and-secant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Powers of tangent and secant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-powers-of-cotangent-and-cosecant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Powers of cotangent and cosecant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-products-with-different-angles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Products with different angles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-rewriting-the-integrand-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Rewriting the integrand first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-identities-we-use-proved" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The identities we use, proved
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powers-of-sine-and-cosine" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Powers of sine and cosine
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduction-formulas-for-tannx-and-secnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reduction formulas for <span class="arithmatex">\(\tan^nx\)</span> and <span class="arithmatex">\(\sec^nx\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-tanmxsecnx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Products <span class="arithmatex">\(\tan^mx\sec^nx\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powers-of-cotangent-and-cosecant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Powers of cotangent and cosecant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-with-different-angles-sin-mxcos-nx-and-relatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Products with different angles: <span class="arithmatex">\(\sin mx\cos nx\)</span> and relatives
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orthogonality-of-sines-and-cosines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Orthogonality of sines and cosines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-errors-and-answers-that-look-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pitfalls: errors and answers that look different
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-odd-powers-of-sine-and-cosine" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Odd powers of sine and cosine
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-even-powers-and-power-reducing-identities" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Even powers and power-reducing identities
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-powers-of-tangent-and-secant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Powers of tangent and secant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-powers-of-cotangent-and-cosecant" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Powers of cotangent and cosecant
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-products-with-different-angles" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Products with different angles
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-rewriting-the-integrand-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Rewriting the integrand first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="83-trigonometric-integrals">8.3 Trigonometric Integrals<a class="headerlink" href="#83-trigonometric-integrals" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>Integrals of powers and products of the six trigonometric functions turn up everywhere: in areas and volumes, in the trigonometric substitutions of the next section, and in the study of waves and vibrations. They look different from one another, but a small number of ideas handles all of them. For <span class="arithmatex">\(\sin^mx\cos^nx\)</span> and <span class="arithmatex">\(\tan^mx\sec^nx\)</span> the idea is to <em>split off one factor</em> that is the derivative of a function of the rest, and then use a Pythagorean identity so that a substitution <span class="arithmatex">\(u=\cos x\)</span>, <span class="arithmatex">\(u=\sin x\)</span>, <span class="arithmatex">\(u=\tan x\)</span> or <span class="arithmatex">\(u=\sec x\)</span> applies. When that is impossible (both powers even, or an even power of tangent with an odd power of secant), we use the power-reducing identities or a reduction formula, which comes from integration by parts. For products such as <span class="arithmatex">\(\sin3x\cos5x\)</span> the product-to-sum identities turn a product into a sum. We prove every identity from the angle-addition formulas, prove every method, and end with the <em>orthogonality relations</em> for sines and cosines, which are the starting point of Fourier series. Calculus I facts used, all by name: the derivatives of the six trigonometric functions, the Chain Rule, the Fundamental Theorem of Calculus, the Pythagorean identity <span class="arithmatex">\(\sin^2x+\cos^2x=1\)</span> and the angle-addition formulas for sine and cosine (from precalculus), and the fact that two antiderivatives on an interval differ by a constant. From Section 8.1 we use substitution (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>), the table of basic formulas and the four trigonometric integrals (Theorem <a href="../../8.1/notes/#thm-trig4">8.1.7</a>); from Section 8.2 we use integration by parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>) and the reduction formulas for <span class="arithmatex">\(\sin^nx\)</span> and <span class="arithmatex">\(\cos^nx\)</span> (Theorem <a href="../../8.2/notes/#thm-redtrig">8.2.11</a>). No appendix section is needed.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>derive the double-angle, power-reducing and product-to-sum identities from the angle-addition formulas;</p>
+</li>
+<li>
+<p>integrate <span class="arithmatex">\(\sin^mx\cos^nx\)</span> by splitting off a factor (an odd power) or by power-reducing identities (both powers even);</p>
+</li>
+<li>
+<p>integrate <span class="arithmatex">\(\tan^mx\sec^nx\)</span> and <span class="arithmatex">\(\cot^mx\csc^nx\)</span>, and say which case needs a reduction formula and why;</p>
+</li>
+<li>
+<p>state and prove the reduction formulas for <span class="arithmatex">\(\tan^nx\)</span>, <span class="arithmatex">\(\sec^nx\)</span>, <span class="arithmatex">\(\cot^nx\)</span> and <span class="arithmatex">\(\csc^nx\)</span>, and evaluate <span class="arithmatex">\(\int\sec^3x\,dx\)</span>;</p>
+</li>
+<li>
+<p>integrate products <span class="arithmatex">\(\sin mx\cos nx\)</span>, <span class="arithmatex">\(\sin mx\sin nx\)</span>, <span class="arithmatex">\(\cos mx\cos nx\)</span> and prove the orthogonality relations on an interval of length <span class="arithmatex">\(2\pi\)</span>;</p>
+</li>
+<li>
+<p>check every answer by differentiating, and recognize answers that differ by a constant and the common errors.</p>
+</li>
+</ul>
+<h2 id="the-identities-we-use-proved">The identities we use, proved<a class="headerlink" href="#the-identities-we-use-proved" title="Permanent link">&para;</a></h2>
+<p>Every method in this section is an identity followed by a substitution, so we first make sure of the identities. We start from the Pythagorean identity and the <em>angle-addition formulas</em>, which we take as known:</p>
+<div class="arithmatex">\[\sin(A\pm B)=\sin A\cos B\pm\cos A\sin B,\qquad\cos(A\pm B)=\cos A\cos B\mp\sin A\sin B .\]</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.1: Trigonometric identities</p>
+<p><span id="thm-ident"></span></p>
+<p>For all real numbers <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> (where the quantities are defined):</p>
+<p><strong>(1)</strong> <em>Pythagorean.</em> <span class="arithmatex">\(\sin^2x+\cos^2x=1\)</span>, <span class="arithmatex">\(\;1+\tan^2x=\sec^2x\)</span>, <span class="arithmatex">\(\;1+\cot^2x=\csc^2x\)</span>.</p>
+<p><strong>(2)</strong> <em>Double-angle.</em> <span class="arithmatex">\(\sin2x=2\sin x\cos x\)</span> and <span class="arithmatex">\(\cos2x=\cos^2x-\sin^2x=2\cos^2x-1=1-2\sin^2x\)</span>.</p>
+<p><strong>(3)</strong> <em>Power-reducing.</em> <span class="arithmatex">\(\displaystyle\sin^2x=\frac{1-\cos2x}2,\qquad\cos^2x=\frac{1+\cos2x}2\)</span>.</p>
+<p><strong>(4)</strong> <em>Product-to-sum.</em></p>
+<div class="arithmatex">\[\sin A\cos B=\tfrac12\big[\sin(A-B)+\sin(A+B)\big],\qquad\sin A\sin B=\tfrac12\big[\cos(A-B)-\cos(A+B)\big],\]</div>
+<div class="arithmatex">\[\cos A\cos B=\tfrac12\big[\cos(A-B)+\cos(A+B)\big].\]</div>
+</div>
+<p><em>Proof.</em> (1) The first identity is the one we assumed (it also follows from the angle-addition formula: with <span class="arithmatex">\(B=A\)</span>, <span class="arithmatex">\(\cos(A-A)=\cos0=1\)</span> equals <span class="arithmatex">\(\cos^2A+\sin^2A\)</span>). Where <span class="arithmatex">\(\cos x\ne0\)</span>, divide it by <span class="arithmatex">\(\cos^2x\)</span>: <span class="arithmatex">\(\frac{\sin^2x}{\cos^2x}+1=\frac1{\cos^2x}\)</span>, which is <span class="arithmatex">\(\tan^2x+1=\sec^2x\)</span>. Where <span class="arithmatex">\(\sin x\ne0\)</span>, divide by <span class="arithmatex">\(\sin^2x\)</span>: <span class="arithmatex">\(1+\cot^2x=\csc^2x\)</span>.</p>
+<p>(2) Put <span class="arithmatex">\(A=B=x\)</span> in the formulas for <span class="arithmatex">\(\sin(A+B)\)</span> and <span class="arithmatex">\(\cos(A+B)\)</span>: <span class="arithmatex">\(\sin2x=\sin x\cos x+\cos x\sin x=2\sin x\cos x\)</span> and <span class="arithmatex">\(\cos2x=\cos x\cos x-\sin x\sin x=\cos^2x-\sin^2x\)</span>. Replacing <span class="arithmatex">\(\sin^2x\)</span> by <span class="arithmatex">\(1-\cos^2x\)</span> gives <span class="arithmatex">\(\cos2x=2\cos^2x-1\)</span>, and replacing <span class="arithmatex">\(\cos^2x\)</span> by <span class="arithmatex">\(1-\sin^2x\)</span> gives <span class="arithmatex">\(\cos2x=1-2\sin^2x\)</span>.</p>
+<p>(3) Solve <span class="arithmatex">\(\cos2x=2\cos^2x-1\)</span> for <span class="arithmatex">\(\cos^2x\)</span> and <span class="arithmatex">\(\cos2x=1-2\sin^2x\)</span> for <span class="arithmatex">\(\sin^2x\)</span>.</p>
+<p>(4) Add and subtract the formulas for <span class="arithmatex">\(\sin(A+B)\)</span> and <span class="arithmatex">\(\sin(A-B)\)</span>: <span class="arithmatex">\(\sin(A+B)+\sin(A-B)=2\sin A\cos B\)</span>, which is the first identity. Add and subtract the formulas for <span class="arithmatex">\(\cos(A-B)=\cos A\cos B+\sin A\sin B\)</span> and <span class="arithmatex">\(\cos(A+B)=\cos A\cos B-\sin A\sin B\)</span>: the sum is <span class="arithmatex">\(2\cos A\cos B\)</span> and the difference <span class="arithmatex">\(\cos(A-B)-\cos(A+B)\)</span> is <span class="arithmatex">\(2\sin A\sin B\)</span>. Divide by <span class="arithmatex">\(2\)</span>. ◻ ∎</p>
+<p>The power-reducing identities lower an exponent at the price of doubling the angle, and the product-to-sum identities turn a product into a sum; both are exactly what an integral needs.</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.3.1: Which sign?</p>
+<p><span id="think-sign"></span></p>
+<p>The two power-reducing identities differ by one sign. Without looking at the theorem, decide which of <span class="arithmatex">\(\frac{1\pm\cos2x}2\)</span> equals <span class="arithmatex">\(\sin^2x\)</span> and which equals <span class="arithmatex">\(\cos^2x\)</span>, by testing a single value of <span class="arithmatex">\(x\)</span> in each.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>At <span class="arithmatex">\(x=0\)</span> we have <span class="arithmatex">\(\sin^20=0\)</span> and <span class="arithmatex">\(\cos^20=1\)</span>. Since <span class="arithmatex">\(\cos0=1\)</span>, the expression <span class="arithmatex">\(\frac{1-\cos0}2=0\)</span> matches <span class="arithmatex">\(\sin^2\)</span>, and <span class="arithmatex">\(\frac{1+\cos0}2=1\)</span> matches <span class="arithmatex">\(\cos^2\)</span>. So <span class="arithmatex">\(\sin^2x=\frac{1-\cos2x}2\)</span> and <span class="arithmatex">\(\cos^2x=\frac{1+\cos2x}2\)</span> (“sine is minus”). A second test at <span class="arithmatex">\(x=\frac\pi2\)</span> agrees: <span class="arithmatex">\(\sin^2\frac\pi2=1=\frac{1-\cos\pi}2\)</span>.</p>
+</details>
+</div>
+<h2 id="powers-of-sine-and-cosine">Powers of sine and cosine<a class="headerlink" href="#powers-of-sine-and-cosine" title="Permanent link">&para;</a></h2>
+<p>Section 8.2 gave the reduction formulas for <span class="arithmatex">\(\int\sin^nx\,dx\)</span> and <span class="arithmatex">\(\int\cos^nx\,dx\)</span> (Theorem <a href="../../8.2/notes/#thm-redtrig">8.2.11</a>). Here we treat the general product <span class="arithmatex">\(\sin^mx\cos^nx\)</span> and the first method that needs no integration by parts. The idea: if one of the exponents is odd, set one factor aside, because that factor is <span class="arithmatex">\(\pm\)</span> the derivative of the other function; the remaining even power converts to the other function by <span class="arithmatex">\(\sin^2x=1-\cos^2x\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.2: Integrals of <span class="arithmatex">\(\sin^mx\cos^nx\)</span></p>
+<p><span id="thm-sincos"></span></p>
+<p>Let <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> be integers, on an interval where the integrand is defined.</p>
+<p><strong>(1)</strong> <em><span class="arithmatex">\(m\)</span> odd and positive</em>, <span class="arithmatex">\(m=2j+1\)</span> with <span class="arithmatex">\(j\ge0\)</span>. With <span class="arithmatex">\(u=\cos x\)</span>,</p>
+<div class="arithmatex">\[\int\sin^mx\cos^nx\,dx=-\int\big(1-u^2\big)^ju^n\,du .\]</div>
+<p><strong>(2)</strong> <em><span class="arithmatex">\(n\)</span> odd and positive</em>, <span class="arithmatex">\(n=2j+1\)</span> with <span class="arithmatex">\(j\ge0\)</span>. With <span class="arithmatex">\(u=\sin x\)</span>,</p>
+<div class="arithmatex">\[\int\sin^mx\cos^nx\,dx=\int u^m\big(1-u^2\big)^j\,du .\]</div>
+<p><strong>(3)</strong> <em><span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> both even and nonnegative.</em> The integral equals a sum of constant multiples of integrals <span class="arithmatex">\(\int\cos^i2x\,dx\)</span> with <span class="arithmatex">\(0\le i\le\frac{m+n}2\)</span>, each of which can be evaluated by (2) when <span class="arithmatex">\(i\)</span> is odd and by repeating this step when <span class="arithmatex">\(i\)</span> is even.</p>
+<p>In (1) and (2) the right-hand side is a finite sum of powers of <span class="arithmatex">\(u\)</span> (expand <span class="arithmatex">\((1-u^2)^j\)</span> by the binomial theorem), so each term is integrated by formula (2) of Section 8.1, or gives <span class="arithmatex">\(\ln\lvert u\rvert\)</span> when the exponent is <span class="arithmatex">\(-1\)</span>. After integrating, substitute back <span class="arithmatex">\(u=\cos x\)</span> or <span class="arithmatex">\(u=\sin x\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) Write <span class="arithmatex">\(\sin^mx=\sin^{2j}x\sin x=\big(\sin^2x\big)^j\sin x=\big(1-\cos^2x\big)^j\sin x\)</span> by Theorem <a href="#thm-ident">8.3.1</a>(1). Then <span class="arithmatex">\(\sin^mx\cos^nx\,dx=\big(1-\cos^2x\big)^j\cos^nx\,(\sin x\,dx)\)</span>. Let <span class="arithmatex">\(u=\cos x\)</span>, so <span class="arithmatex">\(du=-\sin x\,dx\)</span>; by the substitution rule (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>) the integral becomes <span class="arithmatex">\(-\int(1-u^2)^ju^n\,du\)</span>.</p>
+<p>(2) Write <span class="arithmatex">\(\cos^nx=\big(1-\sin^2x\big)^j\cos x\)</span> and let <span class="arithmatex">\(u=\sin x\)</span>, <span class="arithmatex">\(du=\cos x\,dx\)</span>.</p>
+<p>(3) Since <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> are even, <span class="arithmatex">\(\sin^mx\cos^nx=\big(\sin^2x\big)^{m/2}\big(\cos^2x\big)^{n/2}=\left(\frac{1-\cos2x}2\right)^{m/2}\left(\frac{1+\cos2x}2\right)^{n/2}\)</span> by Theorem <a href="#thm-ident">8.3.1</a>(3). Multiplying out, this is a polynomial in <span class="arithmatex">\(\cos2x\)</span> of degree <span class="arithmatex">\(d=\frac{m+n}2\)</span>, say <span class="arithmatex">\(\sum_{i=0}^dc_i\cos^i2x\)</span>. We show by strong induction on <span class="arithmatex">\(d\)</span> that every integral <span class="arithmatex">\(\int\cos^i2x\,dx\)</span> with <span class="arithmatex">\(i\le d\)</span> can be evaluated. If <span class="arithmatex">\(i=0\)</span> the integral is <span class="arithmatex">\(x\)</span>. If <span class="arithmatex">\(i\)</span> is odd, <span class="arithmatex">\(i=2l+1\)</span>, write <span class="arithmatex">\(\cos^i2x=\big(1-\sin^22x\big)^l\cos2x\)</span> and let <span class="arithmatex">\(w=\sin2x\)</span>, <span class="arithmatex">\(dw=2\cos2x\,dx\)</span>: the integral is <span class="arithmatex">\(\frac12\int(1-w^2)^l\,dw\)</span>, a polynomial. If <span class="arithmatex">\(i\ge2\)</span> is even, let <span class="arithmatex">\(w=2x\)</span> and use Theorem <a href="#thm-ident">8.3.1</a>(3): <span class="arithmatex">\(\int\cos^i2x\,dx=\frac12\int\cos^iw\,dw=\frac12\int\left(\frac{1+\cos2w}2\right)^{i/2}dw\)</span>, which is a polynomial in <span class="arithmatex">\(\cos2w\)</span> of degree <span class="arithmatex">\(\frac i2\le\frac d2&lt;d\)</span> (because <span class="arithmatex">\(d\ge1\)</span> here), and the induction hypothesis applies to it. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 8.3.3: Powers of sine and cosine</p>
+<p><span id="proc-sincos"></span></p>
+<ol>
+<li>
+<p>If the power of <span class="arithmatex">\(\sin x\)</span> is odd, set aside one factor <span class="arithmatex">\(\sin x\)</span>, convert the rest to <span class="arithmatex">\(\cos x\)</span> with <span class="arithmatex">\(\sin^2x=1-\cos^2x\)</span>, and let <span class="arithmatex">\(u=\cos x\)</span>.</p>
+</li>
+<li>
+<p>If the power of <span class="arithmatex">\(\cos x\)</span> is odd, set aside one factor <span class="arithmatex">\(\cos x\)</span>, convert the rest to <span class="arithmatex">\(\sin x\)</span> with <span class="arithmatex">\(\cos^2x=1-\sin^2x\)</span>, and let <span class="arithmatex">\(u=\sin x\)</span>. (If both are odd, either works; take the smaller power of the one you convert.)</p>
+</li>
+<li>
+<p>If both powers are even, use <span class="arithmatex">\(\sin^2x=\frac{1-\cos2x}2\)</span> and <span class="arithmatex">\(\cos^2x=\frac{1+\cos2x}2\)</span>, expand, and repeat with the powers of <span class="arithmatex">\(\cos2x\)</span>. Remember that <span class="arithmatex">\(\int\cos^22x\,dx\)</span> again needs the power-reducing identity, with <span class="arithmatex">\(4x\)</span>.</p>
+</li>
+<li>
+<p>A single power <span class="arithmatex">\(\sin^nx\)</span> or <span class="arithmatex">\(\cos^nx\)</span> may be done by Theorem <a href="../../8.2/notes/#thm-redtrig">8.2.11</a>; the formulas of Section 8.2 are best for large <span class="arithmatex">\(n\)</span>.</p>
+</li>
+<li>
+<p>Check by differentiating.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.4: A square of the sine of a multiple angle</p>
+<p><span id="ex-m1"></span></p>
+<p>Find <span class="arithmatex">\(\int\sin^23x\,dx\)</span>, and compare with the reduction formula of Section 8.2.</p>
+<p><strong>Solution.</strong> Both powers are even (the power of <span class="arithmatex">\(\cos\)</span> is <span class="arithmatex">\(0\)</span>), so we use <span class="arithmatex">\(\sin^2w=\frac{1-\cos2w}2\)</span> with <span class="arithmatex">\(w=3x\)</span>:</p>
+<div class="arithmatex">\[\int\sin^23x\,dx=\int\frac{1-\cos6x}2\,dx=\frac x2-\frac12\cdot\frac{\sin6x}6+C=\frac x2-\frac{\sin6x}{12}+C .\]</div>
+<p>Here <span class="arithmatex">\(\int\cos6x\,dx=\frac{\sin6x}6\)</span> is formula (3) of Section 8.1 with <span class="arithmatex">\(a=6\)</span>.</p>
+<p><em>Compare.</em> Theorem <a href="../../8.2/notes/#thm-redtrig">8.2.11</a> with <span class="arithmatex">\(n=2\)</span> and <span class="arithmatex">\(w=3x\)</span> gives <span class="arithmatex">\(\int\sin^2w\,dw=-\frac{\sin w\cos w}2+\frac w2\)</span>, so <span class="arithmatex">\(\int\sin^23x\,dx=\frac13\left(-\frac{\sin3x\cos3x}2+\frac{3x}2\right)=\frac x2-\frac{\sin3x\cos3x}6\)</span>. This agrees with the first answer, because <span class="arithmatex">\(\sin6x=2\sin3x\cos3x\)</span> (Theorem <a href="#thm-ident">8.3.1</a>(2)) gives <span class="arithmatex">\(\frac{\sin6x}{12}=\frac{\sin3x\cos3x}6\)</span>. <em>Check by an area.</em> Over one period of <span class="arithmatex">\(\sin3x\)</span> (<span class="arithmatex">\(0\le x\le\frac{2\pi}3\)</span>) the average of <span class="arithmatex">\(\sin^23x\)</span> is <span class="arithmatex">\(\frac12\)</span>, so <span class="arithmatex">\(\int_0^{2\pi/3}\sin^23x\,dx\)</span> should be <span class="arithmatex">\(\frac12\cdot\frac{2\pi}3=\frac\pi3\)</span>. The antiderivative gives <span class="arithmatex">\(\frac{\pi}3-\frac{\sin4\pi}{12}-0=\frac\pi3\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.5: An odd power of sine, and the area under the curve</p>
+<p><span id="ex-m2"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/2}\sin^3x\cos^2x\,dx\)</span>. This is the area under <span class="arithmatex">\(y=\sin^3x\cos^2x\)</span> (Figure 1).</p>
+<p><strong>Solution.</strong> The power of <span class="arithmatex">\(\sin x\)</span> is odd, <span class="arithmatex">\(m=3=2\cdot1+1\)</span> (so <span class="arithmatex">\(j=1\)</span>) and <span class="arithmatex">\(n=2\)</span>. Set aside one <span class="arithmatex">\(\sin x\)</span> and convert <span class="arithmatex">\(\sin^2x=1-\cos^2x\)</span> (Pythagorean identity):</p>
+<div class="arithmatex">\[\sin^3x\cos^2x=\sin^2x\cos^2x\cdot\sin x=\big(1-\cos^2x\big)\cos^2x\sin x .\]</div>
+<p>Let <span class="arithmatex">\(u=\cos x\)</span>, <span class="arithmatex">\(du=-\sin x\,dx\)</span>. Then <span class="arithmatex">\(\int\sin^3x\cos^2x\,dx=-\int\big(1-u^2\big)u^2\,du=-\int\big(u^2-u^4\big)du=-\frac{u^3}3+\frac{u^5}5+C\)</span>, so</p>
+<div class="arithmatex">\[\int\sin^3x\cos^2x\,dx=-\frac{\cos^3x}3+\frac{\cos^5x}5+C .\]</div>
+<p><em>Check by differentiating.</em> By the Chain Rule, <span class="arithmatex">\(\frac{d}{dx}\left[-\frac{\cos^3x}3+\frac{\cos^5x}5\right]=\cos^2x\sin x-\cos^4x\sin x=\cos^2x\sin x\big(1-\cos^2x\big)=\sin^3x\cos^2x\)</span>.</p>
+<p><em>The definite integral.</em> At <span class="arithmatex">\(x=\frac\pi2\)</span> we have <span class="arithmatex">\(\cos x=0\)</span>, so the antiderivative is <span class="arithmatex">\(0\)</span>; at <span class="arithmatex">\(x=0\)</span> we have <span class="arithmatex">\(\cos x=1\)</span>, so it is <span class="arithmatex">\(-\frac13+\frac15=-\frac2{15}\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^{\pi/2}\sin^3x\cos^2x\,dx=0-\left(-\frac2{15}\right)=\frac2{15}\approx0.1333 .\]</div>
+<p><em>Plausibility.</em> The curve starts at <span class="arithmatex">\(0\)</span>, rises to a maximum and returns to <span class="arithmatex">\(0\)</span>. Its maximum is at <span class="arithmatex">\(\tan^2x=\frac32\)</span> (set the derivative <span class="arithmatex">\(\sin^2x\cos x\left(3\cos^2x-2\sin^2x\right)\)</span> equal to <span class="arithmatex">\(0\)</span>), where <span class="arithmatex">\(\sin^2x=\frac35\)</span>, <span class="arithmatex">\(\cos^2x=\frac25\)</span>, and the height is <span class="arithmatex">\(\frac25\left(\frac35\right)^{3/2}\approx0.1859\)</span>. The area is less than <span class="arithmatex">\(0.1859\cdot\frac\pi2\approx0.292\)</span>, and <span class="arithmatex">\(0.1333\)</span> is a sensible fraction of it.</p>
+<p><img alt="Diagram: area \(2/15\); \(y=\sin^3x\cos^2x\)" class="calc-figure" src="../figures/notes-fig1.svg" width="417" /></p>
+<p>Figure 1. The region under <span class="arithmatex">\(y=\sin^3x\cos^2x\)</span> on <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span>. The maximum is at <span class="arithmatex">\(\tan x=\sqrt{3/2}\)</span>, and the area is <span class="arithmatex">\(\frac2{15}\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.3.1: An odd power of cosine</p>
+<p><span id="kc-kcodd"></span></p>
+<p>Evaluate <span class="arithmatex">\(\int\sin^2x\cos^3x\,dx\)</span>. Say which factor you set aside, and check by differentiating.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.6: Both powers even</p>
+<p><span id="ex-m3"></span></p>
+<p>Find <span class="arithmatex">\(\int\sin^2x\cos^4x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Both powers are even. Group <span class="arithmatex">\(\sin^2x\cos^4x=\big(\sin x\cos x\big)^2\cos^2x\)</span> and use <span class="arithmatex">\(\sin x\cos x=\frac12\sin2x\)</span> (double angle) and <span class="arithmatex">\(\cos^2x=\frac{1+\cos2x}2\)</span>:</p>
+<div class="arithmatex">\[\sin^2x\cos^4x=\frac{\sin^22x}4\cdot\frac{1+\cos2x}2=\frac18\sin^22x+\frac18\sin^22x\cos2x .\]</div>
+<p>For the first term use <span class="arithmatex">\(\sin^22x=\frac{1-\cos4x}2\)</span>. For the second term the power of <span class="arithmatex">\(\sin2x\)</span> is <span class="arithmatex">\(2\)</span> but there is a factor <span class="arithmatex">\(\cos2x\)</span> to the first power: let <span class="arithmatex">\(w=\sin2x\)</span>, <span class="arithmatex">\(dw=2\cos2x\,dx\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\sin^2x\cos^4x\,dx=\frac1{16}\int(1-\cos4x)\,dx+\frac18\cdot\frac12\int w^2\,dw=\frac x{16}-\frac{\sin4x}{64}+\frac{\sin^32x}{48}+C .\]</div>
+<p>(The coefficients: <span class="arithmatex">\(\frac18\cdot\frac12\cdot\frac{w^3}3=\frac{w^3}{48}\)</span> and <span class="arithmatex">\(\frac1{16}\cdot\frac{\sin4x}4=\frac{\sin4x}{64}\)</span>.)</p>
+<p><em>Check by differentiating.</em> <span class="arithmatex">\(\frac{d}{dx}\left[\frac x{16}-\frac{\sin4x}{64}+\frac{\sin^32x}{48}\right]=\frac1{16}-\frac{\cos4x}{16}+\frac{\sin^22x\cos2x}8\)</span>. Since <span class="arithmatex">\(1-\cos4x=2\sin^22x\)</span>, the first two terms give <span class="arithmatex">\(\frac{\sin^22x}8\)</span>, and the sum is <span class="arithmatex">\(\frac{\sin^22x}8(1+\cos2x)=\frac{\sin^22x}8\cdot2\cos^2x=\frac{4\sin^2x\cos^2x\cdot\cos^2x}4=\sin^2x\cos^4x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.7: An even power under a root: the absolute value</p>
+<p><span id="ex-m4"></span></p>
+<p>Evaluate (a) <span class="arithmatex">\(\displaystyle\int_0^{\pi}\big(1-\cos2x\big)^{3/2}\,dx\)</span> and (b) <span class="arithmatex">\(\displaystyle\int_0^{2\pi}\big(1-\cos2x\big)^{3/2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> By the power-reducing identity, <span class="arithmatex">\(1-\cos2x=2\sin^2x\)</span>. A power <span class="arithmatex">\(\frac32\)</span> of a square needs care: for <span class="arithmatex">\(a\ge0\)</span> we have <span class="arithmatex">\(\big(a^2\big)^{3/2}=a^3\)</span>, but for a number <span class="arithmatex">\(s\)</span> of either sign <span class="arithmatex">\(\big(s^2\big)^{3/2}=\lvert s\rvert^3\)</span>. Hence</p>
+<div class="arithmatex">\[\big(1-\cos2x\big)^{3/2}=\big(2\sin^2x\big)^{3/2}=2\sqrt2\,\lvert\sin x\rvert^3 .\]</div>
+<p>(a) On <span class="arithmatex">\([0,\pi]\)</span> we have <span class="arithmatex">\(\sin x\ge0\)</span>, so <span class="arithmatex">\(\lvert\sin x\rvert^3=\sin^3x\)</span>. By Theorem <a href="#thm-sincos">8.3.2</a>(1) (or Section 8.2, <span class="arithmatex">\(n=3\)</span>), an antiderivative of <span class="arithmatex">\(\sin^3x\)</span> is <span class="arithmatex">\(-\cos x+\frac{\cos^3x}3\)</span>, whose change over <span class="arithmatex">\([0,\pi]\)</span> is <span class="arithmatex">\(\left(1-\frac13\right)-\left(-1+\frac13\right)=\frac43\)</span>. So</p>
+<div class="arithmatex">\[\int_0^\pi\big(1-\cos2x\big)^{3/2}dx=2\sqrt2\cdot\frac43=\frac{8\sqrt2}3\approx3.7712 .\]</div>
+<p>(b) On <span class="arithmatex">\([\pi,2\pi]\)</span> we have <span class="arithmatex">\(\sin x\le0\)</span>, so <span class="arithmatex">\(\lvert\sin x\rvert^3=-\sin^3x\)</span>, and the integral over <span class="arithmatex">\([\pi,2\pi]\)</span> is again <span class="arithmatex">\(\frac{8\sqrt2}3\)</span> (the graph is the same shape, by the symmetry <span class="arithmatex">\(\lvert\sin(x+\pi)\rvert=\lvert\sin x\rvert\)</span>). The total is <span class="arithmatex">\(\frac{16\sqrt2}3\approx7.5425\)</span>. If we had used <span class="arithmatex">\(\sin^3x\)</span> without the absolute value we would have found <span class="arithmatex">\(\int_0^{2\pi}\sin^3x\,dx=0\)</span>, which is impossible for a positive integrand.</p>
+</div>
+<h2 id="reduction-formulas-for-tannx-and-secnx">Reduction formulas for <span class="arithmatex">\(\tan^nx\)</span> and <span class="arithmatex">\(\sec^nx\)</span><a class="headerlink" href="#reduction-formulas-for-tannx-and-secnx" title="Permanent link">&para;</a></h2>
+<p>Section 8.2 reduced <span class="arithmatex">\(\sin^nx\)</span> and <span class="arithmatex">\(\cos^nx\)</span> to lower powers. The same can be done for the tangent and the secant. The tangent formula comes from the identity <span class="arithmatex">\(\tan^2x=\sec^2x-1\)</span> and a substitution; the secant formula needs integration by parts.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.8: Reduction formulas for <span class="arithmatex">\(\tan^nx\)</span> and <span class="arithmatex">\(\sec^nx\)</span></p>
+<p><span id="thm-redtan"></span></p>
+<p>For every integer <span class="arithmatex">\(n\ge2\)</span>, on any interval where the functions are defined,</p>
+<div class="arithmatex">\[\int\tan^nx\,dx=\frac{\tan^{n-1}x}{n-1}-\int\tan^{n-2}x\,dx,\]</div>
+<div class="arithmatex">\[\int\sec^nx\,dx=\frac{\sec^{n-2}x\tan x}{n-1}+\frac{n-2}{n-1}\int\sec^{n-2}x\,dx .\]</div>
+<p>Consequently every <span class="arithmatex">\(\int\tan^nx\,dx\)</span> reduces to <span class="arithmatex">\(\int1\,dx=x\)</span> or to <span class="arithmatex">\(\int\tan x\,dx=\ln\lvert\sec x\rvert\)</span>, and every <span class="arithmatex">\(\int\sec^nx\,dx\)</span> with <span class="arithmatex">\(n\)</span> odd reduces to <span class="arithmatex">\(\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert\)</span> (Theorem <a href="../../8.1/notes/#thm-trig4">8.1.7</a>). In particular</p>
+<div class="arithmatex">\[\int\sec^3x\,dx=\frac12\sec x\tan x+\frac12\ln\lvert\sec x+\tan x\rvert+C .\]</div>
+</div>
+<p><em>Proof.</em> <em>Tangent.</em> By Theorem <a href="#thm-ident">8.3.1</a>(1),</p>
+<div class="arithmatex">\[\tan^nx=\tan^{n-2}x\tan^2x=\tan^{n-2}x\big(\sec^2x-1\big)=\tan^{n-2}x\sec^2x-\tan^{n-2}x .\]</div>
+<p>In the first term let <span class="arithmatex">\(u=\tan x\)</span>, <span class="arithmatex">\(du=\sec^2x\,dx\)</span>; since <span class="arithmatex">\(n\ge2\)</span> the exponent <span class="arithmatex">\(n-2\ge0\)</span> is not <span class="arithmatex">\(-1\)</span>, so <span class="arithmatex">\(\int u^{n-2}\,du=\frac{u^{n-1}}{n-1}\)</span>. This gives the formula.</p>
+<p><em>Secant.</em> Write <span class="arithmatex">\(\sec^nx=\sec^{n-2}x\cdot\sec^2x\)</span> and use parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>) with <span class="arithmatex">\(u=\sec^{n-2}x\)</span> and <span class="arithmatex">\(dv=\sec^2x\,dx\)</span>. By the Chain Rule, <span class="arithmatex">\(du=(n-2)\sec^{n-3}x\cdot\sec x\tan x\,dx=(n-2)\sec^{n-2}x\tan x\,dx\)</span>, and <span class="arithmatex">\(v=\tan x\)</span>. Hence</p>
+<div class="arithmatex">\[\int\sec^nx\,dx=\sec^{n-2}x\tan x-(n-2)\int\sec^{n-2}x\tan^2x\,dx .\]</div>
+<p>Replace <span class="arithmatex">\(\tan^2x=\sec^2x-1\)</span>: the last integral is <span class="arithmatex">\(\int\sec^nx\,dx-\int\sec^{n-2}x\,dx\)</span>. So</p>
+<div class="arithmatex">\[\int\sec^nx\,dx=\sec^{n-2}x\tan x-(n-2)\int\sec^nx\,dx+(n-2)\int\sec^{n-2}x\,dx .\]</div>
+<p>The unknown integral appears on both sides. Add <span class="arithmatex">\((n-2)\int\sec^nx\,dx\)</span> to both sides:</p>
+<div class="arithmatex">\[(n-1)\int\sec^nx\,dx=\sec^{n-2}x\tan x+(n-2)\int\sec^{n-2}x\,dx .\]</div>
+<p>Divide by <span class="arithmatex">\(n-1\ne0\)</span>.</p>
+<p><em>The consequences.</em> Applying the tangent formula repeatedly lowers the exponent by <span class="arithmatex">\(2\)</span> each time, ending at <span class="arithmatex">\(\tan^0x=1\)</span> (when <span class="arithmatex">\(n\)</span> is even) or <span class="arithmatex">\(\tan^1x\)</span> (when <span class="arithmatex">\(n\)</span> is odd). Applying the secant formula to odd <span class="arithmatex">\(n\)</span> ends at <span class="arithmatex">\(\sec^1x\)</span>. For <span class="arithmatex">\(n=3\)</span>: <span class="arithmatex">\(\int\sec^3x\,dx=\frac{\sec x\tan x}2+\frac12\int\sec x\,dx\)</span>, and <span class="arithmatex">\(\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert+C\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.9: Reduction formulas for <span class="arithmatex">\(\tan^4x\)</span> and <span class="arithmatex">\(\sec^5x\)</span></p>
+<p><span id="ex-m5"></span></p>
+<p>Find (a) <span class="arithmatex">\(\int\tan^4x\,dx\)</span> and (b) <span class="arithmatex">\(\int\sec^5x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> (a) Apply Theorem <a href="#thm-redtan">8.3.8</a> with <span class="arithmatex">\(n=4\)</span>, then <span class="arithmatex">\(n=2\)</span>:</p>
+<div class="arithmatex">\[\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx,\qquad\int\tan^2x\,dx=\tan x-\int\tan^0x\,dx=\tan x-x .\]</div>
+<p>Substituting the second result into the first,</p>
+<div class="arithmatex">\[\int\tan^4x\,dx=\frac{\tan^3x}3-\tan x+x+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[\frac{\tan^3x}3-\tan x+x\right]=\tan^2x\sec^2x-\sec^2x+1=\tan^2x\sec^2x-\tan^2x=\tan^2x\big(\sec^2x-1\big)=\tan^4x\)</span>.</p>
+<p>(b) With <span class="arithmatex">\(n=5\)</span>, then <span class="arithmatex">\(n=3\)</span>:</p>
+<div class="arithmatex">\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx .\]</div>
+<p>Now insert <span class="arithmatex">\(\int\sec^3x\,dx=\frac{\sec x\tan x}2+\frac12\ln\lvert\sec x+\tan x\rvert\)</span>:</p>
+<div class="arithmatex">\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\left(\frac{\sec x\tan x}2+\frac12\ln\lvert\sec x+\tan x\rvert\right)+C .\]</div>
+<p>Multiplying out,</p>
+<div class="arithmatex">\[\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac{3\sec x\tan x}8+\frac38\ln\lvert\sec x+\tan x\rvert+C .\]</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.3.2: A reduction formula for the tangent</p>
+<p><span id="kc-kcred"></span></p>
+<p>Use Theorem <a href="#thm-redtan">8.3.8</a> to evaluate <span class="arithmatex">\(\int\tan^3x\,dx\)</span>, and check your answer by differentiating.</p>
+</div>
+<h2 id="products-tanmxsecnx">Products <span class="arithmatex">\(\tan^mx\sec^nx\)</span><a class="headerlink" href="#products-tanmxsecnx" title="Permanent link">&para;</a></h2>
+<p>For a product of tangent and secant we split off a factor that is the derivative of one of them: <span class="arithmatex">\(\frac{d}{dx}\tan x=\sec^2x\)</span> and <span class="arithmatex">\(\frac{d}{dx}\sec x=\sec x\tan x\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.10: Integrals of <span class="arithmatex">\(\tan^mx\sec^nx\)</span></p>
+<p><span id="thm-tansec"></span></p>
+<p>Let <span class="arithmatex">\(m,n\ge0\)</span> be integers, on an interval where the integrand is defined.</p>
+<p><strong>(1)</strong> <em><span class="arithmatex">\(n\)</span> even and positive</em>, <span class="arithmatex">\(n=2j+2\)</span> with <span class="arithmatex">\(j\ge0\)</span>. With <span class="arithmatex">\(u=\tan x\)</span>,</p>
+<div class="arithmatex">\[\int\tan^mx\sec^nx\,dx=\int u^m\big(1+u^2\big)^j\,du .\]</div>
+<p><strong>(2)</strong> <em><span class="arithmatex">\(m\)</span> odd and <span class="arithmatex">\(n\ge1\)</span></em>, <span class="arithmatex">\(m=2i+1\)</span> with <span class="arithmatex">\(i\ge0\)</span>. With <span class="arithmatex">\(u=\sec x\)</span>,</p>
+<div class="arithmatex">\[\int\tan^mx\sec^nx\,dx=\int\big(u^2-1\big)^iu^{n-1}\,du .\]</div>
+<p><strong>(3)</strong> <em><span class="arithmatex">\(m\)</span> even and <span class="arithmatex">\(n\)</span> odd.</em> Writing <span class="arithmatex">\(\tan^2x=\sec^2x-1\)</span> turns the integrand into a sum of constant multiples of odd powers <span class="arithmatex">\(\sec^{n+2l}x\)</span>, each of which is integrated by Theorem <a href="#thm-redtan">8.3.8</a>.</p>
+<p><strong>(4)</strong> <em><span class="arithmatex">\(n=0\)</span>.</em> <span class="arithmatex">\(\int\tan^mx\,dx\)</span> is given by Theorem <a href="#thm-redtan">8.3.8</a>.</p>
+<p>These four cases cover every pair <span class="arithmatex">\(m,n\ge0\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) Write <span class="arithmatex">\(\sec^nx=\sec^{2j}x\sec^2x=\big(1+\tan^2x\big)^j\sec^2x\)</span> (Theorem <a href="#thm-ident">8.3.1</a>(1)). Then</p>
+<div class="arithmatex">\[\tan^mx\sec^nx\,dx=\tan^mx\big(1+\tan^2x\big)^j\,\big(\sec^2x\,dx\big);\]</div>
+<p>let <span class="arithmatex">\(u=\tan x\)</span>, <span class="arithmatex">\(du=\sec^2x\,dx\)</span> and use Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>.</p>
+<p>(2) Write <span class="arithmatex">\(\tan^mx\sec^nx=\tan^{2i}x\,\sec^{n-1}x\cdot\big(\sec x\tan x\big)=\big(\sec^2x-1\big)^i\sec^{n-1}x\cdot\big(\sec x\tan x\big)\)</span>; let <span class="arithmatex">\(u=\sec x\)</span>, <span class="arithmatex">\(du=\sec x\tan x\,dx\)</span>. This needs <span class="arithmatex">\(n\ge1\)</span> so that a factor <span class="arithmatex">\(\sec x\)</span> is available.</p>
+<p>(3) With <span class="arithmatex">\(m=2i\)</span> the integrand is <span class="arithmatex">\(\big(\sec^2x-1\big)^i\sec^nx\)</span>. By the binomial theorem this is</p>
+<div class="arithmatex">\[\sum_{l=0}^i(-1)^{i-l}\binom il\sec^{n+2l}x,\]</div>
+<p>and each exponent <span class="arithmatex">\(n+2l\)</span> is odd.</p>
+<p>(4) is Theorem <a href="#thm-redtan">8.3.8</a>. Cases: if <span class="arithmatex">\(n\ge2\)</span> is even, (1) applies; if <span class="arithmatex">\(n\)</span> is odd and <span class="arithmatex">\(m\)</span> is odd, (2); if <span class="arithmatex">\(n\)</span> is odd and <span class="arithmatex">\(m\)</span> is even, (3); if <span class="arithmatex">\(n=0\)</span>, (4); and <span class="arithmatex">\(n=1\)</span> with <span class="arithmatex">\(m\)</span> odd is in (2) (with <span class="arithmatex">\(n-1=0\)</span>). Nothing else remains. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 8.3.11: Powers of tangent and secant</p>
+<p><span id="proc-tansec"></span></p>
+<ol>
+<li>
+<p><em>Even power of secant (<span class="arithmatex">\(n\ge2\)</span>).</em> Set aside <span class="arithmatex">\(\sec^2x\)</span>, write the rest of the secant power as a polynomial in <span class="arithmatex">\(\tan^2x\)</span>, and let <span class="arithmatex">\(u=\tan x\)</span>.</p>
+</li>
+<li>
+<p><em>Odd power of tangent (<span class="arithmatex">\(n\ge1\)</span>).</em> Set aside <span class="arithmatex">\(\sec x\tan x\)</span>, write the remaining even power of tangent as a polynomial in <span class="arithmatex">\(\sec^2x\)</span>, and let <span class="arithmatex">\(u=\sec x\)</span>.</p>
+</li>
+<li>
+<p><em>Even power of tangent and odd power of secant.</em> Replace <span class="arithmatex">\(\tan^2x\)</span> by <span class="arithmatex">\(\sec^2x-1\)</span>, expand, and use the reduction formula for each odd power of secant.</p>
+</li>
+<li>
+<p><em>No secant (<span class="arithmatex">\(n=0\)</span>).</em> Use the reduction formula for <span class="arithmatex">\(\tan^mx\)</span>.</p>
+</li>
+<li>
+<p>If both cases (1) and (2) apply, either works; check by differentiating, and expect answers that differ by a constant.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.12: The two substitution cases</p>
+<p><span id="ex-m6"></span></p>
+<p>Find (a) <span class="arithmatex">\(\int\tan^2x\sec^4x\,dx\)</span> and (b) <span class="arithmatex">\(\int\tan^5x\sec^3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> (a) The power of secant is <span class="arithmatex">\(4\)</span>, which is even, so set aside <span class="arithmatex">\(\sec^2x\)</span> and write the rest as <span class="arithmatex">\(\sec^2x=1+\tan^2x\)</span>:</p>
+<div class="arithmatex">\[\tan^2x\sec^4x=\tan^2x\big(1+\tan^2x\big)\sec^2x .\]</div>
+<p>Let <span class="arithmatex">\(u=\tan x\)</span>, <span class="arithmatex">\(du=\sec^2x\,dx\)</span>:</p>
+<div class="arithmatex">\[\int\tan^2x\sec^4x\,dx=\int u^2\big(1+u^2\big)du=\frac{u^3}3+\frac{u^5}5+C=\frac{\tan^3x}3+\frac{\tan^5x}5+C .\]</div>
+<p><em>Check.</em> The derivative is <span class="arithmatex">\(\tan^2x\sec^2x+\tan^4x\sec^2x=\tan^2x\sec^2x\big(1+\tan^2x\big)=\tan^2x\sec^4x\)</span>.</p>
+<p>(b) The power of tangent is <span class="arithmatex">\(5\)</span>, which is odd, and the power of secant is <span class="arithmatex">\(3\ge1\)</span>. Set aside <span class="arithmatex">\(\sec x\tan x\)</span>: <span class="arithmatex">\(\tan^5x\sec^3x=\tan^4x\sec^2x\cdot\sec x\tan x=\big(\sec^2x-1\big)^2\sec^2x\cdot\sec x\tan x\)</span>. Let <span class="arithmatex">\(u=\sec x\)</span>, <span class="arithmatex">\(du=\sec x\tan x\,dx\)</span>:</p>
+<div class="arithmatex">\[\int\tan^5x\sec^3x\,dx=\int\big(u^2-1\big)^2u^2\,du=\int\big(u^6-2u^4+u^2\big)du=\frac{u^7}7-\frac{2u^5}5+\frac{u^3}3+C .\]</div>
+<p>Substituting back,</p>
+<div class="arithmatex">\[\int\tan^5x\sec^3x\,dx=\frac{\sec^7x}7-\frac{2\sec^5x}5+\frac{\sec^3x}3+C .\]</div>
+<p><em>Check.</em> The derivative of <span class="arithmatex">\(\frac{\sec^7x}7\)</span> is <span class="arithmatex">\(\sec^6x\cdot\sec x\tan x=\sec^7x\tan x\)</span>; of <span class="arithmatex">\(-\frac{2\sec^5x}5\)</span> it is <span class="arithmatex">\(-2\sec^5x\tan x\)</span>; of <span class="arithmatex">\(\frac{\sec^3x}3\)</span> it is <span class="arithmatex">\(\sec^3x\tan x\)</span>. The sum is <span class="arithmatex">\(\sec^3x\tan x\big(\sec^4x-2\sec^2x+1\big)=\sec^3x\tan x\big(\sec^2x-1\big)^2=\sec^3x\tan x\cdot\tan^4x=\tan^5x\sec^3x\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.3.2: Why does the third case need more?</p>
+<p><span id="think-whyparts"></span></p>
+<p>In <span class="arithmatex">\(\int\tan^2x\sec x\,dx\)</span> the tangent power is even and the secant power is odd. Try <span class="arithmatex">\(u=\sec x\)</span>, and then try <span class="arithmatex">\(u=\tan x\)</span>. What goes wrong each time, and why is that not an accident?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>With <span class="arithmatex">\(u=\sec x\)</span>, <span class="arithmatex">\(du=\sec x\tan x\,dx\)</span>, the integrand <span class="arithmatex">\(\tan^2x\sec x\,dx=\tan x\cdot\big(\sec x\tan x\,dx\big)=\tan x\,du\)</span>, and <span class="arithmatex">\(\tan x=\pm\sqrt{u^2-1}\)</span> is not a polynomial in <span class="arithmatex">\(u\)</span>. With <span class="arithmatex">\(u=\tan x\)</span>, <span class="arithmatex">\(du=\sec^2x\,dx\)</span>, we would need <span class="arithmatex">\(\sec x\,dx=\frac{du}{\sec x}=\frac{du}{\sqrt{1+u^2}}\)</span>, again a square root. Not an accident: the case <span class="arithmatex">\(m=0\)</span>, <span class="arithmatex">\(n=1\)</span>, <span class="arithmatex">\(\int\sec x\,dx=\ln\lvert\sec x+\tan x\rvert\)</span>, has a logarithm in its answer, and no polynomial integral in <span class="arithmatex">\(u\)</span> can produce it; the reduction formula (parts) is what creates the logarithm, through <span class="arithmatex">\(\int\sec x\,dx\)</span>.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.13: An even power of tangent with an odd power of secant</p>
+<p><span id="ex-m7"></span></p>
+<p>Find <span class="arithmatex">\(\int\tan^2x\sec^3x\,dx\)</span>, and evaluate <span class="arithmatex">\(\int_0^{\pi/4}\tan^2x\sec^3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The tangent power is even and the secant power is odd, so we rewrite <span class="arithmatex">\(\tan^2x=\sec^2x-1\)</span> (Theorem <a href="#thm-tansec">8.3.10</a>(3)):</p>
+<div class="arithmatex">\[\int\tan^2x\sec^3x\,dx=\int\big(\sec^2x-1\big)\sec^3x\,dx=\int\sec^5x\,dx-\int\sec^3x\,dx .\]</div>
+<p>By Theorem <a href="#thm-redtan">8.3.8</a> with <span class="arithmatex">\(n=5\)</span>, <span class="arithmatex">\(\int\sec^5x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx\)</span>. Substituting,</p>
+<div class="arithmatex">\[\int\tan^2x\sec^3x\,dx=\frac{\sec^3x\tan x}4+\frac34\int\sec^3x\,dx-\int\sec^3x\,dx=\frac{\sec^3x\tan x}4-\frac14\int\sec^3x\,dx .\]</div>
+<p>Now use <span class="arithmatex">\(\int\sec^3x\,dx=\frac12\sec x\tan x+\frac12\ln\lvert\sec x+\tan x\rvert\)</span>:</p>
+<div class="arithmatex">\[\int\tan^2x\sec^3x\,dx=\frac{\sec^3x\tan x}4-\frac{\sec x\tan x}8-\frac18\ln\lvert\sec x+\tan x\rvert+C .\]</div>
+<p><em>The definite integral.</em> At <span class="arithmatex">\(x=\frac\pi4\)</span>: <span class="arithmatex">\(\sec\frac\pi4=\sqrt2\)</span>, <span class="arithmatex">\(\tan\frac\pi4=1\)</span>, so <span class="arithmatex">\(\sec^3\frac\pi4=2\sqrt2\)</span>, and the antiderivative is <span class="arithmatex">\(\frac{2\sqrt2}4-\frac{\sqrt2}8-\frac18\ln\left(\sqrt2+1\right)=\frac{3\sqrt2}8-\frac18\ln\left(1+\sqrt2\right)\)</span>. At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(\tan0=0\)</span> and <span class="arithmatex">\(\ln\lvert\sec0+0\rvert=\ln1=0\)</span>, so it is <span class="arithmatex">\(0\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^{\pi/4}\tan^2x\sec^3x\,dx=\frac{3\sqrt2-\ln\left(1+\sqrt2\right)}8\approx0.4202 .\]</div>
+</div>
+<h2 id="powers-of-cotangent-and-cosecant">Powers of cotangent and cosecant<a class="headerlink" href="#powers-of-cotangent-and-cosecant" title="Permanent link">&para;</a></h2>
+<p>The cotangent and cosecant behave like the tangent and secant, with <span class="arithmatex">\(\frac{d}{dx}\cot x=-\csc^2x\)</span> and <span class="arithmatex">\(\frac{d}{dx}\csc x=-\csc x\cot x\)</span>, so each substitution has a minus sign.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.14: Cotangent and cosecant</p>
+<p><span id="thm-cotcsc"></span></p>
+<p>Let <span class="arithmatex">\(n\ge2\)</span> and <span class="arithmatex">\(m\ge0\)</span> be integers, on an interval where the functions are defined.</p>
+<p><strong>(1)</strong> <em>Reduction formulas.</em></p>
+<div class="arithmatex">\[\int\cot^nx\,dx=-\frac{\cot^{n-1}x}{n-1}-\int\cot^{n-2}x\,dx,\]</div>
+<div class="arithmatex">\[\int\csc^nx\,dx=-\frac{\csc^{n-2}x\cot x}{n-1}+\frac{n-2}{n-1}\int\csc^{n-2}x\,dx .\]</div>
+<p>In particular <span class="arithmatex">\(\displaystyle\int\csc^3x\,dx=-\frac12\csc x\cot x-\frac12\ln\lvert\csc x+\cot x\rvert+C\)</span>.</p>
+<p><strong>(2)</strong> <em><span class="arithmatex">\(n\)</span> even and positive</em>, <span class="arithmatex">\(n=2j+2\)</span>. With <span class="arithmatex">\(u=\cot x\)</span>: <span class="arithmatex">\(\displaystyle\int\cot^mx\csc^nx\,dx=-\int u^m\big(1+u^2\big)^j\,du\)</span>.</p>
+<p><strong>(3)</strong> <em><span class="arithmatex">\(m\)</span> odd and <span class="arithmatex">\(n\ge1\)</span></em>, <span class="arithmatex">\(m=2i+1\)</span>. With <span class="arithmatex">\(u=\csc x\)</span>: <span class="arithmatex">\(\displaystyle\int\cot^mx\csc^nx\,dx=-\int\big(u^2-1\big)^iu^{n-1}\,du\)</span>.</p>
+<p><strong>(4)</strong> <em><span class="arithmatex">\(m\)</span> even and <span class="arithmatex">\(n\)</span> odd.</em> Replace <span class="arithmatex">\(\cot^2x=\csc^2x-1\)</span>, expand, and use (1).</p>
+</div>
+<p><em>Proof.</em> (1) <em>Cotangent.</em> <span class="arithmatex">\(\cot^nx=\cot^{n-2}x\big(\csc^2x-1\big)\)</span> by Theorem <a href="#thm-ident">8.3.1</a>(1). In <span class="arithmatex">\(\int\cot^{n-2}x\csc^2x\,dx\)</span> let <span class="arithmatex">\(u=\cot x\)</span>, <span class="arithmatex">\(du=-\csc^2x\,dx\)</span>: it equals <span class="arithmatex">\(-\frac{u^{n-1}}{n-1}\)</span>. <em>Cosecant.</em> Parts with <span class="arithmatex">\(u=\csc^{n-2}x\)</span>, <span class="arithmatex">\(dv=\csc^2x\,dx\)</span>: <span class="arithmatex">\(du=-(n-2)\csc^{n-2}x\cot x\,dx\)</span> (since <span class="arithmatex">\(\frac{d}{dx}\csc x=-\csc x\cot x\)</span>) and <span class="arithmatex">\(v=-\cot x\)</span>. Then</p>
+<div class="arithmatex">\[\int\csc^nx\,dx=-\csc^{n-2}x\cot x-(n-2)\int\csc^{n-2}x\cot^2x\,dx .\]</div>
+<p>Replace <span class="arithmatex">\(\cot^2x=\csc^2x-1\)</span>:</p>
+<div class="arithmatex">\[\int\csc^nx\,dx=-\csc^{n-2}x\cot x-(n-2)\int\csc^nx\,dx+(n-2)\int\csc^{n-2}x\,dx .\]</div>
+<p>Add <span class="arithmatex">\((n-2)\int\csc^nx\,dx\)</span> to both sides and divide by <span class="arithmatex">\(n-1\)</span>. For <span class="arithmatex">\(n=3\)</span> use <span class="arithmatex">\(\int\csc x\,dx=-\ln\lvert\csc x+\cot x\rvert\)</span> (Theorem <a href="../../8.1/notes/#thm-trig4">8.1.7</a>).</p>
+<p>(2) <span class="arithmatex">\(\cot^mx\csc^nx\,dx=\cot^mx\big(1+\cot^2x\big)^j\big(\csc^2x\,dx\big)\)</span> and <span class="arithmatex">\(du=-\csc^2x\,dx\)</span>.</p>
+<p>(3) <span class="arithmatex">\(\cot^mx\csc^nx=\big(\csc^2x-1\big)^i\csc^{n-1}x\cdot\big(\csc x\cot x\big)\)</span> and <span class="arithmatex">\(du=-\csc x\cot x\,dx\)</span> for <span class="arithmatex">\(u=\csc x\)</span>.</p>
+<p>(4) is the same expansion as in Theorem <a href="#thm-tansec">8.3.10</a>(3). ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.15: Cotangent and cosecant</p>
+<p><span id="ex-m8"></span></p>
+<p>Find (a) <span class="arithmatex">\(\int\cot^4x\csc^4x\,dx\)</span> and (b) <span class="arithmatex">\(\int\cot^3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> (a) The power of <span class="arithmatex">\(\csc x\)</span> is <span class="arithmatex">\(4\)</span>, even: set aside <span class="arithmatex">\(\csc^2x\)</span> and write <span class="arithmatex">\(\csc^2x=1+\cot^2x\)</span>. Let <span class="arithmatex">\(u=\cot x\)</span>, <span class="arithmatex">\(du=-\csc^2x\,dx\)</span>:</p>
+<div class="arithmatex">\[\int\cot^4x\csc^4x\,dx=-\int u^4\big(1+u^2\big)du=-\frac{u^5}5-\frac{u^7}7+C=-\frac{\cot^5x}5-\frac{\cot^7x}7+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[-\frac{\cot^5x}5-\frac{\cot^7x}7\right]=\cot^4x\csc^2x+\cot^6x\csc^2x=\cot^4x\csc^2x\big(1+\cot^2x\big)=\cot^4x\csc^4x\)</span>.</p>
+<p>(b) By Theorem <a href="#thm-cotcsc">8.3.14</a>(1) with <span class="arithmatex">\(n=3\)</span>, and <span class="arithmatex">\(\int\cot x\,dx=\ln\lvert\sin x\rvert\)</span> (formula (15) of Section 8.1):</p>
+<div class="arithmatex">\[\int\cot^3x\,dx=-\frac{\cot^2x}2-\int\cot x\,dx=-\frac{\cot^2x}2-\ln\lvert\sin x\rvert+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[-\frac{\cot^2x}2-\ln\lvert\sin x\rvert\right]=\cot x\csc^2x-\cot x=\cot x\big(\csc^2x-1\big)=\cot^3x\)</span>.</p>
+</div>
+<h2 id="products-with-different-angles-sin-mxcos-nx-and-relatives">Products with different angles: <span class="arithmatex">\(\sin mx\cos nx\)</span> and relatives<a class="headerlink" href="#products-with-different-angles-sin-mxcos-nx-and-relatives" title="Permanent link">&para;</a></h2>
+<p>A product such as <span class="arithmatex">\(\sin3x\cos5x\)</span> has no odd power to split off and no Pythagorean identity to use; but the product-to-sum identities (Theorem <a href="#thm-ident">8.3.1</a>(4)) turn it into a sum of single sines or cosines, which are in the table of Section 8.1.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.16: Products of sines and cosines of different multiples</p>
+<p><span id="thm-prod"></span></p>
+<p>Let <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> be real numbers with <span class="arithmatex">\(a^2\ne b^2\)</span> (that is, <span class="arithmatex">\(a\ne b\)</span> and <span class="arithmatex">\(a\ne-b\)</span>). Then</p>
+<div class="arithmatex">\[\int\sin ax\cos bx\,dx=-\frac{\cos(a-b)x}{2(a-b)}-\frac{\cos(a+b)x}{2(a+b)}+C,\]</div>
+<div class="arithmatex">\[\int\sin ax\sin bx\,dx=\frac{\sin(a-b)x}{2(a-b)}-\frac{\sin(a+b)x}{2(a+b)}+C,\]</div>
+<div class="arithmatex">\[\int\cos ax\cos bx\,dx=\frac{\sin(a-b)x}{2(a-b)}+\frac{\sin(a+b)x}{2(a+b)}+C .\]</div>
+<p>If <span class="arithmatex">\(a=b\ne0\)</span>, then <span class="arithmatex">\(\int\sin ax\cos ax\,dx=-\frac{\cos2ax}{4a}+C\)</span>, <span class="arithmatex">\(\int\sin^2ax\,dx=\frac x2-\frac{\sin2ax}{4a}+C\)</span> and <span class="arithmatex">\(\int\cos^2ax\,dx=\frac x2+\frac{\sin2ax}{4a}+C\)</span>.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-ident">8.3.1</a>(4), <span class="arithmatex">\(\sin ax\cos bx=\frac12\big[\sin(a-b)x+\sin(a+b)x\big]\)</span>. Since <span class="arithmatex">\(a-b\ne0\)</span> and <span class="arithmatex">\(a+b\ne0\)</span>, formula (4) of Section 8.1 (with the constants <span class="arithmatex">\(a-b\)</span> and <span class="arithmatex">\(a+b\)</span> in place of <span class="arithmatex">\(a\)</span>) gives <span class="arithmatex">\(\int\sin cx\,dx=-\frac{\cos cx}c\)</span> for <span class="arithmatex">\(c=a\mp b\)</span>. The sine–sine and cosine–cosine formulas follow in the same way from <span class="arithmatex">\(\sin ax\sin bx=\frac12\big[\cos(a-b)x-\cos(a+b)x\big]\)</span> and <span class="arithmatex">\(\cos ax\cos bx=\frac12\big[\cos(a-b)x+\cos(a+b)x\big]\)</span>, with formula (3): <span class="arithmatex">\(\int\cos cx\,dx=\frac{\sin cx}c\)</span>. If <span class="arithmatex">\(a=b\)</span> the term with <span class="arithmatex">\(a-b=0\)</span> is <span class="arithmatex">\(\sin0=0\)</span> in the first case and the constant <span class="arithmatex">\(\cos0=1\)</span> in the others, and the double-angle and power-reducing identities give the three formulas: <span class="arithmatex">\(\sin ax\cos ax=\frac12\sin2ax\)</span>, <span class="arithmatex">\(\sin^2ax=\frac{1-\cos2ax}2\)</span>, <span class="arithmatex">\(\cos^2ax=\frac{1+\cos2ax}2\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.17: Products of sines and cosines</p>
+<p><span id="ex-m9"></span></p>
+<p>Find (a) <span class="arithmatex">\(\int\sin5x\cos2x\,dx\)</span> and (b) <span class="arithmatex">\(\int_0^{\pi/4}\cos3x\cos x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> (a) By the product-to-sum identity with <span class="arithmatex">\(A=5x\)</span>, <span class="arithmatex">\(B=2x\)</span>: <span class="arithmatex">\(\sin5x\cos2x=\frac12\big[\sin3x+\sin7x\big]\)</span>. Integrating each term with formula (4) of Section 8.1,</p>
+<div class="arithmatex">\[\int\sin5x\cos2x\,dx=\frac12\left(-\frac{\cos3x}3-\frac{\cos7x}7\right)+C=-\frac{\cos3x}6-\frac{\cos7x}{14}+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[-\frac{\cos3x}6-\frac{\cos7x}{14}\right]=\frac{\sin3x}2+\frac{\sin7x}2=\sin5x\cos2x\)</span> by the same identity read backward.</p>
+<p>(b) <span class="arithmatex">\(\cos3x\cos x=\frac12\big[\cos2x+\cos4x\big]\)</span>, so an antiderivative is <span class="arithmatex">\(\frac12\left(\frac{\sin2x}2+\frac{\sin4x}4\right)=\frac{\sin2x}4+\frac{\sin4x}8\)</span>. At <span class="arithmatex">\(x=\frac\pi4\)</span>: <span class="arithmatex">\(\frac{\sin\frac\pi2}4+\frac{\sin\pi}8=\frac14+0\)</span>. At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(0\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^{\pi/4}\cos3x\cos x\,dx=\frac14 .\]</div>
+</div>
+<h2 id="orthogonality-of-sines-and-cosines">Orthogonality of sines and cosines<a class="headerlink" href="#orthogonality-of-sines-and-cosines" title="Permanent link">&para;</a></h2>
+<p>The next theorem is the most important special case of the product formulas. It says that when <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> are different whole numbers, the functions <span class="arithmatex">\(\sin mx\)</span> and <span class="arithmatex">\(\sin nx\)</span> are “perpendicular” on an interval of length <span class="arithmatex">\(2\pi\)</span>, in the sense that the integral of their product is zero. (Compare the dot product of two perpendicular vectors; the integral <span class="arithmatex">\(\int fg\)</span> plays the role of the dot product of the functions <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span>.)</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.3.18: Orthogonality relations</p>
+<p><span id="thm-orth"></span></p>
+<p>Let <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> be positive integers and let <span class="arithmatex">\(a\)</span> be any real number. On <span class="arithmatex">\([a,a+2\pi]\)</span>, and in particular on <span class="arithmatex">\([-\pi,\pi]\)</span> and <span class="arithmatex">\([0,2\pi]\)</span>:</p>
+<p><strong>(1)</strong> <span class="arithmatex">\(\displaystyle\int\sin mx\,dx=0\)</span> and <span class="arithmatex">\(\displaystyle\int\cos mx\,dx=0\)</span>, while <span class="arithmatex">\(\displaystyle\int1\,dx=2\pi\)</span>.</p>
+<p><strong>(2)</strong> <span class="arithmatex">\(\displaystyle\int\sin mx\cos nx\,dx=0\)</span> for all <span class="arithmatex">\(m,n\)</span>.</p>
+<p><strong>(3)</strong> <span class="arithmatex">\(\displaystyle\int\sin mx\sin nx\,dx=\begin{cases}0&amp;m\ne n\\\pi&amp;m=n\end{cases}\)</span>.</p>
+<p><strong>(4)</strong> <span class="arithmatex">\(\displaystyle\int\cos mx\cos nx\,dx=\begin{cases}0&amp;m\ne n\\\pi&amp;m=n\end{cases}\)</span>.</p>
+<p>(All integrals are over <span class="arithmatex">\([a,a+2\pi]\)</span>.)</p>
+</div>
+<p><em>Proof.</em> (1) Let <span class="arithmatex">\(k\)</span> be a nonzero integer. By formula (3) of Section 8.1,</p>
+<div class="arithmatex">\[\int_a^{a+2\pi}\cos kx\,dx=\frac{\sin k(a+2\pi)-\sin ka}k .\]</div>
+<p>Since <span class="arithmatex">\(k\)</span> is an integer, <span class="arithmatex">\(k(a+2\pi)=ka+2\pi k\)</span> differs from <span class="arithmatex">\(ka\)</span> by a whole number of full turns, so <span class="arithmatex">\(\sin k(a+2\pi)=\sin ka\)</span> and the integral is <span class="arithmatex">\(0\)</span>. In the same way <span class="arithmatex">\(\int_a^{a+2\pi}\sin kx\,dx=-\frac{\cos k(a+2\pi)-\cos ka}k=0\)</span>. Finally <span class="arithmatex">\(\int_a^{a+2\pi}1\,dx=2\pi\)</span>.</p>
+<p>(2) By Theorem <a href="#thm-ident">8.3.1</a>(4), <span class="arithmatex">\(\sin mx\cos nx=\frac12\big[\sin(m-n)x+\sin(m+n)x\big]\)</span>. The number <span class="arithmatex">\(m+n\)</span> is a positive integer, so <span class="arithmatex">\(\int\sin(m+n)x\,dx=0\)</span> by (1). If <span class="arithmatex">\(m\ne n\)</span>, then <span class="arithmatex">\(m-n\)</span> is a nonzero integer and <span class="arithmatex">\(\int\sin(m-n)x\,dx=0\)</span> by (1) as well. If <span class="arithmatex">\(m=n\)</span> the term is <span class="arithmatex">\(\sin0=0\)</span>. So the integral is <span class="arithmatex">\(0\)</span>.</p>
+<p>(3) <span class="arithmatex">\(\sin mx\sin nx=\frac12\big[\cos(m-n)x-\cos(m+n)x\big]\)</span>. If <span class="arithmatex">\(m\ne n\)</span>, both <span class="arithmatex">\(m-n\)</span> and <span class="arithmatex">\(m+n\)</span> are nonzero integers, so both integrals vanish by (1). If <span class="arithmatex">\(m=n\)</span>, the first term is <span class="arithmatex">\(\cos0=1\)</span>, and <span class="arithmatex">\(\int_a^{a+2\pi}\frac12\big[1-\cos2mx\big]\,dx=\frac12\cdot2\pi-0=\pi\)</span>.</p>
+<p>(4) <span class="arithmatex">\(\cos mx\cos nx=\frac12\big[\cos(m-n)x+\cos(m+n)x\big]\)</span>. If <span class="arithmatex">\(m\ne n\)</span> both integrals vanish by (1); if <span class="arithmatex">\(m=n\)</span>, then <span class="arithmatex">\(\int\frac12\big[1+\cos2mx\big]\,dx=\pi\)</span>. ◻ ∎</p>
+<p><em>A picture of orthogonality.</em> Figure 2 shows <span class="arithmatex">\(y=\sin x\sin2x\)</span> on <span class="arithmatex">\([-\pi,\pi]\)</span>, the case <span class="arithmatex">\(m=1\)</span>, <span class="arithmatex">\(n=2\)</span>. The graph is positive on <span class="arithmatex">\(\left(-\frac\pi2,0\right)\)</span> and <span class="arithmatex">\(\left(0,\frac\pi2\right)\)</span> and negative on the two outer intervals. Each of the four lobes has area <span class="arithmatex">\(\frac23\)</span>, so the signed areas cancel exactly: <span class="arithmatex">\(\frac23+\frac23-\frac23-\frac23=0\)</span>. The theorem says this cancellation happens for <em>every</em> pair <span class="arithmatex">\(m\ne n\)</span>.</p>
+<p><img alt="Diagram: \(+\frac23\); \(+\frac23\); \(-\frac23\); \(-\frac23\); \(\pi\); \(-\pi\)" class="calc-figure" src="../figures/notes-fig2.svg" width="581" /></p>
+<p>Figure 2. The graph of <span class="arithmatex">\(y=\sin x\sin2x\)</span> on <span class="arithmatex">\([-\pi,\pi]\)</span>. The four signed areas <span class="arithmatex">\(\frac23\)</span>, <span class="arithmatex">\(\frac23\)</span>, <span class="arithmatex">\(-\frac23\)</span>, <span class="arithmatex">\(-\frac23\)</span> add to <span class="arithmatex">\(0\)</span>.</p>
+<p><em>Symmetry gives part (2) at once.</em> The function <span class="arithmatex">\(\sin mx\cos nx\)</span> is <em>odd</em> (replacing <span class="arithmatex">\(x\)</span> by <span class="arithmatex">\(-x\)</span> changes its sign, because <span class="arithmatex">\(\sin\)</span> is odd and <span class="arithmatex">\(\cos\)</span> is even). The integral of an odd function over <span class="arithmatex">\([-\pi,\pi]\)</span> is <span class="arithmatex">\(0\)</span>: with <span class="arithmatex">\(x=-s\)</span> in <span class="arithmatex">\(\int_{-\pi}^0f(x)\,dx\)</span> we get <span class="arithmatex">\(\int_{\pi}^{0}f(-s)(-ds)=\int_0^\pi f(-s)\,ds=-\int_0^\pi f(s)\,ds\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>), which cancels <span class="arithmatex">\(\int_0^\pi f(x)\,dx\)</span>. This argument works only on an interval symmetric about <span class="arithmatex">\(0\)</span>; the proof above works on every interval of length <span class="arithmatex">\(2\pi\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Orthogonality needs a full period</p>
+<p>The interval matters. On <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span> the functions <span class="arithmatex">\(\sin x\)</span> and <span class="arithmatex">\(\sin2x\)</span> are <em>not</em> orthogonal: <span class="arithmatex">\(\int_0^{\pi/2}\sin x\sin2x\,dx=\frac23\ne0\)</span>. Theorem <a href="#thm-orth">8.3.18</a> holds on an interval whose length is <span class="arithmatex">\(2\pi\)</span> (or, for sines with sines and cosines with cosines, on <span class="arithmatex">\([0,\pi]\)</span>; see the bank).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.3.3: Using orthogonality</p>
+<p><span id="kc-kcorth"></span></p>
+<p>Without computing an antiderivative, find <span class="arithmatex">\(\int_{-\pi}^{\pi}\sin4x\cos3x\,dx\)</span> and <span class="arithmatex">\(\int_{-\pi}^{\pi}\sin^24x\,dx\)</span>. Which parts of Theorem <a href="#thm-orth">8.3.18</a> do you use?</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.3.3: Why not half a period?</p>
+<p><span id="think-halfper"></span></p>
+<p>The proof of Theorem <a href="#thm-orth">8.3.18</a> used <span class="arithmatex">\(\sin k(a+2\pi)=\sin ka\)</span> for every integer <span class="arithmatex">\(k\)</span>. Find where the proof fails on <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span>, and use Theorem <a href="#thm-prod">8.3.16</a> to see why the integral of <span class="arithmatex">\(\sin x\sin2x\)</span> over <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span> is not <span class="arithmatex">\(0\)</span>.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>On <span class="arithmatex">\(\left[0,\frac\pi2\right]\)</span> the antiderivatives are evaluated at <span class="arithmatex">\(\frac\pi2\)</span> and <span class="arithmatex">\(0\)</span>, and <span class="arithmatex">\(\sin k\frac\pi2\)</span> is not <span class="arithmatex">\(0\)</span> for odd <span class="arithmatex">\(k\)</span>, so the step “<span class="arithmatex">\(\sin k(a+2\pi)=\sin ka\)</span>” (which needs a whole number of full turns) is gone. By Theorem <a href="#thm-prod">8.3.16</a>, <span class="arithmatex">\(\int_0^{\pi/2}\sin x\sin2x\,dx=\frac12\left[\sin x-\frac{\sin3x}3\right]_0^{\pi/2}=\frac12\left(1+\frac13\right)=\frac23\)</span>, because <span class="arithmatex">\(\sin\frac{3\pi}2=-1\)</span>.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.19: Reading off coefficients with orthogonality</p>
+<p><span id="ex-m10"></span></p>
+<p>(a) Suppose <span class="arithmatex">\(f(x)=4-3\cos x+5\sin2x+2\cos3x\)</span>. Compute <span class="arithmatex">\(\int_{-\pi}^{\pi}f(x)\cos3x\,dx\)</span> and explain how it identifies the coefficient <span class="arithmatex">\(2\)</span>. (b) For <span class="arithmatex">\(f(x)=x\)</span> on <span class="arithmatex">\([-\pi,\pi]\)</span>, compute <span class="arithmatex">\(b_n=\frac1\pi\int_{-\pi}^{\pi}x\sin nx\,dx\)</span> for a positive integer <span class="arithmatex">\(n\)</span>.</p>
+<p><strong>Solution.</strong> (a) Multiply <span class="arithmatex">\(f\)</span> by <span class="arithmatex">\(\cos3x\)</span> and integrate term by term over <span class="arithmatex">\([-\pi,\pi]\)</span>. By Theorem <a href="#thm-orth">8.3.18</a>: <span class="arithmatex">\(\int4\cos3x\,dx=0\)</span> by (1); <span class="arithmatex">\(\int-3\cos x\cos3x\,dx=0\)</span> by (4) with <span class="arithmatex">\(m=1\ne3\)</span>; <span class="arithmatex">\(\int5\sin2x\cos3x\,dx=0\)</span> by (2); and <span class="arithmatex">\(\int2\cos^23x\,dx=2\pi\)</span> by (4) with <span class="arithmatex">\(m=n=3\)</span>. Hence</p>
+<div class="arithmatex">\[\int_{-\pi}^{\pi}f(x)\cos3x\,dx=2\pi .\]</div>
+<p>Every term except the one containing <span class="arithmatex">\(\cos3x\)</span> dropped out, and that term gave <span class="arithmatex">\(\pi\)</span> times its coefficient. So the coefficient of <span class="arithmatex">\(\cos3x\)</span> is <span class="arithmatex">\(\frac1\pi\int_{-\pi}^{\pi}f(x)\cos3x\,dx=2\)</span>. In the same way <span class="arithmatex">\(\frac1\pi\int_{-\pi}^{\pi}f(x)\sin2x\,dx=5\)</span>, and <span class="arithmatex">\(\frac1\pi\int_{-\pi}^\pi f(x)\cos x\,dx=-3\)</span>. (b) Here we cannot use orthogonality, since <span class="arithmatex">\(x\)</span> is not a combination of sines and cosines; we integrate by parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>) with <span class="arithmatex">\(u=x\)</span>, <span class="arithmatex">\(dv=\sin nx\,dx\)</span>, <span class="arithmatex">\(du=dx\)</span>, <span class="arithmatex">\(v=-\frac{\cos nx}n\)</span>:</p>
+<div class="arithmatex">\[\int x\sin nx\,dx=-\frac{x\cos nx}n+\frac1n\int\cos nx\,dx=-\frac{x\cos nx}n+\frac{\sin nx}{n^2}+C .\]</div>
+<p>At <span class="arithmatex">\(x=\pi\)</span> the antiderivative is <span class="arithmatex">\(-\frac{\pi\cos n\pi}n+0\)</span> and at <span class="arithmatex">\(x=-\pi\)</span> it is <span class="arithmatex">\(\frac{\pi\cos n\pi}n+0\)</span> (because <span class="arithmatex">\(\cos(-n\pi)=\cos n\pi\)</span> and <span class="arithmatex">\(\sin(\pm n\pi)=0\)</span>). With <span class="arithmatex">\(\cos n\pi=(-1)^n\)</span>,</p>
+<div class="arithmatex">\[\int_{-\pi}^{\pi}x\sin nx\,dx=-\frac{2\pi(-1)^n}n,\qquad b_n=\frac{2(-1)^{n+1}}n .\]</div>
+<p>So <span class="arithmatex">\(b_1=2\)</span>, <span class="arithmatex">\(b_2=-1\)</span>, <span class="arithmatex">\(b_3=\frac23\)</span>, <span class="arithmatex">\(b_4=-\frac12\)</span>. (A later course shows that <span class="arithmatex">\(2\sin x-\sin2x+\frac23\sin3x-\cdots\)</span> is the <em>Fourier series</em> of <span class="arithmatex">\(x\)</span> on <span class="arithmatex">\((-\pi,\pi)\)</span>.)</p>
+</div>
+<h2 id="pitfalls-errors-and-answers-that-look-different">Pitfalls: errors and answers that look different<a class="headerlink" href="#pitfalls-errors-and-answers-that-look-different" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.20: Three common errors</p>
+<p><span id="ex-m11"></span></p>
+<p>Each “solution” below is wrong. Find what is wrong by differentiating the answer, and correct it. (a) <span class="arithmatex">\(\int\sin^2x\,dx=\frac{\sin^3x}3+C\)</span>. (b) <span class="arithmatex">\(\int\tan^3x\,dx=\frac{\tan^4x}4+C\)</span>. (c) <span class="arithmatex">\(\int\sin3x\cos2x\,dx=\left(-\frac{\cos3x}3\right)\left(\frac{\sin2x}2\right)+C\)</span>.</p>
+<p><strong>Solution.</strong> (a) The power rule <span class="arithmatex">\(\int u^2\,du=\frac{u^3}3\)</span> is valid only when <span class="arithmatex">\(du\)</span> is present, that is, when the integrand is <span class="arithmatex">\(u^2u'\)</span>. Differentiating, <span class="arithmatex">\(\frac{d}{dx}\frac{\sin^3x}3=\sin^2x\cos x\ne\sin^2x\)</span>. The correct method is the power-reducing identity: <span class="arithmatex">\(\int\sin^2x\,dx=\int\frac{1-\cos2x}2\,dx=\frac x2-\frac{\sin2x}4+C\)</span>. (b) Here <span class="arithmatex">\(\frac{d}{dx}\frac{\tan^4x}4=\tan^3x\sec^2x\)</span>, which has an extra factor <span class="arithmatex">\(\sec^2x\)</span>: the substitution <span class="arithmatex">\(u=\tan x\)</span> needs <span class="arithmatex">\(du=\sec^2x\,dx\)</span> to be in the integrand, and it is not. The correct integral is by the reduction formula: <span class="arithmatex">\(\int\tan^3x\,dx=\frac{\tan^2x}2-\int\tan x\,dx=\frac{\tan^2x}2-\ln\lvert\sec x\rvert+C\)</span>. (c) The integral of a product is <em>not</em> the product of the integrals. Differentiating the proposed answer by the Product Rule gives <span class="arithmatex">\(\frac{\sin3x\sin2x}2-\frac{\cos3x\cos2x}3\)</span>; at <span class="arithmatex">\(x=\frac\pi2\)</span> this is <span class="arithmatex">\(0\)</span>, while the integrand <span class="arithmatex">\(\sin\frac{3\pi}2\cos\pi\)</span> equals <span class="arithmatex">\(1\)</span>. The correct method is product-to-sum: <span class="arithmatex">\(\sin3x\cos2x=\frac12\big[\sin x+\sin5x\big]\)</span>, so the integral is <span class="arithmatex">\(-\frac{\cos x}2-\frac{\cos5x}{10}+C\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.21: Two methods, answers that differ by a constant</p>
+<p><span id="ex-m12"></span></p>
+<p>Find <span class="arithmatex">\(\int\tan x\sec^2x\,dx\)</span> with the substitution <span class="arithmatex">\(u=\tan x\)</span> and with <span class="arithmatex">\(u=\sec x\)</span>, and reconcile the answers.</p>
+<p><strong>Solution.</strong> <em>With <span class="arithmatex">\(u=\tan x\)</span>:</em> <span class="arithmatex">\(du=\sec^2x\,dx\)</span>, so <span class="arithmatex">\(\int\tan x\sec^2x\,dx=\int u\,du=\frac{\tan^2x}2+C_1\)</span>. <em>With <span class="arithmatex">\(u=\sec x\)</span>:</em> write <span class="arithmatex">\(\tan x\sec^2x=\sec x\cdot\big(\sec x\tan x\big)\)</span> and <span class="arithmatex">\(du=\sec x\tan x\,dx\)</span>, so the integral is <span class="arithmatex">\(\int u\,du=\frac{\sec^2x}2+C_2\)</span>.</p>
+<p><em>Reconcile.</em> The answers look different, but <span class="arithmatex">\(\sec^2x=1+\tan^2x\)</span> gives</p>
+<div class="arithmatex">\[\frac{\sec^2x}2=\frac{1+\tan^2x}2=\frac{\tan^2x}2+\frac12 .\]</div>
+<p>They differ by the constant <span class="arithmatex">\(\frac12\)</span>, as two antiderivatives on an interval must. A constant is absorbed into <span class="arithmatex">\(C\)</span>, and for a definite integral it cancels: <span class="arithmatex">\(\left[\frac{\tan^2x}2\right]_0^{\pi/4}=\frac12-0=\frac12\)</span> and <span class="arithmatex">\(\left[\frac{\sec^2x}2\right]_0^{\pi/4}=1-\frac12=\frac12\)</span>. Figure 3 shows the two antiderivatives: one curve is the other raised by <span class="arithmatex">\(\frac12\)</span>.</p>
+<p><img alt="Diagram: \(y=\frac12\tan^2x\); \(y=\frac12\sec^2x\); \(1\)" class="calc-figure" src="../figures/notes-fig3.svg" width="551" /></p>
+<p>Figure 3. The antiderivatives <span class="arithmatex">\(\frac12\tan^2x\)</span> and <span class="arithmatex">\(\frac12\sec^2x\)</span> of <span class="arithmatex">\(\tan x\sec^2x\)</span> differ by the constant <span class="arithmatex">\(\frac12\)</span> (compare the heights at <span class="arithmatex">\(x=0\)</span> and at <span class="arithmatex">\(x=\frac\pi4\)</span>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Reconciling answers</p>
+<p>Two correct trigonometric answers rarely match term by term, because identities rewrite the same function in several ways (compare the closing remark in Section 8.2, and Example <a href="../../8.2/notes/#ex-m12">8.2.19</a>). Differentiate both: each must give the integrand. Or subtract them and use an identity to see that the difference is constant. For instance the answer <span class="arithmatex">\(\frac{\sec^6x}6-\frac{\sec^4x}4\)</span> for <span class="arithmatex">\(\int\tan^3x\sec^4x\,dx\)</span> by <span class="arithmatex">\(u=\sec x\)</span> equals <span class="arithmatex">\(\frac{\tan^4x}4+\frac{\tan^6x}6-\frac1{12}\)</span>, where <span class="arithmatex">\(\frac{\tan^4x}4+\frac{\tan^6x}6\)</span> is the answer by <span class="arithmatex">\(u=\tan x\)</span>.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>The reduction formulas of this section are exactly what is needed after a trigonometric substitution, the next technique of this chapter, which turns integrals with <span class="arithmatex">\(\sqrt{a^2-x^2}\)</span>, <span class="arithmatex">\(\sqrt{a^2+x^2}\)</span> and <span class="arithmatex">\(\sqrt{x^2-a^2}\)</span> into integrals of powers of sine, tangent and secant. The orthogonality relations are the starting point of Fourier series, which write a periodic function as a sum of sines and cosines and are studied in later courses, alongside the power series and Taylor series of the later chapters. Integrals of <span class="arithmatex">\(\sec^3x\)</span> also arise in the length of a parabola and in the length of a spiral.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ul>
+<li>
+<p>Group 1: odd powers of sine and cosine (including a negative power).</p>
+</li>
+<li>
+<p>Group 2: even powers and the power-reducing identities.</p>
+</li>
+<li>
+<p>Group 3: powers of tangent and secant.</p>
+</li>
+<li>
+<p>Group 4: powers of cotangent and cosecant.</p>
+</li>
+<li>
+<p>Group 5: products of sines and cosines of different multiples.</p>
+</li>
+<li>
+<p>Group 6: rewriting the integrand first.</p>
+</li>
+<li>
+<p>Group 7: proofs.</p>
+</li>
+</ul>
+<h2 id="group-1-odd-powers-of-sine-and-cosine">Group 1: Odd powers of sine and cosine<a class="headerlink" href="#group-1-odd-powers-of-sine-and-cosine" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.22: A negative power of the cosine</p>
+<p><span id="ex-b1"></span></p>
+<p>Find <span class="arithmatex">\(\int\frac{\sin^3x}{\cos^4x}\,dx\)</span> on an interval where <span class="arithmatex">\(\cos x\ne0\)</span>.</p>
+<p><strong>Solution.</strong> The power of <span class="arithmatex">\(\sin x\)</span> is odd. Write <span class="arithmatex">\(\frac{\sin^3x}{\cos^4x}=\big(1-\cos^2x\big)\cos^{-4}x\cdot\sin x\)</span> and let <span class="arithmatex">\(u=\cos x\)</span>, <span class="arithmatex">\(du=-\sin x\,dx\)</span>:</p>
+<div class="arithmatex">\[\int\frac{\sin^3x}{\cos^4x}\,dx=-\int\big(1-u^2\big)u^{-4}\,du=-\int\big(u^{-4}-u^{-2}\big)du .\]</div>
+<p>Integrating term by term (formula (2) of Section 8.1),</p>
+<div class="arithmatex">\[-\int\big(u^{-4}-u^{-2}\big)du=-\left(-\frac{u^{-3}}3+u^{-1}\right)+C=\frac{u^{-3}}3-u^{-1}+C .\]</div>
+<p>Since <span class="arithmatex">\(u^{-1}=\sec x\)</span>, the answer is</p>
+<div class="arithmatex">\[\int\frac{\sin^3x}{\cos^4x}\,dx=\frac{\sec^3x}3-\sec x+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[\frac{\sec^3x}3-\sec x\right]=\sec^3x\tan x-\sec x\tan x=\sec x\tan x\big(\sec^2x-1\big)=\sec x\tan^3x=\frac{\sin^3x}{\cos^4x}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.23: A fifth power of the cosine of a multiple angle</p>
+<p><span id="ex-b2"></span></p>
+<p>Find <span class="arithmatex">\(\int\sin^22x\cos^52x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The power of <span class="arithmatex">\(\cos2x\)</span> is odd. Set aside one <span class="arithmatex">\(\cos2x\)</span> and write <span class="arithmatex">\(\cos^42x=\big(1-\sin^22x\big)^2\)</span>. Let <span class="arithmatex">\(w=\sin2x\)</span>, <span class="arithmatex">\(dw=2\cos2x\,dx\)</span>, so <span class="arithmatex">\(\cos2x\,dx=\frac12\,dw\)</span>:</p>
+<div class="arithmatex">\[\int\sin^22x\cos^52x\,dx=\frac12\int w^2\big(1-w^2\big)^2dw=\frac12\int\big(w^2-2w^4+w^6\big)dw .\]</div>
+<p>Integrating term by term,</p>
+<div class="arithmatex">\[\frac12\int\big(w^2-2w^4+w^6\big)dw=\frac12\left(\frac{w^3}3-\frac{2w^5}5+\frac{w^7}7\right)+C .\]</div>
+<p>Substituting <span class="arithmatex">\(w=\sin2x\)</span>,</p>
+<div class="arithmatex">\[\int\sin^22x\cos^52x\,dx=\frac{\sin^32x}6-\frac{\sin^52x}5+\frac{\sin^72x}{14}+C .\]</div>
+<p><em>Check.</em> By the Chain Rule the three terms differentiate to <span class="arithmatex">\(\sin^22x\cos2x\)</span>, <span class="arithmatex">\(-2\sin^42x\cos2x\)</span> and <span class="arithmatex">\(\sin^62x\cos2x\)</span>, whose sum is <span class="arithmatex">\(\sin^22x\cos2x\big(1-2\sin^22x+\sin^42x\big)=\sin^22x\cos2x\cdot\cos^42x\)</span>.</p>
+</div>
+<h2 id="group-2-even-powers-and-power-reducing-identities">Group 2: Even powers and power-reducing identities<a class="headerlink" href="#group-2-even-powers-and-power-reducing-identities" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.24: A fourth power of a multiple angle</p>
+<p><span id="ex-b3"></span></p>
+<p>Find <span class="arithmatex">\(\int\cos^43x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Use <span class="arithmatex">\(\cos^2w=\frac{1+\cos2w}2\)</span> with <span class="arithmatex">\(w=3x\)</span> twice. First, <span class="arithmatex">\(\cos^43x=\left(\frac{1+\cos6x}2\right)^2=\frac14\big(1+2\cos6x+\cos^26x\big)\)</span>. Then <span class="arithmatex">\(\cos^26x=\frac{1+\cos12x}2\)</span>, so</p>
+<div class="arithmatex">\[\cos^43x=\frac14\left(\frac32+2\cos6x+\frac{\cos12x}2\right)=\frac38+\frac{\cos6x}2+\frac{\cos12x}8 .\]</div>
+<p>Integrating with formula (3) of Section 8.1,</p>
+<div class="arithmatex">\[\int\cos^43x\,dx=\frac{3x}8+\frac{\sin6x}{12}+\frac{\sin12x}{96}+C .\]</div>
+<p>(Here <span class="arithmatex">\(\frac12\cdot\frac{\sin6x}6=\frac{\sin6x}{12}\)</span> and <span class="arithmatex">\(\frac18\cdot\frac{\sin12x}{12}=\frac{\sin12x}{96}\)</span>.) <em>Check.</em> The derivative is <span class="arithmatex">\(\frac38+\frac{\cos6x}2+\frac{\cos12x}8\)</span>, which is <span class="arithmatex">\(\cos^43x\)</span> by the expansion above.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.25: A definite integral of <span class="arithmatex">\(\sin^4x\cos^4x\)</span></p>
+<p><span id="ex-b4"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/2}\sin^4x\cos^4x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Both powers are even and equal, so combine them: <span class="arithmatex">\(\sin^4x\cos^4x=\big(\sin x\cos x\big)^4=\left(\frac{\sin2x}2\right)^4=\frac{\sin^42x}{16}\)</span>. Now <span class="arithmatex">\(\sin^2w=\frac{1-\cos2w}2\)</span> twice with <span class="arithmatex">\(w=2x\)</span>: <span class="arithmatex">\(\sin^42x=\frac14\big(1-2\cos4x+\cos^24x\big)=\frac14\left(\frac32-2\cos4x+\frac{\cos8x}2\right)=\frac38-\frac{\cos4x}2+\frac{\cos8x}8\)</span>. An antiderivative of <span class="arithmatex">\(\sin^42x\)</span> is <span class="arithmatex">\(\frac{3x}8-\frac{\sin4x}8+\frac{\sin8x}{64}\)</span>. At <span class="arithmatex">\(x=\frac\pi2\)</span>: <span class="arithmatex">\(\frac{3\pi}{16}-\frac{\sin2\pi}8+\frac{\sin4\pi}{64}=\frac{3\pi}{16}\)</span>; at <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(0\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^{\pi/2}\sin^4x\cos^4x\,dx=\frac1{16}\cdot\frac{3\pi}{16}=\frac{3\pi}{256}\approx0.0368 .\]</div>
+</div>
+<h2 id="group-3-powers-of-tangent-and-secant">Group 3: Powers of tangent and secant<a class="headerlink" href="#group-3-powers-of-tangent-and-secant" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.26: An even power of secant on an interval</p>
+<p><span id="ex-b5"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/4}\sec^6x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The power of secant is even, <span class="arithmatex">\(6=2\cdot2+2\)</span>. Set aside <span class="arithmatex">\(\sec^2x\)</span> and write <span class="arithmatex">\(\sec^4x=\big(1+\tan^2x\big)^2\)</span>. Let <span class="arithmatex">\(u=\tan x\)</span>, <span class="arithmatex">\(du=\sec^2x\,dx\)</span>; the limits change: <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(x=\frac\pi4\)</span> gives <span class="arithmatex">\(u=1\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>).</p>
+<div class="arithmatex">\[\int_0^{\pi/4}\sec^6x\,dx=\int_0^1\big(1+u^2\big)^2du=\int_0^1\big(1+2u^2+u^4\big)du=\Big[u+\frac{2u^3}3+\frac{u^5}5\Big]_0^1=1+\frac23+\frac15=\frac{28}{15} .\]</div>
+<p><em>Plausibility.</em> <span class="arithmatex">\(\sec x\)</span> rises from <span class="arithmatex">\(1\)</span> to <span class="arithmatex">\(\sqrt2\)</span> on this interval, so <span class="arithmatex">\(\sec^6x\)</span> rises from <span class="arithmatex">\(1\)</span> to <span class="arithmatex">\(8\)</span> and the integral over a length <span class="arithmatex">\(\frac\pi4\approx0.785\)</span> lies between <span class="arithmatex">\(0.785\)</span> and <span class="arithmatex">\(6.28\)</span>; <span class="arithmatex">\(\frac{28}{15}\approx1.867\)</span> is in that range.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.27: A sixth power of the tangent</p>
+<p><span id="ex-b6"></span></p>
+<p>Find <span class="arithmatex">\(\int\tan^6x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Apply Theorem <a href="#thm-redtan">8.3.8</a> three times: <span class="arithmatex">\(\int\tan^6x\,dx=\frac{\tan^5x}5-\int\tan^4x\,dx\)</span>, then <span class="arithmatex">\(\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx\)</span>, then <span class="arithmatex">\(\int\tan^2x\,dx=\tan x-x\)</span>. Substituting from the bottom up,</p>
+<div class="arithmatex">\[\int\tan^6x\,dx=\frac{\tan^5x}5-\left(\frac{\tan^3x}3-\big(\tan x-x\big)\right)=\frac{\tan^5x}5-\frac{\tan^3x}3+\tan x-x+C .\]</div>
+<p><em>Check.</em> The derivative is <span class="arithmatex">\(\tan^4x\sec^2x-\tan^2x\sec^2x+\sec^2x-1=\sec^2x\big(\tan^4x-\tan^2x+1\big)-1\)</span>. Writing <span class="arithmatex">\(\sec^2x=1+\tan^2x\)</span> gives <span class="arithmatex">\(\big(1+\tan^2x\big)\big(\tan^4x-\tan^2x+1\big)-1=\tan^6x+1-1=\tan^6x\)</span>.</p>
+</div>
+<h2 id="group-4-powers-of-cotangent-and-cosecant">Group 4: Powers of cotangent and cosecant<a class="headerlink" href="#group-4-powers-of-cotangent-and-cosecant" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.28: An odd power of cotangent</p>
+<p><span id="ex-b7"></span></p>
+<p>Find <span class="arithmatex">\(\int\cot^3x\csc^3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The power of <span class="arithmatex">\(\cot x\)</span> is odd, so set aside <span class="arithmatex">\(\csc x\cot x\)</span> and write <span class="arithmatex">\(\cot^2x=\csc^2x-1\)</span>: <span class="arithmatex">\(\cot^3x\csc^3x=\big(\csc^2x-1\big)\csc^2x\cdot\csc x\cot x\)</span>. Let <span class="arithmatex">\(u=\csc x\)</span>, <span class="arithmatex">\(du=-\csc x\cot x\,dx\)</span>:</p>
+<div class="arithmatex">\[\int\cot^3x\csc^3x\,dx=-\int\big(u^2-1\big)u^2\,du=-\int\big(u^4-u^2\big)du .\]</div>
+<p>Integrating term by term and substituting back <span class="arithmatex">\(u=\csc x\)</span>,</p>
+<div class="arithmatex">\[-\int\big(u^4-u^2\big)du=-\frac{u^5}5+\frac{u^3}3+C=-\frac{\csc^5x}5+\frac{\csc^3x}3+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac{d}{dx}\left[-\frac{\csc^5x}5+\frac{\csc^3x}3\right]=\csc^5x\cot x-\csc^3x\cot x=\csc^3x\cot x\big(\csc^2x-1\big)=\csc^3x\cot^3x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.29: The cube of the cosecant on an interval</p>
+<p><span id="ex-b8"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_{\pi/6}^{\pi/2}\csc^3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-cotcsc">8.3.14</a>(1), an antiderivative is <span class="arithmatex">\(F(x)=-\frac12\csc x\cot x-\frac12\ln\lvert\csc x+\cot x\rvert\)</span>, valid on <span class="arithmatex">\(\left[\frac\pi6,\frac\pi2\right]\)</span> where <span class="arithmatex">\(\sin x&gt;0\)</span>. At <span class="arithmatex">\(x=\frac\pi2\)</span>: <span class="arithmatex">\(\csc=1\)</span>, <span class="arithmatex">\(\cot=0\)</span>, so <span class="arithmatex">\(F=0-\frac12\ln1=0\)</span>. At <span class="arithmatex">\(x=\frac\pi6\)</span>: <span class="arithmatex">\(\csc=2\)</span>, <span class="arithmatex">\(\cot=\sqrt3\)</span>, so <span class="arithmatex">\(F=-\frac12\cdot2\sqrt3-\frac12\ln\left(2+\sqrt3\right)=-\sqrt3-\frac12\ln\left(2+\sqrt3\right)\)</span>. Hence</p>
+<div class="arithmatex">\[\int_{\pi/6}^{\pi/2}\csc^3x\,dx=0-\left(-\sqrt3-\frac12\ln\left(2+\sqrt3\right)\right)=\sqrt3+\frac12\ln\left(2+\sqrt3\right)\approx2.3905 .\]</div>
+<p><em>Plausibility.</em> On the interval, <span class="arithmatex">\(\csc x\)</span> decreases from <span class="arithmatex">\(2\)</span> to <span class="arithmatex">\(1\)</span>, so <span class="arithmatex">\(\csc^3x\)</span> decreases from <span class="arithmatex">\(8\)</span> to <span class="arithmatex">\(1\)</span>; the interval has length <span class="arithmatex">\(\frac\pi3\approx1.047\)</span>, so the integral lies between <span class="arithmatex">\(1.05\)</span> and <span class="arithmatex">\(8.4\)</span>, and <span class="arithmatex">\(2.39\)</span> is reasonable.</p>
+</div>
+<h2 id="group-5-products-with-different-angles">Group 5: Products with different angles<a class="headerlink" href="#group-5-products-with-different-angles" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.30: A sine times a cosine</p>
+<p><span id="ex-b9"></span></p>
+<p>Find <span class="arithmatex">\(\int\sin6x\cos x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> With <span class="arithmatex">\(A=6x\)</span>, <span class="arithmatex">\(B=x\)</span>: <span class="arithmatex">\(\sin6x\cos x=\frac12\big[\sin5x+\sin7x\big]\)</span> (Theorem <a href="#thm-ident">8.3.1</a>(4)). Then</p>
+<div class="arithmatex">\[\int\sin6x\cos x\,dx=\frac12\left(-\frac{\cos5x}5-\frac{\cos7x}7\right)+C=-\frac{\cos5x}{10}-\frac{\cos7x}{14}+C .\]</div>
+<p><em>Check.</em> The derivative is <span class="arithmatex">\(\frac{\sin5x}2+\frac{\sin7x}2=\sin6x\cos x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.31: A product of cosines on an interval</p>
+<p><span id="ex-b10"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/3}\cos5x\cos2x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(\cos5x\cos2x=\frac12\big[\cos3x+\cos7x\big]\)</span>, so an antiderivative is <span class="arithmatex">\(\frac12\left(\frac{\sin3x}3+\frac{\sin7x}7\right)\)</span>. At <span class="arithmatex">\(x=\frac\pi3\)</span>: <span class="arithmatex">\(\sin\pi=0\)</span> and <span class="arithmatex">\(\sin\frac{7\pi}3=\sin\left(2\pi+\frac\pi3\right)=\sin\frac\pi3=\frac{\sqrt3}2\)</span>, so the value is <span class="arithmatex">\(\frac12\left(0+\frac{\sqrt3}{14}\right)=\frac{\sqrt3}{28}\)</span>. At <span class="arithmatex">\(x=0\)</span> it is <span class="arithmatex">\(0\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^{\pi/3}\cos5x\cos2x\,dx=\frac{\sqrt3}{28}\approx0.0619 .\]</div>
+</div>
+<h2 id="group-6-rewriting-the-integrand-first">Group 6: Rewriting the integrand first<a class="headerlink" href="#group-6-rewriting-the-integrand-first" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.32: Expanding a square</p>
+<p><span id="ex-b11"></span></p>
+<p>Find <span class="arithmatex">\(\int(\sin x+\cos x)^2\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Expand: <span class="arithmatex">\((\sin x+\cos x)^2=\sin^2x+2\sin x\cos x+\cos^2x=1+\sin2x\)</span>, using <span class="arithmatex">\(\sin^2x+\cos^2x=1\)</span> and the double-angle identity. Then</p>
+<div class="arithmatex">\[\int(\sin x+\cos x)^2\,dx=\int(1+\sin2x)\,dx=x-\frac{\cos2x}2+C .\]</div>
+<p><em>Check.</em> The derivative is <span class="arithmatex">\(1+\sin2x=(\sin x+\cos x)^2\)</span>. (An answer that looks different, <span class="arithmatex">\(x+\sin^2x+C\)</span>, is also correct, since <span class="arithmatex">\(-\frac{\cos2x}2=\sin^2x-\frac12\)</span>.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.33: Multiplying by a conjugate</p>
+<p><span id="ex-b12"></span></p>
+<p>Find <span class="arithmatex">\(\int\frac{dx}{1-\sin x}\)</span> on an interval where <span class="arithmatex">\(\cos x\ne0\)</span>, and evaluate <span class="arithmatex">\(\int_0^{\pi/4}\frac{dx}{1-\sin x}\)</span>.</p>
+<p><strong>Solution.</strong> Multiply numerator and denominator by <span class="arithmatex">\(1+\sin x\)</span>, which is nonzero where <span class="arithmatex">\(\cos x\ne0\)</span>:</p>
+<div class="arithmatex">\[\frac1{1-\sin x}=\frac{1+\sin x}{(1-\sin x)(1+\sin x)}=\frac{1+\sin x}{1-\sin^2x}=\frac{1+\sin x}{\cos^2x}=\sec^2x+\sec x\tan x .\]</div>
+<p>Both terms are in the table of Section 8.1 (formulas (5) and (7)), so</p>
+<div class="arithmatex">\[\int\frac{dx}{1-\sin x}=\tan x+\sec x+C .\]</div>
+<p>For the definite integral, <span class="arithmatex">\(\big[\tan x+\sec x\big]_0^{\pi/4}=(1+\sqrt2)-(0+1)=\sqrt2\approx1.4142\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.34: Orthogonality on <span class="arithmatex">\([0,\pi]\)</span></p>
+<p><span id="ex-b13"></span></p>
+<p>Let <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> be positive integers. Prove that <span class="arithmatex">\(\int_0^\pi\sin mx\sin nx\,dx=0\)</span> if <span class="arithmatex">\(m\ne n\)</span> and <span class="arithmatex">\(=\frac\pi2\)</span> if <span class="arithmatex">\(m=n\)</span>, and that <span class="arithmatex">\(\int_0^\pi\cos mx\cos nx\,dx=0\)</span> if <span class="arithmatex">\(m\ne n\)</span>. Check with <span class="arithmatex">\(m=2\)</span>, <span class="arithmatex">\(n=5\)</span>, and show that the corresponding statement for <span class="arithmatex">\(\sin mx\cos nx\)</span> needs a condition on <span class="arithmatex">\(m+n\)</span>.</p>
+<p><strong>Proof.</strong> <em>Plan:</em> product-to-sum, then integrate, then use <span class="arithmatex">\(\sin k\pi=0\)</span> for integers <span class="arithmatex">\(k\)</span>. By Theorem <a href="#thm-ident">8.3.1</a>(4), <span class="arithmatex">\(\sin mx\sin nx=\frac12\big[\cos(m-n)x-\cos(m+n)x\big]\)</span>. If <span class="arithmatex">\(m\ne n\)</span>, then <span class="arithmatex">\(m-n\)</span> and <span class="arithmatex">\(m+n\)</span> are nonzero integers, and</p>
+<div class="arithmatex">\[\int_0^\pi\sin mx\sin nx\,dx=\frac12\left[\frac{\sin(m-n)x}{m-n}-\frac{\sin(m+n)x}{m+n}\right]_0^\pi,\]</div>
+<p>which is <span class="arithmatex">\(\frac12\left(\frac{\sin(m-n)\pi}{m-n}-\frac{\sin(m+n)\pi}{m+n}\right)=0\)</span> because <span class="arithmatex">\(\sin k\pi=0\)</span> for every integer <span class="arithmatex">\(k\)</span> and the bracket is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=0\)</span>. If <span class="arithmatex">\(m=n\)</span>, then <span class="arithmatex">\(\sin^2mx=\frac{1-\cos2mx}2\)</span> and <span class="arithmatex">\(\int_0^\pi\frac{1-\cos2mx}2\,dx=\frac\pi2-\frac{\sin2m\pi}{4m}=\frac\pi2\)</span>. The cosine statement is the same with <span class="arithmatex">\(\cos mx\cos nx=\frac12\big[\cos(m-n)x+\cos(m+n)x\big]\)</span>. For <span class="arithmatex">\(m=2\)</span>, <span class="arithmatex">\(n=5\)</span>: <span class="arithmatex">\(\int_0^\pi\sin2x\sin5x\,dx=\frac12\left[\frac{\sin(-3x)}{-3}-\frac{\sin7x}7\right]_0^\pi=0\)</span>. <em>A common mistake.</em> For <span class="arithmatex">\(\sin mx\cos nx\)</span> the integral over <span class="arithmatex">\([0,\pi]\)</span> is <span class="arithmatex">\(\frac12\int_0^\pi\big[\sin(m-n)x+\sin(m+n)x\big]dx\)</span>, and <span class="arithmatex">\(\int_0^\pi\sin kx\,dx=\frac{1-\cos k\pi}k\)</span> is <span class="arithmatex">\(0\)</span> only for <em>even</em> <span class="arithmatex">\(k\)</span>. So it vanishes when <span class="arithmatex">\(m+n\)</span> (and then <span class="arithmatex">\(m-n\)</span>) is even, but not always: <span class="arithmatex">\(\int_0^\pi\sin x\cos2x\,dx=-\frac23\)</span>, while <span class="arithmatex">\(\int_0^\pi\sin x\cos3x\,dx=0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.3.35: A two-index reduction formula</p>
+<p><span id="ex-b14"></span></p>
+<p>For integers <span class="arithmatex">\(m\ge0\)</span> and <span class="arithmatex">\(n\ge2\)</span> let <span class="arithmatex">\(I(m,n)=\int_0^{\pi/2}\sin^mx\cos^nx\,dx\)</span>. Prove that <span class="arithmatex">\(I(m,n)=\frac{n-1}{m+n}\,I(m,n-2)\)</span>, and use it to evaluate <span class="arithmatex">\(I(2,4)\)</span>.</p>
+<p><strong>Proof.</strong> <em>Plan:</em> parts with <span class="arithmatex">\(u=\cos^{n-1}x\)</span> and <span class="arithmatex">\(dv=\sin^mx\cos x\,dx\)</span>, then a Pythagorean identity, then solve for <span class="arithmatex">\(I(m,n)\)</span>. We have <span class="arithmatex">\(du=-(n-1)\cos^{n-2}x\sin x\,dx\)</span> and <span class="arithmatex">\(v=\frac{\sin^{m+1}x}{m+1}\)</span> (here <span class="arithmatex">\(m+1\ge1\)</span>). The definite form of Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a> applies, since the functions are smooth, and gives</p>
+<div class="arithmatex">\[I(m,n)=\left[\frac{\cos^{n-1}x\sin^{m+1}x}{m+1}\right]_0^{\pi/2}+\frac{n-1}{m+1}\int_0^{\pi/2}\cos^{n-2}x\sin^{m+2}x\,dx .\]</div>
+<p>The bracket is <span class="arithmatex">\(0\)</span> at both ends: at <span class="arithmatex">\(x=\frac\pi2\)</span> because <span class="arithmatex">\(\cos^{n-1}\frac\pi2=0\)</span> (as <span class="arithmatex">\(n-1\ge1\)</span>), and at <span class="arithmatex">\(x=0\)</span> because <span class="arithmatex">\(\sin^{m+1}0=0\)</span> (as <span class="arithmatex">\(m+1\ge1\)</span>). In the integral write <span class="arithmatex">\(\sin^{m+2}x=\sin^mx\big(1-\cos^2x\big)\)</span>, so it equals <span class="arithmatex">\(I(m,n-2)-I(m,n)\)</span>. Therefore <span class="arithmatex">\(I(m,n)=\frac{n-1}{m+1}\big[I(m,n-2)-I(m,n)\big]\)</span>. Multiply by <span class="arithmatex">\(m+1\)</span> and collect <span class="arithmatex">\(I(m,n)\)</span>: <span class="arithmatex">\(\big(m+1+n-1\big)I(m,n)=(n-1)\,I(m,n-2)\)</span>, that is <span class="arithmatex">\(I(m,n)=\frac{n-1}{m+n}I(m,n-2)\)</span>.</p>
+<p><em>Application.</em> <span class="arithmatex">\(I(2,4)=\frac36I(2,2)=\frac12\cdot\frac14I(2,0)=\frac18\int_0^{\pi/2}\sin^2x\,dx=\frac18\cdot\frac\pi4=\frac\pi{32}\approx0.0982\)</span>, because <span class="arithmatex">\(\int_0^{\pi/2}\sin^2x\,dx=\frac12\left[x-\frac{\sin2x}2\right]_0^{\pi/2}=\frac\pi4\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcodd">8.3.1</a>.</strong> The power of <span class="arithmatex">\(\cos x\)</span> is odd, so set aside one <span class="arithmatex">\(\cos x\)</span> and write <span class="arithmatex">\(\cos^2x=1-\sin^2x\)</span>: <span class="arithmatex">\(\sin^2x\cos^3x=\sin^2x\big(1-\sin^2x\big)\cos x\)</span>. With <span class="arithmatex">\(u=\sin x\)</span>, <span class="arithmatex">\(du=\cos x\,dx\)</span>: <span class="arithmatex">\(\int u^2\big(1-u^2\big)du=\frac{u^3}3-\frac{u^5}5\)</span>. So <span class="arithmatex">\(\int\sin^2x\cos^3x\,dx=\frac{\sin^3x}3-\frac{\sin^5x}5+C\)</span>. Check: the derivative is <span class="arithmatex">\(\sin^2x\cos x-\sin^4x\cos x=\sin^2x\cos x\big(1-\sin^2x\big)=\sin^2x\cos^3x\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcred">8.3.2</a>.</strong> By Theorem <a href="#thm-redtan">8.3.8</a> with <span class="arithmatex">\(n=3\)</span>: <span class="arithmatex">\(\int\tan^3x\,dx=\frac{\tan^2x}2-\int\tan x\,dx=\frac{\tan^2x}2-\ln\lvert\sec x\rvert+C\)</span>. Check: the derivative is <span class="arithmatex">\(\tan x\sec^2x-\tan x=\tan x\big(\sec^2x-1\big)=\tan^3x\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcorth">8.3.3</a>.</strong> By Theorem <a href="#thm-orth">8.3.18</a>(2), <span class="arithmatex">\(\int_{-\pi}^{\pi}\sin4x\cos3x\,dx=0\)</span> (sine times cosine is always <span class="arithmatex">\(0\)</span>; also, the integrand is odd). By Theorem <a href="#thm-orth">8.3.18</a>(3) with <span class="arithmatex">\(m=n=4\)</span>, <span class="arithmatex">\(\int_{-\pi}^{\pi}\sin^24x\,dx=\pi\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>

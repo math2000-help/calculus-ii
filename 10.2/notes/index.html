@@ -1,0 +1,3067 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../10.1/notes/">
+      
+      
+        <link rel="next" href="../../10.3/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-definition-of-a-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The definition of a limit
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Computing limits
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geometric-sequences-and-growth-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Geometric sequences and growth rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monotone-sequences-and-boundedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Monotone sequences and boundedness
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurrences-a_n1ra_nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-limit-laws-and-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Limit laws and algebra
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-limits-of-fn-and-the-squeeze-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Limits of <span class="arithmatex">\(f(n)\)</span> and the Squeeze Theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-geometric-sequences-and-growth-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Geometric sequences and growth rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-recurrences-a_n1ra_nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-monotone-and-bounded" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Monotone and bounded
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-the-varepsilonn-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: The <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-definition-of-a-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The definition of a limit
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Computing limits
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geometric-sequences-and-growth-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Geometric sequences and growth rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monotone-sequences-and-boundedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Monotone sequences and boundedness
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurrences-a_n1ra_nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-limit-laws-and-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Limit laws and algebra
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-limits-of-fn-and-the-squeeze-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Limits of <span class="arithmatex">\(f(n)\)</span> and the Squeeze Theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-geometric-sequences-and-growth-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Geometric sequences and growth rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-recurrences-a_n1ra_nd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-monotone-and-bounded" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Monotone and bounded
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-the-varepsilonn-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: The <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="102-sequences">10.2 Sequences<a class="headerlink" href="#102-sequences" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>In Definition <a href="../../10.1/notes/#def-limit">10.1.10</a> we estimated limits from tables and warned that tables prove nothing (Pause and think <a href="../../10.1/notes/#think-table">10.1.2</a>). Two questions now need honest answers. First, what does “the terms get and stay as close as we like to <span class="arithmatex">\(L\)</span>” mean in a sentence that can be <em>checked</em>? Second, once we have that, how do we compute limits without a table: by combining limits we already know, by trapping a sequence between two others, by recognising which of two competing quantities grows faster, and, for a sequence defined by a recurrence, by deciding whether it settles down at all before we go looking for where?</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>state the <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition of a limit and use it to show that a simple sequence converges or diverges;</p>
+</li>
+<li>
+<p>compute limits of sequences with the limit laws, with limits of functions as <span class="arithmatex">\(x\to\infty\)</span>, with the Squeeze Theorem and by applying a continuous function to a limit;</p>
+</li>
+<li>
+<p>find the limit of <span class="arithmatex">\(r^n\)</span> for every <span class="arithmatex">\(r\)</span> and compare the growth of <span class="arithmatex">\(\ln^q n\)</span>, <span class="arithmatex">\(n^p\)</span>, <span class="arithmatex">\(b^n\)</span>, <span class="arithmatex">\(n!\)</span> and <span class="arithmatex">\(n^n\)</span>;</p>
+</li>
+<li>
+<p>decide whether a sequence is bounded and whether it is monotonic, and use the Monotone Convergence Theorem to prove convergence;</p>
+</li>
+<li>
+<p>find the limit of a recursively defined sequence by the fixed-point rule <em>after</em> showing that it converges, and solve <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span> in closed form;</p>
+</li>
+<li>
+<p>prove the main theorems of this section.</p>
+</li>
+</ul>
+<h2 id="the-definition-of-a-limit">The definition of a limit<a class="headerlink" href="#the-definition-of-a-limit" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 10.2.1: Limit of a sequence</p>
+<p><span id="def-limit"></span></p>
+<p>The sequence <span class="arithmatex">\(\{a_n\}\)</span> <em>converges to <span class="arithmatex">\(L\)</span></em>, written <span class="arithmatex">\(\lim_{n\to\infty}a_n=L\)</span>, if for every <span class="arithmatex">\(\varepsilon&gt;0\)</span> there is an integer <span class="arithmatex">\(N\)</span> such that</p>
+<div class="arithmatex">\[|a_n-L|&lt;\varepsilon\quad\text{for every } n&gt;N.\]</div>
+<p>A sequence that does not converge <em>diverges</em>. We write <span class="arithmatex">\(\lim_{n\to\infty}a_n=\infty\)</span> if for every real number <span class="arithmatex">\(K\)</span> there is an integer <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(a_n&gt;K\)</span> for all <span class="arithmatex">\(n&gt;N\)</span> (and <span class="arithmatex">\(-\infty\)</span> similarly); such a sequence diverges, and we say it <em>diverges to infinity</em>.</p>
+</div>
+<p>Read it as a game. Someone names a tolerance <span class="arithmatex">\(\varepsilon\)</span>, however small. You must answer with a cutoff <span class="arithmatex">\(N\)</span> such that <em>every</em> term after the <span class="arithmatex">\(N\)</span>th is within <span class="arithmatex">\(\varepsilon\)</span> of <span class="arithmatex">\(L\)</span>. If you can always win, the sequence converges to <span class="arithmatex">\(L\)</span>. A smaller <span class="arithmatex">\(\varepsilon\)</span> usually forces a larger <span class="arithmatex">\(N\)</span>. This is the precise form of Definition <a href="../../10.1/notes/#def-limit">10.1.10</a>, and it is the definition used in Appendix B (Definition <a href="../../appendix/appendix/#def-limit">A.2</a>), where all the limit facts of this section are proved from it.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.2: Winning the game</p>
+<p><span id="ex-epsN"></span></p>
+<p>Prove that <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n^2+1}{2n^2-1}=\frac12\)</span> and find an <span class="arithmatex">\(N\)</span> that works for <span class="arithmatex">\(\varepsilon=0.01\)</span>.</p>
+<p><strong>Plan.</strong> Simplify <span class="arithmatex">\(|a_n-L|\)</span> to something we can make small by choosing <span class="arithmatex">\(n\)</span> large.</p>
+<p><strong>Solution.</strong> For <span class="arithmatex">\(n\ge1\)</span>,</p>
+<div class="arithmatex">\[\left|\frac{n^2+1}{2n^2-1}-\frac12\right|=\left|\frac{2(n^2+1)-(2n^2-1)}{2(2n^2-1)}\right|=\frac{3}{2(2n^2-1)} .\]</div>
+<p>This is less than <span class="arithmatex">\(\varepsilon\)</span> exactly when <span class="arithmatex">\(2n^2-1&gt;\frac3{2\varepsilon}\)</span>. Given any <span class="arithmatex">\(\varepsilon&gt;0\)</span>, choose <span class="arithmatex">\(N\)</span> an integer with <span class="arithmatex">\(N^2&gt;\frac{3}{4\varepsilon}+\frac12\)</span>; then every <span class="arithmatex">\(n&gt;N\)</span> has <span class="arithmatex">\(2n^2-1&gt;\frac3{2\varepsilon}\)</span> and so <span class="arithmatex">\(|a_n-\frac12|&lt;\varepsilon\)</span>. That proves the limit.</p>
+<p>For <span class="arithmatex">\(\varepsilon=0.01\)</span> we need <span class="arithmatex">\(2n^2-1&gt;150\)</span>, so <span class="arithmatex">\(n^2&gt;75.5\)</span> and <span class="arithmatex">\(n\ge9\)</span>: <span class="arithmatex">\(N=8\)</span> works. Check: at <span class="arithmatex">\(n=9\)</span> the distance is <span class="arithmatex">\(\frac3{2\cdot161}\approx0.0093&lt;0.01\)</span>, while at <span class="arithmatex">\(n=8\)</span> it is <span class="arithmatex">\(\frac3{2\cdot127}\approx0.0118&gt;0.01\)</span>, so <span class="arithmatex">\(N=7\)</span> would not do.</p>
+</div>
+<p>Note that if <span class="arithmatex">\(N\)</span> works for a given <span class="arithmatex">\(\varepsilon\)</span>, so does every larger integer, since the inequality <span class="arithmatex">\(|a_n-L|&lt;\varepsilon\)</span> is required for <em>all</em> <span class="arithmatex">\(n&gt;N\)</span>. The definition therefore asks only that <em>some</em> cutoff exists, not the smallest one.</p>
+<h2 id="computing-limits">Computing limits<a class="headerlink" href="#computing-limits" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.3: Limit laws</p>
+<p><span id="thm-laws"></span></p>
+<p>Let <span class="arithmatex">\(a_n\to A\)</span> and <span class="arithmatex">\(b_n\to B\)</span>, and let <span class="arithmatex">\(c\)</span> be a constant. Then <span class="arithmatex">\(a_n\pm b_n\to A\pm B\)</span>, <span class="arithmatex">\(ca_n\to cA\)</span>, <span class="arithmatex">\(a_nb_n\to AB\)</span>, and <span class="arithmatex">\(a_n/b_n\to A/B\)</span> if <span class="arithmatex">\(B\ne0\)</span>.</p>
+</div>
+<p><em>Proof.</em> Here is the proof of the sum; the other three use the same idea and are done in full in Theorem <a href="../../appendix/appendix/#thm-laws">B.4</a>. Let <span class="arithmatex">\(\varepsilon&gt;0\)</span> and choose <span class="arithmatex">\(N_1,N_2\)</span> with <span class="arithmatex">\(|a_n-A|&lt;\varepsilon/2\)</span> for <span class="arithmatex">\(n&gt;N_1\)</span> and <span class="arithmatex">\(|b_n-B|&lt;\varepsilon/2\)</span> for <span class="arithmatex">\(n&gt;N_2\)</span>. For <span class="arithmatex">\(n&gt;\max\{N_1,N_2\}\)</span>, the triangle inequality gives <span class="arithmatex">\(|(a_n+b_n)-(A+B)|\le|a_n-A|+|b_n-B|&lt;\varepsilon\)</span>. For the product the new idea is the identity <span class="arithmatex">\(a_nb_n-AB=a_n(b_n-B)+B(a_n-A)\)</span>, together with the fact that a convergent sequence is bounded (Theorem <a href="../../appendix/appendix/#thm-bounded">B.2</a>); for the quotient one shows first that <span class="arithmatex">\(1/b_n\to1/B\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.4: Limits of <span class="arithmatex">\(f(n)\)</span></p>
+<p><span id="thm-fn"></span></p>
+<p>If <span class="arithmatex">\(f(n)=a_n\)</span> for every positive integer <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\lim_{x\to\infty}f(x)=L\)</span> (where <span class="arithmatex">\(L\)</span> is a number, <span class="arithmatex">\(\infty\)</span> or <span class="arithmatex">\(-\infty\)</span>), then <span class="arithmatex">\(\lim_{n\to\infty}a_n=L\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Since <span class="arithmatex">\(f(x)\to L\)</span> as <span class="arithmatex">\(x\to\infty\)</span>, there is a number <span class="arithmatex">\(X\)</span> with <span class="arithmatex">\(|f(x)-L|&lt;\varepsilon\)</span> for all <span class="arithmatex">\(x&gt;X\)</span>. Choose an integer <span class="arithmatex">\(N\ge X\)</span>. For <span class="arithmatex">\(n&gt;N\)</span> we have <span class="arithmatex">\(n&gt;X\)</span>, so <span class="arithmatex">\(|a_n-L|=|f(n)-L|&lt;\varepsilon\)</span>. The cases <span class="arithmatex">\(L=\pm\infty\)</span> are the same with “<span class="arithmatex">\(f(x)&gt;K\)</span>” or “<span class="arithmatex">\(f(x)&lt;K\)</span>” in place of “<span class="arithmatex">\(|f(x)-L|&lt;\varepsilon\)</span>”. ◻ ∎</p>
+<p>The converse is false: <span class="arithmatex">\(a_n=\cos(2\pi n)=1\)</span> converges although <span class="arithmatex">\(\lim_{x\to\infty}\cos(2\pi x)\)</span> does not exist. So this theorem lets us use Calculus I tools (such as l’Hôpital’s Rule) on a function, but a failure for the function says nothing about the sequence.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.5: Squeeze Theorem for sequences</p>
+<p><span id="thm-squeeze"></span></p>
+<p>If <span class="arithmatex">\(a_n\le b_n\le c_n\)</span> for all <span class="arithmatex">\(n\)</span> beyond some index, and <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(c_n\to L\)</span>, then <span class="arithmatex">\(b_n\to L\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\varepsilon&gt;0\)</span> and choose <span class="arithmatex">\(N\)</span> so that <span class="arithmatex">\(|a_n-L|&lt;\varepsilon\)</span> and <span class="arithmatex">\(|c_n-L|&lt;\varepsilon\)</span> (and the inequalities <span class="arithmatex">\(a_n\le b_n\le c_n\)</span> hold) for <span class="arithmatex">\(n&gt;N\)</span>. Then <span class="arithmatex">\(L-\varepsilon&lt;a_n\le b_n\le c_n&lt;L+\varepsilon\)</span>, so <span class="arithmatex">\(|b_n-L|&lt;\varepsilon\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.6: A continuous function of a limit</p>
+<p><span id="thm-contfn"></span></p>
+<p>If <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(f\)</span> is continuous at <span class="arithmatex">\(L\)</span> and defined at every <span class="arithmatex">\(a_n\)</span>, then <span class="arithmatex">\(f(a_n)\to f(L)\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. By continuity there is <span class="arithmatex">\(\delta&gt;0\)</span> with <span class="arithmatex">\(|f(y)-f(L)|&lt;\varepsilon\)</span> whenever <span class="arithmatex">\(|y-L|&lt;\delta\)</span>. Choose <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(|a_n-L|&lt;\delta\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. Then <span class="arithmatex">\(|f(a_n)-f(L)|&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. ◻ ∎</p>
+<p>A consequence used constantly: <span class="arithmatex">\(|a_n|\to0\)</span> if and only if <span class="arithmatex">\(a_n\to0\)</span> (Pause and think <a href="#think-laws">10.2.1</a> and Example <a href="#ex-b14">10.2.35</a> use related ideas), since <span class="arithmatex">\(|a_n-0|=\big||a_n|-0\big|\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.7: Limit laws on a rational expression</p>
+<p><span id="ex-rational"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{3n^2+n}{2n^2-5}\)</span>.</p>
+<p><strong>Solution.</strong> Each of <span class="arithmatex">\(3n^2+n\)</span> and <span class="arithmatex">\(2n^2-5\)</span> tends to infinity, so the limit laws cannot be applied directly (“<span class="arithmatex">\(\infty/\infty\)</span>”). Divide numerator and denominator by the highest power, <span class="arithmatex">\(n^2\)</span>:</p>
+<div class="arithmatex">\[\frac{3n^2+n}{2n^2-5}=\frac{3+1/n}{2-5/n^2}\ \longrightarrow\ \frac{3+0}{2-0}=\frac32,\]</div>
+<p>using <span class="arithmatex">\(\frac1n\to0\)</span> and <span class="arithmatex">\(\frac5{n^2}\to0\)</span>, the sum, product and quotient laws, and <span class="arithmatex">\(2\ne0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.8: A difference of square roots</p>
+<p><span id="ex-conj"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(\sqrt{n^2+n}-n\right)\)</span>.</p>
+<p><strong>Solution.</strong> This is “<span class="arithmatex">\(\infty-\infty\)</span>”. Multiply and divide by the conjugate <span class="arithmatex">\(\sqrt{n^2+n}+n\)</span>:</p>
+<div class="arithmatex">\[\sqrt{n^2+n}-n=\frac{(n^2+n)-n^2}{\sqrt{n^2+n}+n}=\frac{n}{\sqrt{n^2+n}+n}=\frac{1}{\sqrt{1+1/n}+1}\ \longrightarrow\ \frac1{1+1}=\frac12 .\]</div>
+<p>In the last step we used that the square root is continuous (Theorem <a href="#thm-contfn">10.2.6</a>) so <span class="arithmatex">\(\sqrt{1+1/n}\to\sqrt1=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.9: A limit of <span class="arithmatex">\(f(n)\)</span></p>
+<p><span id="ex-fnex"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}n\sin\frac1n\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(f(x)=x\sin\frac1x\)</span>. Substitute <span class="arithmatex">\(u=\frac1x\)</span>; as <span class="arithmatex">\(x\to\infty\)</span>, <span class="arithmatex">\(u\to0^+\)</span>, and <span class="arithmatex">\(f(x)=\dfrac{\sin u}{u}\to1\)</span> by the basic limit from Calculus I. By Theorem <a href="#thm-fn">10.2.4</a>, <span class="arithmatex">\(\lim_{n\to\infty}n\sin\frac1n=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.10: Squeezing an oscillation</p>
+<p><span id="ex-sq"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{\cos n}{n^2}\)</span>.</p>
+<p><strong>Solution.</strong> The numerator oscillates, so the quotient law does not apply (it needs <span class="arithmatex">\(\lim\cos n\)</span> to exist). Instead, <span class="arithmatex">\(-1\le\cos n\le1\)</span> gives</p>
+<div class="arithmatex">\[-\frac1{n^2}\le\frac{\cos n}{n^2}\le\frac1{n^2},\]</div>
+<p>and both outer sequences tend to <span class="arithmatex">\(0\)</span> (Theorem <a href="#thm-fn">10.2.4</a> with <span class="arithmatex">\(f(x)=1/x^2\)</span>). By the Squeeze Theorem the limit is <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.2.1: Computing limits</p>
+<p><span id="kc-compute"></span></p>
+<p>Find each limit or say that it diverges: (a) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{4n^3-n}{2n^3+7}\)</span>; (b) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(\sqrt{n+3}-\sqrt n\right)\)</span>; (c) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n^2-1}{n+2}\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.2.1: When limit laws need hypotheses</p>
+<p><span id="think-laws"></span></p>
+<p>(a) Give sequences <span class="arithmatex">\(a_n\)</span> and <span class="arithmatex">\(b_n\)</span> that both diverge while <span class="arithmatex">\(a_n+b_n\)</span> and <span class="arithmatex">\(a_nb_n\)</span> both converge. (b) If <span class="arithmatex">\(a_n\)</span> diverges and <span class="arithmatex">\(a_n+b_n\)</span> converges, must <span class="arithmatex">\(b_n\)</span> diverge? Prove your answer using a limit law. (c) Why does the quotient law in Theorem <a href="#thm-laws">10.2.3</a> require <span class="arithmatex">\(B\ne0\)</span>, and what can happen when <span class="arithmatex">\(A=B=0\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>(a) <span class="arithmatex">\(a_n=(-1)^n\)</span> and <span class="arithmatex">\(b_n=-(-1)^n\)</span>: both diverge, <span class="arithmatex">\(a_n+b_n=0\)</span> converges, and with <span class="arithmatex">\(b_n=(-1)^n\)</span> the product <span class="arithmatex">\(a_nb_n=1\)</span> converges. (b) Yes. If <span class="arithmatex">\(b_n\)</span> converged, then <span class="arithmatex">\(a_n=(a_n+b_n)-b_n\)</span> would converge by the difference law, contradicting the assumption. (c) The quotient law needs <span class="arithmatex">\(B\ne0\)</span> since division by <span class="arithmatex">\(0\)</span> is undefined and <span class="arithmatex">\(b_n\)</span> may be <span class="arithmatex">\(0\)</span> or tiny; when <span class="arithmatex">\(A=B=0\)</span> the quotient can do anything: <span class="arithmatex">\(\frac1n\big/\frac1n\to1\)</span>, <span class="arithmatex">\(\frac1{n^2}\big/\frac1n\to0\)</span>, <span class="arithmatex">\(\frac1n\big/\frac1{n^2}\to\infty\)</span>. (This is the “<span class="arithmatex">\(0/0\)</span>” form.)</p>
+</details>
+</div>
+<h2 id="geometric-sequences-and-growth-rates">Geometric sequences and growth rates<a class="headerlink" href="#geometric-sequences-and-growth-rates" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.11: The sequence <span class="arithmatex">\(r^n\)</span></p>
+<p><span id="thm-geom"></span></p>
+<p>Let <span class="arithmatex">\(r\)</span> be a real number. Then</p>
+<div class="arithmatex">\[\lim_{n\to\infty}r^n=\begin{cases}0 &amp; \text{if } |r|&lt;1,\\ 1 &amp; \text{if } r=1,\end{cases}\]</div>
+<p><span class="arithmatex">\(r^n\to\infty\)</span> if <span class="arithmatex">\(r&gt;1\)</span>, and <span class="arithmatex">\(\{r^n\}\)</span> diverges if <span class="arithmatex">\(r\le-1\)</span>.</p>
+</div>
+<p><em>Proof.</em> We use <em>Bernoulli’s inequality</em>: <span class="arithmatex">\((1+h)^n\ge1+nh\)</span> for every <span class="arithmatex">\(h&gt;0\)</span> and every integer <span class="arithmatex">\(n\ge1\)</span>. This is proved by induction (Example <a href="#ex-b13">10.2.34</a>).</p>
+<p><em>Case <span class="arithmatex">\(r&gt;1\)</span>.</em> Write <span class="arithmatex">\(r=1+h\)</span> with <span class="arithmatex">\(h&gt;0\)</span>. Then <span class="arithmatex">\(r^n\ge1+nh\)</span>, and <span class="arithmatex">\(1+nh\to\infty\)</span>, so <span class="arithmatex">\(r^n\to\infty\)</span> (given <span class="arithmatex">\(K\)</span>, choose <span class="arithmatex">\(N\ge K/h\)</span>; for <span class="arithmatex">\(n&gt;N\)</span>, <span class="arithmatex">\(r^n\ge1+nh&gt;K\)</span>).</p>
+<p><em>Case <span class="arithmatex">\(0&lt;|r|&lt;1\)</span>.</em> Then <span class="arithmatex">\(1/|r|&gt;1\)</span>; write <span class="arithmatex">\(1/|r|=1+h\)</span> with <span class="arithmatex">\(h&gt;0\)</span>. Then <span class="arithmatex">\(|r|^n=\dfrac1{(1+h)^n}\le\dfrac1{1+nh}\)</span>, so</p>
+<div class="arithmatex">\[0\le|r^n|\le\frac1{1+nh}\to0,\]</div>
+<p>and the Squeeze Theorem gives <span class="arithmatex">\(|r^n|\to0\)</span>, hence <span class="arithmatex">\(r^n\to0\)</span>. For <span class="arithmatex">\(r=0\)</span> the sequence is <span class="arithmatex">\(0,0,\dots\)</span> and the claim is trivial.</p>
+<p><em>Case <span class="arithmatex">\(r=1\)</span>.</em> The sequence is constant, equal to <span class="arithmatex">\(1\)</span>.</p>
+<p><em>Case <span class="arithmatex">\(r=-1\)</span>.</em> The terms alternate between <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span>; consecutive terms differ by <span class="arithmatex">\(2\)</span>, so no limit exists (the argument of Appendix Example <a href="../../appendix/appendix/#ex-divproof">B.9</a>).</p>
+<p><em>Case <span class="arithmatex">\(r&lt;-1\)</span>.</em> Then <span class="arithmatex">\(|r|&gt;1\)</span>, so <span class="arithmatex">\(|r^n|=|r|^n\to\infty\)</span> by the first case; a sequence with <span class="arithmatex">\(|a_n|\to\infty\)</span> is unbounded, but a convergent sequence is bounded (Theorem <a href="../../appendix/appendix/#thm-bounded">B.2</a>), so <span class="arithmatex">\(\{r^n\}\)</span> diverges. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.12: Using <span class="arithmatex">\(r^n\)</span></p>
+<p><span id="ex-geoex"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{3^n+2^n}{3^{n+1}}\)</span>.</p>
+<p><strong>Solution.</strong> Divide each term by <span class="arithmatex">\(3^n\)</span> and write <span class="arithmatex">\(3^{n+1}=3\cdot3^n\)</span>:</p>
+<div class="arithmatex">\[\frac{3^n+2^n}{3^{n+1}}=\frac{1+(2/3)^n}{3}\ \longrightarrow\ \frac{1+0}{3}=\frac13,\]</div>
+<p>because <span class="arithmatex">\(|2/3|&lt;1\)</span>, so <span class="arithmatex">\((2/3)^n\to0\)</span> by Theorem <a href="#thm-geom">10.2.11</a>.</p>
+</div>
+<p>Which grows faster, <span class="arithmatex">\(n^{10}\)</span> or <span class="arithmatex">\(1.01^n\)</span>? Or <span class="arithmatex">\(2^n\)</span> or <span class="arithmatex">\(n!\)</span>? The next theorem ranks the standard growth rates; each statement says that the second quantity eventually dwarfs the first.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.13: Growth rates</p>
+<p><span id="thm-growth"></span></p>
+<p>Let <span class="arithmatex">\(p&gt;0\)</span>, <span class="arithmatex">\(q&gt;0\)</span> and <span class="arithmatex">\(b&gt;1\)</span>. Then</p>
+<p><strong>(a)</strong> <span class="arithmatex">\(\dfrac{(\ln n)^q}{n^p}\to0\)</span>,</p>
+<p><strong>(b)</strong> <span class="arithmatex">\(\dfrac{n^p}{b^n}\to0\)</span>,</p>
+<p><strong>(c)</strong> <span class="arithmatex">\(\dfrac{b^n}{n!}\to0\)</span>,</p>
+<p><strong>(d)</strong> <span class="arithmatex">\(\dfrac{n!}{n^n}\to0\)</span>.</p>
+<p>Consequently, for large <span class="arithmatex">\(n\)</span>,</p>
+<div class="arithmatex">\[(\ln n)^q\ll n^p\ll b^n\ll n!\ll n^n,\]</div>
+<p>where <span class="arithmatex">\(u_n\ll v_n\)</span> means <span class="arithmatex">\(u_n/v_n\to0\)</span>.</p>
+</div>
+<p><em>Proof.</em> (d) <span class="arithmatex">\(\dfrac{n!}{n^n}=\dfrac1n\cdot\dfrac2n\cdots\dfrac nn\le\dfrac1n\cdot1\cdots1=\dfrac1n\)</span>, since each of the other factors is at most <span class="arithmatex">\(1\)</span>. So <span class="arithmatex">\(0&lt;\frac{n!}{n^n}\le\frac1n\to0\)</span>, and the Squeeze Theorem gives the limit <span class="arithmatex">\(0\)</span>.</p>
+<p>(c) Choose an integer <span class="arithmatex">\(M\ge2b\)</span>. For <span class="arithmatex">\(n&gt;M\)</span>,</p>
+<div class="arithmatex">\[\frac{b^n}{n!}=\frac{b^M}{M!}\cdot\frac{b}{M+1}\cdot\frac{b}{M+2}\cdots\frac bn\le\frac{b^M}{M!}\left(\frac12\right)^{n-M},\]</div>
+<p>because each of the <span class="arithmatex">\(n-M\)</span> factors <span class="arithmatex">\(\frac bj\)</span> (<span class="arithmatex">\(j&gt;M\)</span>) is at most <span class="arithmatex">\(\frac b{2b}=\frac12\)</span>. The right side is a constant times <span class="arithmatex">\((1/2)^n\)</span>, which tends to <span class="arithmatex">\(0\)</span> by Theorem <a href="#thm-geom">10.2.11</a>; squeezing gives <span class="arithmatex">\(b^n/n!\to0\)</span>.</p>
+<p>(b) Write <span class="arithmatex">\(b=1+h\)</span> with <span class="arithmatex">\(h&gt;0\)</span> and choose an integer <span class="arithmatex">\(m&gt;p\)</span>. For <span class="arithmatex">\(n\ge2m\)</span> the binomial theorem gives, keeping only one term,</p>
+<div class="arithmatex">\[b^n\ge\binom nm h^m=\frac{n(n-1)\cdots(n-m+1)}{m!}h^m\ge\frac{(n/2)^m}{m!}h^m ,\]</div>
+<p>since each of the <span class="arithmatex">\(m\)</span> factors <span class="arithmatex">\(n-j\)</span> (<span class="arithmatex">\(0\le j\le m-1\)</span>) is at least <span class="arithmatex">\(n-m+1&gt;n/2\)</span> when <span class="arithmatex">\(n\ge2m\)</span>. Hence</p>
+<div class="arithmatex">\[0&lt;\frac{n^p}{b^n}\le\frac{2^m\,m!}{h^m}\cdot n^{p-m}\to0,\]</div>
+<p>because <span class="arithmatex">\(p-m&lt;0\)</span> means <span class="arithmatex">\(n^{p-m}=1/n^{m-p}\to0\)</span> (Theorem <a href="#thm-fn">10.2.4</a>). The Squeeze Theorem gives (b).</p>
+<p>(a) First take <span class="arithmatex">\(q=1\)</span>. The function <span class="arithmatex">\(f(x)=\dfrac{\ln x}{x^p}\)</span> has the form <span class="arithmatex">\(\infty/\infty\)</span> as <span class="arithmatex">\(x\to\infty\)</span>, and by l’Hôpital’s Rule</p>
+<div class="arithmatex">\[\lim_{x\to\infty}\frac{\ln x}{x^p}=\lim_{x\to\infty}\frac{1/x}{p\,x^{p-1}}=\lim_{x\to\infty}\frac1{p\,x^{p}}=0,\]</div>
+<p>so <span class="arithmatex">\(\frac{\ln n}{n^p}\to0\)</span> for every <span class="arithmatex">\(p&gt;0\)</span> by Theorem <a href="#thm-fn">10.2.4</a>. For general <span class="arithmatex">\(q&gt;0\)</span> apply this with <span class="arithmatex">\(p/q\)</span> in place of <span class="arithmatex">\(p\)</span>: <span class="arithmatex">\(\frac{(\ln n)^q}{n^p}=\left(\frac{\ln n}{n^{p/q}}\right)^q\to0^q=0\)</span>, using Theorem <a href="#thm-contfn">10.2.6</a> with the continuous function <span class="arithmatex">\(y\mapsto y^q\)</span> at <span class="arithmatex">\(0\)</span> (continuous from the right at <span class="arithmatex">\(0\)</span>, which is all that is needed since the terms are positive).</p>
+<p>The chain follows by combining (a)–(d): for instance <span class="arithmatex">\(n^p/n!=\frac{n^p}{b^n}\cdot\frac{b^n}{n!}\)</span> with <span class="arithmatex">\(b=2\)</span> is a product of two sequences tending to <span class="arithmatex">\(0\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.14: Ranking growth rates in a quotient</p>
+<p><span id="ex-rank"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n!+4^n}{n!+n^4}\)</span>.</p>
+<p><strong>Solution.</strong> The dominant term in both numerator and denominator is <span class="arithmatex">\(n!\)</span>. Divide by <span class="arithmatex">\(n!\)</span>:</p>
+<div class="arithmatex">\[\frac{n!+4^n}{n!+n^4}=\frac{1+4^n/n!}{1+n^4/n!}\ \longrightarrow\ \frac{1+0}{1+0}=1,\]</div>
+<p>because <span class="arithmatex">\(4^n/n!\to0\)</span> by Theorem <a href="#thm-growth">10.2.13</a>(c), and <span class="arithmatex">\(n^4/n!\to0\)</span> because <span class="arithmatex">\(n^4/2^n\to0\)</span> by (b) and <span class="arithmatex">\(2^n/n!\to0\)</span> by (c). Numerically, <span class="arithmatex">\(4^{10}/10!\approx0.29\)</span> and <span class="arithmatex">\(4^{20}/20!\approx4.5\times10^{-7}\)</span>, already small.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.2.2: Squeeze and growth</p>
+<p><span id="kc-growthkc"></span></p>
+<p>Find each limit: (a) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{(-1)^n\,n}{n^2+1}\)</span>; (b) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{2^n+5^n}{5^n+1}\)</span>; (c) <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n^{20}}{1.5^n}\)</span> and say what a table of the first <span class="arithmatex">\(50\)</span> terms would show.</p>
+</div>
+<h2 id="monotone-sequences-and-boundedness">Monotone sequences and boundedness<a class="headerlink" href="#monotone-sequences-and-boundedness" title="Permanent link">&para;</a></h2>
+<div class="admonition definition">
+<p class="admonition-title">Definition 10.2.15: Monotone and bounded sequences</p>
+<p><span id="def-monotone"></span></p>
+<p>A sequence <span class="arithmatex">\(\{a_n\}\)</span> is <em>nondecreasing</em> if <span class="arithmatex">\(a_{n+1}\ge a_n\)</span> for all <span class="arithmatex">\(n\)</span>, <em>increasing</em> if <span class="arithmatex">\(a_{n+1}&gt;a_n\)</span>, and <em>nonincreasing</em> or <em>decreasing</em> if the inequalities are reversed; it is <em>monotonic</em> if it is of one of these kinds. It is <em>bounded above</em> if there is <span class="arithmatex">\(M\)</span> with <span class="arithmatex">\(a_n\le M\)</span> for all <span class="arithmatex">\(n\)</span>, <em>bounded below</em> if <span class="arithmatex">\(a_n\ge m\)</span> for all <span class="arithmatex">\(n\)</span>, and <em>bounded</em> if both hold.</p>
+</div>
+<p>To show a sequence is monotonic, compare <span class="arithmatex">\(a_{n+1}\)</span> with <span class="arithmatex">\(a_n\)</span> directly (by subtraction, by a ratio of positive terms, or, for <span class="arithmatex">\(a_n=f(n)\)</span>, from the sign of <span class="arithmatex">\(f'\)</span>), or use induction on a recurrence. Bounds are usually proved by induction or by an inequality.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.16: Monotone Convergence Theorem</p>
+<p><span id="thm-mct"></span></p>
+<p>A nondecreasing sequence that is bounded above converges, to its least upper bound. A nonincreasing sequence that is bounded below converges, to its greatest lower bound. In particular a bounded monotonic sequence converges.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\{a_n\}\)</span> be nondecreasing and bounded above. By the completeness of the real numbers (the least upper bound property; see the beginning of Appendix A) the set <span class="arithmatex">\(\{a_1,a_2,\dots\}\)</span> has a least upper bound <span class="arithmatex">\(L\)</span>. Let <span class="arithmatex">\(\varepsilon&gt;0\)</span>. Since <span class="arithmatex">\(L-\varepsilon\)</span> is not an upper bound, some <span class="arithmatex">\(a_N&gt;L-\varepsilon\)</span>. For <span class="arithmatex">\(n&gt;N\)</span> we have <span class="arithmatex">\(a_n\ge a_N&gt;L-\varepsilon\)</span> because the sequence is nondecreasing, and <span class="arithmatex">\(a_n\le L\)</span> because <span class="arithmatex">\(L\)</span> is an upper bound. So <span class="arithmatex">\(|a_n-L|&lt;\varepsilon\)</span>. The nonincreasing case follows by applying this to <span class="arithmatex">\(-a_n\)</span>. The complete argument is Theorem <a href="../../appendix/appendix/#thm-mct">A.5</a>. ◻ ∎</p>
+<p>The theorem does not tell us the limit; it tells us there is one. For a recurrence, there is a good way to <em>find</em> it once existence is known.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.17: Fixed-point rule</p>
+<p><span id="thm-fixed"></span></p>
+<p>Suppose <span class="arithmatex">\(a_{n+1}=f(a_n)\)</span> for all <span class="arithmatex">\(n\)</span>, the function <span class="arithmatex">\(f\)</span> is continuous, and <span class="arithmatex">\(a_n\to L\)</span>. Then <span class="arithmatex">\(f(L)=L\)</span>.</p>
+</div>
+<p><em>Proof.</em> The sequence <span class="arithmatex">\(a_2,a_3,\dots\)</span> also converges to <span class="arithmatex">\(L\)</span> (it is the same sequence with the first term removed; Theorem <a href="../../appendix/appendix/#thm-tail">B.3</a>). On the other hand <span class="arithmatex">\(a_{n+1}=f(a_n)\to f(L)\)</span> by Theorem <a href="#thm-contfn">10.2.6</a>. A sequence has only one limit (Theorem <a href="../../appendix/appendix/#thm-unique">B.1</a>), so <span class="arithmatex">\(f(L)=L\)</span>. ◻ ∎</p>
+<div class="admonition warning">
+<p class="admonition-title">The rule assumes the limit exists</p>
+<p>The fixed-point rule says <em>if</em> the sequence converges <em>then</em> the limit solves <span class="arithmatex">\(f(L)=L\)</span>. It never says that the sequence converges. The sequence <span class="arithmatex">\(a_1=1\)</span>, <span class="arithmatex">\(a_{n+1}=2a_n+1\)</span> gives <span class="arithmatex">\(L=2L+1\)</span>, so <span class="arithmatex">\(L=-1\)</span>, yet the terms <span class="arithmatex">\(1,3,7,15,\dots\)</span> grow without bound: there is no limit at all (Pause and think <a href="#think-fixed">10.2.3</a>). Prove convergence (monotone and bounded) first, then solve for <span class="arithmatex">\(L\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.18: Monotone and bounded: repeated square roots</p>
+<p><span id="ex-sqrt6"></span></p>
+<p>In Example <a href="../../10.1/notes/#ex-b4">10.1.23</a> we guessed that <span class="arithmatex">\(a_1=1\)</span>, <span class="arithmatex">\(a_{n+1}=\sqrt{6+a_n}\)</span> tends to <span class="arithmatex">\(3\)</span>. Prove it.</p>
+<p><strong>Bounded above by <span class="arithmatex">\(3\)</span>.</strong> <span class="arithmatex">\(a_1=1&lt;3\)</span>. If <span class="arithmatex">\(a_n&lt;3\)</span> then <span class="arithmatex">\(a_{n+1}=\sqrt{6+a_n}&lt;\sqrt{9}=3\)</span>. So <span class="arithmatex">\(a_n&lt;3\)</span> for all <span class="arithmatex">\(n\)</span> (induction).</p>
+<p><strong>Increasing.</strong> Compare squares: <span class="arithmatex">\(a_{n+1}^2-a_n^2=6+a_n-a_n^2=(3-a_n)(2+a_n)&gt;0\)</span>, because <span class="arithmatex">\(a_n&lt;3\)</span> and <span class="arithmatex">\(a_n&gt;0\)</span>. Hence <span class="arithmatex">\(a_{n+1}&gt;a_n\)</span> for every <span class="arithmatex">\(n\)</span> (all terms are positive).</p>
+<p><strong>Limit.</strong> By the Monotone Convergence Theorem the sequence converges, say to <span class="arithmatex">\(L\)</span>, and <span class="arithmatex">\(L\le3\)</span>. By the fixed-point rule with <span class="arithmatex">\(f(x)=\sqrt{6+x}\)</span>, <span class="arithmatex">\(L=\sqrt{6+L}\)</span>, so <span class="arithmatex">\(L^2-L-6=(L-3)(L+2)=0\)</span>; since <span class="arithmatex">\(L&gt;0\)</span>, <span class="arithmatex">\(L=3\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.2.2: Which hypothesis does the work?</p>
+<p><span id="think-mct"></span></p>
+<p>The Monotone Convergence Theorem has two hypotheses: “monotonic” and “bounded”. Give an example of (a) a monotonic sequence that is not bounded and diverges, and (b) a bounded sequence that is not monotonic and diverges. Then say, in words, why each hypothesis cannot be dropped.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>(a) <span class="arithmatex">\(a_n=n\)</span>: increasing, unbounded, diverges to infinity. (b) <span class="arithmatex">\(a_n=(-1)^n\)</span>: bounded, not monotonic, diverges. The monotonic hypothesis prevents oscillation between two values; the bounded hypothesis prevents escape to infinity. The theorem needs both: <em>monotone</em> says the terms can only move one way, and <em>bounded</em> says they cannot move forever.</p>
+</details>
+</div>
+<h2 id="recurrences-a_n1ra_nd">Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span><a class="headerlink" href="#recurrences-a_n1ra_nd" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 10.2.19: Linear recurrences of first order</p>
+<p><span id="thm-affine"></span></p>
+<p>Let <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span> for all <span class="arithmatex">\(n\ge1\)</span>, with <span class="arithmatex">\(r\ne1\)</span>, and let <span class="arithmatex">\(L=\dfrac d{1-r}\)</span>. Then</p>
+<div class="arithmatex">\[a_n=L+(a_1-L)\,r^{\,n-1}\quad\text{for every } n\ge1 .\]</div>
+<p>Consequently the sequence converges if <span class="arithmatex">\(|r|&lt;1\)</span> (to <span class="arithmatex">\(L\)</span>) or if <span class="arithmatex">\(a_1=L\)</span> (it is constant), and otherwise it diverges.</p>
+</div>
+<p><em>Proof.</em> Note that <span class="arithmatex">\(L\)</span> satisfies <span class="arithmatex">\(L=rL+d\)</span>, because <span class="arithmatex">\(L(1-r)=d\)</span>. By induction: for <span class="arithmatex">\(n=1\)</span> the formula says <span class="arithmatex">\(a_1=L+(a_1-L)=a_1\)</span>. If <span class="arithmatex">\(a_n=L+(a_1-L)r^{n-1}\)</span>, then</p>
+<div class="arithmatex">\[a_{n+1}=ra_n+d=rL+(a_1-L)r^{n}+d=\big(rL+d\big)+(a_1-L)r^n=L+(a_1-L)r^{n},\]</div>
+<p>which is the formula for <span class="arithmatex">\(n+1\)</span>. For the consequence, if <span class="arithmatex">\(|r|&lt;1\)</span> then <span class="arithmatex">\(r^{n-1}\to0\)</span> by Theorem <a href="#thm-geom">10.2.11</a>, so <span class="arithmatex">\(a_n\to L\)</span>. If <span class="arithmatex">\(a_1=L\)</span> the formula gives <span class="arithmatex">\(a_n=L\)</span> for all <span class="arithmatex">\(n\)</span>. If <span class="arithmatex">\(|r|\ge1\)</span> and <span class="arithmatex">\(a_1\ne L\)</span>, the sequence <span class="arithmatex">\((a_1-L)r^{n-1}\)</span> diverges by Theorem <a href="#thm-geom">10.2.11</a> (for <span class="arithmatex">\(r=-1\)</span> it alternates; for <span class="arithmatex">\(|r|&gt;1\)</span> it is unbounded; <span class="arithmatex">\(r=1\)</span> is excluded), so <span class="arithmatex">\(a_n=L+(a_1-L)r^{n-1}\)</span> diverges (if <span class="arithmatex">\(a_n\)</span> converged then so would <span class="arithmatex">\(a_n-L\)</span>). ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.20: Solving a linear recurrence</p>
+<p><span id="ex-affineex"></span></p>
+<p>In Example <a href="../../10.1/notes/#ex-b10">10.1.29</a> the amount of a drug just after the <span class="arithmatex">\(n\)</span>th dose satisfied <span class="arithmatex">\(D_1=100\)</span>, <span class="arithmatex">\(D_{n+1}=0.8D_n+100\)</span>. Find <span class="arithmatex">\(\lim D_n\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(r=0.8\)</span>, <span class="arithmatex">\(d=100\)</span>, so <span class="arithmatex">\(L=\dfrac{100}{1-0.8}=500\)</span> and by Theorem <a href="#thm-affine">10.2.19</a></p>
+<div class="arithmatex">\[D_n=500+(100-500)(0.8)^{n-1}=500-400(0.8)^{n-1}.\]</div>
+<p>This agrees with the closed form <span class="arithmatex">\(500(1-0.8^n)\)</span> found earlier (since <span class="arithmatex">\(400\cdot0.8^{n-1}=500\cdot0.8^n\)</span>). Because <span class="arithmatex">\(|0.8|&lt;1\)</span>, <span class="arithmatex">\(D_n\to500\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 10.2.3: A first-order recurrence</p>
+<p><span id="kc-affinekc"></span></p>
+<p>Let <span class="arithmatex">\(a_1=1\)</span> and <span class="arithmatex">\(a_{n+1}=\dfrac{a_n+3}{2}\)</span>. (a) Find <span class="arithmatex">\(L=\dfrac d{1-r}\)</span> and the closed form of <span class="arithmatex">\(a_n\)</span>. (b) Find <span class="arithmatex">\(\lim a_n\)</span>. (c) For the recurrence <span class="arithmatex">\(b_1=2\)</span>, <span class="arithmatex">\(b_{n+1}=-2b_n+3\)</span>, find <span class="arithmatex">\(L\)</span>, the closed form, and say whether <span class="arithmatex">\(b_n\)</span> converges.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 10.2.3: Why does the fixed-point rule give a false answer here?</p>
+<p><span id="think-fixed"></span></p>
+<p>Apply the fixed-point rule to <span class="arithmatex">\(a_1=1\)</span>, <span class="arithmatex">\(a_{n+1}=2a_n+1\)</span> and find <span class="arithmatex">\(L\)</span>. All the terms are positive. What does that say? Use Theorem <a href="#thm-affine">10.2.19</a> to decide what really happens, and say which hypothesis of the rule was false.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The rule gives <span class="arithmatex">\(L=2L+1\)</span>, so <span class="arithmatex">\(L=-1\)</span>. But all terms are positive, and a limit of positive numbers cannot be negative (see the remark on limits and inequalities), so something is wrong. Here <span class="arithmatex">\(r=2\)</span>, <span class="arithmatex">\(d=1\)</span>, <span class="arithmatex">\(L=\frac1{1-2}=-1\)</span>, and <span class="arithmatex">\(a_n=-1+(1-(-1))2^{n-1}=-1+2^n\)</span>, which tends to infinity. The hypothesis that failed is that <span class="arithmatex">\(a_n\)</span> converges. The equation <span class="arithmatex">\(L=f(L)\)</span> only locates the possible limits.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.21: Newton’s method for <span class="arithmatex">\(\sqrt5\)</span></p>
+<p><span id="ex-newton"></span></p>
+<p>Let <span class="arithmatex">\(a_1=3\)</span> and <span class="arithmatex">\(a_{n+1}=\dfrac12\left(a_n+\dfrac5{a_n}\right)\)</span>. Show that <span class="arithmatex">\(\{a_n\}\)</span> converges and find its limit.</p>
+<p><strong>Bounded below by <span class="arithmatex">\(\sqrt5\)</span>.</strong> For <span class="arithmatex">\(a_n&gt;0\)</span>, <span class="arithmatex">\(a_{n+1}-\sqrt5=\dfrac{(a_n-\sqrt5)^2}{2a_n}\ge0\)</span>. [To check: <span class="arithmatex">\(\frac12\left(a+\frac5a\right)-\sqrt5=\frac{a^2-2\sqrt5a+5}{2a}\)</span>.] So <span class="arithmatex">\(a_n\ge\sqrt5\)</span> for all <span class="arithmatex">\(n\ge2\)</span>, and <span class="arithmatex">\(a_1=3&gt;\sqrt5\)</span> too.</p>
+<p><strong>Nonincreasing.</strong> Since <span class="arithmatex">\(a_n^2\ge5\)</span>, we have <span class="arithmatex">\(\dfrac5{a_n}\le a_n\)</span>, so <span class="arithmatex">\(a_{n+1}-a_n=\dfrac12\left(\dfrac5{a_n}-a_n\right)\le0\)</span>.</p>
+<p><strong>Limit.</strong> By the Monotone Convergence Theorem, <span class="arithmatex">\(a_n\to L\ge\sqrt5\)</span>. The fixed-point rule with <span class="arithmatex">\(f(x)=\frac12(x+5/x)\)</span> (continuous for <span class="arithmatex">\(x&gt;0\)</span>) gives <span class="arithmatex">\(L=\frac12(L+\frac5L)\)</span>, so <span class="arithmatex">\(L^2=5\)</span> and <span class="arithmatex">\(L=\sqrt5\approx2.2360680\)</span>. The first terms <span class="arithmatex">\(3,\ \frac73\approx2.3333,\ \frac{47}{21}\approx2.2381\)</span> converge very quickly.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Limits and inequalities</p>
+<p>If <span class="arithmatex">\(a_n\to L\)</span> and <span class="arithmatex">\(a_n\ge m\)</span> for all <span class="arithmatex">\(n\)</span>, then <span class="arithmatex">\(L\ge m\)</span>. (Suppose instead <span class="arithmatex">\(L&lt;m\)</span> and take <span class="arithmatex">\(\varepsilon=m-L&gt;0\)</span>; for large <span class="arithmatex">\(n\)</span>, <span class="arithmatex">\(a_n&lt;L+\varepsilon=m\)</span>, a contradiction.) But strict inequalities are not preserved: <span class="arithmatex">\(a_n=\frac1n&gt;0\)</span> for all <span class="arithmatex">\(n\)</span>, yet <span class="arithmatex">\(\lim a_n=0\)</span>, which is not greater than <span class="arithmatex">\(0\)</span>.</p>
+</div>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Limit laws and algebra</em> (Examples <a href="#ex-b1">10.2.22</a>–<a href="#ex-b2">10.2.23</a>).</p>
+</li>
+<li>
+<p><em>Limits of <span class="arithmatex">\(f(n)\)</span> and the Squeeze Theorem</em> (Examples <a href="#ex-b3">10.2.24</a>–<a href="#ex-b4">10.2.25</a>).</p>
+</li>
+<li>
+<p><em>Geometric sequences and growth rates</em> (Examples <a href="#ex-b5">10.2.26</a>–<a href="#ex-b6">10.2.27</a>).</p>
+</li>
+<li>
+<p><em>Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span></em> (Examples <a href="#ex-b7">10.2.28</a>–<a href="#ex-b8">10.2.29</a>).</p>
+</li>
+<li>
+<p><em>Monotone and bounded</em> (Examples <a href="#ex-b9">10.2.30</a>–<a href="#ex-b10">10.2.31</a>).</p>
+</li>
+<li>
+<p><em>The <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition</em> (Examples <a href="#ex-b11">10.2.32</a>–<a href="#ex-b12">10.2.33</a>).</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">10.2.34</a>–<a href="#ex-b14">10.2.35</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-limit-laws-and-algebra">Group 1: Limit laws and algebra<a class="headerlink" href="#group-1-limit-laws-and-algebra" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.22: A rational expression with a lower-order tail</p>
+<p><span id="ex-b1"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{5n^2-3}{n^2+4n}\)</span>.</p>
+<p><strong>Solution.</strong> Divide the numerator and the denominator by <span class="arithmatex">\(n^2\)</span>, the highest power in the denominator: <span class="arithmatex">\(\dfrac{5-3/n^2}{1+4/n}\)</span>. Since <span class="arithmatex">\(\frac3{n^2}\to0\)</span> and <span class="arithmatex">\(\frac4n\to0\)</span>, the limit laws give <span class="arithmatex">\(\dfrac{5-0}{1+0}=5\)</span>. Check: <span class="arithmatex">\(a_{1000}=\dfrac{5\cdot10^6-3}{10^6+4000}\approx4.9801\)</span>, below <span class="arithmatex">\(5\)</span>, as expected since the <span class="arithmatex">\(4n\)</span> in the denominator pulls the value down.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.23: A hidden conjugate</p>
+<p><span id="ex-b2"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\left(\sqrt{n^2+3n}-n\right)\)</span>.</p>
+<p><strong>Solution.</strong> Each term tends to infinity, so we use the conjugate: <span class="arithmatex">\(\sqrt{n^2+3n}-n=\dfrac{3n}{\sqrt{n^2+3n}+n}=\dfrac3{\sqrt{1+3/n}+1}\to\dfrac3{1+1}=\dfrac32\)</span>. Check: at <span class="arithmatex">\(n=10^4\)</span>, <span class="arithmatex">\(\sqrt{10^8+3\cdot10^4}-10^4\approx1.4999\)</span>.</p>
+</div>
+<h2 id="group-2-limits-of-fn-and-the-squeeze-theorem">Group 2: Limits of <span class="arithmatex">\(f(n)\)</span> and the Squeeze Theorem<a class="headerlink" href="#group-2-limits-of-fn-and-the-squeeze-theorem" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.24: A derivative in disguise</p>
+<p><span id="ex-b3"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}n\left(e^{1/n}-1\right)\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(f(x)=x\left(e^{1/x}-1\right)=\dfrac{e^{u}-1}{u}\)</span> with <span class="arithmatex">\(u=\frac1x\to0^+\)</span>. This is the difference quotient of <span class="arithmatex">\(e^u\)</span> at <span class="arithmatex">\(u=0\)</span>, whose limit is the derivative <span class="arithmatex">\(\frac{d}{du}e^u\big|_{u=0}=1\)</span>. By Theorem <a href="#thm-fn">10.2.4</a>, the sequence tends to <span class="arithmatex">\(1\)</span>. Check: at <span class="arithmatex">\(n=1000\)</span>, <span class="arithmatex">\(1000\left(e^{0.001}-1\right)\approx1.0005\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.25: Squeezing with a bounded oscillation</p>
+<p><span id="ex-b4"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{n+\sin n}{n+2}\)</span>.</p>
+<p><strong>Solution.</strong> Because <span class="arithmatex">\(-1\le\sin n\le1\)</span>, <span class="arithmatex">\(\dfrac{n-1}{n+2}\le\dfrac{n+\sin n}{n+2}\le\dfrac{n+1}{n+2}\)</span>. Both bounds tend to <span class="arithmatex">\(1\)</span> (divide by <span class="arithmatex">\(n\)</span>: <span class="arithmatex">\(\frac{1-1/n}{1+2/n}\)</span> and <span class="arithmatex">\(\frac{1+1/n}{1+2/n}\)</span>). By the Squeeze Theorem the limit is <span class="arithmatex">\(1\)</span>. Notice that we could not split the fraction as <span class="arithmatex">\(\frac{n}{n+2}+\frac{\sin n}{n+2}\)</span> and apply the sum law unless we knew each piece converges; here they do (<span class="arithmatex">\(\frac{\sin n}{n+2}\to0\)</span> by squeezing), but the squeeze above avoids the extra step.</p>
+</div>
+<h2 id="group-3-geometric-sequences-and-growth-rates">Group 3: Geometric sequences and growth rates<a class="headerlink" href="#group-3-geometric-sequences-and-growth-rates" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.26: Dominant exponentials</p>
+<p><span id="ex-b5"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\lim_{n\to\infty}\frac{3^n-2^n}{3^n+2^n}\)</span>.</p>
+<p><strong>Solution.</strong> Divide by <span class="arithmatex">\(3^n\)</span>: <span class="arithmatex">\(\dfrac{1-(2/3)^n}{1+(2/3)^n}\)</span>. Since <span class="arithmatex">\((2/3)^n\to0\)</span> (Theorem <a href="#thm-geom">10.2.11</a>), the limit is <span class="arithmatex">\(\dfrac{1-0}{1+0}=1\)</span>. Check at <span class="arithmatex">\(n=10\)</span>: <span class="arithmatex">\(\frac{3^{10}-2^{10}}{3^{10}+2^{10}}=\frac{58025}{60073}\approx0.966\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.27: Factorials win eventually</p>
+<p><span id="ex-b6"></span></p>
+<p>(a) Show that <span class="arithmatex">\(\dfrac{n^{10}}{1.01^n}\to0\)</span>. (b) Find where <span class="arithmatex">\(a_n=\dfrac{100^n}{n!}\)</span> stops increasing, and explain why <span class="arithmatex">\(a_n\to0\)</span> anyway.</p>
+<p><strong>Solution.</strong> (a) This is Theorem <a href="#thm-growth">10.2.13</a>(b) with <span class="arithmatex">\(p=10\)</span> and <span class="arithmatex">\(b=1.01\)</span>: any exponential beats any power, however small the base excess. (It takes a very large <span class="arithmatex">\(n\)</span>: <span class="arithmatex">\(\frac{n^{10}}{1.01^n}\)</span> is still huge at <span class="arithmatex">\(n=1000\)</span>, so a table of moderate size would suggest the opposite. Compare Pause and think <a href="../../10.1/notes/#think-table">10.1.2</a>.)</p>
+<p>(b) The ratio of consecutive terms is <span class="arithmatex">\(\dfrac{a_{n+1}}{a_n}=\dfrac{100^{n+1}/(n+1)!}{100^n/n!}=\dfrac{100}{n+1}\)</span>, which is greater than <span class="arithmatex">\(1\)</span> while <span class="arithmatex">\(n+1&lt;100\)</span>, equal to <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(n=99\)</span>, and less than <span class="arithmatex">\(1\)</span> afterwards. So the terms increase up to <span class="arithmatex">\(a_{99}\)</span>, with <span class="arithmatex">\(a_{100}=a_{99}\)</span>, and then decrease. Indeed <span class="arithmatex">\(\frac{100^{100}}{100!}=\frac{100^{99}}{99!}\cdot\frac{100}{100}\)</span>. The maximum is astronomically large (<span class="arithmatex">\(a_{99}\approx10^{42}\)</span>), yet by Theorem <a href="#thm-growth">10.2.13</a>(c) with <span class="arithmatex">\(b=100\)</span> the sequence tends to <span class="arithmatex">\(0\)</span>. The theorem is about the long run only.</p>
+</div>
+<h2 id="group-4-recurrences-a_n1ra_nd">Group 4: Recurrences <span class="arithmatex">\(a_{n+1}=ra_n+d\)</span><a class="headerlink" href="#group-4-recurrences-a_n1ra_nd" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.28: A convergent linear recurrence</p>
+<p><span id="ex-b7"></span></p>
+<p>Let <span class="arithmatex">\(a_1=10\)</span> and <span class="arithmatex">\(a_{n+1}=\frac12a_n+4\)</span>. Find <span class="arithmatex">\(a_n\)</span> in closed form and its limit.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(r=\frac12\)</span>, <span class="arithmatex">\(d=4\)</span>, <span class="arithmatex">\(L=\dfrac4{1-1/2}=8\)</span>, so Theorem <a href="#thm-affine">10.2.19</a> gives <span class="arithmatex">\(a_n=8+(10-8)\left(\frac12\right)^{n-1}=8+2\left(\frac12\right)^{n-1}\)</span>. Check: <span class="arithmatex">\(a_2=8+1=9\)</span> and directly <span class="arithmatex">\(\frac12(10)+4=9\)</span>; <span class="arithmatex">\(a_3=8+\frac12=8.5\)</span> and directly <span class="arithmatex">\(\frac12(9)+4=8.5\)</span>. As <span class="arithmatex">\(n\to\infty\)</span>, <span class="arithmatex">\(\left(\frac12\right)^{n-1}\to0\)</span> and <span class="arithmatex">\(a_n\to8\)</span>, decreasing from above.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.29: When <span class="arithmatex">\(|r|&gt;1\)</span></p>
+<p><span id="ex-b8"></span></p>
+<p>Let <span class="arithmatex">\(a_{n+1}=-2a_n+3\)</span>. For which starting values <span class="arithmatex">\(a_1\)</span> does <span class="arithmatex">\(\{a_n\}\)</span> converge? Find the limit.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(r=-2\)</span>, <span class="arithmatex">\(d=3\)</span>, <span class="arithmatex">\(L=\dfrac3{1-(-2)}=1\)</span>, so <span class="arithmatex">\(a_n=1+(a_1-1)(-2)^{n-1}\)</span>. Since <span class="arithmatex">\(|r|&gt;1\)</span>, the term <span class="arithmatex">\((a_1-1)(-2)^{n-1}\)</span> diverges unless <span class="arithmatex">\(a_1-1=0\)</span>. So the sequence converges only if <span class="arithmatex">\(a_1=1\)</span>, when it is constant <span class="arithmatex">\(1,1,1,\dots\)</span> with limit <span class="arithmatex">\(1\)</span>. For example <span class="arithmatex">\(a_1=2\)</span> gives <span class="arithmatex">\(2,\,-1,\,5,\,-7,\,17,\dots\)</span> with <span class="arithmatex">\(a_n=1+(-2)^{n-1}\)</span>: the terms alternate in sign and grow. Check: <span class="arithmatex">\(a_2=-4+3=-1\)</span>, formula <span class="arithmatex">\(1+(-2)=-1\)</span>; <span class="arithmatex">\(a_3=2+3=5\)</span>, formula <span class="arithmatex">\(1+4=5\)</span>. So the fixed point <span class="arithmatex">\(L=1\)</span> is <em>repelling</em>: a start anywhere else is pushed away (compare the warning about the fixed-point rule).</p>
+</div>
+<h2 id="group-5-monotone-and-bounded">Group 5: Monotone and bounded<a class="headerlink" href="#group-5-monotone-and-bounded" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.30: A series-like sequence bounded by a geometric sum</p>
+<p><span id="ex-b9"></span></p>
+<p>Let <span class="arithmatex">\(a_n=1+1+\frac1{2!}+\frac1{3!}+\cdots+\frac1{n!}=\sum_{k=0}^n\frac1{k!}\)</span>. Show that <span class="arithmatex">\(\{a_n\}\)</span> converges.</p>
+<p><strong>Solution.</strong> <em>Increasing:</em> <span class="arithmatex">\(a_{n+1}-a_n=\frac1{(n+1)!}&gt;0\)</span>. <em>Bounded:</em> for <span class="arithmatex">\(k\ge1\)</span>, <span class="arithmatex">\(k!=1\cdot2\cdot3\cdots k\ge2^{k-1}\)</span> (each factor from <span class="arithmatex">\(2\)</span> on is at least <span class="arithmatex">\(2\)</span>), so <span class="arithmatex">\(\frac1{k!}\le\frac1{2^{k-1}}\)</span> and</p>
+<div class="arithmatex">\[a_n\le1+\left(1+\frac12+\frac14+\cdots+\frac1{2^{n-1}}\right)=1+\frac{1-2^{-n}}{1-\frac12}&lt;1+2=3 ,\]</div>
+<p>using the finite geometric sum (Theorem <a href="../../10.1/notes/#thm-geosum">10.1.15</a>). By the Monotone Convergence Theorem the sequence converges, to a number between <span class="arithmatex">\(a_3=\frac{8}{3}\approx2.667\)</span> and <span class="arithmatex">\(3\)</span>. (It converges to <span class="arithmatex">\(e\)</span>.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.31: A bounded sum by comparison with a telescoping sum</p>
+<p><span id="ex-b10"></span></p>
+<p>Let <span class="arithmatex">\(s_n=1+\dfrac1{2^2}+\dfrac1{3^2}+\cdots+\dfrac1{n^2}\)</span>. Show that <span class="arithmatex">\(\{s_n\}\)</span> converges.</p>
+<p><strong>Solution.</strong> The sequence is increasing since each added term is positive. To bound it, compare each term with a telescoping one: for <span class="arithmatex">\(k\ge2\)</span>, <span class="arithmatex">\(\dfrac1{k^2}&lt;\dfrac1{k(k-1)}=\dfrac1{k-1}-\dfrac1k\)</span>. Therefore</p>
+<div class="arithmatex">\[s_n&lt;1+\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\cdots+\left(\frac1{n-1}-\frac1n\right)=2-\frac1n&lt;2 .\]</div>
+<p>So <span class="arithmatex">\(\{s_n\}\)</span> is increasing and bounded above by <span class="arithmatex">\(2\)</span>, hence convergent by the Monotone Convergence Theorem. The terms are <span class="arithmatex">\(1,\ 1.25,\ 1.3611,\ 1.4236,\dots\)</span>, and the limit is in fact <span class="arithmatex">\(\frac{\pi^2}6\approx1.6449\)</span>, a fact we cannot get from this argument alone.</p>
+</div>
+<h2 id="group-6-the-varepsilonn-definition">Group 6: The <span class="arithmatex">\(\varepsilon\)</span>–<span class="arithmatex">\(N\)</span> definition<a class="headerlink" href="#group-6-the-varepsilonn-definition" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.32: Finding <span class="arithmatex">\(N\)</span> for a rational sequence</p>
+<p><span id="ex-b11"></span></p>
+<p>Prove that <span class="arithmatex">\(\dfrac{3n}{n+1}\to3\)</span> and find <span class="arithmatex">\(N\)</span> for <span class="arithmatex">\(\varepsilon=0.01\)</span>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(\left|\dfrac{3n}{n+1}-3\right|=\left|\dfrac{3n-3n-3}{n+1}\right|=\dfrac3{n+1}\)</span>. This is less than <span class="arithmatex">\(\varepsilon\)</span> when <span class="arithmatex">\(n+1&gt;\frac3\varepsilon\)</span>, that is <span class="arithmatex">\(n&gt;\frac3\varepsilon-1\)</span>. So for every <span class="arithmatex">\(\varepsilon&gt;0\)</span> any integer <span class="arithmatex">\(N\ge\frac3\varepsilon-1\)</span> works. For <span class="arithmatex">\(\varepsilon=0.01\)</span>: <span class="arithmatex">\(\frac3\varepsilon-1=299\)</span>, so <span class="arithmatex">\(N=299\)</span>. Check at <span class="arithmatex">\(n=300\)</span>: <span class="arithmatex">\(\frac3{301}&lt;0.01\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.33: An alternating sequence</p>
+<p><span id="ex-b12"></span></p>
+<p>Prove that <span class="arithmatex">\(\dfrac{(-1)^n}{n}\to0\)</span> and find <span class="arithmatex">\(N\)</span> for <span class="arithmatex">\(\varepsilon=0.001\)</span>.</p>
+<p><strong>Solution.</strong> The signs do not affect the distance: <span class="arithmatex">\(\left|\dfrac{(-1)^n}n-0\right|=\dfrac1n\)</span>. We need <span class="arithmatex">\(\frac1n&lt;\varepsilon\)</span>, that is <span class="arithmatex">\(n&gt;\frac1\varepsilon\)</span>. Given <span class="arithmatex">\(\varepsilon&gt;0\)</span>, take any integer <span class="arithmatex">\(N\ge\frac1\varepsilon\)</span>; then <span class="arithmatex">\(n&gt;N\)</span> gives <span class="arithmatex">\(\frac1n&lt;\varepsilon\)</span>. For <span class="arithmatex">\(\varepsilon=0.001\)</span>, <span class="arithmatex">\(N=1000\)</span>. Check: for <span class="arithmatex">\(n=1001\)</span> the distance is <span class="arithmatex">\(\frac1{1001}&lt;0.001\)</span>, but at <span class="arithmatex">\(n=1000\)</span> it is exactly <span class="arithmatex">\(0.001\)</span>, which is not less than <span class="arithmatex">\(\varepsilon\)</span>, so the cutoff <span class="arithmatex">\(N=999\)</span> would fail: the definition requires strict inequality for <em>every</em> <span class="arithmatex">\(n&gt;N\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.34: Bernoulli’s inequality</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove that <span class="arithmatex">\((1+h)^n\ge1+nh\)</span> for every real <span class="arithmatex">\(h&gt;0\)</span> and every integer <span class="arithmatex">\(n\ge1\)</span>.</p>
+<p><em>Proof.</em> <em>Base case</em> <span class="arithmatex">\(n=1\)</span>: <span class="arithmatex">\((1+h)^1=1+h\ge1+1\cdot h\)</span>.</p>
+<p><em>Inductive step.</em> Assume <span class="arithmatex">\((1+h)^n\ge1+nh\)</span>. Multiply both sides by <span class="arithmatex">\(1+h&gt;0\)</span> (this keeps the inequality):</p>
+<div class="arithmatex">\[(1+h)^{n+1}\ge(1+nh)(1+h)=1+(n+1)h+nh^2\ge1+(n+1)h,\]</div>
+<p>because <span class="arithmatex">\(nh^2\ge0\)</span>. This is the statement for <span class="arithmatex">\(n+1\)</span>, so by induction it holds for all <span class="arithmatex">\(n\ge1\)</span>. ◻ ∎</p>
+<p>The inequality is the key to Theorem <a href="#thm-geom">10.2.11</a>: it says that <span class="arithmatex">\((1+h)^n\)</span> grows at least linearly in <span class="arithmatex">\(n\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 10.2.35: Absolute values and limits</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that if <span class="arithmatex">\(a_n\to L\)</span>, then <span class="arithmatex">\(|a_n|\to|L|\)</span>. Is the converse true?</p>
+<p><em>Proof.</em> By the reverse triangle inequality <span class="arithmatex">\(\big||a_n|-|L|\big|\le|a_n-L|\)</span>. (To see it, write <span class="arithmatex">\(|a_n|=|(a_n-L)+L|\le|a_n-L|+|L|\)</span>, so <span class="arithmatex">\(|a_n|-|L|\le|a_n-L|\)</span>; exchange the roles of <span class="arithmatex">\(a_n\)</span> and <span class="arithmatex">\(L\)</span> to get <span class="arithmatex">\(|L|-|a_n|\le|a_n-L|\)</span>.) Let <span class="arithmatex">\(\varepsilon&gt;0\)</span> and choose <span class="arithmatex">\(N\)</span> with <span class="arithmatex">\(|a_n-L|&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N\)</span>. Then <span class="arithmatex">\(\big||a_n|-|L|\big|&lt;\varepsilon\)</span> for <span class="arithmatex">\(n&gt;N\)</span>, which is the claim. (Alternatively, apply Theorem <a href="#thm-contfn">10.2.6</a> with <span class="arithmatex">\(f(x)=|x|\)</span>, which is continuous.) ◻ ∎</p>
+<p>The converse is false: <span class="arithmatex">\(a_n=(-1)^n\)</span> has <span class="arithmatex">\(|a_n|=1\to1\)</span>, but <span class="arithmatex">\(\{a_n\}\)</span> diverges. The converse <em>does</em> hold when the limit is zero: <span class="arithmatex">\(|a_n|\to0\Rightarrow a_n\to0\)</span>, as in the remark after Theorem <a href="#thm-contfn">10.2.6</a>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-compute">10.2.1</a>.</strong> (a) Divide by <span class="arithmatex">\(n^3\)</span>: <span class="arithmatex">\(\frac{4-1/n^2}{2+7/n^3}\to\frac42=2\)</span>. (b) Conjugate: <span class="arithmatex">\(\sqrt{n+3}-\sqrt n=\frac{3}{\sqrt{n+3}+\sqrt n}\to0\)</span> since the denominator tends to infinity. (c) <span class="arithmatex">\(\frac{n^2-1}{n+2}=\frac{n-1/n}{1+2/n}\to\infty\)</span> (the numerator tends to infinity and the denominator to <span class="arithmatex">\(1\)</span>); the sequence diverges to infinity. Equivalently <span class="arithmatex">\(\frac{n^2-1}{n+2}=n-2+\frac3{n+2}\)</span> by division.</p>
+<p><strong>Knowledge Check <a href="#kc-growthkc">10.2.2</a>.</strong> (a) <span class="arithmatex">\(\left|\frac{(-1)^nn}{n^2+1}\right|\le\frac n{n^2+1}\to0\)</span>, so by squeezing the limit is <span class="arithmatex">\(0\)</span>. (b) Divide by <span class="arithmatex">\(5^n\)</span>: <span class="arithmatex">\(\frac{(2/5)^n+1}{1+5^{-n}}\to\frac{0+1}{1+0}=1\)</span>. (c) <span class="arithmatex">\(n^{20}/1.5^n\to0\)</span> by Theorem <a href="#thm-growth">10.2.13</a>(b), but the first <span class="arithmatex">\(50\)</span> terms are large: for example <span class="arithmatex">\(50^{20}/1.5^{50}\approx1.5\times10^{25}\)</span>, so a table of <span class="arithmatex">\(50\)</span> terms would show huge, growing values and mislead; the decrease begins only much later.</p>
+<p><strong>Knowledge Check <a href="#kc-affinekc">10.2.3</a>.</strong> (a) <span class="arithmatex">\(r=\frac12\)</span>, <span class="arithmatex">\(d=\frac32\)</span>, <span class="arithmatex">\(L=\frac{3/2}{1/2}=3\)</span>, <span class="arithmatex">\(a_n=3+(1-3)\left(\frac12\right)^{n-1}=3-2\left(\frac12\right)^{n-1}\)</span>. Check <span class="arithmatex">\(a_2=\frac{1+3}2=2\)</span> and the formula <span class="arithmatex">\(3-1=2\)</span>. (b) <span class="arithmatex">\(|r|&lt;1\)</span>, so <span class="arithmatex">\(a_n\to3\)</span>. (c) <span class="arithmatex">\(r=-2\)</span>, <span class="arithmatex">\(d=3\)</span>, <span class="arithmatex">\(L=1\)</span>, <span class="arithmatex">\(b_n=1+(2-1)(-2)^{n-1}=1+(-2)^{n-1}\)</span>; since <span class="arithmatex">\(|r|&gt;1\)</span> and <span class="arithmatex">\(b_1\ne L\)</span>, <span class="arithmatex">\(b_n\)</span> diverges.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
