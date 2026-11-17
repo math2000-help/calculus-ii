@@ -1,0 +1,3285 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../8.4/notes/">
+      
+      
+        <link rel="next" href="../../10.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.1">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The idea
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-0-divide-when-the-numerator-is-too-large" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 0: divide when the numerator is too large
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decomposition-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The decomposition theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-numerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finding the numerators
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-the-pieces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Integrating the pieces
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-an-integrand-rational" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Making an integrand rational
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-distinct-linear-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Distinct linear factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-repeated-linear-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Repeated linear factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-quadratic-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Quadratic factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-division-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Division first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-definite-integrals-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Definite integrals and applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-substitutions-that-produce-a-rational-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Substitutions that produce a rational function
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The idea
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-0-divide-when-the-numerator-is-too-large" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 0: divide when the numerator is too large
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-decomposition-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The decomposition theorem
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-numerators" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finding the numerators
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-the-pieces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Integrating the pieces
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-an-integrand-rational" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Making an integrand rational
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-distinct-linear-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Distinct linear factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-repeated-linear-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Repeated linear factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-quadratic-factors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Quadratic factors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-division-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Division first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-definite-integrals-and-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Definite integrals and applications
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-substitutions-that-produce-a-rational-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Substitutions that produce a rational function
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="85-partial-fractions">8.5 Partial Fractions<a class="headerlink" href="#85-partial-fractions" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>A <em>rational function</em> is a quotient of two polynomials. The integral <span class="arithmatex">\(\int\frac{7x+5}{(x-1)(x+2)}\,dx\)</span> cannot be found by a substitution or by parts, yet it is easy once we notice that <span class="arithmatex">\(\frac{7x+5}{(x-1)(x+2)}=\frac4{x-1}+\frac3{x+2}\)</span>: each piece is a logarithm. The method of partial fractions undoes the addition of fractions that you learned in algebra. This section answers three questions. <em>Can it always be done?</em> Yes (Theorem <a href="#thm-pfd">8.5.5</a>), and the decomposition is unique; the proof uses only the division of polynomials, and one fact about real polynomials, proved in Appendix L (Theorem <a href="../../appendix/appendix/#thm-realfactor">L.2</a>). <em>How do we find the numerators?</em> By equating coefficients, by substituting numbers, and by the cover-up shortcut (Theorem <a href="#thm-coef">8.5.6</a>). <em>How do we integrate the pieces?</em> The linear pieces give powers and logarithms; the quadratic pieces give a logarithm and an inverse tangent, and repeated quadratic factors need the reduction formula of Section 8.4 (Theorem <a href="#thm-pieces">8.5.9</a>). The last part of the section shows when a substitution turns an integral that is not rational into one that is.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>divide first when the numerator has degree at least that of the denominator, and say why (Theorem <a href="#thm-div">8.5.2</a>);</p>
+</li>
+<li>
+<p>write the form of the partial fraction decomposition for each of the four kinds of factor (distinct linear, repeated linear, irreducible quadratic, repeated irreducible quadratic) and say why that form always works and is unique;</p>
+</li>
+<li>
+<p>find the unknown numerators by equating coefficients, by substituting values, by the cover-up method and by the derivative trick, and know when each is quicker;</p>
+</li>
+<li>
+<p>integrate <span class="arithmatex">\(\frac A{(x-r)^n}\)</span> and <span class="arithmatex">\(\frac{Bx+C}{(x^2+bx+c)^n}\)</span>, separating the logarithm from the inverse tangent, and use the reduction formula for <span class="arithmatex">\(n\ge2\)</span>;</p>
+</li>
+<li>
+<p>evaluate definite integrals of rational functions and check the sign and size of the answer;</p>
+</li>
+<li>
+<p>recognize when partial fractions are not needed, and when a substitution such as <span class="arithmatex">\(u=e^x\)</span> makes an integrand rational;</p>
+</li>
+<li>
+<p>check every antiderivative by differentiating it.</p>
+</li>
+</ul>
+<h2 id="the-idea">The idea<a class="headerlink" href="#the-idea" title="Permanent link">&para;</a></h2>
+<p>In algebra, <span class="arithmatex">\(\frac4{x-1}+\frac3{x+2}=\frac{4(x+2)+3(x-1)}{(x-1)(x+2)}=\frac{7x+5}{(x-1)(x+2)}\)</span>. To integrate the right side we must run this backward. Each term on the left is a case of <span class="arithmatex">\(\int\frac{dx}{x-r}=\ln\lvert x-r\rvert+C\)</span> (the table of Section 8.1), so the whole integral is immediate. Figure 1 shows what the decomposition means: the graph of the rational function is the <em>sum</em> of the graphs of its pieces.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.1: The idea: undoing the addition of fractions</p>
+<p><span id="ex-m1"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{7x+5}{(x-1)(x+2)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Look for numbers <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span> with</p>
+<div class="arithmatex">\[\frac{7x+5}{(x-1)(x+2)}=\frac A{x-1}+\frac B{x+2}.\]</div>
+<p>Multiply both sides by <span class="arithmatex">\((x-1)(x+2)\)</span> (allowed for <span class="arithmatex">\(x\ne1,-2\)</span>): <span class="arithmatex">\(7x+5=A(x+2)+B(x-1)\)</span>. This is true for all <span class="arithmatex">\(x\ne1,-2\)</span>, and both sides are polynomials, so it is true for <em>every</em> <span class="arithmatex">\(x\)</span> (both sides have degree at most <span class="arithmatex">\(1\)</span>, and two such polynomials that agree at more than one point are the same polynomial). Put <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(12=3A\)</span>, so <span class="arithmatex">\(A=4\)</span>. Put <span class="arithmatex">\(x=-2\)</span>: <span class="arithmatex">\(-9=-3B\)</span>, so <span class="arithmatex">\(B=3\)</span>. Check by adding back: <span class="arithmatex">\(4(x+2)+3(x-1)=7x+5\)</span>. Then</p>
+<div class="arithmatex">\[\int\frac{7x+5}{(x-1)(x+2)}\,dx=4\int\frac{dx}{x-1}+3\int\frac{dx}{x+2}=4\ln\lvert x-1\rvert+3\ln\lvert x+2\rvert+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac d{dx}\left(4\ln\lvert x-1\rvert+3\ln\lvert x+2\rvert\right)=\frac4{x-1}+\frac3{x+2}=\frac{7x+5}{(x-1)(x+2)}\)</span>.</p>
+<p><img alt="Diagram: \(x=-2\); \(x=1\); \(f(x)\); (a) the function $f(x)=\frac{7x+5; \(x=1\); \(3\); \(f(x)\); $\frac{4; $\frac3{x+2; (b) the pieces, for \(x&gt;1\)" class="calc-figure" src="../figures/notes-fig1.svg" width="776" /></p>
+<p>Figure 1. (a) The function <span class="arithmatex">\(f(x)=\frac{7x+5}{(x-1)(x+2)}\)</span> (blue) with its vertical asymptotes <span class="arithmatex">\(x=-2\)</span> and <span class="arithmatex">\(x=1\)</span> (dashed); the graph is cut off at <span class="arithmatex">\(y=\pm5\)</span>. (b) For <span class="arithmatex">\(x&gt;1\)</span>, the graph of <span class="arithmatex">\(f\)</span> (blue) is the sum of the graphs of its partial fractions <span class="arithmatex">\(\frac4{x-1}\)</span> (red) and <span class="arithmatex">\(\frac3{x+2}\)</span> (green); at <span class="arithmatex">\(x=3\)</span> the heights are <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(\frac35\)</span>, and <span class="arithmatex">\(\frac42+\frac35=\frac{13}5\)</span>. Near <span class="arithmatex">\(x=1\)</span> the red piece blows up and the green one stays small; near <span class="arithmatex">\(x=-2\)</span> the roles are reversed. That is why each numerator can be found by looking at one asymptote at a time.</p>
+</div>
+<h2 id="step-0-divide-when-the-numerator-is-too-large">Step 0: divide when the numerator is too large<a class="headerlink" href="#step-0-divide-when-the-numerator-is-too-large" title="Permanent link">&para;</a></h2>
+<p>A <em>proper</em> rational function <span class="arithmatex">\(\frac PD\)</span> has <span class="arithmatex">\(\deg P&lt;\deg D\)</span>; otherwise it is <em>improper</em>. Adding fractions never produces an improper term out of proper ones, so an improper function must first be split into a polynomial plus a proper function. That is the division of polynomials.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.5.2: Division of polynomials</p>
+<p><span id="thm-div"></span></p>
+<p>Let <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(D\)</span> be polynomials with <span class="arithmatex">\(D\ne0\)</span>. There are polynomials <span class="arithmatex">\(Q\)</span> and <span class="arithmatex">\(R\)</span>, with <span class="arithmatex">\(\deg R&lt;\deg D\)</span> (or <span class="arithmatex">\(R=0\)</span>), such that <span class="arithmatex">\(N=QD+R\)</span>. They are unique. In particular, if <span class="arithmatex">\(\deg N\ge\deg D\)</span> then <span class="arithmatex">\(\deg Q=\deg N-\deg D\)</span>, and</p>
+<div class="arithmatex">\[\frac ND=Q+\frac RD .\]</div>
+</div>
+<p><em>Proof.</em> <em>Existence,</em> by induction on <span class="arithmatex">\(\deg N\)</span>. If <span class="arithmatex">\(N=0\)</span> or <span class="arithmatex">\(\deg N&lt;\deg D\)</span>, take <span class="arithmatex">\(Q=0\)</span> and <span class="arithmatex">\(R=N\)</span>. Suppose <span class="arithmatex">\(\deg N=n\ge d=\deg D\)</span> and that the claim holds for all numerators of smaller degree. Let <span class="arithmatex">\(\alpha x^n\)</span> and <span class="arithmatex">\(\delta x^d\)</span> be the leading terms of <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(D\)</span> (<span class="arithmatex">\(\delta\ne0\)</span>). The polynomial <span class="arithmatex">\(N_1=N-\frac\alpha\delta x^{n-d}D\)</span> has no <span class="arithmatex">\(x^n\)</span> term (the two leading terms cancel), so <span class="arithmatex">\(\deg N_1&lt;n\)</span>. By the induction hypothesis <span class="arithmatex">\(N_1=Q_1D+R\)</span> with <span class="arithmatex">\(\deg R&lt;d\)</span>. Then <span class="arithmatex">\(N=\left(Q_1+\frac\alpha\delta x^{n-d}\right)D+R\)</span>.</p>
+<p><em>Uniqueness.</em> If <span class="arithmatex">\(N=QD+R=Q'D+R'\)</span> with <span class="arithmatex">\(\deg R,\deg R'&lt;d\)</span>, then <span class="arithmatex">\((Q-Q')D=R'-R\)</span>. The right side has degree less than <span class="arithmatex">\(d\)</span>. If <span class="arithmatex">\(Q\ne Q'\)</span> the left side has degree <span class="arithmatex">\(\deg(Q-Q')+d\ge d\)</span>, which is impossible. So <span class="arithmatex">\(Q=Q'\)</span>, and then <span class="arithmatex">\(R=R'\)</span>. The degree of <span class="arithmatex">\(Q\)</span> follows from the construction (each step lowers the degree of the numerator, and the first step contributes the term <span class="arithmatex">\(\frac\alpha\delta x^{n-d}\)</span> of highest degree). Dividing <span class="arithmatex">\(N=QD+R\)</span> by <span class="arithmatex">\(D\)</span> gives <span class="arithmatex">\(\frac ND=Q+\frac RD\)</span>. ◻ ∎</p>
+<p>The algorithm in the proof is long division: at each step remove the leading term. A quotient polynomial integrates term by term, so only <span class="arithmatex">\(\frac RD\)</span> needs partial fractions.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.3: Division first</p>
+<p><span id="ex-m2"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{x^3+2x^2-6}{x^2-x-2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The numerator has degree <span class="arithmatex">\(3\ge2\)</span>, so divide. First term: <span class="arithmatex">\(x^3\div x^2=x\)</span>, and <span class="arithmatex">\(x\,(x^2-x-2)=x^3-x^2-2x\)</span>. Subtract: <span class="arithmatex">\((x^3+2x^2-6)-(x^3-x^2-2x)=3x^2+2x-6\)</span>. Next term: <span class="arithmatex">\(3x^2\div x^2=3\)</span>, and <span class="arithmatex">\(3(x^2-x-2)=3x^2-3x-6\)</span>. Subtract: <span class="arithmatex">\((3x^2+2x-6)-(3x^2-3x-6)=5x\)</span>. The degree of <span class="arithmatex">\(5x\)</span> is less than <span class="arithmatex">\(2\)</span>, so we stop:</p>
+<div class="arithmatex">\[\frac{x^3+2x^2-6}{x^2-x-2}=x+3+\frac{5x}{x^2-x-2}.\]</div>
+<p>Factor <span class="arithmatex">\(x^2-x-2=(x-2)(x+1)\)</span> and write <span class="arithmatex">\(\frac{5x}{(x-2)(x+1)}=\frac A{x-2}+\frac B{x+1}\)</span>, so <span class="arithmatex">\(5x=A(x+1)+B(x-2)\)</span>. At <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(10=3A\)</span>, <span class="arithmatex">\(A=\frac{10}3\)</span>. At <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(-5=-3B\)</span>, <span class="arithmatex">\(B=\frac53\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\frac{x^3+2x^2-6}{x^2-x-2}\,dx=\int\left(x+3+\frac{10/3}{x-2}+\frac{5/3}{x+1}\right)dx=\frac{x^2}2+3x+\frac{10}3\ln\lvert x-2\rvert+\frac53\ln\lvert x+1\rvert+C .\]</div>
+<p><em>Check.</em> The derivative of the right side is <span class="arithmatex">\(x+3+\frac{10/3}{x-2}+\frac{5/3}{x+1}\)</span>, which is <span class="arithmatex">\(x+3+\frac{5x}{x^2-x-2}\)</span> by the partial fractions above, and that equals the integrand by the division.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.5.1: Is division needed?</p>
+<p><span id="kc-kcdiv"></span></p>
+<p>For each integrand say whether to divide first, and if so find the quotient and remainder: (a) <span class="arithmatex">\(\dfrac{x^2+1}{x^2-4}\)</span>; (b) <span class="arithmatex">\(\dfrac{3x+2}{x^2-4}\)</span>; (c) <span class="arithmatex">\(\dfrac{x^3}{x^2+1}\)</span>.</p>
+</div>
+<h2 id="the-decomposition-theorem">The decomposition theorem<a class="headerlink" href="#the-decomposition-theorem" title="Permanent link">&para;</a></h2>
+<p>Which fractions do we add up? The denominator tells us. By Theorem <a href="../../appendix/appendix/#thm-realfactor">L.2</a> every real polynomial is a constant times a product of real linear factors and real quadratic factors with no real root; collecting equal factors, a monic denominator is</p>
+<div class="arithmatex">\[D(x)=(x-r_1)^{m_1}\cdots(x-r_s)^{m_s}\,\left(x^2+b_1x+c_1\right)^{n_1}\cdots\left(x^2+b_tx+c_t\right)^{n_t},\]</div>
+<p>with the <span class="arithmatex">\(r_i\)</span> distinct, the quadratics distinct, and <span class="arithmatex">\(b_j^2-4c_j&lt;0\)</span>. The linear factors are of two kinds: appearing once (<span class="arithmatex">\(m=1\)</span>) or repeated. The same is true of the quadratic factors. Each prime factor <span class="arithmatex">\(p\)</span> of power <span class="arithmatex">\(m\)</span> contributes <span class="arithmatex">\(m\)</span> fractions, with denominators <span class="arithmatex">\(p,p^2,\dots,p^m\)</span>, and the numerators have degree less than that of <span class="arithmatex">\(p\)</span>: a constant over a linear factor, and <span class="arithmatex">\(Bx+C\)</span> over a quadratic one.</p>
+<p>The proof of the next theorem needs one property of irreducible factors: they behave like prime numbers. Call a nonconstant polynomial <span class="arithmatex">\(p\)</span> <em>irreducible</em> if its only divisors are constants and constant multiples of <span class="arithmatex">\(p\)</span>. A linear polynomial is irreducible (a divisor has degree <span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(1\)</span>). A quadratic <span class="arithmatex">\(x^2+bx+c\)</span> with <span class="arithmatex">\(b^2-4c&lt;0\)</span> is irreducible, since a divisor of degree <span class="arithmatex">\(1\)</span> would give a real root.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.5.4: Euclid’s lemma for polynomials</p>
+<p><span id="thm-euclid"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> be an irreducible polynomial and <span class="arithmatex">\(A,B\)</span> polynomials. If <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(AB\)</span>, then <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(A\)</span> or <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(B\)</span>.</p>
+</div>
+<p><em>Proof.</em> Suppose <span class="arithmatex">\(p\)</span> does not divide <span class="arithmatex">\(A\)</span>; we show that <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(B\)</span>. Among all nonzero polynomials of the form <span class="arithmatex">\(Up+VA\)</span> (<span class="arithmatex">\(U,V\)</span> polynomials) choose one, <span class="arithmatex">\(g\)</span>, of least degree. Divide <span class="arithmatex">\(p\)</span> by <span class="arithmatex">\(g\)</span> (Theorem <a href="#thm-div">8.5.2</a>): <span class="arithmatex">\(p=Qg+R\)</span> with <span class="arithmatex">\(\deg R&lt;\deg g\)</span>. Then <span class="arithmatex">\(R=p-Qg=p-Q(Up+VA)=(1-QU)p+(-QV)A\)</span> is of the same form, and has smaller degree than <span class="arithmatex">\(g\)</span>, so <span class="arithmatex">\(R=0\)</span> by the choice of <span class="arithmatex">\(g\)</span>. Thus <span class="arithmatex">\(g\)</span> divides <span class="arithmatex">\(p\)</span>. In the same way <span class="arithmatex">\(g\)</span> divides <span class="arithmatex">\(A\)</span>. Since <span class="arithmatex">\(p\)</span> is irreducible, <span class="arithmatex">\(g\)</span> is a constant or a constant multiple of <span class="arithmatex">\(p\)</span>; the second would make <span class="arithmatex">\(p\)</span> divide <span class="arithmatex">\(A\)</span>, which is excluded. So <span class="arithmatex">\(g\)</span> is a nonzero constant, and, dividing by it, <span class="arithmatex">\(1=U_1p+V_1A\)</span> for some polynomials <span class="arithmatex">\(U_1,V_1\)</span>. Multiply by <span class="arithmatex">\(B\)</span>: <span class="arithmatex">\(B=U_1pB+V_1AB\)</span>. Both terms on the right are divisible by <span class="arithmatex">\(p\)</span> (the second because <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(AB\)</span>). Hence <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(B\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.5.5: The partial fraction decomposition</p>
+<p><span id="thm-pfd"></span></p>
+<p>Let <span class="arithmatex">\(D\)</span> be as above and let <span class="arithmatex">\(P\)</span> be a polynomial with <span class="arithmatex">\(\deg P&lt;\deg D\)</span>. Then there are real numbers <span class="arithmatex">\(A_{ik}\)</span> <span class="arithmatex">\((1\le i\le s,\ 1\le k\le m_i)\)</span> and <span class="arithmatex">\(B_{jk},C_{jk}\)</span> <span class="arithmatex">\((1\le j\le t,\ 1\le k\le n_j)\)</span> such that</p>
+<div class="arithmatex">\[\frac{P(x)}{D(x)}=\sum_{i=1}^s\sum_{k=1}^{m_i}\frac{A_{ik}}{(x-r_i)^k}+\sum_{j=1}^t\sum_{k=1}^{n_j}\frac{B_{jk}x+C_{jk}}{\left(x^2+b_jx+c_j\right)^k}\]</div>
+<p>for all <span class="arithmatex">\(x\)</span> where <span class="arithmatex">\(D(x)\ne0\)</span>, and these numbers are unique. The number of unknowns is <span class="arithmatex">\(\sum m_i+2\sum n_j=\deg D\)</span>.</p>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(\mathcal V\)</span> be the set of all lists of real coefficients as in the theorem; it is a vector space of dimension <span class="arithmatex">\(\sum m_i+2\sum n_j=\deg D\)</span> (each linear factor power <span class="arithmatex">\(m_i\)</span> contributes <span class="arithmatex">\(m_i\)</span> numbers, each quadratic <span class="arithmatex">\(2n_j\)</span>). Let <span class="arithmatex">\(\mathcal W\)</span> be the vector space of polynomials of degree less than <span class="arithmatex">\(\deg D\)</span> (together with <span class="arithmatex">\(0\)</span>); its dimension is also <span class="arithmatex">\(\deg D\)</span> (the coefficients of <span class="arithmatex">\(1,x,\dots,x^{\deg D-1}\)</span>). Given a list <span class="arithmatex">\(c\in\mathcal V\)</span>, multiply the right side of the decomposition by <span class="arithmatex">\(D\)</span>. A term <span class="arithmatex">\(\frac{N}{p^k}\)</span> with <span class="arithmatex">\(\deg N&lt;\deg p\)</span> becomes <span class="arithmatex">\(N\cdot\frac D{p^k}\)</span>, a polynomial (because <span class="arithmatex">\(p^k\)</span> divides <span class="arithmatex">\(D\)</span> for <span class="arithmatex">\(k\le\)</span> the power of <span class="arithmatex">\(p\)</span> in <span class="arithmatex">\(D\)</span>) of degree less than <span class="arithmatex">\(\deg p+\deg D-k\deg p\le\deg D\)</span>. So <span class="arithmatex">\(c\mapsto\Phi(c)=\)</span> (sum of these polynomials) is a linear map <span class="arithmatex">\(\Phi:\mathcal V\to\mathcal W\)</span>. The theorem says: for every <span class="arithmatex">\(P\in\mathcal W\)</span> there is exactly one <span class="arithmatex">\(c\)</span> with <span class="arithmatex">\(\Phi(c)=P\)</span>. Since <span class="arithmatex">\(\dim\mathcal V=\dim\mathcal W\)</span>, it is enough to show that <span class="arithmatex">\(\Phi\)</span> is one-to-one, that is, that <span class="arithmatex">\(\Phi(c)=0\)</span> forces <span class="arithmatex">\(c=0\)</span> (a one-to-one linear map between spaces of the same finite dimension is onto, by the rank–nullity theorem of linear algebra).</p>
+<p>Suppose <span class="arithmatex">\(\Phi(c)=0\)</span>, so <span class="arithmatex">\(\sum_p\sum_k\frac{N_{p,k}}{p^k}=0\)</span> for all <span class="arithmatex">\(x\)</span> with <span class="arithmatex">\(D(x)\ne0\)</span>, where <span class="arithmatex">\(p\)</span> runs through the distinct irreducible factors of <span class="arithmatex">\(D\)</span> and <span class="arithmatex">\(N_{p,k}\)</span> is the numerator over <span class="arithmatex">\(p^k\)</span> (<span class="arithmatex">\(\deg N_{p,k}&lt;\deg p\)</span>). Assume not all <span class="arithmatex">\(N_{p,k}\)</span> are <span class="arithmatex">\(0\)</span>. Choose a factor <span class="arithmatex">\(p\)</span> and the largest <span class="arithmatex">\(k_0\)</span> with <span class="arithmatex">\(N_{p,k_0}\ne0\)</span> (and, for the other factors, nothing is claimed). Let <span class="arithmatex">\(E\)</span> be the product of all the <em>other</em> prime powers <span class="arithmatex">\(q^{n_q}\)</span> in <span class="arithmatex">\(D\)</span>. Multiply the identity by <span class="arithmatex">\(p^{k_0}E\)</span>:</p>
+<div class="arithmatex">\[0=\sum_{k\le k_0}p^{k_0-k}E\,N_{p,k}+\sum_{q\ne p}\sum_k p^{k_0}\,\frac{E}{q^k}\,N_{q,k}.\]</div>
+<p>(Terms with <span class="arithmatex">\(k&gt;k_0\)</span> have <span class="arithmatex">\(N_{p,k}=0\)</span>.) Every term of the first sum with <span class="arithmatex">\(k&lt;k_0\)</span> contains the factor <span class="arithmatex">\(p\)</span> because <span class="arithmatex">\(k_0-k\ge1\)</span>; every term of the second sum contains <span class="arithmatex">\(p^{k_0}\)</span> and <span class="arithmatex">\(k_0\ge1\)</span>, and <span class="arithmatex">\(\frac E{q^k}\)</span> is a polynomial. The only term without an evident factor <span class="arithmatex">\(p\)</span> is <span class="arithmatex">\(EN_{p,k_0}\)</span>. Hence <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(EN_{p,k_0}\)</span>. By Theorem <a href="#thm-euclid">8.5.4</a>, <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(N_{p,k_0}\)</span> or <span class="arithmatex">\(p\)</span> divides <span class="arithmatex">\(E\)</span>. The first is impossible: <span class="arithmatex">\(N_{p,k_0}\ne0\)</span> has degree less than <span class="arithmatex">\(\deg p\)</span>. For the second, <span class="arithmatex">\(E\)</span> is a product of irreducible polynomials <span class="arithmatex">\(q\ne p\)</span>; applying Theorem <a href="#thm-euclid">8.5.4</a> again and again, <span class="arithmatex">\(p\)</span> would divide one of them, say <span class="arithmatex">\(q\)</span>; then <span class="arithmatex">\(q\)</span> is a constant multiple of <span class="arithmatex">\(p\)</span> (the divisors of the irreducible <span class="arithmatex">\(q\)</span> are only constants and its own multiples), and since both are monic, <span class="arithmatex">\(q=p\)</span>, contradicting <span class="arithmatex">\(q\ne p\)</span>. This contradiction shows that all <span class="arithmatex">\(N_{p,k}\)</span> vanish, so <span class="arithmatex">\(c=0\)</span> and <span class="arithmatex">\(\Phi\)</span> is one-to-one. ◻ ∎</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Factor of <span class="arithmatex">\(D\)</span></strong></th>
+<th style="text-align: left;"><strong>Terms to include</strong></th>
+<th style="text-align: left;"><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(x-r\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac A{x-r}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac{A}{x-3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\((x-r)^m\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac A{x-r}+\dfrac B{(x-r)^2}+\cdots+\dfrac Z{(x-r)^m}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\((x+1)^3\)</span>: <span class="arithmatex">\(\dfrac A{x+1}+\dfrac B{(x+1)^2}+\dfrac C{(x+1)^3}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(x^2+bx+c\)</span>, <span class="arithmatex">\(b^2-4c&lt;0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac{Bx+C}{x^2+bx+c}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac{Bx+C}{x^2+4}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\((x^2+bx+c)^n\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\dfrac{B_1x+C_1}{x^2+bx+c}+\cdots+\dfrac{B_nx+C_n}{(x^2+bx+c)^n}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\((x^2+1)^2\)</span>: <span class="arithmatex">\(\dfrac{Bx+C}{x^2+1}+\dfrac{Dx+E}{(x^2+1)^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.5.2: The form of the decomposition</p>
+<p><span id="kc-kcform"></span></p>
+<p>Write the <em>form</em> of the partial fraction decomposition (do not find the numbers) of (a) <span class="arithmatex">\(\dfrac{x+2}{x(x-3)(x+5)}\)</span>; (b) <span class="arithmatex">\(\dfrac{3x-1}{x^2(x^2+1)}\)</span>; (c) <span class="arithmatex">\(\dfrac{x^2}{(x-1)^3(x^2+x+1)^2}\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.5.1: Why <span class="arithmatex">\(Bx+C\)</span> over a quadratic?</p>
+<p><span id="think-numer"></span></p>
+<p>A student writes <span class="arithmatex">\(\frac{1}{x(x^2+1)}=\frac Ax+\frac B{x^2+1}\)</span> with constant numerators, and cannot find <span class="arithmatex">\(A\)</span> and <span class="arithmatex">\(B\)</span>. Why does this fail? How many unknowns does Theorem <a href="#thm-pfd">8.5.5</a> give, and how many does the student’s form have?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>With constant numerators <span class="arithmatex">\(1=A(x^2+1)+Bx\)</span>. At <span class="arithmatex">\(x=0\)</span> this gives <span class="arithmatex">\(A=1\)</span>; comparing the coefficients of <span class="arithmatex">\(x^2\)</span> gives <span class="arithmatex">\(A=0\)</span>, a contradiction. The denominator <span class="arithmatex">\(x(x^2+1)\)</span> has degree <span class="arithmatex">\(3\)</span>, so Theorem <a href="#thm-pfd">8.5.5</a> gives three unknowns (<span class="arithmatex">\(\frac Ax+\frac{Bx+C}{x^2+1}\)</span>), and the numerators <span class="arithmatex">\(1\cdot\)</span> (any polynomial of degree <span class="arithmatex">\(&lt;3\)</span>) form a space of dimension <span class="arithmatex">\(3\)</span>; the student’s form has only two unknowns and cannot reach every such polynomial. The correct decomposition is <span class="arithmatex">\(\frac1x-\frac x{x^2+1}\)</span>.</p>
+</details>
+</div>
+<h2 id="finding-the-numerators">Finding the numerators<a class="headerlink" href="#finding-the-numerators" title="Permanent link">&para;</a></h2>
+<p>Once the form is chosen, multiply by <span class="arithmatex">\(D\)</span> to get a polynomial identity, and find the unknowns in one of three ways. <em>Equating coefficients</em> compares the coefficients of each power of <span class="arithmatex">\(x\)</span> and gives a linear system. <em>Substituting values</em> puts convenient numbers (the roots of <span class="arithmatex">\(D\)</span> first) into the identity. The <em>cover-up method</em> is substituting a root of <span class="arithmatex">\(D\)</span> in a smart way; the theorem below says exactly what it computes.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.5.6: Cover-up and the derivative trick</p>
+<p><span id="thm-coef"></span></p>
+<p>Let <span class="arithmatex">\(\frac PD\)</span> be proper, let <span class="arithmatex">\(D=(x-r)^m E\)</span> with <span class="arithmatex">\(E(r)\ne0\)</span>, and put <span class="arithmatex">\(G(x)=\dfrac{P(x)}{E(x)}\)</span>. In the decomposition of Theorem <a href="#thm-pfd">8.5.5</a>, the numerators over the powers of <span class="arithmatex">\(x-r\)</span> are</p>
+<div class="arithmatex">\[A_m=G(r),\qquad A_{m-j}=\frac{G^{(j)}(r)}{j!}\quad(j=1,\dots,m-1).\]</div>
+<p>In particular, for a simple root (<span class="arithmatex">\(m=1\)</span>), <span class="arithmatex">\(A_1=\dfrac{P(r)}{E(r)}=\dfrac{P(r)}{D'(r)}\)</span>: <em>cover up</em> the factor <span class="arithmatex">\(x-r\)</span> in <span class="arithmatex">\(D\)</span> and evaluate the rest of the fraction at <span class="arithmatex">\(r\)</span>.</p>
+</div>
+<p><em>Proof.</em> Multiply the decomposition by <span class="arithmatex">\((x-r)^m\)</span>. The terms over powers of <span class="arithmatex">\(x-r\)</span> become <span class="arithmatex">\(A_m+A_{m-1}(x-r)+\dots+A_1(x-r)^{m-1}\)</span>. Every other term of the decomposition has a denominator that is a power of a different irreducible factor, so after multiplication it has the form <span class="arithmatex">\((x-r)^m\times\)</span> (a fraction whose denominator does not vanish at <span class="arithmatex">\(r\)</span>). Collecting these terms into one fraction <span class="arithmatex">\(H\)</span>, whose denominator does not vanish at <span class="arithmatex">\(r\)</span> (so <span class="arithmatex">\(H\)</span> has derivatives of all orders near <span class="arithmatex">\(r\)</span>), we get, for <span class="arithmatex">\(x\)</span> near <span class="arithmatex">\(r\)</span> and <span class="arithmatex">\(x\ne r\)</span>,</p>
+<div class="arithmatex">\[G(x)=\frac{P(x)}{E(x)}=A_m+A_{m-1}(x-r)+\dots+A_1(x-r)^{m-1}+(x-r)^mH(x).\]</div>
+<p>Differentiate <span class="arithmatex">\(j\)</span> times, <span class="arithmatex">\(0\le j\le m-1\)</span>, and put <span class="arithmatex">\(x=r\)</span>. The polynomial part gives <span class="arithmatex">\(j!\,A_{m-j}\)</span>. By the product rule every term of the <span class="arithmatex">\(j\)</span>-th derivative of <span class="arithmatex">\((x-r)^mH(x)\)</span> contains a factor <span class="arithmatex">\((x-r)^{m-i}\)</span> with <span class="arithmatex">\(i\le j&lt;m\)</span>, so it is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(r\)</span>. Hence <span class="arithmatex">\(G^{(j)}(r)=j!\,A_{m-j}\)</span>. For <span class="arithmatex">\(m=1\)</span>: <span class="arithmatex">\(D=(x-r)E\)</span> gives <span class="arithmatex">\(D'=E+(x-r)E'\)</span>, so <span class="arithmatex">\(D'(r)=E(r)\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.7: Three distinct linear factors, the cover-up method, and a definite integral</p>
+<p><span id="ex-m3"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^2\frac{5x+7}{(x+1)(x+2)(x+3)}\,dx\)</span> and check the sign and size of the answer.</p>
+<p><strong>Solution.</strong> The degree <span class="arithmatex">\(1\)</span> of the numerator is less than <span class="arithmatex">\(3\)</span>, so no division is needed. Write</p>
+<div class="arithmatex">\[\frac{5x+7}{(x+1)(x+2)(x+3)}=\frac A{x+1}+\frac B{x+2}+\frac C{x+3}.\]</div>
+<p>Cover-up (Theorem <a href="#thm-coef">8.5.6</a>, <span class="arithmatex">\(m=1\)</span>): <span class="arithmatex">\(A\)</span> is the fraction with <span class="arithmatex">\(x+1\)</span> covered up, evaluated at <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(A=\frac{5(-1)+7}{(1)(2)}=1\)</span>. For <span class="arithmatex">\(B\)</span> cover up <span class="arithmatex">\(x+2\)</span> and put <span class="arithmatex">\(x=-2\)</span>: <span class="arithmatex">\(B=\frac{5(-2)+7}{(-1)(1)}=3\)</span>. For <span class="arithmatex">\(C\)</span> cover up <span class="arithmatex">\(x+3\)</span> and put <span class="arithmatex">\(x=-3\)</span>: <span class="arithmatex">\(C=\frac{5(-3)+7}{(-2)(-1)}=-4\)</span>. Check at <span class="arithmatex">\(x=0\)</span>: the left side is <span class="arithmatex">\(\frac76\)</span>, the right side is <span class="arithmatex">\(1+\frac32-\frac43=\frac{6+9-8}6=\frac76\)</span>. An antiderivative is <span class="arithmatex">\(\ln\lvert x+1\rvert+3\ln\lvert x+2\rvert-4\ln\lvert x+3\rvert\)</span>, and on <span class="arithmatex">\([0,2]\)</span> all three arguments are positive, so</p>
+<div class="arithmatex">\[\int_0^2\ldots\,dx=\Big[\ln(x+1)+3\ln(x+2)-4\ln(x+3)\Big]_0^2=\big(\ln3+3\ln4-4\ln5\big)-\big(0+3\ln2-4\ln3\big).\]</div>
+<p>With <span class="arithmatex">\(3\ln4=6\ln2\)</span> this is <span class="arithmatex">\(5\ln3+3\ln2-4\ln5=\ln\dfrac{3^5\cdot2^3}{5^4}=\ln\dfrac{1944}{625}\approx1.1348\)</span>. <em>Sign and size.</em> The integrand is positive on <span class="arithmatex">\([0,2]\)</span> (every factor is positive), so the integral must be positive. At <span class="arithmatex">\(x=0\)</span> it equals <span class="arithmatex">\(\frac76\approx1.17\)</span> and at <span class="arithmatex">\(x=2\)</span> it equals <span class="arithmatex">\(\frac{17}{60}\approx0.28\)</span>, and it decreases between them, so the area is between <span class="arithmatex">\(2\cdot0.28=0.57\)</span> and <span class="arithmatex">\(2\cdot1.17=2.33\)</span>; the value <span class="arithmatex">\(1.13\)</span> is in that range (the trapezoid with these end heights has area <span class="arithmatex">\(1.45\)</span>, and the curve is bowed below its chord). Figure 2 shows the region.</p>
+<p><img alt="Diagram: area $=\ln\frac{1944; $y=\frac{5x+7; \(x=-1\)" class="calc-figure" src="../figures/notes-fig2.svg" width="534" /></p>
+<p>Figure 2. The region under <span class="arithmatex">\(y=\frac{5x+7}{(x+1)(x+2)(x+3)}\)</span> for <span class="arithmatex">\(0\le x\le2\)</span>. It has area <span class="arithmatex">\(\ln\frac{1944}{625}\approx1.135\)</span>. The dashed line <span class="arithmatex">\(x=-1\)</span> is a vertical asymptote of the graph, where the factor <span class="arithmatex">\(x+1\)</span> vanishes; the region stays to its right.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.8: A repeated linear factor and the derivative trick</p>
+<p><span id="ex-m4"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{x^2+7x+1}{(x-1)^2(x+2)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The form is</p>
+<div class="arithmatex">\[\frac{x^2+7x+1}{(x-1)^2(x+2)}=\frac A{x-1}+\frac B{(x-1)^2}+\frac C{x+2}.\]</div>
+<p>Use Theorem <a href="#thm-coef">8.5.6</a>. For the simple root <span class="arithmatex">\(-2\)</span> cover up <span class="arithmatex">\(x+2\)</span>: <span class="arithmatex">\(C=\frac{4-14+1}{(-3)^2}=\frac{-9}9=-1\)</span>. For the double root <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(E=x+2\)</span> and <span class="arithmatex">\(G(x)=\frac{x^2+7x+1}{x+2}\)</span>. Then <span class="arithmatex">\(B=G(1)=\frac93=3\)</span>, and <span class="arithmatex">\(A=G'(1)\)</span> with</p>
+<div class="arithmatex">\[G'(x)=\frac{(2x+7)(x+2)-(x^2+7x+1)\cdot1}{(x+2)^2},\qquad G'(1)=\frac{9\cdot3-9}{9}=2 .\]</div>
+<p>So <span class="arithmatex">\(A=2\)</span>, <span class="arithmatex">\(B=3\)</span>, <span class="arithmatex">\(C=-1\)</span>. Check at <span class="arithmatex">\(x=0\)</span>: left <span class="arithmatex">\(\frac1{(1)(2)}=\frac12\)</span>; right <span class="arithmatex">\(\frac2{-1}+\frac3{1}+\frac{-1}2=-2+3-\frac12=\frac12\)</span>. Integrate each piece (Theorem <a href="#thm-pieces">8.5.9</a>(1)):</p>
+<div class="arithmatex">\[\int\left(\frac2{x-1}+\frac3{(x-1)^2}-\frac1{x+2}\right)dx=2\ln\lvert x-1\rvert-\frac3{x-1}-\ln\lvert x+2\rvert+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac d{dx}\left(-\frac3{x-1}\right)=\frac3{(x-1)^2}\)</span>, and the other two terms differentiate to <span class="arithmatex">\(\frac2{x-1}\)</span> and <span class="arithmatex">\(-\frac1{x+2}\)</span>, which are the pieces.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.5.3: Cover-up</p>
+<p><span id="kc-kccover"></span></p>
+<p>Use the cover-up method to find <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(B\)</span>, <span class="arithmatex">\(C\)</span> in <span class="arithmatex">\(\dfrac{3x^2+x+2}{x(x-1)(x+2)}=\dfrac Ax+\dfrac B{x-1}+\dfrac C{x+2}\)</span>, and check at <span class="arithmatex">\(x=2\)</span>.</p>
+</div>
+<h2 id="integrating-the-pieces">Integrating the pieces<a class="headerlink" href="#integrating-the-pieces" title="Permanent link">&para;</a></h2>
+<p>Theorem <a href="#thm-pfd">8.5.5</a> reduces every rational integral to two kinds of integrals: <span class="arithmatex">\(\int\frac{dx}{(x-r)^n}\)</span> and <span class="arithmatex">\(\int\frac{Bx+C}{(x^2+bx+c)^n}\,dx\)</span>. The first is a power or a logarithm. For the second, complete the square as in Section 8.4 (Theorem <a href="../../8.4/notes/#thm-square">8.4.8</a>): with <span class="arithmatex">\(u=x+\frac b2\)</span> and <span class="arithmatex">\(a^2=c-\frac{b^2}4&gt;0\)</span> we have <span class="arithmatex">\(x^2+bx+c=u^2+a^2\)</span>, and <span class="arithmatex">\(Bx+C=Bu+K\)</span> with <span class="arithmatex">\(K=C-\frac{Bb}2\)</span>. Split into the part with <span class="arithmatex">\(u\)</span> (a logarithm or a power) and the part with <span class="arithmatex">\(K\)</span> (an inverse tangent or its reduction).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.5.9: Integrals of the pieces</p>
+<p><span id="thm-pieces"></span></p>
+<p><strong>(1)</strong> <span class="arithmatex">\(\displaystyle\int\frac{dx}{x-r}=\ln\lvert x-r\rvert+C\)</span>, and for <span class="arithmatex">\(n\ge2\)</span>, <span class="arithmatex">\(\displaystyle\int\frac{dx}{(x-r)^n}=-\frac1{(n-1)(x-r)^{n-1}}+C\)</span>, on each interval not containing <span class="arithmatex">\(r\)</span>.</p>
+<p><strong>(2)</strong> Let <span class="arithmatex">\(b^2-4c&lt;0\)</span>, <span class="arithmatex">\(a=\sqrt{c-b^2/4}\)</span>, <span class="arithmatex">\(u=x+\frac b2\)</span>, <span class="arithmatex">\(K=C-\frac{Bb}2\)</span>. Then for all <span class="arithmatex">\(x\)</span></p>
+<div class="arithmatex">\[\int\frac{Bx+C}{x^2+bx+c}\,dx=\frac B2\ln\left(x^2+bx+c\right)+\frac Ka\tan^{-1}\frac ua+C_0 .\]</div>
+<p><strong>(3)</strong> With the same notation, for <span class="arithmatex">\(n\ge2\)</span>,</p>
+<div class="arithmatex">\[\int\frac{Bx+C}{(x^2+bx+c)^n}\,dx=-\frac{B}{2(n-1)\left(x^2+bx+c\right)^{n-1}}+K\,I_n(u)+C_0,\]</div>
+<p>where <span class="arithmatex">\(I_n(u)=\displaystyle\int\frac{du}{(u^2+a^2)^n}\)</span> satisfies <span class="arithmatex">\(I_1(u)=\frac1a\tan^{-1}\frac ua\)</span> and</p>
+<div class="arithmatex">\[I_{n+1}(u)=\frac{u}{2na^2\,(u^2+a^2)^n}+\frac{2n-1}{2na^2}\,I_n(u)\qquad(n\ge1).\]</div>
+</div>
+<p><em>Proof.</em> (1) The first formula is in the table of Section 8.1; the second is the power rule, since <span class="arithmatex">\(\frac d{dx}\left[-\frac1{(n-1)(x-r)^{n-1}}\right]=(x-r)^{-n}\)</span>.</p>
+<p>(2) With <span class="arithmatex">\(u=x+\frac b2\)</span>, <span class="arithmatex">\(du=dx\)</span>, <span class="arithmatex">\(x^2+bx+c=u^2+a^2\)</span> and <span class="arithmatex">\(Bx+C=Bu+K\)</span> (indeed <span class="arithmatex">\(Bu+K=Bx+\frac{Bb}2+C-\frac{Bb}2\)</span>):</p>
+<div class="arithmatex">\[\int\frac{Bx+C}{x^2+bx+c}\,dx=B\int\frac{u\,du}{u^2+a^2}+K\int\frac{du}{u^2+a^2}.\]</div>
+<p>For the first integral put <span class="arithmatex">\(w=u^2+a^2\)</span>, <span class="arithmatex">\(dw=2u\,du\)</span>: <span class="arithmatex">\(\int\frac{u\,du}{u^2+a^2}=\frac12\ln(u^2+a^2)\)</span>, with no absolute value because <span class="arithmatex">\(u^2+a^2&gt;0\)</span>. The second is <span class="arithmatex">\(\frac1a\tan^{-1}\frac ua\)</span> (Theorem <a href="../../8.1/notes/#thm-invtrig">8.1.6</a>, or Theorem <a href="../../8.1/notes/#thm-quad">8.1.13</a>(i)).</p>
+<p>(3) In the same way the first integral is, for <span class="arithmatex">\(n\ge2\)</span>, <span class="arithmatex">\(\int\frac{u\,du}{(u^2+a^2)^n}=\frac12\int w^{-n}\,dw=-\frac{1}{2(n-1)\,w^{n-1}}\)</span>. The reduction formula for <span class="arithmatex">\(I_n\)</span> is Example <a href="../../8.4/notes/#ex-b14">8.4.32</a> (proved there by the tangent substitution and the reduction formula for <span class="arithmatex">\(\cos^{2n}\theta\)</span> of Theorem <a href="../../8.2/notes/#thm-redtrig">8.2.11</a>), applied with the variable <span class="arithmatex">\(u\)</span> in place of <span class="arithmatex">\(x\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.10: An irreducible quadratic factor</p>
+<p><span id="ex-m5"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The quadratic has <span class="arithmatex">\(b^2-4c=4-20=-16&lt;0\)</span>, so it is irreducible. The form is <span class="arithmatex">\(\dfrac A{x-1}+\dfrac{Bx+C}{x^2+2x+5}\)</span>. Cover up <span class="arithmatex">\(x-1\)</span> and put <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(A=\frac{5+5+6}{1+2+5}=\frac{16}8=2\)</span>. Multiply out: <span class="arithmatex">\(5x^2+5x+6=2(x^2+2x+5)+(Bx+C)(x-1)\)</span>. Compare the coefficients of <span class="arithmatex">\(x^2\)</span>: <span class="arithmatex">\(5=2+B\)</span>, so <span class="arithmatex">\(B=3\)</span>. Compare the constants: <span class="arithmatex">\(6=10-C\)</span>, so <span class="arithmatex">\(C=4\)</span>. Check with the coefficients of <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(5=4+(C-B)=4+1\)</span>. So</p>
+<div class="arithmatex">\[\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}=\frac2{x-1}+\frac{3x+4}{x^2+2x+5}.\]</div>
+<p>For the second term, <span class="arithmatex">\(u=x+1\)</span>, <span class="arithmatex">\(a^2=5-1=4\)</span>, <span class="arithmatex">\(a=2\)</span>, and <span class="arithmatex">\(3x+4=3u+1\)</span>, so <span class="arithmatex">\(K=C-\frac{Bb}2=4-3=1\)</span>. By Theorem <a href="#thm-pieces">8.5.9</a>(2),</p>
+<div class="arithmatex">\[\int\frac{3x+4}{x^2+2x+5}\,dx=\frac32\ln\left(x^2+2x+5\right)+\frac12\tan^{-1}\frac{x+1}2+C_0 .\]</div>
+<p>Altogether</p>
+<div class="arithmatex">\[\int\frac{5x^2+5x+6}{(x-1)(x^2+2x+5)}\,dx=2\ln\lvert x-1\rvert+\frac32\ln\left(x^2+2x+5\right)+\frac12\tan^{-1}\frac{x+1}2+C .\]</div>
+<p><em>Check.</em> Differentiate: <span class="arithmatex">\(\frac2{x-1}+\frac32\cdot\frac{2x+2}{x^2+2x+5}+\frac12\cdot\frac{1/2}{1+\left(\frac{x+1}2\right)^2}=\frac2{x-1}+\frac{3x+3}{x^2+2x+5}+\frac{1}{x^2+2x+5}\)</span>, because <span class="arithmatex">\(\frac14\cdot\frac{1}{1+(x+1)^2/4}=\frac1{4+(x+1)^2}=\frac1{x^2+2x+5}\)</span>. The last two terms add to <span class="arithmatex">\(\frac{3x+4}{x^2+2x+5}\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.5.2: Why every power?</p>
+<p><span id="think-allpowers"></span></p>
+<p>Why does the decomposition of <span class="arithmatex">\(\frac P{(x-1)^2}\)</span> need both <span class="arithmatex">\(\frac A{x-1}\)</span> and <span class="arithmatex">\(\frac B{(x-1)^2}\)</span>? What goes wrong if we use only <span class="arithmatex">\(\frac B{(x-1)^2}\)</span> with <span class="arithmatex">\(P(x)=x\)</span>? Count unknowns.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Using only <span class="arithmatex">\(\frac B{(x-1)^2}\)</span> gives <span class="arithmatex">\(\frac{x}{(x-1)^2}=\frac B{(x-1)^2}\)</span>, so <span class="arithmatex">\(x=B\)</span>: a constant cannot equal <span class="arithmatex">\(x\)</span> for all <span class="arithmatex">\(x\)</span>. The denominator has degree <span class="arithmatex">\(2\)</span>, so there are <span class="arithmatex">\(2\)</span> unknowns, and the polynomials of degree <span class="arithmatex">\(&lt;2\)</span> (such as <span class="arithmatex">\(x\)</span>) form a space of dimension <span class="arithmatex">\(2\)</span>; one unknown cannot reach all of them. With both terms, <span class="arithmatex">\(x=A(x-1)+B\)</span> gives <span class="arithmatex">\(A=1\)</span>, <span class="arithmatex">\(B=1\)</span>: <span class="arithmatex">\(\frac x{(x-1)^2}=\frac1{x-1}+\frac1{(x-1)^2}\)</span>.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.11: A repeated irreducible quadratic factor</p>
+<p><span id="ex-m6"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{2x^3+4x^2+3x+1}{x\,(x^2+1)^2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The degree <span class="arithmatex">\(3\)</span> is less than <span class="arithmatex">\(5\)</span>. The form (Theorem <a href="#thm-pfd">8.5.5</a>; the quadratic <span class="arithmatex">\(x^2+1\)</span> is repeated, so both powers appear) is</p>
+<div class="arithmatex">\[\frac{2x^3+4x^2+3x+1}{x(x^2+1)^2}=\frac Ax+\frac{Bx+C}{x^2+1}+\frac{Dx+E}{(x^2+1)^2}.\]</div>
+<p>Multiply by <span class="arithmatex">\(x(x^2+1)^2\)</span> and expand:</p>
+<div class="arithmatex">\[2x^3+4x^2+3x+1=A(x^2+1)^2+(Bx+C)\,x\,(x^2+1)+(Dx+E)\,x .\]</div>
+<p>Put <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(1=A\)</span>. Now compare coefficients, with <span class="arithmatex">\(A=1\)</span>, since <span class="arithmatex">\(A(x^2+1)^2=x^4+2x^2+1\)</span> and <span class="arithmatex">\((Bx+C)x(x^2+1)=Bx^4+Cx^3+Bx^2+Cx\)</span> and <span class="arithmatex">\((Dx+E)x=Dx^2+Ex\)</span>:</p>
+<div class="arithmatex">\[x^4:\ 0=1+B;\quad x^3:\ 2=C;\quad x^2:\ 4=2+B+D;\quad x:\ 3=C+E;\quad x^0:\ 1=A.\]</div>
+<p>So <span class="arithmatex">\(B=-1\)</span>, <span class="arithmatex">\(C=2\)</span>, <span class="arithmatex">\(D=4-2-B=3\)</span>, <span class="arithmatex">\(E=3-C=1\)</span>. Thus</p>
+<div class="arithmatex">\[\frac{2x^3+4x^2+3x+1}{x(x^2+1)^2}=\frac1x-\frac{x-2}{x^2+1}+\frac{3x+1}{(x^2+1)^2}.\]</div>
+<p>Integrate each piece. The first is <span class="arithmatex">\(\ln\lvert x\rvert\)</span>. For the second, <span class="arithmatex">\(-\frac{x-2}{x^2+1}=-\frac x{x^2+1}+\frac2{x^2+1}\)</span> gives <span class="arithmatex">\(-\frac12\ln(x^2+1)+2\tan^{-1}x\)</span>. For the third, here <span class="arithmatex">\(b=0\)</span>, <span class="arithmatex">\(c=1\)</span>, <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(u=x\)</span>, <span class="arithmatex">\(B=3\)</span>, <span class="arithmatex">\(K=1\)</span>, <span class="arithmatex">\(n=2\)</span>. By Theorem <a href="#thm-pieces">8.5.9</a>(3), <span class="arithmatex">\(\int\frac{3x\,dx}{(x^2+1)^2}=-\frac3{2(x^2+1)}\)</span> and, with the reduction formula for <span class="arithmatex">\(n=1\)</span> (<span class="arithmatex">\(a=1\)</span>),</p>
+<div class="arithmatex">\[I_2(x)=\frac{x}{2(x^2+1)}+\frac12\,I_1(x)=\frac x{2(x^2+1)}+\frac12\tan^{-1}x .\]</div>
+<p>Adding the pieces,</p>
+<div class="arithmatex">\[\int\ldots\,dx=\ln\lvert x\rvert-\frac12\ln(x^2+1)+2\tan^{-1}x-\frac3{2(x^2+1)}+\frac x{2(x^2+1)}+\frac12\tan^{-1}x+C ,\]</div>
+<p>that is</p>
+<div class="arithmatex">\[\ln\lvert x\rvert-\frac12\ln\left(x^2+1\right)+\frac52\tan^{-1}x+\frac{x-3}{2(x^2+1)}+C .\]</div>
+<p><em>Check.</em> Differentiate the answer. The quotient rule gives <span class="arithmatex">\(\frac{d}{dx}\frac{x-3}{2(x^2+1)}=\frac{(x^2+1)-2x(x-3)}{2(x^2+1)^2}=\frac{-x^2+6x+1}{2(x^2+1)^2}\)</span>. The other terms give <span class="arithmatex">\(\frac1x-\frac x{x^2+1}+\frac5{2(x^2+1)}\)</span>. Over the common denominator <span class="arithmatex">\(2(x^2+1)^2\)</span> the last term and the quotient-rule term add to <span class="arithmatex">\(\frac{5(x^2+1)-x^2+6x+1}{2(x^2+1)^2}=\frac{2x^2+3x+3}{(x^2+1)^2}\)</span>, which equals <span class="arithmatex">\(\frac2{x^2+1}+\frac{3x+1}{(x^2+1)^2}\)</span>. So the derivative is <span class="arithmatex">\(\frac1x-\frac x{x^2+1}+\frac2{x^2+1}+\frac{3x+1}{(x^2+1)^2}\)</span>, the three pieces.</p>
+</div>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 8.5.12: Integrating a rational function</p>
+<p><span id="proc-pfproc"></span></p>
+<p>To evaluate <span class="arithmatex">\(\int\frac{N(x)}{D(x)}\,dx\)</span>:</p>
+<ol>
+<li>
+<p>If <span class="arithmatex">\(\deg N\ge\deg D\)</span>, divide (Theorem <a href="#thm-div">8.5.2</a>): <span class="arithmatex">\(\frac ND=Q+\frac RD\)</span> with <span class="arithmatex">\(\deg R&lt;\deg D\)</span>.</p>
+</li>
+<li>
+<p>Factor <span class="arithmatex">\(D\)</span> into linear factors and irreducible quadratics (find a root by trying the divisors of the constant term, then divide it out; a quadratic with <span class="arithmatex">\(b^2-4c&lt;0\)</span> stays). If <span class="arithmatex">\(D\)</span> is already a derivative-of-the-bottom situation, stop and use a substitution (Example <a href="#ex-m10">8.5.16</a>).</p>
+</li>
+<li>
+<p>Write the form of Theorem <a href="#thm-pfd">8.5.5</a>: one fraction for each power of each factor, a constant over a linear factor, <span class="arithmatex">\(Bx+C\)</span> over a quadratic.</p>
+</li>
+<li>
+<p>Find the numerators: cover-up and the derivative trick for the linear factors (Theorem <a href="#thm-coef">8.5.6</a>), then equate coefficients or substitute for the rest. Check by adding back, or at one more value of <span class="arithmatex">\(x\)</span>.</p>
+</li>
+<li>
+<p>Integrate the pieces with Theorem <a href="#thm-pieces">8.5.9</a>, and integrate <span class="arithmatex">\(Q\)</span> term by term.</p>
+</li>
+<li>
+<p>Differentiate the answer. For a definite integral, check the sign and size.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.13: Equating coefficients and substituting values: three ways, one answer</p>
+<p><span id="ex-m7"></span></p>
+<p>Decompose <span class="arithmatex">\(\dfrac{x^2+3x+7}{(x+1)(x^2+4)}\)</span> and integrate it.</p>
+<p><strong>Solution.</strong> The form is <span class="arithmatex">\(\frac A{x+1}+\frac{Bx+C}{x^2+4}\)</span>, so <span class="arithmatex">\(x^2+3x+7=A(x^2+4)+(Bx+C)(x+1)\)</span>.</p>
+<p><em>Method 1: equate all coefficients.</em> Expanding, <span class="arithmatex">\(A(x^2+4)+(Bx+C)(x+1)=(A+B)x^2+(B+C)x+(4A+C)\)</span>. So</p>
+<div class="arithmatex">\[x^2:\ A+B=1,\qquad x:\ B+C=3,\qquad x^0:\ 4A+C=7.\]</div>
+<p>From the first, <span class="arithmatex">\(B=1-A\)</span>. The second gives <span class="arithmatex">\(C=3-B=2+A\)</span>. The third becomes <span class="arithmatex">\(4A+2+A=7\)</span>, so <span class="arithmatex">\(A=1\)</span>, <span class="arithmatex">\(B=0\)</span>, <span class="arithmatex">\(C=3\)</span>.</p>
+<p><em>Method 2: substitute values.</em> Put <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(1-3+7=5=5A\)</span>, so <span class="arithmatex">\(A=1\)</span>. Put <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(7=4A+C=4+C\)</span>, so <span class="arithmatex">\(C=3\)</span>. Put <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(11=5A+2(B+C)=5+2B+6\)</span>, so <span class="arithmatex">\(B=0\)</span>.</p>
+<p><em>Method 3: cover-up and one coefficient.</em> <span class="arithmatex">\(A=\frac{(-1)^2+3(-1)+7}{(-1)^2+4}=\frac55=1\)</span> by Theorem <a href="#thm-coef">8.5.6</a>; then <span class="arithmatex">\(x^2+3x+7-(x^2+4)=3x+3=(Bx+C)(x+1)\)</span>, so <span class="arithmatex">\(Bx+C=3\)</span>.</p>
+<p>All three agree: <span class="arithmatex">\(\dfrac{x^2+3x+7}{(x+1)(x^2+4)}=\dfrac1{x+1}+\dfrac3{x^2+4}\)</span>. Check at <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(\frac74=1+\frac34\)</span>. By Theorem <a href="#thm-pieces">8.5.9</a>(2) with <span class="arithmatex">\(B=0\)</span>, <span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(K=3\)</span>:</p>
+<div class="arithmatex">\[\int\frac{x^2+3x+7}{(x+1)(x^2+4)}\,dx=\ln\lvert x+1\rvert+\frac32\tan^{-1}\frac x2+C .\]</div>
+<p>Equating all the coefficients always works, because Theorem <a href="#thm-pfd">8.5.5</a> says the system has exactly one solution. Substituting the roots of <span class="arithmatex">\(D\)</span> and the cover-up method are shortcuts that usually need less algebra.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.14: Two forms of the same antiderivative</p>
+<p><span id="ex-m8"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{3}{(x-1)(2x+1)}\,dx\)</span> on <span class="arithmatex">\(x&gt;1\)</span>, in two ways, and compare.</p>
+<p><strong>Solution.</strong> <em>First way.</em> The form is <span class="arithmatex">\(\frac A{x-1}+\frac B{2x+1}\)</span>. Cover up <span class="arithmatex">\(x-1\)</span> at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(A=\frac3{3}=1\)</span>. Cover up <span class="arithmatex">\(2x+1\)</span> at <span class="arithmatex">\(x=-\frac12\)</span>: <span class="arithmatex">\(B=\frac3{-3/2}=-2\)</span>. Then <span class="arithmatex">\(\frac1{x-1}-\frac2{2x+1}\)</span> (check at <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(\frac3{5}\)</span> and <span class="arithmatex">\(1-\frac25=\frac35\)</span>), and</p>
+<div class="arithmatex">\[\int\left(\frac1{x-1}-\frac2{2x+1}\right)dx=\ln(x-1)-\ln(2x+1)+C_1 .\]</div>
+<p>(Use <span class="arithmatex">\(u=2x+1\)</span> for the second term: <span class="arithmatex">\(\int\frac{2\,dx}{2x+1}=\ln\lvert2x+1\rvert\)</span>.)</p>
+<p><em>Second way.</em> Factor the <span class="arithmatex">\(2\)</span> out of the second factor: <span class="arithmatex">\(\frac3{(x-1)(2x+1)}=\frac{3/2}{(x-1)(x+\frac12)}\)</span>, and <span class="arithmatex">\(\frac1{(x-1)(x+\frac12)}=\frac{2/3}{x-1}-\frac{2/3}{x+\frac12}\)</span> by cover-up. So the integrand is <span class="arithmatex">\(\frac1{x-1}-\frac1{x+1/2}\)</span> and</p>
+<div class="arithmatex">\[\int\left(\frac1{x-1}-\frac1{x+1/2}\right)dx=\ln(x-1)-\ln\left(x+\tfrac12\right)+C_2 .\]</div>
+<p><em>Comparison.</em> The two answers look different. Since <span class="arithmatex">\(\ln(2x+1)=\ln2+\ln\left(x+\frac12\right)\)</span>, the first answer is <span class="arithmatex">\(\ln(x-1)-\ln\left(x+\frac12\right)-\ln2+C_1\)</span>. They are both antiderivatives of the same function on an interval, so they differ by a constant, and they do: <span class="arithmatex">\(C_2=C_1-\ln2\)</span>. Neither is wrong. (For <span class="arithmatex">\(x&lt;-\frac12\)</span> or other intervals the absolute values must be restored.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.15: An application: logistic growth</p>
+<p><span id="ex-m9"></span></p>
+<p>A population <span class="arithmatex">\(P(t)\)</span> (in thousands) grows according to <span class="arithmatex">\(\dfrac{dP}{dt}=\dfrac{P(50-P)}{500}\)</span> with <span class="arithmatex">\(P(0)=5\)</span>. Find <span class="arithmatex">\(P(t)\)</span> and the time at which <span class="arithmatex">\(P=25\)</span>.</p>
+<p><strong>Solution.</strong> Separate: <span class="arithmatex">\(\dfrac{dP}{P(50-P)}=\dfrac{dt}{500}\)</span> (for <span class="arithmatex">\(0&lt;P&lt;50\)</span>). Partial fractions: <span class="arithmatex">\(\frac1{P(50-P)}=\frac AP+\frac B{50-P}\)</span> gives <span class="arithmatex">\(1=A(50-P)+BP\)</span>; at <span class="arithmatex">\(P=0\)</span>: <span class="arithmatex">\(A=\frac1{50}\)</span>; at <span class="arithmatex">\(P=50\)</span>: <span class="arithmatex">\(B=\frac1{50}\)</span>. So</p>
+<div class="arithmatex">\[\frac1{50}\int\left(\frac1P+\frac1{50-P}\right)dP=\frac1{50}\Big(\ln P-\ln(50-P)\Big)=\frac1{50}\ln\frac P{50-P}=\frac t{500}+C .\]</div>
+<p>(The integral of <span class="arithmatex">\(\frac1{50-P}\)</span> is <span class="arithmatex">\(-\ln\lvert50-P\rvert\)</span>, by the substitution <span class="arithmatex">\(w=50-P\)</span>.) Multiply by <span class="arithmatex">\(50\)</span>: <span class="arithmatex">\(\ln\frac P{50-P}=\frac t{10}+C_1\)</span>. At <span class="arithmatex">\(t=0\)</span>, <span class="arithmatex">\(P=5\)</span>: <span class="arithmatex">\(\ln\frac5{45}=C_1=-\ln9\)</span>. So <span class="arithmatex">\(\frac P{50-P}=\frac{e^{t/10}}9\)</span>; solving, <span class="arithmatex">\(9P=(50-P)e^{t/10}\)</span>, <span class="arithmatex">\(P\,(9+e^{t/10})=50e^{t/10}\)</span>, and</p>
+<div class="arithmatex">\[P(t)=\frac{50\,e^{t/10}}{9+e^{t/10}}=\frac{50}{1+9e^{-t/10}} .\]</div>
+<p>Check the differential equation: with <span class="arithmatex">\(P=\frac{50}{1+9e^{-t/10}}\)</span> we get <span class="arithmatex">\(50-P=\frac{450e^{-t/10}}{1+9e^{-t/10}}\)</span> and <span class="arithmatex">\(\frac{dP}{dt}=\frac{45e^{-t/10}}{(1+9e^{-t/10})^2}=\frac{P(50-P)}{500}\)</span>. Now <span class="arithmatex">\(P=25\)</span> means <span class="arithmatex">\(\frac P{50-P}=1\)</span>, so <span class="arithmatex">\(e^{t/10}=9\)</span> and <span class="arithmatex">\(t=10\ln9\approx21.97\)</span>. The population grows slowly at first, fastest when it is half of the limit <span class="arithmatex">\(50\)</span>, and then levels off at <span class="arithmatex">\(50\)</span> thousand (the limit of <span class="arithmatex">\(P\)</span> as <span class="arithmatex">\(t\to\infty\)</span> is <span class="arithmatex">\(50\)</span>). Figure 3 shows the curve.</p>
+<p><img alt="Diagram: \(P=50\); $P=\frac{50" class="calc-figure" src="../figures/notes-fig3.svg" width="478" /></p>
+<p>Figure 3. The solution <span class="arithmatex">\(P(t)=\frac{50}{1+9e^{-t/10}}\)</span> starts at <span class="arithmatex">\(P(0)=5\)</span>, passes through <span class="arithmatex">\((10\ln9,\,25)\approx(21.97,\,25)\)</span>, where growth is fastest, and approaches the dashed horizontal asymptote <span class="arithmatex">\(P=50\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.16: When partial fractions are not needed</p>
+<p><span id="ex-m10"></span></p>
+<p>Evaluate (a) <span class="arithmatex">\(\displaystyle\int\frac{6x^2}{x^3+5}\,dx\)</span>; (b) <span class="arithmatex">\(\displaystyle\int\frac{dx}{x^2+6x+13}\)</span>; (c) <span class="arithmatex">\(\displaystyle\int\frac{x\,dx}{x^2-9}\)</span> on <span class="arithmatex">\(x&gt;3\)</span>.</p>
+<p><strong>Solution.</strong> (a) The numerator is a multiple of the derivative of the denominator: <span class="arithmatex">\(\frac d{dx}(x^3+5)=3x^2\)</span>. Put <span class="arithmatex">\(u=x^3+5\)</span>, <span class="arithmatex">\(du=3x^2\,dx\)</span>, so <span class="arithmatex">\(6x^2\,dx=2\,du\)</span> and <span class="arithmatex">\(\int\frac{2\,du}u=2\ln\lvert u\rvert=2\ln\lvert x^3+5\rvert+C\)</span>. Partial fractions would factor <span class="arithmatex">\(x^3+5\)</span> into a linear and a quadratic factor with ugly roots and give the same answer with much more work.</p>
+<p>(b) The denominator is irreducible (<span class="arithmatex">\(36-52&lt;0\)</span>) and the numerator is constant, so complete the square: <span class="arithmatex">\(x^2+6x+13=(x+3)^2+4\)</span>, and by Theorem <a href="../../8.1/notes/#thm-quad">8.1.13</a>(i) with <span class="arithmatex">\(D=13-9=4\)</span>, the integral is <span class="arithmatex">\(\frac12\tan^{-1}\frac{x+3}2+C\)</span>.</p>
+<p>(c) Here <span class="arithmatex">\(u=x^2-9\)</span>, <span class="arithmatex">\(du=2x\,dx\)</span> gives <span class="arithmatex">\(\frac12\ln(x^2-9)+C\)</span>. Partial fractions give the same result in a different form: <span class="arithmatex">\(\frac x{(x-3)(x+3)}=\frac{1/2}{x-3}+\frac{1/2}{x+3}\)</span> (cover-up: <span class="arithmatex">\(\frac3{6}\)</span> and <span class="arithmatex">\(\frac{-3}{-6}\)</span>), so <span class="arithmatex">\(\frac12\ln(x-3)+\frac12\ln(x+3)=\frac12\ln\left((x-3)(x+3)\right)=\frac12\ln(x^2-9)\)</span>, the same function exactly.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.5.3: Always decompose?</p>
+<p><span id="think-when"></span></p>
+<p>Before using partial fractions, what two questions can you ask about an integrand <span class="arithmatex">\(\frac ND\)</span> that might save you the work? Apply them to <span class="arithmatex">\(\dfrac{2x+3}{x^2+3x+5}\)</span> and to <span class="arithmatex">\(\dfrac{x}{x^4+1}\)</span>.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Ask: (1) Is it improper (then divide)? (2) Is the numerator the derivative of the denominator, or can a substitution simplify it, or is the denominator a single irreducible quadratic (then complete the square)? For <span class="arithmatex">\(\frac{2x+3}{x^2+3x+5}\)</span> the numerator is exactly the derivative <span class="arithmatex">\(2x+3\)</span> of the denominator, so the integral is <span class="arithmatex">\(\ln(x^2+3x+5)+C\)</span>, with no decomposition. For <span class="arithmatex">\(\frac x{x^4+1}\)</span>, <span class="arithmatex">\(u=x^2\)</span>, <span class="arithmatex">\(du=2x\,dx\)</span> gives <span class="arithmatex">\(\frac12\int\frac{du}{u^2+1}=\frac12\tan^{-1}(x^2)+C\)</span> (factoring <span class="arithmatex">\(x^4+1\)</span> into real quadratics would be much harder).</p>
+</details>
+</div>
+<h2 id="making-an-integrand-rational">Making an integrand rational<a class="headerlink" href="#making-an-integrand-rational" title="Permanent link">&para;</a></h2>
+<p>Not every integrand that leads to partial fractions starts as a rational function. A substitution may turn it into one. If <span class="arithmatex">\(e^x\)</span> is the only appearance of <span class="arithmatex">\(x\)</span>, put <span class="arithmatex">\(u=e^x\)</span> (<span class="arithmatex">\(dx=\frac{du}u\)</span>). If the integrand is a rational function of <span class="arithmatex">\(\sin x\)</span> and <span class="arithmatex">\(\cos x\)</span>, the substitution <span class="arithmatex">\(t=\tan\frac x2\)</span> makes it a rational function of <span class="arithmatex">\(t\)</span> (Example <a href="#ex-b14">8.5.32</a>), and so every such integral can in principle be done by partial fractions; it is often not the shortest route, and the section on integration strategies compares the methods. For <span class="arithmatex">\(\sqrt[n]{ax+b}\)</span>, put <span class="arithmatex">\(u=\sqrt[n]{ax+b}\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.17: A substitution that produces a rational function</p>
+<p><span id="ex-m11"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{1+e^x}\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=e^x\)</span>, so <span class="arithmatex">\(du=e^x\,dx=u\,dx\)</span> and <span class="arithmatex">\(dx=\frac{du}u\)</span>. Then</p>
+<div class="arithmatex">\[\int\frac{dx}{1+e^x}=\int\frac{du}{u(1+u)} .\]</div>
+<p>This is rational and proper. Cover-up: <span class="arithmatex">\(\frac1{u(1+u)}=\frac Au+\frac B{1+u}\)</span>, <span class="arithmatex">\(A=\frac11=1\)</span> (at <span class="arithmatex">\(u=0\)</span>), <span class="arithmatex">\(B=\frac1{-1}=-1\)</span> (at <span class="arithmatex">\(u=-1\)</span>). So <span class="arithmatex">\(\int\left(\frac1u-\frac1{1+u}\right)du=\ln u-\ln(1+u)=\ln\frac u{1+u}\)</span>, since <span class="arithmatex">\(u&gt;0\)</span>. Back in <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(\ln\frac{e^x}{1+e^x}=x-\ln(1+e^x)\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\frac{dx}{1+e^x}=x-\ln\left(1+e^x\right)+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac d{dx}\left(x-\ln(1+e^x)\right)=1-\frac{e^x}{1+e^x}=\frac1{1+e^x}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.18: A challenging example: division, a repeated factor and a quadratic</p>
+<p><span id="ex-m12"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{x^5+x^4+3x^3+3x^2+10}{x^4-4x+3}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> <em>Divide.</em> The numerator has degree <span class="arithmatex">\(5&gt;4\)</span>. <span class="arithmatex">\(x^5\div x^4=x\)</span> and <span class="arithmatex">\(x(x^4-4x+3)=x^5-4x^2+3x\)</span>; the difference is <span class="arithmatex">\(x^4+3x^3+7x^2-3x+10\)</span>. Then <span class="arithmatex">\(x^4\div x^4=1\)</span> and <span class="arithmatex">\(1\cdot(x^4-4x+3)\)</span>; the difference is <span class="arithmatex">\(3x^3+7x^2+x+7\)</span>. So the quotient is <span class="arithmatex">\(x+1\)</span> and the remainder is <span class="arithmatex">\(R=3x^3+7x^2+x+7\)</span> (degree <span class="arithmatex">\(3&lt;4\)</span>).</p>
+<p><em>Factor the denominator.</em> <span class="arithmatex">\(D(1)=1-4+3=0\)</span>, so <span class="arithmatex">\(x-1\)</span> is a factor; <span class="arithmatex">\(D=(x-1)(x^3+x^2+x-3)\)</span> by division. The cubic is again <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(x^3+x^2+x-3=(x-1)(x^2+2x+3)\)</span>. So <span class="arithmatex">\(D=(x-1)^2(x^2+2x+3)\)</span>, and <span class="arithmatex">\(x^2+2x+3\)</span> has <span class="arithmatex">\(b^2-4c=4-12=-8&lt;0\)</span>.</p>
+<p><em>Form.</em> <span class="arithmatex">\(\dfrac R D=\dfrac A{x-1}+\dfrac B{(x-1)^2}+\dfrac{Fx+H}{x^2+2x+3}\)</span>.</p>
+<p><em>Numerators.</em> With <span class="arithmatex">\(E=x^2+2x+3\)</span> and <span class="arithmatex">\(G=\frac RE\)</span> (Theorem <a href="#thm-coef">8.5.6</a>): <span class="arithmatex">\(B=G(1)=\frac{3+7+1+7}{6}=3\)</span>, and <span class="arithmatex">\(G'(x)=\frac{R'E-RE'}{E^2}\)</span> with <span class="arithmatex">\(R'=9x^2+14x+1\)</span>, <span class="arithmatex">\(E'=2x+2\)</span>, so <span class="arithmatex">\(G'(1)=\frac{24\cdot6-18\cdot4}{36}=\frac{72}{36}=2=A\)</span>. Equate the <span class="arithmatex">\(x^3\)</span> coefficients in <span class="arithmatex">\(R=A(x-1)E+BE+(Fx+H)(x-1)^2\)</span>: <span class="arithmatex">\(3=A+F\)</span>, so <span class="arithmatex">\(F=1\)</span>. Equate the constants: <span class="arithmatex">\(7=-3A+3B+H=-6+9+H\)</span>, so <span class="arithmatex">\(H=4\)</span>. Check at <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(R(0)=7\)</span> and <span class="arithmatex">\(A(-1)(3)+B(3)+H(1)=-6+9+4=7\)</span>. So</p>
+<div class="arithmatex">\[\frac{x^5+x^4+3x^3+3x^2+10}{x^4-4x+3}=x+1+\frac2{x-1}+\frac3{(x-1)^2}+\frac{x+4}{x^2+2x+3}.\]</div>
+<p><em>Integrate.</em> The polynomial part gives <span class="arithmatex">\(\frac{x^2}2+x\)</span>. The two linear pieces give <span class="arithmatex">\(2\ln\lvert x-1\rvert-\frac3{x-1}\)</span>. For the quadratic piece, <span class="arithmatex">\(u=x+1\)</span>, <span class="arithmatex">\(a^2=3-1=2\)</span>, <span class="arithmatex">\(x+4=u+3\)</span>, so <span class="arithmatex">\(B=1\)</span>, <span class="arithmatex">\(K=4-\frac12\cdot2=3\)</span>, and Theorem <a href="#thm-pieces">8.5.9</a>(2) gives <span class="arithmatex">\(\frac12\ln(x^2+2x+3)+\frac3{\sqrt2}\tan^{-1}\frac{x+1}{\sqrt2}\)</span>. So</p>
+<div class="arithmatex">\[\int\ldots\,dx=\frac{x^2}2+x+2\ln\lvert x-1\rvert-\frac3{x-1}+\frac12\ln\left(x^2+2x+3\right)+\frac3{\sqrt2}\tan^{-1}\frac{x+1}{\sqrt2}+C .\]</div>
+<p><em>Check.</em> The derivative of the quadratic piece’s antiderivative is <span class="arithmatex">\(\frac{x+1}{x^2+2x+3}+\frac3{\sqrt2}\cdot\frac{1/\sqrt2}{1+(x+1)^2/2}=\frac{x+1}{x^2+2x+3}+\frac{3}{x^2+2x+3}=\frac{x+4}{x^2+2x+3}\)</span>, because <span class="arithmatex">\(\frac32\cdot\frac{1}{1+(x+1)^2/2}=\frac{3}{2+(x+1)^2}\)</span>. The other terms differentiate to <span class="arithmatex">\(x+1\)</span>, <span class="arithmatex">\(\frac2{x-1}\)</span> and <span class="arithmatex">\(\frac3{(x-1)^2}\)</span>.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>Partial fractions complete the toolkit for rational functions: <em>every</em> rational function has an elementary antiderivative made of a polynomial, logarithms, inverse tangents and rational functions. The next section, on integration strategies, asks which method to try first, and the questions of Procedure <a href="#proc-pfproc">8.5.12</a> (is it already a substitution? is it improper?) are the first on that list. The decomposition is also the tool for improper integrals of rational functions in the section on improper integrals, where the logarithms decide convergence. In the chapters on series, the geometric series is a rational function expanded in powers of <span class="arithmatex">\(x\)</span>, and the Taylor series of <span class="arithmatex">\(\tan^{-1}x\)</span> comes from integrating <span class="arithmatex">\(\frac1{1+x^2}\)</span> term by term; partial fractions help to expand rational functions in power series, and they are also the main tool for the Laplace transform in a later course on differential equations. For repeated factors, the cover-up and the derivative trick are the beginning of the theory of residues in complex analysis.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ul>
+<li>
+<p>Group 1: distinct linear factors.</p>
+</li>
+<li>
+<p>Group 2: repeated linear factors.</p>
+</li>
+<li>
+<p>Group 3: irreducible and repeated irreducible quadratic factors.</p>
+</li>
+<li>
+<p>Group 4: division first.</p>
+</li>
+<li>
+<p>Group 5: definite integrals and applications.</p>
+</li>
+<li>
+<p>Group 6: substitutions that produce rational functions.</p>
+</li>
+<li>
+<p>Group 7: proofs.</p>
+</li>
+</ul>
+<h2 id="group-1-distinct-linear-factors">Group 1: Distinct linear factors<a class="headerlink" href="#group-1-distinct-linear-factors" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.19: A quadratic denominator</p>
+<p><span id="ex-b1"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{7x-7}{x^2+x-12}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Factor: <span class="arithmatex">\(x^2+x-12=(x-3)(x+4)\)</span> (the numbers <span class="arithmatex">\(4\)</span> and <span class="arithmatex">\(-3\)</span> have product <span class="arithmatex">\(-12\)</span> and sum <span class="arithmatex">\(1\)</span>). The numerator has degree <span class="arithmatex">\(1&lt;2\)</span>. Write <span class="arithmatex">\(\frac{7x-7}{(x-3)(x+4)}=\frac A{x-3}+\frac B{x+4}\)</span>. Cover-up: <span class="arithmatex">\(A=\frac{7\cdot3-7}{3+4}=\frac{14}7=2\)</span> and <span class="arithmatex">\(B=\frac{7(-4)-7}{-4-3}=\frac{-35}{-7}=5\)</span>. Check by adding back: <span class="arithmatex">\(2(x+4)+5(x-3)=7x-7\)</span>. Then</p>
+<div class="arithmatex">\[\int\frac{7x-7}{x^2+x-12}\,dx=2\ln\lvert x-3\rvert+5\ln\lvert x+4\rvert+C .\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.20: Three factors and a definite integral</p>
+<p><span id="ex-b2"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_1^3\frac{4x+2}{x(x+1)(x+2)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="arithmatex">\(\frac{4x+2}{x(x+1)(x+2)}=\frac Ax+\frac B{x+1}+\frac C{x+2}\)</span>. Cover-up: <span class="arithmatex">\(A=\frac{2}{(1)(2)}=1\)</span> at <span class="arithmatex">\(x=0\)</span>; <span class="arithmatex">\(B=\frac{-4+2}{(-1)(1)}=2\)</span> at <span class="arithmatex">\(x=-1\)</span>; <span class="arithmatex">\(C=\frac{-8+2}{(-2)(-1)}=-3\)</span> at <span class="arithmatex">\(x=-2\)</span>. Check at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(\frac66=1\)</span> and <span class="arithmatex">\(1+\frac22-\frac33=1\)</span>. On <span class="arithmatex">\([1,3]\)</span> all arguments are positive:</p>
+<div class="arithmatex">\[\begin{aligned}\Big[\ln x+2\ln(x+1)-3\ln(x+2)\Big]_1^3&amp;=(\ln3+2\ln4-3\ln5)-(0+2\ln2-3\ln3)\\&amp;=4\ln3+2\ln2-3\ln5=\ln\frac{324}{125}\approx0.9524 .\end{aligned}\]</div>
+<p><em>Sign and size.</em> The integrand is positive; it equals <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=1\)</span> and <span class="arithmatex">\(\frac{14}{60}\approx0.23\)</span> at <span class="arithmatex">\(x=3\)</span> and decreases, so the integral lies between <span class="arithmatex">\(2\cdot0.23=0.47\)</span> and <span class="arithmatex">\(2\cdot1=2\)</span>; <span class="arithmatex">\(0.95\)</span> is plausible.</p>
+</div>
+<h2 id="group-2-repeated-linear-factors">Group 2: Repeated linear factors<a class="headerlink" href="#group-2-repeated-linear-factors" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.21: A single repeated factor</p>
+<p><span id="ex-b3"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{3x-1}{(x-2)^2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Form: <span class="arithmatex">\(\frac A{x-2}+\frac B{(x-2)^2}\)</span>, so <span class="arithmatex">\(3x-1=A(x-2)+B\)</span>. At <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(5=B\)</span>. The coefficient of <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(3=A\)</span>. So <span class="arithmatex">\(\frac{3x-1}{(x-2)^2}=\frac3{x-2}+\frac5{(x-2)^2}\)</span>. (Equivalently, <span class="arithmatex">\(u=x-2\)</span> gives <span class="arithmatex">\(3u+5\)</span> in the numerator.) Then</p>
+<div class="arithmatex">\[\int\frac{3x-1}{(x-2)^2}\,dx=3\ln\lvert x-2\rvert-\frac5{x-2}+C .\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.22: A double root at <span class="arithmatex">\(0\)</span> and a simple root</p>
+<p><span id="ex-b4"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{4x^2-5x+2}{x^2(x-1)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Form: <span class="arithmatex">\(\frac Ax+\frac B{x^2}+\frac C{x-1}\)</span>. For <span class="arithmatex">\(C\)</span> cover up <span class="arithmatex">\(x-1\)</span> and put <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(C=\frac{4-5+2}{1}=1\)</span>. For the double root <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(E=x-1\)</span> and <span class="arithmatex">\(G=\frac{4x^2-5x+2}{x-1}\)</span> (Theorem <a href="#thm-coef">8.5.6</a>): <span class="arithmatex">\(B=G(0)=\frac2{-1}=-2\)</span>, and <span class="arithmatex">\(G'(x)=\frac{(8x-5)(x-1)-(4x^2-5x+2)}{(x-1)^2}\)</span>, so <span class="arithmatex">\(A=G'(0)=\frac{(-5)(-1)-2}{1}=3\)</span>. Check at <span class="arithmatex">\(x=2\)</span>: left <span class="arithmatex">\(\frac{16-10+2}{4}=2\)</span>; right <span class="arithmatex">\(\frac32-\frac24+1=2\)</span>. Then <span class="arithmatex">\(\int\left(\frac3x-\frac2{x^2}+\frac1{x-1}\right)dx\)</span>:</p>
+<div class="arithmatex">\[\int\frac{4x^2-5x+2}{x^2(x-1)}\,dx=3\ln\lvert x\rvert+\frac2x+\ln\lvert x-1\rvert+C .\]</div>
+</div>
+<h2 id="group-3-quadratic-factors">Group 3: Quadratic factors<a class="headerlink" href="#group-3-quadratic-factors" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.23: A linear factor and an irreducible quadratic</p>
+<p><span id="ex-b5"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{x^2+x+12}{x(x^2+4)}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Form: <span class="arithmatex">\(\frac Ax+\frac{Bx+C}{x^2+4}\)</span>. Cover-up at <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(A=\frac{12}4=3\)</span>. Then <span class="arithmatex">\(x^2+x+12=3(x^2+4)+(Bx+C)x\)</span>; compare <span class="arithmatex">\(x^2\)</span>: <span class="arithmatex">\(1=3+B\)</span>, so <span class="arithmatex">\(B=-2\)</span>; compare <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(1=C\)</span>. Check at <span class="arithmatex">\(x=1\)</span>: left <span class="arithmatex">\(\frac{14}5\)</span>; right <span class="arithmatex">\(3+\frac{-2+1}5=\frac{14}5\)</span>. So the integrand is <span class="arithmatex">\(\frac3x+\frac{-2x+1}{x^2+4}\)</span>. With <span class="arithmatex">\(b=0\)</span>, <span class="arithmatex">\(a=2\)</span>, <span class="arithmatex">\(B=-2\)</span>, <span class="arithmatex">\(K=1\)</span>, Theorem <a href="#thm-pieces">8.5.9</a>(2) gives <span class="arithmatex">\(-\ln(x^2+4)+\frac12\tan^{-1}\frac x2\)</span> for the second term:</p>
+<div class="arithmatex">\[\int\frac{x^2+x+12}{x(x^2+4)}\,dx=3\ln\lvert x\rvert-\ln\left(x^2+4\right)+\frac12\tan^{-1}\frac x2+C .\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.24: A repeated shifted quadratic, no decomposition needed</p>
+<p><span id="ex-b6"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{x+3}{(x^2+2x+2)^2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The integrand is already a single term of the form in Theorem <a href="#thm-pfd">8.5.5</a>, so no decomposition is needed: <span class="arithmatex">\(b=2\)</span>, <span class="arithmatex">\(c=2\)</span>, <span class="arithmatex">\(a^2=c-\frac{b^2}4=1\)</span>, <span class="arithmatex">\(u=x+1\)</span>, and <span class="arithmatex">\(x+3=u+2\)</span>, so <span class="arithmatex">\(B=1\)</span>, <span class="arithmatex">\(K=2\)</span>, <span class="arithmatex">\(n=2\)</span>. By Theorem <a href="#thm-pieces">8.5.9</a>(3): <span class="arithmatex">\(\int\frac{u\,du}{(u^2+1)^2}=-\frac1{2(u^2+1)}\)</span> and, by the reduction formula with <span class="arithmatex">\(n=1\)</span>, <span class="arithmatex">\(a=1\)</span>: <span class="arithmatex">\(I_2=\frac u{2(u^2+1)}+\frac12\tan^{-1}u\)</span>. So the integral is <span class="arithmatex">\(-\frac1{2(u^2+1)}+2I_2=-\frac1{2(u^2+1)}+\frac u{u^2+1}+\tan^{-1}u\)</span>, and with <span class="arithmatex">\(u=x+1\)</span>, <span class="arithmatex">\(u^2+1=x^2+2x+2\)</span>:</p>
+<div class="arithmatex">\[\int\frac{x+3}{(x^2+2x+2)^2}\,dx=\frac{2x+1}{2\,(x^2+2x+2)}+\tan^{-1}(x+1)+C .\]</div>
+<p><em>Check.</em> Write <span class="arithmatex">\(q=x^2+2x+2\)</span>, <span class="arithmatex">\(q'=2x+2\)</span>. By the quotient rule <span class="arithmatex">\(\frac d{dx}\frac{2x+1}{2q}=\frac{4q-2(2x+1)q'}{4q^2}=\frac{2q-(2x+1)(2x+2)}{2q^2}=\frac{(2x^2+4x+4)-(4x^2+6x+2)}{2q^2}=\frac{1-x-x^2}{q^2}\)</span>. Also <span class="arithmatex">\(\frac d{dx}\tan^{-1}(x+1)=\frac1{1+(x+1)^2}=\frac1q=\frac{q}{q^2}=\frac{x^2+2x+2}{q^2}\)</span>. The sum is <span class="arithmatex">\(\frac{(1-x-x^2)+(x^2+2x+2)}{q^2}=\frac{x+3}{q^2}\)</span>.</p>
+</div>
+<h2 id="group-4-division-first">Group 4: Division first<a class="headerlink" href="#group-4-division-first" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.25: Equal degrees</p>
+<p><span id="ex-b7"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{x^4+1}{x^2-1}\,dx\)</span> on each interval not containing <span class="arithmatex">\(\pm1\)</span>.</p>
+<p><strong>Solution.</strong> Divide: <span class="arithmatex">\(x^4\div x^2=x^2\)</span> and <span class="arithmatex">\(x^2(x^2-1)=x^4-x^2\)</span>; the difference is <span class="arithmatex">\(x^2+1\)</span>; then <span class="arithmatex">\(x^2\div x^2=1\)</span> and <span class="arithmatex">\(1\cdot(x^2-1)\)</span> leaves <span class="arithmatex">\(2\)</span>. So <span class="arithmatex">\(\frac{x^4+1}{x^2-1}=x^2+1+\frac2{x^2-1}\)</span>. Cover-up for <span class="arithmatex">\(\frac2{(x-1)(x+1)}\)</span>: the coefficient of <span class="arithmatex">\(\frac1{x-1}\)</span> is <span class="arithmatex">\(\frac2{1+1}=1\)</span> (at <span class="arithmatex">\(x=1\)</span>) and that of <span class="arithmatex">\(\frac1{x+1}\)</span> is <span class="arithmatex">\(\frac2{-1-1}=-1\)</span> (at <span class="arithmatex">\(x=-1\)</span>), so <span class="arithmatex">\(\frac2{x^2-1}=\frac1{x-1}-\frac1{x+1}\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\frac{x^4+1}{x^2-1}\,dx=\frac{x^3}3+x+\ln\left\lvert\frac{x-1}{x+1}\right\rvert+C .\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.26: Division, then a substitution</p>
+<p><span id="ex-b8"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{x^3}{x^2+4}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Divide: <span class="arithmatex">\(x^3=x\,(x^2+4)-4x\)</span>, so <span class="arithmatex">\(\frac{x^3}{x^2+4}=x-\frac{4x}{x^2+4}\)</span>. The remainder <span class="arithmatex">\(\frac{4x}{x^2+4}\)</span> is already in the form of Theorem <a href="#thm-pieces">8.5.9</a>(2) with <span class="arithmatex">\(B=4\)</span>, <span class="arithmatex">\(K=0\)</span>, so no decomposition is needed (or <span class="arithmatex">\(u=x^2+4\)</span>, <span class="arithmatex">\(du=2x\,dx\)</span>): its integral is <span class="arithmatex">\(2\ln(x^2+4)\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\frac{x^3}{x^2+4}\,dx=\frac{x^2}2-2\ln\left(x^2+4\right)+C .\]</div>
+</div>
+<h2 id="group-5-definite-integrals-and-applications">Group 5: Definite integrals and applications<a class="headerlink" href="#group-5-definite-integrals-and-applications" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.27: A definite integral with a quadratic factor</p>
+<p><span id="ex-b9"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^1\frac{dx}{(x+1)(x^2+1)}\)</span>.</p>
+<p><strong>Solution.</strong> Form: <span class="arithmatex">\(\frac A{x+1}+\frac{Bx+C}{x^2+1}\)</span>, so <span class="arithmatex">\(1=A(x^2+1)+(Bx+C)(x+1)\)</span>. At <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(1=2A\)</span>, <span class="arithmatex">\(A=\frac12\)</span>. Compare <span class="arithmatex">\(x^2\)</span>: <span class="arithmatex">\(0=A+B\)</span>, so <span class="arithmatex">\(B=-\frac12\)</span>. Compare the constants: <span class="arithmatex">\(1=A+C\)</span>, so <span class="arithmatex">\(C=\frac12\)</span>. Check at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(\frac14\)</span> and <span class="arithmatex">\(\frac14+\frac{-\frac12+\frac12}{2}=\frac14\)</span>. So the integrand is <span class="arithmatex">\(\frac{1/2}{x+1}+\frac{-\frac12x+\frac12}{x^2+1}\)</span>, with antiderivative <span class="arithmatex">\(\frac12\ln(x+1)-\frac14\ln(x^2+1)+\frac12\tan^{-1}x\)</span> (here <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(K=\frac12\)</span>). Then</p>
+<div class="arithmatex">\[\int_0^1\ldots\,dx=\left(\frac12\ln2-\frac14\ln2+\frac12\cdot\frac\pi4\right)-0=\frac14\ln2+\frac\pi8\approx0.5660 .\]</div>
+<p><em>Sign and size.</em> The integrand is positive, equals <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(\frac14\)</span> at <span class="arithmatex">\(1\)</span>, and is convex-decreasing in between, so the area is less than that of the trapezoid, <span class="arithmatex">\(\frac12\left(1+\frac14\right)=0.625\)</span>, and more than <span class="arithmatex">\(\frac14\)</span>. The value <span class="arithmatex">\(0.566\)</span> fits.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.28: A second-order reaction</p>
+<p><span id="ex-b10"></span></p>
+<p>In a reaction <span class="arithmatex">\(A+B\to\)</span> product the amount <span class="arithmatex">\(x(t)\)</span> of product satisfies <span class="arithmatex">\(\dfrac{dx}{dt}=0.02\,(10-x)(5-x)\)</span> with <span class="arithmatex">\(x(0)=0\)</span> (units: moles per litre, and <span class="arithmatex">\(t\)</span> in minutes). Find the time at which <span class="arithmatex">\(x=4\)</span>.</p>
+<p><strong>Solution.</strong> Separate: <span class="arithmatex">\(\frac{dx}{(10-x)(5-x)}=0.02\,dt\)</span> for <span class="arithmatex">\(0\le x&lt;5\)</span>. Partial fractions: <span class="arithmatex">\(\frac1{(10-x)(5-x)}=\frac A{10-x}+\frac B{5-x}\)</span>, so <span class="arithmatex">\(1=A(5-x)+B(10-x)\)</span>. At <span class="arithmatex">\(x=5\)</span>: <span class="arithmatex">\(1=5B\)</span>, <span class="arithmatex">\(B=\frac15\)</span>. At <span class="arithmatex">\(x=10\)</span>: <span class="arithmatex">\(1=-5A\)</span>, <span class="arithmatex">\(A=-\frac15\)</span>. Check: <span class="arithmatex">\(\frac15\left(\frac1{5-x}-\frac1{10-x}\right)=\frac15\cdot\frac{5}{(5-x)(10-x)}\)</span>. The integral over <span class="arithmatex">\(0\to4\)</span> is</p>
+<div class="arithmatex">\[\frac15\Big[-\ln(5-x)+\ln(10-x)\Big]_0^4=\frac15\Big[\ln\frac{10-x}{5-x}\Big]_0^4=\frac15\left(\ln6-\ln2\right)=\frac{\ln3}5 .\]</div>
+<p>So <span class="arithmatex">\(0.02\,t=\frac{\ln3}5\)</span> and <span class="arithmatex">\(t=\frac{\ln3}{5\cdot0.02}=10\ln3\approx10.99\)</span> minutes.</p>
+</div>
+<h2 id="group-6-substitutions-that-produce-a-rational-function">Group 6: Substitutions that produce a rational function<a class="headerlink" href="#group-6-substitutions-that-produce-a-rational-function" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.29: An exponential</p>
+<p><span id="ex-b11"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{e^x}{e^{2x}-3e^x+2}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=e^x\)</span>, <span class="arithmatex">\(du=e^x\,dx\)</span>. Then the integral is <span class="arithmatex">\(\int\frac{du}{u^2-3u+2}=\int\frac{du}{(u-1)(u-2)}\)</span>. Cover-up: <span class="arithmatex">\(\frac1{(u-1)(u-2)}=\frac A{u-2}+\frac B{u-1}\)</span> with <span class="arithmatex">\(A=\frac1{2-1}=1\)</span> and <span class="arithmatex">\(B=\frac1{1-2}=-1\)</span>. So the integral is <span class="arithmatex">\(\ln\lvert u-2\rvert-\ln\lvert u-1\rvert\)</span>, and in terms of <span class="arithmatex">\(x\)</span>,</p>
+<div class="arithmatex">\[\int\frac{e^x}{e^{2x}-3e^x+2}\,dx=\ln\left\lvert\frac{e^x-2}{e^x-1}\right\rvert+C\quad(x\ne0,\ x\ne\ln2).\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.30: A sine and a cosine</p>
+<p><span id="ex-b12"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{\cos x}{\sin^2x+\sin x-2}\,dx\)</span> on an interval where <span class="arithmatex">\(\sin x\ne1\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=\sin x\)</span>, <span class="arithmatex">\(du=\cos x\,dx\)</span>. Then <span class="arithmatex">\(\int\frac{du}{u^2+u-2}=\int\frac{du}{(u+2)(u-1)}\)</span>. Cover-up: <span class="arithmatex">\(\frac1{(u+2)(u-1)}=\frac A{u+2}+\frac B{u-1}\)</span>, <span class="arithmatex">\(A=\frac1{-3}\)</span> at <span class="arithmatex">\(u=-2\)</span> and <span class="arithmatex">\(B=\frac13\)</span> at <span class="arithmatex">\(u=1\)</span>. So the integral is <span class="arithmatex">\(\frac13\left(\ln\lvert u-1\rvert-\ln\lvert u+2\rvert\right)\)</span>. Since <span class="arithmatex">\(-1\le u\le1\)</span>, <span class="arithmatex">\(u+2&gt;0\)</span> and <span class="arithmatex">\(u-1\le0\)</span>, so <span class="arithmatex">\(\lvert u-1\rvert=1-u\)</span>:</p>
+<div class="arithmatex">\[\int\frac{\cos x}{\sin^2x+\sin x-2}\,dx=\frac13\ln\frac{1-\sin x}{\sin x+2}+C .\]</div>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.31: Distinct real roots: a formula for every numerator</p>
+<p><span id="ex-b13"></span></p>
+<p>Let <span class="arithmatex">\(D=(x-r_1)\cdots(x-r_n)\)</span> with distinct real <span class="arithmatex">\(r_i\)</span> and let <span class="arithmatex">\(\deg P&lt;n\)</span>. Prove that</p>
+<div class="arithmatex">\[\frac{P(x)}{D(x)}=\sum_{i=1}^n\frac{P(r_i)}{D'(r_i)}\cdot\frac1{x-r_i},\qquad\int\frac PD\,dx=\sum_{i=1}^n\frac{P(r_i)}{D'(r_i)}\ln\lvert x-r_i\rvert+C .\]</div>
+<p>Then evaluate <span class="arithmatex">\(\displaystyle\int\frac{x^2+2}{x^3-x}\,dx\)</span>.</p>
+<p><strong>Proof.</strong> All the factors are linear and distinct, so by Theorem <a href="#thm-pfd">8.5.5</a>, <span class="arithmatex">\(\frac PD=\sum_i\frac{A_i}{x-r_i}\)</span> for unique numbers <span class="arithmatex">\(A_i\)</span>. By Theorem <a href="#thm-coef">8.5.6</a> with <span class="arithmatex">\(m=1\)</span>, <span class="arithmatex">\(A_i=\frac{P(r_i)}{D'(r_i)}\)</span>. This is the first formula; integrating each term with Theorem <a href="#thm-pieces">8.5.9</a>(1) gives the second. <span class="arithmatex">\(\blacksquare\)</span></p>
+<p><em>Application.</em> <span class="arithmatex">\(D=x^3-x=x(x-1)(x+1)\)</span>, <span class="arithmatex">\(D'=3x^2-1\)</span>, <span class="arithmatex">\(P=x^2+2\)</span>. The roots <span class="arithmatex">\(0,1,-1\)</span> give <span class="arithmatex">\(\frac{P(0)}{D'(0)}=\frac2{-1}=-2\)</span>, <span class="arithmatex">\(\frac{P(1)}{D'(1)}=\frac32\)</span>, <span class="arithmatex">\(\frac{P(-1)}{D'(-1)}=\frac32\)</span>. So</p>
+<div class="arithmatex">\[\int\frac{x^2+2}{x^3-x}\,dx=-2\ln\lvert x\rvert+\frac32\ln\lvert x-1\rvert+\frac32\ln\lvert x+1\rvert+C .\]</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.5.32: The substitution <span class="arithmatex">\(t=\tan\frac x2\)</span></p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that for <span class="arithmatex">\(-\pi&lt;x&lt;\pi\)</span> and <span class="arithmatex">\(t=\tan\frac x2\)</span>,</p>
+<div class="arithmatex">\[\cos x=\frac{1-t^2}{1+t^2},\qquad\sin x=\frac{2t}{1+t^2},\qquad dx=\frac{2\,dt}{1+t^2}.\]</div>
+<p>Then evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{2+\cos x}\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="arithmatex">\(\frac x2\in\left(-\frac\pi2,\frac\pi2\right)\)</span>, <span class="arithmatex">\(\cos\frac x2&gt;0\)</span> and <span class="arithmatex">\(\sec^2\frac x2=1+t^2\)</span>, so <span class="arithmatex">\(\cos^2\frac x2=\frac1{1+t^2}\)</span> and <span class="arithmatex">\(\sin^2\frac x2=t^2\cos^2\frac x2=\frac{t^2}{1+t^2}\)</span>. The double-angle formulas give <span class="arithmatex">\(\cos x=\cos^2\frac x2-\sin^2\frac x2=\frac{1-t^2}{1+t^2}\)</span> and <span class="arithmatex">\(\sin x=2\sin\frac x2\cos\frac x2=2t\cos^2\frac x2=\frac{2t}{1+t^2}\)</span>. Finally <span class="arithmatex">\(x=2\tan^{-1}t\)</span> (the inverse of <span class="arithmatex">\(t=\tan\frac x2\)</span> on this interval), so <span class="arithmatex">\(dx=\frac{2\,dt}{1+t^2}\)</span>. <span class="arithmatex">\(\blacksquare\)</span></p>
+<p><em>Application.</em> <span class="arithmatex">\(2+\cos x=\frac{2(1+t^2)+1-t^2}{1+t^2}=\frac{t^2+3}{1+t^2}\)</span>, so</p>
+<div class="arithmatex">\[\begin{aligned}\int\frac{dx}{2+\cos x}&amp;=\int\frac{1+t^2}{t^2+3}\cdot\frac{2\,dt}{1+t^2}=\int\frac{2\,dt}{t^2+3}\\&amp;=\frac2{\sqrt3}\tan^{-1}\frac t{\sqrt3}+C=\frac2{\sqrt3}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt3}\right)+C\quad(-\pi&lt;x&lt;\pi).\end{aligned}\]</div>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcdiv">8.5.1</a>.</strong> (a) Yes, the degrees are equal: <span class="arithmatex">\(\frac{x^2+1}{x^2-4}=1+\frac5{x^2-4}\)</span> (since <span class="arithmatex">\(x^2+1=(x^2-4)+5\)</span>). (b) No: the numerator has degree <span class="arithmatex">\(1&lt;2\)</span>. (c) Yes: <span class="arithmatex">\(x^3=x\,(x^2+1)-x\)</span>, so <span class="arithmatex">\(\frac{x^3}{x^2+1}=x-\frac x{x^2+1}\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcform">8.5.2</a>.</strong> (a) <span class="arithmatex">\(\frac Ax+\frac B{x-3}+\frac C{x+5}\)</span>. (b) <span class="arithmatex">\(\frac Ax+\frac B{x^2}+\frac{Cx+D}{x^2+1}\)</span>. (c) <span class="arithmatex">\(\frac A{x-1}+\frac B{(x-1)^2}+\frac C{(x-1)^3}+\frac{Dx+E}{x^2+x+1}+\frac{Fx+G}{(x^2+x+1)^2}\)</span>. The numbers of unknowns are <span class="arithmatex">\(3\)</span>, <span class="arithmatex">\(4\)</span> and <span class="arithmatex">\(7\)</span>, equal to the degrees <span class="arithmatex">\(3\)</span>, <span class="arithmatex">\(4\)</span> and <span class="arithmatex">\(3+4=7\)</span> of the denominators, as Theorem <a href="#thm-pfd">8.5.5</a> says (<span class="arithmatex">\(x^2+x+1\)</span> has <span class="arithmatex">\(b^2-4c=-3&lt;0\)</span>).</p>
+<p><strong>Knowledge Check <a href="#kc-kccover">8.5.3</a>.</strong> Cover up <span class="arithmatex">\(x\)</span> at <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(A=\frac{2}{(-1)(2)}=-1\)</span>. Cover up <span class="arithmatex">\(x-1\)</span> at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(B=\frac{3+1+2}{(1)(3)}=2\)</span>. Cover up <span class="arithmatex">\(x+2\)</span> at <span class="arithmatex">\(x=-2\)</span>: <span class="arithmatex">\(C=\frac{12-2+2}{(-2)(-3)}=2\)</span>. Check at <span class="arithmatex">\(x=2\)</span>: left <span class="arithmatex">\(\frac{12+2+2}{2\cdot1\cdot4}=2\)</span>; right <span class="arithmatex">\(-\frac12+2+\frac24=2\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
