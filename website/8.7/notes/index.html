@@ -1,0 +1,3563 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../8.6/notes/">
+      
+      
+        <link rel="next" href="../../10.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#three-families-of-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Three families of methods
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-table-of-integrals" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A table of integrals
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitting-an-integral-to-a-table-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fitting an integral to a table entry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-the-tables-answer-is-not-your-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        When the table’s answer is not your answer
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-computer-algebra-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading computer algebra output
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definite-integrals-and-breaks-in-the-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definite integrals and breaks in the formula
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-functions-and-numerical-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Special functions and numerical values
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-match-the-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Match the entry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-substitute-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Substitute first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-complete-the-square" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Complete the square
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-reduction-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Reduction formulas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-when-the-tables-answer-is-not-yours" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: When the table’s answer is not yours
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-definite-integrals-and-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Definite integrals and breaks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#three-families-of-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Three families of methods
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-table-of-integrals" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A table of integrals
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fitting-an-integral-to-a-table-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fitting an integral to a table entry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-the-tables-answer-is-not-your-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        When the table’s answer is not your answer
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-computer-algebra-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading computer algebra output
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definite-integrals-and-breaks-in-the-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definite integrals and breaks in the formula
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-functions-and-numerical-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Special functions and numerical values
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-match-the-entry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Match the entry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-substitute-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Substitute first
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-complete-the-square" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Complete the square
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-reduction-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Reduction formulas
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-when-the-tables-answer-is-not-yours" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: When the table’s answer is not yours
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-definite-integrals-and-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Definite integrals and breaks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="87-other-methods-of-integration">8.7 Other Methods of Integration<a class="headerlink" href="#87-other-methods-of-integration" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>In practice an integral is often not done by hand at all: it is looked up in a table of integrals, or typed into a computer algebra system. Both are legitimate and fast, and both can mislead a careless user. A table lists a formula only for a particular <em>form</em>, with conditions on the constants; a computer algebra system prints a formula that may differ from yours by a constant, may omit absolute values, and may be wrong at one point of the interval you care about. This section teaches how to <em>use</em> these tools and how to <em>trust</em> them: how to match an integral to a table entry, how to prepare it by a substitution, by completing the square or by a reduction formula, how to compare two answers that look different, and why a definite integral computed from a formula needs a second look when the formula has a break. Every table entry that we use is proved by differentiation, and every computer result in the examples is checked the same way.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>match an integral to the form of a table entry, read off the constants, and check the conditions under which the entry holds;</p>
+</li>
+<li>
+<p>prepare an integral for a table by a substitution, by completing the square, or by one or more steps of a reduction formula;</p>
+</li>
+<li>
+<p>decide whether your answer and the answer of a table or a computer algebra system are the same, and find the constant by which they differ;</p>
+</li>
+<li>
+<p>read the output of a computer algebra system critically: a missing constant, a missing absolute value, a formula valid on only part of the interval, a form that is undefined at a point where the integrand is fine;</p>
+</li>
+<li>
+<p>evaluate a definite integral from a formula whose graph has a jump (Theorem <a href="#thm-break">8.7.14</a>), and recognize a definite integral that cannot be evaluated by the Fundamental Theorem of Calculus at all;</p>
+</li>
+<li>
+<p>say plainly that a table entry or a computer result is a claim and not a proof, and check it by differentiating.</p>
+</li>
+</ul>
+<h2 id="three-families-of-methods">Three families of methods<a class="headerlink" href="#three-families-of-methods" title="Permanent link">&para;</a></h2>
+<p>Sections 8.1 to 8.5 were <em>analytical</em> methods: pencil-and-paper manipulations that end in a formula. This section adds two more ways of reaching a formula, and a third kind of answer.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Method</strong></th>
+<th style="text-align: left;"><strong>What you get</strong></th>
+<th style="text-align: left;"><strong>What can go wrong</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">by hand (8.1–8.5)</td>
+<td style="text-align: left;">a formula</td>
+<td style="text-align: left;">an algebra or sign error</td>
+</tr>
+<tr>
+<td style="text-align: left;">table of integrals</td>
+<td style="text-align: left;">a formula, for a standard form</td>
+<td style="text-align: left;">the wrong match of constants; a condition missed; a misprint</td>
+</tr>
+<tr>
+<td style="text-align: left;">computer algebra</td>
+<td style="text-align: left;">a formula, a special function, or nothing</td>
+<td style="text-align: left;">a missing constant or absolute value; a formula with a break; a different form that you do not recognize</td>
+</tr>
+<tr>
+<td style="text-align: left;">numerical integration</td>
+<td style="text-align: left;">a number (for a definite integral)</td>
+<td style="text-align: left;">no formula at all; an error that must be bounded</td>
+</tr>
+</tbody>
+</table>
+<p>A table and a computer algebra system are both ways of <em>finding a candidate</em> <span class="arithmatex">\(F\)</span>. They differ from the methods of the earlier sections only in that someone else did the work. The next section takes up numerical integration; Calculus I and the earlier sections are all that is needed here.</p>
+<div class="admonition warning">
+<p class="admonition-title">A table or a computer result is not a proof</p>
+<p>Looking up an integral, or asking a program, produces a <em>claim</em>: “<span class="arithmatex">\(F\)</span> is an antiderivative of <span class="arithmatex">\(f\)</span> on this interval”. The claim becomes a fact when you differentiate <span class="arithmatex">\(F\)</span> and obtain <span class="arithmatex">\(f\)</span> (Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>(1)). A table is written by people and may contain a misprint, may state its conditions in a footnote, or may be copied with a constant interchanged; a program may print a form valid on only part of the domain. In this section every table entry is proved by differentiation (Theorem <a href="#thm-table">8.7.1</a>), and every integral in an example, whatever its source, is checked by differentiating the answer. Where a definite integral comes from a formula, we also check that the formula is continuous on the interval (Theorem <a href="#thm-break">8.7.14</a>) and that the number has the right sign and size.</p>
+</div>
+<h2 id="a-table-of-integrals">A table of integrals<a class="headerlink" href="#a-table-of-integrals" title="Permanent link">&para;</a></h2>
+<p>A table of integrals is a list of formulas <span class="arithmatex">\(\int f(x)\,dx=F(x)+C\)</span>, grouped by the <em>form</em> of <span class="arithmatex">\(f\)</span>: roots of a linear function, roots of <span class="arithmatex">\(x^2\pm a^2\)</span>, trigonometric functions of a linear argument, products of a power and an exponential or a sine, and so on. Large tables have hundreds of entries; we use a small one. Together with the basic formulas of Section 8.1 (formulas (1)–(17)), the inverse-trigonometric and logarithmic integrals of Sections 8.2 and 8.4, and the reduction formulas of Sections 8.2, 8.3, 8.4 and 8.6, it is enough for every example here. The letters <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> are constants, and each entry holds on every interval on which both sides are defined.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.7.1: A short table of integrals</p>
+<p><span id="thm-table"></span></p>
+<p>Write <span class="arithmatex">\(s=\sqrt{ax+b}\)</span> in (T1)–(T4) and <span class="arithmatex">\(s=\sqrt{x^2+a^2}\)</span> in (T6), (T7). Then</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{x}{ax+b}\,dx=\frac xa-\frac b{a^2}\ln\lvert ax+b\rvert+C\)</span>, where <span class="arithmatex">\(a\ne0\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{x}{\sqrt{ax+b}}\,dx=\frac{2(ax-2b)}{3a^2}\,\sqrt{ax+b}+C\)</span>, where <span class="arithmatex">\(a\ne0\)</span> and <span class="arithmatex">\(ax+b&gt;0\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{ax+b}}=\frac1{\sqrt b}\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert+C\)</span>, where <span class="arithmatex">\(b&gt;0\)</span>, <span class="arithmatex">\(x\ne0\)</span> and <span class="arithmatex">\(ax+b&gt;0\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{ax+b}}=\frac2{\sqrt{-b}}\tan^{-1}\frac{s}{\sqrt{-b}}+C\)</span>, where <span class="arithmatex">\(b&lt;0\)</span> and <span class="arithmatex">\(ax+b&gt;0\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{dx}{1+\sin ax}=-\frac1a\tan\left(\frac\pi4-\frac{ax}2\right)+C\)</span>, where <span class="arithmatex">\(a\ne0\)</span>, on any interval on which <span class="arithmatex">\(\sin ax\ne-1\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\sqrt{x^2+a^2}\,dx=\frac x2\sqrt{x^2+a^2}+\frac{a^2}2\ln\left(x+\sqrt{x^2+a^2}\right)+C\)</span>, where <span class="arithmatex">\(a&gt;0\)</span>;</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{x^2+a^2}}=-\frac1a\ln\frac{a+\sqrt{x^2+a^2}}{\lvert x\rvert}+C\)</span>, where <span class="arithmatex">\(a&gt;0\)</span> and <span class="arithmatex">\(x\ne0\)</span>.</p>
+</li>
+</ol>
+</div>
+<p><em>Proof.</em> In each case we differentiate the right side and obtain the integrand, which proves the entry (Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>(1)).</p>
+<p>(T1) By the Chain Rule, <span class="arithmatex">\(\frac d{dx}\ln\lvert ax+b\rvert=\frac a{ax+b}\)</span>, so</p>
+<div class="arithmatex">\[\frac d{dx}\left[\frac xa-\frac b{a^2}\ln\lvert ax+b\rvert\right]=\frac1a-\frac b{a(ax+b)}=\frac{(ax+b)-b}{a(ax+b)}=\frac x{ax+b}.\]</div>
+<p>(T2) Here <span class="arithmatex">\(s=\sqrt{ax+b}\)</span>, <span class="arithmatex">\(s^2=ax+b\)</span> and <span class="arithmatex">\(s'=\frac a{2s}\)</span>. By the Product Rule,</p>
+<div class="arithmatex">\[\frac d{dx}\left[\frac{2(ax-2b)}{3a^2}\,s\right]=\frac{2a}{3a^2}\,s+\frac{2(ax-2b)}{3a^2}\cdot\frac a{2s}=\frac{2s^2+(ax-2b)}{3as}=\frac{2(ax+b)+ax-2b}{3as}=\frac{3ax}{3as}=\frac xs.\]</div>
+<p>(T3) Let <span class="arithmatex">\(b&gt;0\)</span>. Since <span class="arithmatex">\(s^2=ax+b\)</span>, we have <span class="arithmatex">\(s^2-b=ax\)</span> and <span class="arithmatex">\(x\ne0\)</span> means <span class="arithmatex">\(s\ne\sqrt b\)</span>. Also <span class="arithmatex">\(s+\sqrt b&gt;0\)</span>. For the logarithm of a quotient, <span class="arithmatex">\(\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert=\ln\lvert s-\sqrt b\rvert-\ln(s+\sqrt b)\)</span>, and <span class="arithmatex">\(\frac d{dx}\ln\lvert w\rvert=\frac{w'}w\)</span> for <span class="arithmatex">\(w\ne0\)</span> of either sign (Section 8.1). With <span class="arithmatex">\(s'=\frac a{2s}\)</span>,</p>
+<div class="arithmatex">\[\frac d{dx}\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert=\frac{s'}{s-\sqrt b}-\frac{s'}{s+\sqrt b}=s'\cdot\frac{2\sqrt b}{s^2-b}=\frac a{2s}\cdot\frac{2\sqrt b}{ax}=\frac{\sqrt b}{xs}.\]</div>
+<p>Multiplying by <span class="arithmatex">\(\frac1{\sqrt b}\)</span> gives <span class="arithmatex">\(\frac1{xs}\)</span>.</p>
+<p>(T4) Let <span class="arithmatex">\(b&lt;0\)</span> and <span class="arithmatex">\(\beta=\sqrt{-b}&gt;0\)</span>, so <span class="arithmatex">\(s^2=ax-\beta^2\)</span>; <span class="arithmatex">\(ax+b&gt;0\)</span> gives <span class="arithmatex">\(ax&gt;\beta^2&gt;0\)</span>, so <span class="arithmatex">\(x\ne0\)</span> and <span class="arithmatex">\(s^2+\beta^2=ax\)</span>. By the Chain Rule and <span class="arithmatex">\(\frac d{du}\tan^{-1}u=\frac1{1+u^2}\)</span>,</p>
+<div class="arithmatex">\[\frac d{dx}\tan^{-1}\frac s\beta=\frac1{1+s^2/\beta^2}\cdot\frac{s'}\beta=\frac{\beta^2}{\beta^2+s^2}\cdot\frac{a}{2s\beta}=\frac{\beta a}{2s\cdot ax}=\frac\beta{2xs}.\]</div>
+<p>Multiplying by <span class="arithmatex">\(\frac2\beta\)</span> gives <span class="arithmatex">\(\frac1{xs}\)</span>.</p>
+<p>(T5) The identity <span class="arithmatex">\(\cos^2\phi=\frac{1+\cos2\phi}2\)</span> (Theorem <a href="../../8.3/notes/#thm-ident">8.3.1</a>(3)) with <span class="arithmatex">\(2\phi=\frac\pi2-ax\)</span> and <span class="arithmatex">\(\cos\left(\frac\pi2-ax\right)=\sin ax\)</span> gives <span class="arithmatex">\(1+\sin ax=2\cos^2\left(\frac\pi4-\frac{ax}2\right)\)</span>. This is <span class="arithmatex">\(0\)</span> exactly when <span class="arithmatex">\(\cos\left(\frac\pi4-\frac{ax}2\right)=0\)</span>, so on an interval where <span class="arithmatex">\(\sin ax\ne-1\)</span> the tangent is defined, and</p>
+<div class="arithmatex">\[\frac d{dx}\left[-\frac1a\tan\left(\frac\pi4-\frac{ax}2\right)\right]=-\frac1a\sec^2\left(\frac\pi4-\frac{ax}2\right)\cdot\left(-\frac a2\right)=\frac1{2\cos^2\left(\frac\pi4-\frac{ax}2\right)}=\frac1{1+\sin ax}.\]</div>
+<p>(T6) Let <span class="arithmatex">\(s=\sqrt{x^2+a^2}\)</span>, so <span class="arithmatex">\(s^2=x^2+a^2\)</span>, <span class="arithmatex">\(s'=\frac xs\)</span> and <span class="arithmatex">\(s&gt;\lvert x\rvert\)</span>, hence <span class="arithmatex">\(x+s&gt;0\)</span>. By the Product Rule <span class="arithmatex">\(\frac d{dx}\left(\frac x2s\right)=\frac s2+\frac{x^2}{2s}\)</span>, and <span class="arithmatex">\(\frac d{dx}\ln(x+s)=\frac{1+x/s}{x+s}=\frac{(s+x)/s}{x+s}=\frac1s\)</span>. Therefore</p>
+<div class="arithmatex">\[\frac d{dx}\left[\frac x2s+\frac{a^2}2\ln(x+s)\right]=\frac s2+\frac{x^2}{2s}+\frac{a^2}{2s}=\frac{s^2+x^2+a^2}{2s}=\frac{2s^2}{2s}=s.\]</div>
+<p>(T7) With <span class="arithmatex">\(s=\sqrt{x^2+a^2}\)</span> again, <span class="arithmatex">\(a+s&gt;0\)</span>, so <span class="arithmatex">\(\ln\frac{a+s}{\lvert x\rvert}=\ln(a+s)-\ln\lvert x\rvert\)</span> and</p>
+<div class="arithmatex">\[\frac d{dx}\left[\ln(a+s)-\ln\lvert x\rvert\right]=\frac{x/s}{a+s}-\frac1x=\frac{x^2-s(a+s)}{xs(a+s)}=\frac{x^2-as-s^2}{xs(a+s)}=\frac{-a^2-as}{xs(a+s)}=-\frac a{xs},\]</div>
+<p>because <span class="arithmatex">\(x^2-s^2=-a^2\)</span>. Multiplying by <span class="arithmatex">\(-\frac1a\)</span> gives <span class="arithmatex">\(\frac1{xs}\)</span>. ◻ ∎</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.7.1: Why differentiate a table?</p>
+<p><span id="think-why"></span></p>
+<p>A table of integrals is produced by people who evaluated the integrals analytically, so its entries are “exact”. Why, then, do we insist on differentiating an entry before relying on it? What does the check cost, compared with the cost of an error?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Analytical evaluation is done by people, and people make slips: a misprint in the table, an interchanged sign, the wrong entry when two entries differ by the sign of a constant (as (T3) and (T4) do), a condition (<span class="arithmatex">\(b&gt;0\)</span>, <span class="arithmatex">\(x&gt;0\)</span>, <span class="arithmatex">\(a\ne0\)</span>) that was overlooked, or a mistake in your own copying of the constants. Differentiating takes one line, using rules you already know, and settles the question for <em>this</em> integrand on <em>this</em> interval; an undetected error propagates into every later use of the result, such as a volume, a probability or a bridge load. So the check is cheap and the error is expensive.</p>
+</details>
+</div>
+<p>The seven entries are typical. (T1) and (T2) are integrals of <span class="arithmatex">\(x\)</span> over a linear function or over its square root; (T3) and (T4) are the same integrand <span class="arithmatex">\(\frac1{x\sqrt{ax+b}}\)</span> but with <em>different answers depending on the sign of <span class="arithmatex">\(b\)</span></em>, which is why a table states a condition; (T5) is a trigonometric form; (T6) and (T7) involve a root of <span class="arithmatex">\(x^2+a^2\)</span>. Notice that (T5) holds only where <span class="arithmatex">\(\sin ax\ne-1\)</span>, and that (T3) has a restriction <span class="arithmatex">\(x\ne0\)</span>: the conditions are part of the entry.</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 8.7.2: Using a table of integrals</p>
+<p><span id="proc-table"></span></p>
+<ol>
+<li>
+<p><em>Find the form.</em> Classify the integrand: root of a linear function, root of <span class="arithmatex">\(x^2\pm a^2\)</span>, trigonometric function of a linear argument, power times exponential, sine or cosine, and so on. Look for that form.</p>
+</li>
+<li>
+<p><em>Match the constants</em> literally: write the integrand next to the entry and read off <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(n\)</span>. Check the conditions (sign of <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(a&gt;0\)</span>, the interval). If the signs differ from the entry, there may be another entry (for instance (T3) and (T4)) or the entry may not apply.</p>
+</li>
+<li>
+<p><em>If no entry matches, prepare the integral:</em> a substitution <span class="arithmatex">\(u=g(x)\)</span> so that the integrand becomes <span class="arithmatex">\(f(u)\,du\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>); completing the square when <span class="arithmatex">\(ax^2+bx+c\)</span> occurs (Theorem <a href="#thm-square">8.7.5</a>); a rewrite from Procedure <a href="../../8.1/notes/#proc-rewrite">8.1.9</a>; or, for powers, a reduction formula, used repeatedly until the exponent reaches the base case (Theorem <a href="#thm-redxn">8.7.7</a> and the reduction formulas of Sections 8.2 to 8.6).</p>
+</li>
+<li>
+<p><em>Return to the original variable.</em></p>
+</li>
+<li>
+<p><em>Check</em> by differentiating. For a definite integral, check that the formula is defined and continuous on the whole interval (Theorem <a href="#thm-break">8.7.14</a>) and compare with a rough estimate.</p>
+</li>
+</ol>
+</div>
+<h2 id="fitting-an-integral-to-a-table-entry">Fitting an integral to a table entry<a class="headerlink" href="#fitting-an-integral-to-a-table-entry" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.3: Matching the constants</p>
+<p><span id="ex-m1"></span></p>
+<p>Evaluate (a) <span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{5x-4}}\)</span> for <span class="arithmatex">\(x&gt;\frac45\)</span>; (b) <span class="arithmatex">\(\displaystyle\int\frac{x\,dx}{\sqrt{4-3x}}\)</span> for <span class="arithmatex">\(x&lt;\frac43\)</span>, and find <span class="arithmatex">\(\displaystyle\int_0^1\frac{x\,dx}{\sqrt{4-3x}}\)</span>.</p>
+<p><strong>Solution.</strong> (a) The integrand is <span class="arithmatex">\(\frac1{x\sqrt{ax+b}}\)</span> with <span class="arithmatex">\(ax+b=5x-4\)</span>, so <span class="arithmatex">\(a=5\)</span> and <span class="arithmatex">\(b=-4\)</span>. Because <span class="arithmatex">\(b&lt;0\)</span>, the matching entry is (T4), not (T3) (which needs <span class="arithmatex">\(b&gt;0\)</span> and would require <span class="arithmatex">\(\sqrt{-4}\)</span>). With <span class="arithmatex">\(\sqrt{-b}=2\)</span>,</p>
+<div class="arithmatex">\[\int\frac{dx}{x\sqrt{5x-4}}=\frac2{2}\tan^{-1}\frac{\sqrt{5x-4}}2+C=\tan^{-1}\frac{\sqrt{5x-4}}2+C .\]</div>
+<p><em>Check.</em> Let <span class="arithmatex">\(s=\sqrt{5x-4}\)</span>, <span class="arithmatex">\(s'=\frac5{2s}\)</span>. Then <span class="arithmatex">\(\frac d{dx}\tan^{-1}\frac s2=\frac1{1+s^2/4}\cdot\frac{s'}2=\frac4{4+s^2}\cdot\frac5{4s}=\frac5{5x\,s}=\frac1{xs}\)</span>, because <span class="arithmatex">\(4+s^2=5x\)</span>.</p>
+<p>(b) The integrand is <span class="arithmatex">\(\frac x{\sqrt{ax+b}}\)</span> with <span class="arithmatex">\(a=-3\)</span> and <span class="arithmatex">\(b=4\)</span>, and <span class="arithmatex">\(ax+b=4-3x&gt;0\)</span> for <span class="arithmatex">\(x&lt;\frac43\)</span>: entry (T2). Then <span class="arithmatex">\(\frac{2(ax-2b)}{3a^2}=\frac{2(-3x-8)}{27}=-\frac{2(3x+8)}{27}\)</span>, so</p>
+<div class="arithmatex">\[\int\frac{x\,dx}{\sqrt{4-3x}}=-\frac{2(3x+8)}{27}\sqrt{4-3x}+C .\]</div>
+<p><em>Check.</em> With <span class="arithmatex">\(s=\sqrt{4-3x}\)</span>, <span class="arithmatex">\(s'=-\frac3{2s}\)</span> and <span class="arithmatex">\(s^2=4-3x\)</span>: <span class="arithmatex">\(\frac d{dx}\left[-\frac2{27}(3x+8)s\right]=-\frac2{27}\left[3s-\frac{3(3x+8)}{2s}\right]=-\frac2{27}\cdot\frac{6s^2-9x-24}{2s}=-\frac2{27}\cdot\frac{24-18x-9x-24}{2s}=\frac{x}{s}\)</span>.</p>
+<p><em>The definite integral.</em> The integrand is defined and continuous on <span class="arithmatex">\([0,1]\)</span> (as <span class="arithmatex">\(4-3x\ge1\)</span>), and the antiderivative is too, so by the Fundamental Theorem of Calculus</p>
+<div class="arithmatex">\[\int_0^1\frac{x\,dx}{\sqrt{4-3x}}=\left[-\frac{2(3x+8)}{27}\sqrt{4-3x}\right]_0^1=-\frac{2\cdot11}{27}\cdot1+\frac{2\cdot8}{27}\cdot2=\frac{-22+32}{27}=\frac{10}{27}\approx0.370 .\]</div>
+<p><em>Rough check.</em> The integrand is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(\frac{0.5}{\sqrt{2.5}}\approx0.32\)</span> at <span class="arithmatex">\(x=\frac12\)</span> and <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=1\)</span>, so an average near <span class="arithmatex">\(0.37\)</span> on an interval of length <span class="arithmatex">\(1\)</span> is reasonable.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.7.1: Which entry?</p>
+<p><span id="kc-kc1"></span></p>
+<p>For each integral, name the entry of Theorem <a href="#thm-table">8.7.1</a> that fits and the values of <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> (do not integrate): (a) <span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{3x+8}}\)</span>; (b) <span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{3x-8}}\)</span>; (c) <span class="arithmatex">\(\displaystyle\int\frac{x\,dx}{\sqrt{2-7x}}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.4: A substitution to reach the table</p>
+<p><span id="ex-m2"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{\sqrt{1+e^{2x}}}\)</span>.</p>
+<p><strong>Solution.</strong> No entry contains <span class="arithmatex">\(e^{2x}\)</span>, but <span class="arithmatex">\(x\)</span> appears only through <span class="arithmatex">\(e^x\)</span>, so put <span class="arithmatex">\(u=e^x\)</span> (Section 8.6, Theorem <a href="../../8.6/notes/#thm-rational">8.6.9</a>): <span class="arithmatex">\(du=e^x\,dx\)</span>, so <span class="arithmatex">\(dx=\frac{du}u\)</span>, and <span class="arithmatex">\(e^{2x}=u^2\)</span>. Then</p>
+<div class="arithmatex">\[\int\frac{dx}{\sqrt{1+e^{2x}}}=\int\frac{1}{\sqrt{1+u^2}}\cdot\frac{du}u=\int\frac{du}{u\sqrt{u^2+1}} .\]</div>
+<p>This is entry (T7) with <span class="arithmatex">\(a=1\)</span> (and <span class="arithmatex">\(u&gt;0\)</span>, so <span class="arithmatex">\(\lvert u\rvert=u\)</span>):</p>
+<div class="arithmatex">\[\int\frac{du}{u\sqrt{u^2+1}}=-\ln\frac{1+\sqrt{u^2+1}}{u}+C=-\ln\left(1+\sqrt{u^2+1}\right)+\ln u+C .\]</div>
+<p>Replace <span class="arithmatex">\(u\)</span> by <span class="arithmatex">\(e^x\)</span>, so <span class="arithmatex">\(\ln u=x\)</span> and <span class="arithmatex">\(u^2+1=e^{2x}+1\)</span>:</p>
+<div class="arithmatex">\[\int\frac{dx}{\sqrt{1+e^{2x}}}=x-\ln\left(1+\sqrt{1+e^{2x}}\right)+C .\]</div>
+<p><em>Check.</em> Let <span class="arithmatex">\(s=\sqrt{1+e^{2x}}\)</span>, so <span class="arithmatex">\(s'=\frac{e^{2x}}s\)</span> and <span class="arithmatex">\(s^2-1=e^{2x}\)</span>. Then <span class="arithmatex">\(\frac d{dx}\ln(1+s)=\frac{s'}{1+s}=\frac{s^2-1}{s(1+s)}=\frac{(s-1)(s+1)}{s(1+s)}=\frac{s-1}s\)</span>, so the derivative of the answer is <span class="arithmatex">\(1-\frac{s-1}s=\frac1s\)</span>, the integrand.</p>
+</div>
+<p>The next entry usually needed is a root of a quadratic. A table lists <span class="arithmatex">\(\sqrt{x^2\pm a^2}\)</span> and <span class="arithmatex">\(\sqrt{a^2-x^2}\)</span>; a general quadratic <span class="arithmatex">\(ax^2+bx+c\)</span> is brought to that form by completing the square, which we state once and prove.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.7.5: Completing the square</p>
+<p><span id="thm-square"></span></p>
+<p>For constants <span class="arithmatex">\(a\ne0\)</span>, <span class="arithmatex">\(b\)</span>, <span class="arithmatex">\(c\)</span> and all <span class="arithmatex">\(x\)</span>,</p>
+<div class="arithmatex">\[ax^2+bx+c=a\left(x+\frac b{2a}\right)^2+\frac{4ac-b^2}{4a}.\]</div>
+<p>Consequently, with <span class="arithmatex">\(u=x+\frac b{2a}\)</span> (so <span class="arithmatex">\(du=dx\)</span>), an integrand containing <span class="arithmatex">\(ax^2+bx+c\)</span> becomes one containing <span class="arithmatex">\(au^2+k\)</span>, where <span class="arithmatex">\(k=\frac{4ac-b^2}{4a}\)</span>.</p>
+</div>
+<p><em>Proof.</em> Expand the right side: <span class="arithmatex">\(a\left(x^2+\frac bax+\frac{b^2}{4a^2}\right)+\frac{4ac-b^2}{4a}=ax^2+bx+\frac{b^2}{4a}+c-\frac{b^2}{4a}=ax^2+bx+c\)</span>. The substitution <span class="arithmatex">\(u=x+\frac b{2a}\)</span> has <span class="arithmatex">\(du=dx\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>). <span class="arithmatex">\(\blacksquare\)</span> ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.6: Complete the square, substitute, use the table</p>
+<p><span id="ex-m3"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\sqrt{x^2+6x+13}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> No entry has <span class="arithmatex">\(x^2+6x+13\)</span> under the root, so complete the square (Theorem <a href="#thm-square">8.7.5</a> with <span class="arithmatex">\(a=1\)</span>, <span class="arithmatex">\(b=6\)</span>, <span class="arithmatex">\(c=13\)</span>): <span class="arithmatex">\(x^2+6x+13=(x+3)^2+4\)</span>. Put <span class="arithmatex">\(u=x+3\)</span>, <span class="arithmatex">\(du=dx\)</span>:</p>
+<div class="arithmatex">\[\int\sqrt{x^2+6x+13}\,dx=\int\sqrt{u^2+2^2}\,du .\]</div>
+<p>This is entry (T6) with <span class="arithmatex">\(a=2\)</span>, so</p>
+<div class="arithmatex">\[\int\sqrt{u^2+4}\,du=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)+C .\]</div>
+<p>Return to <span class="arithmatex">\(x\)</span> with <span class="arithmatex">\(u=x+3\)</span> and <span class="arithmatex">\(u^2+4=x^2+6x+13\)</span>:</p>
+<div class="arithmatex">\[\int\sqrt{x^2+6x+13}\,dx=\frac{x+3}2\sqrt{x^2+6x+13}+2\ln\left(x+3+\sqrt{x^2+6x+13}\right)+C .\]</div>
+<p><em>Check.</em> The entry (T6) was proved by differentiation, and the Chain Rule with <span class="arithmatex">\(\frac{du}{dx}=1\)</span> transfers it to <span class="arithmatex">\(x\)</span>; numerically at <span class="arithmatex">\(x=0\)</span>, the derivative of the answer is <span class="arithmatex">\(\sqrt{13}\approx3.606\)</span>, the value of the integrand.</p>
+<p><em>Another form.</em> A computer algebra system may print <span class="arithmatex">\(2\sinh^{-1}\frac{x+3}2\)</span> for the logarithm. Since <span class="arithmatex">\(\sinh^{-1}w=\ln\left(w+\sqrt{w^2+1}\right)\)</span> (Example <a href="#ex-b10">8.7.27</a>), <span class="arithmatex">\(2\sinh^{-1}\frac{x+3}2=2\ln\frac{x+3+\sqrt{x^2+6x+13}}2=2\ln\left(x+3+\sqrt{x^2+6x+13}\right)-2\ln2\)</span>: the same answer with a different constant.</p>
+</div>
+<p>A <em>reduction formula</em> does not give the answer in one step; it replaces an integral with a power <span class="arithmatex">\(n\)</span> by a similar integral with <span class="arithmatex">\(n-1\)</span>, and it is used repeatedly until the base case is reached. We met such formulas in Sections 8.2, 8.3, 8.4 and 8.6 (for <span class="arithmatex">\(\sin^nx\)</span> and <span class="arithmatex">\(\cos^nx\)</span>, <span class="arithmatex">\(\tan^nx\)</span> and <span class="arithmatex">\(\sec^nx\)</span>, <span class="arithmatex">\((x^2+a^2)^{-n}\)</span> and <span class="arithmatex">\((\ln x)^n\)</span>). Tables list many more; here is the one needed for polynomials times sines and cosines.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.7.7: Reduction formulas for <span class="arithmatex">\(x^n\sin ax\)</span> and <span class="arithmatex">\(x^n\cos ax\)</span></p>
+<p><span id="thm-redxn"></span></p>
+<p>For <span class="arithmatex">\(a\ne0\)</span> and every integer <span class="arithmatex">\(n\ge1\)</span>,</p>
+<div class="arithmatex">\[\int x^n\sin ax\,dx=-\frac{x^n\cos ax}a+\frac na\int x^{n-1}\cos ax\,dx,\]</div>
+<div class="arithmatex">\[\int x^n\cos ax\,dx=\frac{x^n\sin ax}a-\frac na\int x^{n-1}\sin ax\,dx .\]</div>
+<p>The base cases are <span class="arithmatex">\(\int\sin ax\,dx=-\frac{\cos ax}a\)</span> and <span class="arithmatex">\(\int\cos ax\,dx=\frac{\sin ax}a\)</span> (formulas (3), (4) of Section 8.1).</p>
+</div>
+<p><em>Proof.</em> Integrate by parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>). For the first formula let <span class="arithmatex">\(p=x^n\)</span> and <span class="arithmatex">\(dv=\sin ax\,dx\)</span>, so <span class="arithmatex">\(dp=nx^{n-1}\,dx\)</span> and <span class="arithmatex">\(v=-\frac{\cos ax}a\)</span>:</p>
+<div class="arithmatex">\[\int x^n\sin ax\,dx=-\frac{x^n\cos ax}a-\int\left(-\frac{\cos ax}a\right)nx^{n-1}\,dx=-\frac{x^n\cos ax}a+\frac na\int x^{n-1}\cos ax\,dx.\]</div>
+<p>For the second let <span class="arithmatex">\(p=x^n\)</span> and <span class="arithmatex">\(dv=\cos ax\,dx\)</span>, so <span class="arithmatex">\(v=\frac{\sin ax}a\)</span> and the same steps give <span class="arithmatex">\(\frac{x^n\sin ax}a-\frac na\int x^{n-1}\sin ax\,dx\)</span>. <span class="arithmatex">\(\blacksquare\)</span> ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.8: A reduction formula used three times</p>
+<p><span id="ex-m4"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int x^3\sin2x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The formulas alternate between sine and cosine and lower the power of <span class="arithmatex">\(x\)</span> by one each time (Theorem <a href="#thm-redxn">8.7.7</a> with <span class="arithmatex">\(a=2\)</span>). We write <span class="arithmatex">\(J_n=\int x^n\sin2x\,dx\)</span> and <span class="arithmatex">\(K_n=\int x^n\cos2x\,dx\)</span>.</p>
+<div class="arithmatex">\[\begin{aligned}
+J_3&amp;=-\frac{x^3\cos2x}2+\frac32K_2, &amp;\text{(first formula, $n=3$)}\\
+K_2&amp;=\frac{x^2\sin2x}2-\frac22J_1=\frac{x^2\sin2x}2-J_1, &amp;\text{(second formula, $n=2$)}\\
+J_1&amp;=-\frac{x\cos2x}2+\frac12K_0=-\frac{x\cos2x}2+\frac{\sin2x}4. &amp;\text{(first formula, $n=1$)}
+\end{aligned}\]</div>
+<p>Here <span class="arithmatex">\(K_0=\int\cos2x\,dx=\frac{\sin2x}2\)</span> is the base case. Substitute from the bottom up. First <span class="arithmatex">\(K_2=\frac{x^2\sin2x}2+\frac{x\cos2x}2-\frac{\sin2x}4\)</span>. Then</p>
+<div class="arithmatex">\[\begin{aligned}J_3&amp;=-\frac{x^3\cos2x}2+\frac32\left(\frac{x^2\sin2x}2+\frac{x\cos2x}2-\frac{\sin2x}4\right)\\&amp;=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8 .\end{aligned}\]</div>
+<p>So <span class="arithmatex">\(\displaystyle\int x^3\sin2x\,dx=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8+C\)</span>. <em>Check by the tabular method</em> (Theorem <a href="../../8.2/notes/#thm-tab">8.2.14</a>). Differentiate <span class="arithmatex">\(x^3\)</span> repeatedly (<span class="arithmatex">\(x^3,3x^2,6x,6,0\)</span>) and integrate <span class="arithmatex">\(\sin2x\)</span> repeatedly (<span class="arithmatex">\(-\frac{\cos2x}2,-\frac{\sin2x}4,\frac{\cos2x}8,\frac{\sin2x}{16}\)</span>), with alternating signs <span class="arithmatex">\(+,-,+,-\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}&amp;x^3\left(-\frac{\cos2x}2\right)-3x^2\left(-\frac{\sin2x}4\right)+6x\left(\frac{\cos2x}8\right)-6\left(\frac{\sin2x}{16}\right)\\&amp;\quad=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8,\end{aligned}\]</div>
+<p>the same function. <em>Check by differentiating.</em> Term by term, <span class="arithmatex">\(\frac d{dx}\left(-\frac{x^3\cos2x}2\right)=-\frac{3x^2\cos2x}2+x^3\sin2x\)</span>; <span class="arithmatex">\(\frac d{dx}\frac{3x^2\sin2x}4=\frac{3x\sin2x}2+\frac{3x^2\cos2x}2\)</span>; <span class="arithmatex">\(\frac d{dx}\frac{3x\cos2x}4=\frac{3\cos2x}4-\frac{3x\sin2x}2\)</span>; <span class="arithmatex">\(\frac d{dx}\left(-\frac{3\sin2x}8\right)=-\frac{3\cos2x}4\)</span>. In the sum, every term cancels except <span class="arithmatex">\(x^3\sin2x\)</span>.</p>
+</div>
+<h2 id="when-the-tables-answer-is-not-your-answer">When the table’s answer is not your answer<a class="headerlink" href="#when-the-tables-answer-is-not-your-answer" title="Permanent link">&para;</a></h2>
+<p>Two people who integrate the same function may print different formulas, and so may two tables or two programs. By Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>(2), if both are antiderivatives on the same interval their difference is constant <em>on that interval</em>. The constant is easy to find (evaluate the difference at one point) and is usually nonzero; it vanishes from every definite integral.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.9: A table form and a computer form that differ by a constant</p>
+<p><span id="ex-m5"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/2}\frac{dx}{1+\sin2x}\)</span> with the table, and compare the table’s antiderivative with the one printed by a computer algebra system.</p>
+<p><strong>Solution.</strong> Entry (T5) with <span class="arithmatex">\(a=2\)</span> gives <span class="arithmatex">\(F_T(x)=-\frac12\tan\left(\frac\pi4-x\right)\)</span>, valid where <span class="arithmatex">\(\sin2x\ne-1\)</span>. On <span class="arithmatex">\([0,\frac\pi2]\)</span> we have <span class="arithmatex">\(2x\in[0,\pi]\)</span> and <span class="arithmatex">\(\sin2x\ge0\)</span>, so <span class="arithmatex">\(F_T\)</span> and the integrand are continuous on the whole interval. Then <span class="arithmatex">\(F_T\left(\frac\pi2\right)=-\frac12\tan\left(-\frac\pi4\right)=\frac12\)</span> and <span class="arithmatex">\(F_T(0)=-\frac12\tan\frac\pi4=-\frac12\)</span>, so</p>
+<div class="arithmatex">\[\int_0^{\pi/2}\frac{dx}{1+\sin2x}=\frac12-\left(-\frac12\right)=1 .\]</div>
+<p><em>Rough check.</em> The integrand is <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=0\)</span> and at <span class="arithmatex">\(x=\frac\pi2\)</span> and <span class="arithmatex">\(\frac12\)</span> at <span class="arithmatex">\(x=\frac\pi4\)</span>, so it lies between <span class="arithmatex">\(\frac12\)</span> and <span class="arithmatex">\(1\)</span> on an interval of length <span class="arithmatex">\(\frac\pi2\approx1.57\)</span>: the integral lies between <span class="arithmatex">\(0.79\)</span> and <span class="arithmatex">\(1.57\)</span>, and <span class="arithmatex">\(1\)</span> does.</p>
+<p><em>The computer’s form.</em> SymPy 1.14 prints <span class="arithmatex">\(F_C(x)=-\dfrac1{\tan x+1}\)</span>. To check it we differentiate, using <span class="arithmatex">\(\frac d{dx}\tan x=\sec^2x\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}F_C'(x)&amp;=\frac{\sec^2x}{(1+\tan x)^2}=\frac{1/\cos^2x}{(\cos x+\sin x)^2/\cos^2x}\\&amp;=\frac1{(\cos x+\sin x)^2}=\frac1{1+2\sin x\cos x}=\frac1{1+\sin2x}.\end{aligned}\]</div>
+<p>So both are antiderivatives. They must differ by a constant, and we can find it exactly. From the angle-subtraction formulas, <span class="arithmatex">\(\sin\left(\frac\pi4-x\right)=\frac{\sqrt2}2(\cos x-\sin x)\)</span> and <span class="arithmatex">\(\cos\left(\frac\pi4-x\right)=\frac{\sqrt2}2(\cos x+\sin x)\)</span>; dividing and then dividing top and bottom by <span class="arithmatex">\(\cos x\)</span>,</p>
+<div class="arithmatex">\[\tan\left(\frac\pi4-x\right)=\frac{\cos x-\sin x}{\cos x+\sin x}=\frac{1-\tan x}{1+\tan x},\]</div>
+<div class="arithmatex">\[F_T=-\frac12\cdot\frac{1-\tan x}{1+\tan x}=\frac12\cdot\frac{(\tan x+1)-2}{\tan x+1}=\frac12-\frac1{\tan x+1}=\frac12+F_C .\]</div>
+<p>The two forms differ by <span class="arithmatex">\(\frac12\)</span> (Figure 1(a)), and the constant cancels in <span class="arithmatex">\(F(b)-F(a)\)</span>. One more point: <span class="arithmatex">\(F_C\)</span> is undefined at <span class="arithmatex">\(x=\frac\pi2\)</span> because <span class="arithmatex">\(\tan\frac\pi2\)</span> is, although the integrand is perfectly continuous there. As <span class="arithmatex">\(x\to\frac\pi2^-\)</span>, <span class="arithmatex">\(\tan x\to\infty\)</span> and <span class="arithmatex">\(F_C\to0\)</span>, so the break is removable: with <span class="arithmatex">\(F_C\left(\frac\pi2\right):=0\)</span> we get <span class="arithmatex">\(F_C\left(\frac\pi2\right)-F_C(0)=0-(-1)=1\)</span> again (Theorem <a href="#thm-break">8.7.14</a>(1) below).</p>
+<p><img alt="Diagram: \(\left(0,-\frac12\right)\); \(\frac12\); \(F_T\); \(F_C\); (a) the two forms of $\int\frac{dx; \(\frac\pi2\); \(-\frac\pi2\); \(\left(-1,-\frac\pi4\right)\); \(\left(-1,\frac\pi4\right)\); blue: $\tan^{-1; red: $-\tan^{-1; (b) two forms of $\int\frac{dx" class="calc-figure" src="../figures/notes-fig1.svg" width="808" /></p>
+<p>Figure 1. (a) <span class="arithmatex">\(F_T=-\frac12\tan\left(\frac\pi4-x\right)\)</span> (blue) and <span class="arithmatex">\(F_C=-\frac1{\tan x+1}\)</span> (red): the same shape, a constant vertical distance <span class="arithmatex">\(\frac12\)</span> apart. (b) <span class="arithmatex">\(\tan^{-1}x\)</span> (blue) and <span class="arithmatex">\(-\tan^{-1}\frac1x\)</span> (red, undefined at <span class="arithmatex">\(x=0\)</span>): the red curve lies <span class="arithmatex">\(\frac\pi2\)</span> <em>below</em> the blue one for <span class="arithmatex">\(x&gt;0\)</span> and <span class="arithmatex">\(\frac\pi2\)</span> <em>above</em> it for <span class="arithmatex">\(x&lt;0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.10: A constant that changes from one interval to the next</p>
+<p><span id="ex-m6"></span></p>
+<p>Find <span class="arithmatex">\(\displaystyle\int\frac{dx}{1+x^2}\)</span> in two ways and compare the answers.</p>
+<p><strong>Solution.</strong> <em>Way 1.</em> Formula (11) of Section 8.1 with <span class="arithmatex">\(a=1\)</span> gives <span class="arithmatex">\(F_1(x)=\tan^{-1}x\)</span>, an antiderivative on all of <span class="arithmatex">\(\mathbb R\)</span>.</p>
+<p><em>Way 2.</em> For <span class="arithmatex">\(x\ne0\)</span> put <span class="arithmatex">\(u=\frac1x\)</span>, so <span class="arithmatex">\(x=\frac1u\)</span> and <span class="arithmatex">\(dx=-\frac{du}{u^2}\)</span>, and <span class="arithmatex">\(1+x^2=1+\frac1{u^2}=\frac{u^2+1}{u^2}\)</span>. Then</p>
+<div class="arithmatex">\[\int\frac{dx}{1+x^2}=\int\frac{u^2}{u^2+1}\cdot\left(-\frac{du}{u^2}\right)=-\int\frac{du}{1+u^2}=-\tan^{-1}u+C=-\tan^{-1}\frac1x+C .\]</div>
+<p>So <span class="arithmatex">\(F_2(x)=-\tan^{-1}\frac1x\)</span> on <span class="arithmatex">\(x&gt;0\)</span> and on <span class="arithmatex">\(x&lt;0\)</span>. <em>Check:</em> <span class="arithmatex">\(\frac d{dx}\left[-\tan^{-1}\frac1x\right]=-\frac1{1+1/x^2}\cdot\left(-\frac1{x^2}\right)=\frac1{x^2+1}\)</span>.</p>
+<p><em>Both are right, so how do they differ?</em> By Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>(2) they differ by a constant on each interval <span class="arithmatex">\(x&gt;0\)</span> and <span class="arithmatex">\(x&lt;0\)</span>. For <span class="arithmatex">\(x&gt;0\)</span> let <span class="arithmatex">\(\theta=\tan^{-1}x\in\left(0,\frac\pi2\right)\)</span>. Then <span class="arithmatex">\(\frac\pi2-\theta\in\left(0,\frac\pi2\right)\)</span> and <span class="arithmatex">\(\tan\left(\frac\pi2-\theta\right)=\cot\theta=\frac1x\)</span>, so <span class="arithmatex">\(\tan^{-1}\frac1x=\frac\pi2-\theta\)</span>, that is <span class="arithmatex">\(\tan^{-1}x+\tan^{-1}\frac1x=\frac\pi2\)</span> for <span class="arithmatex">\(x&gt;0\)</span>. Since <span class="arithmatex">\(\tan^{-1}\)</span> is an odd function, for <span class="arithmatex">\(x&lt;0\)</span> we get <span class="arithmatex">\(\tan^{-1}x+\tan^{-1}\frac1x=-\left[\tan^{-1}(-x)+\tan^{-1}\frac1{-x}\right]=-\frac\pi2\)</span>. Hence</p>
+<div class="arithmatex">\[F_2(x)-F_1(x)=-\left[\tan^{-1}x+\tan^{-1}\frac1x\right]=\begin{cases}-\frac\pi2,&amp;x&gt;0,\\[2pt]+\frac\pi2,&amp;x&lt;0.\end{cases}\]</div>
+<p>The two answers differ by <span class="arithmatex">\(-\frac\pi2\)</span> on one side of <span class="arithmatex">\(0\)</span> and by <span class="arithmatex">\(+\frac\pi2\)</span> on the other (Figure 1(b)). The usual “<span class="arithmatex">\(+C\)</span>” stands for one constant <em>per interval</em> on which the integrand is defined, and a formula that is undefined at a point (here <span class="arithmatex">\(F_2\)</span> at <span class="arithmatex">\(0\)</span>) may carry different constants on the two sides. This is harmless for an indefinite integral on one interval, and dangerous for a definite integral that crosses <span class="arithmatex">\(0\)</span>: see Example <a href="#ex-m9">8.7.15</a> below.</p>
+</div>
+<h2 id="reading-computer-algebra-output">Reading computer algebra output<a class="headerlink" href="#reading-computer-algebra-output" title="Permanent link">&para;</a></h2>
+<p>Computer algebra systems differ in the form they print, but certain habits recur. They often omit the constant. They may write a logarithm without absolute values, which is correct only for positive arguments. They may print an inverse hyperbolic function, or a special function, where you expect elementary functions. They may produce a formula with a break. Procedure <a href="#proc-cas">8.7.11</a> turns these observations into a routine; the examples that follow use outputs of SymPy 1.14, and other systems differ in form but not in kind.</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 8.7.11: Reading the output of a computer algebra system</p>
+<p><span id="proc-cas"></span></p>
+<ol>
+<li>
+<p><em>Add the constant.</em> An answer to an indefinite integral is <span class="arithmatex">\(F(x)+C\)</span>, with one constant per interval of the domain (Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>).</p>
+</li>
+<li>
+<p><em>Compare the form.</em> If it differs from yours, subtract, or differentiate both, or evaluate the difference at two points. A nonzero constant difference is fine (Examples <a href="#ex-m5">8.7.9</a> and <a href="#ex-m6">8.7.10</a>).</p>
+</li>
+<li>
+<p><em>Check the domain.</em> Is each logarithm of a quantity that can be negative? Each root, each <span class="arithmatex">\(\tan^{-1}\)</span> of a quotient, each place where a tangent or a denominator is undefined? On which interval is the formula valid? (Example <a href="#ex-m7">8.7.12</a>.)</p>
+</li>
+<li>
+<p><em>Differentiate.</em> The derivative must be the integrand wherever the formula is defined. This step is the proof.</p>
+</li>
+<li>
+<p><em>For a definite integral,</em> test the sign and the size of the answer against the integrand (a positive integrand cannot have a negative integral), look for points of <span class="arithmatex">\([a,b]\)</span> where the formula or the integrand is undefined (Theorem <a href="#thm-break">8.7.14</a>, Examples <a href="#ex-m8">8.7.13</a> to <a href="#ex-m10">8.7.16</a>), and compare with a numerical value.</p>
+</li>
+<li>
+<p><em>If the answer contains a special function or the system returns the integral unevaluated,</em> see Example <a href="#ex-m11">8.7.17</a>: the integral may have no elementary antiderivative (Section 8.6), or the system may need a rewrite by hand (Example <a href="#ex-m8">8.7.13</a>).</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.12: A logarithm without absolute values</p>
+<p><span id="ex-m7"></span></p>
+<p>A computer algebra system prints <span class="arithmatex">\(\displaystyle\int\frac{dx}{x^2+3x}=\frac13\ln x-\frac13\ln(x+3)\)</span>. Is this an antiderivative? On which intervals? Evaluate <span class="arithmatex">\(\displaystyle\int_{-2}^{-1}\frac{dx}{x^2+3x}\)</span>.</p>
+<p><strong>Solution.</strong> <em>Differentiate</em> (step 4 of Procedure <a href="#proc-cas">8.7.11</a>). Wherever the formula is defined, <span class="arithmatex">\(\frac d{dx}\left[\frac13\ln x-\frac13\ln(x+3)\right]=\frac13\left(\frac1x-\frac1{x+3}\right)=\frac13\cdot\frac{3}{x(x+3)}=\frac1{x^2+3x}\)</span>. So it is an antiderivative, but only where <span class="arithmatex">\(\ln x\)</span> and <span class="arithmatex">\(\ln(x+3)\)</span> are real numbers, that is for <span class="arithmatex">\(x&gt;0\)</span>. The integrand is defined on three intervals, <span class="arithmatex">\(x&lt;-3\)</span>, <span class="arithmatex">\(-3&lt;x&lt;0\)</span> and <span class="arithmatex">\(x&gt;0\)</span>.</p>
+<p><em>The complete answer.</em> The same partial fractions (Section 8.5, <span class="arithmatex">\(\frac1{x(x+3)}=\frac13\left(\frac1x-\frac1{x+3}\right)\)</span>) and the rule <span class="arithmatex">\(\frac d{dx}\ln\lvert w\rvert=\frac{w'}w\)</span> for <span class="arithmatex">\(w\ne0\)</span> of either sign (Section 8.1) give</p>
+<div class="arithmatex">\[\int\frac{dx}{x^2+3x}=\frac13\ln\lvert x\rvert-\frac13\ln\lvert x+3\rvert+C=\frac13\ln\left\lvert\frac x{x+3}\right\rvert+C,\]</div>
+<p>valid on each of the three intervals (with a possibly different <span class="arithmatex">\(C\)</span> on each). <em>The definite integral.</em> The interval <span class="arithmatex">\([-2,-1]\)</span> lies inside <span class="arithmatex">\((-3,0)\)</span>, where the integrand <span class="arithmatex">\(\frac1{x(x+3)}\)</span> is continuous. The formula with absolute values is continuous there, so</p>
+<div class="arithmatex">\[\int_{-2}^{-1}\frac{dx}{x^2+3x}=\frac13\left[\ln\left\lvert\frac x{x+3}\right\rvert\right]_{-2}^{-1}=\frac13\left[\ln\frac12-\ln2\right]=-\frac23\ln2\approx-0.462 .\]</div>
+<p><em>Rough check.</em> On <span class="arithmatex">\((-3,0)\)</span> the product <span class="arithmatex">\(x(x+3)\)</span> is negative, so the integrand and the integral are negative; at <span class="arithmatex">\(x=-1.5\)</span> the integrand is <span class="arithmatex">\(\frac1{-2.25}\approx-0.44\)</span> and the interval has length <span class="arithmatex">\(1\)</span>, so about <span class="arithmatex">\(-0.46\)</span> is right. The formula without absolute values cannot even be evaluated here: <span class="arithmatex">\(\ln(-1)\)</span> and <span class="arithmatex">\(\ln(-2)\)</span> are not real numbers.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.13: When the system returns nothing: rewrite by hand</p>
+<p><span id="ex-m8"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_{-\pi}^{\pi}\sqrt{1-\cos x}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> SymPy 1.14 returns this integral unevaluated. A system may fail on a root of a trigonometric expression, so we rewrite by hand (step 6 of Procedure <a href="#proc-cas">8.7.11</a>). The power-reducing identity (Theorem <a href="../../8.3/notes/#thm-ident">8.3.1</a>(3)) <span class="arithmatex">\(\sin^2\frac x2=\frac{1-\cos x}2\)</span> gives <span class="arithmatex">\(1-\cos x=2\sin^2\frac x2\)</span>, and <span class="arithmatex">\(\sqrt{w^2}=\lvert w\rvert\)</span>, so</p>
+<div class="arithmatex">\[\sqrt{1-\cos x}=\sqrt2\,\sqrt{\sin^2\frac x2}=\sqrt2\,\left\lvert\sin\frac x2\right\rvert .\]</div>
+<p><em>The tempting error</em> is <span class="arithmatex">\(\sqrt{\sin^2\frac x2}=\sin\frac x2\)</span>, which is false when <span class="arithmatex">\(\sin\frac x2&lt;0\)</span>, that is for <span class="arithmatex">\(-\pi\le x&lt;0\)</span>. It would give <span class="arithmatex">\(\int_{-\pi}^{\pi}\sqrt2\sin\frac x2\,dx=\left[-2\sqrt2\cos\frac x2\right]_{-\pi}^{\pi}=-2\sqrt2(0-0)=0\)</span>, which cannot be right: the integrand is continuous and positive except at <span class="arithmatex">\(x=0\)</span>, so the integral is positive.</p>
+<p><em>The correct computation.</em> The integrand <span class="arithmatex">\(\sqrt2\left\lvert\sin\frac x2\right\rvert\)</span> is an even function, and <span class="arithmatex">\(\sin\frac x2\ge0\)</span> on <span class="arithmatex">\([0,\pi]\)</span>, so</p>
+<div class="arithmatex">\[\int_{-\pi}^{\pi}\sqrt{1-\cos x}\,dx=2\int_0^\pi\sqrt2\sin\frac x2\,dx=2\sqrt2\left[-2\cos\frac x2\right]_0^\pi=2\sqrt2\,(0+2)=4\sqrt2\approx5.657 .\]</div>
+<p><em>Rough check.</em> The integrand is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=\pm\frac\pi2\)</span> and <span class="arithmatex">\(\sqrt2\approx1.41\)</span> at <span class="arithmatex">\(x=\pm\pi\)</span>; an average near <span class="arithmatex">\(0.9\)</span> over an interval of length <span class="arithmatex">\(2\pi\approx6.28\)</span> gives about <span class="arithmatex">\(5.7\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.7.2: Read the output</p>
+<p><span id="kc-kc2"></span></p>
+<p>A program prints <span class="arithmatex">\(\displaystyle\int\frac{dx}{x^2-4}=\frac14\ln(x-2)-\frac14\ln(x+2)\)</span>. (a) For which <span class="arithmatex">\(x\)</span> is this an antiderivative? (b) What would you write for <span class="arithmatex">\(-2&lt;x&lt;2\)</span>?</p>
+</div>
+<h2 id="definite-integrals-and-breaks-in-the-formula">Definite integrals and breaks in the formula<a class="headerlink" href="#definite-integrals-and-breaks-in-the-formula" title="Permanent link">&para;</a></h2>
+<p>The Fundamental Theorem of Calculus says <span class="arithmatex">\(\int_a^bf=F(b)-F(a)\)</span> when <span class="arithmatex">\(f\)</span> is continuous on <span class="arithmatex">\([a,b]\)</span> and <span class="arithmatex">\(F\)</span> is an antiderivative <em>on all of</em> <span class="arithmatex">\([a,b]\)</span>. A formula for <span class="arithmatex">\(F\)</span> that has a break inside <span class="arithmatex">\([a,b]\)</span> is not an antiderivative on <span class="arithmatex">\([a,b]\)</span>. A break can be removable (the formula is undefined at a point but has a limit, as with <span class="arithmatex">\(F_C\)</span> in Example <a href="#ex-m5">8.7.9</a>), a <em>jump</em> (the one-sided limits exist but differ), or an infinite one. The theorem says what to do in the first two cases; the third is a different problem (Example <a href="#ex-m10">8.7.16</a>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 8.7.14: Definite integrals when the formula has breaks</p>
+<p><span id="thm-break"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let <span class="arithmatex">\(a=c_0&lt;c_1&lt;\dots&lt;c_m&lt;c_{m+1}=b\)</span>. Suppose that on each open interval <span class="arithmatex">\((c_j,c_{j+1})\)</span> the function <span class="arithmatex">\(F\)</span> is differentiable with <span class="arithmatex">\(F'=f\)</span>, and that the one-sided limits <span class="arithmatex">\(F(c_j^+)=\lim_{x\to c_j^+}F(x)\)</span> (for <span class="arithmatex">\(j=0,\dots,m\)</span>) and <span class="arithmatex">\(F(c_{j+1}^-)=\lim_{x\to c_{j+1}^-}F(x)\)</span> exist as real numbers. Then</p>
+<div class="arithmatex">\[\int_a^bf(x)\,dx=\sum_{j=0}^{m}\Big[F(c_{j+1}^-)-F(c_j^+)\Big].\]</div>
+<p>In particular: (1) if there are no breaks, or each limit <span class="arithmatex">\(F(c^-)\)</span> equals <span class="arithmatex">\(F(c^+)\)</span> (a removable break), the value is <span class="arithmatex">\(F(b^-)-F(a^+)\)</span>, that is <span class="arithmatex">\(F(b)-F(a)\)</span> with <span class="arithmatex">\(F\)</span> defined at the break points by its limits; (2) for a single break at <span class="arithmatex">\(c\)</span>,</p>
+<div class="arithmatex">\[\int_a^bf(x)\,dx=F(b)-F(a)-\Big[F(c^+)-F(c^-)\Big],\]</div>
+<p>so the naive value <span class="arithmatex">\(F(b)-F(a)\)</span> is wrong by exactly the jump <span class="arithmatex">\(F(c^+)-F(c^-)\)</span>.</p>
+</div>
+<p><em>Proof.</em> Fix <span class="arithmatex">\(j\)</span> and numbers <span class="arithmatex">\(s&lt;t\)</span> in <span class="arithmatex">\((c_j,c_{j+1})\)</span>. The function <span class="arithmatex">\(f\)</span> is continuous on <span class="arithmatex">\([s,t]\)</span> and <span class="arithmatex">\(F\)</span> is differentiable on <span class="arithmatex">\((s,t)\)</span> and continuous on <span class="arithmatex">\([s,t]\)</span> (differentiable at every point of <span class="arithmatex">\([s,t]\)</span>), with <span class="arithmatex">\(F'=f\)</span>, so by the Fundamental Theorem of Calculus <span class="arithmatex">\(\int_s^tf=F(t)-F(s)\)</span>. Let <span class="arithmatex">\(M\)</span> be the maximum of <span class="arithmatex">\(\lvert f\rvert\)</span> on <span class="arithmatex">\([a,b]\)</span> (Extreme Value Theorem). Then <span class="arithmatex">\(\left\lvert\int_{c_j}^sf\right\rvert\le M(s-c_j)\to0\)</span> as <span class="arithmatex">\(s\to c_j^+\)</span> and <span class="arithmatex">\(\left\lvert\int_t^{c_{j+1}}f\right\rvert\le M(c_{j+1}-t)\to0\)</span> as <span class="arithmatex">\(t\to c_{j+1}^-\)</span>, so <span class="arithmatex">\(\int_s^tf\to\int_{c_j}^{c_{j+1}}f\)</span>, while <span class="arithmatex">\(F(t)-F(s)\to F(c_{j+1}^-)-F(c_j^+)\)</span>. Hence <span class="arithmatex">\(\int_{c_j}^{c_{j+1}}f=F(c_{j+1}^-)-F(c_j^+)\)</span>. Adding over <span class="arithmatex">\(j=0,\dots,m\)</span> (additivity of the integral over intervals) gives the formula. For (1), if <span class="arithmatex">\(F(c_j^-)=F(c_j^+)\)</span> for <span class="arithmatex">\(j=1,\dots,m\)</span> the sum telescopes to <span class="arithmatex">\(F(c_{m+1}^-)-F(c_0^+)\)</span>. For (2) with <span class="arithmatex">\(m=1\)</span>, <span class="arithmatex">\(c=c_1\)</span>: the sum is <span class="arithmatex">\(F(c^-)-F(a)+F(b)-F(c^+)=F(b)-F(a)-\big[F(c^+)-F(c^-)\big]\)</span>. <span class="arithmatex">\(\blacksquare\)</span> ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.15: An antiderivative with a jump</p>
+<p><span id="ex-m9"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{2\pi}\frac{dx}{3+\cos x}\)</span>.</p>
+<p><strong>Solution.</strong> The integrand is continuous on <span class="arithmatex">\([0,2\pi]\)</span> (<span class="arithmatex">\(3+\cos x\ge2\)</span>), so the integral exists. Use the substitution <span class="arithmatex">\(t=\tan\frac x2\)</span> of Example <a href="../../8.5/notes/#ex-b14">8.5.32</a> (valid for <span class="arithmatex">\(-\pi&lt;x&lt;\pi\)</span>; the formulas <span class="arithmatex">\(\cos x=\frac{1-t^2}{1+t^2}\)</span> and <span class="arithmatex">\(dx=\frac{2\,dt}{1+t^2}\)</span> hold on every interval where <span class="arithmatex">\(\tan\frac x2\)</span> is defined). Then <span class="arithmatex">\(3+\cos x=\frac{3(1+t^2)+1-t^2}{1+t^2}=\frac{2t^2+4}{1+t^2}\)</span> and</p>
+<div class="arithmatex">\[\int\frac{dx}{3+\cos x}=\int\frac{1+t^2}{2t^2+4}\cdot\frac{2\,dt}{1+t^2}=\int\frac{dt}{t^2+2}=\frac1{\sqrt2}\tan^{-1}\frac t{\sqrt2}+C .\]</div>
+<p>Back to <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(F(x)=\frac1{\sqrt2}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt2}\right)\)</span>, an antiderivative on every interval where <span class="arithmatex">\(\tan\frac x2\)</span> is defined, that is for <span class="arithmatex">\(x\ne\pi\)</span> on <span class="arithmatex">\([0,2\pi]\)</span>.</p>
+<p><em>The naive evaluation</em> is <span class="arithmatex">\(F(2\pi)-F(0)=\frac1{\sqrt2}\tan^{-1}0-\frac1{\sqrt2}\tan^{-1}0=0\)</span>. This is impossible: since <span class="arithmatex">\(2\le3+\cos x\le4\)</span>, the integrand lies between <span class="arithmatex">\(\frac14\)</span> and <span class="arithmatex">\(\frac12\)</span>, so the integral lies between <span class="arithmatex">\(\frac{2\pi}4\approx1.57\)</span> and <span class="arithmatex">\(\frac{2\pi}2\approx3.14\)</span>.</p>
+<p><em>The error.</em> At <span class="arithmatex">\(x=\pi\)</span>, <span class="arithmatex">\(\tan\frac x2\)</span> is undefined. As <span class="arithmatex">\(x\to\pi^-\)</span>, <span class="arithmatex">\(\tan\frac x2\to+\infty\)</span> and <span class="arithmatex">\(F\to\frac1{\sqrt2}\cdot\frac\pi2\)</span>; as <span class="arithmatex">\(x\to\pi^+\)</span>, <span class="arithmatex">\(\tan\frac x2\to-\infty\)</span> and <span class="arithmatex">\(F\to-\frac1{\sqrt2}\cdot\frac\pi2\)</span>. So <span class="arithmatex">\(F\)</span> has a jump at <span class="arithmatex">\(\pi\)</span> (Figure 2): <span class="arithmatex">\(F(\pi^+)-F(\pi^-)=-\frac\pi{\sqrt2}\)</span>.</p>
+<p><em>The correct evaluation</em> by Theorem <a href="#thm-break">8.7.14</a>(2) with <span class="arithmatex">\(c=\pi\)</span>:</p>
+<div class="arithmatex">\[\int_0^{2\pi}\frac{dx}{3+\cos x}=\big[F(\pi^-)-F(0)\big]+\big[F(2\pi)-F(\pi^+)\big]=\frac\pi{2\sqrt2}-0+0+\frac\pi{2\sqrt2}=\frac\pi{\sqrt2}\approx2.221 .\]</div>
+<p>This lies between <span class="arithmatex">\(1.57\)</span> and <span class="arithmatex">\(3.14\)</span>, as it must. Equivalently, <span class="arithmatex">\(G(x)=F(x)\)</span> for <span class="arithmatex">\(x&lt;\pi\)</span> and <span class="arithmatex">\(G(x)=F(x)+\frac\pi{\sqrt2}\)</span> for <span class="arithmatex">\(x&gt;\pi\)</span> is an antiderivative that is continuous on all of <span class="arithmatex">\([0,2\pi]\)</span>, with <span class="arithmatex">\(G(2\pi)-G(0)=\frac\pi{\sqrt2}\)</span>.</p>
+<p><img alt="Diagram: jump $-\frac\pi{\sqrt2; \(F\); \(G\); \(\pi\)" class="calc-figure" src="../figures/notes-fig2.svg" width="454" /></p>
+<p>Figure 2. <span class="arithmatex">\(F(x)=\frac1{\sqrt2}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt2}\right)\)</span> (blue) has a jump at <span class="arithmatex">\(x=\pi\)</span>. Adding <span class="arithmatex">\(\frac\pi{\sqrt2}\)</span> to the right branch (red, dashed) gives a continuous antiderivative <span class="arithmatex">\(G\)</span>; the integral is <span class="arithmatex">\(G(2\pi)-G(0)=\frac\pi{\sqrt2}\)</span>, not <span class="arithmatex">\(F(2\pi)-F(0)=0\)</span>.</p>
+<p><em>What a good system does.</em> SymPy 1.14 returns the correct value <span class="arithmatex">\(\frac{\sqrt2\,\pi}2=\frac\pi{\sqrt2}\)</span> for this integral, and an antiderivative that contains a term with <span class="arithmatex">\(\lfloor\cdot\rfloor\)</span>: the term that adds the jump. A program or a hand computation that reports only the formula <span class="arithmatex">\(F\)</span> and subtracts <span class="arithmatex">\(F(0)\)</span> from <span class="arithmatex">\(F(2\pi)\)</span> would give <span class="arithmatex">\(0\)</span>. The sign and size check is what catches the error.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.16: An integrand that is unbounded: the formula is not the problem</p>
+<p><span id="ex-m10"></span></p>
+<p>A student computes <span class="arithmatex">\(\displaystyle\int_{-1}^{3}\frac{dx}{(x-1)^2}\)</span> from <span class="arithmatex">\(F(x)=-\frac1{x-1}\)</span>: <span class="arithmatex">\(F(3)-F(-1)=-\frac12-\frac12=-1\)</span>. Is this correct?</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(F'(x)=\frac1{(x-1)^2}\)</span>, so <span class="arithmatex">\(F\)</span> is an antiderivative on each of <span class="arithmatex">\(x&lt;1\)</span> and <span class="arithmatex">\(x&gt;1\)</span>. But the answer cannot be right: the integrand is positive, so the integral would be positive. This time the formula’s break is not a jump. The integrand itself is undefined at <span class="arithmatex">\(x=1\)</span> and grows without bound near it (Figure 3), so <span class="arithmatex">\(f\)</span> is <em>not continuous</em> on <span class="arithmatex">\([-1,3]\)</span>, and Theorem <a href="#thm-break">8.7.14</a> does not apply: its proof used a bound <span class="arithmatex">\(M\)</span> for <span class="arithmatex">\(\lvert f\rvert\)</span>.</p>
+<p>What is true is that the area to the left of <span class="arithmatex">\(x=1\)</span> is already infinite. For <span class="arithmatex">\(t&lt;1\)</span>,</p>
+<div class="arithmatex">\[\int_{-1}^{t}\frac{dx}{(x-1)^2}=\left[-\frac1{x-1}\right]_{-1}^{t}=-\frac1{t-1}-\frac12=\frac1{1-t}-\frac12\longrightarrow\infty\quad(t\to1^-).\]</div>
+<p>So <span class="arithmatex">\(\int_{-1}^3\frac{dx}{(x-1)^2}\)</span> is not a number; it is a divergent <em>improper</em> integral, a topic for a later section of this chapter. A system correctly reports <span class="arithmatex">\(\infty\)</span> for it. The warning is the general one: before using <span class="arithmatex">\(F(b)-F(a)\)</span>, check that <span class="arithmatex">\(f\)</span> is continuous on <span class="arithmatex">\([a,b]\)</span>, and that <span class="arithmatex">\(F\)</span> is too (or has only the breaks that Theorem <a href="#thm-break">8.7.14</a> handles).</p>
+<p><img alt="Diagram: \(1\); $y=\frac1{(x-1)^2" class="calc-figure" src="../figures/notes-fig3.svg" width="403" /></p>
+<p>Figure 3. The integrand <span class="arithmatex">\(\frac1{(x-1)^2}\)</span> has a vertical asymptote at <span class="arithmatex">\(x=1\)</span>. The shaded area to the left of the asymptote is unbounded as the right-hand end moves toward <span class="arithmatex">\(1\)</span>, so there is no number <span class="arithmatex">\(\int_{-1}^3\frac{dx}{(x-1)^2}\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 8.7.3: Is the answer possible?</p>
+<p><span id="kc-kc3"></span></p>
+<p>A program reports <span class="arithmatex">\(\displaystyle\int_0^{\pi}\sec^2x\,dx=\tan\pi-\tan0=0\)</span>. Without computing anything, explain why this cannot be correct, and say which hypothesis of the Fundamental Theorem fails.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.7.2: Not the identity function</p>
+<p><span id="think-atan"></span></p>
+<p>Substituting <span class="arithmatex">\(u=\tan x\)</span> in <span class="arithmatex">\(\displaystyle\int\frac{\sec^2x}{1+\tan^2x}\,dx\)</span> gives <span class="arithmatex">\(\tan^{-1}(\tan x)+C\)</span>. But <span class="arithmatex">\(\frac{\sec^2x}{1+\tan^2x}=1\)</span> wherever <span class="arithmatex">\(\tan x\)</span> is defined, and <span class="arithmatex">\(\int_0^{\pi}1\,dx=\pi\)</span>. What does <span class="arithmatex">\(\tan^{-1}(\tan x)\)</span> give from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\pi\)</span>, and why? How does Theorem <a href="#thm-break">8.7.14</a> repair it?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Where <span class="arithmatex">\(\tan x\)</span> is defined, <span class="arithmatex">\(\tan^{-1}(\tan x)\)</span> equals <span class="arithmatex">\(x\)</span> only for <span class="arithmatex">\(-\frac\pi2&lt;x&lt;\frac\pi2\)</span>; on <span class="arithmatex">\(\left(\frac\pi2,\frac{3\pi}2\right)\)</span> it equals <span class="arithmatex">\(x-\pi\)</span> (the tangent has period <span class="arithmatex">\(\pi\)</span> and <span class="arithmatex">\(\tan^{-1}\)</span> returns values in <span class="arithmatex">\(\left(-\frac\pi2,\frac\pi2\right)\)</span>). So <span class="arithmatex">\(F(x)=\tan^{-1}(\tan x)\)</span> has derivative <span class="arithmatex">\(1\)</span> on each interval but jumps: <span class="arithmatex">\(F\left(\frac\pi2^-\right)=\frac\pi2\)</span> and <span class="arithmatex">\(F\left(\frac\pi2^+\right)=-\frac\pi2\)</span>, a jump of <span class="arithmatex">\(-\pi\)</span>. From <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\pi\)</span>, the naive value is <span class="arithmatex">\(F(\pi)-F(0)=\tan^{-1}(0)-\tan^{-1}(0)=0\)</span>, not <span class="arithmatex">\(\pi\)</span>. Theorem <a href="#thm-break">8.7.14</a>(2) corrects it: <span class="arithmatex">\(0-(-\pi)=\pi\)</span>, which is <span class="arithmatex">\(\int_0^\pi1\,dx\)</span>. The lesson: a substitution <span class="arithmatex">\(u=g(x)\)</span> with <span class="arithmatex">\(g\)</span> not one-to-one on the interval (here <span class="arithmatex">\(\tan\)</span>) gives an antiderivative valid only where <span class="arithmatex">\(g\)</span> is monotone.</p>
+</details>
+</div>
+<h2 id="special-functions-and-numerical-values">Special functions and numerical values<a class="headerlink" href="#special-functions-and-numerical-values" title="Permanent link">&para;</a></h2>
+<p>Sometimes a computer algebra system returns an answer in terms of a function that is not on your list of elementary functions. The most common are the error function <span class="arithmatex">\(\operatorname{erf}(y)=\frac2{\sqrt\pi}\int_0^ye^{-t^2}\,dt\)</span> and the Fresnel function <span class="arithmatex">\(S(y)=\int_0^y\sin\frac{\pi t^2}2\,dt\)</span>. These are <em>defined as integrals</em>. By the Fundamental Theorem of Calculus, <span class="arithmatex">\(\frac d{dy}\int_0^yg(t)\,dt=g(y)\)</span> for continuous <span class="arithmatex">\(g\)</span>, so a function defined this way is an antiderivative of <span class="arithmatex">\(g\)</span> by definition. A special-function answer is therefore a new name for the same integral. It is not wrong, and it is not an elementary closed form (Section 8.6 explains why none exists for <span class="arithmatex">\(e^{-x^2}\)</span>).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.17: A special function, and what to do with it</p>
+<p><span id="ex-m11"></span></p>
+<p>A computer algebra system returns <span class="arithmatex">\(\displaystyle\int_0^1e^{-x^2}\,dx=\frac{\sqrt\pi}2\operatorname{erf}(1)\approx0.7468241328\)</span> and <span class="arithmatex">\(\displaystyle\int_0^1\sin\left(x^2\right)dx=\sqrt{\frac\pi2}\,S\left(\sqrt{\frac2\pi}\right)\approx0.3102683017\)</span>. Check both answers with elementary means.</p>
+<p><strong>Solution.</strong> <em>The first answer is a restatement.</em> By the definition of <span class="arithmatex">\(\operatorname{erf}\)</span>, <span class="arithmatex">\(\frac{\sqrt\pi}2\operatorname{erf}(1)=\int_0^1e^{-x^2}\,dx\)</span> exactly. <em>The second</em> follows from a substitution: with <span class="arithmatex">\(t=x\sqrt{2/\pi}\)</span>, <span class="arithmatex">\(dt=\sqrt{2/\pi}\,dx\)</span> and <span class="arithmatex">\(\frac{\pi t^2}2=x^2\)</span>, so <span class="arithmatex">\(S(y)=\sqrt{\frac2\pi}\int_0^{y\sqrt{\pi/2}}\sin\left(x^2\right)dx\)</span>; for <span class="arithmatex">\(y=\sqrt{2/\pi}\)</span> the upper limit is <span class="arithmatex">\(1\)</span>, and <span class="arithmatex">\(\int_0^1\sin\left(x^2\right)dx=\sqrt{\frac\pi2}\,S\left(\sqrt{\frac2\pi}\right)\)</span>.</p>
+<p><em>Bracket the first integral.</em> Let <span class="arithmatex">\(g(s)=e^s-1-s\)</span>. Then <span class="arithmatex">\(g(0)=0\)</span> and <span class="arithmatex">\(g'(s)=e^s-1\)</span> is negative for <span class="arithmatex">\(s&lt;0\)</span> and positive for <span class="arithmatex">\(s&gt;0\)</span>, so <span class="arithmatex">\(g(s)\ge0\)</span> for all <span class="arithmatex">\(s\)</span>, that is <span class="arithmatex">\(e^s\ge1+s\)</span>. With <span class="arithmatex">\(s=-x^2\)</span> this gives <span class="arithmatex">\(e^{-x^2}\ge1-x^2\)</span>, and with <span class="arithmatex">\(s=x^2\)</span> it gives <span class="arithmatex">\(e^{x^2}\ge1+x^2\)</span>, so <span class="arithmatex">\(e^{-x^2}\le\frac1{1+x^2}\)</span>. Integrating over <span class="arithmatex">\([0,1]\)</span>,</p>
+<div class="arithmatex">\[\frac23=\int_0^1\left(1-x^2\right)dx\le\int_0^1e^{-x^2}\,dx\le\int_0^1\frac{dx}{1+x^2}=\frac\pi4,\qquad 0.667\le0.7468\le0.785 .\]</div>
+<p><em>Bracket the second.</em> For <span class="arithmatex">\(0\le s\le1\)</span>, the graph of the concave function <span class="arithmatex">\(\sin s\)</span> lies above its chord from <span class="arithmatex">\((0,0)\)</span> to <span class="arithmatex">\(\left(\frac\pi2,1\right)\)</span>, so <span class="arithmatex">\(\sin s\ge\frac{2s}\pi\)</span> on <span class="arithmatex">\(\left[0,\frac\pi2\right]\supset[0,1]\)</span>, and <span class="arithmatex">\(\sin s\le s\)</span> for <span class="arithmatex">\(s\ge0\)</span> (the function <span class="arithmatex">\(s-\sin s\)</span> is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(0\)</span> and has derivative <span class="arithmatex">\(1-\cos s\ge0\)</span>). With <span class="arithmatex">\(s=x^2\)</span>,</p>
+<div class="arithmatex">\[\frac2{3\pi}=\int_0^1\frac{2x^2}\pi\,dx\le\int_0^1\sin\left(x^2\right)dx\le\int_0^1x^2\,dx=\frac13,\qquad 0.212\le0.3103\le0.333 .\]</div>
+<p>Both numerical values lie in their brackets. In practice, one more step is natural: to compute the number to as many digits as needed, which is the subject of the next section on numerical integration, and which a later chapter on Taylor series also provides, because the series of <span class="arithmatex">\(e^{-x^2}\)</span> can be integrated term by term.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 8.7.3: What does a special-function answer tell you?</p>
+<p><span id="think-special"></span></p>
+<p>Since <span class="arithmatex">\(\operatorname{erf}\)</span> is defined by an integral, the output <span class="arithmatex">\(\frac{\sqrt\pi}2\operatorname{erf}(1)\)</span> is only a name for <span class="arithmatex">\(\int_0^1e^{-x^2}\,dx\)</span>. Name at least two things the answer still gives you that the integral sign alone did not.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>(i) It gives a <em>number</em> on demand: <span class="arithmatex">\(\operatorname{erf}\)</span> is built into calculators and software, which return <span class="arithmatex">\(\frac{\sqrt\pi}2\operatorname{erf}(1)\approx0.7468241328\)</span> to as many digits as asked, with a guaranteed accuracy. (ii) It gives <em>properties</em> you can use without integrating: <span class="arithmatex">\(\operatorname{erf}\)</span> is odd, increasing, has derivative <span class="arithmatex">\(\frac2{\sqrt\pi}e^{-y^2}\)</span> (the Fundamental Theorem of Calculus), and the same function reappears whenever <span class="arithmatex">\(\int e^{-t^2}\,dt\)</span> does (in probability, for the normal distribution, and in heat flow), so results and values can be reused. It does <em>not</em> give an elementary formula (Section 8.6).</p>
+</details>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>When no formula exists or the formula is too long to use, the value of a definite integral is found numerically with an error bound; that is the next section. Integrals with an unbounded integrand or an infinite interval, such as Example <a href="#ex-m10">8.7.16</a>, are treated in a later section on improper integrals; there the idea of Example <a href="#ex-m10">8.7.16</a>, a limit of <span class="arithmatex">\(F(t)-F(a)\)</span>, becomes a definition. Series methods, in a later chapter, give a third way to integrate <span class="arithmatex">\(e^{-x^2}\)</span> and <span class="arithmatex">\(\sin x^2\)</span>: write the integrand as a power series and integrate term by term. And in a later course, computer algebra systems appear again as tools whose output must be checked, in the same spirit.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by the task and ordered from easiest to hardest within each group.</p>
+<ul>
+<li>
+<p>Group 1: match the constants of a table entry (a linear denominator, a root of a linear function with <span class="arithmatex">\(b&gt;0\)</span>).</p>
+</li>
+<li>
+<p>Group 2: a substitution first, then the table (a trigonometric substitution into a root of <span class="arithmatex">\(u^2+a^2\)</span>, a square root removed by <span class="arithmatex">\(u=\sqrt x\)</span>).</p>
+</li>
+<li>
+<p>Group 3: complete the square, then use the table or a reduction formula (a definite integral with a root, a power of a quadratic).</p>
+</li>
+<li>
+<p>Group 4: reduction formulas (a polynomial times a cosine, a power of the tangent on an interval).</p>
+</li>
+<li>
+<p>Group 5: when the table’s answer differs from yours (two substitutions, and a logarithm against an inverse hyperbolic sine).</p>
+</li>
+<li>
+<p>Group 6: definite integrals and breaks (a jump on an interval of length <span class="arithmatex">\(2\pi\)</span>, an integrand that is unbounded).</p>
+</li>
+<li>
+<p>Group 7: proofs (a reduction formula for <span class="arithmatex">\(\int\frac{x^m}{\sqrt{1-x^2}}\,dx\)</span>, and <span class="arithmatex">\(\int_0^{2\pi}\frac{dx}{a+\cos x}\)</span>).</p>
+</li>
+</ul>
+<h2 id="group-1-match-the-entry">Group 1: Match the entry<a class="headerlink" href="#group-1-match-the-entry" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.18: A linear denominator</p>
+<p><span id="ex-b1"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{x}{2x+7}\,dx\)</span>, and then <span class="arithmatex">\(\displaystyle\int_0^1\frac{x}{2x+7}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The integrand is <span class="arithmatex">\(\frac x{ax+b}\)</span> with <span class="arithmatex">\(a=2\)</span> and <span class="arithmatex">\(b=7\)</span>: entry (T1). Then <span class="arithmatex">\(\frac xa=\frac x2\)</span> and <span class="arithmatex">\(\frac b{a^2}=\frac74\)</span>, so</p>
+<div class="arithmatex">\[\int\frac{x}{2x+7}\,dx=\frac x2-\frac74\ln\lvert2x+7\rvert+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac d{dx}\left[\frac x2-\frac74\ln\lvert2x+7\rvert\right]=\frac12-\frac74\cdot\frac2{2x+7}=\frac{(2x+7)-7}{2(2x+7)}=\frac x{2x+7}\)</span>. On <span class="arithmatex">\([0,1]\)</span> we have <span class="arithmatex">\(2x+7\ge7\)</span>, so the integrand and the antiderivative are continuous, and</p>
+<div class="arithmatex">\[\int_0^1\frac{x}{2x+7}\,dx=\left[\frac x2-\frac74\ln(2x+7)\right]_0^1=\frac12-\frac74\ln9+\frac74\ln7=\frac12-\frac74\ln\frac97\approx0.0602 .\]</div>
+<p><em>Rough check.</em> The integrand rises from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\frac19\approx0.11\)</span>, so the integral is between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(0.11\)</span>; <span class="arithmatex">\(0.06\)</span> is the right size.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.19: A root of a linear function, with <span class="arithmatex">\(b&gt;0\)</span></p>
+<p><span id="ex-b2"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{x\sqrt{4x+9}}\)</span> for <span class="arithmatex">\(x&gt;0\)</span>, and then <span class="arithmatex">\(\displaystyle\int_1^4\frac{dx}{x\sqrt{4x+9}}\)</span>.</p>
+<p><strong>Solution.</strong> The integrand is <span class="arithmatex">\(\frac1{x\sqrt{ax+b}}\)</span> with <span class="arithmatex">\(a=4\)</span> and <span class="arithmatex">\(b=9&gt;0\)</span>: entry (T3), with <span class="arithmatex">\(\sqrt b=3\)</span> and <span class="arithmatex">\(s=\sqrt{4x+9}\)</span>:</p>
+<div class="arithmatex">\[\int\frac{dx}{x\sqrt{4x+9}}=\frac13\ln\left\lvert\frac{\sqrt{4x+9}-3}{\sqrt{4x+9}+3}\right\rvert+C .\]</div>
+<p>For <span class="arithmatex">\(x&gt;0\)</span> we have <span class="arithmatex">\(s&gt;3\)</span>, so the quotient is positive and the absolute value may be dropped. <em>Check.</em> In (T3) the derivative of the logarithm is <span class="arithmatex">\(\frac{\sqrt b}{xs}=\frac3{xs}\)</span>; multiplying by <span class="arithmatex">\(\frac13\)</span> gives <span class="arithmatex">\(\frac1{xs}\)</span>. For the definite integral, <span class="arithmatex">\(s(4)=\sqrt{25}=5\)</span> and <span class="arithmatex">\(s(1)=\sqrt{13}\)</span>, so</p>
+<div class="arithmatex">\[\int_1^4\frac{dx}{x\sqrt{4x+9}}=\frac13\left[\ln\frac{5-3}{5+3}-\ln\frac{\sqrt{13}-3}{\sqrt{13}+3}\right]=\frac13\ln\left[\frac14\cdot\frac{\sqrt{13}+3}{\sqrt{13}-3}\right]=\frac23\ln\frac{3+\sqrt{13}}4\approx0.3344 .\]</div>
+<p>For the last step multiply top and bottom of <span class="arithmatex">\(\frac{\sqrt{13}+3}{\sqrt{13}-3}\)</span> by <span class="arithmatex">\(\sqrt{13}+3\)</span>: the result is <span class="arithmatex">\(\frac{(\sqrt{13}+3)^2}{13-9}=\frac{(\sqrt{13}+3)^2}4\)</span>, so the quantity in brackets is <span class="arithmatex">\(\frac{(\sqrt{13}+3)^2}{16}\)</span>, whose logarithm is <span class="arithmatex">\(2\ln\frac{\sqrt{13}+3}4\)</span>. <em>Rough check.</em> At <span class="arithmatex">\(x=1\)</span> the integrand is <span class="arithmatex">\(\frac1{\sqrt{13}}\approx0.28\)</span> and at <span class="arithmatex">\(x=4\)</span> it is <span class="arithmatex">\(\frac1{20}=0.05\)</span>; the average over an interval of length <span class="arithmatex">\(3\)</span> is about <span class="arithmatex">\(0.11\)</span>, giving about <span class="arithmatex">\(0.33\)</span>.</p>
+</div>
+<h2 id="group-2-substitute-first">Group 2: Substitute first<a class="headerlink" href="#group-2-substitute-first" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.20: A trigonometric function inside a root</p>
+<p><span id="ex-b3"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\cos x\,\sqrt{\sin^2x+4}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The derivative of <span class="arithmatex">\(\sin x\)</span> is present, so put <span class="arithmatex">\(u=\sin x\)</span>, <span class="arithmatex">\(du=\cos x\,dx\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>):</p>
+<div class="arithmatex">\[\int\cos x\,\sqrt{\sin^2x+4}\,dx=\int\sqrt{u^2+4}\,du .\]</div>
+<p>Entry (T6) with <span class="arithmatex">\(a=2\)</span> gives <span class="arithmatex">\(\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)\)</span>. Replacing <span class="arithmatex">\(u\)</span> by <span class="arithmatex">\(\sin x\)</span>,</p>
+<div class="arithmatex">\[\int\cos x\,\sqrt{\sin^2x+4}\,dx=\frac{\sin x}2\sqrt{\sin^2x+4}+2\ln\left(\sin x+\sqrt{\sin^2x+4}\right)+C .\]</div>
+<p><em>Check by the Chain Rule.</em> If <span class="arithmatex">\(G(u)=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)\)</span>, then <span class="arithmatex">\(G'(u)=\sqrt{u^2+4}\)</span> (entry (T6)), so <span class="arithmatex">\(\frac d{dx}G(\sin x)=\sqrt{\sin^2x+4}\cdot\cos x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.21: A square root removed by <span class="arithmatex">\(u=\sqrt x\)</span></p>
+<p><span id="ex-b4"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{1+\sqrt x}\)</span> for <span class="arithmatex">\(x&gt;0\)</span>, and then <span class="arithmatex">\(\displaystyle\int_1^9\frac{dx}{1+\sqrt x}\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=\sqrt x\)</span>, so <span class="arithmatex">\(x=u^2\)</span> and <span class="arithmatex">\(dx=2u\,du\)</span> (Theorem <a href="../../8.6/notes/#thm-rational">8.6.9</a>). Then</p>
+<div class="arithmatex">\[\int\frac{dx}{1+\sqrt x}=\int\frac{2u}{1+u}\,du=2\int\frac{u}{u+1}\,du .\]</div>
+<p>Entry (T1) with <span class="arithmatex">\(a=1\)</span> and <span class="arithmatex">\(b=1\)</span> gives <span class="arithmatex">\(\int\frac u{u+1}\,du=u-\ln\lvert u+1\rvert\)</span>, and <span class="arithmatex">\(u+1&gt;0\)</span>. Therefore</p>
+<div class="arithmatex">\[\int\frac{dx}{1+\sqrt x}=2\sqrt x-2\ln\left(1+\sqrt x\right)+C .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(\frac d{dx}\left[2\sqrt x-2\ln\left(1+\sqrt x\right)\right]=\frac1{\sqrt x}-\frac2{1+\sqrt x}\cdot\frac1{2\sqrt x}=\frac1{\sqrt x}\left(1-\frac1{1+\sqrt x}\right)=\frac1{\sqrt x}\cdot\frac{\sqrt x}{1+\sqrt x}=\frac1{1+\sqrt x}\)</span>.</p>
+<p><em>The definite integral.</em> The antiderivative is continuous on <span class="arithmatex">\([1,9]\)</span>, so</p>
+<div class="arithmatex">\[\int_1^9\frac{dx}{1+\sqrt x}=\left[2\sqrt x-2\ln\left(1+\sqrt x\right)\right]_1^9=(6-2\ln4)-(2-2\ln2)=4-2\ln2\approx2.614 .\]</div>
+<p>The integrand falls from <span class="arithmatex">\(\frac12\)</span> to <span class="arithmatex">\(\frac14\)</span> over an interval of length <span class="arithmatex">\(8\)</span>, so the integral lies between <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(4\)</span>.</p>
+</div>
+<h2 id="group-3-complete-the-square">Group 3: Complete the square<a class="headerlink" href="#group-3-complete-the-square" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.22: A power of a quadratic in the denominator</p>
+<p><span id="ex-b5"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\frac{dx}{(x^2-4x+13)^2}\)</span>, and then <span class="arithmatex">\(\displaystyle\int_2^5\frac{dx}{(x^2-4x+13)^2}\)</span>.</p>
+<p><strong>Solution.</strong> Complete the square (Theorem <a href="#thm-square">8.7.5</a>): <span class="arithmatex">\(x^2-4x+13=(x-2)^2+9\)</span>. Put <span class="arithmatex">\(u=x-2\)</span>, <span class="arithmatex">\(du=dx\)</span>, so the integral is <span class="arithmatex">\(\int\frac{du}{(u^2+3^2)^2}\)</span>. The reduction formula of Example <a href="../../8.4/notes/#ex-b14">8.4.32</a> with <span class="arithmatex">\(a=3\)</span> and <span class="arithmatex">\(n=1\)</span> gives <span class="arithmatex">\(I_2=\frac{u}{2\cdot9\,(u^2+9)}+\frac{1}{2\cdot9}I_1\)</span>, and <span class="arithmatex">\(I_1=\int\frac{du}{u^2+9}=\frac13\tan^{-1}\frac u3\)</span> (formula (11) of Section 8.1). So</p>
+<div class="arithmatex">\[\int\frac{du}{(u^2+9)^2}=\frac u{18(u^2+9)}+\frac1{54}\tan^{-1}\frac u3+C,\]</div>
+<div class="arithmatex">\[\int\frac{dx}{(x^2-4x+13)^2}=\frac{x-2}{18\left(x^2-4x+13\right)}+\frac1{54}\tan^{-1}\frac{x-2}3+C .\]</div>
+<p>For <span class="arithmatex">\(x\)</span> from <span class="arithmatex">\(2\)</span> to <span class="arithmatex">\(5\)</span>, <span class="arithmatex">\(u\)</span> goes from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(3\)</span>, and</p>
+<div class="arithmatex">\[\begin{aligned}\int_2^5\frac{dx}{(x^2-4x+13)^2}&amp;=\left[\frac u{18(u^2+9)}+\frac1{54}\tan^{-1}\frac u3\right]_0^3\\&amp;=\frac3{18\cdot18}+\frac1{54}\cdot\frac\pi4=\frac1{108}+\frac\pi{216}=\frac{2+\pi}{216}\approx0.0238 .\end{aligned}\]</div>
+<p><em>Rough check.</em> At <span class="arithmatex">\(x=2\)</span> the integrand is <span class="arithmatex">\(\frac1{81}\approx0.012\)</span>; it decreases to <span class="arithmatex">\(\frac1{324}\approx0.003\)</span> at <span class="arithmatex">\(x=5\)</span>, so on an interval of length <span class="arithmatex">\(3\)</span> the integral is at most <span class="arithmatex">\(0.037\)</span> and at least <span class="arithmatex">\(0.009\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.23: A root of a quadratic on an interval</p>
+<p><span id="ex-b6"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^2\sqrt{x^2-2x+5}\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Complete the square: <span class="arithmatex">\(x^2-2x+5=(x-1)^2+4\)</span>. With <span class="arithmatex">\(u=x-1\)</span>, <span class="arithmatex">\(du=dx\)</span>, the limits become <span class="arithmatex">\(u=-1\)</span> and <span class="arithmatex">\(u=1\)</span>, and the integral is <span class="arithmatex">\(\int_{-1}^{1}\sqrt{u^2+4}\,du\)</span>. By entry (T6) with <span class="arithmatex">\(a=2\)</span>, an antiderivative is <span class="arithmatex">\(G(u)=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)\)</span>, continuous on <span class="arithmatex">\([-1,1]\)</span> (note <span class="arithmatex">\(u+\sqrt{u^2+4}&gt;0\)</span>). Then <span class="arithmatex">\(G(1)=\frac{\sqrt5}2+2\ln\left(1+\sqrt5\right)\)</span> and <span class="arithmatex">\(G(-1)=-\frac{\sqrt5}2+2\ln\left(-1+\sqrt5\right)\)</span>, so</p>
+<div class="arithmatex">\[\int_{-1}^1\sqrt{u^2+4}\,du=\sqrt5+2\ln\frac{\sqrt5+1}{\sqrt5-1}.\]</div>
+<p>Multiplying top and bottom by <span class="arithmatex">\(\sqrt5+1\)</span>: <span class="arithmatex">\(\frac{\sqrt5+1}{\sqrt5-1}=\frac{(\sqrt5+1)^2}{4}=\frac{6+2\sqrt5}4=\frac{3+\sqrt5}2=\left(\frac{1+\sqrt5}2\right)^2\)</span>. Hence</p>
+<div class="arithmatex">\[\int_0^2\sqrt{x^2-2x+5}\,dx=\sqrt5+4\ln\frac{1+\sqrt5}2\approx4.161 .\]</div>
+<p><em>Rough check.</em> The integrand is <span class="arithmatex">\(\sqrt5\approx2.24\)</span> at both ends and <span class="arithmatex">\(2\)</span> at <span class="arithmatex">\(x=1\)</span>; an average of about <span class="arithmatex">\(2.08\)</span> on an interval of length <span class="arithmatex">\(2\)</span> gives <span class="arithmatex">\(4.16\)</span>.</p>
+</div>
+<h2 id="group-4-reduction-formulas">Group 4: Reduction formulas<a class="headerlink" href="#group-4-reduction-formulas" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.24: A polynomial times a cosine</p>
+<p><span id="ex-b7"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int x^2\cos3x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> Use Theorem <a href="#thm-redxn">8.7.7</a> with <span class="arithmatex">\(a=3\)</span>, going down from <span class="arithmatex">\(n=2\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}
+\int x^2\cos3x\,dx&amp;=\frac{x^2\sin3x}3-\frac23\int x\sin3x\,dx, &amp;\text{(second formula, $n=2$)}\\
+\int x\sin3x\,dx&amp;=-\frac{x\cos3x}3+\frac13\int\cos3x\,dx=-\frac{x\cos3x}3+\frac{\sin3x}9. &amp;\text{(first formula, $n=1$)}
+\end{aligned}\]</div>
+<p>Substituting the second line into the first,</p>
+<div class="arithmatex">\[\int x^2\cos3x\,dx=\frac{x^2\sin3x}3-\frac23\left(-\frac{x\cos3x}3+\frac{\sin3x}9\right)=\frac{x^2\sin3x}3+\frac{2x\cos3x}9-\frac{2\sin3x}{27}+C .\]</div>
+<p><em>Check.</em> Term by term, <span class="arithmatex">\(\frac d{dx}\frac{x^2\sin3x}3=\frac{2x\sin3x}3+x^2\cos3x\)</span>, <span class="arithmatex">\(\frac d{dx}\frac{2x\cos3x}9=\frac{2\cos3x}9-\frac{2x\sin3x}3\)</span> and <span class="arithmatex">\(\frac d{dx}\left(-\frac{2\sin3x}{27}\right)=-\frac{2\cos3x}9\)</span>; the sum is <span class="arithmatex">\(x^2\cos3x\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.25: A power of the tangent on an interval</p>
+<p><span id="ex-b8"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_0^{\pi/3}\tan^4x\,dx\)</span>.</p>
+<p><strong>Solution.</strong> The reduction formula <span class="arithmatex">\(\int\tan^nx\,dx=\frac{\tan^{n-1}x}{n-1}-\int\tan^{n-2}x\,dx\)</span> (Theorem <a href="../../8.3/notes/#thm-redtan">8.3.8</a>) used twice:</p>
+<div class="arithmatex">\[\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx,\qquad\int\tan^2x\,dx=\tan x-\int1\,dx=\tan x-x .\]</div>
+<p>Hence <span class="arithmatex">\(\int\tan^4x\,dx=\frac{\tan^3x}3-\tan x+x+C\)</span>. The function <span class="arithmatex">\(\tan x\)</span> is continuous on <span class="arithmatex">\(\left[0,\frac\pi3\right]\)</span>, so with <span class="arithmatex">\(\tan\frac\pi3=\sqrt3\)</span> and <span class="arithmatex">\(\left(\sqrt3\right)^3=3\sqrt3\)</span>,</p>
+<div class="arithmatex">\[\int_0^{\pi/3}\tan^4x\,dx=\left[\frac{\tan^3x}3-\tan x+x\right]_0^{\pi/3}=\frac{3\sqrt3}3-\sqrt3+\frac\pi3-0=\frac\pi3\approx1.047 .\]</div>
+<p><em>Rough check.</em> The integrand is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=\frac\pi4\approx0.785\)</span> and <span class="arithmatex">\(9\)</span> at <span class="arithmatex">\(x=\frac\pi3\approx1.047\)</span>; since it stays small until <span class="arithmatex">\(x\)</span> is near <span class="arithmatex">\(\frac\pi4\)</span>, an integral near <span class="arithmatex">\(1\)</span> is plausible.</p>
+</div>
+<h2 id="group-5-when-the-tables-answer-is-not-yours">Group 5: When the table’s answer is not yours<a class="headerlink" href="#group-5-when-the-tables-answer-is-not-yours" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.26: Two substitutions, two answers</p>
+<p><span id="ex-b9"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int\tan x\sec^2x\,dx\)</span> in two ways and find how the answers differ.</p>
+<p><strong>Solution.</strong> <em>With <span class="arithmatex">\(u=\tan x\)</span>:</em> <span class="arithmatex">\(du=\sec^2x\,dx\)</span>, so <span class="arithmatex">\(\int u\,du=\frac{u^2}2\)</span> and the answer is <span class="arithmatex">\(F_1=\frac12\tan^2x\)</span>. <em>With <span class="arithmatex">\(u=\sec x\)</span>:</em> <span class="arithmatex">\(du=\sec x\tan x\,dx\)</span>, and <span class="arithmatex">\(\tan x\sec^2x\,dx=\sec x\cdot(\sec x\tan x\,dx)=u\,du\)</span>, so the answer is <span class="arithmatex">\(F_2=\frac12\sec^2x\)</span>. Both are antiderivatives on every interval where <span class="arithmatex">\(\cos x\ne0\)</span>, so by Theorem <a href="../../8.6/notes/#thm-check">8.6.2</a>(2) they differ by a constant, and</p>
+<div class="arithmatex">\[F_2-F_1=\frac12\left(\sec^2x-\tan^2x\right)=\frac12 ,\]</div>
+<p>by the identity <span class="arithmatex">\(1+\tan^2x=\sec^2x\)</span> (Theorem <a href="../../8.3/notes/#thm-ident">8.3.1</a>(1)). <em>Check on an interval:</em> <span class="arithmatex">\(\int_0^{\pi/4}\tan x\sec^2x\,dx=\frac12\tan^2\frac\pi4-0=\frac12\)</span> and <span class="arithmatex">\(\frac12\sec^2\frac\pi4-\frac12\sec^20=\frac12\cdot2-\frac12=\frac12\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.27: A logarithm and an inverse hyperbolic sine</p>
+<p><span id="ex-b10"></span></p>
+<p>A table gives <span class="arithmatex">\(\displaystyle\int\frac{dx}{\sqrt{x^2+9}}=\ln\left(x+\sqrt{x^2+9}\right)\)</span> and a computer algebra system prints <span class="arithmatex">\(\sinh^{-1}\frac x3\)</span>. Show that both are antiderivatives and find the constant by which they differ.</p>
+<p><strong>Solution.</strong> <em>The logarithm.</em> With <span class="arithmatex">\(s=\sqrt{x^2+9}\)</span>, <span class="arithmatex">\(s'=\frac xs\)</span> and <span class="arithmatex">\(x+s&gt;0\)</span>: <span class="arithmatex">\(\frac d{dx}\ln(x+s)=\frac{1+x/s}{x+s}=\frac{(s+x)/s}{x+s}=\frac1s\)</span>.</p>
+<p><em>The inverse hyperbolic sine.</em> By definition <span class="arithmatex">\(y=\sinh^{-1}w\)</span> means <span class="arithmatex">\(w=\sinh y=\frac{e^y-e^{-y}}2\)</span>. Multiply by <span class="arithmatex">\(2e^y\)</span>: <span class="arithmatex">\(2we^y=e^{2y}-1\)</span>, that is <span class="arithmatex">\(\left(e^y\right)^2-2w\,e^y-1=0\)</span>, a quadratic equation for <span class="arithmatex">\(e^y\)</span> with roots <span class="arithmatex">\(w\pm\sqrt{w^2+1}\)</span>. Since <span class="arithmatex">\(e^y&gt;0\)</span> and <span class="arithmatex">\(\sqrt{w^2+1}&gt;\lvert w\rvert\)</span>, only the root with the plus sign is positive, so <span class="arithmatex">\(e^y=w+\sqrt{w^2+1}\)</span> and</p>
+<div class="arithmatex">\[\sinh^{-1}w=\ln\left(w+\sqrt{w^2+1}\right).\]</div>
+<p>With <span class="arithmatex">\(w=\frac x3\)</span>: <span class="arithmatex">\(\sinh^{-1}\frac x3=\ln\left(\frac x3+\sqrt{\frac{x^2}9+1}\right)=\ln\frac{x+\sqrt{x^2+9}}3=\ln\left(x+\sqrt{x^2+9}\right)-\ln3\)</span>. So the two forms differ by <span class="arithmatex">\(\ln3\approx1.099\)</span>, and each is an antiderivative (the second differs from the first by a constant, whose derivative is <span class="arithmatex">\(0\)</span>). <em>Moral:</em> a constant such as <span class="arithmatex">\(\ln3\)</span> is easy to miss when two answers “look different”.</p>
+</div>
+<h2 id="group-6-definite-integrals-and-breaks">Group 6: Definite integrals and breaks<a class="headerlink" href="#group-6-definite-integrals-and-breaks" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.28: A jump in the middle of the interval</p>
+<p><span id="ex-b11"></span></p>
+<p>Evaluate <span class="arithmatex">\(\displaystyle\int_{\pi/2}^{5\pi/2}\frac{dx}{2+\cos x}\)</span>.</p>
+<p><strong>Solution.</strong> By Example <a href="../../8.5/notes/#ex-b14">8.5.32</a> and the same steps as in Example <a href="#ex-m9">8.7.15</a>, <span class="arithmatex">\(F(x)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(x/2)}{\sqrt3}\)</span> is an antiderivative wherever <span class="arithmatex">\(\tan\frac x2\)</span> is defined. For <span class="arithmatex">\(x\in\left(\frac\pi2,\frac{5\pi}2\right)\)</span> we have <span class="arithmatex">\(\frac x2\in\left(\frac\pi4,\frac{5\pi}4\right)\)</span>, and <span class="arithmatex">\(\tan\frac x2\)</span> is undefined only at <span class="arithmatex">\(\frac x2=\frac\pi2\)</span>, that is <span class="arithmatex">\(x=\pi\)</span>. This is the one break (the next one, <span class="arithmatex">\(x=3\pi\)</span>, is outside the interval). The limits are <span class="arithmatex">\(F(\pi^-)=\frac2{\sqrt3}\cdot\frac\pi2=\frac\pi{\sqrt3}\)</span> and <span class="arithmatex">\(F(\pi^+)=-\frac\pi{\sqrt3}\)</span>. At the ends, <span class="arithmatex">\(F\left(\frac\pi2\right)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(\pi/4)}{\sqrt3}=\frac2{\sqrt3}\cdot\frac\pi6=\frac\pi{3\sqrt3}\)</span> and <span class="arithmatex">\(F\left(\frac{5\pi}2\right)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(5\pi/4)}{\sqrt3}=\frac\pi{3\sqrt3}\)</span> (because <span class="arithmatex">\(\tan\frac{5\pi}4=\tan\frac\pi4=1\)</span>). The naive value <span class="arithmatex">\(F\left(\frac{5\pi}2\right)-F\left(\frac\pi2\right)=0\)</span> is wrong, since the integrand is at least <span class="arithmatex">\(\frac13\)</span>. By Theorem <a href="#thm-break">8.7.14</a>,</p>
+<div class="arithmatex">\[\int_{\pi/2}^{5\pi/2}\frac{dx}{2+\cos x}=\left[\frac\pi{\sqrt3}-\frac\pi{3\sqrt3}\right]+\left[\frac\pi{3\sqrt3}+\frac\pi{\sqrt3}\right]=\frac{2\pi}{\sqrt3}\approx3.628 .\]</div>
+<p>This is the integral over one full period of <span class="arithmatex">\(\frac1{2+\cos x}\)</span>, as it should be, and it lies between <span class="arithmatex">\(\frac13\cdot2\pi\approx2.09\)</span> and <span class="arithmatex">\(2\pi\approx6.28\)</span>, since <span class="arithmatex">\(\frac13\le\frac1{2+\cos x}\le1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.29: A table form on an interval where it breaks</p>
+<p><span id="ex-b12"></span></p>
+<p>A student uses entry (T5) with <span class="arithmatex">\(a=1\)</span> to compute <span class="arithmatex">\(\displaystyle\int_\pi^{2\pi}\frac{dx}{1+\sin x}\)</span>. Show that the result is wrong and explain what is true.</p>
+<p><strong>Solution.</strong> (T5) gives <span class="arithmatex">\(F(x)=-\tan\left(\frac\pi4-\frac x2\right)\)</span>, valid where <span class="arithmatex">\(\sin x\ne-1\)</span>. Then <span class="arithmatex">\(F(2\pi)=-\tan\left(-\frac{3\pi}4\right)=-1\)</span> (since <span class="arithmatex">\(\tan\left(-\frac{3\pi}4\right)=\tan\frac\pi4=1\)</span>, as the tangent has period <span class="arithmatex">\(\pi\)</span>) and <span class="arithmatex">\(F(\pi)=-\tan\left(-\frac\pi4\right)=1\)</span>. The naive value is <span class="arithmatex">\(F(2\pi)-F(\pi)=-2\)</span>. This is impossible because the integrand is positive.</p>
+<p><em>What went wrong.</em> <span class="arithmatex">\(1+\sin x=0\)</span> at <span class="arithmatex">\(x=\frac{3\pi}2\in(\pi,2\pi)\)</span>. There the integrand is unbounded (near <span class="arithmatex">\(\frac{3\pi}2\)</span>, <span class="arithmatex">\(1+\sin x\approx\frac12\left(x-\frac{3\pi}2\right)^2\)</span>), so <span class="arithmatex">\(f\)</span> is not continuous on <span class="arithmatex">\([\pi,2\pi]\)</span> and Theorem <a href="#thm-break">8.7.14</a> does not apply. The tangent in <span class="arithmatex">\(F\)</span> is undefined at <span class="arithmatex">\(x=\frac{3\pi}2\)</span> for the same reason. For <span class="arithmatex">\(\pi&lt;t&lt;\frac{3\pi}2\)</span>,</p>
+<div class="arithmatex">\[\int_\pi^t\frac{dx}{1+\sin x}=F(t)-F(\pi)=-\tan\left(\frac\pi4-\frac t2\right)-1\longrightarrow+\infty\quad\left(t\to\tfrac{3\pi}2^-\right),\]</div>
+<p>because <span class="arithmatex">\(\frac\pi4-\frac t2\)</span> decreases to <span class="arithmatex">\(-\frac\pi2\)</span> and <span class="arithmatex">\(\tan\)</span> tends to <span class="arithmatex">\(-\infty\)</span> there. So <span class="arithmatex">\(\int_\pi^{2\pi}\frac{dx}{1+\sin x}\)</span> diverges (as an improper integral, in a later section). A table entry has a domain, and the interval of integration must lie inside it.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.30: A reduction formula for <span class="arithmatex">\(\int\frac{x^m}{\sqrt{1-x^2}}\,dx\)</span></p>
+<p><span id="ex-b13"></span></p>
+<p>Prove that for every integer <span class="arithmatex">\(m\ge2\)</span> and <span class="arithmatex">\(-1&lt;x&lt;1\)</span>,</p>
+<div class="arithmatex">\[\int\frac{x^m}{\sqrt{1-x^2}}\,dx=-\frac{x^{m-1}\sqrt{1-x^2}}m+\frac{m-1}m\int\frac{x^{m-2}}{\sqrt{1-x^2}}\,dx .\]</div>
+<p>Then find <span class="arithmatex">\(\displaystyle\int\frac{x^2}{\sqrt{1-x^2}}\,dx\)</span> and <span class="arithmatex">\(\displaystyle\int x\sin^{-1}x\,dx\)</span>.</p>
+<p><strong>Plan.</strong> Differentiate <span class="arithmatex">\(-\frac{x^{m-1}\sqrt{1-x^2}}m\)</span> and show that the result is the integrand of the left side minus <span class="arithmatex">\(\frac{m-1}m\)</span> times the integrand of the last integral.</p>
+<p><strong>Proof.</strong> Let <span class="arithmatex">\(s=\sqrt{1-x^2}\)</span>, so <span class="arithmatex">\(s'=-\frac xs\)</span> and <span class="arithmatex">\(s=\frac{1-x^2}s\)</span>. By the Product Rule</p>
+<div class="arithmatex">\[\frac d{dx}\left[-\frac{x^{m-1}s}m\right]=-\frac{(m-1)x^{m-2}s}m+\frac{x^{m-1}}m\cdot\frac xs=\frac{-(m-1)x^{m-2}(1-x^2)+x^m}{ms},\]</div>
+<p>where we wrote <span class="arithmatex">\(s=\frac{1-x^2}s\)</span> in the first term. The numerator is <span class="arithmatex">\(-(m-1)x^{m-2}+(m-1)x^m+x^m=-(m-1)x^{m-2}+mx^m\)</span>, so</p>
+<div class="arithmatex">\[\frac d{dx}\left[-\frac{x^{m-1}s}m\right]=\frac{x^m}s-\frac{m-1}m\cdot\frac{x^{m-2}}s .\]</div>
+<p>Rearranging, <span class="arithmatex">\(\frac{x^m}s=\frac d{dx}\left[-\frac{x^{m-1}s}m\right]+\frac{m-1}m\cdot\frac{x^{m-2}}s\)</span>. Integrating both sides gives the formula. <span class="arithmatex">\(\blacksquare\)</span></p>
+<p><em>Applications.</em> For <span class="arithmatex">\(m=2\)</span>, with <span class="arithmatex">\(\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x\)</span>,</p>
+<div class="arithmatex">\[\int\frac{x^2}{\sqrt{1-x^2}}\,dx=-\frac{x\sqrt{1-x^2}}2+\frac12\sin^{-1}x+C .\]</div>
+<p>For <span class="arithmatex">\(\int x\sin^{-1}x\,dx\)</span> use parts with <span class="arithmatex">\(p=\sin^{-1}x\)</span> and <span class="arithmatex">\(dv=x\,dx\)</span>, so <span class="arithmatex">\(dp=\frac{dx}{\sqrt{1-x^2}}\)</span> and <span class="arithmatex">\(v=\frac{x^2}2\)</span>:</p>
+<div class="arithmatex">\[\int x\sin^{-1}x\,dx=\frac{x^2}2\sin^{-1}x-\frac12\int\frac{x^2}{\sqrt{1-x^2}}\,dx=\frac{x^2}2\sin^{-1}x+\frac x4\sqrt{1-x^2}-\frac14\sin^{-1}x+C .\]</div>
+<p><em>Common mistake:</em> replacing <span class="arithmatex">\(s'\)</span> by <span class="arithmatex">\(\frac xs\)</span> (the sign of <span class="arithmatex">\(s'=-\frac xs\)</span> matters, because <span class="arithmatex">\(\frac{d}{dx}\sqrt{1-x^2}\)</span> is negative for <span class="arithmatex">\(x&gt;0\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 8.7.31: The integral of <span class="arithmatex">\(\frac1{a+\cos x}\)</span> over a period</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that for every constant <span class="arithmatex">\(a&gt;1\)</span>, <span class="arithmatex">\(\displaystyle\int_0^{2\pi}\frac{dx}{a+\cos x}=\frac{2\pi}{\sqrt{a^2-1}}\)</span>. Check it for <span class="arithmatex">\(a=3\)</span> and <span class="arithmatex">\(a=2\)</span>.</p>
+<p><strong>Plan.</strong> Find an antiderivative with <span class="arithmatex">\(t=\tan\frac x2\)</span>, locate its break, and apply Theorem <a href="#thm-break">8.7.14</a>.</p>
+<p><strong>Proof.</strong> Put <span class="arithmatex">\(t=\tan\frac x2\)</span>, on any interval where it is defined, with <span class="arithmatex">\(\cos x=\frac{1-t^2}{1+t^2}\)</span> and <span class="arithmatex">\(dx=\frac{2\,dt}{1+t^2}\)</span> (Example <a href="../../8.5/notes/#ex-b14">8.5.32</a>). Then</p>
+<div class="arithmatex">\[a+\cos x=\frac{a(1+t^2)+1-t^2}{1+t^2}=\frac{(a+1)+(a-1)t^2}{1+t^2},\]</div>
+<div class="arithmatex">\[\frac{dx}{a+\cos x}=\frac{2\,dt}{(a+1)+(a-1)t^2}=\frac2{a+1}\cdot\frac{dt}{1+k^2t^2},\]</div>
+<p>with <span class="arithmatex">\(k=\sqrt{\frac{a-1}{a+1}}&gt;0\)</span>. Since <span class="arithmatex">\(\int\frac{dt}{1+k^2t^2}=\frac1k\tan^{-1}(kt)\)</span> and <span class="arithmatex">\((a+1)k=\sqrt{(a+1)^2\cdot\frac{a-1}{a+1}}=\sqrt{a^2-1}\)</span>,</p>
+<div class="arithmatex">\[F(x)=\frac2{\sqrt{a^2-1}}\tan^{-1}\left(k\tan\frac x2\right)\]</div>
+<p>is an antiderivative of <span class="arithmatex">\(\frac1{a+\cos x}\)</span> on every interval where <span class="arithmatex">\(\tan\frac x2\)</span> is defined. On <span class="arithmatex">\([0,2\pi]\)</span> the only point where it is not defined is <span class="arithmatex">\(x=\pi\)</span>. As <span class="arithmatex">\(x\to\pi^-\)</span>, <span class="arithmatex">\(\tan\frac x2\to+\infty\)</span> and <span class="arithmatex">\(F\to\frac2{\sqrt{a^2-1}}\cdot\frac\pi2=\frac\pi{\sqrt{a^2-1}}\)</span>; as <span class="arithmatex">\(x\to\pi^+\)</span>, <span class="arithmatex">\(\tan\frac x2\to-\infty\)</span> and <span class="arithmatex">\(F\to-\frac\pi{\sqrt{a^2-1}}\)</span>. Also <span class="arithmatex">\(F(0)=F(2\pi)=0\)</span>. The integrand is continuous on <span class="arithmatex">\([0,2\pi]\)</span> (as <span class="arithmatex">\(a+\cos x\ge a-1&gt;0\)</span>), so Theorem <a href="#thm-break">8.7.14</a> with <span class="arithmatex">\(c=\pi\)</span> gives</p>
+<div class="arithmatex">\[\int_0^{2\pi}\frac{dx}{a+\cos x}=\left[\frac\pi{\sqrt{a^2-1}}-0\right]+\left[0+\frac\pi{\sqrt{a^2-1}}\right]=\frac{2\pi}{\sqrt{a^2-1}}.\ \blacksquare\]</div>
+<p><em>Check.</em> For <span class="arithmatex">\(a=3\)</span>: <span class="arithmatex">\(\frac{2\pi}{\sqrt8}=\frac\pi{\sqrt2}\)</span>, the value found in Example <a href="#ex-m9">8.7.15</a>. For <span class="arithmatex">\(a=2\)</span>: <span class="arithmatex">\(\frac{2\pi}{\sqrt3}\)</span>, the value of Example <a href="#ex-b11">8.7.28</a> over a period. <em>Common mistake:</em> using <span class="arithmatex">\(F(2\pi)-F(0)=0\)</span>, which ignores the jump <span class="arithmatex">\(F(\pi^+)-F(\pi^-)=-\frac{2\pi}{\sqrt{a^2-1}}\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kc1">8.7.1</a>.</strong> (a) The integrand is <span class="arithmatex">\(\frac1{x\sqrt{ax+b}}\)</span> with <span class="arithmatex">\(a=3\)</span> and <span class="arithmatex">\(b=8&gt;0\)</span>: entry (T3). (b) The same integrand with <span class="arithmatex">\(a=3\)</span> and <span class="arithmatex">\(b=-8&lt;0\)</span>: entry (T4). (c) The integrand is <span class="arithmatex">\(\frac x{\sqrt{ax+b}}\)</span> with <span class="arithmatex">\(a=-7\)</span> and <span class="arithmatex">\(b=2\)</span>: entry (T2), valid for <span class="arithmatex">\(2-7x&gt;0\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kc2">8.7.2</a>.</strong> (a) The expression <span class="arithmatex">\(\ln(x-2)\)</span> is real only for <span class="arithmatex">\(x&gt;2\)</span>, and <span class="arithmatex">\(\ln(x+2)\)</span> only for <span class="arithmatex">\(x&gt;-2\)</span>, so the printed formula is an antiderivative only for <span class="arithmatex">\(x&gt;2\)</span>, even though the integrand is defined for all <span class="arithmatex">\(x\ne\pm2\)</span>. (b) With absolute values, <span class="arithmatex">\(\int\frac{dx}{x^2-4}=\frac14\ln\lvert x-2\rvert-\frac14\ln\lvert x+2\rvert+C=\frac14\ln\left\lvert\frac{x-2}{x+2}\right\rvert+C\)</span>, valid on each of <span class="arithmatex">\(x&lt;-2\)</span>, <span class="arithmatex">\(-2&lt;x&lt;2\)</span> and <span class="arithmatex">\(x&gt;2\)</span>. For <span class="arithmatex">\(-2&lt;x&lt;2\)</span> this is <span class="arithmatex">\(\frac14\ln\frac{2-x}{2+x}+C\)</span>. Its derivative is <span class="arithmatex">\(\frac14\left(\frac1{x-2}-\frac1{x+2}\right)=\frac14\cdot\frac4{x^2-4}\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kc3">8.7.3</a>.</strong> The integrand <span class="arithmatex">\(\sec^2x\ge1\)</span> is positive, so <span class="arithmatex">\(\int_0^\pi\sec^2x\,dx\ge\pi&gt;0\)</span>, and the value <span class="arithmatex">\(0\)</span> is impossible. The hypothesis that fails is that <span class="arithmatex">\(f\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span>: <span class="arithmatex">\(\sec^2x\)</span> is undefined, and unbounded, at <span class="arithmatex">\(x=\frac\pi2\)</span> (and <span class="arithmatex">\(\tan x\)</span> is undefined there too). Here the break is infinite, not a jump, and the integral is an improper one that diverges.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
