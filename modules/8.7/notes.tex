@@ -1,0 +1,722 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{7}{Other Methods of Integration}
+\calcxdoc{8.1}
+\calcxdoc{8.2}
+\calcxdoc{8.3}
+\calcxdoc{8.4}
+\calcxdoc{8.5}
+\calcxdoc{8.6}
+
+\begin{document}
+
+\section{Other Methods of Integration}
+
+\begin{guide}
+In practice an integral is often not done by hand at all: it is looked up in a table of integrals, or typed into a computer algebra system. Both are legitimate and fast, and both can mislead a careless user. A table lists a formula only for a particular \emph{form}, with conditions on the constants; a computer algebra system prints a formula that may differ from yours by a constant, may omit absolute values, and may be wrong at one point of the interval you care about. This section teaches how to \emph{use} these tools and how to \emph{trust} them: how to match an integral to a table entry, how to prepare it by a substitution, by completing the square or by a reduction formula, how to compare two answers that look different, and why a definite integral computed from a formula needs a second look when the formula has a break. Every table entry that we use is proved by differentiation, and every computer result in the examples is checked the same way.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item match an integral to the form of a table entry, read off the constants, and check the conditions under which the entry holds;
+  \item prepare an integral for a table by a substitution, by completing the square, or by one or more steps of a reduction formula;
+  \item decide whether your answer and the answer of a table or a computer algebra system are the same, and find the constant by which they differ;
+  \item read the output of a computer algebra system critically: a missing constant, a missing absolute value, a formula valid on only part of the interval, a form that is undefined at a point where the integrand is fine;
+  \item evaluate a definite integral from a formula whose graph has a jump (Theorem~\ref{thm:break}), and recognize a definite integral that cannot be evaluated by the Fundamental Theorem of Calculus at all;
+  \item say plainly that a table entry or a computer result is a claim and not a proof, and check it by differentiating.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Three families of methods}
+
+Sections 8.1 to 8.5 were \emph{analytical} methods: pencil-and-paper manipulations that end in a formula. This section adds two more ways of reaching a formula, and a third kind of answer.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{p{1.25in}p{1.55in}p{2.1in}}
+\textbf{Method} & \textbf{What you get} & \textbf{What can go wrong}\\ \hline
+by hand (8.1--8.5) & a formula & an algebra or sign error\\
+table of integrals & a formula, for a standard form & the wrong match of constants; a condition missed; a misprint\\
+computer algebra & a formula, a special function, or nothing & a missing constant or absolute value; a formula with a break; a different form that you do not recognize\\
+numerical integration & a number (for a definite integral) & no formula at all; an error that must be bounded\\
+\end{tabular}
+\end{center}
+
+A table and a computer algebra system are both ways of \emph{finding a candidate} $F$. They differ from the methods of the earlier sections only in that someone else did the work. The next section takes up numerical integration; Calculus~I and the earlier sections are all that is needed here.
+
+\begin{warn}[A table or a computer result is not a proof]
+Looking up an integral, or asking a program, produces a \emph{claim}: ``$F$ is an antiderivative of $f$ on this interval''. The claim becomes a fact when you differentiate $F$ and obtain $f$ (Theorem~\ref{8.6-thm:check}(1)). A table is written by people and may contain a misprint, may state its conditions in a footnote, or may be copied with a constant interchanged; a program may print a form valid on only part of the domain. In this section every table entry is proved by differentiation (Theorem~\ref{thm:table}), and every integral in an example, whatever its source, is checked by differentiating the answer. Where a definite integral comes from a formula, we also check that the formula is continuous on the interval (Theorem~\ref{thm:break}) and that the number has the right sign and size.
+\end{warn}
+
+% ---------------------------------------------------------------------
+\subsection*{A table of integrals}
+
+A table of integrals is a list of formulas $\int f(x)\,dx=F(x)+C$, grouped by the \emph{form} of $f$: roots of a linear function, roots of $x^2\pm a^2$, trigonometric functions of a linear argument, products of a power and an exponential or a sine, and so on. Large tables have hundreds of entries; we use a small one. Together with the basic formulas of Section~8.1 (formulas (1)--(17)), the inverse-trigonometric and logarithmic integrals of Sections~8.2 and~8.4, and the reduction formulas of Sections~8.2, 8.3, 8.4 and~8.6, it is enough for every example here. The letters $a$ and $b$ are constants, and each entry holds on every interval on which both sides are defined.
+
+\begin{thm}{A short table of integrals}{table}
+Write $s=\sqrt{ax+b}$ in (T1)--(T4) and $s=\sqrt{x^2+a^2}$ in (T6), (T7). Then
+\begin{enumerate}[label=(T\arabic*),leftmargin=*]
+  \item $\displaystyle\int\frac{x}{ax+b}\,dx=\frac xa-\frac b{a^2}\ln\lvert ax+b\rvert+C$, where $a\ne0$;
+  \item $\displaystyle\int\frac{x}{\sqrt{ax+b}}\,dx=\frac{2(ax-2b)}{3a^2}\,\sqrt{ax+b}+C$, where $a\ne0$ and $ax+b>0$;
+  \item $\displaystyle\int\frac{dx}{x\sqrt{ax+b}}=\frac1{\sqrt b}\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert+C$, where $b>0$, $x\ne0$ and $ax+b>0$;
+  \item $\displaystyle\int\frac{dx}{x\sqrt{ax+b}}=\frac2{\sqrt{-b}}\tan^{-1}\frac{s}{\sqrt{-b}}+C$, where $b<0$ and $ax+b>0$;
+  \item $\displaystyle\int\frac{dx}{1+\sin ax}=-\frac1a\tan\left(\frac\pi4-\frac{ax}2\right)+C$, where $a\ne0$, on any interval on which $\sin ax\ne-1$;
+  \item $\displaystyle\int\sqrt{x^2+a^2}\,dx=\frac x2\sqrt{x^2+a^2}+\frac{a^2}2\ln\left(x+\sqrt{x^2+a^2}\right)+C$, where $a>0$;
+  \item $\displaystyle\int\frac{dx}{x\sqrt{x^2+a^2}}=-\frac1a\ln\frac{a+\sqrt{x^2+a^2}}{\lvert x\rvert}+C$, where $a>0$ and $x\ne0$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+In each case we differentiate the right side and obtain the integrand, which proves the entry (Theorem~\ref{8.6-thm:check}(1)).
+
+(T1) By the Chain Rule, $\frac d{dx}\ln\lvert ax+b\rvert=\frac a{ax+b}$, so
+\[\frac d{dx}\left[\frac xa-\frac b{a^2}\ln\lvert ax+b\rvert\right]=\frac1a-\frac b{a(ax+b)}=\frac{(ax+b)-b}{a(ax+b)}=\frac x{ax+b}.\]
+%@ t1 | all(ANT(x/a0-Q(b0)/a0**2*log(sqrt((a0*x+b0)**2)),x/(a0*x+b0),[Q(1,3),2,-1]) == 0 for a0,b0 in ((2,7),(-3,5),(Q(1,2),4))) | =\frac{(ax+b)-b}{a(ax+b)}=\frac x{ax+b}.\]
+
+(T2) Here $s=\sqrt{ax+b}$, $s^2=ax+b$ and $s'=\frac a{2s}$. By the Product Rule,
+\[\frac d{dx}\left[\frac{2(ax-2b)}{3a^2}\,s\right]=\frac{2a}{3a^2}\,s+\frac{2(ax-2b)}{3a^2}\cdot\frac a{2s}=\frac{2s^2+(ax-2b)}{3as}=\frac{2(ax+b)+ax-2b}{3as}=\frac{3ax}{3as}=\frac xs.\]
+%@ t2 | all(ANT(2*(a0*x-2*b0)/(3*a0**2)*sqrt(a0*x+b0),x/sqrt(a0*x+b0),pts) == 0 for a0,b0,pts in ((3,2,[1,2,5]),(-3,4,[-1,0,1]),(Q(1,2),1,[1,3,7]))) | =\frac{3ax}{3as}=\frac xs.\]
+
+(T3) Let $b>0$. Since $s^2=ax+b$, we have $s^2-b=ax$ and $x\ne0$ means $s\ne\sqrt b$. Also $s+\sqrt b>0$. For the logarithm of a quotient, $\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert=\ln\lvert s-\sqrt b\rvert-\ln(s+\sqrt b)$, and $\frac d{dx}\ln\lvert w\rvert=\frac{w'}w$ for $w\ne0$ of either sign (Section~8.1). With $s'=\frac a{2s}$,
+\[\frac d{dx}\ln\left\lvert\frac{s-\sqrt b}{s+\sqrt b}\right\rvert=\frac{s'}{s-\sqrt b}-\frac{s'}{s+\sqrt b}=s'\cdot\frac{2\sqrt b}{s^2-b}=\frac a{2s}\cdot\frac{2\sqrt b}{ax}=\frac{\sqrt b}{xs}.\]
+Multiplying by $\frac1{\sqrt b}$ gives $\frac1{xs}$.
+%@ t3 | all(ANT(log(sqrt(((sqrt(a0*x+b0)-sqrt(b0))/(sqrt(a0*x+b0)+sqrt(b0)))**2))/sqrt(b0),1/(x*sqrt(a0*x+b0)),pts) == 0 for a0,b0,pts in ((4,9,[1,2,5]),(3,4,[Q(1,2),2,6]),(-2,9,[-3,-1,2]))) | Multiplying by $\frac1{\sqrt b}$ gives $\frac1{xs}$.
+
+(T4) Let $b<0$ and $\beta=\sqrt{-b}>0$, so $s^2=ax-\beta^2$; $ax+b>0$ gives $ax>\beta^2>0$, so $x\ne0$ and $s^2+\beta^2=ax$. By the Chain Rule and $\frac d{du}\tan^{-1}u=\frac1{1+u^2}$,
+\[\frac d{dx}\tan^{-1}\frac s\beta=\frac1{1+s^2/\beta^2}\cdot\frac{s'}\beta=\frac{\beta^2}{\beta^2+s^2}\cdot\frac{a}{2s\beta}=\frac{\beta a}{2s\cdot ax}=\frac\beta{2xs}.\]
+Multiplying by $\frac2\beta$ gives $\frac1{xs}$.
+%@ t4 | all(ANT(2*atan(sqrt(a0*x+b0)/sqrt(-b0))/sqrt(-b0),1/(x*sqrt(a0*x+b0)),pts) == 0 for a0,b0,pts in ((5,-4,[1,2,5]),(3,-8,[3,4,9]),(-2,-9,[-6,-7,-20]))) | Multiplying by $\frac2\beta$ gives $\frac1{xs}$.
+
+(T5) The identity $\cos^2\phi=\frac{1+\cos2\phi}2$ (Theorem~\ref{8.3-thm:ident}(3)) with $2\phi=\frac\pi2-ax$ and $\cos\left(\frac\pi2-ax\right)=\sin ax$ gives $1+\sin ax=2\cos^2\left(\frac\pi4-\frac{ax}2\right)$. This is $0$ exactly when $\cos\left(\frac\pi4-\frac{ax}2\right)=0$, so on an interval where $\sin ax\ne-1$ the tangent is defined, and
+\[\frac d{dx}\left[-\frac1a\tan\left(\frac\pi4-\frac{ax}2\right)\right]=-\frac1a\sec^2\left(\frac\pi4-\frac{ax}2\right)\cdot\left(-\frac a2\right)=\frac1{2\cos^2\left(\frac\pi4-\frac{ax}2\right)}=\frac1{1+\sin ax}.\]
+%@ t5 | all(ANT(-tan(pi/4-a0*x/2)/a0,1/(1+sin(a0*x)),pts) == 0 for a0,pts in ((1,[Q(1,2),1,2]),(2,[Q(1,2),1,Q(3,2)]),(-3,[Q(1,4),Q(1,2),1]))) | =\frac1{2\cos^2\left(\frac\pi4-\frac{ax}2\right)}=\frac1{1+\sin ax}.\]
+
+(T6) Let $s=\sqrt{x^2+a^2}$, so $s^2=x^2+a^2$, $s'=\frac xs$ and $s>\lvert x\rvert$, hence $x+s>0$. By the Product Rule $\frac d{dx}\left(\frac x2s\right)=\frac s2+\frac{x^2}{2s}$, and $\frac d{dx}\ln(x+s)=\frac{1+x/s}{x+s}=\frac{(s+x)/s}{x+s}=\frac1s$. Therefore
+\[\frac d{dx}\left[\frac x2s+\frac{a^2}2\ln(x+s)\right]=\frac s2+\frac{x^2}{2s}+\frac{a^2}{2s}=\frac{s^2+x^2+a^2}{2s}=\frac{2s^2}{2s}=s.\]
+%@ t6 | all(ANT(x*sqrt(x**2+a0**2)/2+a0**2*log(x+sqrt(x**2+a0**2))/2,sqrt(x**2+a0**2),[-3,0,1,4]) == 0 for a0 in (1,2,Q(5,2))) | =\frac{s^2+x^2+a^2}{2s}=\frac{2s^2}{2s}=s.\]
+
+(T7) With $s=\sqrt{x^2+a^2}$ again, $a+s>0$, so $\ln\frac{a+s}{\lvert x\rvert}=\ln(a+s)-\ln\lvert x\rvert$ and
+\[\frac d{dx}\left[\ln(a+s)-\ln\lvert x\rvert\right]=\frac{x/s}{a+s}-\frac1x=\frac{x^2-s(a+s)}{xs(a+s)}=\frac{x^2-as-s^2}{xs(a+s)}=\frac{-a^2-as}{xs(a+s)}=-\frac a{xs},\]
+because $x^2-s^2=-a^2$. Multiplying by $-\frac1a$ gives $\frac1{xs}$.
+%@ t7 | all(ANT(-log((a0+sqrt(x**2+a0**2))/sqrt(x**2))/a0,1/(x*sqrt(x**2+a0**2)),[-3,-1,1,4]) == 0 for a0 in (1,2,Q(5,2))) | Multiplying by $-\frac1a$ gives $\frac1{xs}$.
+\end{proof}
+
+\begin{think}{Why differentiate a table?}{why}
+A table of integrals is produced by people who evaluated the integrals analytically, so its entries are ``exact''. Why, then, do we insist on differentiating an entry before relying on it? What does the check cost, compared with the cost of an error?
+\end{think}
+
+The seven entries are typical. (T1) and (T2) are integrals of $x$ over a linear function or over its square root; (T3) and (T4) are the same integrand $\frac1{x\sqrt{ax+b}}$ but with \emph{different answers depending on the sign of $b$}, which is why a table states a condition; (T5) is a trigonometric form; (T6) and (T7) involve a root of $x^2+a^2$. Notice that (T5) holds only where $\sin ax\ne-1$, and that (T3) has a restriction $x\ne0$: the conditions are part of the entry.
+
+\begin{proc}{Using a table of integrals}{table}
+\begin{enumerate}[nosep]
+  \item \emph{Find the form.} Classify the integrand: root of a linear function, root of $x^2\pm a^2$, trigonometric function of a linear argument, power times exponential, sine or cosine, and so on. Look for that form.
+  \item \emph{Match the constants} literally: write the integrand next to the entry and read off $a$, $b$, $n$. Check the conditions (sign of $b$, $a>0$, the interval). If the signs differ from the entry, there may be another entry (for instance (T3) and (T4)) or the entry may not apply.
+  \item \emph{If no entry matches, prepare the integral:} a substitution $u=g(x)$ so that the integrand becomes $f(u)\,du$ (Theorem~\ref{8.1-thm:subst}); completing the square when $ax^2+bx+c$ occurs (Theorem~\ref{thm:square}); a rewrite from Procedure~\ref{8.1-proc:rewrite}; or, for powers, a reduction formula, used repeatedly until the exponent reaches the base case (Theorem~\ref{thm:redxn} and the reduction formulas of Sections~8.2 to 8.6).
+  \item \emph{Return to the original variable.}
+  \item \emph{Check} by differentiating. For a definite integral, check that the formula is defined and continuous on the whole interval (Theorem~\ref{thm:break}) and compare with a rough estimate.
+\end{enumerate}
+\end{proc}
+
+% ---------------------------------------------------------------------
+\subsection*{Fitting an integral to a table entry}
+
+\begin{exmp}{Matching the constants}{m1}
+Evaluate (a) $\displaystyle\int\frac{dx}{x\sqrt{5x-4}}$ for $x>\frac45$; (b) $\displaystyle\int\frac{x\,dx}{\sqrt{4-3x}}$ for $x<\frac43$, and find $\displaystyle\int_0^1\frac{x\,dx}{\sqrt{4-3x}}$.
+
+\textbf{Solution.} (a) The integrand is $\frac1{x\sqrt{ax+b}}$ with $ax+b=5x-4$, so $a=5$ and $b=-4$. Because $b<0$, the matching entry is (T4), not (T3) (which needs $b>0$ and would require $\sqrt{-4}$). With $\sqrt{-b}=2$,
+\[\int\frac{dx}{x\sqrt{5x-4}}=\frac2{2}\tan^{-1}\frac{\sqrt{5x-4}}2+C=\tan^{-1}\frac{\sqrt{5x-4}}2+C .\]
+%@ m1a | ANT(atan(sqrt(5*x-4)/2),1/(x*sqrt(5*x-4)),[1,2,5]) == 0 | =\tan^{-1}\frac{\sqrt{5x-4}}2+C .\]
+\emph{Check.} Let $s=\sqrt{5x-4}$, $s'=\frac5{2s}$. Then $\frac d{dx}\tan^{-1}\frac s2=\frac1{1+s^2/4}\cdot\frac{s'}2=\frac4{4+s^2}\cdot\frac5{4s}=\frac5{5x\,s}=\frac1{xs}$, because $4+s^2=5x$.
+
+(b) The integrand is $\frac x{\sqrt{ax+b}}$ with $a=-3$ and $b=4$, and $ax+b=4-3x>0$ for $x<\frac43$: entry (T2). Then $\frac{2(ax-2b)}{3a^2}=\frac{2(-3x-8)}{27}=-\frac{2(3x+8)}{27}$, so
+\[\int\frac{x\,dx}{\sqrt{4-3x}}=-\frac{2(3x+8)}{27}\sqrt{4-3x}+C .\]
+%@ m1b | ANT(-2*(3*x+8)*sqrt(4-3*x)/27,x/sqrt(4-3*x),[-2,0,1]) == 0 | =-\frac{2(3x+8)}{27}\sqrt{4-3x}+C .\]
+\emph{Check.} With $s=\sqrt{4-3x}$, $s'=-\frac3{2s}$ and $s^2=4-3x$: $\frac d{dx}\left[-\frac2{27}(3x+8)s\right]=-\frac2{27}\left[3s-\frac{3(3x+8)}{2s}\right]=-\frac2{27}\cdot\frac{6s^2-9x-24}{2s}=-\frac2{27}\cdot\frac{24-18x-9x-24}{2s}=\frac{x}{s}$.
+
+\emph{The definite integral.} The integrand is defined and continuous on $[0,1]$ (as $4-3x\ge1$), and the antiderivative is too, so by the Fundamental Theorem of Calculus
+\[\int_0^1\frac{x\,dx}{\sqrt{4-3x}}=\left[-\frac{2(3x+8)}{27}\sqrt{4-3x}\right]_0^1=-\frac{2\cdot11}{27}\cdot1+\frac{2\cdot8}{27}\cdot2=\frac{-22+32}{27}=\frac{10}{27}\approx0.370 .\]
+%@ m1c | NUM(Integral(x/sqrt(4-3*x),(x,0,1)),Q(10,27)) == 0 and Q(-22+32,27) == Q(10,27) | =\frac{-22+32}{27}=\frac{10}{27}\approx0.370 .\]
+\emph{Rough check.} The integrand is $0$ at $x=0$, $\frac{0.5}{\sqrt{2.5}}\approx0.32$ at $x=\frac12$ and $1$ at $x=1$, so an average near $0.37$ on an interval of length $1$ is reasonable.
+\end{exmp}
+
+\begin{kc}{Which entry?}{kc1}
+For each integral, name the entry of Theorem~\ref{thm:table} that fits and the values of $a$ and $b$ (do not integrate): (a) $\displaystyle\int\frac{dx}{x\sqrt{3x+8}}$; (b) $\displaystyle\int\frac{dx}{x\sqrt{3x-8}}$; (c) $\displaystyle\int\frac{x\,dx}{\sqrt{2-7x}}$.
+\end{kc}
+
+\begin{exmp}{A substitution to reach the table}{m2}
+Evaluate $\displaystyle\int\frac{dx}{\sqrt{1+e^{2x}}}$.
+
+\textbf{Solution.} No entry contains $e^{2x}$, but $x$ appears only through $e^x$, so put $u=e^x$ (Section~8.6, Theorem~\ref{8.6-thm:rational}): $du=e^x\,dx$, so $dx=\frac{du}u$, and $e^{2x}=u^2$. Then
+\[\int\frac{dx}{\sqrt{1+e^{2x}}}=\int\frac{1}{\sqrt{1+u^2}}\cdot\frac{du}u=\int\frac{du}{u\sqrt{u^2+1}} .\]
+This is entry (T7) with $a=1$ (and $u>0$, so $\lvert u\rvert=u$):
+\[\int\frac{du}{u\sqrt{u^2+1}}=-\ln\frac{1+\sqrt{u^2+1}}{u}+C=-\ln\left(1+\sqrt{u^2+1}\right)+\ln u+C .\]
+Replace $u$ by $e^x$, so $\ln u=x$ and $u^2+1=e^{2x}+1$:
+\[\int\frac{dx}{\sqrt{1+e^{2x}}}=x-\ln\left(1+\sqrt{1+e^{2x}}\right)+C .\]
+%@ m2 | ANT(x-log(1+sqrt(1+exp(2*x))),1/sqrt(1+exp(2*x)),[-2,0,1,3]) == 0 | =x-\ln\left(1+\sqrt{1+e^{2x}}\right)+C .\]
+\emph{Check.} Let $s=\sqrt{1+e^{2x}}$, so $s'=\frac{e^{2x}}s$ and $s^2-1=e^{2x}$. Then $\frac d{dx}\ln(1+s)=\frac{s'}{1+s}=\frac{s^2-1}{s(1+s)}=\frac{(s-1)(s+1)}{s(1+s)}=\frac{s-1}s$, so the derivative of the answer is $1-\frac{s-1}s=\frac1s$, the integrand.
+%@ m2b | simplify(1-((Symbol('s')**2-1)/(Symbol('s')*(1+Symbol('s'))))-1/Symbol('s')) == 0 | so the derivative of the answer is $1-\frac{s-1}s=\frac1s$, the integrand.
+\end{exmp}
+
+The next entry usually needed is a root of a quadratic. A table lists $\sqrt{x^2\pm a^2}$ and $\sqrt{a^2-x^2}$; a general quadratic $ax^2+bx+c$ is brought to that form by completing the square, which we state once and prove.
+
+\begin{thm}{Completing the square}{square}
+For constants $a\ne0$, $b$, $c$ and all $x$,
+\[ax^2+bx+c=a\left(x+\frac b{2a}\right)^2+\frac{4ac-b^2}{4a}.\]
+%@ sq | simplify(a*(x+b/(2*a))**2+(4*a*c-b**2)/(4*a)-(a*x**2+b*x+c)) == 0 | ^2+\frac{4ac-b^2}{4a}.\]
+Consequently, with $u=x+\frac b{2a}$ (so $du=dx$), an integrand containing $ax^2+bx+c$ becomes one containing $au^2+k$, where $k=\frac{4ac-b^2}{4a}$.
+\end{thm}
+\begin{proof}
+Expand the right side: $a\left(x^2+\frac bax+\frac{b^2}{4a^2}\right)+\frac{4ac-b^2}{4a}=ax^2+bx+\frac{b^2}{4a}+c-\frac{b^2}{4a}=ax^2+bx+c$. The substitution $u=x+\frac b{2a}$ has $du=dx$ (Theorem~\ref{8.1-thm:subst}). $\blacksquare$
+\end{proof}
+
+\begin{exmp}{Complete the square, substitute, use the table}{m3}
+Evaluate $\displaystyle\int\sqrt{x^2+6x+13}\,dx$.
+
+\textbf{Solution.} No entry has $x^2+6x+13$ under the root, so complete the square (Theorem~\ref{thm:square} with $a=1$, $b=6$, $c=13$): $x^2+6x+13=(x+3)^2+4$. Put $u=x+3$, $du=dx$:
+\[\int\sqrt{x^2+6x+13}\,dx=\int\sqrt{u^2+2^2}\,du .\]
+This is entry (T6) with $a=2$, so
+\[\int\sqrt{u^2+4}\,du=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)+C .\]
+Return to $x$ with $u=x+3$ and $u^2+4=x^2+6x+13$:
+\[\int\sqrt{x^2+6x+13}\,dx=\frac{x+3}2\sqrt{x^2+6x+13}+2\ln\left(x+3+\sqrt{x^2+6x+13}\right)+C .\]
+%@ m3 | ANT((x+3)*sqrt(x**2+6*x+13)/2+2*log(x+3+sqrt(x**2+6*x+13)),sqrt(x**2+6*x+13),[-5,-3,0,2]) == 0 and expand((x+3)**2+4-(x**2+6*x+13)) == 0 | +2\ln\left(x+3+\sqrt{x^2+6x+13}\right)+C .\]
+\emph{Check.} The entry (T6) was proved by differentiation, and the Chain Rule with $\frac{du}{dx}=1$ transfers it to $x$; numerically at $x=0$, the derivative of the answer is $\sqrt{13}\approx3.606$, the value of the integrand.
+
+\emph{Another form.} A computer algebra system may print $2\sinh^{-1}\frac{x+3}2$ for the logarithm. Since $\sinh^{-1}w=\ln\left(w+\sqrt{w^2+1}\right)$ (Example~\ref{ex:b10}), $2\sinh^{-1}\frac{x+3}2=2\ln\frac{x+3+\sqrt{x^2+6x+13}}2=2\ln\left(x+3+\sqrt{x^2+6x+13}\right)-2\ln2$: the same answer with a different constant.
+%@ m3b | all(NUM(2*asinh(Q(v+3,2))-2*log(v+3+sqrt(v**2+6*v+13))+2*log(2),0) == 0 for v in (-5,-Q(1,2),0,3)) | $2\sinh^{-1}\frac{x+3}2=2\ln\frac{x+3+\sqrt{x^2+6x+13}}2=2\ln\left(x+3+\sqrt{x^2+6x+13}\right)-2\ln2$: the same answer with a different constant.
+\end{exmp}
+
+A \emph{reduction formula} does not give the answer in one step; it replaces an integral with a power $n$ by a similar integral with $n-1$, and it is used repeatedly until the base case is reached. We met such formulas in Sections~8.2, 8.3, 8.4 and~8.6 (for $\sin^nx$ and $\cos^nx$, $\tan^nx$ and $\sec^nx$, $(x^2+a^2)^{-n}$ and $(\ln x)^n$). Tables list many more; here is the one needed for polynomials times sines and cosines.
+
+\begin{thm}{Reduction formulas for $x^n\sin ax$ and $x^n\cos ax$}{redxn}
+For $a\ne0$ and every integer $n\ge1$,
+\[\int x^n\sin ax\,dx=-\frac{x^n\cos ax}a+\frac na\int x^{n-1}\cos ax\,dx,\]
+\[\int x^n\cos ax\,dx=\frac{x^n\sin ax}a-\frac na\int x^{n-1}\sin ax\,dx .\]
+The base cases are $\int\sin ax\,dx=-\frac{\cos ax}a$ and $\int\cos ax\,dx=\frac{\sin ax}a$ (formulas (3), (4) of Section~8.1).
+\end{thm}
+\begin{proof}
+Integrate by parts (Theorem~\ref{8.2-thm:parts}). For the first formula let $p=x^n$ and $dv=\sin ax\,dx$, so $dp=nx^{n-1}\,dx$ and $v=-\frac{\cos ax}a$:
+\[\int x^n\sin ax\,dx=-\frac{x^n\cos ax}a-\int\left(-\frac{\cos ax}a\right)nx^{n-1}\,dx=-\frac{x^n\cos ax}a+\frac na\int x^{n-1}\cos ax\,dx.\]
+For the second let $p=x^n$ and $dv=\cos ax\,dx$, so $v=\frac{\sin ax}a$ and the same steps give $\frac{x^n\sin ax}a-\frac na\int x^{n-1}\sin ax\,dx$. $\blacksquare$
+\end{proof}
+
+\begin{exmp}{A reduction formula used three times}{m4}
+Evaluate $\displaystyle\int x^3\sin2x\,dx$.
+
+\textbf{Solution.} The formulas alternate between sine and cosine and lower the power of $x$ by one each time (Theorem~\ref{thm:redxn} with $a=2$). We write $J_n=\int x^n\sin2x\,dx$ and $K_n=\int x^n\cos2x\,dx$.
+\begin{align*}
+J_3&=-\frac{x^3\cos2x}2+\frac32K_2, &\text{(first formula, $n=3$)}\\
+K_2&=\frac{x^2\sin2x}2-\frac22J_1=\frac{x^2\sin2x}2-J_1, &\text{(second formula, $n=2$)}\\
+J_1&=-\frac{x\cos2x}2+\frac12K_0=-\frac{x\cos2x}2+\frac{\sin2x}4. &\text{(first formula, $n=1$)}
+\end{align*}
+Here $K_0=\int\cos2x\,dx=\frac{\sin2x}2$ is the base case. Substitute from the bottom up. First $K_2=\frac{x^2\sin2x}2+\frac{x\cos2x}2-\frac{\sin2x}4$. Then
+\begin{align*}J_3&=-\frac{x^3\cos2x}2+\frac32\left(\frac{x^2\sin2x}2+\frac{x\cos2x}2-\frac{\sin2x}4\right)\\&=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8 .\end{align*}
+So $\displaystyle\int x^3\sin2x\,dx=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8+C$.
+%@ m4 | ANT(-x**3*cos(2*x)/2+3*x**2*sin(2*x)/4+3*x*cos(2*x)/4-3*sin(2*x)/8,x**3*sin(2*x),[Q(1,2),1,2,-3]) == 0 and expand(Q(3,2)*(x**2*sin(2*x)/2+x*cos(2*x)/2-sin(2*x)/4)-(3*x**2*sin(2*x)/4+3*x*cos(2*x)/4-3*sin(2*x)/8)) == 0 | \frac{3x\cos2x}4-\frac{3\sin2x}8+C$.
+\emph{Check by the tabular method} (Theorem~\ref{8.2-thm:tab}). Differentiate $x^3$ repeatedly ($x^3,3x^2,6x,6,0$) and integrate $\sin2x$ repeatedly ($-\frac{\cos2x}2,-\frac{\sin2x}4,\frac{\cos2x}8,\frac{\sin2x}{16}$), with alternating signs $+,-,+,-$:
+\begin{align*}&x^3\left(-\frac{\cos2x}2\right)-3x^2\left(-\frac{\sin2x}4\right)+6x\left(\frac{\cos2x}8\right)-6\left(\frac{\sin2x}{16}\right)\\&\quad=-\frac{x^3\cos2x}2+\frac{3x^2\sin2x}4+\frac{3x\cos2x}4-\frac{3\sin2x}8,\end{align*}
+the same function. \emph{Check by differentiating.} Term by term, $\frac d{dx}\left(-\frac{x^3\cos2x}2\right)=-\frac{3x^2\cos2x}2+x^3\sin2x$; $\frac d{dx}\frac{3x^2\sin2x}4=\frac{3x\sin2x}2+\frac{3x^2\cos2x}2$; $\frac d{dx}\frac{3x\cos2x}4=\frac{3\cos2x}4-\frac{3x\sin2x}2$; $\frac d{dx}\left(-\frac{3\sin2x}8\right)=-\frac{3\cos2x}4$. In the sum, every term cancels except $x^3\sin2x$.
+%@ m4b | simplify(diff(-x**3*cos(2*x)/2,x)+diff(3*x**2*sin(2*x)/4,x)+diff(3*x*cos(2*x)/4,x)+diff(-3*sin(2*x)/8,x)-x**3*sin(2*x)) == 0 | In the sum, every term cancels except $x^3\sin2x$.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{When the table's answer is not your answer}
+
+Two people who integrate the same function may print different formulas, and so may two tables or two programs. By Theorem~\ref{8.6-thm:check}(2), if both are antiderivatives on the same interval their difference is constant \emph{on that interval}. The constant is easy to find (evaluate the difference at one point) and is usually nonzero; it vanishes from every definite integral.
+
+\begin{exmp}{A table form and a computer form that differ by a constant}{m5}
+Evaluate $\displaystyle\int_0^{\pi/2}\frac{dx}{1+\sin2x}$ with the table, and compare the table's antiderivative with the one printed by a computer algebra system.
+
+\textbf{Solution.} Entry (T5) with $a=2$ gives $F_T(x)=-\frac12\tan\left(\frac\pi4-x\right)$, valid where $\sin2x\ne-1$. On $[0,\frac\pi2]$ we have $2x\in[0,\pi]$ and $\sin2x\ge0$, so $F_T$ and the integrand are continuous on the whole interval. Then $F_T\left(\frac\pi2\right)=-\frac12\tan\left(-\frac\pi4\right)=\frac12$ and $F_T(0)=-\frac12\tan\frac\pi4=-\frac12$, so
+\[\int_0^{\pi/2}\frac{dx}{1+\sin2x}=\frac12-\left(-\frac12\right)=1 .\]
+%@ m5a | NUM(Integral(1/(1+sin(2*x)),(x,0,pi/2)),1) == 0 and NUM(-tan(-pi/4)/2+tan(pi/4)/2,1) == 0 | =\frac12-\left(-\frac12\right)=1 .\]
+\emph{Rough check.} The integrand is $1$ at $x=0$ and at $x=\frac\pi2$ and $\frac12$ at $x=\frac\pi4$, so it lies between $\frac12$ and $1$ on an interval of length $\frac\pi2\approx1.57$: the integral lies between $0.79$ and $1.57$, and $1$ does.
+
+\emph{The computer's form.} SymPy~1.14 prints $F_C(x)=-\dfrac1{\tan x+1}$. To check it we differentiate, using $\frac d{dx}\tan x=\sec^2x$:
+\begin{align*}F_C'(x)&=\frac{\sec^2x}{(1+\tan x)^2}=\frac{1/\cos^2x}{(\cos x+\sin x)^2/\cos^2x}\\&=\frac1{(\cos x+\sin x)^2}=\frac1{1+2\sin x\cos x}=\frac1{1+\sin2x}.\end{align*}
+%@ m5b | ANT(-1/(tan(x)+1),1/(1+sin(2*x)),[Q(1,2),1,Q(5,4),-Q(1,4)]) == 0 and simplify(1/(cos(x)+sin(x))**2-1/(1+sin(2*x))) == 0 | &=\frac1{(\cos x+\sin x)^2}=\frac1{1+2\sin x\cos x}=\frac1{1+\sin2x}.\end{align*}
+So both are antiderivatives. They must differ by a constant, and we can find it exactly. From the angle-subtraction formulas, $\sin\left(\frac\pi4-x\right)=\frac{\sqrt2}2(\cos x-\sin x)$ and $\cos\left(\frac\pi4-x\right)=\frac{\sqrt2}2(\cos x+\sin x)$; dividing and then dividing top and bottom by $\cos x$,
+\[\tan\left(\frac\pi4-x\right)=\frac{\cos x-\sin x}{\cos x+\sin x}=\frac{1-\tan x}{1+\tan x},\]
+\[F_T=-\frac12\cdot\frac{1-\tan x}{1+\tan x}=\frac12\cdot\frac{(\tan x+1)-2}{\tan x+1}=\frac12-\frac1{\tan x+1}=\frac12+F_C .\]
+%@ m5c | all(NUM(-tan(pi/4-v)/2,Q(1,2)-1/(tan(v)+1)) == 0 and NUM(tan(pi/4-v),(1-tan(v))/(1+tan(v))) == 0 for v in (-Q(1,5),Q(1,3),Q(1,2),1,Q(5,4))) | =\frac12-\frac1{\tan x+1}=\frac12+F_C .\]
+The two forms differ by $\frac12$ (Figure~1(a)), and the constant cancels in $F(b)-F(a)$. One more point: $F_C$ is undefined at $x=\frac\pi2$ because $\tan\frac\pi2$ is, although the integrand is perfectly continuous there. As $x\to\frac\pi2^-$, $\tan x\to\infty$ and $F_C\to0$, so the break is removable: with $F_C\left(\frac\pi2\right):=0$ we get $F_C\left(\frac\pi2\right)-F_C(0)=0-(-1)=1$ again (Theorem~\ref{thm:break}(1) below).
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{scope}[x=3.2cm,y=1.2cm]
+    \draw[->] (-0.5,0) -- (1.75,0) node[right] {$x$};
+    \draw[->] (0,-2.2) -- (0,0.95) node[above] {$y$};
+    \draw[very thick,blue!70!black,domain=-0.45:1.55,samples=80,variable=\t] plot ({\t},{-0.5*tan(deg(0.785398-\t))});
+    \draw[very thick,red!70!black,domain=-0.45:1.55,samples=80,variable=\t] plot ({\t},{-1/(tan(deg(\t))+1)});
+    \draw[gray,thin] (0,-0.5) -- (-0.3,0.3);
+    \fill[blue!70!black] (0,-0.5) circle (1.5pt);
+    \node[above,font=\small] at (-0.3,0.3) {$\left(0,-\frac12\right)$};
+%@ f1-a | NUM(-tan(pi/4)/2,-Q(1,2)) == 0 | \fill[blue!70!black] (0,-0.5) circle (1.5pt);
+    \fill[red!70!black] (0,-1) circle (1.5pt) node[below right,font=\small] {$(0,-1)$};
+%@ f1-b | NUM(-1/(tan(0)+1),-1) == 0 | \fill[red!70!black] (0,-1) circle (1.5pt) node[below right,font=\small] {$(0,-1)$};
+    \fill[blue!70!black] (0.785398,0) circle (1.5pt) node[above left,font=\small] {$\left(\frac\pi4,0\right)$};
+%@ f1-c | NUM(-tan(pi/4-pi/4)/2,0) == 0 | \fill[blue!70!black] (0.785398,0) circle (1.5pt) node[above left,font=\small] {$\left(\frac\pi4,0\right)$};
+    \fill[red!70!black] (0.785398,-0.5) circle (1.5pt) node[below right,font=\small] {$\left(\frac\pi4,-\frac12\right)$};
+%@ f1-d | NUM(-1/(tan(pi/4)+1),-Q(1,2)) == 0 | \fill[red!70!black] (0.785398,-0.5) circle (1.5pt) node[below right,font=\small] {$\left(\frac\pi4,-\frac12\right)$};
+    \draw[<->,thick] (0.3,-0.764) -- (0.3,-0.264);
+    \node[right,font=\small] at (0.3,-0.51) {$\frac12$};
+    \node[blue!70!black,font=\small] at (1.5,0.68) {$F_T$};
+    \node[red!70!black,font=\small] at (1.45,-0.38) {$F_C$};
+    \node[font=\small\bfseries] at (0.6,-2.65) {(a) the two forms of $\int\frac{dx}{1+\sin2x}$};
+  \end{scope}
+  \begin{scope}[xshift=9.8cm,x=1.0cm,y=1.1cm]
+    \draw[->] (-3.5,0) -- (3.7,0) node[right] {$x$};
+    \draw[->] (0,-2.0) -- (0,2.0) node[above] {$y$};
+    \draw[dashed,gray] (-3.3,1.570796) -- (3.3,1.570796);
+    \draw[dashed,gray] (-3.3,-1.570796) -- (3.3,-1.570796);
+    \node[right,font=\small] at (3.3,1.570796) {$\frac\pi2$};
+    \node[right,font=\small] at (3.3,-1.570796) {$-\frac\pi2$};
+    \draw[very thick,blue!70!black,domain=-3.2:3.2,samples=80,variable=\t] plot ({\t},{rad(atan(\t))});
+    \draw[very thick,red!70!black,domain=0.12:3.2,samples=80,variable=\t] plot ({\t},{-rad(atan(1/\t))});
+    \draw[very thick,red!70!black,domain=-3.2:-0.12,samples=80,variable=\t] plot ({\t},{-rad(atan(1/\t))});
+    \fill[blue!70!black] (1,0.785398) circle (1.5pt) node[above left,font=\small] {$\left(1,\frac\pi4\right)$};
+%@ f1-e | NUM(atan(1),pi/4) == 0 | \fill[blue!70!black] (1,0.785398) circle (1.5pt) node[above left,font=\small] {$\left(1,\frac\pi4\right)$};
+    \fill[red!70!black] (1,-0.785398) circle (1.5pt) node[below right,font=\small] {$\left(1,-\frac\pi4\right)$};
+%@ f1-f | NUM(-atan(Q(1,1)),-pi/4) == 0 | \fill[red!70!black] (1,-0.785398) circle (1.5pt) node[below right,font=\small] {$\left(1,-\frac\pi4\right)$};
+    \draw[gray,thin] (-1,-0.785398) -- (-0.8,-1.0);
+    \fill[blue!70!black] (-1,-0.785398) circle (1.5pt);
+    \node[below,font=\scriptsize] at (-0.55,-1.0) {$\left(-1,-\frac\pi4\right)$};
+%@ f1-g | NUM(atan(-1),-pi/4) == 0 | \fill[blue!70!black] (-1,-0.785398) circle (1.5pt);
+    \draw[gray,thin] (-1,0.785398) -- (-0.8,0.55);
+    \fill[red!70!black] (-1,0.785398) circle (1.5pt);
+    \node[below,font=\scriptsize] at (-0.55,0.55) {$\left(-1,\frac\pi4\right)$};
+%@ f1-h | NUM(-atan(Q(1,-1)),pi/4) == 0 | \fill[red!70!black] (-1,0.785398) circle (1.5pt);
+    \node[blue!70!black,font=\small,anchor=west] at (-3.3,-0.45) {blue: $\tan^{-1}x$};
+    \node[red!70!black,font=\small,anchor=west] at (0.5,1.85) {red: $-\tan^{-1}\frac1x$};
+    \node[font=\small\bfseries] at (0,-2.55) {(b) two forms of $\int\frac{dx}{1+x^2}$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 1. (a) $F_T=-\frac12\tan\left(\frac\pi4-x\right)$ (blue) and $F_C=-\frac1{\tan x+1}$ (red): the same shape, a constant vertical distance $\frac12$ apart. (b) $\tan^{-1}x$ (blue) and $-\tan^{-1}\frac1x$ (red, undefined at $x=0$): the red curve lies $\frac\pi2$ \emph{below} the blue one for $x>0$ and $\frac\pi2$ \emph{above} it for $x<0$.\end{center}
+\end{exmp}
+
+\begin{exmp}{A constant that changes from one interval to the next}{m6}
+Find $\displaystyle\int\frac{dx}{1+x^2}$ in two ways and compare the answers.
+
+\textbf{Solution.} \emph{Way 1.} Formula (11) of Section~8.1 with $a=1$ gives $F_1(x)=\tan^{-1}x$, an antiderivative on all of $\mathbb R$.
+
+\emph{Way 2.} For $x\ne0$ put $u=\frac1x$, so $x=\frac1u$ and $dx=-\frac{du}{u^2}$, and $1+x^2=1+\frac1{u^2}=\frac{u^2+1}{u^2}$. Then
+\[\int\frac{dx}{1+x^2}=\int\frac{u^2}{u^2+1}\cdot\left(-\frac{du}{u^2}\right)=-\int\frac{du}{1+u^2}=-\tan^{-1}u+C=-\tan^{-1}\frac1x+C .\]
+So $F_2(x)=-\tan^{-1}\frac1x$ on $x>0$ and on $x<0$. \emph{Check:} $\frac d{dx}\left[-\tan^{-1}\frac1x\right]=-\frac1{1+1/x^2}\cdot\left(-\frac1{x^2}\right)=\frac1{x^2+1}$.
+%@ m6a | ANT(-atan(1/x),1/(1+x**2),[-3,-Q(1,2),Q(1,2),2]) == 0 | =\frac1{x^2+1}$.
+
+\emph{Both are right, so how do they differ?} By Theorem~\ref{8.6-thm:check}(2) they differ by a constant on each interval $x>0$ and $x<0$. For $x>0$ let $\theta=\tan^{-1}x\in\left(0,\frac\pi2\right)$. Then $\frac\pi2-\theta\in\left(0,\frac\pi2\right)$ and $\tan\left(\frac\pi2-\theta\right)=\cot\theta=\frac1x$, so $\tan^{-1}\frac1x=\frac\pi2-\theta$, that is $\tan^{-1}x+\tan^{-1}\frac1x=\frac\pi2$ for $x>0$. Since $\tan^{-1}$ is an odd function, for $x<0$ we get $\tan^{-1}x+\tan^{-1}\frac1x=-\left[\tan^{-1}(-x)+\tan^{-1}\frac1{-x}\right]=-\frac\pi2$. Hence
+\[F_2(x)-F_1(x)=-\left[\tan^{-1}x+\tan^{-1}\frac1x\right]=\begin{cases}-\frac\pi2,&x>0,\\[2pt]+\frac\pi2,&x<0.\end{cases}\]
+%@ m6b | NUM(atan(2)+atan(Q(1,2)),pi/2) == 0 and NUM(atan(-3)+atan(-Q(1,3)),-pi/2) == 0 and NUM(atan(5)+atan(Q(1,5)),pi/2) == 0 | \begin{cases}-\frac\pi2,&x>0,\\[2pt]+\frac\pi2,&x<0.\end{cases}\]
+The two answers differ by $-\frac\pi2$ on one side of $0$ and by $+\frac\pi2$ on the other (Figure~1(b)). The usual ``$+C$'' stands for one constant \emph{per interval} on which the integrand is defined, and a formula that is undefined at a point (here $F_2$ at $0$) may carry different constants on the two sides. This is harmless for an indefinite integral on one interval, and dangerous for a definite integral that crosses $0$: see Example~\ref{ex:m9} below.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Reading computer algebra output}
+
+Computer algebra systems differ in the form they print, but certain habits recur. They often omit the constant. They may write a logarithm without absolute values, which is correct only for positive arguments. They may print an inverse hyperbolic function, or a special function, where you expect elementary functions. They may produce a formula with a break. Procedure~\ref{proc:cas} turns these observations into a routine; the examples that follow use outputs of SymPy~1.14, and other systems differ in form but not in kind.
+
+\begin{proc}{Reading the output of a computer algebra system}{cas}
+\begin{enumerate}[nosep]
+  \item \emph{Add the constant.} An answer to an indefinite integral is $F(x)+C$, with one constant per interval of the domain (Theorem~\ref{8.6-thm:check}).
+  \item \emph{Compare the form.} If it differs from yours, subtract, or differentiate both, or evaluate the difference at two points. A nonzero constant difference is fine (Examples~\ref{ex:m5} and~\ref{ex:m6}).
+  \item \emph{Check the domain.} Is each logarithm of a quantity that can be negative? Each root, each $\tan^{-1}$ of a quotient, each place where a tangent or a denominator is undefined? On which interval is the formula valid? (Example~\ref{ex:m7}.)
+  \item \emph{Differentiate.} The derivative must be the integrand wherever the formula is defined. This step is the proof.
+  \item \emph{For a definite integral,} test the sign and the size of the answer against the integrand (a positive integrand cannot have a negative integral), look for points of $[a,b]$ where the formula or the integrand is undefined (Theorem~\ref{thm:break}, Examples~\ref{ex:m8} to~\ref{ex:m10}), and compare with a numerical value.
+  \item \emph{If the answer contains a special function or the system returns the integral unevaluated,} see Example~\ref{ex:m11}: the integral may have no elementary antiderivative (Section~8.6), or the system may need a rewrite by hand (Example~\ref{ex:m8}).
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A logarithm without absolute values}{m7}
+A computer algebra system prints $\displaystyle\int\frac{dx}{x^2+3x}=\frac13\ln x-\frac13\ln(x+3)$. Is this an antiderivative? On which intervals? Evaluate $\displaystyle\int_{-2}^{-1}\frac{dx}{x^2+3x}$.
+
+\textbf{Solution.} \emph{Differentiate} (step 4 of Procedure~\ref{proc:cas}). Wherever the formula is defined, $\frac d{dx}\left[\frac13\ln x-\frac13\ln(x+3)\right]=\frac13\left(\frac1x-\frac1{x+3}\right)=\frac13\cdot\frac{3}{x(x+3)}=\frac1{x^2+3x}$. So it is an antiderivative, but only where $\ln x$ and $\ln(x+3)$ are real numbers, that is for $x>0$. The integrand is defined on three intervals, $x<-3$, $-3<x<0$ and $x>0$.
+
+\emph{The complete answer.} The same partial fractions (Section~8.5, $\frac1{x(x+3)}=\frac13\left(\frac1x-\frac1{x+3}\right)$) and the rule $\frac d{dx}\ln\lvert w\rvert=\frac{w'}w$ for $w\ne0$ of either sign (Section~8.1) give
+\[\int\frac{dx}{x^2+3x}=\frac13\ln\lvert x\rvert-\frac13\ln\lvert x+3\rvert+C=\frac13\ln\left\lvert\frac x{x+3}\right\rvert+C,\]
+valid on each of the three intervals (with a possibly different $C$ on each).
+%@ m7a | ANT(log(sqrt(x**2))/3-log(sqrt((x+3)**2))/3,1/(x**2+3*x),[-5,-2,-Q(1,2),1,4]) == 0 | =\frac13\ln\left\lvert\frac x{x+3}\right\rvert+C,\]
+\emph{The definite integral.} The interval $[-2,-1]$ lies inside $(-3,0)$, where the integrand $\frac1{x(x+3)}$ is continuous. The formula with absolute values is continuous there, so
+\[\int_{-2}^{-1}\frac{dx}{x^2+3x}=\frac13\left[\ln\left\lvert\frac x{x+3}\right\rvert\right]_{-2}^{-1}=\frac13\left[\ln\frac12-\ln2\right]=-\frac23\ln2\approx-0.462 .\]
+%@ m7b | NUM(Integral(1/(x**2+3*x),(x,-2,-1)),-2*log(2)/3) == 0 and NUM(log(Q(1,2))-log(2),-2*log(2)) == 0 | =\frac13\left[\ln\frac12-\ln2\right]=-\frac23\ln2\approx-0.462 .\]
+\emph{Rough check.} On $(-3,0)$ the product $x(x+3)$ is negative, so the integrand and the integral are negative; at $x=-1.5$ the integrand is $\frac1{-2.25}\approx-0.44$ and the interval has length $1$, so about $-0.46$ is right. The formula without absolute values cannot even be evaluated here: $\ln(-1)$ and $\ln(-2)$ are not real numbers.
+\end{exmp}
+
+\begin{exmp}{When the system returns nothing: rewrite by hand}{m8}
+Evaluate $\displaystyle\int_{-\pi}^{\pi}\sqrt{1-\cos x}\,dx$.
+
+\textbf{Solution.} SymPy~1.14 returns this integral unevaluated. A system may fail on a root of a trigonometric expression, so we rewrite by hand (step 6 of Procedure~\ref{proc:cas}). The power-reducing identity (Theorem~\ref{8.3-thm:ident}(3)) $\sin^2\frac x2=\frac{1-\cos x}2$ gives $1-\cos x=2\sin^2\frac x2$, and $\sqrt{w^2}=\lvert w\rvert$, so
+\[\sqrt{1-\cos x}=\sqrt2\,\sqrt{\sin^2\frac x2}=\sqrt2\,\left\lvert\sin\frac x2\right\rvert .\]
+\emph{The tempting error} is $\sqrt{\sin^2\frac x2}=\sin\frac x2$, which is false when $\sin\frac x2<0$, that is for $-\pi\le x<0$. It would give $\int_{-\pi}^{\pi}\sqrt2\sin\frac x2\,dx=\left[-2\sqrt2\cos\frac x2\right]_{-\pi}^{\pi}=-2\sqrt2(0-0)=0$, which cannot be right: the integrand is continuous and positive except at $x=0$, so the integral is positive.
+
+\emph{The correct computation.} The integrand $\sqrt2\left\lvert\sin\frac x2\right\rvert$ is an even function, and $\sin\frac x2\ge0$ on $[0,\pi]$, so
+\[\int_{-\pi}^{\pi}\sqrt{1-\cos x}\,dx=2\int_0^\pi\sqrt2\sin\frac x2\,dx=2\sqrt2\left[-2\cos\frac x2\right]_0^\pi=2\sqrt2\,(0+2)=4\sqrt2\approx5.657 .\]
+%@ m8a | abs(2*Integral(sqrt(1-cos(x)),(x,0,pi)).evalf(15)-5.65685424949238) < 1e-9 and ANT(-2*sqrt(2)*cos(x/2),sqrt(1-cos(x)),[Q(1,2),1,2,3]) == 0 and NUM(2*integrate(sqrt(2)*sin(x/2),(x,0,pi)),4*sqrt(2)) == 0 | =2\sqrt2\,(0+2)=4\sqrt2\approx5.657 .\]
+\emph{Rough check.} The integrand is $0$ at $x=0$, $1$ at $x=\pm\frac\pi2$ and $\sqrt2\approx1.41$ at $x=\pm\pi$; an average near $0.9$ over an interval of length $2\pi\approx6.28$ gives about $5.7$.
+\end{exmp}
+
+\begin{kc}{Read the output}{kc2}
+A program prints $\displaystyle\int\frac{dx}{x^2-4}=\frac14\ln(x-2)-\frac14\ln(x+2)$. (a) For which $x$ is this an antiderivative? (b) What would you write for $-2<x<2$?
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Definite integrals and breaks in the formula}
+
+The Fundamental Theorem of Calculus says $\int_a^bf=F(b)-F(a)$ when $f$ is continuous on $[a,b]$ and $F$ is an antiderivative \emph{on all of} $[a,b]$. A formula for $F$ that has a break inside $[a,b]$ is not an antiderivative on $[a,b]$. A break can be removable (the formula is undefined at a point but has a limit, as with $F_C$ in Example~\ref{ex:m5}), a \emph{jump} (the one-sided limits exist but differ), or an infinite one. The theorem says what to do in the first two cases; the third is a different problem (Example~\ref{ex:m10}).
+
+\begin{thm}{Definite integrals when the formula has breaks}{break}
+Let $f$ be continuous on $[a,b]$ and let $a=c_0<c_1<\dots<c_m<c_{m+1}=b$. Suppose that on each open interval $(c_j,c_{j+1})$ the function $F$ is differentiable with $F'=f$, and that the one-sided limits $F(c_j^+)=\lim_{x\to c_j^+}F(x)$ (for $j=0,\dots,m$) and $F(c_{j+1}^-)=\lim_{x\to c_{j+1}^-}F(x)$ exist as real numbers. Then
+\[\int_a^bf(x)\,dx=\sum_{j=0}^{m}\Big[F(c_{j+1}^-)-F(c_j^+)\Big].\]
+In particular: (1) if there are no breaks, or each limit $F(c^-)$ equals $F(c^+)$ (a removable break), the value is $F(b^-)-F(a^+)$, that is $F(b)-F(a)$ with $F$ defined at the break points by its limits; (2) for a single break at $c$,
+\[\int_a^bf(x)\,dx=F(b)-F(a)-\Big[F(c^+)-F(c^-)\Big],\]
+so the naive value $F(b)-F(a)$ is wrong by exactly the jump $F(c^+)-F(c^-)$.
+\end{thm}
+\begin{proof}
+Fix $j$ and numbers $s<t$ in $(c_j,c_{j+1})$. The function $f$ is continuous on $[s,t]$ and $F$ is differentiable on $(s,t)$ and continuous on $[s,t]$ (differentiable at every point of $[s,t]$), with $F'=f$, so by the Fundamental Theorem of Calculus $\int_s^tf=F(t)-F(s)$. Let $M$ be the maximum of $\lvert f\rvert$ on $[a,b]$ (Extreme Value Theorem). Then $\left\lvert\int_{c_j}^sf\right\rvert\le M(s-c_j)\to0$ as $s\to c_j^+$ and $\left\lvert\int_t^{c_{j+1}}f\right\rvert\le M(c_{j+1}-t)\to0$ as $t\to c_{j+1}^-$, so $\int_s^tf\to\int_{c_j}^{c_{j+1}}f$, while $F(t)-F(s)\to F(c_{j+1}^-)-F(c_j^+)$. Hence $\int_{c_j}^{c_{j+1}}f=F(c_{j+1}^-)-F(c_j^+)$. Adding over $j=0,\dots,m$ (additivity of the integral over intervals) gives the formula. For (1), if $F(c_j^-)=F(c_j^+)$ for $j=1,\dots,m$ the sum telescopes to $F(c_{m+1}^-)-F(c_0^+)$. For (2) with $m=1$, $c=c_1$: the sum is $F(c^-)-F(a)+F(b)-F(c^+)=F(b)-F(a)-\big[F(c^+)-F(c^-)\big]$. $\blacksquare$
+\end{proof}
+
+\begin{exmp}{An antiderivative with a jump}{m9}
+Evaluate $\displaystyle\int_0^{2\pi}\frac{dx}{3+\cos x}$.
+
+\textbf{Solution.} The integrand is continuous on $[0,2\pi]$ ($3+\cos x\ge2$), so the integral exists. Use the substitution $t=\tan\frac x2$ of Example~\ref{8.5-ex:b14} (valid for $-\pi<x<\pi$; the formulas $\cos x=\frac{1-t^2}{1+t^2}$ and $dx=\frac{2\,dt}{1+t^2}$ hold on every interval where $\tan\frac x2$ is defined). Then $3+\cos x=\frac{3(1+t^2)+1-t^2}{1+t^2}=\frac{2t^2+4}{1+t^2}$ and
+\[\int\frac{dx}{3+\cos x}=\int\frac{1+t^2}{2t^2+4}\cdot\frac{2\,dt}{1+t^2}=\int\frac{dt}{t^2+2}=\frac1{\sqrt2}\tan^{-1}\frac t{\sqrt2}+C .\]
+Back to $x$: $F(x)=\frac1{\sqrt2}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt2}\right)$, an antiderivative on every interval where $\tan\frac x2$ is defined, that is for $x\ne\pi$ on $[0,2\pi]$.
+%@ m9a | ANT(atan(tan(x/2)/sqrt(2))/sqrt(2),1/(3+cos(x)),[Q(1,2),1,2,4,5,6]) == 0 | $F(x)=\frac1{\sqrt2}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt2}\right)$, an antiderivative on every interval where $\tan\frac x2$ is defined, that is for $x\ne\pi$ on $[0,2\pi]$.
+
+\emph{The naive evaluation} is $F(2\pi)-F(0)=\frac1{\sqrt2}\tan^{-1}0-\frac1{\sqrt2}\tan^{-1}0=0$. This is impossible: since $2\le3+\cos x\le4$, the integrand lies between $\frac14$ and $\frac12$, so the integral lies between $\frac{2\pi}4\approx1.57$ and $\frac{2\pi}2\approx3.14$.
+
+\emph{The error.} At $x=\pi$, $\tan\frac x2$ is undefined. As $x\to\pi^-$, $\tan\frac x2\to+\infty$ and $F\to\frac1{\sqrt2}\cdot\frac\pi2$; as $x\to\pi^+$, $\tan\frac x2\to-\infty$ and $F\to-\frac1{\sqrt2}\cdot\frac\pi2$. So $F$ has a jump at $\pi$ (Figure~2): $F(\pi^+)-F(\pi^-)=-\frac\pi{\sqrt2}$.
+
+\emph{The correct evaluation} by Theorem~\ref{thm:break}(2) with $c=\pi$:
+\[\int_0^{2\pi}\frac{dx}{3+\cos x}=\big[F(\pi^-)-F(0)\big]+\big[F(2\pi)-F(\pi^+)\big]=\frac\pi{2\sqrt2}-0+0+\frac\pi{2\sqrt2}=\frac\pi{\sqrt2}\approx2.221 .\]
+%@ m9b | NUM(Integral(1/(3+cos(x)),(x,0,2*pi)),pi/sqrt(2)) == 0 and NUM(pi/(2*sqrt(2))+pi/(2*sqrt(2)),pi/sqrt(2)) == 0 | =\frac\pi{2\sqrt2}-0+0+\frac\pi{2\sqrt2}=\frac\pi{\sqrt2}\approx2.221 .\]
+This lies between $1.57$ and $3.14$, as it must. Equivalently, $G(x)=F(x)$ for $x<\pi$ and $G(x)=F(x)+\frac\pi{\sqrt2}$ for $x>\pi$ is an antiderivative that is continuous on all of $[0,2\pi]$, with $G(2\pi)-G(0)=\frac\pi{\sqrt2}$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.35cm]
+  \draw[->] (-0.2,0) -- (6.8,0) node[right] {$x$};
+  \draw[->] (0,-1.5) -- (0,2.7) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:3.08,samples=80,variable=\t] plot ({\t},{rad(atan(tan(deg(\t/2))/1.414214))/1.414214});
+  \draw[very thick,blue!70!black,domain=3.205:6.2832,samples=80,variable=\t] plot ({\t},{rad(atan(tan(deg(\t/2))/1.414214))/1.414214});
+  \draw[very thick,red!70!black,dashed,domain=3.205:6.2832,samples=80,variable=\t] plot ({\t},{rad(atan(tan(deg(\t/2))/1.414214))/1.414214+2.221441});
+  \draw[dotted] (3.141593,-1.2) -- (3.141593,2.4);
+  \draw[<->,thick] (3.4,-1.1107) -- (3.4,1.1107);
+  \node[right,font=\small] at (3.4,0.45) {jump $-\frac\pi{\sqrt2}$};
+  \fill (3.141593,1.110721) circle (1.5pt) node[above left,font=\small] {$\left(\pi,\frac\pi{2\sqrt2}\right)$};
+%@ f2-a | NUM(atan(oo)/sqrt(2),pi/(2*sqrt(2))) == 0 | \fill (3.141593,1.110721) circle (1.5pt) node[above left,font=\small] {$\left(\pi,\frac\pi{2\sqrt2}\right)$};
+  \fill (3.141593,-1.110721) circle (1.5pt) node[below right,font=\small] {$\left(\pi,-\frac\pi{2\sqrt2}\right)$};
+%@ f2-b | NUM(atan(-oo)/sqrt(2),-pi/(2*sqrt(2))) == 0 | \fill (3.141593,-1.110721) circle (1.5pt) node[below right,font=\small] {$\left(\pi,-\frac\pi{2\sqrt2}\right)$};
+  \fill (6.283185,0) circle (1.5pt) node[above right,font=\small] {$(2\pi,0)$};
+%@ f2-c | NUM(atan(tan(pi)/sqrt(2))/sqrt(2),0) == 0 | \fill (6.283185,0) circle (1.5pt) node[above right,font=\small] {$(2\pi,0)$};
+  \fill (6.283185,2.221441) circle (1.5pt) node[above left,font=\small] {$\left(2\pi,\frac\pi{\sqrt2}\right)$};
+%@ f2-d | NUM(atan(tan(pi)/sqrt(2))/sqrt(2)+pi/sqrt(2),pi/sqrt(2)) == 0 | \fill (6.283185,2.221441) circle (1.5pt) node[above left,font=\small] {$\left(2\pi,\frac\pi{\sqrt2}\right)$};
+  \node[blue!70!black,font=\small] at (1.3,0.95) {$F$};
+  \node[red!70!black,font=\small] at (5.3,1.95) {$G$};
+  \node[below,font=\small] at (3.141593,-1.25) {$\pi$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 2. $F(x)=\frac1{\sqrt2}\tan^{-1}\left(\frac{\tan(x/2)}{\sqrt2}\right)$ (blue) has a jump at $x=\pi$. Adding $\frac\pi{\sqrt2}$ to the right branch (red, dashed) gives a continuous antiderivative $G$; the integral is $G(2\pi)-G(0)=\frac\pi{\sqrt2}$, not $F(2\pi)-F(0)=0$.\end{center}
+
+\emph{What a good system does.} SymPy~1.14 returns the correct value $\frac{\sqrt2\,\pi}2=\frac\pi{\sqrt2}$ for this integral, and an antiderivative that contains a term with $\lfloor\cdot\rfloor$: the term that adds the jump. A program or a hand computation that reports only the formula $F$ and subtracts $F(0)$ from $F(2\pi)$ would give $0$. The sign and size check is what catches the error.
+\end{exmp}
+
+\begin{exmp}{An integrand that is unbounded: the formula is not the problem}{m10}
+A student computes $\displaystyle\int_{-1}^{3}\frac{dx}{(x-1)^2}$ from $F(x)=-\frac1{x-1}$: $F(3)-F(-1)=-\frac12-\frac12=-1$. Is this correct?
+
+\textbf{Solution.} $F'(x)=\frac1{(x-1)^2}$, so $F$ is an antiderivative on each of $x<1$ and $x>1$. But the answer cannot be right: the integrand is positive, so the integral would be positive. This time the formula's break is not a jump. The integrand itself is undefined at $x=1$ and grows without bound near it (Figure~3), so $f$ is \emph{not continuous} on $[-1,3]$, and Theorem~\ref{thm:break} does not apply: its proof used a bound $M$ for $\lvert f\rvert$.
+
+What is true is that the area to the left of $x=1$ is already infinite. For $t<1$,
+\[\int_{-1}^{t}\frac{dx}{(x-1)^2}=\left[-\frac1{x-1}\right]_{-1}^{t}=-\frac1{t-1}-\frac12=\frac1{1-t}-\frac12\longrightarrow\infty\quad(t\to1^-).\]
+%@ m10 | NUM(-1/(3-1)-(-1/(-1-1)),-1) == 0 and NUM(1/(1-Q(99,100))-Q(1,2),Q(199,2)) == 0 | =\frac1{1-t}-\frac12\longrightarrow\infty\quad(t\to1^-).\]
+So $\int_{-1}^3\frac{dx}{(x-1)^2}$ is not a number; it is a divergent \emph{improper} integral, a topic for a later section of this chapter. A system correctly reports $\infty$ for it. The warning is the general one: before using $F(b)-F(a)$, check that $f$ is continuous on $[a,b]$, and that $F$ is too (or has only the breaks that Theorem~\ref{thm:break} handles).
+
+\begin{center}
+\begin{tikzpicture}[x=1.45cm,y=0.95cm]
+  \draw[->] (-1.4,0) -- (3.5,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,4.6) node[above] {$y$};
+  \draw[dashed,gray] (1,0) -- (1,4.5);
+  \node[below,font=\small] at (1,0) {$1$};
+  \fill[blue!12] (-1,0) -- plot[domain=-1:0.5,samples=60,variable=\t] ({\t},{1/((\t-1)*(\t-1))}) -- (0.5,0) -- cycle;
+  \fill[blue!12] (1.5,0) -- plot[domain=1.5:3,samples=60,variable=\t] ({\t},{1/((\t-1)*(\t-1))}) -- (3,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=-1:0.5,samples=60,variable=\t] plot ({\t},{1/((\t-1)*(\t-1))});
+  \draw[very thick,blue!70!black,domain=1.5:3,samples=60,variable=\t] plot ({\t},{1/((\t-1)*(\t-1))});
+  \fill (-1,0.25) circle (1.5pt) node[above,font=\small] {$\left(-1,\frac14\right)$};
+%@ f3-a | NUM(1/(-1-1)**2,Q(1,4)) == 0 | \fill (-1,0.25) circle (1.5pt) node[above,font=\small] {$\left(-1,\frac14\right)$};
+  \fill (0,1) circle (1.5pt) node[above right,font=\small] {$(0,1)$};
+%@ f3-b | NUM(1/(0-1)**2,1) == 0 | \fill (0,1) circle (1.5pt) node[above right,font=\small] {$(0,1)$};
+  \fill (2,1) circle (1.5pt) node[above right,font=\small] {$(2,1)$};
+%@ f3-c | NUM(1/(2-1)**2,1) == 0 | \fill (2,1) circle (1.5pt) node[above right,font=\small] {$(2,1)$};
+  \fill (3,0.25) circle (1.5pt) node[above,font=\small] {$\left(3,\frac14\right)$};
+%@ f3-d | NUM(1/(3-1)**2,Q(1,4)) == 0 | \fill (3,0.25) circle (1.5pt) node[above,font=\small] {$\left(3,\frac14\right)$};
+  \node[font=\small] at (2.3,3.2) {$y=\frac1{(x-1)^2}$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 3. The integrand $\frac1{(x-1)^2}$ has a vertical asymptote at $x=1$. The shaded area to the left of the asymptote is unbounded as the right-hand end moves toward $1$, so there is no number $\int_{-1}^3\frac{dx}{(x-1)^2}$.\end{center}
+\end{exmp}
+
+\begin{kc}{Is the answer possible?}{kc3}
+A program reports $\displaystyle\int_0^{\pi}\sec^2x\,dx=\tan\pi-\tan0=0$. Without computing anything, explain why this cannot be correct, and say which hypothesis of the Fundamental Theorem fails.
+\end{kc}
+
+\begin{think}{Not the identity function}{atan}
+Substituting $u=\tan x$ in $\displaystyle\int\frac{\sec^2x}{1+\tan^2x}\,dx$ gives $\tan^{-1}(\tan x)+C$. But $\frac{\sec^2x}{1+\tan^2x}=1$ wherever $\tan x$ is defined, and $\int_0^{\pi}1\,dx=\pi$. What does $\tan^{-1}(\tan x)$ give from $0$ to $\pi$, and why? How does Theorem~\ref{thm:break} repair it?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Special functions and numerical values}
+
+Sometimes a computer algebra system returns an answer in terms of a function that is not on your list of elementary functions. The most common are the error function $\operatorname{erf}(y)=\frac2{\sqrt\pi}\int_0^ye^{-t^2}\,dt$ and the Fresnel function $S(y)=\int_0^y\sin\frac{\pi t^2}2\,dt$. These are \emph{defined as integrals}. By the Fundamental Theorem of Calculus, $\frac d{dy}\int_0^yg(t)\,dt=g(y)$ for continuous $g$, so a function defined this way is an antiderivative of $g$ by definition. A special-function answer is therefore a new name for the same integral. It is not wrong, and it is not an elementary closed form (Section~8.6 explains why none exists for $e^{-x^2}$).
+
+\begin{exmp}{A special function, and what to do with it}{m11}
+A computer algebra system returns $\displaystyle\int_0^1e^{-x^2}\,dx=\frac{\sqrt\pi}2\operatorname{erf}(1)\approx0.7468241328$ and $\displaystyle\int_0^1\sin\left(x^2\right)dx=\sqrt{\frac\pi2}\,S\left(\sqrt{\frac2\pi}\right)\approx0.3102683017$. Check both answers with elementary means.
+
+\textbf{Solution.} \emph{The first answer is a restatement.} By the definition of $\operatorname{erf}$, $\frac{\sqrt\pi}2\operatorname{erf}(1)=\int_0^1e^{-x^2}\,dx$ exactly. \emph{The second} follows from a substitution: with $t=x\sqrt{2/\pi}$, $dt=\sqrt{2/\pi}\,dx$ and $\frac{\pi t^2}2=x^2$, so $S(y)=\sqrt{\frac2\pi}\int_0^{y\sqrt{\pi/2}}\sin\left(x^2\right)dx$; for $y=\sqrt{2/\pi}$ the upper limit is $1$, and $\int_0^1\sin\left(x^2\right)dx=\sqrt{\frac\pi2}\,S\left(\sqrt{\frac2\pi}\right)$.
+
+\emph{Bracket the first integral.} Let $g(s)=e^s-1-s$. Then $g(0)=0$ and $g'(s)=e^s-1$ is negative for $s<0$ and positive for $s>0$, so $g(s)\ge0$ for all $s$, that is $e^s\ge1+s$. With $s=-x^2$ this gives $e^{-x^2}\ge1-x^2$, and with $s=x^2$ it gives $e^{x^2}\ge1+x^2$, so $e^{-x^2}\le\frac1{1+x^2}$. Integrating over $[0,1]$,
+\[\frac23=\int_0^1\left(1-x^2\right)dx\le\int_0^1e^{-x^2}\,dx\le\int_0^1\frac{dx}{1+x^2}=\frac\pi4,\qquad 0.667\le0.7468\le0.785 .\]
+%@ m11a | abs((sqrt(pi)*erf(1)/2).evalf(15)-Q(7468241328,10**10)) < 1e-9 and NUM(Integral(1-x**2,(x,0,1)),Q(2,3)) == 0 and NUM(Integral(1/(1+x**2),(x,0,1)),pi/4) == 0 and NUM(Integral(exp(-x**2),(x,0,1)),sqrt(pi)*erf(1)/2) == 0 | 0.667\le0.7468\le0.785 .
+\emph{Bracket the second.} For $0\le s\le1$, the graph of the concave function $\sin s$ lies above its chord from $(0,0)$ to $\left(\frac\pi2,1\right)$, so $\sin s\ge\frac{2s}\pi$ on $\left[0,\frac\pi2\right]\supset[0,1]$, and $\sin s\le s$ for $s\ge0$ (the function $s-\sin s$ is $0$ at $0$ and has derivative $1-\cos s\ge0$). With $s=x^2$,
+\[\frac2{3\pi}=\int_0^1\frac{2x^2}\pi\,dx\le\int_0^1\sin\left(x^2\right)dx\le\int_0^1x^2\,dx=\frac13,\qquad 0.212\le0.3103\le0.333 .\]
+%@ m11b | abs((sqrt(pi/2)*fresnels(sqrt(2/pi))).evalf(15)-Q(3102683017,10**10)) < 1e-9 and NUM(Integral(2*x**2/pi,(x,0,1)),2/(3*pi)) == 0 and NUM(Integral(x**2,(x,0,1)),Q(1,3)) == 0 and NUM(Integral(sin(x**2),(x,0,1)),sqrt(pi/2)*fresnels(sqrt(2/pi))) == 0 | 0.212\le0.3103\le0.333 .
+Both numerical values lie in their brackets. In practice, one more step is natural: to compute the number to as many digits as needed, which is the subject of the next section on numerical integration, and which a later chapter on Taylor series also provides, because the series of $e^{-x^2}$ can be integrated term by term.
+\end{exmp}
+
+\begin{think}{What does a special-function answer tell you?}{special}
+Since $\operatorname{erf}$ is defined by an integral, the output $\frac{\sqrt\pi}2\operatorname{erf}(1)$ is only a name for $\int_0^1e^{-x^2}\,dx$. Name at least two things the answer still gives you that the integral sign alone did not.
+\end{think}
+
+\subsection*{Looking ahead}
+
+When no formula exists or the formula is too long to use, the value of a definite integral is found numerically with an error bound; that is the next section. Integrals with an unbounded integrand or an infinite interval, such as Example~\ref{ex:m10}, are treated in a later section on improper integrals; there the idea of Example~\ref{ex:m10}, a limit of $F(t)-F(a)$, becomes a definition. Series methods, in a later chapter, give a third way to integrate $e^{-x^2}$ and $\sin x^2$: write the integrand as a power series and integrate term by term. And in a later course, computer algebra systems appear again as tools whose output must be checked, in the same spirit.
+
+% ---------------------------------------------------------------------
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by the task and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: match the constants of a table entry (a linear denominator, a root of a linear function with $b>0$).
+  \item Group 2: a substitution first, then the table (a trigonometric substitution into a root of $u^2+a^2$, a square root removed by $u=\sqrt x$).
+  \item Group 3: complete the square, then use the table or a reduction formula (a definite integral with a root, a power of a quadratic).
+  \item Group 4: reduction formulas (a polynomial times a cosine, a power of the tangent on an interval).
+  \item Group 5: when the table's answer differs from yours (two substitutions, and a logarithm against an inverse hyperbolic sine).
+  \item Group 6: definite integrals and breaks (a jump on an interval of length $2\pi$, an integrand that is unbounded).
+  \item Group 7: proofs (a reduction formula for $\int\frac{x^m}{\sqrt{1-x^2}}\,dx$, and $\int_0^{2\pi}\frac{dx}{a+\cos x}$).
+\end{itemize}
+
+\subsection*{Group 1: Match the entry}
+
+\begin{exmp}{A linear denominator}{b1}
+Evaluate $\displaystyle\int\frac{x}{2x+7}\,dx$, and then $\displaystyle\int_0^1\frac{x}{2x+7}\,dx$.
+
+\textbf{Solution.} The integrand is $\frac x{ax+b}$ with $a=2$ and $b=7$: entry (T1). Then $\frac xa=\frac x2$ and $\frac b{a^2}=\frac74$, so
+\[\int\frac{x}{2x+7}\,dx=\frac x2-\frac74\ln\lvert2x+7\rvert+C .\]
+\emph{Check.} $\frac d{dx}\left[\frac x2-\frac74\ln\lvert2x+7\rvert\right]=\frac12-\frac74\cdot\frac2{2x+7}=\frac{(2x+7)-7}{2(2x+7)}=\frac x{2x+7}$.
+%@ b1a | ANT(x/2-Q(7,4)*log(sqrt((2*x+7)**2)),x/(2*x+7),[-5,-Q(7,2)+1,0,1,3]) == 0 | =\frac12-\frac74\cdot\frac2{2x+7}=\frac{(2x+7)-7}{2(2x+7)}=\frac x{2x+7}$.
+On $[0,1]$ we have $2x+7\ge7$, so the integrand and the antiderivative are continuous, and
+\[\int_0^1\frac{x}{2x+7}\,dx=\left[\frac x2-\frac74\ln(2x+7)\right]_0^1=\frac12-\frac74\ln9+\frac74\ln7=\frac12-\frac74\ln\frac97\approx0.0602 .\]
+%@ b1b | NUM(Integral(x/(2*x+7),(x,0,1)),Q(1,2)-Q(7,4)*log(Q(9,7))) == 0 | =\frac12-\frac74\ln\frac97\approx0.0602 .\]
+\emph{Rough check.} The integrand rises from $0$ to $\frac19\approx0.11$, so the integral is between $0$ and $0.11$; $0.06$ is the right size.
+\end{exmp}
+
+\begin{exmp}{A root of a linear function, with $b>0$}{b2}
+Evaluate $\displaystyle\int\frac{dx}{x\sqrt{4x+9}}$ for $x>0$, and then $\displaystyle\int_1^4\frac{dx}{x\sqrt{4x+9}}$.
+
+\textbf{Solution.} The integrand is $\frac1{x\sqrt{ax+b}}$ with $a=4$ and $b=9>0$: entry (T3), with $\sqrt b=3$ and $s=\sqrt{4x+9}$:
+\[\int\frac{dx}{x\sqrt{4x+9}}=\frac13\ln\left\lvert\frac{\sqrt{4x+9}-3}{\sqrt{4x+9}+3}\right\rvert+C .\]
+For $x>0$ we have $s>3$, so the quotient is positive and the absolute value may be dropped.
+%@ b2a | ANT(log(sqrt(((sqrt(4*x+9)-3)/(sqrt(4*x+9)+3))**2))/3,1/(x*sqrt(4*x+9)),[Q(1,2),1,2,5]) == 0 | =\frac13\ln\left\lvert\frac{\sqrt{4x+9}-3}{\sqrt{4x+9}+3}\right\rvert+C .\]
+\emph{Check.} In (T3) the derivative of the logarithm is $\frac{\sqrt b}{xs}=\frac3{xs}$; multiplying by $\frac13$ gives $\frac1{xs}$. For the definite integral, $s(4)=\sqrt{25}=5$ and $s(1)=\sqrt{13}$, so
+\[\int_1^4\frac{dx}{x\sqrt{4x+9}}=\frac13\left[\ln\frac{5-3}{5+3}-\ln\frac{\sqrt{13}-3}{\sqrt{13}+3}\right]=\frac13\ln\left[\frac14\cdot\frac{\sqrt{13}+3}{\sqrt{13}-3}\right]=\frac23\ln\frac{3+\sqrt{13}}4\approx0.3344 .\]
+For the last step multiply top and bottom of $\frac{\sqrt{13}+3}{\sqrt{13}-3}$ by $\sqrt{13}+3$: the result is $\frac{(\sqrt{13}+3)^2}{13-9}=\frac{(\sqrt{13}+3)^2}4$, so the quantity in brackets is $\frac{(\sqrt{13}+3)^2}{16}$, whose logarithm is $2\ln\frac{\sqrt{13}+3}4$.
+%@ b2b | NUM(Integral(1/(x*sqrt(4*x+9)),(x,1,4)),2*log((3+sqrt(13))/4)/3) == 0 and simplify((sqrt(13)+3)/(sqrt(13)-3)-(sqrt(13)+3)**2/4) == 0 | $2\ln\frac{\sqrt{13}+3}4$.
+\emph{Rough check.} At $x=1$ the integrand is $\frac1{\sqrt{13}}\approx0.28$ and at $x=4$ it is $\frac1{20}=0.05$; the average over an interval of length $3$ is about $0.11$, giving about $0.33$.
+\end{exmp}
+
+\subsection*{Group 2: Substitute first}
+
+\begin{exmp}{A trigonometric function inside a root}{b3}
+Evaluate $\displaystyle\int\cos x\,\sqrt{\sin^2x+4}\,dx$.
+
+\textbf{Solution.} The derivative of $\sin x$ is present, so put $u=\sin x$, $du=\cos x\,dx$ (Theorem~\ref{8.1-thm:subst}):
+\[\int\cos x\,\sqrt{\sin^2x+4}\,dx=\int\sqrt{u^2+4}\,du .\]
+Entry (T6) with $a=2$ gives $\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)$. Replacing $u$ by $\sin x$,
+\[\int\cos x\,\sqrt{\sin^2x+4}\,dx=\frac{\sin x}2\sqrt{\sin^2x+4}+2\ln\left(\sin x+\sqrt{\sin^2x+4}\right)+C .\]
+%@ b3 | ANT(sin(x)*sqrt(sin(x)**2+4)/2+2*log(sin(x)+sqrt(sin(x)**2+4)),cos(x)*sqrt(sin(x)**2+4),[Q(3,10),1,2,4]) == 0 | +2\ln\left(\sin x+\sqrt{\sin^2x+4}\right)+C .\]
+\emph{Check by the Chain Rule.} If $G(u)=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)$, then $G'(u)=\sqrt{u^2+4}$ (entry (T6)), so $\frac d{dx}G(\sin x)=\sqrt{\sin^2x+4}\cdot\cos x$.
+\end{exmp}
+
+\begin{exmp}{A square root removed by $u=\sqrt x$}{b4}
+Evaluate $\displaystyle\int\frac{dx}{1+\sqrt x}$ for $x>0$, and then $\displaystyle\int_1^9\frac{dx}{1+\sqrt x}$.
+
+\textbf{Solution.} Let $u=\sqrt x$, so $x=u^2$ and $dx=2u\,du$ (Theorem~\ref{8.6-thm:rational}). Then
+\[\int\frac{dx}{1+\sqrt x}=\int\frac{2u}{1+u}\,du=2\int\frac{u}{u+1}\,du .\]
+Entry (T1) with $a=1$ and $b=1$ gives $\int\frac u{u+1}\,du=u-\ln\lvert u+1\rvert$, and $u+1>0$. Therefore
+\[\int\frac{dx}{1+\sqrt x}=2\sqrt x-2\ln\left(1+\sqrt x\right)+C .\]
+%@ b4a | ANT(2*sqrt(x)-2*log(1+sqrt(x)),1/(1+sqrt(x)),[Q(1,2),1,4,9]) == 0 | =2\sqrt x-2\ln\left(1+\sqrt x\right)+C .\]
+\emph{Check.} $\frac d{dx}\left[2\sqrt x-2\ln\left(1+\sqrt x\right)\right]=\frac1{\sqrt x}-\frac2{1+\sqrt x}\cdot\frac1{2\sqrt x}=\frac1{\sqrt x}\left(1-\frac1{1+\sqrt x}\right)=\frac1{\sqrt x}\cdot\frac{\sqrt x}{1+\sqrt x}=\frac1{1+\sqrt x}$.
+
+\emph{The definite integral.} The antiderivative is continuous on $[1,9]$, so
+\[\int_1^9\frac{dx}{1+\sqrt x}=\left[2\sqrt x-2\ln\left(1+\sqrt x\right)\right]_1^9=(6-2\ln4)-(2-2\ln2)=4-2\ln2\approx2.614 .\]
+%@ b4b | NUM(Integral(1/(1+sqrt(x)),(x,1,9)),4-2*log(2)) == 0 and NUM(2*log(4)-2*log(2),2*log(2)) == 0 | =(6-2\ln4)-(2-2\ln2)=4-2\ln2\approx2.614 .\]
+The integrand falls from $\frac12$ to $\frac14$ over an interval of length $8$, so the integral lies between $2$ and $4$.
+\end{exmp}
+
+\subsection*{Group 3: Complete the square}
+
+\begin{exmp}{A power of a quadratic in the denominator}{b5}
+Evaluate $\displaystyle\int\frac{dx}{(x^2-4x+13)^2}$, and then $\displaystyle\int_2^5\frac{dx}{(x^2-4x+13)^2}$.
+
+\textbf{Solution.} Complete the square (Theorem~\ref{thm:square}): $x^2-4x+13=(x-2)^2+9$. Put $u=x-2$, $du=dx$, so the integral is $\int\frac{du}{(u^2+3^2)^2}$. The reduction formula of Example~\ref{8.4-ex:b14} with $a=3$ and $n=1$ gives $I_2=\frac{u}{2\cdot9\,(u^2+9)}+\frac{1}{2\cdot9}I_1$, and $I_1=\int\frac{du}{u^2+9}=\frac13\tan^{-1}\frac u3$ (formula (11) of Section~8.1). So
+\[\int\frac{du}{(u^2+9)^2}=\frac u{18(u^2+9)}+\frac1{54}\tan^{-1}\frac u3+C,\]
+\[\int\frac{dx}{(x^2-4x+13)^2}=\frac{x-2}{18\left(x^2-4x+13\right)}+\frac1{54}\tan^{-1}\frac{x-2}3+C .\]
+%@ b5a | ANT((x-2)/(18*(x**2-4*x+13))+atan((x-2)/3)/54,1/(x**2-4*x+13)**2,[0,1,3,5]) == 0 and expand((x-2)**2+9-(x**2-4*x+13)) == 0 | +\frac1{54}\tan^{-1}\frac{x-2}3+C .\]
+For $x$ from $2$ to $5$, $u$ goes from $0$ to $3$, and
+\begin{align*}\int_2^5\frac{dx}{(x^2-4x+13)^2}&=\left[\frac u{18(u^2+9)}+\frac1{54}\tan^{-1}\frac u3\right]_0^3\\&=\frac3{18\cdot18}+\frac1{54}\cdot\frac\pi4=\frac1{108}+\frac\pi{216}=\frac{2+\pi}{216}\approx0.0238 .\end{align*}
+%@ b5b | NUM(Integral(1/(x**2-4*x+13)**2,(x,2,5)),(2+pi)/216) == 0 and Q(3,18*18) == Q(1,108) | &=\frac3{18\cdot18}+\frac1{54}\cdot\frac\pi4=\frac1{108}+\frac\pi{216}=\frac{2+\pi}{216}\approx0.0238 .\end{align*}
+\emph{Rough check.} At $x=2$ the integrand is $\frac1{81}\approx0.012$; it decreases to $\frac1{324}\approx0.003$ at $x=5$, so on an interval of length $3$ the integral is at most $0.037$ and at least $0.009$.
+\end{exmp}
+
+\begin{exmp}{A root of a quadratic on an interval}{b6}
+Evaluate $\displaystyle\int_0^2\sqrt{x^2-2x+5}\,dx$.
+
+\textbf{Solution.} Complete the square: $x^2-2x+5=(x-1)^2+4$. With $u=x-1$, $du=dx$, the limits become $u=-1$ and $u=1$, and the integral is $\int_{-1}^{1}\sqrt{u^2+4}\,du$. By entry (T6) with $a=2$, an antiderivative is $G(u)=\frac u2\sqrt{u^2+4}+2\ln\left(u+\sqrt{u^2+4}\right)$, continuous on $[-1,1]$ (note $u+\sqrt{u^2+4}>0$). Then $G(1)=\frac{\sqrt5}2+2\ln\left(1+\sqrt5\right)$ and $G(-1)=-\frac{\sqrt5}2+2\ln\left(-1+\sqrt5\right)$, so
+\[\int_{-1}^1\sqrt{u^2+4}\,du=\sqrt5+2\ln\frac{\sqrt5+1}{\sqrt5-1}.\]
+Multiplying top and bottom by $\sqrt5+1$: $\frac{\sqrt5+1}{\sqrt5-1}=\frac{(\sqrt5+1)^2}{4}=\frac{6+2\sqrt5}4=\frac{3+\sqrt5}2=\left(\frac{1+\sqrt5}2\right)^2$. Hence
+\[\int_0^2\sqrt{x^2-2x+5}\,dx=\sqrt5+4\ln\frac{1+\sqrt5}2\approx4.161 .\]
+%@ b6 | NUM(Integral(sqrt(x**2-2*x+5),(x,0,2)),sqrt(5)+4*log((1+sqrt(5))/2)) == 0 and simplify((sqrt(5)+1)/(sqrt(5)-1)-((1+sqrt(5))/2)**2) == 0 | =\sqrt5+4\ln\frac{1+\sqrt5}2\approx4.161 .\]
+\emph{Rough check.} The integrand is $\sqrt5\approx2.24$ at both ends and $2$ at $x=1$; an average of about $2.08$ on an interval of length $2$ gives $4.16$.
+\end{exmp}
+
+\subsection*{Group 4: Reduction formulas}
+
+\begin{exmp}{A polynomial times a cosine}{b7}
+Evaluate $\displaystyle\int x^2\cos3x\,dx$.
+
+\textbf{Solution.} Use Theorem~\ref{thm:redxn} with $a=3$, going down from $n=2$:
+\begin{align*}
+\int x^2\cos3x\,dx&=\frac{x^2\sin3x}3-\frac23\int x\sin3x\,dx, &\text{(second formula, $n=2$)}\\
+\int x\sin3x\,dx&=-\frac{x\cos3x}3+\frac13\int\cos3x\,dx=-\frac{x\cos3x}3+\frac{\sin3x}9. &\text{(first formula, $n=1$)}
+\end{align*}
+Substituting the second line into the first,
+\[\int x^2\cos3x\,dx=\frac{x^2\sin3x}3-\frac23\left(-\frac{x\cos3x}3+\frac{\sin3x}9\right)=\frac{x^2\sin3x}3+\frac{2x\cos3x}9-\frac{2\sin3x}{27}+C .\]
+%@ b7 | ANT(x**2*sin(3*x)/3+2*x*cos(3*x)/9-2*sin(3*x)/27,x**2*cos(3*x),[Q(1,2),1,2,-3]) == 0 | =\frac{x^2\sin3x}3+\frac{2x\cos3x}9-\frac{2\sin3x}{27}+C .\]
+\emph{Check.} Term by term, $\frac d{dx}\frac{x^2\sin3x}3=\frac{2x\sin3x}3+x^2\cos3x$, $\frac d{dx}\frac{2x\cos3x}9=\frac{2\cos3x}9-\frac{2x\sin3x}3$ and $\frac d{dx}\left(-\frac{2\sin3x}{27}\right)=-\frac{2\cos3x}9$; the sum is $x^2\cos3x$.
+\end{exmp}
+
+\begin{exmp}{A power of the tangent on an interval}{b8}
+Evaluate $\displaystyle\int_0^{\pi/3}\tan^4x\,dx$.
+
+\textbf{Solution.} The reduction formula $\int\tan^nx\,dx=\frac{\tan^{n-1}x}{n-1}-\int\tan^{n-2}x\,dx$ (Theorem~\ref{8.3-thm:redtan}) used twice:
+\[\int\tan^4x\,dx=\frac{\tan^3x}3-\int\tan^2x\,dx,\qquad\int\tan^2x\,dx=\tan x-\int1\,dx=\tan x-x .\]
+Hence $\int\tan^4x\,dx=\frac{\tan^3x}3-\tan x+x+C$. The function $\tan x$ is continuous on $\left[0,\frac\pi3\right]$, so with $\tan\frac\pi3=\sqrt3$ and $\left(\sqrt3\right)^3=3\sqrt3$,
+\[\int_0^{\pi/3}\tan^4x\,dx=\left[\frac{\tan^3x}3-\tan x+x\right]_0^{\pi/3}=\frac{3\sqrt3}3-\sqrt3+\frac\pi3-0=\frac\pi3\approx1.047 .\]
+%@ b8 | ANT(tan(x)**3/3-tan(x)+x,tan(x)**4,[Q(1,5),Q(1,2),1]) == 0 and NUM(Integral(tan(x)**4,(x,0,pi/3)),pi/3) == 0 | =\frac{3\sqrt3}3-\sqrt3+\frac\pi3-0=\frac\pi3\approx1.047 .\]
+\emph{Rough check.} The integrand is $0$ at $x=0$, $1$ at $x=\frac\pi4\approx0.785$ and $9$ at $x=\frac\pi3\approx1.047$; since it stays small until $x$ is near $\frac\pi4$, an integral near $1$ is plausible.
+\end{exmp}
+
+\subsection*{Group 5: When the table's answer is not yours}
+
+\begin{exmp}{Two substitutions, two answers}{b9}
+Evaluate $\displaystyle\int\tan x\sec^2x\,dx$ in two ways and find how the answers differ.
+
+\textbf{Solution.} \emph{With $u=\tan x$:} $du=\sec^2x\,dx$, so $\int u\,du=\frac{u^2}2$ and the answer is $F_1=\frac12\tan^2x$. \emph{With $u=\sec x$:} $du=\sec x\tan x\,dx$, and $\tan x\sec^2x\,dx=\sec x\cdot(\sec x\tan x\,dx)=u\,du$, so the answer is $F_2=\frac12\sec^2x$. Both are antiderivatives on every interval where $\cos x\ne0$, so by Theorem~\ref{8.6-thm:check}(2) they differ by a constant, and
+\[F_2-F_1=\frac12\left(\sec^2x-\tan^2x\right)=\frac12 ,\]
+by the identity $1+\tan^2x=\sec^2x$ (Theorem~\ref{8.3-thm:ident}(1)). \emph{Check on an interval:} $\int_0^{\pi/4}\tan x\sec^2x\,dx=\frac12\tan^2\frac\pi4-0=\frac12$ and $\frac12\sec^2\frac\pi4-\frac12\sec^20=\frac12\cdot2-\frac12=\frac12$.
+%@ b9 | ANT(tan(x)**2/2,tan(x)*sec(x)**2,[Q(1,5),Q(1,2),1]) == 0 and ANT(sec(x)**2/2,tan(x)*sec(x)**2,[Q(1,5),Q(1,2),1]) == 0 and simplify(sec(x)**2/2-tan(x)**2/2-Q(1,2)) == 0 | $\frac12\sec^2\frac\pi4-\frac12\sec^20=\frac12\cdot2-\frac12=\frac12$.
+\end{exmp}
+
+\begin{exmp}{A logarithm and an inverse hyperbolic sine}{b10}
+A table gives $\displaystyle\int\frac{dx}{\sqrt{x^2+9}}=\ln\left(x+\sqrt{x^2+9}\right)$ and a computer algebra system prints $\sinh^{-1}\frac x3$. Show that both are antiderivatives and find the constant by which they differ.
+
+\textbf{Solution.} \emph{The logarithm.} With $s=\sqrt{x^2+9}$, $s'=\frac xs$ and $x+s>0$: $\frac d{dx}\ln(x+s)=\frac{1+x/s}{x+s}=\frac{(s+x)/s}{x+s}=\frac1s$.
+
+\emph{The inverse hyperbolic sine.} By definition $y=\sinh^{-1}w$ means $w=\sinh y=\frac{e^y-e^{-y}}2$. Multiply by $2e^y$: $2we^y=e^{2y}-1$, that is $\left(e^y\right)^2-2w\,e^y-1=0$, a quadratic equation for $e^y$ with roots $w\pm\sqrt{w^2+1}$. Since $e^y>0$ and $\sqrt{w^2+1}>\lvert w\rvert$, only the root with the plus sign is positive, so $e^y=w+\sqrt{w^2+1}$ and
+\[\sinh^{-1}w=\ln\left(w+\sqrt{w^2+1}\right).\]
+With $w=\frac x3$: $\sinh^{-1}\frac x3=\ln\left(\frac x3+\sqrt{\frac{x^2}9+1}\right)=\ln\frac{x+\sqrt{x^2+9}}3=\ln\left(x+\sqrt{x^2+9}\right)-\ln3$.
+%@ b10 | all(NUM(asinh(Q(v,3))-log(v+sqrt(v**2+9))+log(3),0) == 0 for v in (-4,-Q(1,2),0,2,7)) and ANT(asinh(x/3),1/sqrt(x**2+9),[-3,0,1,4]) == 0 | $\sinh^{-1}\frac x3=\ln\left(\frac x3+\sqrt{\frac{x^2}9+1}\right)=\ln\frac{x+\sqrt{x^2+9}}3=\ln\left(x+\sqrt{x^2+9}\right)-\ln3$.
+So the two forms differ by $\ln3\approx1.099$, and each is an antiderivative (the second differs from the first by a constant, whose derivative is $0$). \emph{Moral:} a constant such as $\ln3$ is easy to miss when two answers ``look different''.
+\end{exmp}
+
+\subsection*{Group 6: Definite integrals and breaks}
+
+\begin{exmp}{A jump in the middle of the interval}{b11}
+Evaluate $\displaystyle\int_{\pi/2}^{5\pi/2}\frac{dx}{2+\cos x}$.
+
+\textbf{Solution.} By Example~\ref{8.5-ex:b14} and the same steps as in Example~\ref{ex:m9}, $F(x)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(x/2)}{\sqrt3}$ is an antiderivative wherever $\tan\frac x2$ is defined. For $x\in\left(\frac\pi2,\frac{5\pi}2\right)$ we have $\frac x2\in\left(\frac\pi4,\frac{5\pi}4\right)$, and $\tan\frac x2$ is undefined only at $\frac x2=\frac\pi2$, that is $x=\pi$. This is the one break (the next one, $x=3\pi$, is outside the interval). The limits are $F(\pi^-)=\frac2{\sqrt3}\cdot\frac\pi2=\frac\pi{\sqrt3}$ and $F(\pi^+)=-\frac\pi{\sqrt3}$. At the ends, $F\left(\frac\pi2\right)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(\pi/4)}{\sqrt3}=\frac2{\sqrt3}\cdot\frac\pi6=\frac\pi{3\sqrt3}$ and $F\left(\frac{5\pi}2\right)=\frac2{\sqrt3}\tan^{-1}\frac{\tan(5\pi/4)}{\sqrt3}=\frac\pi{3\sqrt3}$ (because $\tan\frac{5\pi}4=\tan\frac\pi4=1$). The naive value $F\left(\frac{5\pi}2\right)-F\left(\frac\pi2\right)=0$ is wrong, since the integrand is at least $\frac13$. By Theorem~\ref{thm:break},
+\[\int_{\pi/2}^{5\pi/2}\frac{dx}{2+\cos x}=\left[\frac\pi{\sqrt3}-\frac\pi{3\sqrt3}\right]+\left[\frac\pi{3\sqrt3}+\frac\pi{\sqrt3}\right]=\frac{2\pi}{\sqrt3}\approx3.628 .\]
+%@ b11 | NUM(Integral(1/(2+cos(x)),(x,pi/2,5*pi/2)),2*pi/sqrt(3)) == 0 and ANT(2*atan(tan(x/2)/sqrt(3))/sqrt(3),1/(2+cos(x)),[Q(3,2),2,4,5,6]) == 0 and NUM(2*atan(tan(pi/4)/sqrt(3))/sqrt(3),pi/(3*sqrt(3))) == 0 | =\frac{2\pi}{\sqrt3}\approx3.628 .\]
+This is the integral over one full period of $\frac1{2+\cos x}$, as it should be, and it lies between $\frac13\cdot2\pi\approx2.09$ and $2\pi\approx6.28$, since $\frac13\le\frac1{2+\cos x}\le1$.
+\end{exmp}
+
+\begin{exmp}{A table form on an interval where it breaks}{b12}
+A student uses entry (T5) with $a=1$ to compute $\displaystyle\int_\pi^{2\pi}\frac{dx}{1+\sin x}$. Show that the result is wrong and explain what is true.
+
+\textbf{Solution.} (T5) gives $F(x)=-\tan\left(\frac\pi4-\frac x2\right)$, valid where $\sin x\ne-1$. Then $F(2\pi)=-\tan\left(-\frac{3\pi}4\right)=-1$ (since $\tan\left(-\frac{3\pi}4\right)=\tan\frac\pi4=1$, as the tangent has period $\pi$) and $F(\pi)=-\tan\left(-\frac\pi4\right)=1$. The naive value is $F(2\pi)-F(\pi)=-2$. This is impossible because the integrand is positive.
+%@ b12a | NUM(-tan(-3*pi/4)-(-tan(-pi/4)),-2) == 0 and ANT(-tan(pi/4-x/2),1/(1+sin(x)),[Q(7,2),4,5,6]) == 0 | The naive value is $F(2\pi)-F(\pi)=-2$.
+
+\emph{What went wrong.} $1+\sin x=0$ at $x=\frac{3\pi}2\in(\pi,2\pi)$. There the integrand is unbounded (near $\frac{3\pi}2$, $1+\sin x\approx\frac12\left(x-\frac{3\pi}2\right)^2$), so $f$ is not continuous on $[\pi,2\pi]$ and Theorem~\ref{thm:break} does not apply. The tangent in $F$ is undefined at $x=\frac{3\pi}2$ for the same reason. For $\pi<t<\frac{3\pi}2$,
+\[\int_\pi^t\frac{dx}{1+\sin x}=F(t)-F(\pi)=-\tan\left(\frac\pi4-\frac t2\right)-1\longrightarrow+\infty\quad\left(t\to\tfrac{3\pi}2^-\right),\]
+%@ b12b | NUM(Integral(1/(1+sin(x)),(x,pi,Q(3,2)*pi-Q(1,100))),-tan(pi/4-(Q(3,2)*pi-Q(1,100))/2)-1) == 0 | \longrightarrow+\infty\quad\left(t\to\tfrac{3\pi}2^-\right),\]
+because $\frac\pi4-\frac t2$ decreases to $-\frac\pi2$ and $\tan$ tends to $-\infty$ there. So $\int_\pi^{2\pi}\frac{dx}{1+\sin x}$ diverges (as an improper integral, in a later section). A table entry has a domain, and the interval of integration must lie inside it.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{A reduction formula for $\int\frac{x^m}{\sqrt{1-x^2}}\,dx$}{b13}
+Prove that for every integer $m\ge2$ and $-1<x<1$,
+\[\int\frac{x^m}{\sqrt{1-x^2}}\,dx=-\frac{x^{m-1}\sqrt{1-x^2}}m+\frac{m-1}m\int\frac{x^{m-2}}{\sqrt{1-x^2}}\,dx .\]
+Then find $\displaystyle\int\frac{x^2}{\sqrt{1-x^2}}\,dx$ and $\displaystyle\int x\sin^{-1}x\,dx$.
+
+\textbf{Plan.} Differentiate $-\frac{x^{m-1}\sqrt{1-x^2}}m$ and show that the result is the integrand of the left side minus $\frac{m-1}m$ times the integrand of the last integral.
+
+\textbf{Proof.} Let $s=\sqrt{1-x^2}$, so $s'=-\frac xs$ and $s=\frac{1-x^2}s$. By the Product Rule
+\[\frac d{dx}\left[-\frac{x^{m-1}s}m\right]=-\frac{(m-1)x^{m-2}s}m+\frac{x^{m-1}}m\cdot\frac xs=\frac{-(m-1)x^{m-2}(1-x^2)+x^m}{ms},\]
+where we wrote $s=\frac{1-x^2}s$ in the first term. The numerator is $-(m-1)x^{m-2}+(m-1)x^m+x^m=-(m-1)x^{m-2}+mx^m$, so
+\[\frac d{dx}\left[-\frac{x^{m-1}s}m\right]=\frac{x^m}s-\frac{m-1}m\cdot\frac{x^{m-2}}s .\]
+Rearranging, $\frac{x^m}s=\frac d{dx}\left[-\frac{x^{m-1}s}m\right]+\frac{m-1}m\cdot\frac{x^{m-2}}s$. Integrating both sides gives the formula. $\blacksquare$
+%@ b13a | all(ANT(-x**(m0-1)*sqrt(1-x**2)/m0,x**m0/sqrt(1-x**2)-Q(m0-1,m0)*x**(m0-2)/sqrt(1-x**2),[Q(1,10),Q(1,2),-Q(7,10)]) == 0 for m0 in (2,3,4,5)) | Rearranging, $\frac{x^m}s=\frac d{dx}\left[-\frac{x^{m-1}s}m\right]+\frac{m-1}m\cdot\frac{x^{m-2}}s$. Integrating both sides gives the formula. $\blacksquare$
+
+\emph{Applications.} For $m=2$, with $\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x$,
+\[\int\frac{x^2}{\sqrt{1-x^2}}\,dx=-\frac{x\sqrt{1-x^2}}2+\frac12\sin^{-1}x+C .\]
+For $\int x\sin^{-1}x\,dx$ use parts with $p=\sin^{-1}x$ and $dv=x\,dx$, so $dp=\frac{dx}{\sqrt{1-x^2}}$ and $v=\frac{x^2}2$:
+\[\int x\sin^{-1}x\,dx=\frac{x^2}2\sin^{-1}x-\frac12\int\frac{x^2}{\sqrt{1-x^2}}\,dx=\frac{x^2}2\sin^{-1}x+\frac x4\sqrt{1-x^2}-\frac14\sin^{-1}x+C .\]
+%@ b13b | ANT(-x*sqrt(1-x**2)/2+asin(x)/2,x**2/sqrt(1-x**2),[Q(1,10),Q(1,2),-Q(7,10)]) == 0 and ANT(x**2*asin(x)/2+x*sqrt(1-x**2)/4-asin(x)/4,x*asin(x),[Q(1,10),Q(1,2),-Q(7,10)]) == 0 | +\frac x4\sqrt{1-x^2}-\frac14\sin^{-1}x+C .\]
+\emph{Common mistake:} replacing $s'$ by $\frac xs$ (the sign of $s'=-\frac xs$ matters, because $\frac{d}{dx}\sqrt{1-x^2}$ is negative for $x>0$).
+\end{exmp}
+
+\begin{exmp}{The integral of $\frac1{a+\cos x}$ over a period}{b14}
+Prove that for every constant $a>1$, $\displaystyle\int_0^{2\pi}\frac{dx}{a+\cos x}=\frac{2\pi}{\sqrt{a^2-1}}$. Check it for $a=3$ and $a=2$.
+
+\textbf{Plan.} Find an antiderivative with $t=\tan\frac x2$, locate its break, and apply Theorem~\ref{thm:break}.
+
+\textbf{Proof.} Put $t=\tan\frac x2$, on any interval where it is defined, with $\cos x=\frac{1-t^2}{1+t^2}$ and $dx=\frac{2\,dt}{1+t^2}$ (Example~\ref{8.5-ex:b14}). Then
+\[a+\cos x=\frac{a(1+t^2)+1-t^2}{1+t^2}=\frac{(a+1)+(a-1)t^2}{1+t^2},\]
+\[\frac{dx}{a+\cos x}=\frac{2\,dt}{(a+1)+(a-1)t^2}=\frac2{a+1}\cdot\frac{dt}{1+k^2t^2},\]
+with $k=\sqrt{\frac{a-1}{a+1}}>0$. Since $\int\frac{dt}{1+k^2t^2}=\frac1k\tan^{-1}(kt)$ and $(a+1)k=\sqrt{(a+1)^2\cdot\frac{a-1}{a+1}}=\sqrt{a^2-1}$,
+\[F(x)=\frac2{\sqrt{a^2-1}}\tan^{-1}\left(k\tan\frac x2\right)\]
+is an antiderivative of $\frac1{a+\cos x}$ on every interval where $\tan\frac x2$ is defined. On $[0,2\pi]$ the only point where it is not defined is $x=\pi$. As $x\to\pi^-$, $\tan\frac x2\to+\infty$ and $F\to\frac2{\sqrt{a^2-1}}\cdot\frac\pi2=\frac\pi{\sqrt{a^2-1}}$; as $x\to\pi^+$, $\tan\frac x2\to-\infty$ and $F\to-\frac\pi{\sqrt{a^2-1}}$. Also $F(0)=F(2\pi)=0$. The integrand is continuous on $[0,2\pi]$ (as $a+\cos x\ge a-1>0$), so Theorem~\ref{thm:break} with $c=\pi$ gives
+\[\int_0^{2\pi}\frac{dx}{a+\cos x}=\left[\frac\pi{\sqrt{a^2-1}}-0\right]+\left[0+\frac\pi{\sqrt{a^2-1}}\right]=\frac{2\pi}{\sqrt{a^2-1}}.\ \blacksquare\]
+%@ b14a | all(ANT(2*atan(sqrt(Q(a0-1,a0+1))*tan(x/2))/sqrt(a0**2-1),1/(a0+cos(x)),[Q(1,2),2,4,5]) == 0 for a0 in (2,3,5)) and all(NUM(Integral(1/(a0+cos(x)),(x,0,2*pi)),2*pi/sqrt(a0**2-1)) == 0 for a0 in (2,3,5)) | =\frac{2\pi}{\sqrt{a^2-1}}.\ \blacksquare\]
+\emph{Check.} For $a=3$: $\frac{2\pi}{\sqrt8}=\frac\pi{\sqrt2}$, the value found in Example~\ref{ex:m9}. For $a=2$: $\frac{2\pi}{\sqrt3}$, the value of Example~\ref{ex:b11} over a period. \emph{Common mistake:} using $F(2\pi)-F(0)=0$, which ignores the jump $F(\pi^+)-F(\pi^-)=-\frac{2\pi}{\sqrt{a^2-1}}$.
+%@ b14b | NUM(2*pi/sqrt(8),pi/sqrt(2)) == 0 and NUM(Integral(1/(3+cos(x)),(x,0,2*pi)),pi/sqrt(2)) == 0 | $\frac{2\pi}{\sqrt8}=\frac\pi{\sqrt2}$, the value found in Example~\ref{ex:m9}.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kc1}.] (a) The integrand is $\frac1{x\sqrt{ax+b}}$ with $a=3$ and $b=8>0$: entry (T3). (b) The same integrand with $a=3$ and $b=-8<0$: entry (T4). (c) The integrand is $\frac x{\sqrt{ax+b}}$ with $a=-7$ and $b=2$: entry (T2), valid for $2-7x>0$.
+
+  \item[Knowledge Check \ref{kc:kc2}.] (a) The expression $\ln(x-2)$ is real only for $x>2$, and $\ln(x+2)$ only for $x>-2$, so the printed formula is an antiderivative only for $x>2$, even though the integrand is defined for all $x\ne\pm2$. (b) With absolute values, $\int\frac{dx}{x^2-4}=\frac14\ln\lvert x-2\rvert-\frac14\ln\lvert x+2\rvert+C=\frac14\ln\left\lvert\frac{x-2}{x+2}\right\rvert+C$, valid on each of $x<-2$, $-2<x<2$ and $x>2$. For $-2<x<2$ this is $\frac14\ln\frac{2-x}{2+x}+C$. Its derivative is $\frac14\left(\frac1{x-2}-\frac1{x+2}\right)=\frac14\cdot\frac4{x^2-4}$.
+%@ ans-kc2 | ANT(log(sqrt((x-2)**2))/4-log(sqrt((x+2)**2))/4,1/(x**2-4),[-5,-1,1,3]) == 0 | =\frac14\cdot\frac4{x^2-4}$.
+
+  \item[Knowledge Check \ref{kc:kc3}.] The integrand $\sec^2x\ge1$ is positive, so $\int_0^\pi\sec^2x\,dx\ge\pi>0$, and the value $0$ is impossible. The hypothesis that fails is that $f$ be continuous on $[a,b]$: $\sec^2x$ is undefined, and unbounded, at $x=\frac\pi2$ (and $\tan x$ is undefined there too). Here the break is infinite, not a jump, and the integral is an improper one that diverges.
+
+  \item[Pause and think \ref{think:why}.] Analytical evaluation is done by people, and people make slips: a misprint in the table, an interchanged sign, the wrong entry when two entries differ by the sign of a constant (as (T3) and (T4) do), a condition ($b>0$, $x>0$, $a\ne0$) that was overlooked, or a mistake in your own copying of the constants. Differentiating takes one line, using rules you already know, and settles the question for \emph{this} integrand on \emph{this} interval; an undetected error propagates into every later use of the result, such as a volume, a probability or a bridge load. So the check is cheap and the error is expensive.
+
+  \item[Pause and think \ref{think:atan}.] Where $\tan x$ is defined, $\tan^{-1}(\tan x)$ equals $x$ only for $-\frac\pi2<x<\frac\pi2$; on $\left(\frac\pi2,\frac{3\pi}2\right)$ it equals $x-\pi$ (the tangent has period $\pi$ and $\tan^{-1}$ returns values in $\left(-\frac\pi2,\frac\pi2\right)$). So $F(x)=\tan^{-1}(\tan x)$ has derivative $1$ on each interval but jumps: $F\left(\frac\pi2^-\right)=\frac\pi2$ and $F\left(\frac\pi2^+\right)=-\frac\pi2$, a jump of $-\pi$. From $0$ to $\pi$, the naive value is $F(\pi)-F(0)=\tan^{-1}(0)-\tan^{-1}(0)=0$, not $\pi$. Theorem~\ref{thm:break}(2) corrects it: $0-(-\pi)=\pi$, which is $\int_0^\pi1\,dx$. The lesson: a substitution $u=g(x)$ with $g$ not one-to-one on the interval (here $\tan$) gives an antiderivative valid only where $g$ is monotone.
+%@ ans-atan | NUM(atan(tan(Q(1,3))),Q(1,3)) == 0 and NUM(atan(tan(Q(1,1)+Q(7,5))) ,Q(1,1)+Q(7,5)-pi) == 0 and NUM(atan(tan(pi))-atan(tan(0))-(-pi),pi) == 0 | which is $\int_0^\pi1\,dx$. The lesson: a substitution $u=g(x)$ with $g$ not one-to-one on the interval (here $\tan$) gives an antiderivative valid only where $g$ is monotone.
+
+  \item[Pause and think \ref{think:special}.] (i) It gives a \emph{number} on demand: $\operatorname{erf}$ is built into calculators and software, which return $\frac{\sqrt\pi}2\operatorname{erf}(1)\approx0.7468241328$ to as many digits as asked, with a guaranteed accuracy. (ii) It gives \emph{properties} you can use without integrating: $\operatorname{erf}$ is odd, increasing, has derivative $\frac2{\sqrt\pi}e^{-y^2}$ (the Fundamental Theorem of Calculus), and the same function reappears whenever $\int e^{-t^2}\,dt$ does (in probability, for the normal distribution, and in heat flow), so results and values can be reused. It does \emph{not} give an elementary formula (Section~8.6).
+%@ ans-special | simplify(diff(erf(x),x)-2*exp(-x**2)/sqrt(pi)) == 0 and simplify(erf(-x)+erf(x)) == 0 and NUM(sqrt(pi)*erf(1)/2,Integral(exp(-x**2),(x,0,1))) == 0 | and the same function reappears whenever $\int e^{-t^2}\,dt$ does (in probability, for the normal distribution, and in heat flow), so results and values can be reused. It does \emph{not} give an elementary formula (Section~8.6).
+\end{description}
+
+\end{document}
