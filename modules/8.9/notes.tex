@@ -1,0 +1,1020 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{8}{9}{Improper Integrals}
+\calcxdoc{8.1}
+\calcxdoc{8.2}
+\calcxdoc{8.4}
+\calcxdoc{8.5}
+\calcxdoc{8.6}
+\calcxdoc{8.7}
+\calcxdoc{8.8}
+\calcxapp
+
+\begin{document}
+
+\section{Improper Integrals}
+
+\begin{guide}
+Every definite integral in Sections 8.1 to 8.8 was the integral of a continuous function over a closed interval of finite length. This section removes both restrictions. What could $\int_1^\infty\frac{dx}{x^2}$ mean, when the region under the graph never ends, or $\int_0^1\frac{dx}{\sqrt x}$, when the graph rises without bound at the left edge? The answer is a single idea, used in every case: \emph{replace the troublesome endpoint by a variable one, integrate on the closed interval that results, and take a limit.} An improper integral is a limit and not a sum; it may converge to a number or diverge, and a computer that prints a decimal for it has printed an approximation. The section defines the two kinds of improper integral, settles the family $\frac1{x^p}$ completely, proves the Comparison Test, the Limit Comparison Test and the fact that absolute convergence implies convergence (the proofs rest on Appendix C and the short Appendix N), explains why a doubly infinite integral must be split and why a symmetric limit is not the definition, shows how an interior singularity ruins a naive antiderivative, ties in the integrals of Sections 8.6 to 8.8 that have no elementary antiderivative, and ends with the Gamma-type integrals, Gabriel's horn and the integrals of decay and probability.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item write an improper integral as a limit (or a sum of limits) and decide whether it converges, evaluating it when it does;
+  \item state and use the exact answer for $\int_a^\infty x^{-p}\,dx$ and $\int_0^a x^{-p}\,dx$, including the borderline case $p=1$;
+  \item apply the Comparison Test and the Limit Comparison Test, and say which direction of the inequality proves convergence and which proves divergence;
+  \item explain why absolute convergence implies convergence, and give an integral that converges although its integrand does not tend to $0$;
+  \item split a doubly infinite integral at any point, explain why the point does not matter, and explain why $\lim_{t\to\infty}\int_{-t}^tf(x)\,dx$ is \emph{not} the definition;
+  \item recognize an interior singularity, split there, and explain how a naive antiderivative or a naive substitution gives a wrong answer;
+  \item bracket a convergent improper integral with a comparison bound and compute the rest numerically, and say plainly that the result is an approximation;
+  \item use the Gamma-type integrals, the reduction formula, Gabriel's horn and the integrals of decay and probability.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Two ways an integral can be improper}
+
+The integral $\int_a^bf(x)\,dx$ of Calculus~I is defined for a function that is continuous (or at least bounded) on a closed interval $[a,b]$ of finite length. Two things can go wrong, and they are the only two:
+\begin{itemize}
+  \item the \emph{interval is infinite}, as in $\int_1^\infty\frac{dx}{x^2}$;
+  \item the \emph{integrand is unbounded} near a point of the interval, as in $\int_0^1\frac{dx}{\sqrt x}$ (the integrand is not even defined at $x=0$).
+\end{itemize}
+In both cases the Riemann sums of Calculus~I break down: there is no finite partition into pieces of finite width on which $f$ is bounded. We keep what still makes sense. On every closed bounded interval \emph{inside} the region, $f$ is continuous and the integral exists, and we can ask what happens when that interval is pushed out to the troublesome endpoint.
+
+\begin{warn}[An improper integral is a limit and not a sum]
+The symbol $\int_1^\infty\frac{dx}{x^2}$ is shorthand for $\lim_{b\to\infty}\int_1^b\frac{dx}{x^2}$. It is \emph{not} ``$F(\infty)-F(1)$ with $\infty$ plugged in as if it were a number'', and the existence of the limit is a question, not a given. Whenever the antiderivative is evaluated at an endpoint where something is wrong, write $\lim$. Likewise, a decimal printed for a convergent improper integral is an approximation: we write $\approx$, and when the exact value is not available we give the approximation together with a bound for its error (Example~\ref{ex:m11}).
+\end{warn}
+
+\begin{defn}{Improper integrals over infinite intervals}{inf}
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item If $f$ is continuous on $[a,\infty)$, then $\displaystyle\int_a^\infty f(x)\,dx=\lim_{b\to\infty}\int_a^bf(x)\,dx$.
+  \item If $f$ is continuous on $(-\infty,b]$, then $\displaystyle\int_{-\infty}^bf(x)\,dx=\lim_{a\to-\infty}\int_a^bf(x)\,dx$.
+  \item If $f$ is continuous on $(-\infty,\infty)$, then for any real number $c$,
+  \[\int_{-\infty}^\infty f(x)\,dx=\lim_{a\to-\infty}\int_a^cf(x)\,dx+\lim_{b\to\infty}\int_c^bf(x)\,dx .\]
+\end{enumerate}
+If the limit exists as a real number, the improper integral \emph{converges} and the limit is its \emph{value}; otherwise it \emph{diverges}. In case~(3) the integral converges only if \emph{both} limits exist, and the two limits are taken \emph{independently}: $a$ and $b$ do not move together. (Theorem~\ref{thm:split} shows that the choice of $c$ does not matter.)
+\end{defn}
+
+\begin{defn}{Improper integrals with an unbounded integrand}{unb}
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item If $f$ is continuous on $(a,b]$, then $\displaystyle\int_a^bf(x)\,dx=\lim_{c\to a^+}\int_c^bf(x)\,dx$.
+  \item If $f$ is continuous on $[a,b)$, then $\displaystyle\int_a^bf(x)\,dx=\lim_{c\to b^-}\int_a^cf(x)\,dx$.
+  \item If $f$ is continuous on $[a,b]$ except at one point $p$ with $a<p<b$, then
+  \[\int_a^bf(x)\,dx=\lim_{c\to p^-}\int_a^cf(x)\,dx+\lim_{d\to p^+}\int_d^bf(x)\,dx .\]
+\end{enumerate}
+\emph{Converges} and \emph{diverges} mean the same as before, and in case~(3) both limits must exist, taken independently ($c$ and $d$ approach $p$ separately). A point such as $a$, $b$ or $p$ at which $f$ is not defined or not continuous is a \emph{singularity}.
+\end{defn}
+
+Some remarks that save mistakes. (i) If $f$ has a finite limit at the singularity (for example $\frac{\sin x}x$ at $x=0$), then $f$ extends to a continuous function on the closed interval, the integral is an ordinary one, and the limit in Definition~\ref{def:unb} equals it, because $c\mapsto\int_c^bf$ is continuous by the Fundamental Theorem of Calculus. Such a ``singularity'' is not improper. (ii) An integral can be improper for two reasons at once (for example $\int_0^\infty\frac{dx}{\sqrt x(1+x)}$, Example~\ref{ex:m4}); then it is cut into pieces, each with only one trouble spot, and it converges exactly when every piece converges. (iii) When the integrand is non-negative and the limit is $+\infty$ we write $\int=\infty$ and say the integral \emph{diverges to infinity}. That is a statement about a limit, and $\infty$ is not the value of a convergent integral. (iv) Some integrals diverge without going to $\pm\infty$: the limit can fail to exist because of oscillation (Example~\ref{ex:m1}(c)).
+
+\begin{center}
+\begin{tikzpicture}[x=1.4cm,y=3.2cm]
+  \draw[->] (-0.1,0) -- (5.3,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,1.25) node[above] {$y$};
+  \fill[blue!12] (1,0) -- plot[domain=1:4,samples=40,variable=\t] ({\t},{1/(\t*\t)}) -- (4,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=1:5.1,samples=60,variable=\t] plot ({\t},{1/(\t*\t)});
+  \draw[dashed] (4,0) -- (4,0.0625);
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+%@ f1-a | 1/Integer(1)**2 == 1 | 1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \fill (4,0.0625) circle (1.5pt) node[above right,font=\small] {$(b,1/b^2)$};
+%@ f1-b | 1/Integer(4)**2 == Q(1,16) | (1.5pt) node[above right,font=\small] {$(b,1/b^2)$};
+  \draw[->,thick,red!70!black] (4.35,0.12) -- (5.2,0.12) node[right,font=\small] {$b\to\infty$};
+  \node[below,font=\small] at (1,0) {$1$};
+  \node[below,font=\small] at (4,0) {$b$};
+  \node[font=\small] at (2.55,0.62) {area $=1-1/b$};
+  \node[font=\small] at (3.9,1.1) {$y=1/x^2$};
+\end{tikzpicture}\qquad
+\begin{tikzpicture}[x=4.6cm,y=1.25cm]
+  \draw[->] (-0.03,0) -- (1.35,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,3.5) node[above] {$y$};
+  \fill[red!15] (0.12,0) -- plot[domain=0.12:0.25,samples=30,variable=\t] ({\t},{1/sqrt(\t)}) -- (0.25,0) -- cycle;
+  \fill[blue!12] (0.25,0) -- plot[domain=0.25:1,samples=40,variable=\t] ({\t},{1/sqrt(\t)}) -- (1,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0.08:1.2,samples=60,variable=\t] plot ({\t},{1/sqrt(\t)});
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+%@ f1-c | 1/sqrt(Integer(1)) == 1 | 1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \fill (0.25,2) circle (1.5pt) node[above right,font=\small] {$(c,1/\surd c)$};
+%@ f1-d | 1/sqrt(Q(1,4)) == 2 | (1.5pt) node[above right,font=\small] {$(c,1/\surd c)$};
+  \draw[->,thick,red!70!black] (0.2,0.35) -- (0.04,0.35) node[left,font=\small] {$c\to0^+$};
+  \node[below,font=\small] at (1,0) {$1$};
+  \node[below,font=\small] at (0.25,0) {$c$};
+  \node[font=\small] at (0.82,2.2) {$y=1/\surd x$};
+  \node[font=\small] at (0.7,0.5) {area $=2(1-\surd c)$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 1. Left: $\int_1^\infty\frac{dx}{x^2}$. The region under $y=\frac1{x^2}$ from $1$ to $b$ has area $1-\frac1b$ (for $b=4$ the point $(4,\frac1{16})$ is marked), and the $x$-axis is a horizontal asymptote. Right: $\int_0^1\frac{dx}{\sqrt x}$. The region from $c$ to $1$ has area $2(1-\sqrt c)$ (for $c=\frac14$ the area is $1$), and the $y$-axis is a vertical asymptote. In both pictures the limit is taken by pushing the variable endpoint out to the trouble spot.\end{center}
+%@ f1-e | integrate(1/x**2,(x,1,4)) == Q(3,4) and integrate(1/sqrt(x),(x,Q(1,4),1)) == 1 | the variable endpoint out to the trouble spot.\end{center}
+
+\begin{exmp}{Infinite intervals by the definition}{m1}
+Evaluate or show divergence: (a) $\displaystyle\int_1^\infty\frac{dx}{x^2}$, \quad (b) $\displaystyle\int_{-\infty}^0e^{2x}\,dx$, \quad (c) $\displaystyle\int_0^\infty\cos x\,dx$.
+
+\textbf{Solution.} (a) The integrand is continuous on $[1,\infty)$, so Definition~\ref{def:inf}(1) applies. For $b>1$, $\int_1^bx^{-2}\,dx=\left[-\frac1x\right]_1^b=1-\frac1b$. As $b\to\infty$, $\frac1b\to0$, so the limit is $1$:
+\[\int_1^\infty\frac{dx}{x^2}=\lim_{b\to\infty}\left(1-\frac1b\right)=1 .\]
+%@ m1a | ANT(-1/x,1/x**2,[Q(1,2),2,3]) == 0 and limit(integrate(1/x**2,(x,1,b)),b,oo) == 1 | dx}{x^2}=\lim_{b\to\infty}\left(1-\frac1b\right)=1 .\]
+The integral converges, and the region of Figure~1 (left), which stretches forever to the right, has area exactly $1$.
+
+(b) Definition~\ref{def:inf}(2): for $a<0$, $\int_a^0e^{2x}\,dx=\left[\frac{e^{2x}}2\right]_a^0=\frac12-\frac{e^{2a}}2$. As $a\to-\infty$, $2a\to-\infty$ and $e^{2a}\to0$, so
+\[\int_{-\infty}^0e^{2x}\,dx=\lim_{a\to-\infty}\left(\frac12-\frac{e^{2a}}2\right)=\frac12 .\]
+%@ m1b | ANT(exp(2*x)/2,exp(2*x),[Q(1,2),-1,-2]) == 0 and limit(integrate(exp(2*x),(x,a,0)),a,-oo) == Q(1,2) | \frac12-\frac{e^{2a}}2\right)=\frac12 .\]
+
+(c) For $b>0$, $\int_0^b\cos x\,dx=\sin b$. The limit of $\sin b$ as $b\to\infty$ does not exist: along $b=n\pi$ the values are all $0$, and along $b=2n\pi+\frac\pi2$ they are all $1$. So the integral \emph{diverges}, and it does not diverge to $\infty$ or $-\infty$; it oscillates. (The areas above and below the axis keep cancelling, but ``cancelling'' is not convergence.)
+%@ m1c | all(sin(n0*pi) == 0 for n0 in range(1,6)) and all(sin(2*n0*pi+pi/2) == 1 for n0 in range(1,6)) and integrate(cos(x),(x,0,b)) == sin(b) | keep cancelling, but ``cancelling'' is not convergence.)
+\end{exmp}
+
+\begin{exmp}{Unbounded integrands by the definition}{m2}
+Evaluate or show divergence: (a) $\displaystyle\int_0^1\frac{dx}{\sqrt x}$, \quad (b) $\displaystyle\int_2^{10}\frac{dx}{(x-2)^{2/3}}$, \quad (c) $\displaystyle\int_0^{\pi/2}\tan x\,dx$.
+
+\textbf{Solution.} (a) The integrand is continuous on $(0,1]$ and unbounded as $x\to0^+$, so Definition~\ref{def:unb}(1) applies. For $0<c<1$, $\int_c^1x^{-1/2}\,dx=\left[2\sqrt x\right]_c^1=2-2\sqrt c$. As $c\to0^+$, $\sqrt c\to0$:
+\[\int_0^1\frac{dx}{\sqrt x}=\lim_{c\to0^+}\left(2-2\sqrt c\right)=2 .\]
+%@ m2a | ANT(2*sqrt(x),1/sqrt(x),[Q(1,4),1,4]) == 0 and limit(2-2*sqrt(c),c,0,'+') == 2 | dx}{\sqrt x}=\lim_{c\to0^+}\left(2-2\sqrt c\right)=2 .\]
+This is the area of the region at the right of Figure~1: it is finite, although the region is unbounded above.
+
+(b) The integrand is continuous on $(2,10]$ and unbounded as $x\to2^+$. For $2<c<10$, with the antiderivative $3(x-2)^{1/3}$ (the derivative is $(x-2)^{-2/3}$),
+\[\int_c^{10}\frac{dx}{(x-2)^{2/3}}=3(8)^{1/3}-3(c-2)^{1/3}=6-3(c-2)^{1/3}\longrightarrow6\quad(c\to2^+).\]
+%@ m2b | ANT(3*(x-2)**Q(1,3),(x-2)**Q(-2,3),[3,4,Q(5,2)]) == 0 and 3*8**Q(1,3) == 6 and limit(6-3*(c-2)**Q(1,3),c,2,'+') == 6 | c-2)^{1/3}=6-3(c-2)^{1/3}\longrightarrow6\quad(c\to2^+).\]
+The value is $6$.
+
+(c) The integrand is continuous on $\left[0,\frac\pi2\right)$ and $\tan x\to\infty$ as $x\to\frac\pi2^-$. For $0<c<\frac\pi2$, $\int_0^c\tan x\,dx=\left[-\ln\cos x\right]_0^c=-\ln\cos c$ ($\cos x>0$ on this interval, so no absolute value is needed). As $c\to\frac\pi2^-$, $\cos c\to0^+$, so $-\ln\cos c\to+\infty$: the integral \emph{diverges} (to $\infty$).
+%@ m2c | limit(-log(cos(c)),c,pi/2,'-') == oo and ANT(-log(cos(x)),tan(x),[Q(1,2),1,Q(3,2)]) == 0 | the integral \emph{diverges} (to $\infty$).
+\end{exmp}
+
+\begin{kc}{Is it improper?}{kc1}
+Which of these are improper integrals, and for each one say why? (a) $\displaystyle\int_0^1\frac{\sin x}x\,dx$; \quad (b) $\displaystyle\int_0^\pi\tan x\,dx$; \quad (c) $\displaystyle\int_{-1}^1\frac{dx}{x^2+1}$; \quad (d) $\displaystyle\int_1^\infty\frac{dx}{x^2+1}$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{The $p$-integrals: a complete answer}
+
+The functions $\frac1{x^p}$ decide most convergence questions, because the tests below compare other integrands with them. The next theorem settles every $p$, at infinity and at $0$, including the borderline $p=1$.
+
+\begin{thm}{The $p$-integrals}{p}
+Let $a>0$ and let $p$ be a real number.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item $\displaystyle\int_a^\infty\frac{dx}{x^p}$ converges if $p>1$, and then equals $\dfrac{a^{1-p}}{p-1}$; it diverges to $\infty$ if $p\le1$.
+  \item $\displaystyle\int_0^a\frac{dx}{x^p}$ converges if $p<1$, and then equals $\dfrac{a^{1-p}}{1-p}$; it diverges to $\infty$ if $p\ge1$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Let $b>a$. If $p\ne1$, then $\int_a^bx^{-p}\,dx=\dfrac{b^{1-p}-a^{1-p}}{1-p}$ (the power rule). If $p>1$ then $1-p<0$, so $b^{1-p}=\frac1{b^{p-1}}\to0$ as $b\to\infty$, and the limit is $\frac{-a^{1-p}}{1-p}=\frac{a^{1-p}}{p-1}$. If $p<1$ then $1-p>0$, $b^{1-p}\to\infty$, and the integral diverges to $\infty$. If $p=1$, $\int_a^b\frac{dx}x=\ln b-\ln a\to\infty$.
+
+(2) Let $0<c<a$. If $p\ne1$, then $\int_c^ax^{-p}\,dx=\dfrac{a^{1-p}-c^{1-p}}{1-p}$. If $p<1$ then $1-p>0$ and $c^{1-p}\to0$ as $c\to0^+$, so the limit is $\frac{a^{1-p}}{1-p}$. If $p>1$ then $c^{1-p}=\frac1{c^{p-1}}\to\infty$ and the integral diverges to $\infty$ (the numerator tends to $-\infty$ and $1-p<0$). If $p=1$, $\int_c^a\frac{dx}x=\ln a-\ln c\to\infty$. $\blacksquare$
+%@ p-a | simplify(diff(x**(1-r)/(1-r),x)-x**(-r)) == 0 and limit(integrate(x**(-Q(3,2)),(x,4,b)),b,oo) == 1 and limit(integrate(x**(-Q(1,3)),(x,c,8)),c,0,'+') == 6 | $\int_c^a\frac{dx}x=\ln a-\ln c\to\infty$. $\blacksquare$
+\end{proof}
+
+For instance $\int_4^\infty x^{-3/2}\,dx=\frac{4^{-1/2}}{1/2}=1$ and $\int_0^8x^{-1/3}\,dx=\frac{8^{2/3}}{2/3}=6$. The same results hold when the singularity is not at $0$: with $u=x-a$ (or $u=b-x$) the integrals $\int_a^b(x-a)^{-p}\,dx$ and $\int_a^b(b-x)^{-p}\,dx$ become $\int_0^{b-a}u^{-p}\,du$ and converge exactly when $p<1$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=2.9cm]
+  \draw[->] (-0.1,0) -- (4.9,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=1:4.2,samples=50,variable=\t] plot ({\t},{1/sqrt(\t)});
+  \draw[very thick,orange!85!black,domain=1:4.2,samples=50,variable=\t] plot ({\t},{1/\t});
+  \draw[very thick,blue!70!black,domain=1:4.2,samples=50,variable=\t] plot ({\t},{1/(\t*\t)});
+  \fill (4,0.5) circle (1.5pt) node[above right,font=\small] {$p=\frac12$};
+%@ f2-a | 1/sqrt(Integer(4)) == Q(1,2) | (1.5pt) node[above right,font=\small] {$p=\frac12$};
+  \fill (4,0.25) circle (1.5pt) node[above right,font=\small] {$p=1$};
+%@ f2-b | 1/Integer(4) == Q(1,4) | circle (1.5pt) node[above right,font=\small] {$p=1$};
+  \fill (4,0.0625) circle (1.5pt) node[above right,font=\small] {$p=2$};
+%@ f2-c | 1/Integer(4)**2 == Q(1,16) | circle (1.5pt) node[above right,font=\small] {$p=2$};
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \node[below,font=\small] at (1,0) {$1$};
+  \node[font=\small,align=center] at (2.9,1.42) {$\int_1^\infty x^{-p}dx$: finite only for $p>1$};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[x=4.1cm,y=0.9cm]
+  \draw[->] (-0.03,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,4.6) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.075:1.15,samples=60,variable=\t] plot ({\t},{1/sqrt(\t)});
+  \draw[very thick,orange!85!black,domain=0.22:1.15,samples=60,variable=\t] plot ({\t},{1/\t});
+  \draw[very thick,red!70!black,domain=0.47:1.15,samples=60,variable=\t] plot ({\t},{1/(\t*\t)});
+  \fill (0.5,1.414214) circle (1.5pt) node[right,font=\small] {$p=\frac12$};
+%@ f2-d | 1/sqrt(Q(1,2))**2 == 2 | circle (1.5pt) node[right,font=\small] {$p=\frac12$};
+  \fill (0.5,2) circle (1.5pt) node[right,font=\small] {$p=1$};
+%@ f2-e | 1/Q(1,2) == 2 | (0.5,2) circle (1.5pt) node[right,font=\small] {$p=1$};
+  \fill (0.5,4) circle (1.5pt) node[right,font=\small] {$p=2$};
+%@ f2-f | 1/Q(1,2)**2 == 4 | (0.5,4) circle (1.5pt) node[right,font=\small] {$p=2$};
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \node[below,font=\small] at (1,0) {$1$};
+  \node[font=\small,align=center] at (0.6,5.0) {$\int_0^1x^{-p}dx$: finite only for $p<1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 2. The family $y=x^{-p}$ for $p=\frac12$, $1$, $2$. Left, on $[1,\infty)$: for $p=2$ (blue) the area is finite ($=1$), for $p=1$ and $p=\frac12$ (orange, red) it is infinite. Right, on $(0,1]$: for $p=\frac12$ (blue) the area is finite ($=2$), for $p=1$ and $p=2$ it is infinite. The curve with $p=1$ is the borderline in both pictures.\end{center}
+%@ f2-g | limit(integrate(x**-2,(x,1,b)),b,oo) == 1 and limit(integrate(x**Q(-1,2),(x,c,1)),c,0,'+') == 2 | with $p=1$ is the borderline in both pictures.\end{center}
+
+\begin{kc}{The borderline}{kc2}
+Decide whether each converges, and give the value if it does: (a) $\displaystyle\int_1^\infty x^{-0.99}\,dx$, \quad (b) $\displaystyle\int_0^1x^{-0.99}\,dx$, \quad (c) $\displaystyle\int_1^\infty x^{-1.01}\,dx$.
+\end{kc}
+
+\begin{think}{No power works on the whole half-line}{pw}
+Theorem~\ref{thm:p} treats $\int_a^\infty$ and $\int_0^a$ separately. Explain why $\int_0^\infty x^{-p}\,dx$ diverges for \emph{every} real $p$. Then explain why $\int_0^\infty\frac{dx}{\sqrt x(1+x)}$ (Example~\ref{ex:m4}) is not a contradiction.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Integration techniques inside the limit}
+
+Every technique of Sections 8.1 to 8.7 works inside the limit: find an antiderivative (or use the substitution rule on the closed interval where it is valid), evaluate on the closed interval, and \emph{then} take the limit. The limit is where the question is decided.
+
+\begin{exmp}{A logarithm at $0$ and a logarithm at infinity}{m3}
+Evaluate (a) $\displaystyle\int_0^1\ln x\,dx$ and (b) $\displaystyle\int_2^\infty\frac{dx}{x(\ln x)^2}$.
+
+\textbf{Solution.} (a) $\ln x$ is continuous on $(0,1]$ and tends to $-\infty$ as $x\to0^+$. By parts (Theorem~\ref{8.2-thm:inv}), $\int\ln x\,dx=x\ln x-x+C$. For $0<c<1$,
+\[\int_c^1\ln x\,dx=\big[x\ln x-x\big]_c^1=(0-1)-(c\ln c-c)=-1-c\ln c+c .\]
+%@ m3a | simplify(integrate(log(x),(x,c,1))-(-1-c*log(c)+c)) == 0 | dx=\big[x\ln x-x\big]_c^1=(0-1)-(c\ln c-c)=-1-c\ln c+c .\]
+Now $c\to0^+$. The term $c\to0$, and $c\ln c=\dfrac{\ln c}{1/c}$ is of the form $\frac{-\infty}\infty$, so by L'Hôpital's Rule $\lim_{c\to0^+}\frac{1/c}{-1/c^2}=\lim_{c\to0^+}(-c)=0$. Hence
+\[\int_0^1\ln x\,dx=-1-0+0=-1 .\]
+%@ m3b | limit(c*log(c),c,0,'+') == 0 and limit(-1-c*log(c)+c,c,0,'+') == -1 | \[\int_0^1\ln x\,dx=-1-0+0=-1 .\]
+The answer is negative because $\ln x<0$ on $(0,1)$: the region lies below the axis.
+
+(b) The integrand is continuous and positive on $[2,\infty)$. Substitute $u=\ln x$, $du=\frac{dx}x$ (Section 8.1): $\int\frac{dx}{x(\ln x)^2}=\int\frac{du}{u^2}=-\frac1u+C=-\frac1{\ln x}+C$. For $b>2$,
+\[\int_2^b\frac{dx}{x(\ln x)^2}=\left[-\frac1{\ln x}\right]_2^b=\frac1{\ln2}-\frac1{\ln b}\longrightarrow\frac1{\ln2}\quad(b\to\infty),\]
+%@ m3c | limit(1/log(2)-1/log(b),b,oo) == 1/log(2) and RND(1/log(2),4) == Q(14427,10000) | \ln b}\longrightarrow\frac1{\ln2}\quad(b\to\infty),\]
+because $\ln b\to\infty$. So the integral converges, to $\frac1{\ln2}\approx1.4427$. \emph{Check} by differentiating: $\frac d{dx}\left(-\frac1{\ln x}\right)=\frac1{x(\ln x)^2}$.
+%@ m3d | ANT(-1/log(x),1/(x*log(x)**2),[3,4,Q(5,2)]) == 0 | because $\ln b\to\infty$. So the integral converges, to $\frac1{\ln2}\approx1.4427$. \emph{Check} by differentiating: $\frac d{dx}\left(-\frac1{\ln x}\right)=\frac1{x(\ln x)^2}$.
+(Compare $\int_2^\infty\frac{dx}{x\ln x}$: the same substitution gives $\ln\ln b-\ln\ln2\to\infty$, so that one diverges. Two integrands that look almost the same can behave differently; a later chapter returns to exactly this pair.)
+\end{exmp}
+
+\begin{exmp}{Two troubles at once}{m4}
+Evaluate (a) $\displaystyle\int_1^4\frac{dx}{\sqrt{(x-1)(4-x)}}$ and (b) $\displaystyle\int_0^\infty\frac{dx}{\sqrt x\,(1+x)}$.
+
+\textbf{Solution.} (a) The integrand is continuous on $(1,4)$ and unbounded at \emph{both} ends. Cut the interval at the midpoint $\frac52$ (any interior point would do): the integral converges exactly when both $\int_1^{5/2}$ and $\int_{5/2}^4$ do. Complete the square (Theorem~\ref{8.7-thm:square}): $(x-1)(4-x)=-x^2+5x-4=\frac94-\left(x-\frac52\right)^2$. By the inverse sine formula (Theorem~\ref{8.1-thm:invtrig}) with $a=\frac32$,
+\[\int\frac{dx}{\sqrt{\frac94-\left(x-\frac52\right)^2}}=\sin^{-1}\frac{x-\frac52}{3/2}+C=\sin^{-1}\frac{2x-5}3+C .\]
+%@ m4a | ANT(asin((2*x-5)/3),1/sqrt((x-1)*(4-x)),[Q(3,2),2,3]) == 0 and simplify((x-1)*(4-x)-(Q(9,4)-(x-Q(5,2))**2)) == 0 | -1}\frac{x-\frac52}{3/2}+C=\sin^{-1}\frac{2x-5}3+C .\]
+For $1<c<\frac52$: $\int_c^{5/2}=\sin^{-1}0-\sin^{-1}\frac{2c-5}3\to0-\sin^{-1}(-1)=\frac\pi2$ as $c\to1^+$ (the inverse sine is continuous at $-1$). For $\frac52<d<4$: $\int_{5/2}^d=\sin^{-1}\frac{2d-5}3-0\to\sin^{-1}1=\frac\pi2$ as $d\to4^-$. Both halves converge, so
+\[\int_1^4\frac{dx}{\sqrt{(x-1)(4-x)}}=\frac\pi2+\frac\pi2=\pi .\]
+%@ m4b | limit(asin((2*c-5)/3),c,1,'+') == -pi/2 and limit(asin((2*c-5)/3),c,4,'-') == pi/2 and pi/2+pi/2 == pi | dx}{\sqrt{(x-1)(4-x)}}=\frac\pi2+\frac\pi2=\pi .\]
+
+(b) The integral is improper at $0$ (the integrand is unbounded) and at $\infty$ (the interval is infinite). Cut at $1$: $\int_0^1+\int_1^\infty$. For $0<c<b$ let $u=\sqrt x$, $x=u^2$, $dx=2u\,du$ (the substitution is one-to-one on $[c,b]$ with $c>0$):
+\[\int\frac{dx}{\sqrt x\,(1+x)}=\int\frac{2u\,du}{u(1+u^2)}=2\int\frac{du}{1+u^2}=2\tan^{-1}u+C=2\tan^{-1}\sqrt x+C .\]
+%@ m4c | ANT(2*atan(sqrt(x)),1/(sqrt(x)*(1+x)),[Q(1,4),1,4,9]) == 0 | du}{1+u^2}=2\tan^{-1}u+C=2\tan^{-1}\sqrt x+C .\]
+Then $\int_c^1=2\tan^{-1}1-2\tan^{-1}\sqrt c\to\frac\pi2-0=\frac\pi2$ as $c\to0^+$, and $\int_1^b=2\tan^{-1}\sqrt b-\frac\pi2\to\pi-\frac\pi2=\frac\pi2$ as $b\to\infty$. Both pieces converge, so
+\[\int_0^\infty\frac{dx}{\sqrt x\,(1+x)}=\frac\pi2+\frac\pi2=\pi .\]
+%@ m4d | limit(2*atan(sqrt(b)),b,oo) == pi and 2*atan(1) == pi/2 and integrate(1/(sqrt(x)*(1+x)),(x,0,oo)) == pi | dx}{\sqrt x\,(1+x)}=\frac\pi2+\frac\pi2=\pi .\]
+Notice that the integrand behaves like $x^{-1/2}$ near $0$ (convergent end) and like $x^{-3/2}$ near $\infty$ (convergent end); this is why neither end causes trouble.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Antiderivatives, interior singularities and breaks}
+
+Theorem~\ref{8.7-thm:break} said how to evaluate $\int_a^bf$ when $f$ is continuous on $[a,b]$ but a formula for an antiderivative has a break inside. If the singularity is in the \emph{integrand}, a new phenomenon appears: the one-sided limits of $F$ at the singular point may be infinite, and then there is no integral at all. This is the improper version of the theorem.
+
+\begin{thm}{Antiderivatives and improper integrals}{ftc}
+Let $f$ be continuous on $[a,b]$ except at one point $p$ with $a<p<b$, where it may be unbounded, and let $F$ be differentiable with $F'=f$ on $[a,p)$ and on $(p,b]$. Then
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item $\int_a^pf$ converges if and only if the limit $F(p^-)=\lim_{x\to p^-}F(x)$ exists as a real number, and then $\int_a^pf=F(p^-)-F(a)$;
+  \item $\int_p^bf$ converges if and only if $F(p^+)=\lim_{x\to p^+}F(x)$ exists as a real number, and then $\int_p^bf=F(b)-F(p^+)$;
+  \item consequently $\int_a^bf$ converges if and only if both one-sided limits exist as real numbers, and then
+  \[\int_a^bf(x)\,dx=F(b)-F(a)-\big[F(p^+)-F(p^-)\big].\]
+  The naive value $F(b)-F(a)$ is correct exactly when $F(p^+)=F(p^-)$, that is, when $F$ extends continuously across $p$; if one of the one-sided limits is $\pm\infty$ or does not exist, the integral diverges.
+\end{enumerate}
+The same argument shows $\int_a^\infty f=\lim_{b\to\infty}F(b)-F(a)$ when $F'=f$ on $[a,\infty)$, the integral converging if and only if the limit is a real number.
+\end{thm}
+\begin{proof}
+(1) For $a\le x<p$ the function $F$ is differentiable on $[a,x]$ with continuous derivative $f$, so $\int_a^xf=F(x)-F(a)$ by the Fundamental Theorem of Calculus. Hence $\lim_{x\to p^-}\int_a^xf$ exists exactly when $\lim_{x\to p^-}F(x)$ does, and the two limits differ by the constant $F(a)$. (2) is the same with $\int_x^bf=F(b)-F(x)$ for $p<x\le b$. (3) By Definition~\ref{def:unb}(3), $\int_a^bf$ converges exactly when the integrals in (1) and (2) both converge, and the value is their sum, $F(p^-)-F(a)+F(b)-F(p^+)$. The final statement is the same computation with $b\to\infty$. $\blacksquare$
+\end{proof}
+
+When $f$ is continuous on all of $[a,b]$, $F$ is too, so the one-sided limits exist and Theorem~\ref{8.7-thm:break} is the case in which they differ only by a jump of the \emph{formula}. When $f$ is unbounded at $p$, the formula $F$ itself can blow up, and a missing check gives answers that are not just off by a constant but meaningless.
+
+\begin{exmp}{A singularity in the middle of the interval}{m5}
+Evaluate or show divergence, and find what the naive computation gives: (a) $\displaystyle\int_{-1}^3\frac{dx}{(x-1)^2}$; (b) $\displaystyle\int_{-1}^1\frac{dx}x$; (c) $\displaystyle\int_{-1}^8\frac{dx}{x^{2/3}}$.
+
+\textbf{Solution.} (a) The integrand is unbounded at $p=1$, inside $[-1,3]$, so the integral must be cut there. An antiderivative on each side is $F(x)=-\frac1{x-1}$. As $x\to1^-$, $x-1\to0^-$ and $F(x)\to+\infty$, so by Theorem~\ref{thm:ftc}(1) already $\int_{-1}^1\frac{dx}{(x-1)^2}$ diverges, and therefore so does the whole integral (to $+\infty$, since the integrand is positive). The naive evaluation $F(3)-F(-1)=-\frac12-\frac12=-1$ is nonsense: a positive integrand cannot have a negative integral. This is the integral flagged in Example~\ref{8.7-ex:m10}.
+%@ m5a | limit(-1/(c-1),c,1,'-') == oo and limit(-1/(c-1),c,1,'+') == -oo and -1/Integer(3-1)-(-1/Integer(-1-1)) == -1 | This is the integral flagged in Example~\ref{8.7-ex:m10}.
+
+(b) Here $F(x)=\ln\lvert x\rvert$ is an antiderivative on each side of $0$, and $F(0^\pm)=-\infty$. By Theorem~\ref{thm:ftc} the integral diverges. The naive value $F(1)-F(-1)=\ln1-\ln1=0$ is wrong. To see what the definition does, let $c$ and $d$ approach $0$ independently: $\int_{-1}^{-c}\frac{dx}x=\ln c$ and $\int_d^1\frac{dx}x=-\ln d$, so the sum is $\ln c-\ln d=\ln\frac cd$. With $c=d$ this is $0$ for every $d$ (the ``symmetric limit''), but with $c=e^5d$ it is $5$ for every $d$, and with $c=d^2$ it is $\ln d\to-\infty$. The two limits do not combine into a single number.
+%@ m5b | ANT(log(sqrt(x**2)),1/x,[Q(1,2),-Q(1,2),2,-3]) == 0 and simplify(log(exp(5)*Symbol('u',positive=True))-log(Symbol('u',positive=True))-5) == 0 | The two limits do not combine into a single number.
+(The symmetric value $0$ is called a \emph{principal value}. It is useful in some applications, and it is \emph{not} the value of the improper integral.)
+
+(c) The integrand is $x^{-2/3}=\lvert x\rvert^{-2/3}$ (the real cube root of $x$ is used, so the integrand is positive and even), unbounded at $0$. Here $F(x)=3x^{1/3}$ (the real cube root) is an antiderivative on each side, and $F$ is continuous at $0$ with $F(0^-)=F(0^+)=0$. By Theorem~\ref{thm:ftc}(3) the integral \emph{converges} and the naive value is right:
+\[\int_{-1}^8\frac{dx}{x^{2/3}}=F(8)-F(-1)=3\cdot2-3\cdot(-1)=9 .\]
+%@ m5c | integrate(x**Q(-2,3),(x,0,8)) == 6 and integrate(x**Q(-2,3),(x,0,1)) == 3 and 3*2-3*(-1) == 9 | dx}{x^{2/3}}=F(8)-F(-1)=3\cdot2-3\cdot(-1)=9 .\]
+As a check, the two halves are $\int_{-1}^0=\int_0^1x^{-2/3}\,dx=3$ (even integrand, Theorem~\ref{thm:p}(2) with $p=\frac23$) and $\int_0^8x^{-2/3}\,dx=6$, and $3+6=9$. So an interior singularity is \emph{not} always fatal: what matters is whether $F$ has finite one-sided limits there.
+
+\emph{A jump at the singularity.} A program may return an antiderivative with a different constant on each side. For $f(x)=x^{-2/3}$ the function $G(x)=3x^{1/3}$ for $x>0$ and $G(x)=3x^{1/3}+5$ for $x<0$ is an antiderivative on each side. It has $G(0^-)=5$, $G(0^+)=0$, so the jump is $G(0^+)-G(0^-)=-5$. The naive value is $G(8)-G(-1)=6-2=4$ and the correct value, by Theorem~\ref{thm:ftc}(3), is $4-(-5)=9$.
+%@ m5d | 3*8**Q(1,3)-(3*(-1)+5) == 4 and 4-(0-5) == 9 | correct value, by Theorem~\ref{thm:ftc}(3), is $4-(-5)=9$.
+\end{exmp}
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=0.62cm]
+  \draw[->] (-2.2,0) -- (2.4,0) node[right] {$x$};
+  \draw[->] (0,-4.4) -- (0,4.6) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.22:2,samples=50,variable=\t] plot ({\t},{1/\t});
+  \draw[very thick,red!70!black,domain=-2:-0.22,samples=50,variable=\t] plot ({\t},{1/\t});
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+%@ f3-a | 1/Integer(1) == 1 | 1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \fill (-1,-1) circle (1.5pt) node[below left,font=\small] {$(-1,-1)$};
+%@ f3-b | 1/Integer(-1) == -1 | circle (1.5pt) node[below left,font=\small] {$(-1,-1)$};
+  \node[font=\small,anchor=west] at (0.7,2.6) {$\int_d^1=-\ln d\to\infty$};
+  \node[font=\small,anchor=east] at (-0.7,-2.6) {$\int_{-1}^{-c}=\ln c\to-\infty$};
+  \node[below,font=\small] at (1,0) {$1$};
+  \node[above,font=\small] at (-1,0) {$-1$};
+  \node[font=\small] at (1.7,-1.3) {$y=1/x$};
+\end{tikzpicture}\qquad
+\begin{tikzpicture}[x=0.52cm,y=1.5cm]
+  \clip (-3.4,-0.5) rectangle (9.6,2.4);
+  \draw[->] (-1.5,0) -- (8.9,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,2.2) node[above] {$y$};
+  \fill[blue!12] (-1,0) -- plot[domain=-1:-0.06,samples=40,variable=\t] ({\t},{1/(abs(\t)^(2/3))}) -- (-0.06,0) -- cycle;
+  \fill[blue!12] (0.06,0) -- plot[domain=0.06:8,samples=60,variable=\t] ({\t},{1/(\t^(2/3))}) -- (8,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=-1:-0.03,samples=50,variable=\t] plot ({\t},{1/(abs(\t)^(2/3))});
+  \draw[very thick,blue!70!black,domain=0.03:8.4,samples=80,variable=\t] plot ({\t},{1/(\t^(2/3))});
+  \fill (-1,1) circle (1.5pt) node[above left,font=\small] {$(-1,1)$};
+%@ f3-c | 1/Integer(1)**Q(2,3) == 1 | 1) circle (1.5pt) node[above left,font=\small] {$(-1,1)$};
+  \fill (8,0.25) circle (1.5pt) node[above right,font=\small] {$(8,\frac14)$};
+%@ f3-d | 1/Integer(8)**Q(2,3) == Q(1,4) | (1.5pt) node[above right,font=\small] {$(8,\frac14)$};
+  \node[font=\small] at (3.2,1.55) {$y=\lvert x\rvert^{-2/3}$};
+  \node[font=\small] at (4.6,0.85) {area on $[0,8]=6$};
+  \node[below,font=\small] at (8,0) {$8$};
+  \node[below,font=\small] at (-1,0) {$-1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 3. Interior singularities. Left: $y=\frac1x$ has infinite area on each side of the vertical asymptote $x=0$ (blue above the axis, red below), so $\int_{-1}^1\frac{dx}x$ diverges, although the signed areas ``cancel'' in the symmetric limit. Right: $y=\lvert x\rvert^{-2/3}$ also has a vertical asymptote at $0$, but its area is finite: $3$ on $[-1,0]$ and $6$ on $[0,8]$, total $9$ (Example~\ref{ex:m5}(c)).\end{center}
+%@ f3-e | integrate(x**Q(-2,3),(x,0,8)) == 6 | $[0,8]$, total $9$ (Example~\ref{ex:m5}(c)).\end{center}
+
+% ---------------------------------------------------------------------
+\subsection*{Doubly infinite integrals: split anywhere, but split}
+
+Definition~\ref{def:inf}(3) cuts $\int_{-\infty}^\infty$ at a number $c$ and asks that \emph{each} half converge on its own. The number $c$ is arbitrary, and it must be, because nothing in the problem singles one out. The next theorem says that the choice cannot change the verdict or the value.
+
+\begin{thm}{The split point does not matter}{split}
+Let $f$ be continuous on $(-\infty,\infty)$ and let $c$ and $c'$ be real numbers. Then $\int_{-\infty}^cf$ and $\int_c^\infty f$ both converge if and only if $\int_{-\infty}^{c'}f$ and $\int_{c'}^\infty f$ both converge, and in that case
+\[\int_{-\infty}^cf(x)\,dx+\int_c^\infty f(x)\,dx=\int_{-\infty}^{c'}f(x)\,dx+\int_{c'}^\infty f(x)\,dx .\]
+\end{thm}
+\begin{proof}
+Let $k=\int_c^{c'}f(x)\,dx$, an ordinary integral and a real number. For every $a<\min\{c,c'\}$ additivity of ordinary integrals gives $\int_a^{c'}f=\int_a^cf+k$, so $\lim_{a\to-\infty}\int_a^{c'}f$ exists exactly when $\lim_{a\to-\infty}\int_a^cf$ does, and $\int_{-\infty}^{c'}f=\int_{-\infty}^cf+k$. For every $b>\max\{c,c'\}$, $\int_{c'}^bf=\int_c^bf-k$, so $\int_{c'}^\infty f$ converges exactly when $\int_c^\infty f$ does, and $\int_{c'}^\infty f=\int_c^\infty f-k$. Adding, $k$ cancels. $\blacksquare$
+\end{proof}
+
+\begin{exmp}{A doubly infinite integral and two split points}{m6}
+Evaluate $\displaystyle\int_{-\infty}^\infty\frac{dx}{x^2+4x+13}$, splitting first at $c=-2$ and then at $c=0$.
+
+\textbf{Solution.} Complete the square: $x^2+4x+13=(x+2)^2+9$. By Theorem~\ref{8.1-thm:quad} (or the substitution $u=\frac{x+2}3$),
+\[\int\frac{dx}{(x+2)^2+9}=\frac13\tan^{-1}\frac{x+2}3+C=:F(x)+C .\]
+%@ m6a | simplify(x**2+4*x+13-((x+2)**2+9)) == 0 and ANT(atan((x+2)/3)/3,1/(x**2+4*x+13),[0,1,-3,Q(1,2)]) == 0 | dx}{(x+2)^2+9}=\frac13\tan^{-1}\frac{x+2}3+C=:F(x)+C .\]
+Recall $\tan^{-1}u\to\frac\pi2$ as $u\to\infty$ and $\to-\frac\pi2$ as $u\to-\infty$, so $F(x)\to\frac\pi6$ as $x\to\infty$ and $F(x)\to-\frac\pi6$ as $x\to-\infty$.
+
+\emph{Split at $c=-2$} (where $F(-2)=\frac13\tan^{-1}0=0$): $\int_{-\infty}^{-2}=F(-2)-\lim_{a\to-\infty}F(a)=0-\left(-\frac\pi6\right)=\frac\pi6$, and $\int_{-2}^\infty=\lim_{b\to\infty}F(b)-F(-2)=\frac\pi6$. Both converge, and the sum is $\frac\pi3$.
+
+\emph{Split at $c=0$} (where $F(0)=\frac13\tan^{-1}\frac23$): $\int_{-\infty}^0=\frac13\tan^{-1}\frac23+\frac\pi6$ and $\int_0^\infty=\frac\pi6-\frac13\tan^{-1}\frac23$. Both converge, and the sum is again
+\[\left(\frac13\tan^{-1}\frac23+\frac\pi6\right)+\left(\frac\pi6-\frac13\tan^{-1}\frac23\right)=\frac\pi3 .\]
+%@ m6b | limit(atan((b+2)/3)/3,b,oo) == pi/6 and limit(atan((a+2)/3)/3,a,-oo) == -pi/6 and simplify((atan(Q(2,3))/3+pi/6)+(pi/6-atan(Q(2,3))/3)-pi/3) == 0 | \frac\pi6-\frac13\tan^{-1}\frac23\right)=\frac\pi3 .\]
+The piece $\frac13\tan^{-1}\frac23$ appears with opposite signs and cancels, exactly as Theorem~\ref{thm:split} says: the half-line values depend on $c$, the total does not. The value is $\frac\pi3\approx1.047$, and it agrees with sympy's $\int_{-\infty}^{\infty}=\frac\pi3$.
+%@ m6c | integrate(1/(x**2+4*x+13),(x,-oo,oo)) == pi/3 | agrees with sympy's $\int_{-\infty}^{\infty}=\frac\pi3$.
+\end{exmp}
+
+\subsection*{The symmetric limit is not the definition}
+
+A tempting shortcut replaces the two independent limits by one: $\lim_{t\to\infty}\int_{-t}^tf(x)\,dx$, where both ends move out together. When $f$ is odd this limit is $0$ for free, which is why the shortcut is so attractive. The next theorem says exactly when it is legitimate.
+
+\begin{thm}{Even and odd integrands, and the symmetric limit}{odd}
+Let $f$ be continuous on $(-\infty,\infty)$.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item For every $t>0$: $\int_{-t}^0f(x)\,dx=\int_0^tf(-u)\,du$. Hence if $f$ is odd, $\int_{-t}^tf=0$; if $f$ is even, $\int_{-t}^tf=2\int_0^tf$.
+  \item If $f$ is \emph{odd}: $\int_{-\infty}^\infty f$ converges if and only if $\int_0^\infty f$ converges, and then $\int_{-\infty}^\infty f=0$. If $\int_0^\infty f$ diverges, then $\int_{-\infty}^\infty f$ diverges, even though $\lim_{t\to\infty}\int_{-t}^tf=0$.
+  \item If $f$ is \emph{even}: $\int_{-\infty}^\infty f$ converges if and only if $\int_0^\infty f$ converges, and then $\int_{-\infty}^\infty f=2\int_0^\infty f$.
+  \item For every continuous $f$: if $\int_{-\infty}^\infty f$ converges, then $\lim_{t\to\infty}\int_{-t}^tf$ exists and equals it. The converse is false.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Substitute $x=-u$, $dx=-du$ in $\int_{-t}^0f(x)\,dx$: $x=-t$ corresponds to $u=t$ and $x=0$ to $u=0$, so the integral is $\int_{u=t}^{u=0}f(-u)(-du)=\int_0^tf(-u)\,du$. If $f$ is odd, $f(-u)=-f(u)$, so $\int_{-t}^0f=-\int_0^tf$ and $\int_{-t}^tf=\int_{-t}^0f+\int_0^tf=0$; if $f$ is even, $f(-u)=f(u)$ and $\int_{-t}^tf=2\int_0^tf$.
+
+(2) For $f$ odd, $\int_a^0f=-\int_0^{-a}f$ for $a<0$, by (1) with $t=-a$. As $a\to-\infty$ we have $-a\to\infty$, so $\int_{-\infty}^0f$ converges if and only if $\int_0^\infty f$ does, and then $\int_{-\infty}^0f=-\int_0^\infty f$. The doubly infinite integral converges only if both halves do, which happens exactly when $\int_0^\infty f$ converges, and then the total is $-A+A=0$ with $A=\int_0^\infty f$. If $\int_0^\infty f$ diverges, so does $\int_{-\infty}^0f$, and the doubly infinite integral diverges; but $\int_{-t}^tf=0$ for every $t$ by (1).
+
+(3) The same argument with $\int_a^0f=+\int_0^{-a}f$ gives $\int_{-\infty}^0f=\int_0^\infty f$, hence the total $2\int_0^\infty f$.
+
+(4) For every $t$, $\int_{-t}^tf=\int_{-t}^0f+\int_0^tf$, and as $t\to\infty$ the two terms tend to $\int_{-\infty}^0f$ and $\int_0^\infty f$, which are the two halves of the integral (case $c=0$ of Definition~\ref{def:inf}(3)). The converse fails by (2): for $f(x)=x$ the symmetric limit is $0$ but the integral diverges (Example~\ref{ex:m7}). $\blacksquare$
+%@ odd-a | integrate(x**3,(x,-t,t)) == 0 and integrate(x**2,(x,-t,t))-2*integrate(x**2,(x,0,t)) == 0 | integral diverges (Example~\ref{ex:m7}). $\blacksquare$
+\end{proof}
+
+So the shortcut $\lim\int_{-t}^t$ gives the right answer \emph{when the integral is already known to converge}, and it can give a number for an integral that diverges. The following example is the standard test of whether this distinction has sunk in.
+
+\begin{exmp}{The interesting example: does $\int_{-\infty}^\infty x\,dx$ converge?}{m7}
+(a) Determine whether the improper integral $\displaystyle\int_{-\infty}^\infty x\,dx$ converges or diverges using (1) the definition (Definition~\ref{def:inf}(3)); (2) the limit $\displaystyle\lim_{t\to\infty}\int_{-t}^tx\,dx$. Compare the two answers. (b) A student substitutes $u=1+x^2$ in $\displaystyle\int_{-\infty}^\infty\frac{x}{1+x^2}\,dx$ and gets $0$. What is wrong?
+
+\textbf{Solution.} (a) The function $f(x)=x$ is continuous on $(-\infty,\infty)$, and an antiderivative is $\frac{x^2}2$.
+
+\emph{(1) By the definition.} Split at $c=0$ (any $c$ gives the same verdict, Theorem~\ref{thm:split}). Then
+\[\int_{-\infty}^0x\,dx=\lim_{a\to-\infty}\left[\frac{x^2}2\right]_a^0=\lim_{a\to-\infty}\left(-\frac{a^2}2\right)=-\infty .\]
+%@ m7a | limit(-a**2/2,a,-oo) == -oo and limit(b**2/2,b,oo) == oo and ANT(x**2/2,x,[-3,Q(1,2),2]) == 0 | \lim_{a\to-\infty}\left(-\frac{a^2}2\right)=-\infty .\]
+The limit does not exist as a real number, so $\int_{-\infty}^0x\,dx$ diverges. Likewise $\int_0^\infty x\,dx=\lim_{b\to\infty}\frac{b^2}2=\infty$ diverges. The definition requires \emph{both} halves to converge, and neither does, so
+\[\int_{-\infty}^\infty x\,dx\ \text{ diverges.}\]
+
+\emph{(2) By the symmetric limit.} For every $t>0$,
+\[\int_{-t}^tx\,dx=\left[\frac{x^2}2\right]_{-t}^t=\frac{t^2}2-\frac{(-t)^2}2=0,\qquad\text{so}\qquad\lim_{t\to\infty}\int_{-t}^tx\,dx=\lim_{t\to\infty}0=0 .\]
+%@ m7b | simplify(integrate(x,(x,-t,t))) == 0 and limit(integrate(x,(x,-t,t)),t,oo) == 0 | t\to\infty}\int_{-t}^tx\,dx=\lim_{t\to\infty}0=0 .\]
+
+\emph{Comparison.} The two procedures give different answers: the definition says the integral diverges, the symmetric limit says $0$. The definition is the one that counts. The symmetric limit exists here because the integrand is odd (Theorem~\ref{thm:odd}(2)); it is the \emph{principal value}. Why is it not the integral? Because ``both ends go to infinity together'' is only one of many ways to approach infinity, and they disagree. For any real number $L$, let the upper end be $u=\sqrt{t^2+2L}$ (so $u\to\infty$ as $t\to\infty$, a perfectly legitimate way of letting the upper end go to infinity):
+\[\int_{-t}^{\sqrt{t^2+2L}}x\,dx=\frac{t^2+2L}2-\frac{t^2}2=L\qquad\text{for every }t,\]
+%@ m7c | simplify(integrate(x,(x,-t,sqrt(t**2+2*c))) - c) == 0 and simplify((sqrt(t**2+10))**2/2-t**2/2-5) == 0 | dx=\frac{t^2+2L}2-\frac{t^2}2=L\qquad\text{for every }t,\]
+so by moving the upper end out a little faster than the lower end we get $5$, or $-7$, or any number we please (with $u=2t$ we get $\frac{3t^2}2\to\infty$). A quantity that depends on how you approach $\infty$ is not a property of the integral. That is why Definition~\ref{def:inf}(3) takes two \emph{independent} limits.
+
+\begin{center}
+\begin{tikzpicture}[x=0.72cm,y=0.5cm]
+  \draw[->] (-4.8,0) -- (4.9,0) node[right] {$x$};
+  \draw[->] (0,-4.5) -- (0,4.7) node[above] {$y$};
+  \fill[blue!14] (0,0) -- (3,0) -- (3,3) -- cycle;
+  \fill[red!18] (0,0) -- (-3,0) -- (-3,-3) -- cycle;
+  \draw[very thick,blue!70!black] (-4.4,-4.4) -- (4.4,4.4);
+  \draw[dashed] (3,0) -- (3,3);
+  \draw[dashed] (-3,0) -- (-3,-3);
+  \fill (3,3) circle (1.5pt) node[above left,font=\small] {$(t,t)$};
+%@ f4-a | integrate(x,(x,0,3)) == Q(9,2) | 3) circle (1.5pt) node[above left,font=\small] {$(t,t)$};
+  \fill (-3,-3) circle (1.5pt) node[below right,font=\small] {$(-t,-t)$};
+%@ f4-b | integrate(x,(x,-3,0)) == -Q(9,2) | circle (1.5pt) node[below right,font=\small] {$(-t,-t)$};
+  \node[font=\small] at (1.8,0.9) {$+t^2/2$};
+  \node[font=\small] at (-1.8,-0.9) {$-t^2/2$};
+  \node[below,font=\small] at (3,0) {$t$};
+  \node[above,font=\small] at (-3,0) {$-t$};
+  \node[font=\small] at (3.3,4.0) {$y=x$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 4. $y=x$ with $t=3$. The signed area from $0$ to $t$ is $+\frac{t^2}2=\frac92$ (blue), from $-t$ to $0$ it is $-\frac92$ (red), and the two cancel in $\int_{-t}^t$. But each piece grows without bound as $t\to\infty$, so neither $\int_0^\infty x\,dx$ nor $\int_{-\infty}^0x\,dx$ converges, and ``cancelling infinities'' is not a value.\end{center}
+%@ f4-c | integrate(x,(x,0,3))+integrate(x,(x,-3,0)) == 0 | and ``cancelling infinities'' is not a value.\end{center}
+
+(b) The substitution $u=1+x^2$, $du=2x\,dx$ is perfectly valid on every closed interval $[a,b]$ (it needs a continuous derivative, nothing more), and gives
+\[\int_a^b\frac{x\,dx}{1+x^2}=\int_{1+a^2}^{1+b^2}\frac{du}{2u}=\frac12\ln\frac{1+b^2}{1+a^2}.\]
+%@ m7d | simplify(integrate(x/(1+x**2),(x,a,b))-(log(1+b**2)-log(1+a**2))/2) == 0 | 1+b^2}\frac{du}{2u}=\frac12\ln\frac{1+b^2}{1+a^2}.\]
+The student's mistake is the next step: both $x\to-\infty$ and $x\to\infty$ send $u$ to $\infty$, and ``$\int_\infty^\infty$'' silently assumes that the two limits of integration are equal, that is, that $1+a^2=1+b^2$, which is the choice $a=-b$ (the symmetric limit). The definition lets $a\to-\infty$ and $b\to\infty$ independently, and then $\frac12\ln\frac{1+b^2}{1+a^2}$ has no limit: with $a=-b$ it is $0$, with $a=-\frac b2$ it tends to $\frac12\ln4=\ln2$. Equivalently, on one half alone, $\int_0^b\frac{x\,dx}{1+x^2}=\frac12\ln(1+b^2)\to\infty$, so $\int_0^\infty\frac x{1+x^2}\,dx$ diverges, and so does $\int_{-\infty}^\infty\frac x{1+x^2}\,dx$ (the integrand is odd, Theorem~\ref{thm:odd}(2)).
+%@ m7e | limit(log(1+b**2)/2,b,oo) == oo and simplify(limit(log((1+b**2)/(1+(b/2)**2))/2,b,oo)-log(2)) == 0 and ANT(log(1+x**2)/2,x/(1+x**2),[Q(1,2),1,3,-2]) == 0 | (the integrand is odd, Theorem~\ref{thm:odd}(2)).
+\end{exmp}
+
+\begin{think}{Odd means zero?}{odd}
+A classmate says: ``$x^3$ is an odd function, so the positive and negative areas cancel and $\int_{-\infty}^\infty x^3\,dx=0$.'' Is that right? Does the same argument work for $\int_{-\infty}^\infty xe^{-x^2}\,dx$? What must you check before you may say ``odd, so zero''?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Comparison: deciding convergence without an antiderivative}
+
+Sections 8.6 and 8.7 showed that many integrands, for example $e^{-x^2}$, have no elementary antiderivative, so the method of the previous pages (integrate, then take the limit) is closed. But often the question is only \emph{whether} an integral converges, or how big it is, and for that a comparison with a simpler integral is enough. The comparison tests are the improper-integral version of ``a number smaller than a finite number is finite''. They need three ingredients: a way to organize the many kinds of improper integral into one, the algebra of limits of integrals, and the key fact that for a non-negative integrand the integral up to $x$ can only grow.
+
+\emph{One trouble spot at a time.} A \emph{piece} is an integral $\int_a^\omega f(x)\,dx$ with $a<\omega\le\infty$ and $f$ continuous on $[a,\omega)$, defined as $\lim_{x\to\omega^-}\int_a^xf$. Here $\omega$ is either $\infty$ or a finite number where $f$ is undefined or unbounded. By Definitions~\ref{def:inf} and~\ref{def:unb}, every improper integral is a finite sum of pieces and \emph{mirror images} of pieces (trouble at the left end), and it converges exactly when every piece does. The mirror principle says that a mirror image is a piece after a change of variable.
+
+\begin{thm}{The mirror principle}{mirror}
+Let $a<b$. (1) If $f$ is continuous on $(a,b]$ and $g(u)=f(a+b-u)$ for $a\le u<b$, then $\int_a^bf$ converges if and only if the piece $\int_a^bg$ converges, and the values are equal. (2) If $f$ is continuous on $(-\infty,b]$ and $g(u)=f(-u)$ for $u\ge-b$, then $\int_{-\infty}^bf$ converges if and only if the piece $\int_{-b}^\infty g$ converges, with equal values.
+\end{thm}
+\begin{proof}
+(1) For $a<c<b$ the substitution $x=a+b-u$, $dx=-du$ turns $\int_c^bf(x)\,dx$ into $\int_a^{a+b-c}g(u)\,du$ (the limits $x=c,b$ correspond to $u=a+b-c,a$, and the minus sign from $dx=-du$ reverses them). The map $c\mapsto a+b-c$ is a bijection of $(a,b)$ onto itself that exchanges ``$c\to a^+$'' and ``$a+b-c\to b^-$'', so the two limits exist together and are equal. (2) In the same way $\int_t^bf(x)\,dx=\int_{-b}^{-t}g(u)\,du$ by $x=-u$, and $t\to-\infty$ corresponds to $-t\to\infty$. $\blacksquare$
+\end{proof}
+
+In particular a statement about the sign of the integrand, or about a limit $\lim_{x\to a^+}\frac{f(x)}{h(x)}$, becomes the same statement for $g$ at $b^-$. So \emph{every theorem below is stated and proved for pieces $\int_a^\omega$, and it holds, with the obvious change of one-sided limit, at a left-hand trouble spot and at $-\infty$.}
+
+\begin{thm}{Arithmetic of improper integrals}{alg}
+Let $f$ and $g$ be continuous on $[a,\omega)$.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item (\emph{Additivity}) For $a\le c<\omega$: $\int_a^\omega f$ converges if and only if $\int_c^\omega f$ converges, and then $\int_a^\omega f=\int_a^cf+\int_c^\omega f$.
+  \item (\emph{Linearity}) If $\int_a^\omega f$ and $\int_a^\omega g$ converge, then $\int_a^\omega(\alpha f+\beta g)$ converges and equals $\alpha\int_a^\omega f+\beta\int_a^\omega g$. If $\alpha\ne0$, then $\int_a^\omega\alpha f$ converges if and only if $\int_a^\omega f$ does.
+  \item (\emph{Order}) If $\int_a^\omega f$ and $\int_a^\omega g$ converge and $f\le g$ on $[a,\omega)$, then $\int_a^\omega f\le\int_a^\omega g$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+For $x\in[c,\omega)$, $\int_a^xf=\int_a^cf+\int_c^xf$, and $\int_a^cf$ is a constant; limits as $x\to\omega^-$ of the two sides exist together, which is (1). For (2), $\int_a^x(\alpha f+\beta g)=\alpha\int_a^xf+\beta\int_a^xg$ and the limit laws apply; and if $\alpha\ne0$, $\int_a^xf=\frac1\alpha\int_a^x\alpha f$. For (3), $\int_a^xf\le\int_a^xg$ for every $x$, and limits preserve non-strict inequalities (Calculus~I). $\blacksquare$
+\end{proof}
+
+Now the key fact. If $f\ge0$, then $F(x)=\int_a^xf$ \emph{increases} with $x$, and an increasing function either levels off at a finite value or goes to $\infty$. There is no third possibility, no oscillation. This is what makes the comparison tests work.
+
+\begin{thm}{Non-negative integrands: the bounded-above criterion}{bdd}
+Let $f$ be continuous on $[a,\omega)$ with $f\ge0$, and let $F(x)=\int_a^xf$. Then $F$ is nondecreasing, and
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item if $F$ is bounded above, then $\int_a^\omega f$ converges, and $F(x)\le\int_a^\omega f$ for every $x$;
+  \item if $F$ is not bounded above, then $F(x)\to\infty$ as $x\to\omega^-$: the integral diverges to $\infty$.
+\end{enumerate}
+In words: an integral of a non-negative function converges if and only if the integrals up to $x$ stay bounded.
+\end{thm}
+\begin{proof}
+If $a\le x<y<\omega$ then $F(y)-F(x)=\int_x^yf\ge0$, so $F$ is nondecreasing. A nondecreasing function on $[a,\omega)$ that is bounded above has a limit at $\omega^-$ equal to its supremum, and one that is not bounded above tends to $\infty$. For $\omega=\infty$ this is Theorem~\ref{app-thm:posint} (which rests on Theorem~\ref{app-thm:monofn}); for finite $\omega$ it is Theorem~\ref{app-thm:posend}. Both come from the completeness of the real numbers (Appendix A), and the proofs are in the appendix. The inequality $F(x)\le\int_a^\omega f$ holds because the limit of a nondecreasing function is its supremum. $\blacksquare$
+\end{proof}
+
+\begin{thm}{The Comparison Test}{comp}
+Let $f$ and $g$ be continuous on $[a,\omega)$ with $0\le g(x)\le f(x)$.
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item If $\int_a^\omega f$ converges, then $\int_a^\omega g$ converges, and $\int_a^\omega g\le\int_a^\omega f$.
+  \item If $\int_a^\omega g$ diverges, then $\int_a^\omega f$ diverges (to $\infty$).
+\end{enumerate}
+The inequality $0\le g\le f$ need only hold on some interval $[c,\omega)$ with $c<\omega$: the verdict on convergence is unaffected (Theorem~\ref{thm:alg}(1)).
+\end{thm}
+\begin{proof}
+Let $F(x)=\int_a^xf$ and $G(x)=\int_a^xg$. Since $0\le g\le f$, $0\le G(x)\le F(x)$ for every $x$. (1) If $\int_a^\omega f$ converges, then by Theorem~\ref{thm:bdd}(1), $F(x)\le\int_a^\omega f$, so $G(x)\le\int_a^\omega f$ for every $x$: $G$ is bounded above, so $\int_a^\omega g$ converges by Theorem~\ref{thm:bdd}(1), and $\int_a^\omega g\le\int_a^\omega f$ by Theorem~\ref{thm:alg}(3). (2) is the contrapositive of (1), and Theorem~\ref{thm:bdd}(2) says what the divergence looks like: $G\to\infty$, so $F\ge G\to\infty$. For the last sentence, apply the theorem on $[c,\omega)$ and use additivity: $\int_a^\omega$ converges if and only if $\int_c^\omega$ does. $\blacksquare$
+\end{proof}
+
+\begin{thm}{The Limit Comparison Test}{lct}
+Let $f$ and $g$ be continuous and positive on $[a,\omega)$, and suppose $L=\displaystyle\lim_{x\to\omega^-}\frac{f(x)}{g(x)}$ exists ($L$ a number or $\infty$).
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item If $0<L<\infty$, then $\int_a^\omega f$ and $\int_a^\omega g$ either both converge or both diverge.
+  \item If $L=0$ and $\int_a^\omega g$ converges, then $\int_a^\omega f$ converges.
+  \item If $L=\infty$ and $\int_a^\omega g$ diverges, then $\int_a^\omega f$ diverges.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Take $\varepsilon=\frac L2$: there is $c<\omega$ such that $\frac L2<\frac fg<\frac{3L}2$ on $[c,\omega)$, that is, $\frac L2\,g<f<\frac{3L}2\,g$. If $\int g$ converges, so does $\int\frac{3L}2g$ (Theorem~\ref{thm:alg}(2)), and $f<\frac{3L}2g$ gives that $\int f$ converges by the Comparison Test. If $\int g$ diverges, so does $\int\frac L2g$, and $f>\frac L2g$ gives that $\int f$ diverges. (2) With $\varepsilon=1$ there is $c$ with $\frac fg<1$, that is $f<g$, on $[c,\omega)$; if $\int g$ converges, so does $\int f$. (3) If $L=\infty$ there is $c$ with $\frac fg>1$, that is $f>g$, on $[c,\omega)$; if $\int g$ diverges, so does $\int f$. In each case the Comparison Test is applied on $[c,\omega)$, which is allowed by its last sentence. $\blacksquare$
+\end{proof}
+
+\emph{How to use them.} Guess the behavior from the part of $f$ that dominates near the trouble spot, choose a comparison function $g$ whose integral you know (usually $x^{-p}$ or $e^{-kx}$, Theorem~\ref{thm:p}), and then decide which test is easier: the Comparison Test needs an inequality for all large $x$ (or all $x$ near the singularity), the Limit Comparison Test needs a limit.
+
+\begin{center}
+\begin{tikzpicture}[x=1.85cm,y=3.6cm]
+  \draw[->] (-0.1,0) -- (3.4,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,1.12) node[above] {$y$};
+  \fill[blue!12] (1,0) -- plot[domain=1:3,samples=40,variable=\t] ({\t},{exp(-\t)}) -- (3,0) -- cycle;
+  \fill[red!25] (1,0) -- plot[domain=1:3,samples=40,variable=\t] ({\t},{exp(-\t*\t)}) -- (3,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:3.2,samples=60,variable=\t] plot ({\t},{exp(-\t)});
+  \draw[very thick,red!70!black,domain=0:3.2,samples=80,variable=\t] plot ({\t},{exp(-\t*\t)});
+  \fill (1,0.367879) circle (1.5pt) node[above right,font=\small] {$(1,e^{-1})$};
+%@ f5-a | exp(-Integer(1)**2) == exp(-1) | (1.5pt) node[above right,font=\small] {$(1,e^{-1})$};
+  \fill (2,0.135335) circle (1.5pt) node[above right,font=\small] {$(2,e^{-2})$};
+%@ f5-b | exp(-Integer(2)**2) < exp(-Integer(2)) and exp(-Integer(2)) == exp(-2) | (1.5pt) node[above right,font=\small] {$(2,e^{-2})$};
+  \node[blue!70!black,font=\small] at (2.55,0.42) {$e^{-x}$};
+  \node[red!70!black,font=\small] at (0.55,0.38) {$e^{-x^2}$};
+  \node[below,font=\small] at (1,0) {$1$};
+\end{tikzpicture}\qquad
+\begin{tikzpicture}[x=1.0cm,y=4.4cm]
+  \draw[->] (1.7,0) -- (6.9,0) node[right] {$x$};
+  \draw[->] (1.7,-0.02) -- (1.7,0.95) node[above] {$y$};
+  \fill[blue!12] (2,0) -- plot[domain=2:6.4,samples=50,variable=\t] ({\t},{1/(\t^(2/3))}) -- (6.4,0) -- cycle;
+  \draw[very thick,red!70!black,domain=2:6.4,samples=60,variable=\t] plot ({\t},{1/((\t*\t-1)^(1/3))});
+  \draw[very thick,blue!70!black,domain=2:6.4,samples=60,variable=\t] plot ({\t},{1/(\t^(2/3))});
+  \fill (2,0.693361) circle (1.5pt) node[above right,font=\small] {$(2,3^{-1/3})$};
+%@ f5-c | NUM((Integer(2)**2-1)**Q(-1,3),3**Q(-1,3)) == 0 and 3**Q(-1,3) > 4**Q(-1,3) and NUM(4**Q(-1,3),2**Q(-2,3)) == 0 | (1.5pt) node[above right,font=\small] {$(2,3^{-1/3})$};
+  \node[red!70!black,font=\small] at (5.2,0.5) {$f=(x^2-1)^{-1/3}$};
+  \node[blue!70!black,font=\small] at (5.2,0.26) {$g=x^{-2/3}$};
+  \node[below,font=\small] at (2,0) {$2$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 5. Left: for $x\ge1$ the red curve $e^{-x^2}$ lies below the blue curve $e^{-x}$, so the red region (area $\le e^{-1}$) is inside the blue one, which has finite area $e^{-1}$: the Comparison Test gives convergence of $\int_1^\infty e^{-x^2}dx$. (The curves cross at $x=0$ and $x=1$; for $0<x<1$, $e^{-x^2}>e^{-x}$.) Right: $f(x)=(x^2-1)^{-1/3}$ lies above $g(x)=x^{-2/3}$ for $x\ge2$, and the shaded region under $g$ already has infinite area, so the region under $f$ does too: $\int_2^\infty f$ diverges (Example~\ref{ex:m8}(b)).\end{center}
+
+\begin{exmp}{The Comparison Test}{m8}
+Decide whether the integrals converge: (a) $\displaystyle\int_1^\infty e^{-x^2}\,dx$; (b) $\displaystyle\int_2^\infty\frac{dx}{\sqrt[3]{x^2-1}}$.
+
+\textbf{Solution.} (a) The integrand has no elementary antiderivative (Theorem~\ref{8.6-thm:conseq}), so we compare. Predict first: $e^{-x^2}$ decays faster than $e^{-x}$, whose integral over $[1,\infty)$ converges, so we expect convergence and use part (1). For $x\ge1$ we have $x^2\ge x$, hence $-x^2\le-x$, and since $e^u$ is increasing, $0<e^{-x^2}\le e^{-x}$. The comparison integral is $\int_1^\infty e^{-x}\,dx=\lim_{b\to\infty}\left(e^{-1}-e^{-b}\right)=e^{-1}$. By the Comparison Test, $\int_1^\infty e^{-x^2}\,dx$ converges, and its value is at most $e^{-1}\approx0.3679$. Adding the ordinary integral $\int_0^1e^{-x^2}\,dx$ (Theorem~\ref{thm:alg}(1)) shows that $\int_0^\infty e^{-x^2}\,dx$ converges too.
+%@ m8a | limit(integrate(exp(-x),(x,1,b)),b,oo) == exp(-1) and RND(exp(-1),4) == Q(3679,10000) | 1)) shows that $\int_0^\infty e^{-x^2}\,dx$ converges too.
+A better comparison function gives a better bound. For $x\ge1$ also $e^{-x^2}\le xe^{-x^2}$, and $\int_1^\infty xe^{-x^2}\,dx=\lim_{b\to\infty}\left[-\frac{e^{-x^2}}2\right]_1^b=\frac1{2e}\approx0.1839$, so $\int_1^\infty e^{-x^2}\,dx\le0.1839$. (The true value is about $0.1394$; the bound is safe, not sharp.)
+%@ m8b | limit(integrate(x*exp(-x**2),(x,1,b)),b,oo) == exp(-1)/2 and RND(exp(-1)/2,4) == Q(1839,10000) and RND(Integral(exp(-x**2),(x,1,oo)).evalf(20),4) == Q(1394,10000) | value is about $0.1394$; the bound is safe, not sharp.)
+
+(b) For large $x$, $\sqrt[3]{x^2-1}\approx x^{2/3}$, and $\int_2^\infty x^{-2/3}\,dx$ diverges ($p=\frac23\le1$, Theorem~\ref{thm:p}), so we expect divergence and use part (2) with $g(x)=x^{-2/3}$ the \emph{smaller} function. For $x\ge2$, $0<x^2-1<x^2$, so $(x^2-1)^{1/3}<x^{2/3}$ and, taking reciprocals,
+\[\frac1{\sqrt[3]{x^2-1}}>\frac1{x^{2/3}}>0 .\]
+%@ m8c | all(((v**2-1)**Q(-1,3)).evalf(30) > (v**Q(-2,3)).evalf(30) for v in (2,3,5,10)) and NUM(Integer(4)**Q(1,3),2**Q(2,3)) == 0 | \[\frac1{\sqrt[3]{x^2-1}}>\frac1{x^{2/3}}>0 .\]
+Since $\int_2^\infty x^{-2/3}\,dx$ diverges, $\int_2^\infty\frac{dx}{\sqrt[3]{x^2-1}}$ diverges (to $\infty$).
+\end{exmp}
+
+\begin{warn}[The inequality must point the right way]
+Both $\frac1{x^2+1}\le\frac1x$ and $\frac1{x^2+1}\le\frac1{x^2}$ hold on $[1,\infty)$. The second comparison proves that $\int_1^\infty\frac{dx}{x^2+1}$ converges, because $\int_1^\infty\frac{dx}{x^2}$ converges. The first proves nothing: $\int_1^\infty\frac{dx}x$ diverges, and \emph{a smaller function can still have a finite integral under a larger one that has an infinite integral}. To prove convergence, bound the integrand \emph{above} by a convergent integrand; to prove divergence, bound it \emph{below} by a divergent one. Also check the sign: the tests need $g\ge0$ (an inequality such as $-\frac1x\le\frac1{x^2}$ is true and useless).
+\end{warn}
+
+\begin{kc}{Which way does it go?}{kc3}
+Let $f$ and $g$ be continuous on $[1,\infty)$ with $0\le g(x)\le f(x)$. What, if anything, can you conclude about the other integral in each case? (a) $\int_1^\infty f$ converges. (b) $\int_1^\infty f$ diverges. (c) $\int_1^\infty g$ converges. (d) $\int_1^\infty g$ diverges.
+\end{kc}
+
+\begin{exmp}{The Limit Comparison Test}{m9}
+Decide whether the integrals converge: (a) $\displaystyle\int_1^\infty\frac{x+2}{x^3+4}\,dx$; (b) $\displaystyle\int_2^\infty\frac{x\,dx}{\sqrt{x^3-1}}$; (c) $\displaystyle\int_0^1\frac{dx}{\sqrt x+x^3}$; (d) $\displaystyle\int_1^\infty\frac{\ln x}{x^2}\,dx$; (e) $\displaystyle\int_2^\infty\frac{\ln x}x\,dx$.
+
+\textbf{Solution.} In each case the integrand is positive and continuous on the interval.
+
+(a) For large $x$ the numerator behaves like $x$ and the denominator like $x^3$, so compare with $g(x)=\frac1{x^2}$: $\dfrac{f(x)}{g(x)}=\dfrac{x^2(x+2)}{x^3+4}=\dfrac{1+2/x}{1+4/x^3}\to1$ as $x\to\infty$. Since $0<1<\infty$ and $\int_1^\infty x^{-2}\,dx$ converges, $\int_1^\infty\frac{x+2}{x^3+4}\,dx$ \emph{converges}.
+%@ m9a | limit(x**2*(x+2)/(x**3+4),x,oo) == 1 | $\int_1^\infty\frac{x+2}{x^3+4}\,dx$ \emph{converges}.
+
+(b) $\sqrt{x^3-1}\approx x^{3/2}$, so $f\approx x^{-1/2}$; take $g(x)=x^{-1/2}$. Then $\dfrac fg=\dfrac{x\cdot x^{1/2}}{\sqrt{x^3-1}}=\dfrac1{\sqrt{1-x^{-3}}}\to1$. As $\int_2^\infty x^{-1/2}\,dx$ diverges ($p=\frac12$), $\int_2^\infty\frac{x\,dx}{\sqrt{x^3-1}}$ \emph{diverges}.
+%@ m9b | limit(x*sqrt(x)/sqrt(x**3-1),x,oo) == 1 | $\int_2^\infty\frac{x\,dx}{\sqrt{x^3-1}}$ \emph{diverges}.
+
+(c) The trouble spot is $x=0$, where $f\to\infty$. Near $0$, $x^3\ll\sqrt x$, so take $g(x)=x^{-1/2}$ and let $x\to0^+$: $\dfrac fg=\dfrac{\sqrt x}{\sqrt x+x^3}=\dfrac1{1+x^{5/2}}\to1$. Since $\int_0^1x^{-1/2}\,dx=2$ converges (Theorem~\ref{thm:p}(2)), $\int_0^1\frac{dx}{\sqrt x+x^3}$ \emph{converges}.
+%@ m9c | limit(1/(1+x**Q(5,2)),x,0,'+') == 1 | 2)), $\int_0^1\frac{dx}{\sqrt x+x^3}$ \emph{converges}.
+
+(d) Here $\ln x$ grows more slowly than any power, so compare with a power slightly smaller than $x^{-2}$, say $g(x)=x^{-3/2}$: $\dfrac fg=\dfrac{\ln x}{x^{1/2}}\to0$ (L'Hôpital: $\frac{1/x}{\frac12x^{-1/2}}=\frac2{\sqrt x}\to0$). With $L=0$ and $\int_1^\infty x^{-3/2}\,dx$ convergent, $\int_1^\infty\frac{\ln x}{x^2}\,dx$ \emph{converges} (its value is $1$, by parts).
+%@ m9d | limit(log(x)/sqrt(x),x,oo) == 0 and integrate(log(x)/x**2,(x,1,oo)) == 1 | \emph{converges} (its value is $1$, by parts).
+
+(e) Compare with $g(x)=\frac1x$: $\dfrac fg=\ln x\to\infty$, and $\int_2^\infty\frac{dx}x$ diverges, so by case (3) $\int_2^\infty\frac{\ln x}x\,dx$ \emph{diverges}. (Directly: $\int_2^b\frac{\ln x}x\,dx=\frac{(\ln b)^2-(\ln2)^2}2\to\infty$.)
+%@ m9e | limit(log(x),x,oo) == oo and simplify(integrate(log(x)/x,(x,2,b))-(log(b)**2-log(2)**2)/2) == 0 | (e) Compare with $g(x)=\frac1x$: $\dfrac fg=\ln x\to\infty$, and $\int_2^\infty\frac{dx}x$ diverges, so by case (3) $\int_2^\infty\frac{\ln x}x\,dx$ \emph{diverges}. (Directly: $\int_2^b\frac{\ln x}x\,dx=\frac{(\ln b)^2-(\ln2)^2}2\to\infty$.)
+In (d) the limit is $0$, so the test only works because $g$ converges; in (e) the limit is $\infty$, so it only works because $g$ diverges. With the wrong $g$ ($g=\frac1{x^2}$ in (d)): $\frac fg=\ln x\to\infty$ and $\int g$ converges: no conclusion.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Absolute convergence}
+
+The comparison tests need $f\ge0$. For an integrand that changes sign (an oscillating one such as $\frac{\sin x}{x^2}$) we compare $\lvert f\rvert$ instead, and the next theorem says that this is enough.
+
+\begin{defn}{Absolute and conditional convergence}{abs}
+A piece $\int_a^\omega f$ \emph{converges absolutely} if $\int_a^\omega\lvert f\rvert$ converges. It \emph{converges conditionally} if $\int_a^\omega f$ converges but $\int_a^\omega\lvert f\rvert$ diverges.
+\end{defn}
+
+\begin{thm}{Absolute convergence implies convergence}{abs}
+Let $f$ be continuous on $[a,\omega)$. If $\int_a^\omega\lvert f\rvert$ converges, then $\int_a^\omega f$ converges, and $\left\lvert\int_a^\omega f\right\rvert\le\int_a^\omega\lvert f\rvert$.
+\end{thm}
+\begin{proof}
+Since $-\lvert f\rvert\le f\le\lvert f\rvert$, we have $0\le f+\lvert f\rvert\le2\lvert f\rvert$. The integral $\int_a^\omega2\lvert f\rvert$ converges (Theorem~\ref{thm:alg}(2)), so by the Comparison Test $\int_a^\omega(f+\lvert f\rvert)$ converges. Now $f=(f+\lvert f\rvert)-\lvert f\rvert$ is a difference of two functions with convergent integrals, so $\int_a^\omega f$ converges by linearity (Theorem~\ref{thm:alg}(2)). Finally $-\lvert f\rvert\le f\le\lvert f\rvert$ gives, by the order property (Theorem~\ref{thm:alg}(3)), $-\int_a^\omega\lvert f\rvert\le\int_a^\omega f\le\int_a^\omega\lvert f\rvert$. $\blacksquare$
+%@ abs-a | all(0 <= v+abs(v) <= 2*abs(v) for v in (-3,-1,0,2,5)) and 2+abs(2) == 4 | $\blacksquare$
+\end{proof}
+
+The converse is false: an integral can converge conditionally (Pause and think~\ref{think:cond}, and Example~\ref{ex:b13}). The theorem also applies at a left-hand trouble spot and at $-\infty$ by the mirror principle.
+
+\begin{exmp}{Oscillating integrands, and an integral that converges although the integrand does not tend to $0$}{m10}
+(a) Show that $\displaystyle\int_1^\infty\frac{\sin x}{x^2}\,dx$ converges. (b) Show that $\displaystyle\int_0^\infty\sin\left(x^2\right)dx$ converges, although $\sin\left(x^2\right)$ does not tend to $0$ as $x\to\infty$. (c) Show that a continuous $f\ge0$ with $f(n)=1$ for every integer $n\ge2$ can have a convergent integral.
+
+\textbf{Solution.} (a) For $x\ge1$, $\left\lvert\frac{\sin x}{x^2}\right\rvert\le\frac1{x^2}$, and $\int_1^\infty\frac{dx}{x^2}$ converges. By the Comparison Test $\int_1^\infty\left\lvert\frac{\sin x}{x^2}\right\rvert dx$ converges, so by Theorem~\ref{thm:abs} $\int_1^\infty\frac{\sin x}{x^2}\,dx$ converges. (It converges absolutely. The value is not needed, and we do not claim a closed form.)
+%@ m10a | all(abs(sin(v)/v**2) <= 1/v**2 for v in (1,2,3,5,10)) and limit(integrate(1/x**2,(x,1,b)),b,oo) == 1 | value is not needed, and we do not claim a closed form.)
+
+(b) The integrand does not tend to $0$: at $x_k=\sqrt{\frac\pi2+2k\pi}$ ($k=0,1,2,\dots$, a sequence tending to $\infty$) we have $\sin\left(x_k^2\right)=\sin\left(\frac\pi2+2k\pi\right)=1$ (Figure~6). The integral over $[0,1]$ is an ordinary one, so by additivity only $\int_1^\infty$ matters. For $b>1$ substitute $u=x^2$, $x=\sqrt u$, $dx=\frac{du}{2\sqrt u}$ (Section 8.1):
+\[\int_1^b\sin\left(x^2\right)dx=\int_1^{b^2}\frac{\sin u}{2\sqrt u}\,du .\]
+Integrate by parts (Theorem~\ref{8.2-thm:parts}) with $dv=\sin u\,du$, $v=-\cos u$ and $w=\frac1{2\sqrt u}$, $dw=-\frac1{4u^{3/2}}\,du$:
+\[\int_1^{b^2}\frac{\sin u}{2\sqrt u}\,du=\left[-\frac{\cos u}{2\sqrt u}\right]_1^{b^2}-\int_1^{b^2}\frac{\cos u}{4u^{3/2}}\,du=\frac{\cos1}2-\frac{\cos\left(b^2\right)}{2b}-\int_1^{b^2}\frac{\cos u}{4u^{3/2}}\,du .\]
+%@ m10b | simplify(diff(-cos(t)/(2*sqrt(t)),t)-(sin(t)/(2*sqrt(t))+cos(t)/(4*t**Q(3,2)))) == 0 and RND(cos(1)/2,4) == Q(2702,10000) | 2b}-\int_1^{b^2}\frac{\cos u}{4u^{3/2}}\,du .\]
+Let $b\to\infty$. The middle term satisfies $\left\lvert\frac{\cos(b^2)}{2b}\right\rvert\le\frac1{2b}\to0$. The last integral converges: $\left\lvert\frac{\cos u}{4u^{3/2}}\right\rvert\le\frac14u^{-3/2}$ and $\int_1^\infty u^{-3/2}\,du$ converges ($p=\frac32>1$), so $\int_1^\infty\frac{\cos u}{4u^{3/2}}\,du$ converges absolutely, hence converges (Theorem~\ref{thm:abs}). Therefore $\lim_{b\to\infty}\int_1^b\sin\left(x^2\right)dx$ exists, and $\int_0^\infty\sin\left(x^2\right)dx$ converges. (Its value is $\frac12\sqrt{\frac\pi2}\approx0.6267$; this follows from the Fresnel integrals and is stated here without proof.) The area oscillates and the positive and negative humps shrink in width fast enough that they add up to a limit, but not because $f\to0$: the heights stay $1$.
+%@ m10c | limit(fresnels(x),x,oo)*sqrt(pi/2) == sqrt(pi/2)/2 and RND(sqrt(pi/2)/2,4) == Q(6267,10000) | to a limit, but not because $f\to0$: the heights stay $1$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.45cm,y=1.5cm]
+  \draw[->] (-0.1,0) -- (4.7,0) node[right] {$x$};
+  \draw[->] (0,-1.3) -- (0,1.4) node[above] {$y$};
+  \draw[dashed,gray] (0,1) -- (4.5,1);
+  \draw[dashed,gray] (0,-1) -- (4.5,-1);
+  \draw[very thick,blue!70!black,domain=0:4.5,samples=500,variable=\t] plot ({\t},{sin(deg(\t*\t))});
+  \fill (1.253314,1) circle (1.5pt) node[above,font=\small] {$(\sqrt{\pi/2},1)$};
+%@ f6-a | sin(sqrt(pi/2)**2) == 1 | (1.5pt) node[above,font=\small] {$(\sqrt{\pi/2},1)$};
+  \fill (1.772454,0) circle (1.5pt) node[below,font=\small] {$\sqrt\pi$};
+%@ f6-b | sin(sqrt(pi)**2) == 0 | 0) circle (1.5pt) node[below,font=\small] {$\sqrt\pi$};
+  \fill (2.802495,1) circle (1.5pt) node[above,font=\small] {$(\sqrt{5\pi/2},1)$};
+%@ f6-c | sin(sqrt(5*pi/2)**2) == 1 | (1.5pt) node[above,font=\small] {$(\sqrt{5\pi/2},1)$};
+  \node[left,font=\small] at (0,1) {$1$};
+  \node[left,font=\small] at (0,-1) {$-1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 6. $y=\sin\left(x^2\right)$. The humps get narrower as $x$ grows (the first zero after $0$ is at $\sqrt\pi\approx1.77$, and the humps then crowd together), but their height stays $1$, so $y\not\to0$. The signed areas of consecutive humps alternate and decrease in size, and $\int_0^\infty\sin(x^2)\,dx$ converges.\end{center}
+%@ f6-d | sin(sqrt(pi)**2) == 0 and RND(sqrt(pi),2) == Q(177,100) | and $\int_0^\infty\sin(x^2)\,dx$ converges.\end{center}
+
+(c) Let $f$ be zero except on the intervals $\left[n-\frac1{n^2},\,n+\frac1{n^2}\right]$ for $n=2,3,4,\dots$ (these do not overlap), where its graph is a triangle with peak $f(n)=1$ and base of length $\frac2{n^2}$. The triangle has area $\frac12\cdot\frac2{n^2}\cdot1=\frac1{n^2}$. For an integer $N\ge2$ and $x\le N$, the integral $F(x)=\int_0^xf$ is at most the sum of the areas of the triangles $n=2,\dots,N$ (the triangle with $n=N+1$ starts at $N+1-\frac1{(N+1)^2}>N$), and
+\[\sum_{n=2}^N\frac1{n^2}\le\sum_{n=2}^N\frac1{n(n-1)}=\sum_{n=2}^N\left(\frac1{n-1}-\frac1n\right)=1-\frac1N<1\qquad(\text{telescoping}).\]
+%@ m10d | Q(1,2)*(2*Q(1,2**2))*1 == Q(1,4) and summation(1/(k*(k-1)),(k,2,N)) == 1-1/N | 1-\frac1N<1\qquad(\text{telescoping}).\]
+So $F$ is bounded above by $1$, and by Theorem~\ref{thm:bdd}(1) the integral $\int_0^\infty f$ converges, although $f(n)=1$ for every $n\ge2$ and so $f$ has no limit $0$.
+\end{exmp}
+
+\begin{think}{Must the integrand tend to zero?}{cond}
+Part (b) and part (c) of the last example give convergent integrals whose integrands do not tend to $0$. (1) What does that say about the statement ``if $\int_a^\infty f$ converges then $f(x)\to0$''? (2) What additional hypothesis on $f$ would rescue it? (Example~\ref{ex:b14} proves one.) (3) Does $\int_0^\infty\sin x\,dx$ converge? Why does the ``humps cancel'' picture not decide it?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{No elementary antiderivative: bracket the integral and compute the rest}
+
+Section 8.6 proved that $\int e^{-x^2}\,dx$ is not elementary, and Section 8.8 approximated integrals like $\int_0^1e^{-x^2}\,dx$ with a guaranteed error. For $\int_0^\infty e^{-x^2}\,dx$ the interval is infinite, and a rule with $n$ panels needs a finite interval. The method is the one the Comparison Test suggests: \emph{cut the integral at a point, bound the tail by comparison, and compute the finite piece with a rule and its error bound.} The result is a \emph{bracket}, a pair of numbers between which the integral is guaranteed to lie.
+
+\begin{exmp}{$\displaystyle\int_0^\infty e^{-x^2}\,dx$ and $\displaystyle\int_0^1\frac{\cos x}{\sqrt x}\,dx$ with guaranteed errors}{m11}
+(a) Bracket $I=\int_0^\infty e^{-x^2}\,dx$ within $10^{-4}$. (b) Approximate $J=\int_0^1\frac{\cos x}{\sqrt x}\,dx$ and explain why the rules of Section 8.8 cannot be applied to it directly.
+
+\textbf{Solution.} (a) \emph{The integral exists.} By Example~\ref{ex:m8}(a) and additivity, $I$ converges. It has no elementary antiderivative (Theorem~\ref{8.6-thm:conseq}), so the Fundamental Theorem cannot be used. (A later course, with a double integral and polar coordinates, shows $I=\frac{\sqrt\pi}2\approx0.886227$; we use that value only to check our answer at the end, and we do not use it in the argument.) \emph{Cut at $3$:} $I=\int_0^3e^{-x^2}\,dx+\int_3^\infty e^{-x^2}\,dx$.
+
+\emph{The tail.} For $x\ge3$ we have $1\le\frac x3$, so $0<e^{-x^2}\le\frac x3e^{-x^2}$, and
+\[\int_3^\infty\frac x3e^{-x^2}\,dx=\frac13\lim_{b\to\infty}\left[-\frac{e^{-x^2}}2\right]_3^b=\frac{e^{-9}}6\approx2.06\times10^{-5}.\]
+By the Comparison Test, $0<\int_3^\infty e^{-x^2}\,dx\le\frac{e^{-9}}6\approx0.0000206$.
+%@ m11a | limit(integrate(x*exp(-x**2)/3,(x,3,b)),b,oo) == exp(-9)/6 and RND(exp(-9)/6*10**5,2) == Q(206,100) | By the Comparison Test, $0<\int_3^\infty e^{-x^2}\,dx\le\frac{e^{-9}}6\approx0.0000206$.
+
+\emph{The finite piece.} Use Simpson's Rule on $[0,3]$. With $f(x)=e^{-x^2}$, $f^{(4)}(x)=\left(16x^4-48x^2+12\right)e^{-x^2}$ and $f^{(5)}(x)=-8x\left(4x^4-20x^2+15\right)e^{-x^2}$. On $[0,3]$ the derivative $f^{(5)}$ vanishes at $x=0$ and at the roots of $4u^2-20u+15=0$, $u=x^2=\frac{5\pm\sqrt{10}}2$, that is at $x\approx0.959$ and $x\approx2.020$. The values of $f^{(4)}$ at $0$, $0.959$, $2.020$ and the endpoint $3$ are $12$, $-7.42$, $1.39$ and $0.11$, so $\lvert f^{(4)}\rvert\le M_4=12$ on $[0,3]$.
+%@ m11b | simplify(diff(exp(-x**2),x,4)-(16*x**4-48*x**2+12)*exp(-x**2)) == 0 and simplify(diff(exp(-x**2),x,5)+8*x*(4*x**4-20*x**2+15)*exp(-x**2)) == 0 and simplify(4*((5-sqrt(10))/2)**2-20*(5-sqrt(10))/2+15) == 0 and RND((lambda u: (16*u**2-48*u+12)*exp(-u))((5-sqrt(10))/2),2) == Q(-742,100) and RND((lambda u: (16*u**2-48*u+12)*exp(-u))((5+sqrt(10))/2),2) == Q(139,100) and RND((16*81-48*9+12)*exp(-9),2) == Q(11,100) and (16*0-48*0+12) == 12 | $0.11$, so $\lvert f^{(4)}\rvert\le M_4=12$ on $[0,3]$.
+With $n=24$ (so $\Delta x=\frac18$) Theorem~\ref{8.8-thm:errmain} gives the error bound
+\[\lvert E_S(24)\rvert\le\frac{M_4(b-a)^5}{180\,n^4}=\frac{12\cdot3^5}{180\cdot24^4}\approx4.9\times10^{-5},\]
+%@ m11c | RND(Q(12*3**5,180*24**4)*10**5,1) == Q(49,10) | \frac{12\cdot3^5}{180\cdot24^4}\approx4.9\times10^{-5},\]
+and the rule itself gives $S(24)\approx0.886207$. So $0.886158\le\int_0^3e^{-x^2}\,dx\le0.886256$.
+%@ m11d | RND(RULE(exp(-x**2),0,3,24,'S'),6) == Q(886207,10**6) and RND(RULE(exp(-x**2),0,3,24,'S')-Q(12*3**5,180*24**4),6) == Q(886158,10**6) and RND(RULE(exp(-x**2),0,3,24,'S')+Q(12*3**5,180*24**4),6) == Q(886256,10**6) | So $0.886158\le\int_0^3e^{-x^2}\,dx\le0.886256$.
+
+\emph{The bracket.} Adding the tail, which lies between $0$ and $0.0000206$,
+\[0.886158\le I\le0.886256+0.000021=0.886277,\qquad\text{so}\quad I\approx0.8862\ \text{ with error less than }10^{-4}.\]
+%@ m11e | RND(RULE(exp(-x**2),0,3,24,'S')+Q(12*3**5,180*24**4)+exp(-9)/6,6) == Q(886277,10**6) and RND(sqrt(pi)/2,6) == Q(886227,10**6) | I\approx0.8862\ \text{ with error less than }10^{-4}.\]
+The quoted value $0.886227$ lies inside the bracket, as it must. The number $0.8862$ is an approximation and $I$ is not equal to it; what is guaranteed is the bracket. \emph{Why not the monotone bracket of Theorem~\ref{8.8-thm:mono}?} The integrand is decreasing, so $R(24)\le\int_0^3e^{-x^2}\,dx\le L(24)$ with no derivative needed, but the gap is $\big(f(0)-f(3)\big)\Delta x=\frac{1-e^{-9}}8\approx0.125$, a thousand times wider than the bracket above.
+%@ m11f | RND((1-exp(-9))/8,3) == Q(125,1000) | a thousand times wider than the bracket above.
+
+(b) $J=\int_0^1\frac{\cos x}{\sqrt x}\,dx$ is improper at $x=0$ (the integrand tends to $\infty$). \emph{It converges:} on $(0,1]$, $0<\cos x\le1$ (since $1<\frac\pi2$), so $0<\frac{\cos x}{\sqrt x}\le\frac1{\sqrt x}$, and $\int_0^1x^{-1/2}\,dx=2$; hence $J\le2$. \emph{The rules of Section 8.8 do not apply:} $f(0)$ is undefined, so $L(n)$, $T(n)$ and $S(n)$ cannot even be written down, and $f''$ and $f^{(4)}$ are unbounded near $0$, so the error bounds have no $M_2$ or $M_4$. Cutting off $[0,\delta]$ and dropping it is no cure either: $\int_0^\delta\frac{\cos x}{\sqrt x}\,dx$ is about $2\sqrt\delta$, which is $0.02$ for $\delta=10^{-4}$, a $1\%$ error that shrinks only like $\sqrt\delta$.
+%@ m11g | integrate(1/sqrt(x),(x,0,1)) == 2 and 2*sqrt(Q(1,10**4)) == Q(1,50) | a $1\%$ error that shrinks only like $\sqrt\delta$.
+\emph{The remedy is the one of Example~\ref{8.8-ex:m12}: change the variable so that the bad point disappears.} Put $x=u^2$, $dx=2u\,du$ (one-to-one on $[c,1]$ for $c>0$, then $c\to0^+$):
+\[J=\int_0^1\frac{\cos\left(u^2\right)}u\,2u\,du=2\int_0^1\cos\left(u^2\right)du .\]
+%@ m11h | simplify(cos(Symbol('u')**2)/Symbol('u')*2*Symbol('u')-2*cos(Symbol('u')**2)) == 0 | u^2\right)}u\,2u\,du=2\int_0^1\cos\left(u^2\right)du .\]
+The new integrand $g(u)=2\cos\left(u^2\right)$ is smooth on $[0,1]$, with $g^{(4)}(u)=8\left(4u^4\cos u^2+12u^2\sin u^2-3\cos u^2\right)$, so $\lvert g^{(4)}\rvert\le8(4+12+3)=152=M_4$. Simpson's Rule with $n=10$ gives $S(10)\approx1.809049$, with error bound $\frac{152}{180\cdot10^4}\approx8.4\times10^{-5}$. Therefore
+\[J=1.8090\pm0.0001,\qquad\text{that is}\qquad1.80896\le J\le1.80914 .\]
+%@ m11i | simplify(diff(2*cos(x**2),x,4)-8*(4*x**4*cos(x**2)+12*x**2*sin(x**2)-3*cos(x**2))) == 0 and 8*(4+12+3) == 152 and RND(2*RULE(cos(x**2),0,1,10,'S'),6) == Q(1809049,10**6) and RND(Q(152,180*10**4)*10**5,1) == Q(84,10) and RND(2*Integral(cos(x**2),(x,0,1)).evalf(25),6) == Q(1809048,10**6) | \qquad\text{that is}\qquad1.80896\le J\le1.80914 .\]
+(The smaller error of the actual computation, about $6\times10^{-8}$, is another example of a bound that is safe and not sharp.) Note what the substitution did: the integrand of $J$ blows up at $0$ and the integrand of $2\int_0^1\cos(u^2)\,du$ does not, yet the two areas are equal (Figure~7).
+
+\begin{center}
+\begin{tikzpicture}[x=5.0cm,y=1.0cm]
+  \clip (-0.08,-0.7) rectangle (1.45,4.2);
+  \draw[->] (-0.03,0) -- (1.25,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,3.7) node[above] {$y$};
+  \fill[blue!12] (0.01,0) -- plot[domain=0.01:1,samples=300,variable=\t] ({\t},{cos(deg(\t))/sqrt(\t)}) -- (1,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0.01:1.15,samples=300,variable=\t] plot ({\t},{cos(deg(\t))/sqrt(\t)});
+  \fill (1,0.540302) circle (1.5pt) node[above right,font=\small] {$(1,\cos1)$};
+%@ f7-a | RND(cos(1)/sqrt(Integer(1)),4) == Q(5403,10000) | (1.5pt) node[above right,font=\small] {$(1,\cos1)$};
+  \fill (0.25,1.937825) circle (1.5pt) node[above right,font=\small] {$(\frac14,2\cos\frac14)$};
+%@ f7-b | cos(Q(1,4))/sqrt(Q(1,4)) == 2*cos(Q(1,4)) | node[above right,font=\small] {$(\frac14,2\cos\frac14)$};
+  \node[font=\small] at (0.62,3.1) {$y=\cos x/\surd x$};
+  \node[below,font=\small] at (1,0) {$1$};
+\end{tikzpicture}\qquad
+\begin{tikzpicture}[x=5.0cm,y=1.0cm]
+  \clip (-0.08,-0.7) rectangle (1.45,4.2);
+  \draw[->] (-0.03,0) -- (1.25,0) node[right] {$u$};
+  \draw[->] (0,-0.05) -- (0,3.7) node[above] {$y$};
+  \fill[blue!12] (0,0) -- plot[domain=0:1,samples=60,variable=\t] ({\t},{2*cos(deg(\t*\t))}) -- (1,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:1.15,samples=60,variable=\t] plot ({\t},{2*cos(deg(\t*\t))});
+  \fill (0,2) circle (1.5pt) node[above right,font=\small] {$(0,2)$};
+%@ f7-c | 2*cos(Integer(0)**2) == 2 | 2) circle (1.5pt) node[above right,font=\small] {$(0,2)$};
+  \fill (1,1.080605) circle (1.5pt) node[above right,font=\small] {$(1,2\cos1)$};
+%@ f7-d | RND(2*cos(Integer(1)**2),4) == Q(10806,10000) | (1.5pt) node[above right,font=\small] {$(1,2\cos1)$};
+  \fill (0.5,1.937825) circle (1.5pt) node[above right,font=\small] {$(\frac12,2\cos\frac14)$};
+%@ f7-e | 2*cos(Q(1,2)**2) == 2*cos(Q(1,4)) | node[above right,font=\small] {$(\frac12,2\cos\frac14)$};
+  \node[font=\small] at (0.62,3.1) {$y=2\cos(u^2)$};
+  \node[below,font=\small] at (1,0) {$1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 7. The two sides of $x=u^2$. Left: $y=\frac{\cos x}{\sqrt x}$ on $(0,1]$ rises without bound at the vertical asymptote $x=0$. Right: $y=2\cos\left(u^2\right)$ on $[0,1]$ is smooth. The point $x=\frac14$ corresponds to $u=\frac12$, with the same height $2\cos\frac14$, and the two regions have the same area $J\approx1.8090$.\end{center}
+%@ f7-f | RND(2*Integral(cos(x**2),(x,0,1)).evalf(25),4) == Q(18090,10000) | regions have the same area $J\approx1.8090$.\end{center}
+
+A last remark on the improper rectangle sums. If $f$ is \emph{decreasing} on $(0,1]$, the right-endpoint sum $R(n)$ is still a lower bound for $\int_0^1f$, even when $f$ is unbounded at $0$, because on each panel $f(x)\ge f(x_k)$ (this is the easy half of Theorem~\ref{8.8-thm:mono}). For $\int_0^1x^{-1/2}\,dx=2$ it gives $R(100)\approx1.859$, an error of $0.14$ with a hundred rectangles: the rectangle rules converge very slowly toward an integrable singularity, which is why the substitution is worth the effort.
+%@ m11j | RND(RULE(1/sqrt(x),0,1,100,'R'),3) == Q(1859,1000) and RND(2-RULE(1/sqrt(x),0,1,100,'R'),2) == Q(14,100) | which is why the substitution is worth the effort.
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Gamma-type integrals and the reduction formula}
+
+Integrals of the form $\int_0^\infty x^ne^{-ax}\,dx$ occur everywhere (decay times, waiting times, moments of a distribution). They are all improper twice if the power is not an integer, and they all reduce, by parts, to one number.
+
+\begin{thm}{The Gamma function and the reduction formula}{gamma}
+For every real number $s>0$ the integral $\Gamma(s)=\displaystyle\int_0^\infty t^{s-1}e^{-t}\,dt$ converges. Moreover:
+\begin{enumerate}[label=(\arabic*),leftmargin=*]
+  \item $\Gamma(s+1)=s\,\Gamma(s)$ for every $s>0$, and $\Gamma(1)=1$; hence $\Gamma(n+1)=n!$ for $n=0,1,2,\dots$;
+  \item for $a>0$ and $s>0$: $\displaystyle\int_0^\infty x^{s-1}e^{-ax}\,dx=\frac{\Gamma(s)}{a^s}$; in particular $\displaystyle\int_0^\infty x^ne^{-ax}\,dx=\frac{n!}{a^{n+1}}$ and $J_n=\frac naJ_{n-1}$ for $J_n=\int_0^\infty x^ne^{-ax}\,dx$, $n\ge1$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+\emph{Convergence.} Cut at $t=1$. On $(0,1]$, $0<t^{s-1}e^{-t}\le t^{s-1}=t^{-(1-s)}$ and $1-s<1$, so $\int_0^1t^{-(1-s)}\,dt$ converges (Theorem~\ref{thm:p}(2)); by the Comparison Test $\int_0^1t^{s-1}e^{-t}\,dt$ converges. On $[1,\infty)$ compare with $g(t)=t^{-2}$: $\frac{t^{s-1}e^{-t}}{t^{-2}}=t^{s+1}e^{-t}\to0$ as $t\to\infty$ (Calculus I: an exponential beats every power; apply L'Hôpital's Rule repeatedly). Since $\int_1^\infty t^{-2}\,dt$ converges, the Limit Comparison Test (case $L=0$) shows that $\int_1^\infty t^{s-1}e^{-t}\,dt$ converges. Both pieces converge, so $\Gamma(s)$ does.
+
+(1) For $0<\varepsilon<b$, integrate by parts with $u=t^s$, $dv=e^{-t}\,dt$ (Theorem~\ref{8.2-thm:parts}):
+\[\int_\varepsilon^bt^se^{-t}\,dt=\Big[-t^se^{-t}\Big]_\varepsilon^b+s\int_\varepsilon^bt^{s-1}e^{-t}\,dt .\]
+As $b\to\infty$, $b^se^{-b}\to0$ (an exponential beats a power), and as $\varepsilon\to0^+$, $\varepsilon^se^{-\varepsilon}\to0$ because $s>0$. The integral on the right tends to $s\,\Gamma(s)$ and the left side to $\Gamma(s+1)$. Also $\Gamma(1)=\int_0^\infty e^{-t}\,dt=\lim_{b\to\infty}(1-e^{-b})=1$. By induction, $\Gamma(n+1)=n\,\Gamma(n)=n(n-1)\Gamma(n-1)=\dots=n!\,\Gamma(1)=n!$.
+
+(2) On $[\varepsilon,b]$ substitute $t=ax$, $dt=a\,dx$: $\int_\varepsilon^bt^{s-1}e^{-t}\,dt=\int_{\varepsilon/a}^{b/a}(ax)^{s-1}e^{-ax}a\,dx=a^s\int_{\varepsilon/a}^{b/a}x^{s-1}e^{-ax}\,dx$. Let $\varepsilon\to0^+$ and $b\to\infty$; then $\frac\varepsilon a\to0^+$ and $\frac ba\to\infty$, giving $\Gamma(s)=a^s\int_0^\infty x^{s-1}e^{-ax}\,dx$. With $s=n+1$ this is $\frac{n!}{a^{n+1}}$, and $J_n=\frac{n!}{a^{n+1}}=\frac na\cdot\frac{(n-1)!}{a^n}=\frac naJ_{n-1}$. $\blacksquare$
+\end{proof}
+%@ gam-a | gamma(5) == 24 and simplify(diff(-x**2*exp(-x),x)-(x**2*exp(-x)-2*x*exp(-x))) == 0 and integrate(x**3*exp(-2*x),(x,0,oo)) == Q(3,8) | \end{proof}
+
+\begin{exmp}{Gamma-type integrals}{m12}
+Evaluate (a) $\displaystyle\int_0^\infty x^3e^{-2x}\,dx$ by the reduction formula; (b) $\displaystyle\int_0^\infty x^4e^{-x}\,dx$; (c) $\Gamma\left(\frac72\right)$.
+
+\textbf{Solution.} (a) With $a=2$ the reduction formula gives $J_n=\frac n2J_{n-1}$, starting from $J_0=\int_0^\infty e^{-2x}\,dx=\frac12$. Then $J_1=\frac12\cdot\frac12=\frac14$, $J_2=\frac22\cdot\frac14=\frac14$, $J_3=\frac32\cdot\frac14=\frac38$. (Directly: $\frac{3!}{2^4}=\frac6{16}=\frac38$.) Each use of the reduction formula is an integration by parts in which the boundary term $-x^ne^{-2x}\big/2$ vanishes at both ends.
+%@ m12a | Q(1,2) == limit(integrate(exp(-2*x),(x,0,b)),b,oo) and Q(1,2)*Q(1,2) == Q(1,4) and Q(2,2)*Q(1,4) == Q(1,4) and Q(3,2)*Q(1,4) == Q(3,8) and integrate(x**3*exp(-2*x),(x,0,oo)) == Q(3,8) | boundary term $-x^ne^{-2x}\big/2$ vanishes at both ends.
+
+(b) This is $\Gamma(5)=4!=24$.
+%@ m12b | integrate(x**4*exp(-x),(x,0,oo)) == 24 and factorial(4) == 24 | (b) This is $\Gamma(5)=4!=24$.
+
+(c) By part (1), $\Gamma\left(\frac72\right)=\frac52\cdot\frac32\cdot\frac12\,\Gamma\left(\frac12\right)=\frac{15}8\,\Gamma\left(\frac12\right)$. For $\Gamma\left(\frac12\right)=\int_0^\infty t^{-1/2}e^{-t}\,dt$ substitute $t=x^2$, $dt=2x\,dx$: $\Gamma\left(\frac12\right)=\int_0^\infty\frac{e^{-x^2}}x\,2x\,dx=2\int_0^\infty e^{-x^2}\,dx$. Using the value $\int_0^\infty e^{-x^2}\,dx=\frac{\sqrt\pi}2$ quoted in Example~\ref{ex:m11} (it is not proved in this section), $\Gamma\left(\frac12\right)=\sqrt\pi$ and
+\[\Gamma\left(\frac72\right)=\frac{15\sqrt\pi}8\approx3.3234 .\]
+%@ m12c | gamma(Q(1,2)) == sqrt(pi) and Q(5,2)*Q(3,2)*Q(1,2) == Q(15,8) and RND(15*sqrt(pi)/8,4) == Q(33234,10000) and gamma(Q(7,2)) == 15*sqrt(pi)/8 | \frac72\right)=\frac{15\sqrt\pi}8\approx3.3234 .\]
+This is how the factorial is extended to non-integers: $\Gamma(n+1)=n!$ for integers, and $\Gamma$ is defined for every $s>0$ (a later course studies it as a function).
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Gabriel's horn: finite volume and infinite surface area}
+
+\begin{exmp}{The solid obtained by revolving $y=\frac1x$, $x\ge1$, about the $x$-axis}{m13}
+Find the volume and the surface area of the solid (Gabriel's horn, also called Torricelli's trumpet).
+
+\textbf{Solution.} \emph{Volume.} By the disk method of Calculus~I, $V=\pi\int_1^b\left(\frac1x\right)^2dx$ up to $x=b$, and for the infinite horn we let $b\to\infty$:
+\[V=\pi\lim_{b\to\infty}\int_1^b\frac{dx}{x^2}=\pi\lim_{b\to\infty}\left(1-\frac1b\right)=\pi .\]
+%@ m13a | limit(pi*integrate(1/x**2,(x,1,b)),b,oo) == pi | x^2}=\pi\lim_{b\to\infty}\left(1-\frac1b\right)=\pi .\]
+The volume is finite: $\pi$ cubic units.
+
+\emph{Surface area.} The surface-area formula of Calculus~I for a curve $y=f(x)$ revolved about the $x$-axis is $2\pi\int f(x)\sqrt{1+f'(x)^2}\,dx$. Here $f(x)=\frac1x$ and $f'(x)=-\frac1{x^2}$, so up to $x=b$,
+\[S(b)=2\pi\int_1^b\frac1x\sqrt{1+\frac1{x^4}}\,dx .\]
+%@ m13b | simplify(diff(1/x,x)+1/x**2) == 0 and simplify(2*pi*(1/x)*sqrt(1+diff(1/x,x)**2)-2*pi*sqrt(1+1/x**4)/x) == 0 | \[S(b)=2\pi\int_1^b\frac1x\sqrt{1+\frac1{x^4}}\,dx .\]
+We do not need an antiderivative. Since $\sqrt{1+x^{-4}}\ge1$, the integrand is at least $\frac1x$, so $S(b)\ge2\pi\int_1^b\frac{dx}x=2\pi\ln b\to\infty$ as $b\to\infty$. By the Comparison Test the improper integral $2\pi\int_1^\infty\frac1x\sqrt{1+\frac1{x^4}}\,dx$ diverges to $\infty$: the surface area is infinite.
+%@ m13c | limit(2*pi*log(b),b,oo) == oo and all(sqrt(1+v**-4) >= 1 for v in (1,2,5)) and 2*pi*integrate(1/x,(x,1,E)) == 2*pi | diverges to $\infty$: the surface area is infinite.
+
+\begin{center}
+\begin{tikzpicture}[x=1.55cm,y=1.9cm]
+  \fill[blue!8] (1,0) -- plot[domain=1:5,samples=60,variable=\t] ({\t},{1/\t}) -- (5,-0.2) -- plot[domain=5:1,samples=60,variable=\t] ({\t},{-1/\t}) -- cycle;
+  \draw[->] (0.5,0) -- (5.6,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=1:5,samples=60,variable=\t] plot ({\t},{1/\t});
+  \draw[very thick,blue!70!black,domain=1:5,samples=60,variable=\t] plot ({\t},{-1/\t});
+  \draw[blue!60!black] (1,0) ellipse (0.12 and 1);
+  \draw[blue!60!black] (2,0) ellipse (0.12 and 0.5);
+  \draw[blue!60!black] (4,0) ellipse (0.12 and 0.25);
+  \fill (1,1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+%@ f8-a | 1/Integer(1) == 1 | 1) circle (1.5pt) node[above right,font=\small] {$(1,1)$};
+  \fill (2,0.5) circle (1.5pt) node[above right,font=\small] {$(2,\frac12)$};
+%@ f8-b | 1/Integer(2) == Q(1,2) | (1.5pt) node[above right,font=\small] {$(2,\frac12)$};
+  \fill (4,0.25) circle (1.5pt) node[above right,font=\small] {$(4,\frac14)$};
+%@ f8-c | 1/Integer(4) == Q(1,4) | (1.5pt) node[above right,font=\small] {$(4,\frac14)$};
+  \node[font=\small] at (3.4,-0.85) {radius $=1/x$};
+  \node[below,font=\small] at (1,-1) {$1$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 8. Gabriel's horn: the region under $y=\frac1x$ for $x\ge1$ revolved about the $x$-axis (cross-sections at $x=1,2,4$ are circles of radius $1,\frac12,\frac14$). The volume is $\pi\int_1^\infty x^{-2}dx=\pi$, finite, while the surface area is at least $2\pi\int_1^\infty\frac{dx}x=\infty$.\end{center}
+%@ f8-d | limit(pi*integrate(1/x**2,(x,1,b)),b,oo) == pi | at least $2\pi\int_1^\infty\frac{dx}x=\infty$.\end{center}
+
+\emph{What is paradoxical, and what is not.} The horn can be filled with $\pi$ cubic units of paint but its surface ``cannot be painted''. There is no contradiction: a volume measures a three-dimensional region, an area a two-dimensional surface, and the two integrals are different integrals ($\frac1{x^2}$ is integrable at $\infty$, $\frac1x$ is not). Painting the \emph{inside} wall with a layer of fixed thickness $\varepsilon$ needs volume about $\varepsilon\cdot S=\infty$; filling the horn uses a layer whose thickness shrinks to $0$ down the horn. The same comparison shows what happens for the family $y=x^{-p}$ (Example~\ref{ex:b12}).
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Decay and probability}
+
+Improper integrals measure the total effect of something that decays but never stops: the total number of decays of a radioactive sample, the total drug exposure, the total probability.
+
+\begin{exmp}{A lifetime with an exponential density}{m14}
+The lifetime $T$ (in years) of a component has probability density $f(t)=0.2\,e^{-0.2t}$ for $t\ge0$ (and $f(t)=0$ for $t<0$). The probability that $T$ lies in $[a,b]$ is $\int_a^bf(t)\,dt$. Find (a) the total probability, (b) the probability that the component lasts more than $10$ years, (c) the mean lifetime $\int_0^\infty tf(t)\,dt$.
+
+\textbf{Solution.} (a) $\int_0^\infty0.2e^{-0.2t}\,dt=\lim_{b\to\infty}\left[-e^{-0.2t}\right]_0^b=\lim_{b\to\infty}\left(1-e^{-0.2b}\right)=1$. The total is $1$, as it must be for a density.
+
+(b) $P(T>10)=\int_{10}^\infty0.2e^{-0.2t}\,dt=\lim_{b\to\infty}\left(e^{-2}-e^{-0.2b}\right)=e^{-2}\approx0.1353$.
+%@ m14a | limit(integrate(Q(1,5)*exp(-t/5),(t,0,b)),b,oo) == 1 and limit(integrate(Q(1,5)*exp(-t/5),(t,10,b)),b,oo) == exp(-2) and RND(exp(-2),4) == Q(1353,10000) | (b) $P(T>10)=\int_{10}^\infty0.2e^{-0.2t}\,dt=\lim_{b\to\infty}\left(e^{-2}-e^{-0.2b}\right)=e^{-2}\approx0.1353$.
+
+(c) By parts with $u=t$, $dv=0.2e^{-0.2t}\,dt$, $v=-e^{-0.2t}$:
+\[\int_0^bt\,(0.2e^{-0.2t})\,dt=\Big[-te^{-0.2t}\Big]_0^b+\int_0^be^{-0.2t}\,dt=-be^{-0.2b}+5\left(1-e^{-0.2b}\right).\]
+%@ m14b | simplify(integrate(t*exp(-t/5)/5,(t,0,b))-(-b*exp(-b/5)+5*(1-exp(-b/5)))) == 0 | -0.2t}\,dt=-be^{-0.2b}+5\left(1-e^{-0.2b}\right).\]
+As $b\to\infty$, $be^{-0.2b}\to0$ (an exponential beats a power) and $e^{-0.2b}\to0$, so the mean is $5$ years, the reciprocal of $0.2$. (With the notation of Theorem~\ref{thm:gamma}, this is $0.2\,J_1=0.2\cdot\frac1{0.2^2}=5$.)
+%@ m14c | limit(-b*exp(-b/5)+5*(1-exp(-b/5)),b,oo) == 5 and Q(1,5)*Q(1,Q(1,5)**2) == 5 | thm:gamma}, this is $0.2\,J_1=0.2\cdot\frac1{0.2^2}=5$.)
+
+\emph{An observation.} Given that the component has already lasted $10$ years, the probability that it lasts $5$ more is $\frac{P(T>15)}{P(T>10)}=\frac{e^{-3}}{e^{-2}}=e^{-1}=P(T>5)$: the exponential model has no memory. The same integral $\int_a^\infty\lambda e^{-\lambda t}\,dt=e^{-\lambda a}$ gives the fraction of a radioactive sample still undecayed after time $a$.
+
+\begin{center}
+\begin{tikzpicture}[x=0.29cm,y=24cm]
+  \draw[->] (-0.5,0) -- (26,0) node[right] {$t$};
+  \draw[->] (0,-0.01) -- (0,0.23) node[above] {$y$};
+  \fill[red!22] (10,0) -- plot[domain=10:25,samples=40,variable=\t] ({\t},{0.2*exp(-0.2*\t)}) -- (25,0) -- cycle;
+  \draw[very thick,blue!70!black,domain=0:25,samples=60,variable=\t] plot ({\t},{0.2*exp(-0.2*\t)});
+  \fill (0,0.2) circle (1.5pt) node[above right,font=\small] {$(0,0.2)$};
+%@ f9-a | Q(1,5)*exp(0) == Q(1,5) | circle (1.5pt) node[above right,font=\small] {$(0,0.2)$};
+  \fill (10,0.027067) circle (1.5pt) node[above right,font=\small] {$(10,0.2e^{-2})$};
+%@ f9-b | RND(Q(1,5)*exp(-2),4) == Q(271,10000) | (1.5pt) node[above right,font=\small] {$(10,0.2e^{-2})$};
+  \node[below,font=\small] at (10,0) {$10$};
+  \node[font=\small] at (17.5,0.08) {tail: $P(T>10)=e^{-2}\approx0.135$};
+\end{tikzpicture}
+\end{center}
+\begin{center}\small Figure 9. The density $0.2e^{-0.2t}$. The total area under the curve is $1$; the shaded tail beyond $t=10$ has area $e^{-2}\approx0.1353$ (the horizontal axis is an asymptote, and the tail is still a convergent improper integral).\end{center}
+%@ f9-c | RND(exp(-2),3) == Q(135,1000) | tail is still a convergent improper integral).\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+The ideas of this section return in several later topics, which we name here and do not use. The comparison of an integral with a simpler one, and the fact that for a non-negative integrand the partial integrals can only increase, are exactly the ideas behind the Integral Test and the comparison tests for infinite series, and the dichotomy of the $p$-integrals reappears as the dichotomy of the $p$-series: the series $\sum\frac1{n^p}$ converges for exactly the same exponents. Absolute convergence has a twin for series. In probability, a density on an infinite interval is a function with a convergent improper integral equal to $1$, and means and variances are improper integrals of the Gamma type. The Laplace transform of a function $f$ is the improper integral $\int_0^\infty e^{-st}f(t)\,dt$, and the Gamma function studied above is its most famous special value. And the principal value of Example~\ref{ex:m7} and Example~\ref{ex:m5}(b) is the starting point of a useful but different notion in complex analysis and Fourier analysis. Integrals of the Gamma type with a non-integer $s$, and the integral $\int_{-\infty}^\infty e^{-x^2}\,dx=\sqrt\pi$ quoted here, are proved in a later course on multiple integrals.
+
+% ---------------------------------------------------------------------
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by the task and ordered from easiest to hardest within each group.
+\begin{itemize}[nosep]
+  \item Group 1: infinite intervals ($\int_2^\infty\frac{dx}{x^2-1}$ by partial fractions, $\int_0^\infty xe^{-2x}\,dx$ by parts).
+  \item Group 2: unbounded integrands ($\int_0^{\pi/2}\frac{\sin x}{\sqrt{\cos x}}\,dx$ and $\int_0^1\frac{\ln x}{\sqrt x}\,dx$).
+  \item Group 3: naive methods that fail (the Interesting-type integrals $\int_{-\infty}^\infty\frac x{x^2+9}\,dx$ and $\int_{-\infty}^\infty\sin x\,dx$, and a symmetric integral that does converge).
+  \item Group 4: comparison ($\int_1^\infty\frac{dx}{x+e^x}$ converges, $\int_2^\infty\frac{dx}{\sqrt x\ln x}$ diverges).
+  \item Group 5: Gamma-type integrals ($\int_0^\infty x^3e^{-x/2}\,dx$ and $\int_0^1(\ln x)^3\,dx$).
+  \item Group 6: applications (the work to leave the Earth, and a family of horns).
+  \item Group 7: proofs (conditional convergence of $\int_1^\infty\frac{\sin x}x\,dx$, and $xf(x)\to0$ for a decreasing integrable $f$).
+\end{itemize}
+
+\subsection*{Group 1: Infinite intervals}
+
+\begin{exmp}{A rational integrand}{b1}
+Evaluate $\displaystyle\int_2^\infty\frac{dx}{x^2-1}$.
+
+\textbf{Solution.} Partial fractions (Section 8.5): $\frac1{x^2-1}=\frac1{(x-1)(x+1)}=\frac A{x-1}+\frac B{x+1}$ gives $1=A(x+1)+B(x-1)$; $x=1$ gives $A=\frac12$ and $x=-1$ gives $B=-\frac12$. So for $b>2$
+\[\int_2^b\frac{dx}{x^2-1}=\frac12\Big[\ln\lvert x-1\rvert-\ln\lvert x+1\rvert\Big]_2^b=\frac12\left(\ln\frac{b-1}{b+1}-\ln\frac13\right).\]
+As $b\to\infty$, $\frac{b-1}{b+1}\to1$ and $\ln\frac{b-1}{b+1}\to0$, so the limit is $\frac12\left(0-\ln\frac13\right)=\frac12\ln3\approx0.5493$.
+%@ b1a | ANT(log((x-1)/(x+1))/2,1/(x**2-1),[Integer(2),Integer(3),Q(7,2)]) == 0 and limit(integrate(1/(x**2-1),(x,2,b)),b,oo) == log(3)/2 and RND(log(3)/2,4) == Q(5493,10000) | As $b\to\infty$, $\frac{b-1}{b+1}\to1$ and $\ln\frac{b-1}{b+1}\to0$, so the limit is $\frac12\left(0-\ln\frac13\right)=\frac12\ln3\approx0.5493$.
+\emph{Check by comparison:} $\frac1{x^2-1}>\frac1{x^2}$ for $x>1$ and $\int_2^\infty\frac{dx}{x^2}=\frac12$, so the value must exceed $\frac12$; it does.
+\end{exmp}
+
+\begin{exmp}{A product of a power and an exponential}{b2}
+Evaluate $\displaystyle\int_0^\infty xe^{-2x}\,dx$.
+
+\textbf{Solution.} By parts with $u=x$, $dv=e^{-2x}\,dx$, $v=-\frac12e^{-2x}$ (Theorem~\ref{8.2-thm:parts}):
+\[\int_0^bxe^{-2x}\,dx=\left[-\frac x2e^{-2x}\right]_0^b+\frac12\int_0^be^{-2x}\,dx=-\frac b2e^{-2b}+\frac12\cdot\frac{1-e^{-2b}}2 .\]
+As $b\to\infty$, $be^{-2b}\to0$ (an exponential beats a power) and $e^{-2b}\to0$, so the value is $\frac14$. This is $J_1$ of Theorem~\ref{thm:gamma}(2) with $a=2$: $\frac{1!}{2^2}=\frac14$.
+%@ b2a | ANT(-x*exp(-2*x)/2-exp(-2*x)/4,x*exp(-2*x),[Integer(1),Q(1,2),3]) == 0 and limit(-b*exp(-2*b)/2+(1-exp(-2*b))/4,b,oo) == Q(1,4) and integrate(x*exp(-2*x),(x,0,oo)) == Q(1,4) | thm:gamma}(2) with $a=2$: $\frac{1!}{2^2}=\frac14$.
+\end{exmp}
+
+\subsection*{Group 2: Unbounded integrands}
+
+\begin{exmp}{A singularity at the right-hand end}{b3}
+Evaluate $\displaystyle\int_0^{\pi/2}\frac{\sin x}{\sqrt{\cos x}}\,dx$.
+
+\textbf{Solution.} The integrand tends to $\infty$ as $x\to\frac\pi2^-$, so the integral is $\lim_{c\to\pi/2^-}\int_0^c$. For $0<c<\frac\pi2$ substitute $u=\cos x$, $du=-\sin x\,dx$ (Section 8.1); then $\int\frac{\sin x}{\sqrt{\cos x}}\,dx=-\int u^{-1/2}\,du=-2\sqrt{\cos x}+C$, and
+\[\int_0^c\frac{\sin x}{\sqrt{\cos x}}\,dx=-2\sqrt{\cos c}+2\sqrt{\cos0}=2-2\sqrt{\cos c}\ \longrightarrow\ 2\qquad(c\to\tfrac\pi2^-),\]
+since $\cos c\to0^+$. The area is $2$.
+%@ b3a | ANT(-2*sqrt(cos(x)),sin(x)/sqrt(cos(x)),[Q(1,2),Q(1,3),1]) == 0 and limit(2-2*sqrt(cos(c)),c,pi/2,'-') == 2 | since $\cos c\to0^+$. The area is $2$.
+\end{exmp}
+
+\begin{exmp}{A logarithm at the left-hand end}{b4}
+Evaluate $\displaystyle\int_0^1\frac{\ln x}{\sqrt x}\,dx$.
+
+\textbf{Solution.} The integrand is not defined at $0$ and tends to $-\infty$ there. For $0<c<1$ integrate by parts with $u=\ln x$, $dv=x^{-1/2}\,dx$, $v=2\sqrt x$:
+\[\int_c^1\frac{\ln x}{\sqrt x}\,dx=\Big[2\sqrt x\ln x\Big]_c^1-\int_c^12x^{-1/2}\,dx=\Big[2\sqrt x\ln x-4\sqrt x\Big]_c^1=-4-2\sqrt c\ln c+4\sqrt c .\]
+As $c\to0^+$, $\sqrt c\to0$ and $\sqrt c\ln c\to0$: by L'Hôpital's Rule, $\frac{\ln c}{c^{-1/2}}\to\frac{1/c}{-\frac12c^{-3/2}}=-2\sqrt c\to0$. So the value is $-4$.
+%@ b4a | ANT(2*sqrt(x)*log(x)-4*sqrt(x),log(x)/sqrt(x),[Q(1,2),Integer(2),Integer(3)]) == 0 and limit(2*sqrt(c)*log(c),c,0,'+') == 0 and 2*sqrt(Integer(1))*log(Integer(1))-4*sqrt(Integer(1)) == -4 | So the value is $-4$.
+(The integrand is negative on $(0,1)$, so a negative value is correct.)
+\end{exmp}
+
+\subsection*{Group 3: Methods that fail}
+
+\begin{exmp}{Two odd integrands, and the symmetric limit}{b5}
+Decide whether (a) $\displaystyle\int_{-\infty}^\infty\frac x{x^2+9}\,dx$ and (b) $\displaystyle\int_{-\infty}^\infty\sin x\,dx$ converge. In each case also compute $\lim_{t\to\infty}\int_{-t}^t$.
+
+\textbf{Solution.} (a) The integrand is odd, so $\int_{-t}^t\frac x{x^2+9}\,dx=0$ for every $t$ and the symmetric limit is $0$. But the symmetric limit is not the definition: we must split (Theorem~\ref{thm:split}). An antiderivative is $F(x)=\frac12\ln\left(x^2+9\right)$, and $\int_0^b\frac x{x^2+9}\,dx=\frac12\ln\frac{b^2+9}9\to\infty$. Since the piece $\int_0^\infty$ diverges, $\int_{-\infty}^\infty\frac x{x^2+9}\,dx$ \emph{diverges}.
+%@ b5a | ANT(log(x**2+9)/2,x/(x**2+9),[Integer(1),Integer(2),Q(1,2)]) == 0 and limit(log(b**2+9)/2-log(9)/2,b,oo) == oo and simplify(log((-b)**2+9)/2-log(b**2+9)/2) == 0 | $\int_{-\infty}^\infty\frac x{x^2+9}\,dx$ \emph{diverges}.
+(b) $\int_0^b\sin x\,dx=1-\cos b$, which equals $0$ at $b=2k\pi$ and $2$ at $b=(2k+1)\pi$ for every positive integer $k$: it takes both values for arbitrarily large $b$, so it has no limit. The piece $\int_0^\infty\sin x\,dx$ diverges, so $\int_{-\infty}^\infty\sin x\,dx$ diverges. The symmetric integral $\int_{-t}^t\sin x\,dx=0$ ($\sin$ is odd), so the symmetric limit exists and equals $0$ even though the integral does not converge. Here the integrand does not tend to $0$, and the integral diverges by oscillation rather than by growth.
+%@ b5b | simplify(integrate(sin(x),(x,0,b))-(1-cos(b))) == 0 and 1-cos(2*pi*k) == 0 and 1-cos((2*k+1)*pi) == 2 | integral diverges by oscillation rather than by growth.
+\end{exmp}
+
+\begin{exmp}{An even integrand: the whole line from half}{b6}
+Evaluate $\displaystyle\int_{-\infty}^\infty\frac{dx}{(x^2+1)^2}$.
+
+\textbf{Solution.} By Theorem~\ref{thm:odd} the integrand is even, and it is enough to find $\int_0^\infty$ and double it (once convergence of one piece is shown, the other is the same by symmetry). Substitute $x=\tan\theta$, $dx=\sec^2\theta\,d\theta$, $x^2+1=\sec^2\theta$ (Section 8.4), $\theta\in\left[0,\frac\pi2\right)$:
+\[\int\frac{dx}{(x^2+1)^2}=\int\frac{\sec^2\theta\,d\theta}{\sec^4\theta}=\int\cos^2\theta\,d\theta=\frac\theta2+\frac{\sin2\theta}4+C=\frac12\left(\arctan x+\frac x{x^2+1}\right)+C,\]
+using $\sin2\theta=2\sin\theta\cos\theta=\frac{2x}{x^2+1}$. Then $\int_0^b\frac{dx}{(x^2+1)^2}=\frac12\left(\arctan b+\frac b{b^2+1}\right)\to\frac12\cdot\frac\pi2=\frac\pi4$, so the whole line gives $2\cdot\frac\pi4=\frac\pi2$.
+%@ b6a | ANT((atan(x)+x/(x**2+1))/2,1/(x**2+1)**2,[Integer(1),Integer(2),Q(1,3)]) == 0 and limit((atan(b)+b/(b**2+1))/2,b,oo) == pi/4 and 2*(pi/4) == pi/2 | so the whole line gives $2\cdot\frac\pi4=\frac\pi2$.
+\emph{Check:} $\frac1{(x^2+1)^2}\le\frac1{x^2+1}$ and $\int_{-\infty}^\infty\frac{dx}{x^2+1}=\pi$, so the value must be less than $\pi$; it is $\frac\pi2$.
+\end{exmp}
+
+\subsection*{Group 4: Comparison}
+
+\begin{exmp}{Convergence by an exponential bound}{b7}
+Show that $\displaystyle\int_1^\infty\frac{dx}{x+e^x}$ converges and give an upper bound.
+
+\textbf{Solution.} The integrand is continuous and positive on $[1,\infty)$. Since $x>0$, $x+e^x>e^x$, so $0<\frac1{x+e^x}<e^{-x}$. Now $\int_1^\infty e^{-x}\,dx=\lim_{b\to\infty}\left(e^{-1}-e^{-b}\right)=e^{-1}$. By the Comparison Test the integral converges and its value is less than $e^{-1}\approx0.368$. (We have not computed the value.)
+%@ b7a | all(1/(v+exp(v)) < exp(-v) for v in (1,2,3,10)) and limit(integrate(exp(-x),(x,1,b)),b,oo) == exp(-1) and RND(exp(-1),3) == Q(368,1000) | $e^{-1}\approx0.368$. (We have not computed the value.)
+\end{exmp}
+
+\begin{exmp}{Divergence by comparison with $\frac1x$}{b8}
+Show that $\displaystyle\int_2^\infty\frac{dx}{\sqrt x\,\ln x}$ diverges.
+
+\textbf{Solution.} We need a lower bound that diverges. Let $h(x)=\frac{\ln x}{\sqrt x}$. Then $h'(x)=\frac{2-\ln x}{2x^{3/2}}$, which is positive for $x<e^2$ and negative for $x>e^2$, so $h$ has its maximum at $x=e^2$, where $h(e^2)=\frac2e\approx0.74<1$. Hence $\ln x<\sqrt x$ for all $x>0$, and for $x\ge2$
+\[\frac1{\sqrt x\,\ln x}>\frac1{\sqrt x\,\sqrt x}=\frac1x .\]
+Since $\int_2^\infty\frac{dx}x=\lim_{b\to\infty}\left(\ln b-\ln2\right)=\infty$, the integral diverges by the Comparison Test. (The bound $\ln x<x^{1/2}$ was needed for $x\ge2$ only, but it holds everywhere.)
+%@ b8a | all(log(v) < sqrt(v) for v in (2,3,10,100)) and simplify(diff(log(x)/sqrt(x),x)-(2-log(x))/(2*x**Q(3,2))) == 0 and limit(integrate(1/x,(x,2,b)),b,oo) == oo and RND(2/E,2) == Q(74,100) | was needed for $x\ge2$ only, but it holds everywhere.)
+\end{exmp}
+
+\subsection*{Group 5: Gamma-type integrals}
+
+\begin{exmp}{Reduction by recursion}{b9}
+Evaluate $\displaystyle\int_0^\infty x^3e^{-x/2}\,dx$.
+
+\textbf{Solution.} Theorem~\ref{thm:gamma}(2) with $a=\frac12$: $J_n=\frac naJ_{n-1}=2nJ_{n-1}$, with $J_0=\int_0^\infty e^{-x/2}\,dx=2$. Then $J_1=2\cdot1\cdot2=4$, $J_2=2\cdot2\cdot4=16$, $J_3=2\cdot3\cdot16=96$. Directly, $\frac{3!}{(1/2)^4}=6\cdot16=96$.
+%@ b9a | 2 == limit(integrate(exp(-x/2),(x,0,b)),b,oo) and 2*1*2 == 4 and 2*2*4 == 16 and 2*3*16 == 96 and integrate(x**3*exp(-x/2),(x,0,oo)) == 96 | Directly, $\frac{3!}{(1/2)^4}=6\cdot16=96$.
+\end{exmp}
+
+\begin{exmp}{A logarithm raised to a power}{b10}
+Evaluate $\displaystyle\int_0^1(\ln x)^3\,dx$.
+
+\textbf{Solution.} The integrand tends to $-\infty$ at $0$. Substitute $x=e^{-t}$, $dx=-e^{-t}\,dt$; $x\to0^+$ corresponds to $t\to\infty$ and $x=1$ to $t=0$, and $\ln x=-t$:
+\[\int_0^1(\ln x)^3\,dx=\int_\infty^0(-t)^3\left(-e^{-t}\right)dt=\int_0^\infty(-t)^3e^{-t}\,dt=-\int_0^\infty t^3e^{-t}\,dt=-\Gamma(4)=-3!=-6 .\]
+\emph{Check by an antiderivative:} $F(x)=x\left(L^3-3L^2+6L-6\right)$ with $L=\ln x$ has $F'(x)=L^3-3L^2+6L-6+\left(3L^2-6L+6\right)=L^3$. Then $F(1)=-6$ and $F(c)\to0$ as $c\to0^+$, so the integral is $-6$.
+%@ b10a | simplify(diff(x*(log(x)**3-3*log(x)**2+6*log(x)-6),x)-log(x)**3) == 0 and limit(c*(log(c)**3-3*log(c)**2+6*log(c)-6),c,0,'+') == 0 and gamma(4) == 6 and integrate(log(x)**3,(x,0,1)) == -6 | and $F(c)\to0$ as $c\to0^+$, so the integral is $-6$.
+\end{exmp}
+
+\subsection*{Group 6: Applications}
+
+\begin{exmp}{The work needed to leave the Earth}{b11}
+The gravitational force on a $1$ kg mass at distance $r$ from the Earth's centre is $F(r)=\frac{gR^2}{r^2}$ newtons ($g=9.8\ \mathrm{m/s^2}$, Earth's radius $R=6.37\times10^6$ m). Find the work needed to lift it from the surface to infinity, and the speed at which it must be launched to do so.
+
+\textbf{Solution.} Work is the integral of force over distance: $W=\int_R^\infty\frac{gR^2}{r^2}\,dr=gR^2\lim_{b\to\infty}\left(\frac1R-\frac1b\right)=gR$, finite because $p=2>1$. Numerically $W=9.8\cdot6.37\times10^6=6.2426\times10^7$ J. Setting this equal to the kinetic energy $\frac12v^2$ gives $v=\sqrt{2gR}=\sqrt{1.24852\times10^8}\approx1.117\times10^4$ m/s, about $11.2$ km/s. Both numbers are approximations (the model ignores air, the Sun and the Moon).
+%@ b11a | limit(1/a-1/b,b,oo) == 1/a and RND(Q(98,10)*Q(637,100),3) == Q(62426,1000) and RND(sqrt(2*Q(62426,1000)*10**6)/1000,2) == Q(1117,100) | (the model ignores air, the Sun and the Moon).
+\end{exmp}
+
+\begin{exmp}{A family of horns}{b12}
+For which $p>0$ does the solid obtained by revolving $y=x^{-p}$, $x\ge1$, about the $x$-axis have (i) finite volume, (ii) finite surface area? Apply the result to $p=\frac34$.
+
+\textbf{Solution.} (i) $V=\pi\int_1^\infty x^{-2p}\,dx$ converges iff $2p>1$ (Theorem~\ref{thm:p}), that is $p>\frac12$. (ii) With $y'=-px^{-p-1}$, $S=2\pi\int_1^\infty x^{-p}\sqrt{1+p^2x^{-2p-2}}\,dx$. The square root is at least $1$, so the integrand is at least $x^{-p}$, and for $p\le1$ the integral diverges by comparison. For $p>1$, on $[1,\infty)$ we have $x^{-2p-2}\le1$, so the square root is at most $\sqrt{1+p^2}$ and the integrand is at most $\sqrt{1+p^2}\,x^{-p}$, whose integral converges; hence $S$ is finite iff $p>1$.
+
+So for $\frac12<p\le1$ the volume is finite and the surface area infinite, as in Example~\ref{ex:m13} ($p=1$); for $p>1$ both are finite; for $p\le\frac12$ both are infinite. For $p=\frac34$: $V=\pi\int_1^\infty x^{-3/2}\,dx=\pi\cdot\frac{1}{1/2}=2\pi$, while $S\ge2\pi\int_1^\infty x^{-3/4}\,dx=\infty$.
+%@ b12a | simplify(diff(x**(-Q(3,4)),x)+Q(3,4)*x**(-Q(7,4))) == 0 and limit(integrate(x**(-Q(3,4)),(x,1,b)),b,oo) == oo and all(sqrt(1+(Q(3,4)*v**(-Q(7,4)))**2) >= 1 for v in (1,2,4)) and limit(pi*integrate(x**(-Q(3,2)),(x,1,b)),b,oo) == 2*pi | while $S\ge2\pi\int_1^\infty x^{-3/4}\,dx=\infty$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{A conditionally convergent integral}{b13}
+Prove that $\displaystyle\int_1^\infty\frac{\sin x}x\,dx$ converges but $\displaystyle\int_1^\infty\frac{\lvert\sin x\rvert}x\,dx$ diverges.
+
+\textbf{Proof.} \emph{Convergence.} For $b>1$, integrate by parts with $u=\frac1x$, $dv=\sin x\,dx$:
+\[\int_1^b\frac{\sin x}x\,dx=\left[-\frac{\cos x}x\right]_1^b-\int_1^b\frac{\cos x}{x^2}\,dx=\cos1-\frac{\cos b}b-\int_1^b\frac{\cos x}{x^2}\,dx .\]
+%@ b13a | simplify(diff(-cos(x)/x,x)-(sin(x)/x+cos(x)/x**2)) == 0 | dx=\cos1-\frac{\cos b}b-\int_1^b\frac{\cos x}{x^2}\,dx .\]
+As $b\to\infty$, $\left\lvert\frac{\cos b}b\right\rvert\le\frac1b\to0$, and $\int_1^\infty\frac{\cos x}{x^2}\,dx$ converges absolutely by comparison with $\int_1^\infty\frac{dx}{x^2}$, hence converges (Theorem~\ref{thm:abs}). So the limit exists.
+
+\emph{No absolute convergence.} Since $0\le\lvert\sin x\rvert\le1$, $\lvert\sin x\rvert\ge\sin^2x=\frac{1-\cos2x}2$. Hence $\frac{\lvert\sin x\rvert}x\ge\frac1{2x}-\frac{\cos2x}{2x}$ and
+\[\int_1^b\frac{\lvert\sin x\rvert}x\,dx\ge\frac12\ln b-\int_1^b\frac{\cos2x}{2x}\,dx .\]
+%@ b13b | simplify(sin(x)**2-(1-cos(2*x))/2) == 0 and all(abs(sin(v)) >= sin(v)**2 for v in (1,2,3,5)) | dx\ge\frac12\ln b-\int_1^b\frac{\cos2x}{2x}\,dx .\]
+The last integral converges as $b\to\infty$ by the same integration by parts ($\int_1^b\frac{\cos2x}{2x}\,dx=\left[\frac{\sin2x}{4x}\right]_1^b+\int_1^b\frac{\sin2x}{4x^2}\,dx$, and $\left\lvert\frac{\sin2x}{4x^2}\right\rvert\le\frac1{4x^2}$), so it stays bounded, while $\frac12\ln b\to\infty$. Therefore $\int_1^\infty\frac{\lvert\sin x\rvert}x\,dx=\infty$. $\blacksquare$
+%@ b13c | limit(log(b)/2,b,oo) == oo and simplify(diff(sin(2*x)/(4*x),x)-(cos(2*x)/(2*x)-sin(2*x)/(4*x**2))) == 0 | $\blacksquare$
+(The value $\int_0^\infty\frac{\sin x}x\,dx=\frac\pi2$ is quoted, not proved here.)
+\end{exmp}
+
+\begin{exmp}{If $f$ is decreasing and $\int f$ converges, then $xf(x)\to0$}{b14}
+Let $f$ be continuous, positive and decreasing on $[1,\infty)$ with $\int_1^\infty f$ convergent. Prove that $\lim_{x\to\infty}xf(x)=0$, and explain why the hypothesis ``decreasing'' cannot be dropped.
+
+\textbf{Proof.} Let $L=\int_1^\infty f$. For $x\ge2$ the interval $\left[\frac x2,x\right]$ lies in $[1,\infty)$ and $f(t)\ge f(x)$ on it ($f$ decreasing), so
+\[0<\frac x2f(x)\le\int_{x/2}^xf(t)\,dt=\int_1^xf-\int_1^{x/2}f .\]
+As $x\to\infty$ both integrals on the right tend to $L$, so the right side tends to $0$. By the Squeeze Theorem $\frac x2f(x)\to0$, hence $xf(x)\to0$. $\blacksquare$
+%@ b14a | simplify(integrate(1/t**2,(t,x/2,x))-1/x) == 0 and Q(1,3) >= Q(1,6) and limit(x*(1/x**2),x,oo) == 0 | $\frac x2f(x)\to0$, hence $xf(x)\to0$. $\blacksquare$
+\emph{The hypothesis matters.} The function in Example~\ref{ex:m10}(c) has a convergent integral but $f(n)=1$ at every integer $n\ge2$, so $xf(x)$ does not tend to $0$; it is not decreasing. Also, $f(x)=\frac1x$ is decreasing and has $xf(x)=1$, but $\int_1^\infty\frac{dx}x$ diverges: the condition $xf(x)\to0$ is necessary for convergence of a decreasing $f$ and is not sufficient (the borderline of the $p$-integrals, Theorem~\ref{thm:p}).
+%@ b14b | limit(x*(1/x),x,oo) == 1 and limit(integrate(1/x,(x,1,b)),b,oo) == oo and 1*1 == 1 | the borderline of the $p$-integrals, Theorem~\ref{thm:p}).
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Answers and discussion}
+
+\begin{description}
+  \item[Knowledge Check \ref{kc:kc1}.] (a) Not improper: $\frac{\sin x}x\to1$ as $x\to0$, so the integrand has a removable discontinuity and extends to a continuous function on $[0,1]$. (b) Improper: $\tan x$ is unbounded near $x=\frac\pi2$, inside $[0,\pi]$ (and the integral diverges, since the piece up to $\frac\pi2$ does). (c) Not improper: $\frac1{x^2+1}$ is continuous on $[-1,1]$. (d) Improper: the interval is infinite.
+%@ ans-kc1 | limit(sin(x)/x,x,0) == 1 and limit(tan(x),x,pi/2,'-') == oo and 1+0 == 1 | on $[-1,1]$. (d) Improper: the interval is infinite.
+  \item[Knowledge Check \ref{kc:kc2}.] (a) Diverges ($p=0.99\le1$ on an infinite interval). (b) Converges ($p<1$ at $0$): $\int_0^1x^{-0.99}\,dx=\frac1{1-0.99}=100$. (c) Converges ($p=1.01>1$): $\int_1^\infty x^{-1.01}\,dx=\frac1{1.01-1}=100$. The exponents are close, the behaviours opposite, and the values equal.
+%@ ans-kc2 | integrate(x**(-Q(99,100)),(x,0,1)) == 100 and integrate(x**(-Q(101,100)),(x,1,oo)) == 100 | are close, the behaviours opposite, and the values equal.
+  \item[Knowledge Check \ref{kc:kc3}.] (a) $\int_1^\infty g$ converges, by the Comparison Test. (b) Nothing about $g$: it may converge ($f=\frac1x$, $g=\frac1{x^2}$) or diverge ($g=f$). (c) Nothing about $f$: it may converge ($f=g$) or diverge ($g=\frac1{x^2}$, $f=\frac1x$). (d) $\int_1^\infty f$ diverges, by the Comparison Test. Convergence passes from the larger function to the smaller, and divergence from the smaller to the larger; the other directions decide nothing.
+  \item[Pause and think \ref{think:pw}.] Split at $1$: $\int_1^\infty x^{-p}$ converges only if $p>1$, and $\int_0^1x^{-p}$ converges only if $p<1$; no $p$ does both, so one of the two pieces always diverges, and so does the integral over $(0,\infty)$. Example~\ref{ex:m4} is not a power: near $0$ it behaves like $x^{-1/2}$ ($p<1$) and near $\infty$ like $x^{-3/2}$ ($p>1$), each piece converges, and the value is $\pi$.
+  \item[Pause and think \ref{think:odd}.] The classmate is wrong. For $\int_{-\infty}^\infty x^3\,dx$, the piece $\int_0^b x^3\,dx=\frac{b^4}4\to\infty$ diverges, so the integral diverges, and the symmetric limit $0$ is not the value. For $xe^{-x^2}$ the argument is correct, but only because we can check that $\int_0^\infty xe^{-x^2}\,dx=\frac12$ converges (and so does the piece on $(-\infty,0]$); then the two pieces cancel and the value is $0$. Before saying ``odd, so zero'' check that the integral converges.
+  \item[Pause and think \ref{think:cond}.] (1) It is false. Convergence of the integral does not force the integrand to tend to $0$. (2) That $f$ is decreasing, or more generally monotone for large $x$ (and non-negative): then $f(x)\to0$, and even $xf(x)\to0$ (Example~\ref{ex:b14}). (3) No: $\int_0^b\sin x\,dx=1-\cos b$ has no limit as $b\to\infty$. Cancellation of humps would need the humps to shrink; here every hump has the same area $2$ and they alternate in sign, so the partial integrals oscillate between $0$ and $2$ forever. For $\frac{\sin x}x$ or $\sin\left(x^2\right)$ the humps shrink, and the partial integrals settle.
+\end{description}
+
+\end{document}
