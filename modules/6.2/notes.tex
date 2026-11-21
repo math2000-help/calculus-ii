@@ -1,0 +1,871 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{6}{2}{Regions Between Curves}
+\calcxdoc{6.1}
+\calcxdoc{8.1}
+\calcxdoc{8.2}
+\calcxdoc{8.4}
+
+\begin{document}
+
+\section{Regions Between Curves}
+
+\begin{guide}
+The graph of one function and the $x$-axis trap a region whose area Calculus I computes with a definite integral. What if the region is trapped between two graphs instead? The idea is the same slice-and-sum idea as in Section 6.1: cut the region into thin vertical strips, find the area of one strip (height times thickness), and add. The height of a strip is now a difference, the upper curve minus the lower curve. The difficulties are all about the \emph{curves}: where do they meet, which one is on top, and what happens if they cross or if the boundary changes its formula? We also learn when it is better to cut the region into \emph{horizontal} strips, and we prove that the two ways of cutting give the same area. There is a close parallel with Section 6.1: when a curve crosses the other, the integral of the difference is a \emph{net} area (like displacement) and the integral of the absolute value is the \emph{total} area (like distance traveled).
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item set up and evaluate the area of a region between two curves, using vertical or horizontal strips, with the intersection points found by algebra;
+  \item split a region when the top or bottom boundary changes formula, and find the total area when two curves cross;
+  \item choose the direction of the strips that makes the work shorter, and check an answer by a second method or by geometry;
+  \item use symmetry to halve the work;
+  \item prove each of the theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Area between two curves}
+
+Calculus I measures area in this way. We take three facts about area as the \emph{meaning} of area: \textbf{(A1)} the region between the graph of a continuous function $h\ge0$ on $[a,b]$ and the $x$-axis has area $\int_a^bh(x)\,dx$; \textbf{(A2)} if a region is cut into two regions that overlap only along curves, the areas add; \textbf{(A3)} regions that differ by a translation or by a reflection have the same area. (That area is a well-defined number with these properties is a theorem of the theory of area, met in a later course on functions of several variables; we use it here.)
+
+\begin{defn}{Area of a region between two curves}{area}
+Let $f$ and $g$ be continuous on $[a,b]$ with $f(x)\ge g(x)$ for every $x$ in $[a,b]$. The region between the graphs is $R=\{(x,y):a\le x\le b,\ g(x)\le y\le f(x)\}$ and its \emph{area} is
+\[
+A=\int_a^b\bigl(f(x)-g(x)\bigr)\,dx .
+\]
+\end{defn}
+
+The formula has a picture. The strip above the point $x$ has height $f(x)-g(x)$ (upper curve minus lower curve) and thickness $dx$, so its area is $\bigl(f(x)-g(x)\bigr)dx$, and the integral adds all the strips. The next theorem shows that the formula is not a new idea: it follows from (A1) to (A3).
+
+\begin{thm}{The formula agrees with Calculus I}{consist}
+Let $f\ge g$ be continuous on $[a,b]$ and let $R$ be the region between their graphs.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item If $g\ge0$, then the area of $R$ obtained from (A1) and (A2) is $\int_a^bf\,dx-\int_a^bg\,dx=\int_a^b(f-g)\,dx$.
+  \item For every constant $c$, replacing $f$ and $g$ by $f+c$ and $g+c$ does not change $\int_a^b(f-g)\,dx$. Hence the formula of Definition~\ref{def:area} gives the area of $R$ whether the curves lie above, below or across the $x$-axis.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Let $U$ be the region between the graph of $f$ and the $x$-axis, and $V$ the region between the graph of $g$ and the $x$-axis (both over $[a,b]$). Since $f\ge g\ge0$, the region $U$ is cut into $V$ and $R$, which overlap only along the graph of $g$. By (A1) the areas of $U$ and $V$ are $\int_a^bf$ and $\int_a^bg$, and by (A2) $\operatorname{area}(U)=\operatorname{area}(V)+\operatorname{area}(R)$. So $\operatorname{area}(R)=\int_a^bf-\int_a^bg=\int_a^b(f-g)$, by the linearity of the integral.
+
+(2) The difference $(f+c)-(g+c)=f-g$ is the same function, so the integral is the same. Now let $m$ be the least value of $g$ on $[a,b]$ (it exists because $g$ is continuous on a closed interval) and take $c=-m$. Then $g+c\ge0$. Translating $R$ up by $c$ gives the region $R_c$ between the graphs of $f+c$ and $g+c$, with $\operatorname{area}(R)=\operatorname{area}(R_c)$ by (A3), and $\operatorname{area}(R_c)=\int_a^b\bigl((f+c)-(g+c)\bigr)=\int_a^b(f-g)$ by part~(1).
+\end{proof}
+
+\begin{kc}{Between a line and a parabola}{kcsum}
+Use Theorem~\ref{thm:consist}(1) to find the area of the region between $y=x$ and $y=x^2$ for $0\le x\le1$. Which graph is on top?
+\end{kc}
+
+\begin{think}{Why a difference?}{thdiff}
+Why is the height of a strip $f(x)-g(x)$, and not $\abs{f(x)}-\abs{g(x)}$ or $f(x)+g(x)$? Test your answer on $f(x)=-1$ and $g(x)=-3$ on $[0,2]$, where both graphs lie below the $x$-axis.
+\end{think}
+
+\begin{proc}{Area between two curves (vertical strips)}{area}
+\begin{enumerate}[nosep]
+  \item \emph{Sketch} the curves. Mark every point where they meet.
+  \item \emph{Intersections.} Solve $f(x)=g(x)$. Keep the solutions that bound the region; a given vertical line also bounds it.
+  \item \emph{Which is on top?} Between two consecutive intersections the difference $f-g$ is continuous and never $0$, so it has one sign there (Intermediate Value Theorem): test one point in each piece.
+  \item \emph{Integrate} (top $-$ bottom) over each piece, add the pieces, and check each antiderivative by differentiating.
+  \item \emph{Check.} The area is positive; compare with a rough estimate, with a geometric formula, or with the same area computed another way.
+\end{enumerate}
+\end{proc}
+
+\begin{warn}[Top minus bottom]
+The order matters: a negative answer for a piece means you subtracted the wrong way round. The curve that is on top can change from piece to piece, and a single integral $\int(f-g)$ over a stretch where the curves cross is \emph{not} the area (see Theorem~\ref{thm:cross}).
+\end{warn}
+
+\begin{exmp}{A region between a line and a parabola}{e1}
+Find the area of the region between $y=2x+3$ and $y=x^2$.
+
+\textbf{Solution.} \emph{Intersections.} Set $x^2=2x+3$, so $x^2-2x-3=0$, that is $(x-3)(x+1)=0$, and $x=-1$ or $x=3$. The points are $(-1,1)$ and $(3,9)$.
+%@ e1-fac | expand((x-3)*(x+1)-(x**2-2*x-3)) == 0 and 2*(-1)+3 == (-1)**2 and 2*3+3 == 3**2 | and $x=-1$ or $x=3$. The points are $(-1,1)$ and $(3,9)$.
+\emph{Which is on top?} The graphs meet only at $x=-1$ and $x=3$, so one sign persists on $(-1,3)$. At $x=0$ the line has $y=3$ and the parabola $y=0$: the line is on top.
+%@ e1-top | 2*0+3 == 3 and 0**2 == 0 | line has $y=3$ and the parabola $y=0$: the line is on top.
+\emph{Integral.} $A=\int_{-1}^{3}(2x+3-x^2)\,dx$. An antiderivative is $F(x)=x^2+3x-\frac{x^3}3$ (check: $F'(x)=2x+3-x^2$). Then $F(3)=9+9-9=9$ and $F(-1)=1-3+\frac13=-\frac53$, so
+\[
+A=F(3)-F(-1)=9+\frac53=\frac{32}3\approx10.67 .
+%@ e1-A | ANT(x**2+3*x-x**3/3, 2*x+3-x**2, [Q(1,2),Q(3,1)]) == 0 and 3**2+3*3-Q(3**3,3) == 9 and (-1)**2+3*(-1)-Q((-1)**3,3) == -Q(5,3) and 9+Q(5,3) == Q(32,3) | A=F(3)-F(-1)=9+\frac53=\frac{32}3\approx10.67 .
+\]
+\emph{Check by a second method.} Complete the square: $2x+3-x^2=4-(x-1)^2$. With $u=x-1$ (Theorem~\ref{8.1-thm:subst}), $\int_{-1}^3\bigl(4-(x-1)^2\bigr)dx=\int_{-2}^{2}(4-u^2)\,du=2\left(8-\frac83\right)=\frac{32}3$. \checkmark
+%@ e1-chk | expand(4-(x-1)**2-(2*x+3-x**2)) == 0 and 2*(8-Q(8,3)) == Q(32,3) | \checkmark
+
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.42cm]
+  \fill[blue!15] plot[domain=-1:3,samples=2,variable=\t]({\t},{2*\t+3}) -- plot[domain=3:-1,samples=40,variable=\t]({\t},{\t*\t}) -- cycle;
+  \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+  \draw[->] (0,-0.8) -- (0,10.5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-1.6:3.2,samples=2,variable=\t] plot ({\t},{2*\t+3});
+  \draw[very thick,red!70!black,domain=-1.5:3.2,samples=50,variable=\t] plot ({\t},{\t*\t});
+  \fill (-1,1) circle (1.6pt) node[left,font=\small] {$(-1,1)$};
+%@ g-e1-p1 | 2*(-1)+3 == 1 and (-1)**2 == 1 | (-1,1) circle (1.6pt) node[left,font=\small] {$(-1,1)$};
+  \fill (3,9) circle (1.6pt) node[right,font=\small] {$(3,9)$};
+%@ g-e1-p2 | 2*3+3 == 9 and 3**2 == 9 | (3,9) circle (1.6pt) node[right,font=\small] {$(3,9)$};
+  \draw[dashed] (1,1) -- (1,5);
+  \node[font=\small] at (1.5,3) {$4$};
+%@ g-e1-gap | (2*1+3)-1**2 == 4 | \node[font=\small] at (1.5,3) {$4$};
+  \node[font=\small,blue!70!black] at (-1.4,3.6) {$y=2x+3$};
+  \node[font=\small,red!70!black] at (3.3,6.5) {$y=x^2$};
+  \node[font=\small] at (1,7) {$A=32/3$};
+%@ g-e1-A | Q(32,3) == integrate(2*x+3-x**2,(x,-1,3)) | \node[font=\small] at (1,7) {$A=32/3$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between the line and the parabola; the dashed gap at $x=1$ is the largest, $5-1=4$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Exponential curves cut off by a vertical line}{e2}
+Find the area of the region bounded by $y=e^x$, $y=e^{-x}$ and the line $x=\ln3$, to the right of the $y$-axis.
+
+\textbf{Solution.} \emph{Intersection.} $e^x=e^{-x}$ gives $e^{2x}=1$, so $x=0$ (the exponential is one-to-one), at the point $(0,1)$. The vertical line $x=\ln3$ meets the curves at $(\ln3,3)$ and $\left(\ln3,\frac13\right)$, using $e^{-\ln3}=\frac13$.
+%@ e2-pts | NUM(exp(2*0), 1) == 0 and NUM(exp(log(3)), 3) == 0 and NUM(exp(-log(3)), Q(1,3)) == 0 | $\left(\ln3,\frac13\right)$, using $e^{-\ln3}=\frac13$.
+\emph{Which is on top?} At $x=1$: $e^1\approx2.72>e^{-1}\approx0.37$, so $e^x$ is on top on $(0,\ln3)$.
+%@ e2-top | exp(1) > exp(-1) and NUM(exp(1), Q(271828182845904523536,10**20)) < 1 | so $e^x$ is on top on $(0,\ln3)$.
+\emph{Integral.} $A=\int_0^{\ln3}(e^x-e^{-x})\,dx=\Bigl[e^x+e^{-x}\Bigr]_0^{\ln3}=\left(3+\frac13\right)-(1+1)=\frac43$. Check: $\frac d{dx}(e^x+e^{-x})=e^x-e^{-x}$.
+%@ e2-A | ANT(exp(x)+exp(-x), exp(x)-exp(-x), [Q(1,2),Q(3,1)]) == 0 and NUM(exp(log(3))+exp(-log(3))-2, Q(4,3)) == 0 | Check: $\frac d{dx}(e^x+e^{-x})=e^x-e^{-x}$.
+
+\begin{center}
+\begin{tikzpicture}[x=3cm,y=1.1cm]
+  \fill[blue!15] plot[domain=0:1.0986,samples=30,variable=\t]({\t},{exp(\t)}) -- plot[domain=1.0986:0,samples=30,variable=\t]({\t},{exp(-\t)}) -- cycle;
+  \draw[->] (-0.3,0) -- (1.5,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,3.6) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-0.25:1.15,samples=40,variable=\t] plot ({\t},{exp(\t)});
+  \draw[very thick,red!70!black,domain=-0.25:1.15,samples=40,variable=\t] plot ({\t},{exp(-\t)});
+  \draw[dashed] (1.0986,0) -- (1.0986,3);
+  \fill (0,1) circle (1.6pt) node[below left,font=\small] {$(0,1)$};
+%@ g-e2-p0 | exp(0) == 1 and exp(-0) == 1 | circle (1.6pt) node[below left,font=\small] {$(0,1)$};
+  \fill (1.0986,3) circle (1.6pt) node[above left,font=\small] {$(\ln3,3)$};
+%@ g-e2-p1 | abs(log(3).evalf(30)-Q(10986,10000)) < Q(1,10000) and NUM(exp(log(3)), 3) == 0 | circle (1.6pt) node[above left,font=\small] {$(\ln3,3)$};
+  \fill (1.0986,0.3333) circle (1.6pt) node[right,font=\small] {$\left(\ln3,\frac13\right)$};
+%@ g-e2-p2 | abs(log(3).evalf(30)-Q(10986,10000)) < Q(1,10000) and NUM(exp(-log(3)), Q(1,3)) == 0 | node[right,font=\small] {$\left(\ln3,\frac13\right)$};
+  \node[font=\small,blue!70!black] at (0.3,1.9) {$y=e^x$};
+  \node[font=\small,red!70!black] at (0.75,0.28) {$y=e^{-x}$};
+  \node[font=\small] at (0.75,1.1) {$A=4/3$};
+%@ g-e2-A | Q(4,3) == integrate(exp(x)-exp(-x),(x,0,log(3))).simplify() | \node[font=\small] at (0.75,1.1) {$A=4/3$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=e^x$ and $y=e^{-x}$ for $0\le x\le\ln3$.
+\end{center}
+\end{exmp}
+
+\begin{think}{Why do the curves not need to be positive?}{thref}
+In Example~\ref{ex:e1} the parabola lies partly \emph{above} the $x$-axis and in Example~\ref{ex:b10} of the bank both curves go below it. Explain, using a vertical shift, why the formula $\int(f-g)\,dx$ still gives the area.
+\end{think}
+
+\begin{exmp}{A trigonometric region}{e3}
+Find the area of the region bounded by $y=\sin x$ and $y=\sin2x$ between $x=0$ and their next intersection to the right.
+
+\textbf{Solution.} \emph{Intersections.} $\sin2x=\sin x$ means $2\sin x\cos x-\sin x=0$ (double-angle identity), so $\sin x\,(2\cos x-1)=0$. Hence $\sin x=0$ (first solution $x=0$) or $\cos x=\frac12$ (first positive solution $x=\frac\pi3$). The region lies over $\left[0,\frac\pi3\right]$.
+%@ e3-pts | NUM(sin(2*(pi/3)), sin(pi/3)) == 0 and cos(pi/3) == Q(1,2) and sin(2*0) == sin(0) | The region lies over $\left[0,\frac\pi3\right]$.
+\emph{Which is on top?} At $x=\frac\pi6$: $\sin\frac\pi3=\frac{\sqrt3}2\approx0.87$ and $\sin\frac\pi6=\frac12$, so $\sin2x$ is on top.
+%@ e3-top | abs((sqrt(3)/2).evalf(30)-Q(87,100)) < Q(1,100) and sin(pi/6) == Q(1,2) | and $\sin\frac\pi6=\frac12$, so $\sin2x$ is on top.
+\emph{Integral.} $A=\int_0^{\pi/3}(\sin2x-\sin x)\,dx=\Bigl[-\tfrac12\cos2x+\cos x\Bigr]_0^{\pi/3}$. (Check: the derivative is $\sin2x-\sin x$, by the Chain Rule.) At $\frac\pi3$: $-\frac12\cos\frac{2\pi}3+\cos\frac\pi3=\frac14+\frac12=\frac34$; at $0$: $-\frac12+1=\frac12$. So $A=\frac34-\frac12=\frac14$.
+%@ e3-A | ANT(-cos(2*x)/2+cos(x), sin(2*x)-sin(x), [Q(1,2),Q(3,1)]) == 0 and -cos(2*(pi/3))/2+cos(pi/3) == Q(3,4) and -cos(0)/2+cos(0) == Q(1,2) and Q(3,4)-Q(1,2) == Q(1,4) | $0$: $-\frac12+1=\frac12$. So $A=\frac34-\frac12=\frac14$.
+\emph{Plausibility.} The largest gap is about $0.37$ and the width is about $1.05$, so $A$ lies between half and the whole of $0.37\cdot1.05\approx0.38$, that is between $0.19$ and $0.38$; $0.25$ fits.
+%@ e3-pl | abs((Q(37,100)*Q(105,100)).evalf(30)-Q(3885,10000)) < Q(1,10000) and Q(1,4) > Q(19,100) and Q(1,4) < Q(38,100) | that is between $0.19$ and $0.38$; $0.25$ fits.
+
+\begin{center}
+\begin{tikzpicture}[x=3cm,y=3.2cm]
+  \fill[blue!15] plot[domain=0:1.0472,samples=30,variable=\t]({\t},{sin((2*\t) r)}) -- plot[domain=1.0472:0,samples=30,variable=\t]({\t},{sin(\t r)}) -- cycle;
+  \draw[->] (-0.1,0) -- (1.9,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.15) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1.57,samples=40,variable=\t] plot ({\t},{sin(\t r)});
+  \draw[very thick,red!70!black,domain=0:1.57,samples=40,variable=\t] plot ({\t},{sin((2*\t) r)});
+  \fill (1.0472,0.866) circle (1.6pt) node[above,font=\small] {$\left(\frac\pi3,\frac{\sqrt3}2\right)$};
+%@ g-e3-p | abs((pi/3).evalf(30)-Q(10472,10000)) < Q(1,10000) and abs((sqrt(3)/2).evalf(30)-Q(866,1000)) < Q(1,1000) and NUM(sin(pi/3), sin(2*pi/3)) == 0 | {$\left(\frac\pi3,\frac{\sqrt3}2\right)$};
+  \node[font=\small,blue!70!black] at (1.45,0.62) {$y=\sin x$};
+  \node[font=\small,red!70!black] at (0.12,0.95) {$y=\sin2x$};
+  \node[font=\small] at (0.62,0.22) {$A=1/4$};
+%@ g-e3-A | Q(1,4) == integrate(sin(2*x)-sin(x),(x,0,pi/3)) | \node[font=\small] at (0.62,0.22) {$A=1/4$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=\sin x$ and $y=\sin2x$ for $0\le x\le\frac\pi3$.
+\end{center}
+\end{exmp}
+
+\subsection*{Compound regions and symmetry}
+
+Often the lower boundary (or the upper one) is given by different formulas on different stretches, for example when it contains an absolute value. The strip height is then a different expression on each piece, and we integrate piece by piece, splitting where the formula changes.
+
+\begin{exmp}{A region whose lower boundary has a corner}{e4}
+Find the area of the region bounded above by $f(x)=10-x^2$ and below by $g(x)=\abs{3x}$.
+
+\textbf{Solution.} By the definition of absolute value, $g(x)=3x$ for $x\ge0$ and $g(x)=-3x$ for $x<0$, so we treat $x\ge0$ and $x<0$ separately.
+
+\emph{Intersections for $x\ge0$.} $10-x^2=3x$ gives $x^2+3x-10=0$, so $(x+5)(x-2)=0$; only $x=2$ has $x\ge0$. \emph{For $x<0$:} $10-x^2=-3x$ gives $x^2-3x-10=0$, so $(x-5)(x+2)=0$; only $x=-2$ has $x<0$. The meeting points are $(\pm2,6)$.
+%@ e4-pts | expand((x+5)*(x-2)-(x**2+3*x-10)) == 0 and expand((x-5)*(x+2)-(x**2-3*x-10)) == 0 and 10-2**2 == 3*2 and 10-(-2)**2 == -3*(-2) | only $x=-2$ has $x<0$. The meeting points are $(\pm2,6)$.
+\emph{Which is on top?} At $x=0$: $f(0)=10>0=g(0)$, so $f$ is on top on $(-2,2)$ (the curves meet nowhere else there).
+
+\emph{The left piece, $-2\le x\le0$,} where $g=-3x$: $\int_{-2}^0(10-x^2+3x)\,dx=\Bigl[10x-\frac{x^3}3+\frac{3x^2}2\Bigr]_{-2}^0=0-\left(-20+\frac83+6\right)=14-\frac83=\frac{34}3$.
+%@ e4-L | ANT(10*x-x**3/3+3*x**2/2, 10-x**2+3*x, [Q(1,2),Q(3,1)]) == 0 and -(10*(-2)-Q((-2)**3,3)+Q(3*(-2)**2,2)) == Q(34,3) | -2}^0=0-\left(-20+\frac83+6\right)=14-\frac83=\frac{34}3$.
+\emph{The right piece, $0\le x\le2$,} where $g=3x$: $\int_0^2(10-x^2-3x)\,dx=\Bigl[10x-\frac{x^3}3-\frac{3x^2}2\Bigr]_0^2=20-\frac83-6=\frac{34}3$.
+%@ e4-R | ANT(10*x-x**3/3-3*x**2/2, 10-x**2-3*x, [Q(1,2),Q(3,1)]) == 0 and 10*2-Q(2**3,3)-Q(3*2**2,2) == Q(34,3) | rac{x^3}3-\frac{3x^2}2\Bigr]_0^2=20-\frac83-6=\frac{34}3$.
+
+The area is $A=\frac{34}3+\frac{34}3=\frac{68}3\approx22.67$. The two pieces are equal because the region is symmetric about the $y$-axis (see Theorem~\ref{thm:sym} below).
+%@ e4-A | Q(34,3)+Q(34,3) == Q(68,3) | about the $y$-axis (see Theorem~\ref{thm:sym} below).
+
+\begin{center}
+\begin{tikzpicture}[x=1.2cm,y=0.38cm]
+  \fill[blue!15] plot[domain=-2:2,samples=40,variable=\t]({\t},{10-\t*\t}) -- (0,0) -- cycle;
+  \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+  \draw[->] (0,-0.8) -- (0,11.5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-2.5:2.5,samples=50,variable=\t] plot ({\t},{10-\t*\t});
+  \draw[very thick,red!70!black] (-2.3,6.9) -- (0,0) -- (2.3,6.9);
+  \draw[dashed] (0,0) -- (0,10);
+  \fill (2,6) circle (1.6pt) node[right,font=\small] {$(2,6)$};
+%@ g-e4-p1 | 10-2**2 == 6 and 3*2 == 6 | (2,6) circle (1.6pt) node[right,font=\small] {$(2,6)$};
+  \fill (-2,6) circle (1.6pt) node[left,font=\small] {$(-2,6)$};
+%@ g-e4-p2 | 10-(-2)**2 == 6 and abs(3*(-2)) == 6 | (-2,6) circle (1.6pt) node[left,font=\small] {$(-2,6)$};
+  \fill (0,10) circle (1.6pt) node[above right,font=\small] {$10$};
+%@ g-e4-p3 | 10-0**2 == 10 | circle (1.6pt) node[above right,font=\small] {$10$};
+  \node[font=\small] at (-0.55,1.6) {$34/3$};
+%@ g-e4-a1 | Q(34,3) == integrate(10-x**2+3*x,(x,-2,0)) | \node[font=\small] at (-0.55,1.6) {$34/3$};
+  \node[font=\small] at (0.55,1.6) {$34/3$};
+%@ g-e4-a2 | Q(34,3) == integrate(10-x**2-3*x,(x,0,2)) | \node[font=\small] at (0.55,1.6) {$34/3$};
+  \node[font=\small,blue!70!black] at (-2.3,9.5) {$y=10-x^2$};
+  \node[font=\small,red!70!black] at (2.2,9) {$y=\lvert 3x\rvert$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=10-x^2$ and $y=\abs{3x}$: two pieces of area $\frac{34}3$.
+\end{center}
+\end{exmp}
+
+The symmetry that halved the work in Example~\ref{ex:e4} holds in general. Recall that $h$ is \emph{even} if $h(-x)=h(x)$ and \emph{odd} if $h(-x)=-h(x)$.
+
+\begin{thm}{Symmetry}{sym}
+Let $h$ be continuous on $[-a,a]$.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item If $h$ is even, $\int_{-a}^ah\,dx=2\int_0^ah\,dx$. If $h$ is odd, $\int_{-a}^ah\,dx=0$.
+  \item If $f\ge g$ are both even, the area between their graphs on $[-a,a]$ is $2\int_0^a(f-g)\,dx$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Write $\int_{-a}^ah=\int_{-a}^0h+\int_0^ah$. In the first integral use the substitution $u=-x$ (Theorem~\ref{8.1-thm:subst}(2) with $g(x)=-x$, $g'(x)=-1$ continuous): $\int_{-a}^0h(-x)\,dx=-\int_{-a}^0h(-x)\,(-1)\,dx=-\int_{a}^{0}h(u)\,du=\int_0^ah(u)\,du$. If $h$ is even, $h(-x)=h(x)$ and so $\int_{-a}^0h(x)\,dx=\int_0^ah$, giving $2\int_0^ah$. If $h$ is odd, $h(x)=-h(-x)$, so $\int_{-a}^0h(x)\,dx=-\int_{-a}^0h(-x)\,dx=-\int_0^ah$, and the two halves cancel.
+%@ pr-sym | simplify(integrate(x**2,(x,-2,2))-2*integrate(x**2,(x,0,2))) == 0 and integrate(x**3,(x,-2,2)) == 0 | and the two halves cancel.
+
+(2) The difference $f-g$ is even (a difference of even functions) and continuous, so by part~(1) and the definition, $A=\int_{-a}^a(f-g)=2\int_0^a(f-g)$.
+\end{proof}
+
+\begin{remark}[Odd pairs]
+If $f$ and $g$ are both odd, then $f-g$ is odd and its integral is $0$; but the \emph{area} between the graphs is not $0$. The function $\abs{f-g}$ is even (because $\abs{(f-g)(-x)}=\abs{-(f-g)(x)}$), and by Theorem~\ref{thm:cross} below the area is $2\int_0^a\abs{f-g}\,dx$.
+\end{remark}
+
+% ---------------------------------------------------------------------
+\subsection*{Curves that cross: net area and total area}
+
+If the graphs cross inside $[a,b]$, the integral $\int_a^b(f-g)\,dx$ adds positive and negative pieces and is a \emph{net} area, exactly as $\int_a^bv\,dt$ is the displacement. The area of the region between the graphs is the \emph{total} area, which is the analogue of the distance traveled (Theorem~\ref{6.1-thm:dist}).
+
+\begin{thm}{Total area between crossing curves}{cross}
+Let $f$ and $g$ be continuous on $[a,b]$ and let $R=\{(x,y):a\le x\le b,\ \min(f,g)\le y\le\max(f,g)\}$ be the region between their graphs.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item The area of $R$ is $A=\int_a^b\abs{f(x)-g(x)}\,dx$.
+  \item Let $a=c_0<c_1<\dots<c_m=b$ be such that $f-g$ has no zero in any open interval $(c_{j-1},c_j)$ (for example the consecutive solutions of $f=g$ together with $a$ and $b$). Then $A=\sum_{j=1}^m\left|\int_{c_{j-1}}^{c_j}(f-g)\,dx\right|$.
+  \item $\left|\int_a^b(f-g)\,dx\right|\le A$, with equality if and only if $f\ge g$ on all of $[a,b]$ or $f\le g$ on all of $[a,b]$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Put $F=\max(f,g)$ and $G=\min(f,g)$. They are continuous, because $F=\frac12\bigl(f+g+\abs{f-g}\bigr)$ and $G=\frac12\bigl(f+g-\abs{f-g}\bigr)$ (check the two cases: if $f\ge g$ then $\abs{f-g}=f-g$ and the formulas give $f$ and $g$; if $f<g$ they give $g$ and $f$). Moreover $F\ge G$ and $F-G=\abs{f-g}$. Definition~\ref{def:area} applied to $F$ and $G$ gives $A=\int_a^b(F-G)=\int_a^b\abs{f-g}$.
+
+(2) On an interval $(c_{j-1},c_j)$ the continuous function $f-g$ is never $0$, so it keeps one sign there: if it took values of opposite signs, the Intermediate Value Theorem would give a zero between them. By continuity the same sign (or $0$) holds on the closed interval. If $f-g\ge0$ on the piece, $\int\abs{f-g}=\int(f-g)=\abs{\int(f-g)}$; if $f-g\le0$, then $\int\abs{f-g}=-\int(f-g)=\abs{\int(f-g)}$. Now add over the pieces, using additivity of the integral over adjacent intervals.
+
+(3) This is Theorem~\ref{6.1-thm:ineq} applied to the continuous function $v=f-g$: $\abs{\int_a^bv}\le\int_a^b\abs v=A$, with equality if and only if $v\ge0$ everywhere or $v\le0$ everywhere.
+%@ pr-cross | 2*integrate(x,(x,0,1)) == 1 and integrate(x,(x,-1,1)) == 0 | if and only if $v\ge0$ everywhere or $v\le0$ everywhere.
+\end{proof}
+
+\begin{kc}{Net area versus total area}{kccross}
+Let $f(x)=x$ and $g(x)=-x$ on $[-1,1]$. Compute $\int_{-1}^1(f-g)\,dx$ and $\int_{-1}^1\abs{f-g}\,dx$. Which one is the area of the region between the graphs, and why do they differ?
+\end{kc}
+
+\begin{think}{Zero net area}{thzero}
+Can the integral $\int_a^b(f-g)\,dx$ be $0$ although the graphs of $f$ and $g$ are different and enclose a region of positive area? What is the matching statement about displacement and distance in Section 6.1?
+\end{think}
+
+\begin{exmp}{Two curves that cross inside the interval}{e5}
+Find (a) the area of the region between $y=x^3$ and $y=x$ for $0\le x\le2$, and (b) the net area $\int_0^2(x^3-x)\,dx$. (c) Find the area of the region enclosed by the two curves alone.
+
+\textbf{Solution.} (a) \emph{Where do they cross?} $x^3-x=x(x-1)(x+1)=0$ at $x=0,\pm1$. On $[0,2]$ the zeros are $0$ and $1$, so the pieces are $[0,1]$ and $[1,2]$.
+%@ e5-z | expand(x*(x-1)*(x+1)-(x**3-x)) == 0 and 1**3-1 == 0 | are $0$ and $1$, so the pieces are $[0,1]$ and $[1,2]$.
+\emph{Which is on top?} At $x=\frac12$: $x^3=\frac18<\frac12=x$, so the line is on top on $(0,1)$. At $x=2$: $8>2$, so the cubic is on top on $(1,2)$.
+%@ e5-top | Q(1,2)**3 == Q(1,8) and 2**3 == 8 | At $x=2$: $8>2$, so the cubic is on top on $(1,2)$.
+\emph{Integrals.} With the antiderivative $\frac{x^2}2-\frac{x^4}4$ of $x-x^3$ (check: its derivative is $x-x^3$):
+\[
+\int_0^1(x-x^3)\,dx=\frac12-\frac14=\frac14,\qquad
+\int_1^2(x^3-x)\,dx=\Bigl[\frac{x^4}4-\frac{x^2}2\Bigr]_1^2=(4-2)-\left(\frac14-\frac12\right)=\frac94.
+%@ e5-pc | ANT(x**2/2-x**4/4, x-x**3, [Q(1,2),Q(3,1)]) == 0 and Q(1,2)-Q(1,4) == Q(1,4) and (Q(2**4,4)-Q(2**2,2))-(Q(1,4)-Q(1,2)) == Q(9,4) | ^2}2\Bigr]_1^2=(4-2)-\left(\frac14-\frac12\right)=\frac94.
+\]
+So $A=\frac14+\frac94=\frac52$.
+%@ e5-A | Q(1,4)+Q(9,4) == Q(5,2) | So $A=\frac14+\frac94=\frac52$.
+
+(b) The net area is $\int_0^2(x^3-x)\,dx=\Bigl[\frac{x^4}4-\frac{x^2}2\Bigr]_0^2=4-2=2$, which is $\frac94-\frac14$: the piece below counts $-\frac14$. As Theorem~\ref{thm:cross}(3) says, $2\le\frac52$, with strict inequality because the curves cross.
+%@ e5-net | Q(2**4,4)-Q(2**2,2) == 2 and Q(9,4)-Q(1,4) == 2 | with strict inequality because the curves cross.
+
+(c) The two curves alone enclose the region between $x=-1$ and $x=1$ (they cross at $x=-1,0,1$). The functions $x^3$ and $x$ are both odd, so by the Remark after Theorem~\ref{thm:sym} the area is $2\int_0^1\abs{x^3-x}\,dx=2\cdot\frac14=\frac12$ (it consists of two congruent pieces, one on each side of the origin).
+%@ e5-enc | integrate(abs(x**3-x),(x,-1,1)) == Q(1,2) | of two congruent pieces, one on each side of the origin).
+
+\begin{center}
+\begin{tikzpicture}[x=2.4cm,y=0.45cm]
+  \fill[blue!15] plot[domain=0:1,samples=2,variable=\t]({\t},{\t}) -- plot[domain=1:0,samples=30,variable=\t]({\t},{\t*\t*\t}) -- cycle;
+  \fill[red!15] plot[domain=1:2,samples=30,variable=\t]({\t},{\t*\t*\t}) -- plot[domain=2:1,samples=2,variable=\t]({\t},{\t}) -- cycle;
+  \draw[->] (-0.2,0) -- (2.5,0) node[right] {$x$};
+  \draw[->] (0,-0.7) -- (0,9.5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:2.1,samples=2,variable=\t] plot ({\t},{\t});
+  \draw[very thick,red!70!black,domain=0:2.0,samples=40,variable=\t] plot ({\t},{\t*\t*\t});
+  \draw[dashed] (2,0) -- (2,8);
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ g-e5-p1 | 1**3 == 1 | circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+  \fill (2,8) circle (1.6pt) node[above left,font=\small] {$(2,8)$};
+%@ g-e5-p2 | 2**3 == 8 | circle (1.6pt) node[above left,font=\small] {$(2,8)$};
+  \fill (2,2) circle (1.6pt) node[below right,font=\small] {$(2,2)$};
+%@ g-e5-p3 | 2*1 == 2 | circle (1.6pt) node[below right,font=\small] {$(2,2)$};
+  \node[font=\small] at (0.62,0.9) {$\frac14$};
+%@ g-e5-a1 | Q(1,4) == integrate(x-x**3,(x,0,1)) | \node[font=\small] at (0.62,0.9) {$\frac14$};
+  \node[font=\small] at (1.62,3.7) {$\frac94$};
+%@ g-e5-a2 | Q(9,4) == integrate(x**3-x,(x,1,2)) | \node[font=\small] at (1.62,3.7) {$\frac94$};
+  \node[font=\small,blue!70!black] at (2.3,2.6) {$y=x$};
+  \node[font=\small,red!70!black] at (1.3,7.6) {$y=x^3$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The two curves cross at $x=1$. The area between them over $[0,2]$ is $\frac14+\frac94=\frac52$; the net area is $\frac94-\frac14=2$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Three boundary curves}{e6}
+Find the area of the region in the first quadrant that lies between the lines $y=x$ and $y=4x$ and below the hyperbola $y=\frac1x$.
+
+\textbf{Solution.} \emph{Intersections.} $y=4x$ meets $y=\frac1x$ where $4x=\frac1x$, so $x^2=\frac14$ and $x=\frac12$, at $(\frac12,2)$. The line $y=x$ meets the hyperbola where $x=\frac1x$, so $x=1$, at $(1,1)$. The two lines meet at the origin.
+%@ e6-pts | 4*Q(1,2) == 1/Q(1,2) and 1 == 1/1 and 4*Q(1,2) == 2 | so $x=1$, at $(1,1)$. The two lines meet at the origin.
+\emph{The boundary changes at $x=\frac12$.} For $0\le x\le\frac12$ the region lies between $y=x$ (bottom) and $y=4x$ (top); for $\frac12\le x\le1$ the top is the hyperbola (at $x=\frac34$: $\frac1x=\frac43<3=4x$, so the hyperbola is the lower of the two curves above $x=\frac12$, hence the boundary there) and the bottom is still $y=x$.
+%@ e6-top | 1/Q(3,4) == Q(4,3) and 4*Q(3,4) == 3 and Q(4,3) < 3 | hence the boundary there) and the bottom is still $y=x$.
+
+\emph{First piece.} $\int_0^{1/2}(4x-x)\,dx=\int_0^{1/2}3x\,dx=\frac32x^2\Big|_0^{1/2}=\frac38$.
+%@ e6-p1 | integrate(3*x,(x,0,Q(1,2))) == Q(3,8) | )\,dx=\int_0^{1/2}3x\,dx=\frac32x^2\Big|_0^{1/2}=\frac38$.
+\emph{Second piece.} $\int_{1/2}^1\left(\frac1x-x\right)dx=\Bigl[\ln x-\frac{x^2}2\Bigr]_{1/2}^1=\left(0-\frac12\right)-\left(-\ln2-\frac18\right)=\ln2-\frac38$.
+%@ e6-p2 | NUM(integrate(1/x-x,(x,Q(1,2),1)), log(2)-Q(3,8)) == 0 and ANT(log(x)-x**2/2, 1/x-x, [Q(1,2),Q(3,1)]) == 0 | 0-\frac12\right)-\left(-\ln2-\frac18\right)=\ln2-\frac38$.
+
+Hence $A=\frac38+\left(\ln2-\frac38\right)=\ln2\approx0.693$: the rational parts cancel.
+%@ e6-A | NUM(Q(3,8)+(log(2)-Q(3,8)), log(2)) == 0 and abs(log(2).evalf(30)-Q(693,1000)) < Q(1,1000) | the rational parts cancel.
+
+\begin{center}
+\begin{tikzpicture}[x=5cm,y=1.5cm]
+  \fill[blue!15] (0,0) -- (0.5,2) -- (0.5,0.5) -- cycle;
+  \fill[red!15] plot[domain=0.5:1,samples=30,variable=\t]({\t},{1/\t}) -- (0.5,0.5) -- cycle;
+  \draw[->] (-0.1,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.9) node[above] {$y$};
+  \draw[very thick,blue!70!black] (0,0) -- (0.7,2.8);
+  \draw[very thick,green!50!black] (0,0) -- (1.25,1.25);
+  \draw[very thick,red!70!black,domain=0.36:1.25,samples=40,variable=\t] plot ({\t},{1/\t});
+  \fill (0.5,2) circle (1.6pt) node[above left,font=\small] {$(\frac12,2)$};
+%@ g-e6-p1 | 4*Q(1,2) == 2 and 1/Q(1,2) == 2 | (1.6pt) node[above left,font=\small] {$(\frac12,2)$};
+  \fill (1,1) circle (1.6pt) node[above right,font=\small] {$(1,1)$};
+%@ g-e6-p2 | 1/1 == 1 and 1 == 1 | circle (1.6pt) node[above right,font=\small] {$(1,1)$};
+  \fill (0.5,0.5) circle (1.6pt) node[below,font=\small] {$(\frac12,\frac12)$};
+%@ g-e6-p3 | Q(1,2) == Q(1,2) and 4*Q(1,2)-Q(1,2) == Q(3,2) | (1.6pt) node[below,font=\small] {$(\frac12,\frac12)$};
+  \node[font=\small] at (0.3,0.75) {$\frac38$};
+%@ g-e6-a1 | Q(3,8) == integrate(3*x,(x,0,Q(1,2))) | \node[font=\small] at (0.3,0.75) {$\frac38$};
+  \node[font=\small] at (0.64,1.0) {$\ln2-\frac38$};
+%@ g-e6-a2 | NUM(integrate(1/x-x,(x,Q(1,2),1)), log(2)-Q(3,8)) == 0 | \node[font=\small] at (0.64,1.0) {$\ln2-\frac38$};
+  \node[font=\small,blue!70!black] at (0.78,2.7) {$y=4x$};
+  \node[font=\small,green!50!black] at (0.82,0.45) {$y=x$};
+  \node[font=\small,red!70!black] at (1.12,1.45) {$y=1/x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=x$ and $y=4x$, below $y=1/x$. Its area is $\ln2$.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Integrating with respect to $y$}
+
+Sometimes the region is easier to describe by the horizontal strip: for each height $y$ in an interval $[c,d]$, the region extends from a left curve $x=q(y)$ to a right curve $x=p(y)$. We need no new definition.
+
+\begin{thm}{Area with respect to $y$}{yslice}
+Let $p$ and $q$ be continuous on $[c,d]$ with $p(y)\ge q(y)$ for all $y$ in $[c,d]$. The region $S=\{(x,y):c\le y\le d,\ q(y)\le x\le p(y)\}$ has area
+\[
+A=\int_c^d\bigl(p(y)-q(y)\bigr)\,dy .
+\]
+\end{thm}
+\begin{proof}
+Reflect $S$ in the line $y=x$, that is, swap the coordinates of every point. The point $(x,y)$ goes to $(u,v)=(y,x)$, and the conditions $c\le y\le d$ and $q(y)\le x\le p(y)$ become $c\le u\le d$ and $q(u)\le v\le p(u)$. So the image is the region between the graphs of $q$ and $p$ over $[c,d]$ in the sense of Definition~\ref{def:area} (with $u$ as the horizontal variable). By (A3) the two regions have the same area, and by the definition the image has area $\int_c^d\bigl(p(u)-q(u)\bigr)\,du$, which is the stated integral with the dummy variable named $y$.
+\end{proof}
+
+The factors have the same meaning as before: $p(y)-q(y)$ is the length of the horizontal strip (right curve minus left curve) and $dy$ is its thickness. To use the formula we write each boundary curve as $x=\text{(function of }y)$.
+
+
+
+\begin{exmp}{Two parabolas that open sideways}{e7}
+Find the area of the region bounded by $x=y^2$ and $x=6-y$.
+
+\textbf{Solution.} The curve $x=y^2$ opens to the right. Strips parallel to the $x$-axis are natural. \emph{Intersections:} $y^2=6-y$, so $y^2+y-6=0$, that is $(y+3)(y-2)=0$, and $y=-3$ or $y=2$. The points are $(9,-3)$ and $(4,2)$.
+%@ e7-pts | expand((x+3)*(x-2)-(x**2+x-6)) == 0 and (-3)**2 == 6-(-3) and 2**2 == 6-2 | and $y=-3$ or $y=2$. The points are $(9,-3)$ and $(4,2)$.
+\emph{Right curve and left curve.} At $y=0$: $x=6-y=6$ and $x=y^2=0$, so $x=6-y$ is the right curve on $(-3,2)$.
+%@ e7-rt | 6-0 == 6 and 0**2 == 0 | and $x=y^2=0$, so $x=6-y$ is the right curve on $(-3,2)$.
+\emph{Integral.} $A=\int_{-3}^{2}\bigl((6-y)-y^2\bigr)\,dy=\Bigl[6y-\frac{y^2}2-\frac{y^3}3\Bigr]_{-3}^{2}$. Check: the derivative of the bracket is $6-y-y^2$. At $y=2$: $12-2-\frac83=\frac{22}3$. At $y=-3$: $-18-\frac92+9=-\frac{27}2$. So $A=\frac{22}3+\frac{27}2=\frac{44+81}6=\frac{125}6\approx20.83$.
+%@ e7-A | ANT(6*x-x**2/2-x**3/3, 6-x-x**2, [Q(1,2),Q(3,1)]) == 0 and 12-2-Q(8,3) == Q(22,3) and 6*(-3)-Q((-3)**2,2)-Q((-3)**3,3) == -Q(27,2) and Q(22,3)+Q(27,2) == Q(125,6) | ac{22}3+\frac{27}2=\frac{44+81}6=\frac{125}6\approx20.83$.
+\emph{What vertical strips would cost.} For $0\le x\le4$ the region lies between $y=-\sqrt x$ and $y=\sqrt x$; for $4\le x\le9$ it lies between the line $y=6-x$ (top) and $y=-\sqrt x$ (bottom). That is two integrals, $\int_0^4 2\sqrt x\,dx=\frac{32}3$ and $\int_4^9\bigl(6-x+\sqrt x\bigr)dx=\frac{61}6$, with the same total $\frac{32}3+\frac{61}6=\frac{125}6$. Horizontal strips needed one integral.
+%@ e7-x | integrate(2*sqrt(x),(x,0,4)) == Q(32,3) and integrate(6-x+sqrt(x),(x,4,9)) == Q(61,6) and Q(32,3)+Q(61,6) == Q(125,6) | Horizontal strips needed one integral.
+
+\begin{center}
+\begin{tikzpicture}[x=0.5cm,y=0.9cm]
+  \fill[blue!15] plot[domain=-3:2,samples=40,variable=\t]({\t*\t},{\t}) -- plot[domain=2:-3,samples=2,variable=\t]({6-\t},{\t}) -- cycle;
+  \draw[->] (-0.6,0) -- (11.5,0) node[right] {$x$};
+  \draw[->] (0,-3.6) -- (0,2.9) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=-3.3:2.5,samples=50,variable=\t] plot ({\t*\t},{\t});
+  \draw[very thick,blue!70!black,domain=-3.3:2.5,samples=2,variable=\t] plot ({6-\t},{\t});
+  \draw[dashed] (1,-1) -- (7,-1);
+  \fill (9,-3) circle (1.6pt) node[right,font=\small] {$(9,-3)$};
+%@ g-e7-p1 | (-3)**2 == 9 and 6-(-3) == 9 | (9,-3) circle (1.6pt) node[right,font=\small] {$(9,-3)$};
+  \fill (4,2) circle (1.6pt) node[above right,font=\small] {$(4,2)$};
+%@ g-e7-p2 | 2**2 == 4 and 6-2 == 4 | circle (1.6pt) node[above right,font=\small] {$(4,2)$};
+  \node[font=\small] at (4,-1.35) {$6-y-y^2$};
+%@ g-e7-len | 6-(-1)-(-1)**2 == 6 and (-1)**2 == 1 | \node[font=\small] at (4,-1.35) {$6-y-y^2$};
+  \node[font=\small] at (3.6,0.55) {$A=125/6$};
+%@ g-e7-A | Q(125,6) == integrate(6-x-x**2,(x,-3,2)) | \node[font=\small] at (3.6,0.55) {$A=125/6$};
+  \node[font=\small,red!70!black] at (10.2,-3.3) {$x=y^2$};
+  \node[font=\small,blue!70!black] at (6.5,1.6) {$x=6-y$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $x=y^2$ and $x=6-y$, with one horizontal strip of length $6-y-y^2$ (here at $y=-1$: from $x=1$ to $x=7$).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A region bounded by a square root, a line and the axis}{e8}
+Find the area of the region bounded by $y=\sqrt x$, the line $y=x-6$ and the $x$-axis.
+
+\textbf{Solution.} \emph{Intersection of the curve and the line.} $\sqrt x=x-6$ forces $x\ge6$. Squaring, $x=(x-6)^2$, so $x^2-13x+36=0$, that is $(x-4)(x-9)=0$. The root $x=4$ is rejected, because $4-6<0$ (squaring introduced it); $x=9$ works: $\sqrt9=3=9-6$. The point is $(9,3)$. The line meets the $x$-axis at $(6,0)$.
+%@ e8-pts | expand((x-4)*(x-9)-(x**2-13*x+36)) == 0 and sqrt(9) == 9-6 and sqrt(4) != 4-6 | point is $(9,3)$. The line meets the $x$-axis at $(6,0)$.
+\emph{Vertical strips need two integrals,} because the lower boundary is the $x$-axis for $0\le x\le6$ and the line for $6\le x\le9$:
+\[
+A=\int_0^6\sqrt x\,dx+\int_6^9\bigl(\sqrt x-x+6\bigr)\,dx .
+\]
+The first integral is $\frac23\,x^{3/2}\Big|_0^6=\frac23\cdot6\sqrt6=4\sqrt6$ (since $6^{3/2}=6\sqrt6$). The second is $\Bigl[\frac23x^{3/2}-\frac{x^2}2+6x\Bigr]_6^9=\left(18-\frac{81}2+54\right)-\left(4\sqrt6-18+36\right)=\frac{63}2-18-4\sqrt6=\frac{27}2-4\sqrt6$. The terms in $\sqrt6$ cancel, so $A=4\sqrt6+\frac{27}2-4\sqrt6=\frac{27}2$.
+%@ e8-x | NUM(integrate(sqrt(x),(x,0,6)), 4*sqrt(6)) == 0 and NUM(integrate(sqrt(x)-x+6,(x,6,9)), Q(27,2)-4*sqrt(6)) == 0 and ANT(Q(2,3)*x**Q(3,2)-x**2/2+6*x, sqrt(x)-x+6, [Q(1,2),Q(3,1)]) == 0 and Q(2,3)*9**Q(3,2)-Q(81,2)+54 == Q(63,2) | cancel, so $A=4\sqrt6+\frac{27}2-4\sqrt6=\frac{27}2$.
+
+\emph{Horizontal strips need one integral.} For $0\le y\le3$ the left boundary is the curve, written $x=y^2$ (solve $y=\sqrt x$ for $x$; valid for $y\ge0$), and the right boundary is the line, written $x=y+6$. They meet at $y=3$, since $y^2=y+6$ gives $(y-3)(y+2)=0$.
+%@ e8-y | expand((x-3)*(x+2)-(x**2-x-6)) == 0 and 3**2 == 3+6 | They meet at $y=3$, since $y^2=y+6$ gives $(y-3)(y+2)=0$.
+\[
+A=\int_0^3\bigl((y+6)-y^2\bigr)\,dy=\Bigl[\frac{y^2}2+6y-\frac{y^3}3\Bigr]_0^3=\frac92+18-9=\frac{27}2=13.5 .
+%@ e8-A | ANT(x**2/2+6*x-x**3/3, x+6-x**2, [Q(1,2),Q(3,1)]) == 0 and Q(3**2,2)+6*3-Q(3**3,3) == Q(27,2) | }2+6y-\frac{y^3}3\Bigr]_0^3=\frac92+18-9=\frac{27}2=13.5 .
+\]
+The two methods agree, as they must (Theorem~\ref{thm:agree} below explains why in a case of this kind), and the second is shorter.
+
+\begin{center}
+\begin{tikzpicture}[x=0.6cm,y=1.0cm]
+  \fill[blue!15] (0,0) -- (6,0) -- (9,3) -- plot[domain=9:0,samples=40,variable=\t]({\t},{sqrt(\t)}) -- cycle;
+  \draw[->] (-0.5,0) -- (10.5,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,3.6) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=0:10,samples=50,variable=\t] plot ({\t},{sqrt(\t)});
+  \draw[very thick,blue!70!black] (5.4,-0.6) -- (9.6,3.6);
+  \draw[dashed] (1,1) -- (7,1);
+  \fill (6,0) circle (1.6pt) node[below,font=\small] {$(6,0)$};
+%@ g-e8-p1 | 6-6 == 0 | (6,0) circle (1.6pt) node[below,font=\small] {$(6,0)$};
+  \fill (9,3) circle (1.6pt) node[above left,font=\small] {$(9,3)$};
+%@ g-e8-p2 | sqrt(9) == 3 and 9-6 == 3 | circle (1.6pt) node[above left,font=\small] {$(9,3)$};
+  \node[font=\small] at (1,0.6) {$x=y^2$};
+%@ g-e8-l | 1**2 == 1 and 1+6 == 7 | \node[font=\small] at (1,0.6) {$x=y^2$};
+  \node[font=\small] at (3.7,1.4) {$A=27/2$};
+%@ g-e8-A | Q(27,2) == integrate(x+6-x**2,(x,0,3)) | \node[font=\small] at (3.7,1.4) {$A=27/2$};
+  \node[font=\small,red!70!black] at (9.9,2.4) {$y=\sqrt x$};
+  \node[font=\small,blue!70!black] at (6.2,2.4) {$y=x-6$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=\sqrt x$ and above the $x$-axis and the line $y=x-6$. The dashed strip at $y=1$ runs from $x=1$ to $x=7$.
+\end{center}
+\end{exmp}
+
+Both ways of cutting must give the same number, because both compute the area of the same region. For regions between increasing curves we can also see the agreement directly, from the substitution rule and integration by parts, without any geometry.
+
+\begin{thm}{Slicing by $x$ and slicing by $y$ agree}{agree}
+Let $\varphi$ be continuous and strictly increasing on $[a,b]$, with $\varphi(a)=c$, $\varphi(b)=d$ and inverse function $\psi=\varphi^{-1}$ on $[c,d]$. Suppose that $\varphi$ or $\psi$ has a continuous derivative.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item $\displaystyle\int_a^b\varphi(x)\,dx+\int_c^d\psi(y)\,dy=bd-ac$.
+  \item Let $f$ and $g$ be two such functions on $[a,b]$ with $f(a)=g(a)=c$, $f(b)=g(b)=d$ and $f\ge g$. Then the region between their graphs has the same area whether it is computed with vertical strips, $\int_a^b(f-g)\,dx$, or with horizontal strips, $\int_c^d\bigl(g^{-1}(y)-f^{-1}(y)\bigr)\,dy$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) The inverse $\psi$ of a continuous strictly increasing function is continuous and increasing (Intermediate Value Theorem), so both integrals exist. First suppose that $\varphi$ has a continuous derivative. The substitution $y=\varphi(x)$ (Theorem~\ref{8.1-thm:subst}(2), with $f=\psi$ and $g=\varphi$) and $\psi(\varphi(x))=x$ give
+\[
+\int_c^d\psi(y)\,dy=\int_{\varphi(a)}^{\varphi(b)}\psi(y)\,dy=\int_a^b\psi(\varphi(x))\,\varphi'(x)\,dx=\int_a^bx\,\varphi'(x)\,dx .
+\]
+Integration by parts (Theorem~\ref{8.2-thm:parts}, with $u=x$ and $v=\varphi$) gives $\int_a^bx\,\varphi'(x)\,dx=\Bigl[x\varphi(x)\Bigr]_a^b-\int_a^b\varphi(x)\,dx=bd-ac-\int_a^b\varphi$. Rearranging gives (1). If instead $\psi$ has a continuous derivative, apply what we just proved to $\psi$ on $[c,d]$ (its inverse is $\varphi$, and $\psi(c)=a$, $\psi(d)=b$): $\int_c^d\psi+\int_a^b\varphi=db-ca$, which is the same statement.
+%@ pr-agree | integrate(x**2,(x,1,2))+integrate(sqrt(x),(x,1,4)) == 7 and 2*4-1*1 == 7 | which is the same statement.
+
+(2) Put $K=bd-ac$. By part~(1), $\int_c^dg^{-1}=K-\int_a^bg$ and $\int_c^df^{-1}=K-\int_a^bf$. Since $f\ge g$ and both are increasing, $g^{-1}\ge f^{-1}$: if $y=f(x_1)$, then $g(x_1)\le f(x_1)=y$, so $x_1\le g^{-1}(y)$, that is $f^{-1}(y)\le g^{-1}(y)$. The region between the graphs is $\{g(x)\le y\le f(x)\}$, and for increasing functions this says $f^{-1}(y)\le x\le g^{-1}(y)$; so Theorem~\ref{thm:yslice} gives the area $\int_c^d(g^{-1}-f^{-1})\,dy=\bigl(K-\int_a^bg\bigr)-\bigl(K-\int_a^bf\bigr)=\int_a^b(f-g)\,dx$.
+\end{proof}
+
+\begin{remark}[A picture of part~(1)]
+Take $\varphi(x)=x^2$ on $[1,2]$, so $c=1$, $d=4$ and $\psi(y)=\sqrt y$. The area under the graph is $\int_1^2x^2\,dx=\frac73$; the area between the graph and the $y$-axis is $\int_1^4\sqrt y\,dy=\frac{14}3$. Together they fill the L-shaped region (the rectangle $[0,2]\times[0,4]$ without the square $[0,1]\times[0,1]$) of area $8-1=7=\frac73+\frac{14}3$.
+%@ rem-agree | integrate(x**2,(x,1,2)) == Q(7,3) and integrate(sqrt(x),(x,1,4)) == Q(14,3) and Q(7,3)+Q(14,3) == 2*4-1*1 | $[0,1]\times[0,1]$) of area $8-1=7=\frac73+\frac{14}3$.
+\par\smallskip
+\begin{tikzpicture}[x=1.8cm,y=0.5cm]
+  \fill[blue!15] (1,0) -- plot[domain=1:2,samples=20,variable=\t]({\t},{\t*\t}) -- (2,0) -- cycle;
+  \fill[red!15] (0,1) -- plot[domain=1:4,samples=30,variable=\t]({sqrt(\t)},{\t}) -- (0,4) -- cycle;
+  \draw[->] (-0.2,0) -- (2.5,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.5:2.1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ g-rem-p1 | 1**2 == 1 | circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+  \fill (2,4) circle (1.6pt) node[above left,font=\small] {$(2,4)$};
+%@ g-rem-p2 | 2**2 == 4 | circle (1.6pt) node[above left,font=\small] {$(2,4)$};
+  \node[font=\small] at (1.55,0.9) {$7/3$};
+%@ g-rem-a1 | Q(7,3) == integrate(x**2,(x,1,2)) | \node[font=\small] at (1.55,0.9) {$7/3$};
+  \node[font=\small] at (0.5,2.7) {$14/3$};
+%@ g-rem-a2 | Q(14,3) == integrate(sqrt(x),(x,1,4)) | \node[font=\small] at (0.5,2.7) {$14/3$};
+\end{tikzpicture}
+\end{remark}
+
+\begin{kc}{Horizontal strips}{kcy}
+Write the area of the region bounded by $x=y^2$ and $x=4$ as an integral with respect to $y$, and evaluate it.
+\end{kc}
+
+\begin{exmp}{Calculus and geometry together}{e9}
+Find the area of the region in the first quadrant that lies inside the circle $x^2+y^2=4$ and above the line $y=2-x$.
+
+\textbf{Solution.} In the first quadrant the circle is the graph of $y=\sqrt{4-x^2}$. The line $y=2-x$ meets the circle where $\sqrt{4-x^2}=2-x$: squaring, $4-x^2=4-4x+x^2$, so $2x^2-4x=0$ and $x=0$ or $x=2$; both satisfy $2-x\ge0$. The points are $(0,2)$ and $(2,0)$. At $x=1$: $\sqrt3\approx1.73>1=2-x$, so the circle is on top.
+%@ e9-pts | expand(4-x**2-(4-4*x+x**2)+2*x*(x-2)) == 0 and sqrt(4-0**2) == 2-0 and sqrt(4-2**2) == 2-2 and abs(sqrt(3).evalf(30)-Q(173,100)) < Q(1,100) | $x=1$: $\sqrt3\approx1.73>1=2-x$, so the circle is on top.
+\[
+A=\int_0^2\Bigl(\sqrt{4-x^2}-(2-x)\Bigr)\,dx=\int_0^2\sqrt{4-x^2}\,dx-\int_0^2(2-x)\,dx .
+%@ e9-A1 | NUM(integrate(sqrt(4-x**2)-(2-x),(x,0,2)), pi-2) == 0 | -x)\Bigr)\,dx=\int_0^2\sqrt{4-x^2}\,dx-\int_0^2(2-x)\,dx .
+\]
+\emph{The first integral is geometry:} the region under $y=\sqrt{4-x^2}$ over $[0,2]$ is a quarter of the disk of radius $2$, with area $\frac14\pi\cdot2^2=\pi$. (Calculus gives the same: the antiderivative is $F(x)=\frac x2\sqrt{4-x^2}+2\sin^{-1}\frac x2$, found by the substitution $x=2\sin\theta$ of Procedure~\ref{8.4-proc:trigsub}; check by differentiating. Then $F(2)-F(0)=2\cdot\frac\pi2-0=\pi$.) \emph{The second is a triangle} with legs $2$ and $2$: $\int_0^2(2-x)\,dx=\Bigl[2x-\frac{x^2}2\Bigr]_0^2=4-2=2$, which is $\frac12\cdot2\cdot2$.
+%@ e9-ints | ANT(x*sqrt(4-x**2)/2+2*asin(x/2), sqrt(4-x**2), [Q(1,2),Q(3,2)]) == 0 and NUM(2*asin(1), pi) == 0 and 2*2-Q(2**2,2) == 2 | which is $\frac12\cdot2\cdot2$.
+Hence $A=\pi-2\approx1.14$.
+%@ e9-A | abs((pi-2).evalf(30)-Q(114,100)) < Q(1,100) and pi-2 == pi-2 | Hence $A=\pi-2\approx1.14$.
+\emph{Check by a formula from geometry:} the region is a circular segment of radius $r=2$ and central angle $\theta=\frac\pi2$, whose area is $\frac{r^2}2(\theta-\sin\theta)=2\left(\frac\pi2-1\right)=\pi-2$. \checkmark
+%@ e9-chk | 2*(pi/2-sin(pi/2)) == pi-2 | \checkmark
+
+\begin{center}
+\begin{tikzpicture}[x=1.7cm,y=1.7cm]
+  \fill[blue!15] plot[domain=0:90,samples=40,variable=\t]({2*cos(\t)},{2*sin(\t)}) -- cycle;
+  \draw[->] (-0.2,0) -- (2.6,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.6) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=0:90,samples=50,variable=\t] plot ({2*cos(\t)},{2*sin(\t)});
+  \draw[very thick,blue!70!black] (-0.2,2.2) -- (2.2,-0.2);
+  \fill (2,0) circle (1.6pt) node[below,font=\small] {$(2,0)$};
+%@ g-e9-p1 | 2**2+0**2 == 4 and 2-2 == 0 | (2,0) circle (1.6pt) node[below,font=\small] {$(2,0)$};
+  \fill (0,2) circle (1.6pt) node[left,font=\small] {$(0,2)$};
+%@ g-e9-p2 | 0**2+2**2 == 4 and 2-0 == 2 | (0,2) circle (1.6pt) node[left,font=\small] {$(0,2)$};
+  \node[font=\small] at (1.35,1.35) {$A=\pi-2$};
+%@ g-e9-A | NUM(integrate(sqrt(4-x**2)-(2-x),(x,0,2)), pi-2) == 0 | \node[font=\small] at (1.35,1.35) {$A=\pi-2$};
+  \node[font=\small,red!70!black] at (1.6,1.9) {$x^2+y^2=4$};
+  \node[font=\small,blue!70!black] at (2.3,0.35) {$y=2-x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The segment of the disk above the chord $y=2-x$: quarter disk $\pi$ minus triangle $2$.
+\end{center}
+\end{exmp}
+
+\begin{proc}{Choosing vertical or horizontal strips}{choose}
+\begin{enumerate}[nosep]
+  \item Sketch the region and draw one typical strip in each direction.
+  \item Prefer the direction in which the \emph{same two curves} bound the strip all the way across; if the top or bottom changes formula, you must split into several integrals.
+  \item Prefer the direction in which the boundary curves are easy to write: $x=f(y)$ needs the curves solved for $x$, which is easy for $x=y^2$ and hard for $y=x^5+x$.
+  \item Prefer the direction that gives the simpler integrals. When in doubt, set up both and compare.
+  \item If both directions are easy, do both: agreement is an excellent check (Examples~\ref{ex:e7} and~\ref{ex:e8}).
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{A line through the origin that bisects a region}{e10}
+The region $R$ lies between the parabola $y=x^2$ and the line $y=x$. For which slope $m$ with $0<m<1$ does the line $y=mx$ cut $R$ into two parts of equal area?
+
+\textbf{Solution.} \emph{Area of $R$.} The graphs meet where $x^2=x$, at $x=0$ and $x=1$, with $y=x$ on top, so $\operatorname{area}(R)=\int_0^1(x-x^2)\,dx=\frac12-\frac13=\frac16$. Half of this is $\frac1{12}$.
+%@ e10-R | integrate(x-x**2,(x,0,1)) == Q(1,6) and Q(1,6)/2 == Q(1,12) | Half of this is $\frac1{12}$.
+\emph{The lower part.} The line $y=mx$ meets the parabola where $x^2=mx$, at $x=0$ and $x=m$. On $(0,m)$ we have $x^2<mx<x$ (divide by $x>0$: $x<m<1$), so the line lies inside $R$, and the part of $R$ below it is the region between $y=mx$ and $y=x^2$:
+\[
+A_m=\int_0^m(mx-x^2)\,dx=\Bigl[\frac{mx^2}2-\frac{x^3}3\Bigr]_0^m=\frac{m^3}2-\frac{m^3}3=\frac{m^3}6 .
+%@ e10-Am | ANT(m*x**2/2-x**3/3, m*x-x**2, [Q(1,2),Q(3,1)]) == 0 and Q(1,2)-Q(1,3) == Q(1,6) | frac{x^3}3\Bigr]_0^m=\frac{m^3}2-\frac{m^3}3=\frac{m^3}6 .
+\]
+\emph{Solve.} $\frac{m^3}6=\frac1{12}$ gives $m^3=\frac12$, so $m=2^{-1/3}\approx0.794$. This lies in $(0,1)$. The upper part then also has area $\frac16-\frac1{12}=\frac1{12}$.
+%@ e10-m | NUM((2**(-Q(1,3)))**3, Q(1,2)) == 0 and abs((2**(-Q(1,3))).evalf(30)-Q(794,1000)) < Q(1,1000) and Q(1,6)-Q(1,12) == Q(1,12) | part then also has area $\frac16-\frac1{12}=\frac1{12}$.
+
+\begin{center}
+\begin{tikzpicture}[x=5cm,y=5cm]
+  \fill[blue!15] plot[domain=0:1,samples=2,variable=\t]({\t},{\t}) -- plot[domain=1:0,samples=30,variable=\t]({\t},{\t*\t}) -- cycle;
+  \fill[red!15] plot[domain=0:0.7937,samples=2,variable=\t]({\t},{0.7937*\t}) -- plot[domain=0.7937:0,samples=30,variable=\t]({\t},{\t*\t}) -- cycle;
+  \draw[->] (-0.05,0) -- (1.15,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,1.15) node[above] {$y$};
+  \draw[very thick,blue!70!black] (0,0) -- (1.1,1.1);
+  \draw[very thick,red!70!black,domain=0:1.05,samples=40,variable=\t] plot ({\t},{\t*\t});
+  \draw[very thick,green!50!black] (0,0) -- (1.0,0.7937);
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ g-e10-p1 | 1**2 == 1 | circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+  \fill (0.7937,0.6299) circle (1.6pt) node[below right,font=\small] {$(m,m^2)$};
+%@ g-e10-p2 | abs((2**(-Q(1,3))).evalf(30)-Q(7937,10000)) < Q(1,10000) and abs((2**(-Q(2,3))).evalf(30)-Q(6299,10000)) < Q(1,10000) | circle (1.6pt) node[below right,font=\small] {$(m,m^2)$};
+  \node[font=\small,blue!70!black] at (0.35,0.55) {$y=x$};
+  \node[font=\small,green!50!black] at (0.92,0.62) {$y=mx$};
+  \node[font=\small,red!70!black] at (1.08,0.95) {$y=x^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=x^2$ and $y=x$ (area $\frac16$) is cut by $y=mx$ into two parts of area $\frac1{12}$ when $m=2^{-1/3}$. The part below the green line is shaded darker.
+\end{center}
+\end{exmp}
+
+\subsection*{Looking ahead}
+
+The slice-and-sum idea of this section is the same in the rest of the chapter. In a later section the strips become thin slabs and disks whose cross-sectional areas, often differences of squares of the functions above, are summed to give a volume; others use the length of a curve and the area of a surface of revolution. Areas of regions described by polar coordinates are treated in the chapter on parametric and polar curves; in a later course, double integrals extend the idea to regions that are not between two graphs.
+
+% ---------------------------------------------------------------------
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Basic vertical strips} (Examples~\ref{ex:b1}--\ref{ex:b2}): a root and a line; a rational curve and a line, using symmetry.
+  \item \emph{Crossing curves} (Examples~\ref{ex:b3}--\ref{ex:b4}): net versus total area for a cubic and the $x$-axis; sine and cosine.
+  \item \emph{Compound and three-curve regions} (Examples~\ref{ex:b5}--\ref{ex:b6}): two lines and a hyperbola; a parabola and an absolute value.
+  \item \emph{Horizontal strips} (Examples~\ref{ex:b7}--\ref{ex:b8}): a line and a parabola opening sideways; a logarithm and a chord, by both methods.
+  \item \emph{Curves and inverse functions, curves below the axis} (Examples~\ref{ex:b9}--\ref{ex:b10}): $x^3$ and $\sqrt[3]{x}$; both curves below the $x$-axis.
+  \item \emph{Unknown parameters and integration by parts} (Examples~\ref{ex:b11}--\ref{ex:b12}): finding a height for a given area; $\ln x$ and $(\ln x)^2$.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Basic vertical strips}
+
+\begin{exmp}{A root and a line}{b1}
+Find the area of the region between $y=\sqrt x$ and $y=\frac x2$.
+
+\textbf{Solution.} \emph{Intersections.} $\sqrt x=\frac x2$ gives (for $x\ge0$) $x=\frac{x^2}4$, so $x(x-4)=0$ and $x=0$ or $x=4$; both satisfy $\sqrt x=\frac x2$ ($0=0$ and $2=2$). \emph{Top.} At $x=1$: $\sqrt1=1>\frac12$, so $\sqrt x$ is on top.
+%@ b1-p | Q(4**2,4) == 4 and sqrt(4) == Q(4,2) and sqrt(1) > Q(1,2) | At $x=1$: $\sqrt1=1>\frac12$, so $\sqrt x$ is on top.
+\emph{Integral.} $A=\int_0^4\Bigl(x^{1/2}-\frac x2\Bigr)dx=\Bigl[\frac23x^{3/2}-\frac{x^2}4\Bigr]_0^4=\frac23\cdot8-4=\frac{16}3-4=\frac43$.
+%@ b1-A | ANT(Q(2,3)*x**Q(3,2)-x**2/4, sqrt(x)-x/2, [Q(1,2),Q(3,1)]) == 0 and Q(2,3)*4**Q(3,2)-Q(4**2,4) == Q(4,3) | rac{x^2}4\Bigr]_0^4=\frac23\cdot8-4=\frac{16}3-4=\frac43$.
+\emph{Check:} the region sits inside the rectangle $[0,4]\times[0,2]$ of area $8$ and clearly fills a small part of it; $\frac43\approx1.33$ is plausible.
+\end{exmp}
+
+\begin{exmp}{A rational curve above a line}{b2}
+Find the area of the region bounded by $y=\dfrac8{x^2+4}$ and $y=1$.
+
+\textbf{Solution.} \emph{Intersections.} $\frac8{x^2+4}=1$ gives $x^2+4=8$, so $x=\pm2$. At $x=0$: $\frac84=2>1$, so the curve is on top. \emph{Symmetry.} Both functions are even, so by Theorem~\ref{thm:sym}(2) $A=2\int_0^2\Bigl(\frac8{x^2+4}-1\Bigr)dx$.
+%@ b2-p | 8/(2**2+4) == 1 and 8/((-2)**2+4) == 1 and 8/(0**2+4) == 2 | $A=2\int_0^2\Bigl(\frac8{x^2+4}-1\Bigr)dx$.
+\emph{Antiderivative.} $\int\frac8{x^2+4}dx=8\cdot\frac12\tan^{-1}\frac x2=4\tan^{-1}\frac x2$ (check: $\frac d{dx}4\tan^{-1}\frac x2=4\cdot\frac{1/2}{1+x^2/4}=\frac8{4+x^2}$). So
+\[
+A=2\Bigl[4\tan^{-1}\frac x2-x\Bigr]_0^2=2\left(4\cdot\frac\pi4-2\right)=2\pi-4\approx2.28 .
+%@ b2-A | ANT(4*atan(x/2)-x, 8/(x**2+4)-1, [Q(1,2),Q(3,1)]) == 0 and NUM(2*(4*atan(1)-2), 2*pi-4) == 0 and abs((2*pi-4).evalf(30)-Q(228,100)) < Q(1,100) | r]_0^2=2\left(4\cdot\frac\pi4-2\right)=2\pi-4\approx2.28 .
+\]
+\end{exmp}
+
+\subsection*{Group 2: Crossing curves}
+
+\begin{exmp}{A cubic and the $x$-axis: net area and total area}{b3}
+Let $f(x)=x^3-4x$. Find $\int_{-2}^3f\,dx$ and the total area between the graph of $f$ and the $x$-axis over $[-2,3]$.
+
+\textbf{Solution.} \emph{Zeros.} $x^3-4x=x(x-2)(x+2)$, so $f=0$ at $-2,0,2$. \emph{Signs.} $f(-1)=-1+4=3>0$, $f(1)=-3<0$, $f(3)=15>0$. So $f\ge0$ on $[-2,0]$, $f\le0$ on $[0,2]$, $f\ge0$ on $[2,3]$.
+%@ b3-z | expand(x*(x-2)*(x+2)-(x**3-4*x)) == 0 and (-1)**3-4*(-1) == 3 and 1-4 == -3 and 27-12 == 15 | on $[-2,0]$, $f\le0$ on $[0,2]$, $f\ge0$ on $[2,3]$.
+\emph{Antiderivative.} $F(x)=\frac{x^4}4-2x^2$ (check: $F'=x^3-4x$). Values: $F(-2)=4-8=-4$, $F(0)=0$, $F(2)=-4$, $F(3)=\frac{81}4-18=\frac94$.
+%@ b3-F | ANT(x**4/4-2*x**2, x**3-4*x, [Q(1,2),Q(3,1)]) == 0 and Q(16,4)-8 == -4 and Q(16,4)-8 == -4 and Q(81,4)-18 == Q(9,4) | $F(0)=0$, $F(2)=-4$, $F(3)=\frac{81}4-18=\frac94$.
+\emph{Net.} $\int_{-2}^3f=F(3)-F(-2)=\frac94+4=\frac{25}4$.
+\emph{Pieces.} $\int_{-2}^0f=F(0)-F(-2)=4$; $\int_0^2f=F(2)-F(0)=-4$; $\int_2^3f=F(3)-F(2)=\frac94+4=\frac{25}4$.
+\emph{Total.} $A=\abs4+\abs{-4}+\abs{\frac{25}4}=4+4+\frac{25}4=\frac{57}4=14.25$ (Theorem~\ref{thm:cross}(2)). Indeed $\frac{25}4\le\frac{57}4$, as part~(3) requires.
+%@ b3-A | Q(9,4)+4 == Q(25,4) and 4+4+Q(25,4) == Q(57,4) and 4-4+Q(25,4) == Q(25,4) | Indeed $\frac{25}4\le\frac{57}4$, as part~(3) requires.
+
+\begin{center}
+\begin{tikzpicture}[x=1.4cm,y=0.22cm]
+  \fill[blue!15] plot[domain=-2:0,samples=30,variable=\t]({\t},{\t*\t*\t-4*\t}) -- (0,0) -- (-2,0) -- cycle;
+  \fill[red!15] plot[domain=0:2,samples=30,variable=\t]({\t},{\t*\t*\t-4*\t}) -- (2,0) -- (0,0) -- cycle;
+  \fill[blue!15] plot[domain=2:3,samples=30,variable=\t]({\t},{\t*\t*\t-4*\t}) -- (3,0) -- (2,0) -- cycle;
+  \draw[->] (-2.7,0) -- (3.5,0) node[right] {$x$};
+  \draw[->] (0,-5) -- (0,17) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-2.4:3.1,samples=50,variable=\t] plot ({\t},{\t*\t*\t-4*\t});
+  \fill (3,15) circle (1.6pt) node[left,font=\small] {$(3,15)$};
+%@ g-b3-p1 | 3**3-4*3 == 15 | (3,15) circle (1.6pt) node[left,font=\small] {$(3,15)$};
+  \fill (2,0) circle (1.6pt) node[below,font=\small] {$2$};
+%@ g-b3-p2 | 2**3-4*2 == 0 | \fill (2,0) circle (1.6pt) node[below,font=\small] {$2$};
+  \fill (-2,0) circle (1.6pt) node[below,font=\small] {$-2$};
+%@ g-b3-p3 | (-2)**3-4*(-2) == 0 | (-2,0) circle (1.6pt) node[below,font=\small] {$-2$};
+  \node[font=\small] at (-1.1,1.5) {$4$};
+%@ g-b3-a1 | 4 == integrate(x**3-4*x,(x,-2,0)) | \node[font=\small] at (-1.1,1.5) {$4$};
+  \node[font=\small] at (1,-2.4) {$-4$};
+%@ g-b3-a2 | -4 == integrate(x**3-4*x,(x,0,2)) | \node[font=\small] at (1,-2.4) {$-4$};
+  \node[font=\small] at (2.65,3.3) {$\frac{25}4$};
+%@ g-b3-a3 | Q(25,4) == integrate(x**3-4*x,(x,2,3)) | \node[font=\small] at (2.65,3.3) {$\frac{25}4$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The three pieces: net area $4-4+\frac{25}4=\frac{25}4$, total area $4+4+\frac{25}4=\frac{57}4$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Sine and cosine}{b4}
+Find the area of the region between $y=\sin x$ and $y=\cos x$ for $0\le x\le\pi$, and compare it with $\int_0^\pi(\sin x-\cos x)\,dx$.
+
+\textbf{Solution.} \emph{Crossing.} $\sin x=\cos x$ on $[0,\pi]$ only at $x=\frac\pi4$ (where $\tan x=1$; $\cos x=0$ at $\frac\pi2$ gives $\sin x=1\ne0$, so no solutions are lost by dividing). \emph{Top.} At $0$: $\cos0=1>0=\sin0$, so $\cos$ is on top on $[0,\frac\pi4)$; at $\frac\pi2$: $1>0$, so $\sin$ is on top on $(\frac\pi4,\pi]$.
+%@ b4-p | sin(pi/4) == cos(pi/4) and cos(0) > sin(0) and sin(pi/2) > cos(pi/2) | $1>0$, so $\sin$ is on top on $(\frac\pi4,\pi]$.
+\emph{Pieces.} With the antiderivative $\sin x+\cos x$ of $\cos x-\sin x$:
+\[
+\int_0^{\pi/4}(\cos x-\sin x)\,dx=\Bigl[\sin x+\cos x\Bigr]_0^{\pi/4}=\sqrt2-1,
+\]
+\[
+\int_{\pi/4}^{\pi}(\sin x-\cos x)\,dx=\Bigl[-\cos x-\sin x\Bigr]_{\pi/4}^{\pi}=(1-0)-\left(-\frac{\sqrt2}2-\frac{\sqrt2}2\right)=1+\sqrt2 .
+%@ b4-pc | ANT(sin(x)+cos(x), cos(x)-sin(x), [Q(1,2),Q(3,1)]) == 0 and NUM((sin(pi/4)+cos(pi/4))-(sin(0)+cos(0)), sqrt(2)-1) == 0 and NUM((-cos(pi)-sin(pi))-(-cos(pi/4)-sin(pi/4)), 1+sqrt(2)) == 0 | -0)-\left(-\frac{\sqrt2}2-\frac{\sqrt2}2\right)=1+\sqrt2 .
+\]
+So $A=(\sqrt2-1)+(1+\sqrt2)=2\sqrt2\approx2.83$. The net integral is $\int_0^\pi(\sin x-\cos x)\,dx=\bigl[-\cos x-\sin x\bigr]_0^\pi=1-(-1)=2$, which is smaller, as it should be: $2\le2\sqrt2$.
+%@ b4-A | NUM((sqrt(2)-1)+(1+sqrt(2)), 2*sqrt(2)) == 0 and integrate(sin(x)-cos(x),(x,0,pi)) == 2 and 2 < 2*sqrt(2) | which is smaller, as it should be: $2\le2\sqrt2$.
+\end{exmp}
+
+\subsection*{Group 3: Compound and three-curve regions}
+
+\begin{exmp}{Two lines and a hyperbola}{b5}
+Find the area of the region in the first quadrant between the lines $y=x$ and $y=\frac x4$ and below the hyperbola $y=\frac4x$.
+
+\textbf{Solution.} \emph{Intersections.} $x=\frac4x$ gives $x=2$, point $(2,2)$. $\frac x4=\frac4x$ gives $x^2=16$, $x=4$, point $(4,1)$. The lines meet at the origin. For $0\le x\le2$ the region lies between $y=\frac x4$ (bottom) and $y=x$ (top); for $2\le x\le4$ it lies between $y=\frac x4$ (bottom) and $y=\frac4x$ (top) (at $x=3$: $\frac43<3$ and $\frac43>\frac34$).
+%@ b5-p | 2 == 4/2 and Q(4,4) == 1 and 4/4 == 1 and 4*Q(1,3) == Q(4,3) and Q(4,3) > Q(3,4) | (top) (at $x=3$: $\frac43<3$ and $\frac43>\frac34$).
+\emph{First piece.} $\int_0^2\left(x-\frac x4\right)dx=\int_0^2\frac{3x}4\,dx=\frac38x^2\Big|_0^2=\frac32$.
+%@ b5-1 | integrate(Q(3,4)*x,(x,0,2)) == Q(3,2) | ht)dx=\int_0^2\frac{3x}4\,dx=\frac38x^2\Big|_0^2=\frac32$.
+\emph{Second piece.} $\int_2^4\left(\frac4x-\frac x4\right)dx=\Bigl[4\ln x-\frac{x^2}8\Bigr]_2^4=\left(4\ln4-2\right)-\left(4\ln2-\frac12\right)=4\ln2-\frac32$, because $4\ln4=8\ln2$.
+%@ b5-2 | ANT(4*log(x)-x**2/8, 4/x-x/4, [Q(5,2),Q(7,2)]) == 0 and NUM(integrate(4/x-x/4,(x,2,4)), 4*log(2)-Q(3,2)) == 0 | because $4\ln4=8\ln2$.
+Hence $A=\frac32+4\ln2-\frac32=4\ln2\approx2.77$.
+%@ b5-A | NUM(Q(3,2)+4*log(2)-Q(3,2), 4*log(2)) == 0 and abs((4*log(2)).evalf(30)-Q(277,100)) < Q(1,100) | Hence $A=\frac32+4\ln2-\frac32=4\ln2\approx2.77$.
+\end{exmp}
+
+\begin{exmp}{A parabola and an absolute value}{b6}
+Find the area of the region bounded above by $y=9-x^2$ and below by $y=\abs x+3$.
+
+\textbf{Solution.} Both functions are even, so by Theorem~\ref{thm:sym}(2) we may take twice the part with $x\ge0$, where $\abs x=x$. \emph{Intersection:} $9-x^2=x+3$ gives $x^2+x-6=0$, $(x+3)(x-2)=0$; the solution with $x\ge0$ is $x=2$, at $(2,5)$. At $x=0$: $9>3$, so the parabola is on top.
+%@ b6-p | expand((x+3)*(x-2)-(x**2+x-6)) == 0 and 9-2**2 == 2+3 and 9 > 3 | at $(2,5)$. At $x=0$: $9>3$, so the parabola is on top.
+\[
+A=2\int_0^2\bigl(9-x^2-x-3\bigr)\,dx=2\int_0^2\bigl(6-x-x^2\bigr)\,dx=2\Bigl[6x-\frac{x^2}2-\frac{x^3}3\Bigr]_0^2=2\left(12-2-\frac83\right)=\frac{44}3 .
+%@ b6-A | ANT(6*x-x**2/2-x**3/3, 6-x-x**2, [Q(1,2),Q(3,1)]) == 0 and 2*(12-2-Q(8,3)) == Q(44,3) | ac{x^3}3\Bigr]_0^2=2\left(12-2-\frac83\right)=\frac{44}3 .
+\]
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=0.5cm]
+  \fill[blue!15] plot[domain=-2:2,samples=40,variable=\t]({\t},{9-\t*\t}) -- (2,5) -- (0,3) -- (-2,5) -- cycle;
+  \draw[->] (-3.4,0) -- (3.6,0) node[right] {$x$};
+  \draw[->] (0,-0.6) -- (0,10) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-3:3,samples=50,variable=\t] plot ({\t},{9-\t*\t});
+  \draw[very thick,red!70!black] (-3.3,6.3) -- (0,3) -- (3.3,6.3);
+  \fill (2,5) circle (1.6pt) node[right,font=\small] {$(2,5)$};
+%@ g-b6-p1 | 9-4 == 5 and 2+3 == 5 | (2,5) circle (1.6pt) node[right,font=\small] {$(2,5)$};
+  \fill (-2,5) circle (1.6pt) node[left,font=\small] {$(-2,5)$};
+%@ g-b6-p2 | 9-4 == 5 and abs(-2)+3 == 5 | (-2,5) circle (1.6pt) node[left,font=\small] {$(-2,5)$};
+  \fill (0,3) circle (1.6pt) node[below right,font=\small] {$(0,3)$};
+%@ g-b6-p3 | abs(0)+3 == 3 | circle (1.6pt) node[below right,font=\small] {$(0,3)$};
+  \node[font=\small] at (1.0,6.1) {$A=44/3$};
+%@ g-b6-A | Q(44,3) == 2*integrate(6-x-x**2,(x,0,2)) | \node[font=\small] at (1.0,6.1) {$A=44/3$};
+  \node[font=\small,blue!70!black] at (-2.6,8.6) {$y=9-x^2$};
+  \node[font=\small,red!70!black] at (3.0,1.4) {$y=\lvert x\rvert+3$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=9-x^2$ and $y=\abs x+3$.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 4: Horizontal strips}
+
+\begin{exmp}{A line and a parabola opening sideways}{b7}
+Find the area of the region bounded by $x=3y$ and $x=y^2$.
+
+\textbf{Solution.} \emph{Intersections.} $y^2=3y$ gives $y(y-3)=0$: $y=0$ and $y=3$, points $(0,0)$ and $(9,3)$. \emph{Right and left.} At $y=1$: $3y=3>1=y^2$, so the line is on the right.
+%@ b7-p | 3**2 == 3*3 and 3*1 > 1**2 | At $y=1$: $3y=3>1=y^2$, so the line is on the right.
+\emph{Integral.} $A=\int_0^3(3y-y^2)\,dy=\Bigl[\frac{3y^2}2-\frac{y^3}3\Bigr]_0^3=\frac{27}2-9=\frac92$.
+%@ b7-A | ANT(3*x**2/2-x**3/3, 3*x-x**2, [Q(1,2),Q(3,1)]) == 0 and Q(27,2)-9 == Q(9,2) | [\frac{3y^2}2-\frac{y^3}3\Bigr]_0^3=\frac{27}2-9=\frac92$.
+
+\begin{center}
+\begin{tikzpicture}[x=0.6cm,y=1.1cm]
+  \fill[blue!15] plot[domain=0:3,samples=40,variable=\t]({\t*\t},{\t}) -- plot[domain=3:0,samples=2,variable=\t]({3*\t},{\t}) -- cycle;
+  \draw[->] (-0.5,0) -- (10.5,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,3.6) node[above] {$y$};
+  \draw[very thick,red!70!black,domain=0:3.3,samples=50,variable=\t] plot ({\t*\t},{\t});
+  \draw[very thick,blue!70!black] (0,0) -- (10,3.333);
+  \draw[dashed] (1,1) -- (3,1);
+  \fill (9,3) circle (1.6pt) node[above,font=\small] {$(9,3)$};
+%@ g-b7-p | 3**2 == 9 and 3*3 == 9 | (9,3) circle (1.6pt) node[above,font=\small] {$(9,3)$};
+  \node[font=\small] at (4.6,0.45) {$3y-y^2$};
+%@ g-b7-len | 3*1-1**2 == 2 | \node[font=\small] at (4.6,0.45) {$3y-y^2$};
+  \node[font=\small,blue!70!black] at (8.6,1.4) {$x=3y$};
+  \node[font=\small,red!70!black] at (7,3.3) {$x=y^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} Horizontal strip at $y=1$: from $x=1$ to $x=3$, length $3y-y^2=2$. Area $\frac92$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A logarithm and a chord, by both methods}{b8}
+Find the area of the region between $y=\ln x$ and the line through $(1,0)$ and $(e,1)$.
+
+\textbf{Solution.} The line is $y=\dfrac{x-1}{e-1}$ (slope $\frac1{e-1}$, value $0$ at $x=1$, value $1$ at $x=e$). The curve and the line meet at $x=1$ and $x=e$. At $x=2$: $\ln2\approx0.693>\frac1{e-1}\approx0.582$, so the curve is on top.
+%@ b8-p | log(1) == 0 and log(E) == 1 and (E-1)/(E-1) == 1 and log(2).evalf(30) > (1/(E-1)).evalf(30) | so the curve is on top.
+\emph{Vertical strips.} $A=\int_1^e\Bigl(\ln x-\frac{x-1}{e-1}\Bigr)dx$. By integration by parts (Theorem~\ref{8.2-thm:parts}), $\int\ln x\,dx=x\ln x-x$ (check: derivative $\ln x+1-1$). So $\int_1^e\ln x\,dx=(e-e)-(0-1)=1$, and $\int_1^e\frac{x-1}{e-1}dx=\frac1{e-1}\cdot\frac{(e-1)^2}2=\frac{e-1}2$. Hence $A=1-\frac{e-1}2=\frac{3-e}2\approx0.141$.
+%@ b8-A | ANT(x*log(x)-x, log(x), [Q(3,2),Q(5,2)]) == 0 and (E-E)-(0-1) == 1 and NUM(integrate((x-1)/(E-1),(x,1,E)), (E-1)/2) == 0 and NUM(1-(E-1)/2, (3-E)/2) == 0 | Hence $A=1-\frac{e-1}2=\frac{3-e}2\approx0.141$.
+\emph{Horizontal strips.} For $0\le y\le1$, the curve is $x=e^y$ and the line is $x=1+(e-1)y$; the line is on the right (at $y=\frac12$: $1+\frac{e-1}2\approx1.86>e^{1/2}\approx1.65$). So $A=\int_0^1\bigl(1+(e-1)y-e^y\bigr)dy=\Bigl[y+\frac{(e-1)y^2}2-e^y\Bigr]_0^1=\left(1+\frac{e-1}2-e\right)-(0+0-1)=2+\frac{e-1}2-e=\frac{3-e}2$.
+%@ b8-y | NUM(integrate(1+(E-1)*x-exp(x),(x,0,1)), (3-E)/2) == 0 and (1+(E-1)/2).evalf(30) > exp(Q(1,2)).evalf(30) and NUM(2+(E-1)/2-E, (3-E)/2) == 0 | \frac{e-1}2-e\right)-(0+0-1)=2+\frac{e-1}2-e=\frac{3-e}2$.
+The two answers agree. (Here the horizontal method needed no integration by parts.)
+\end{exmp}
+
+\subsection*{Group 5: Inverse functions, and curves below the axis}
+
+\begin{exmp}{$x^3$ and its inverse}{b9}
+Find the area of the region in the first quadrant bounded by $y=x^3$ and $y=\sqrt[3]x$. Check it with Theorem~\ref{thm:agree}.
+
+\textbf{Solution.} $x^3=x^{1/3}$ gives $x=0$ or $x^{8/3}=1$, i.e. $x=1$. At $x=\frac18$: $x^{1/3}=\frac12>\frac1{512}=x^3$, so the cube root is on top. $A=\int_0^1\bigl(x^{1/3}-x^3\bigr)dx=\Bigl[\frac34x^{4/3}-\frac{x^4}4\Bigr]_0^1=\frac34-\frac14=\frac12$.
+%@ b9-A | Q(1,8)**Q(1,3) == Q(1,2) and Q(1,8)**3 == Q(1,512) and ANT(Q(3,4)*x**Q(4,3)-x**4/4, x**Q(1,3)-x**3, [Q(1,2),Q(3,1)]) == 0 and Q(3,4)-Q(1,4) == Q(1,2) | c34x^{4/3}-\frac{x^4}4\Bigr]_0^1=\frac34-\frac14=\frac12$.
+\emph{Check with Theorem~\ref{thm:agree}(1):} $\varphi(x)=x^3$ on $[0,1]$ has inverse $\psi(y)=y^{1/3}$, and $\int_0^1x^3+\int_0^1y^{1/3}\,dy=\frac14+\frac34=1=1\cdot1-0\cdot0$. \checkmark
+%@ b9-c | integrate(x**3,(x,0,1))+integrate(x**Q(1,3),(x,0,1)) == 1 | \checkmark
+\end{exmp}
+
+\begin{exmp}{Both curves below the axis}{b10}
+Find the area of the region between $y=x^2-5$ and $y=-1$.
+
+\textbf{Solution.} \emph{Intersections.} $x^2-5=-1$ gives $x=\pm2$. At $x=0$: $-5<-1$, so the line is on top. The whole region lies below the $x$-axis. \emph{Subtract (top $-$ bottom):} $(-1)-(x^2-5)=4-x^2$. By symmetry,
+\[
+A=2\int_0^2(4-x^2)\,dx=2\Bigl[4x-\frac{x^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3 .
+%@ b10-A | (-1)-(x**2-5) == 4-x**2 and (2**2-5) == -1 and ANT(4*x-x**3/3, 4-x**2, [Q(1,2),Q(3,1)]) == 0 and 2*(8-Q(8,3)) == Q(32,3) | \frac{x^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3 .
+\]
+\emph{Check by shifting} (Theorem~\ref{thm:consist}(2)): moving both curves up $5$ gives $y=x^2$ and $y=4$, whose area is $\int_{-2}^2(4-x^2)\,dx=\frac{32}3$ again. Note that no absolute values were needed; the area comes out positive without them.
+%@ b10-s | integrate(4-x**2,(x,-2,2)) == Q(32,3) | were needed; the area comes out positive without them.
+\end{exmp}
+
+\subsection*{Group 6: Unknown parameters and integration by parts}
+
+\begin{exmp}{Which height gives a prescribed area?}{b11}
+For which $c>0$ does the region between $y=x^2$ and the horizontal line $y=c$ have area $36$?
+
+\textbf{Solution.} The curves meet where $x^2=c$, at $x=\pm\sqrt c$, and the line is on top. By symmetry, $A(c)=2\int_0^{\sqrt c}(c-x^2)\,dx=2\Bigl[cx-\frac{x^3}3\Bigr]_0^{\sqrt c}=2\left(c^{3/2}-\frac{c^{3/2}}3\right)=\frac43c^{3/2}$.
+%@ b11-A | ANT(c*x-x**3/3, c-x**2, [Q(1,2),Q(3,1)]) == 0 and simplify(2*(c**Q(3,2)-c**Q(3,2)/3)-Q(4,3)*c**Q(3,2)) == 0 | c}=2\left(c^{3/2}-\frac{c^{3/2}}3\right)=\frac43c^{3/2}$.
+Setting $A(c)=36$: $c^{3/2}=27$, so $c=27^{2/3}=9$. (Check: $\frac43\cdot9^{3/2}=\frac43\cdot27=36$. Since $A(c)$ is increasing in $c$, there is only one solution.)
+%@ b11-c | 27**Q(2,3) == 9 and Q(4,3)*9**Q(3,2) == 36 | $A(c)$ is increasing in $c$, there is only one solution.)
+\end{exmp}
+
+\begin{exmp}{Logarithm and its square}{b12}
+Find the area of the region between $y=\ln x$ and $y=(\ln x)^2$.
+
+\textbf{Solution.} \emph{Intersections.} Put $u=\ln x$: $u=u^2$ gives $u=0$ or $u=1$, i.e. $x=1$ or $x=e$. For $1<x<e$ we have $0<\ln x<1$, and then $(\ln x)^2<\ln x$ (multiply $\ln x<1$ by $\ln x>0$), so $\ln x$ is on top. $A=\int_1^e\bigl(\ln x-\ln^2x\bigr)dx$.
+
+\emph{Antiderivatives (by parts).} $\int\ln x\,dx=x\ln x-x$. For $\int\ln^2x\,dx$ take $u=\ln^2x$, $dv=dx$, so $du=\frac{2\ln x}x\,dx$ and $v=x$: $\int\ln^2x\,dx=x\ln^2x-2\int\ln x\,dx=x\ln^2x-2x\ln x+2x$ (Theorem~\ref{8.2-thm:parts}). Check by differentiating: $\ln^2x+2\ln x-2\ln x-2+2=\ln^2x$.
+%@ b12-F | ANT(x*log(x)-x, log(x), [Q(3,2),Q(5,2)]) == 0 and ANT(x*log(x)**2-2*x*log(x)+2*x, log(x)**2, [Q(3,2),Q(5,2)]) == 0 | by differentiating: $\ln^2x+2\ln x-2\ln x-2+2=\ln^2x$.
+\emph{Evaluate.} An antiderivative of $\ln x-\ln^2x$ is $G(x)=-x\ln^2x+3x\ln x-3x$. $G(e)=-e+3e-3e=-e$ and $G(1)=-3$, so $A=-e-(-3)=3-e\approx0.282$.
+%@ b12-A | ANT(-x*log(x)**2+3*x*log(x)-3*x, log(x)-log(x)**2, [Q(3,2),Q(5,2)]) == 0 and -E+3*E-3*E == -E and abs((3-E).evalf(30)-Q(282,1000)) < Q(1,1000) | and $G(1)=-3$, so $A=-e-(-3)=3-e\approx0.282$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Archimedes' parabolic segment}{b13}
+Prove: for $p<q$, the area between the parabola $y=x^2$ and the chord joining the points of the parabola with $x=p$ and $x=q$ is $\dfrac{(q-p)^3}6$. Check with $p=1$, $q=4$.
+
+\textbf{Proof.} The chord through $(p,p^2)$ and $(q,q^2)$ has slope $\frac{q^2-p^2}{q-p}=p+q$, so it is $y=p^2+(p+q)(x-p)=(p+q)x-pq$. The chord minus the parabola is $(p+q)x-pq-x^2=-(x-p)(x-q)=(x-p)(q-x)$, which is $\ge0$ on $[p,q]$; so the chord is on top. Put $L=q-p$ and $u=x-p$ (Theorem~\ref{8.1-thm:subst}; then $q-x=L-u$ and $u$ runs from $0$ to $L$):
+\[
+A=\int_p^q(x-p)(q-x)\,dx=\int_0^Lu(L-u)\,du=\Bigl[\frac{Lu^2}2-\frac{u^3}3\Bigr]_0^L=\frac{L^3}2-\frac{L^3}3=\frac{L^3}6 .
+\]
+\emph{Check.} $p=1$, $q=4$: the chord is $y=5x-4$, and $\int_1^4(5x-4-x^2)\,dx=\Bigl[\frac{5x^2}2-4x-\frac{x^3}3\Bigr]_1^4=\left(40-16-\frac{64}3\right)-\left(\frac52-4-\frac13\right)=\frac83+\frac{11}6=\frac92=\frac{3^3}6$. \checkmark
+%@ b13 | (lambda p,q: expand((p+q)*x-p*q-x**2+(x-p)*(x-q)))(*symbols('p q')) == 0 and expand(5*x-4-x**2+(x-1)*(x-4)) == 0 and integrate(5*x-4-x**2,(x,1,4)) == Q(9,2) and Q(27,6) == Q(9,2) | \checkmark
+\end{exmp}
+
+\begin{exmp}{Powers and their inverse powers}{b14}
+Prove: for every real $n>1$ the region in the first quadrant between $y=x^n$ and $y=x^{1/n}$ has area $\dfrac{n-1}{n+1}$. Check with $n=3$ and $n=2$.
+
+\textbf{Proof.} The curves meet where $x^n=x^{1/n}$, that is at $x=0$ and $x=1$ (for $x>0$ take logarithms: $n\ln x=\frac1n\ln x$, so $\left(n-\frac1n\right)\ln x=0$ and $\ln x=0$ because $n\ne\frac1n$). For $0<x<1$ we have $\ln x<0$ and $\frac1n<n$, so $\frac1n\ln x>n\ln x$; therefore $x^{1/n}>x^n$ and the root is on top. Then
+\[
+A=\int_0^1\bigl(x^{1/n}-x^n\bigr)dx=\Bigl[\frac{x^{1/n+1}}{\frac1n+1}-\frac{x^{n+1}}{n+1}\Bigr]_0^1=\frac{n}{n+1}-\frac1{n+1}=\frac{n-1}{n+1},
+\]
+using $\frac1{1/n+1}=\frac n{1+n}$ (the antiderivatives vanish at $x=0$ because the exponents $\frac1n+1$ and $n+1$ are positive).
+
+\emph{Check.} $n=3$: $\frac24=\frac12$, as in Example~\ref{ex:b9}. $n=2$: $\int_0^1(\sqrt x-x^2)\,dx=\frac23-\frac13=\frac13=\frac{2-1}{2+1}$. \checkmark
+%@ b14 | Q(3-1,3+1) == Q(1,2) and integrate(sqrt(x)-x**2,(x,0,1)) == Q(1,3) and Q(2-1,2+1) == Q(1,3) and simplify(1/(1/n+1)-n/(n+1)) == 0 | \checkmark
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Answers and discussion}
+
+\begin{description}
+
+  \item[Knowledge Check \ref{kc:kcsum}.] At $x=\frac12$: $x=\frac12>\frac14=x^2$, so $y=x$ is on top. $A=\int_0^1(x-x^2)\,dx=\Bigl[\frac{x^2}2-\frac{x^3}3\Bigr]_0^1=\frac12-\frac13=\frac16$.
+%@ ans-kc1 | Q(1,2) > Q(1,4) and integrate(x-x**2,(x,0,1)) == Q(1,6) and Q(1,2)-Q(1,3) == Q(1,6) | frac{x^2}2-\frac{x^3}3\Bigr]_0^1=\frac12-\frac13=\frac16$.
+
+  \item[Knowledge Check \ref{kc:kccross}.] $\int_{-1}^1(f-g)\,dx=\int_{-1}^12x\,dx=\bigl[x^2\bigr]_{-1}^1=0$ and $\int_{-1}^1\abs{2x}\,dx=2\int_0^12x\,dx=2$. The area of the region between the graphs is $2$: two triangles, one on each side of the $y$-axis, each with a vertical side of length $2$ at $x=\pm1$ and height $1$, so each has area $\frac12\cdot2\cdot1=1$. The two numbers differ because $f-g=2x$ changes sign at $0$: the net integral lets the part below cancel the part above, while the area counts both as positive (Theorem~\ref{thm:cross}).
+%@ ans-kc2 | integrate(2*x,(x,-1,1)) == 0 and integrate(abs(2*x),(x,-1,1)) == 2 and Q(1,2)*1*2 == 1 | area counts both as positive (Theorem~\ref{thm:cross}).
+
+  \item[Knowledge Check \ref{kc:kcy}.] The curves $x=y^2$ and $x=4$ meet at $y=\pm2$, and $x=4$ is on the right. $A=\int_{-2}^2(4-y^2)\,dy=2\Bigl[4y-\frac{y^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3$.
+%@ ans-kc3 | integrate(4-x**2,(x,-2,2)) == Q(32,3) and 2*(8-Q(8,3)) == Q(32,3) | \frac{y^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3$.
+
+  \item[Pause and think \ref{think:thdiff}.] The height of a strip is the vertical distance between the curves, the top value minus the bottom value, and this is a difference whatever the signs. For $f=-1$ and $g=-3$ the strip between $y=-3$ and $y=-1$ has height $2=f-g=-1-(-3)$, so the area is $\int_0^22\,dx=4$. The expression $\abs f-\abs g=1-3=-2$ gives the wrong sign and the wrong meaning, and $f+g=-4$ is not a distance between the curves at all.
+%@ ans-th1 | -1-(-3) == 2 and abs(-1)-abs(-3) == -2 and -1+(-3) == -4 and integrate(2,(x,0,2)) == 4 | and $f+g=-4$ is not a distance between the curves at all.
+
+  \item[Pause and think \ref{think:thref}.] Move both graphs up by a constant $c$ large enough that both lie above the $x$-axis. The vertical distance between the graphs at each $x$ is unchanged, because $(f+c)-(g+c)=f-g$, and moving a region by a translation does not change its area (A3). So the area of the original region is the area of the shifted one, which Calculus~I gives as $\int(f+c)-\int(g+c)=\int(f-g)$. In Example~\ref{ex:b10}, shifting up by $5$ turns $y=x^2-5$ and $y=-1$ into $y=x^2$ and $y=4$.
+%@ ans-th2 | expand((x**2-5+5)-(x**2)) == 0 and -1+5 == 4 | by $5$ turns $y=x^2-5$ and $y=-1$ into $y=x^2$ and $y=4$.
+
+  \item[Pause and think \ref{think:thzero}.] Yes. For $f(x)=x$ and $g(x)=-x$ on $[-1,1]$ the net integral is $\int_{-1}^1 2x\,dx=0$, but the region between the graphs is two triangles of area $1$ each, so the area is $2$ (Knowledge Check~\ref{kc:kccross}). The parallel in Section 6.1 is displacement $0$ with positive distance traveled: walking east and then back west. Net area corresponds to displacement and total area to distance traveled (Theorem~\ref{6.1-thm:ineq}).
+%@ ans-th3 | integrate(2*x,(x,-1,1)) == 0 and integrate(abs(2*x),(x,-1,1)) == 2 | area to distance traveled (Theorem~\ref{6.1-thm:ineq}).
+
+\end{description}
+
+\end{document}
