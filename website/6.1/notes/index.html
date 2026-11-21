@@ -1,0 +1,3694 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../8.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 6: Applications of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 6: Applications of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.1 Velocity and Net Change
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.1 Velocity and Net Change
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#position-displacement-and-distance-traveled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Position, displacement and distance traveled
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#position-from-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Position from velocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acceleration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-change-and-future-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Net change and future value
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rates-that-change-sign-and-averages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Rates that change sign, and averages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-displacement-and-distance-traveled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Displacement and distance traveled
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-position-from-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Position from velocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Acceleration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-net-change-and-future-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Net change and future value
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-graphs-and-piecewise-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Graphs and piecewise rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-catching-up-and-averages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Catching up, and averages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.8 Numerical Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.8 Numerical Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.9 Improper Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.9 Improper Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.9/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#position-displacement-and-distance-traveled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Position, displacement and distance traveled
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#position-from-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Position from velocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Acceleration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#net-change-and-future-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Net change and future value
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rates-that-change-sign-and-averages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Rates that change sign, and averages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-displacement-and-distance-traveled" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Displacement and distance traveled
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-position-from-velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Position from velocity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Acceleration
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-net-change-and-future-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Net change and future value
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-graphs-and-piecewise-rates" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Graphs and piecewise rates
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-catching-up-and-averages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Catching up, and averages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="61-velocity-and-net-change">6.1 Velocity and Net Change<a class="headerlink" href="#61-velocity-and-net-change" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>If you know how fast something is changing, can you find out how much it has changed? Differentiation goes from a quantity to its rate; integration goes back. This section uses the Fundamental Theorem of Calculus from Calculus I to turn rates into totals. We start with the case you can feel: an object moving along a line, whose velocity is the rate of change of its position. We separate two questions that sound alike but are not: <em>how far did it end up from where it started</em> (displacement) and <em>how far did it actually travel</em> (distance traveled). We then find the position from the velocity, and the velocity from the acceleration. The same idea works for any quantity with a known rate: the water in a reservoir, a population, the cost of making more books. Each time, accumulating the rate gives the net change, and the net change plus the starting value gives the future value. The idea behind this is slice-and-sum, which is also how the rest of this chapter finds areas, volumes and lengths.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>distinguish position, displacement and distance traveled, and compute displacement and distance traveled from a velocity function or from a velocity graph;</p>
+</li>
+<li>
+<p>find the position function from the velocity and the initial position, and the velocity from the acceleration and the initial velocity, by an antiderivative or by an integral from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(t\)</span>;</p>
+</li>
+<li>
+<p>compute the net change and the future value of any quantity from its rate of change, with correct units;</p>
+</li>
+<li>
+<p>handle rates that change sign, rates given in pieces, and rates whose total stays bounded for all time;</p>
+</li>
+<li>
+<p>prove each of the theorems of this section.</p>
+</li>
+</ul>
+<h2 id="position-displacement-and-distance-traveled">Position, displacement and distance traveled<a class="headerlink" href="#position-displacement-and-distance-traveled" title="Permanent link">&para;</a></h2>
+<p>An object moves along a line, say a straight road, with a fixed direction called positive. Its <em>position</em> at time <span class="arithmatex">\(t\)</span> is a number <span class="arithmatex">\(s(t)\)</span>: the signed distance from a chosen origin. Its <em>velocity</em> is <span class="arithmatex">\(v(t)=s'(t)\)</span> (a number that is positive when it moves in the positive direction and negative when it moves the other way), and its <em>speed</em> is <span class="arithmatex">\(\abs{v(t)}\)</span>. Throughout this section we assume that <span class="arithmatex">\(s\)</span> is differentiable and that <span class="arithmatex">\(v=s'\)</span> is continuous.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 6.1.1: Displacement and distance traveled</p>
+<p><span id="def-disp"></span></p>
+<p>Let <span class="arithmatex">\(a&lt;b\)</span>. The <em>displacement</em> of the object over the time interval <span class="arithmatex">\([a,b]\)</span> is the signed number <span class="arithmatex">\(s(b)-s(a)\)</span>: the change in position, positive if it ends up on the positive side of where it started and negative otherwise.</p>
+<p>To define the <em>distance traveled</em>, cut <span class="arithmatex">\([a,b]\)</span> into <span class="arithmatex">\(n\)</span> pieces by times <span class="arithmatex">\(a=t_0&lt;t_1&lt;\dots&lt;t_n=b\)</span>. During the <span class="arithmatex">\(k\)</span>th piece the object moves from <span class="arithmatex">\(s(t_{k-1})\)</span> to <span class="arithmatex">\(s(t_k)\)</span>, so it covers at least the distance <span class="arithmatex">\(\abs{s(t_k)-s(t_{k-1})}\)</span>, with the direction ignored. The <em>distance traveled</em> is the limit of the sums</p>
+<div class="arithmatex">\[\sum_{k=1}^n\abs{s(t_k)-s(t_{k-1})}\]</div>
+<p>as the longest piece shrinks to <span class="arithmatex">\(0\)</span> (Theorem <a href="#thm-dist">6.1.3</a> shows that the limit exists).</p>
+</div>
+<p>The distance traveled is what the odometer of a car reads: it only increases. The displacement is what you get from the position at the end minus the position at the beginning: it can be positive, negative or zero. If you walk <span class="arithmatex">\(3\)</span> blocks east and then <span class="arithmatex">\(3\)</span> blocks west, your displacement is <span class="arithmatex">\(0\)</span> but you have traveled <span class="arithmatex">\(6\)</span> blocks.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.2: Displacement is the integral of the velocity</p>
+<p><span id="thm-disp"></span></p>
+<p>If <span class="arithmatex">\(s\)</span> is differentiable with a continuous derivative <span class="arithmatex">\(v=s'\)</span> on <span class="arithmatex">\([a,b]\)</span>, then the displacement is</p>
+<div class="arithmatex">\[s(b)-s(a)=\int_a^bv(t)\,dt .\]</div>
+</div>
+<p><em>Proof.</em> By definition <span class="arithmatex">\(v=s'\)</span>, so <span class="arithmatex">\(s\)</span> is an antiderivative of the continuous function <span class="arithmatex">\(v\)</span> on <span class="arithmatex">\([a,b]\)</span>. The Fundamental Theorem of Calculus (Part 2, from Calculus I) says that <span class="arithmatex">\(\int_a^bv(t)\,dt=s(b)-s(a)\)</span> for every antiderivative <span class="arithmatex">\(s\)</span> of <span class="arithmatex">\(v\)</span>. ◻ ∎</p>
+<p>Geometrically, the displacement is the <em>net area</em> between the graph of <span class="arithmatex">\(v\)</span> and the <span class="arithmatex">\(t\)</span>-axis: the area above the axis counts <span class="arithmatex">\(+\)</span> and the area below counts <span class="arithmatex">\(-\)</span>. The distance traveled counts all the area as positive.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.3: Distance traveled is the integral of the speed</p>
+<p><span id="thm-dist"></span></p>
+<p>Under the same assumptions, the sums in Definition <a href="#def-disp">6.1.1</a> converge as the longest piece shrinks to <span class="arithmatex">\(0\)</span>, and the distance traveled is</p>
+<div class="arithmatex">\[\int_a^b\abs{v(t)}\,dt .\]</div>
+</div>
+<p><em>Proof.</em> On the <span class="arithmatex">\(k\)</span>th piece <span class="arithmatex">\([t_{k-1},t_k]\)</span> the function <span class="arithmatex">\(s\)</span> is continuous and differentiable, so the Mean Value Theorem (Calculus I) gives a number <span class="arithmatex">\(t_k^*\)</span> in <span class="arithmatex">\((t_{k-1},t_k)\)</span> with</p>
+<div class="arithmatex">\[s(t_k)-s(t_{k-1})=s'(t_k^*)\,(t_k-t_{k-1})=v(t_k^*)\,\Delta t_k,\qquad \Delta t_k=t_k-t_{k-1}.\]</div>
+<p>Take absolute values: <span class="arithmatex">\(\abs{s(t_k)-s(t_{k-1})}=\abs{v(t_k^*)}\,\Delta t_k\)</span>, because <span class="arithmatex">\(\Delta t_k&gt;0\)</span>. Therefore</p>
+<div class="arithmatex">\[\sum_{k=1}^n\abs{s(t_k)-s(t_{k-1})}=\sum_{k=1}^n\abs{v(t_k^*)}\,\Delta t_k ,\]</div>
+<p>which is a Riemann sum for the function <span class="arithmatex">\(\abs{v}\)</span> on <span class="arithmatex">\([a,b]\)</span> (with the sample points <span class="arithmatex">\(t_k^*\)</span>). The function <span class="arithmatex">\(\abs{v}\)</span> is continuous, because <span class="arithmatex">\(v\)</span> is, so it is integrable, and its Riemann sums converge to <span class="arithmatex">\(\int_a^b\abs{v(t)}\,dt\)</span> as the longest piece shrinks to <span class="arithmatex">\(0\)</span>, whatever the sample points are. ◻ ∎</p>
+<p>How do we compute <span class="arithmatex">\(\int_a^b\abs{v}\)</span> when <span class="arithmatex">\(v\)</span> changes sign? A continuous function can change sign only where it is zero (the Intermediate Value Theorem), so between two consecutive zeros of <span class="arithmatex">\(v\)</span> it is either always positive or always negative. There <span class="arithmatex">\(\abs{v}=v\)</span> or <span class="arithmatex">\(\abs{v}=-v\)</span>, and the integral of <span class="arithmatex">\(\abs v\)</span> over the piece equals <span class="arithmatex">\(\abs{\text{displacement over that piece}}\)</span>.</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.1.4: Displacement and distance traveled from a velocity function</p>
+<p><span id="proc-dd"></span></p>
+<p>Let <span class="arithmatex">\(v\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span>.</p>
+<ol>
+<li>
+<p>Solve <span class="arithmatex">\(v(t)=0\)</span> on <span class="arithmatex">\([a,b]\)</span>. The zeros <span class="arithmatex">\(a=c_0&lt;c_1&lt;\dots&lt;c_m=b\)</span> (with <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> added) cut the interval into pieces on which <span class="arithmatex">\(v\)</span> has one sign. Test one point in each piece to find the sign.</p>
+</li>
+<li>
+<p>Find an antiderivative <span class="arithmatex">\(F\)</span> of <span class="arithmatex">\(v\)</span> and check it by differentiating.</p>
+</li>
+<li>
+<p>The displacement is <span class="arithmatex">\(F(b)-F(a)\)</span>.</p>
+</li>
+<li>
+<p>The distance traveled is <span class="arithmatex">\(\sum_{j=1}^m\abs{F(c_j)-F(c_{j-1})}\)</span>: the absolute value of the displacement over each piece, added.</p>
+</li>
+<li>
+<p>Check: the distance is at least the absolute value of the displacement (Theorem <a href="#thm-ineq">6.1.6</a> below), and the units are units of length.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.5: Displacement and distance for a quadratic velocity</p>
+<p><span id="ex-e1"></span></p>
+<p>A particle moves along a line with velocity <span class="arithmatex">\(v(t)=3t^2-12t+9\)</span> (in m/s) for <span class="arithmatex">\(0\le t\le5\)</span> (in s). Find its displacement and the distance it travels, and describe the motion.</p>
+<p><strong>Solution.</strong> <em>Step 1: the sign of <span class="arithmatex">\(v\)</span>.</em> Factor, taking out the <span class="arithmatex">\(3\)</span> first: <span class="arithmatex">\(3t^2-12t+9=3(t^2-4t+3)=3(t-1)(t-3)\)</span>. The zeros are <span class="arithmatex">\(t=1\)</span> and <span class="arithmatex">\(t=3\)</span>, both in <span class="arithmatex">\([0,5]\)</span>, so the pieces are <span class="arithmatex">\([0,1]\)</span>, <span class="arithmatex">\([1,3]\)</span> and <span class="arithmatex">\([3,5]\)</span>. At <span class="arithmatex">\(t=0\)</span>: <span class="arithmatex">\(v(0)=9&gt;0\)</span>. At <span class="arithmatex">\(t=2\)</span>: <span class="arithmatex">\(v(2)=3\cdot4-24+9=-3&lt;0\)</span>. At <span class="arithmatex">\(t=4\)</span>: <span class="arithmatex">\(v(4)=48-48+9=9&gt;0\)</span>. (Each piece has one sign, since <span class="arithmatex">\(v\)</span> can change sign only at a zero.) <em>Step 2: an antiderivative.</em> By the power rule, <span class="arithmatex">\(F(t)=t^3-6t^2+9t\)</span> has <span class="arithmatex">\(F'(t)=3t^2-12t+9=v(t)\)</span>. <em>Step 3: values of <span class="arithmatex">\(F\)</span> at the endpoints and zeros.</em> <span class="arithmatex">\(F(0)=0\)</span>, <span class="arithmatex">\(F(1)=1-6+9=4\)</span>, <span class="arithmatex">\(F(3)=27-54+27=0\)</span>, <span class="arithmatex">\(F(5)=125-150+45=20\)</span>. <em>Step 4: displacement.</em> <span class="arithmatex">\(\int_0^5v\,dt=F(5)-F(0)=20-0=20\)</span> m. <em>Step 5: distance traveled.</em> On each piece the distance is the absolute value of the displacement: <span class="arithmatex">\(\abs{F(1)-F(0)}=4\)</span>, <span class="arithmatex">\(\abs{F(3)-F(1)}=\abs{-4}=4\)</span>, <span class="arithmatex">\(\abs{F(5)-F(3)}=20\)</span>. The distance is <span class="arithmatex">\(4+4+20=28\)</span> m. <em>Conclusion and check.</em> The particle moves <span class="arithmatex">\(4\)</span> m in the positive direction, then <span class="arithmatex">\(4\)</span> m back to where it started, then <span class="arithmatex">\(20\)</span> m in the positive direction: displacement <span class="arithmatex">\(20\)</span> m, distance <span class="arithmatex">\(28\)</span> m. As required, <span class="arithmatex">\(28\ge\abs{20}\)</span>. The figure below shows the net area: the three regions have areas <span class="arithmatex">\(4\)</span>, <span class="arithmatex">\(4\)</span> and <span class="arithmatex">\(20\)</span>; the middle one counts as <span class="arithmatex">\(-4\)</span> in the displacement and <span class="arithmatex">\(+4\)</span> in the distance.</p>
+<p><img alt="Diagram: \(4\); \(-4\); \(20\)" class="calc-figure" src="../figures/notes-fig1.svg" width="485" /></p>
+<p><em>Figure.</em> The graph of <span class="arithmatex">\(v(t)=3t^2-12t+9\)</span>. Displacement <span class="arithmatex">\(=4-4+20=20\)</span>; distance traveled <span class="arithmatex">\(=4+4+20=28\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.1.1: Out and back</p>
+<p><span id="kc-kcout"></span></p>
+<p>A runner jogs <span class="arithmatex">\(3\)</span> km east along a straight road, turns around, and jogs <span class="arithmatex">\(5\)</span> km west. Taking east as the positive direction, what are her displacement and the distance she has traveled?</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.6: The displacement never exceeds the distance</p>
+<p><span id="thm-ineq"></span></p>
+<p>If <span class="arithmatex">\(v\)</span> is continuous on <span class="arithmatex">\([a,b]\)</span>, then</p>
+<div class="arithmatex">\[\abs{\int_a^bv(t)\,dt}\le\int_a^b\abs{v(t)}\,dt ,\]</div>
+<p>with equality if and only if <span class="arithmatex">\(v\ge0\)</span> on all of <span class="arithmatex">\([a,b]\)</span> or <span class="arithmatex">\(v\le0\)</span> on all of <span class="arithmatex">\([a,b]\)</span>.</p>
+</div>
+<p><em>Proof.</em> For every <span class="arithmatex">\(t\)</span> we have <span class="arithmatex">\(-\abs{v(t)}\le v(t)\le\abs{v(t)}\)</span>. Integrating (the integral preserves inequalities) gives <span class="arithmatex">\(-\int_a^b\abs v\le\int_a^bv\le\int_a^b\abs v\)</span>, which is the inequality.</p>
+<p><em>If <span class="arithmatex">\(v\ge0\)</span> on <span class="arithmatex">\([a,b]\)</span>,</em> then <span class="arithmatex">\(\abs v=v\)</span> and both sides are equal. <em>If <span class="arithmatex">\(v\le0\)</span>,</em> then <span class="arithmatex">\(\abs v=-v\)</span> and <span class="arithmatex">\(\abs{\int v}=\abs{-\int\abs v}=\int\abs v\)</span>.</p>
+<p><em>Conversely, suppose equality holds.</em> Then <span class="arithmatex">\(\int_a^bv=\int_a^b\abs v\)</span> or <span class="arithmatex">\(\int_a^bv=-\int_a^b\abs v\)</span>. In the first case let <span class="arithmatex">\(g=\abs v-v\)</span>. It is continuous, <span class="arithmatex">\(g\ge0\)</span>, and <span class="arithmatex">\(\int_a^bg=0\)</span>. If <span class="arithmatex">\(g(c)&gt;0\)</span> for some <span class="arithmatex">\(c\)</span>, then by continuity <span class="arithmatex">\(g&gt;g(c)/2\)</span> on a subinterval of length <span class="arithmatex">\(\delta&gt;0\)</span>, so <span class="arithmatex">\(\int_a^bg\ge\delta\,g(c)/2&gt;0\)</span>, a contradiction. So <span class="arithmatex">\(g\equiv0\)</span>, that is <span class="arithmatex">\(\abs v=v\)</span> and <span class="arithmatex">\(v\ge0\)</span>. In the second case apply the first case to <span class="arithmatex">\(-v\)</span> (which has <span class="arithmatex">\(\abs{-v}=\abs v\)</span>): it gives <span class="arithmatex">\(-v\ge0\)</span>, that is <span class="arithmatex">\(v\le0\)</span>. ◻ ∎</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.1.1: Zero displacement</p>
+<p><span id="think-thzero"></span></p>
+<p>Describe a motion on <span class="arithmatex">\([0,4]\)</span> whose displacement is <span class="arithmatex">\(0\)</span> but whose distance traveled is <span class="arithmatex">\(12\)</span>. What does the graph of <span class="arithmatex">\(v\)</span> look like? Can the distance be <span class="arithmatex">\(0\)</span> if the displacement is <span class="arithmatex">\(0\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>For instance the object moves forward at the velocity <span class="arithmatex">\(v=3\)</span> for <span class="arithmatex">\(2\)</span> s (distance <span class="arithmatex">\(6\)</span>) and backward at <span class="arithmatex">\(v=-3\)</span> for <span class="arithmatex">\(2\)</span> s (distance <span class="arithmatex">\(6\)</span>): displacement <span class="arithmatex">\(6-6=0\)</span>, distance <span class="arithmatex">\(6+6=12\)</span>. The graph of <span class="arithmatex">\(v\)</span> has equal areas above and below the <span class="arithmatex">\(t\)</span>-axis. The distance can be <span class="arithmatex">\(0\)</span> with displacement <span class="arithmatex">\(0\)</span> only if <span class="arithmatex">\(\int_0^4\abs v=0\)</span>, and by the equality part of Theorem <a href="#thm-ineq">6.1.6</a>’s proof (<span class="arithmatex">\(\abs v\ge0\)</span> continuous with integral <span class="arithmatex">\(0\)</span>), <span class="arithmatex">\(v\equiv0\)</span>: the object never moves.</p>
+</details>
+</div>
+<h2 id="position-from-velocity">Position from velocity<a class="headerlink" href="#position-from-velocity" title="Permanent link">&para;</a></h2>
+<p>The displacement needs only the velocity. To say <em>where</em> the object is at time <span class="arithmatex">\(t\)</span>, we also need to know where it started.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.7: Position from velocity</p>
+<p><span id="thm-pos"></span></p>
+<p>Let <span class="arithmatex">\(v=s'\)</span> be continuous on <span class="arithmatex">\([0,\infty)\)</span> (or on an interval starting at <span class="arithmatex">\(0\)</span>). Then for every <span class="arithmatex">\(t\ge0\)</span>,</p>
+<div class="arithmatex">\[s(t)=s(0)+\int_0^tv(x)\,dx .\]</div>
+</div>
+<p><em>Proof.</em> Apply Theorem <a href="#thm-disp">6.1.2</a> on the interval <span class="arithmatex">\([0,t]\)</span>: <span class="arithmatex">\(\int_0^tv(x)\,dx=s(t)-s(0)\)</span>. Add <span class="arithmatex">\(s(0)\)</span> to both sides. ◻ ∎</p>
+<p>In words: <em>position at time <span class="arithmatex">\(t\)</span> = initial position + displacement over <span class="arithmatex">\([0,t]\)</span>.</em> The same holds with any starting time <span class="arithmatex">\(t_0\)</span> in place of <span class="arithmatex">\(0\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">A dummy variable</p>
+<p>In <span class="arithmatex">\(s(t)=s(0)+\int_0^tv(x)\,dx\)</span> the letter <span class="arithmatex">\(t\)</span> is the upper limit, so it cannot also be the variable of integration. Use another letter, here <span class="arithmatex">\(x\)</span>. The integral <span class="arithmatex">\(\int_0^tv(t)\,dt\)</span> is ambiguous and should not be written.</p>
+</div>
+<p>There are two ways to find <span class="arithmatex">\(s(t)\)</span>: (1) <em>the antiderivative method:</em> <span class="arithmatex">\(s(t)=\int v(t)\,dt=V(t)+C\)</span>, then use <span class="arithmatex">\(s(0)\)</span> to find <span class="arithmatex">\(C\)</span>; (2) <em>the integral method:</em> Theorem <a href="#thm-pos">6.1.7</a>. They always agree. The integral method builds the initial condition into the formula.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.8: Position of an oscillator by two methods</p>
+<p><span id="ex-e2"></span></p>
+<p>A mass on a spring moves along a line with velocity <span class="arithmatex">\(v(t)=3\cos2t\)</span> (in cm/s, <span class="arithmatex">\(t\)</span> in s). At <span class="arithmatex">\(t=0\)</span> it is at <span class="arithmatex">\(s(0)=2\)</span> cm. (a) Find <span class="arithmatex">\(s(t)\)</span> by both methods. (b) Find the greatest and least positions and when they are first reached. (c) When does it first return to its starting position, and in which direction is it then moving?</p>
+<p><strong>Solution.</strong> (a) <em>Method 1 (antiderivative).</em> With <span class="arithmatex">\(u=2t\)</span>, <span class="arithmatex">\(\int3\cos2t\,dt=\frac32\sin2t+C\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>). Check: <span class="arithmatex">\(\frac{d}{dt}\left(\frac32\sin2t\right)=\frac32\cdot2\cos2t=3\cos2t\)</span>. The initial condition: <span class="arithmatex">\(s(0)=\frac32\sin0+C=C=2\)</span>. So <span class="arithmatex">\(s(t)=\frac32\sin2t+2\)</span>.</p>
+<p><em>Method 2 (integral).</em> By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=2+\int_0^t3\cos2x\,dx=2+\left[\frac32\sin2x\right]_0^t=2+\frac32\sin2t-\frac32\sin0=2+\frac32\sin2t\)</span>.</p>
+<p>The two answers agree: <span class="arithmatex">\(s(t)=2+\frac32\sin2t\)</span>.</p>
+<p>(b) Because <span class="arithmatex">\(-1\le\sin2t\le1\)</span>, we get <span class="arithmatex">\(2-\frac32\le s\le2+\frac32\)</span>, so <span class="arithmatex">\(\frac12\le s\le\frac72\)</span>. The greatest position <span class="arithmatex">\(\frac72\)</span> occurs when <span class="arithmatex">\(\sin2t=1\)</span>, first at <span class="arithmatex">\(2t=\frac\pi2\)</span>, that is <span class="arithmatex">\(t=\frac\pi4\)</span>. The least position <span class="arithmatex">\(\frac12\)</span> occurs when <span class="arithmatex">\(\sin2t=-1\)</span>, first at <span class="arithmatex">\(2t=\frac{3\pi}2\)</span>, that is <span class="arithmatex">\(t=\frac{3\pi}4\)</span>. (Check with <span class="arithmatex">\(v\)</span>: <span class="arithmatex">\(v(\pi/4)=3\cos\frac\pi2=0\)</span>, and <span class="arithmatex">\(v\)</span> changes from <span class="arithmatex">\(+\)</span> to <span class="arithmatex">\(-\)</span> there.) In particular the mass never reaches <span class="arithmatex">\(s=0\)</span>.</p>
+<p>(c) It is back at <span class="arithmatex">\(s=2\)</span> when <span class="arithmatex">\(\frac32\sin2t=0\)</span>, first when <span class="arithmatex">\(2t=\pi\)</span>, that is <span class="arithmatex">\(t=\frac\pi2\)</span>. There <span class="arithmatex">\(v(\pi/2)=3\cos\pi=-3&lt;0\)</span>: the mass is moving in the negative direction (downward in the picture of a vertical spring if positive is up).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.1.2: Displacement or position?</p>
+<p><span id="kc-kcpos"></span></p>
+<p>For the motion in Example <a href="#ex-e2">6.1.8</a>, is <span class="arithmatex">\(s(t)\)</span> a number or a function? For fixed times <span class="arithmatex">\(t=a\)</span> and <span class="arithmatex">\(t=b\)</span>, is the displacement <span class="arithmatex">\(s(b)-s(a)\)</span> a number or a function? What is the displacement over <span class="arithmatex">\([0,\pi/2]\)</span>?</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.1.2: Why do we need <span class="arithmatex">\(s(0)\)</span>?</p>
+<p><span id="think-thinit"></span></p>
+<p>Two objects have the same velocity function <span class="arithmatex">\(v(t)=3\cos2t\)</span> for all <span class="arithmatex">\(t\)</span>, but one starts at <span class="arithmatex">\(s(0)=2\)</span> and the other at <span class="arithmatex">\(s(0)=-5\)</span>. Which of the following are the same for both: the displacement over <span class="arithmatex">\([0,\pi/2]\)</span>, the distance traveled over <span class="arithmatex">\([0,\pi/2]\)</span>, the position at <span class="arithmatex">\(t=\pi/2\)</span>, the time of the first maximum?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The velocity function is the same, so the displacement and the distance over <span class="arithmatex">\([0,\pi/2]\)</span> are the same for both (they depend only on <span class="arithmatex">\(v\)</span>): both <span class="arithmatex">\(0\)</span> for the displacement, and <span class="arithmatex">\(\int_0^{\pi/2}\abs{3\cos2t}\,dt=2\cdot\frac32=3\)</span> for the distance, because <span class="arithmatex">\(3\cos2t\)</span> changes sign at <span class="arithmatex">\(t=\frac\pi4\)</span> and <span class="arithmatex">\(\frac32\sin2t\)</span> goes from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\frac32\)</span> and back to <span class="arithmatex">\(0\)</span>. The time of the first maximum of <span class="arithmatex">\(s\)</span> is the same too (<span class="arithmatex">\(t=\frac\pi4\)</span>, where <span class="arithmatex">\(v\)</span> changes sign), since <span class="arithmatex">\(s\)</span> differs only by a constant. The <em>positions</em> at <span class="arithmatex">\(t=\pi/2\)</span> are different: <span class="arithmatex">\(2\)</span> for one and <span class="arithmatex">\(-5\)</span> for the other. The initial position shifts the whole position curve up or down; it does not change the displacement.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.9: A piecewise velocity: a delivery drone</p>
+<p><span id="ex-e3"></span></p>
+<p>A drone flies in a straight line. Its velocity (in m/s) is</p>
+<div class="arithmatex">\[v(t)=\begin{cases}4t&amp;0\le t&lt;5,\\20&amp;5\le t&lt;15,\\80-4t&amp;15\le t\le20.\end{cases}\]</div>
+<p>Find (a) the distance it flies, (b) its position at <span class="arithmatex">\(t=12\)</span> s, and (c) its average velocity over <span class="arithmatex">\([0,20]\)</span>. Assume <span class="arithmatex">\(s(0)=0\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="arithmatex">\(v\ge0\)</span> everywhere (at <span class="arithmatex">\(t=20\)</span>, <span class="arithmatex">\(v=80-80=0\)</span>, and the pieces join: <span class="arithmatex">\(4\cdot5=20\)</span> and <span class="arithmatex">\(80-4\cdot15=20\)</span>), so the distance equals the displacement, and by Theorem <a href="#thm-disp">6.1.2</a> we integrate each piece separately, over the interval where its formula holds. (a)</p>
+<div class="arithmatex">\[\int_0^{5}4t\,dt=\left[2t^2\right]_0^5=50,\qquad\int_5^{15}20\,dt=\left[20t\right]_5^{15}=300-100=200,\]</div>
+<p>and, with <span class="arithmatex">\(\int(80-4t)\,dt=80t-2t^2\)</span>,</p>
+<div class="arithmatex">\[\int_{15}^{20}(80-4t)\,dt=\left[80t-2t^2\right]_{15}^{20}=(1600-800)-(1200-450)=800-750=50.\]</div>
+<p>The distance is <span class="arithmatex">\(50+200+50=300\)</span> m. Check with geometry: the region under the graph is a trapezoid with parallel sides <span class="arithmatex">\(20\)</span> and <span class="arithmatex">\(10\)</span> (on the <span class="arithmatex">\(t\)</span>-axis) and height <span class="arithmatex">\(20\)</span>, so its area is <span class="arithmatex">\(\frac{20+10}2\cdot20=300\)</span>.</p>
+<p>(b) Position at <span class="arithmatex">\(t=12\)</span>: <span class="arithmatex">\(s(12)=s(0)+\int_0^{12}v\,dx=0+\int_0^54x\,dx+\int_5^{12}20\,dx=50+20(12-5)=50+140=190\)</span> m.</p>
+<p>(c) The average velocity over <span class="arithmatex">\([0,20]\)</span> is the displacement divided by the elapsed time: <span class="arithmatex">\(\frac{300}{20}=15\)</span> m/s. This is the constant velocity that would cover the same <span class="arithmatex">\(300\)</span> m in <span class="arithmatex">\(20\)</span> s.</p>
+<p><img alt="Diagram: \(50\); \(200\); \(50\)" class="calc-figure" src="../figures/notes-fig2.svg" width="461" /></p>
+<p><em>Figure.</em> The velocity of the drone. The area under the graph is the distance, <span class="arithmatex">\(50+200+50=300\)</span> m.</p>
+</div>
+<h2 id="acceleration">Acceleration<a class="headerlink" href="#acceleration" title="Permanent link">&para;</a></h2>
+<p>Acceleration is to velocity what velocity is to position: <span class="arithmatex">\(a(t)=v'(t)\)</span>. Everything above applies once <span class="arithmatex">\(s\)</span> is replaced by <span class="arithmatex">\(v\)</span> and <span class="arithmatex">\(v\)</span> by <span class="arithmatex">\(a\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.10: Velocity from acceleration</p>
+<p><span id="thm-vel"></span></p>
+<p>Let <span class="arithmatex">\(a=v'\)</span> be continuous on <span class="arithmatex">\([0,\infty)\)</span>. The change in velocity over <span class="arithmatex">\([c,d]\)</span> is <span class="arithmatex">\(v(d)-v(c)=\int_c^da(x)\,dx\)</span>, and for every <span class="arithmatex">\(t\ge0\)</span></p>
+<div class="arithmatex">\[v(t)=v(0)+\int_0^ta(x)\,dx .\]</div>
+</div>
+<p><em>Proof.</em> The function <span class="arithmatex">\(v\)</span> is an antiderivative of the continuous function <span class="arithmatex">\(a\)</span>, so the Fundamental Theorem of Calculus gives <span class="arithmatex">\(\int_c^da(x)\,dx=v(d)-v(c)\)</span>. Taking <span class="arithmatex">\(c=0\)</span> and <span class="arithmatex">\(d=t\)</span> and adding <span class="arithmatex">\(v(0)\)</span> gives the second formula. ◻ ∎</p>
+<p>To find the position from the acceleration, apply this theorem and then Theorem <a href="#thm-pos">6.1.7</a>: first <span class="arithmatex">\(v\)</span> from <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(v(0)\)</span>, then <span class="arithmatex">\(s\)</span> from <span class="arithmatex">\(v\)</span> and <span class="arithmatex">\(s(0)\)</span>. A very common case is a constant acceleration, such as gravity near the surface of the Earth, <span class="arithmatex">\(a=-g\)</span> with <span class="arithmatex">\(g\approx9.8\)</span> m/s<span class="arithmatex">\(^2\)</span> (taking up as positive).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.11: Constant acceleration</p>
+<p><span id="thm-const"></span></p>
+<p>If <span class="arithmatex">\(a(t)=\alpha\)</span> is constant, then</p>
+<div class="arithmatex">\[v(t)=v_0+\alpha t,\qquad s(t)=s_0+v_0t+\tfrac12\alpha t^2,\qquad v(t)^2=v_0^2+2\alpha\,(s(t)-s_0),\]</div>
+<p>where <span class="arithmatex">\(v_0=v(0)\)</span> and <span class="arithmatex">\(s_0=s(0)\)</span>.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-vel">6.1.10</a>, <span class="arithmatex">\(v(t)=v_0+\int_0^t\alpha\,dx=v_0+\alpha t\)</span>. By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=s_0+\int_0^t(v_0+\alpha x)\,dx=s_0+\left[v_0x+\frac12\alpha x^2\right]_0^t=s_0+v_0t+\frac12\alpha t^2\)</span>. For the third formula, compute <span class="arithmatex">\(v^2-v_0^2=(v_0+\alpha t)^2-v_0^2=2v_0\alpha t+\alpha^2t^2=2\alpha\left(v_0t+\tfrac12\alpha t^2\right)=2\alpha(s-s_0)\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.12: A stone thrown from a bridge</p>
+<p><span id="ex-e4"></span></p>
+<p>A stone is thrown straight up with velocity <span class="arithmatex">\(19.6\)</span> m/s from a bridge <span class="arithmatex">\(24.5\)</span> m above a river. Measure <span class="arithmatex">\(s\)</span> upward from the river, so <span class="arithmatex">\(s(0)=24.5\)</span>, and take <span class="arithmatex">\(a=-9.8\)</span> m/s<span class="arithmatex">\(^2\)</span>. Find (a) <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(s(t)\)</span>; (b) the greatest height and when it is reached; (c) when and how fast the stone hits the river; (d) the displacement and the distance traveled from launch to impact.</p>
+<p><strong>Solution.</strong> (a) By Theorem <a href="#thm-const">6.1.11</a> with <span class="arithmatex">\(\alpha=-9.8\)</span>, <span class="arithmatex">\(v_0=19.6\)</span>, <span class="arithmatex">\(s_0=24.5\)</span>: <span class="arithmatex">\(v(t)=19.6-9.8t\)</span> and <span class="arithmatex">\(s(t)=24.5+19.6t-4.9t^2\)</span>.</p>
+<p>(b) The stone is highest when it stops rising, <span class="arithmatex">\(v(t)=0\)</span>: <span class="arithmatex">\(19.6-9.8t=0\)</span>, so <span class="arithmatex">\(t=2\)</span> s (and <span class="arithmatex">\(v\)</span> changes from positive to negative there). The height is <span class="arithmatex">\(s(2)=24.5+39.2-19.6=44.1\)</span> m.</p>
+<p>(c) The stone hits the river when <span class="arithmatex">\(s(t)=0\)</span>, with <span class="arithmatex">\(t&gt;0\)</span>: <span class="arithmatex">\(24.5+19.6t-4.9t^2=0\)</span>. Divide by <span class="arithmatex">\(-4.9\)</span>: <span class="arithmatex">\(t^2-4t-5=0\)</span>, that is <span class="arithmatex">\((t-5)(t+1)=0\)</span>. Only <span class="arithmatex">\(t=5\)</span> s makes sense. The velocity is <span class="arithmatex">\(v(5)=19.6-49=-29.4\)</span> m/s, so the stone is moving downward at <span class="arithmatex">\(29.4\)</span> m/s. <em>Check with the third formula of Theorem <a href="#thm-const">6.1.11</a>:</em> <span class="arithmatex">\(v^2=19.6^2+2(-9.8)(0-24.5)=384.16+480.2=864.36\)</span>, and <span class="arithmatex">\(29.4^2=864.36\)</span>.</p>
+<p>(d) The displacement is <span class="arithmatex">\(s(5)-s(0)=0-24.5=-24.5\)</span> m. For the distance, <span class="arithmatex">\(v\)</span> changes sign at <span class="arithmatex">\(t=2\)</span>, so we add the two legs: up, <span class="arithmatex">\(s(2)-s(0)=44.1-24.5=19.6\)</span> m; down, <span class="arithmatex">\(\abs{s(5)-s(2)}=\abs{0-44.1}=44.1\)</span> m. The distance traveled is <span class="arithmatex">\(19.6+44.1=63.7\)</span> m. (As expected, <span class="arithmatex">\(63.7\ge24.5\)</span>.)</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig3.svg" width="540" /></p>
+<p><em>Figure.</em> Height of the stone above the river: <span class="arithmatex">\(s(t)=24.5+19.6t-4.9t^2\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.13: A variable acceleration</p>
+<p><span id="ex-e5"></span></p>
+<p>An object has acceleration <span class="arithmatex">\(a(t)=\dfrac{12}{(t+2)^2}\)</span> (in m/s<span class="arithmatex">\(^2\)</span>) for <span class="arithmatex">\(t\ge0\)</span>, with <span class="arithmatex">\(v(0)=3\)</span> m/s and <span class="arithmatex">\(s(0)=0\)</span>. Find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(s(t)\)</span>, the position at <span class="arithmatex">\(t=4\)</span>, and the limit of the velocity as <span class="arithmatex">\(t\to\infty\)</span>.</p>
+<p><strong>Solution.</strong> <em>Velocity.</em> By Theorem <a href="#thm-vel">6.1.10</a>, <span class="arithmatex">\(v(t)=3+\int_0^t\frac{12}{(x+2)^2}\,dx\)</span>. An antiderivative of <span class="arithmatex">\(12(x+2)^{-2}\)</span> is <span class="arithmatex">\(-12(x+2)^{-1}\)</span> (substitute <span class="arithmatex">\(u=x+2\)</span>, Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>); check: <span class="arithmatex">\(\frac{d}{dx}\left(-12(x+2)^{-1}\right)=12(x+2)^{-2}\)</span>. So</p>
+<div class="arithmatex">\[v(t)=3+\left[-\frac{12}{x+2}\right]_0^t=3-\frac{12}{t+2}+\frac{12}2=9-\frac{12}{t+2}.\]</div>
+<p><em>Position.</em> By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=0+\int_0^t\left(9-\frac{12}{x+2}\right)dx=\left[9x-12\ln(x+2)\right]_0^t=9t-12\ln(t+2)+12\ln2\)</span>, that is <span class="arithmatex">\(s(t)=9t-12\ln\frac{t+2}2\)</span>. (We used <span class="arithmatex">\(x+2&gt;0\)</span>, so no absolute value is needed in the logarithm.) <em>At <span class="arithmatex">\(t=4\)</span>:</em> <span class="arithmatex">\(s(4)=36-12\ln3\approx22.82\)</span> m. <em>Long-term velocity.</em> <span class="arithmatex">\(\lim_{t\to\infty}\left(9-\frac{12}{t+2}\right)=9\)</span> m/s. The object speeds up and levels off at <span class="arithmatex">\(9\)</span> m/s even though the acceleration is always positive (it tends to <span class="arithmatex">\(0\)</span> quickly).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.1.3: Constant acceleration</p>
+<p><span id="kc-kcacc"></span></p>
+<p>A car brakes from <span class="arithmatex">\(30\)</span> m/s at the constant acceleration <span class="arithmatex">\(-6\)</span> m/s<span class="arithmatex">\(^2\)</span>. How long does it take to stop, and how far does it travel in that time?</p>
+</div>
+<h2 id="net-change-and-future-value">Net change and future value<a class="headerlink" href="#net-change-and-future-value" title="Permanent link">&para;</a></h2>
+<p>Nothing in the arguments above used the fact that <span class="arithmatex">\(s\)</span> was a position. Any quantity <span class="arithmatex">\(Q(t)\)</span> that changes with time has a rate of change <span class="arithmatex">\(Q'(t)\)</span>, and the same theorems hold.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.1.14: Net change and future value</p>
+<p><span id="thm-net"></span></p>
+<p>Let <span class="arithmatex">\(Q\)</span> be differentiable with a continuous rate of change <span class="arithmatex">\(Q'\)</span> on <span class="arithmatex">\([a,b]\)</span>. The <em>net change</em> in <span class="arithmatex">\(Q\)</span> between <span class="arithmatex">\(t=a\)</span> and <span class="arithmatex">\(t=b\)</span> is</p>
+<div class="arithmatex">\[Q(b)-Q(a)=\int_a^bQ'(t)\,dt ,\]</div>
+<p>and, given the initial value <span class="arithmatex">\(Q(0)\)</span>, the <em>future value</em> at time <span class="arithmatex">\(t\ge0\)</span> is</p>
+<div class="arithmatex">\[Q(t)=Q(0)+\int_0^tQ'(x)\,dx .\]</div>
+</div>
+<p><em>Proof.</em> <span class="arithmatex">\(Q\)</span> is an antiderivative of the continuous function <span class="arithmatex">\(Q'\)</span>, so the Fundamental Theorem of Calculus gives the first formula. For <span class="arithmatex">\([0,t]\)</span> it says <span class="arithmatex">\(\int_0^tQ'(x)\,dx=Q(t)-Q(0)\)</span>; add <span class="arithmatex">\(Q(0)\)</span>. ◻ ∎</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Motion on a line</th>
+<th style="text-align: left;">Any quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">position <span class="arithmatex">\(s(t)\)</span></td>
+<td style="text-align: left;">amount <span class="arithmatex">\(Q(t)\)</span> (volume, population, cost)</td>
+</tr>
+<tr>
+<td style="text-align: left;">velocity <span class="arithmatex">\(s'(t)=v(t)\)</span></td>
+<td style="text-align: left;">rate of change <span class="arithmatex">\(Q'(t)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">displacement <span class="arithmatex">\(s(b)-s(a)=\int_a^bv\,dt\)</span></td>
+<td style="text-align: left;">net change <span class="arithmatex">\(Q(b)-Q(a)=\int_a^bQ'\,dt\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">future position <span class="arithmatex">\(s(0)+\int_0^tv\,dx\)</span></td>
+<td style="text-align: left;">future value <span class="arithmatex">\(Q(0)+\int_0^tQ'\,dx\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Units</p>
+<p>The integrand <span class="arithmatex">\(Q'(x)\,dx\)</span> is (units of <span class="arithmatex">\(Q\)</span> per unit of time)<span class="arithmatex">\(\,\times\,\)</span>(units of time), which is in the units of <span class="arithmatex">\(Q\)</span>. For instance, a rate in liters per minute integrated over minutes gives liters. Always check that the units of the limits, the rate and the answer are consistent, and write the units in the answer.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.15: A cell culture and its limiting population</p>
+<p><span id="ex-e6"></span></p>
+<p>A culture has <span class="arithmatex">\(250\)</span> cells when nutrient is added at <span class="arithmatex">\(t=0\)</span>. The population grows at the rate <span class="arithmatex">\(P'(t)=60e^{-0.2t}\)</span> cells per hour. (a) Find <span class="arithmatex">\(P(t)\)</span>. (b) How many cells are added between <span class="arithmatex">\(t=2\)</span> and <span class="arithmatex">\(t=5\)</span>? (c) What happens to <span class="arithmatex">\(P\)</span> as <span class="arithmatex">\(t\to\infty\)</span>?</p>
+<p><strong>Solution.</strong> (a) An antiderivative of <span class="arithmatex">\(60e^{-0.2x}\)</span> is <span class="arithmatex">\(-300e^{-0.2x}\)</span>, because <span class="arithmatex">\(\frac{d}{dx}\left(-300e^{-0.2x}\right)=-300(-0.2)e^{-0.2x}=60e^{-0.2x}\)</span>. By Theorem <a href="#thm-net">6.1.14</a>,</p>
+<div class="arithmatex">\[P(t)=250+\int_0^t60e^{-0.2x}\,dx=250+\left[-300e^{-0.2x}\right]_0^t=250-300e^{-0.2t}+300=550-300e^{-0.2t}.\]</div>
+<p>Check: <span class="arithmatex">\(P(0)=550-300=250\)</span>.</p>
+<p>(b) The number added between <span class="arithmatex">\(t=2\)</span> and <span class="arithmatex">\(t=5\)</span> is the net change <span class="arithmatex">\(P(5)-P(2)=\left(550-300e^{-1}\right)-\left(550-300e^{-0.4}\right)=300\left(e^{-0.4}-e^{-1}\right)\approx90.7\)</span> cells. (c) As <span class="arithmatex">\(t\to\infty\)</span>, <span class="arithmatex">\(e^{-0.2t}\to0\)</span>, so <span class="arithmatex">\(P(t)\to550\)</span>: the population levels off at <span class="arithmatex">\(550\)</span> cells, although the growth rate is positive for every <span class="arithmatex">\(t\)</span>. Equivalently, the improper integral <span class="arithmatex">\(\int_0^\infty60e^{-0.2x}\,dx=\lim_{t\to\infty}\int_0^t60e^{-0.2x}\,dx\)</span> (Definition <a href="../../8.9/notes/#def-inf">8.9.1</a>) converges to <span class="arithmatex">\(300\)</span>, and <span class="arithmatex">\(250+300=550\)</span>.</p>
+<p><img alt="Diagram: \(P=550\)" class="calc-figure" src="../figures/notes-fig4.svg" width="513" /></p>
+<p><em>Figure.</em> <span class="arithmatex">\(P(t)=550-300e^{-0.2t}\)</span>: increasing, but approaching <span class="arithmatex">\(550\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.16: Marginal cost</p>
+<p><span id="ex-e7"></span></p>
+<p>A publisher estimates the marginal cost of printing a title as <span class="arithmatex">\(C'(x)=45-0.003x\)</span> dollars per book, where <span class="arithmatex">\(x\)</span> is the number of books printed so far (<span class="arithmatex">\(0\le x\le10000\)</span>). Find the cost of printing the <span class="arithmatex">\(2001\)</span>st through the <span class="arithmatex">\(5000\)</span>th book, and compare it with the cost of the <span class="arithmatex">\(5001\)</span>st through the <span class="arithmatex">\(8000\)</span>th.</p>
+<p><strong>Solution.</strong> The cost of the books numbered <span class="arithmatex">\(2001\)</span> through <span class="arithmatex">\(5000\)</span> is <span class="arithmatex">\(C(5000)-C(2000)=\int_{2000}^{5000}C'(x)\,dx\)</span> by Theorem <a href="#thm-net">6.1.14</a> (we treat <span class="arithmatex">\(x\)</span> as continuous). An antiderivative of <span class="arithmatex">\(45-0.003x\)</span> is <span class="arithmatex">\(45x-0.0015x^2\)</span>. So</p>
+<div class="arithmatex">\[\begin{aligned}
+\int_{2000}^{5000}(45-0.003x)\,dx&amp;=\Big[45x-0.0015x^2\Big]_{2000}^{5000}=(225000-37500)-(90000-6000)\\
+&amp;=187500-84000=103500
+\end{aligned}\]</div>
+<p>dollars. Similarly, for the books numbered <span class="arithmatex">\(5001\)</span> through <span class="arithmatex">\(8000\)</span>,</p>
+<div class="arithmatex">\[\Big[45x-0.0015x^2\Big]_{5000}^{8000}=(360000-96000)-(225000-37500)=264000-187500=76500\]</div>
+<p>dollars. The cost of the second block of <span class="arithmatex">\(3000\)</span> books is smaller, because the marginal cost is decreasing: each additional book costs less than the one before.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.1.3: A positive rate and a bounded total</p>
+<p><span id="think-thbdd"></span></p>
+<p>In Example <a href="#ex-e6">6.1.15</a> the growth rate <span class="arithmatex">\(P'(t)=60e^{-0.2t}\)</span> is positive for every <span class="arithmatex">\(t\)</span>, yet <span class="arithmatex">\(P(t)\)</span> never exceeds <span class="arithmatex">\(550\)</span>. How can adding a positive amount at every moment not make <span class="arithmatex">\(P\)</span> grow without bound? What would you need to know about <span class="arithmatex">\(P'\)</span> to be sure that <span class="arithmatex">\(P\)</span> stays bounded?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The amounts added get smaller and smaller, quickly enough that their sum stays finite: <span class="arithmatex">\(\int_0^\infty60e^{-0.2x}\,dx=300\)</span> (Definition <a href="../../8.9/notes/#def-inf">8.9.1</a>). A positive rate does not by itself make the total unbounded; what matters is how fast the rate dies out. For comparison, the rate <span class="arithmatex">\(\frac1{x+1}\)</span> is also positive and tends to <span class="arithmatex">\(0\)</span>, but <span class="arithmatex">\(\int_0^t\frac{dx}{x+1}=\ln(t+1)\to\infty\)</span>. To be sure <span class="arithmatex">\(P\)</span> is bounded, one needs the improper integral <span class="arithmatex">\(\int_0^\infty P'\)</span> to converge, for instance by comparison with a convergent integral such as that of an exponential.</p>
+</details>
+</div>
+<h2 id="rates-that-change-sign-and-averages">Rates that change sign, and averages<a class="headerlink" href="#rates-that-change-sign-and-averages" title="Permanent link">&para;</a></h2>
+<p>A rate of change can be positive for a while and then negative; the quantity then rises and falls. The net change adds the signed areas, exactly as the displacement does. The <em>average rate of change</em> of <span class="arithmatex">\(Q\)</span> over <span class="arithmatex">\([a,b]\)</span> is <span class="arithmatex">\(\dfrac{Q(b)-Q(a)}{b-a}=\dfrac1{b-a}\int_a^bQ'(t)\,dt\)</span>, which is the average value of <span class="arithmatex">\(Q'\)</span> on <span class="arithmatex">\([a,b]\)</span> (Calculus I). It is the constant rate that would produce the same net change in the same time: for a velocity, the <em>average velocity</em>, the constant velocity with the same displacement.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.17: A fish pond whose rate changes sign</p>
+<p><span id="ex-e8"></span></p>
+<p>The number of fish in a pond changes at the rate <span class="arithmatex">\(N'(t)=40-10t\)</span> fish per week (hatching minus harvesting and losses), <span class="arithmatex">\(t\)</span> in weeks, and <span class="arithmatex">\(N(0)=100\)</span>. Find <span class="arithmatex">\(N(t)\)</span>; when is the population greatest, and what is it then; when does the pond run out of fish? What is the net change over <span class="arithmatex">\([0,4]\)</span> and over <span class="arithmatex">\([4,10]\)</span>?</p>
+<p><strong>Solution.</strong> <em>Future value.</em> By Theorem <a href="#thm-net">6.1.14</a>, <span class="arithmatex">\(N(t)=100+\int_0^t(40-10x)\,dx=100+\left[40x-5x^2\right]_0^t=100+40t-5t^2\)</span>. <em>The maximum.</em> The rate <span class="arithmatex">\(40-10t\)</span> is positive for <span class="arithmatex">\(t&lt;4\)</span>, zero at <span class="arithmatex">\(t=4\)</span> and negative for <span class="arithmatex">\(t&gt;4\)</span>, so <span class="arithmatex">\(N\)</span> increases until <span class="arithmatex">\(t=4\)</span> and decreases afterwards: the greatest population is <span class="arithmatex">\(N(4)=100+160-80=180\)</span> fish at <span class="arithmatex">\(t=4\)</span> weeks. <em>When the pond is empty.</em> <span class="arithmatex">\(N(t)=0\)</span> means <span class="arithmatex">\(5t^2-40t-100=0\)</span>. Divide by <span class="arithmatex">\(5\)</span>: <span class="arithmatex">\(t^2-8t-20=0\)</span>, that is <span class="arithmatex">\((t-10)(t+2)=0\)</span>. The positive solution is <span class="arithmatex">\(t=10\)</span> weeks. (The model is meaningful only for <span class="arithmatex">\(0\le t\le10\)</span>, because a population cannot be negative.) <em>Net changes.</em> <span class="arithmatex">\(N(4)-N(0)=180-100=80\)</span> fish gained over <span class="arithmatex">\([0,4]\)</span>. <span class="arithmatex">\(N(10)-N(4)=0-180=-180\)</span>, a loss of <span class="arithmatex">\(180\)</span> over <span class="arithmatex">\([4,10]\)</span>. Check with the integral: <span class="arithmatex">\(\int_4^{10}(40-10t)\,dt=\left[40t-5t^2\right]_4^{10}=(400-500)-(160-80)=-100-80=-180\)</span>. The total amount of change in the pond, ignoring direction, is <span class="arithmatex">\(80+180=260\)</span> fish (the analogue of the distance traveled: <span class="arithmatex">\(\int_0^{10}\abs{N'(t)}\,dt=260\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.18: Two cyclists approaching each other</p>
+<p><span id="ex-e9"></span></p>
+<p>Towns A and B are <span class="arithmatex">\(15\)</span> km apart on a straight road. At noon Ana leaves A for B with speed <span class="arithmatex">\(v_A(t)=\dfrac{18}{(t+1)^2}\)</span> km/h and Ben leaves B for A with speed <span class="arithmatex">\(v_B(t)=\dfrac{12}{(t+1)^2}\)</span> km/h (<span class="arithmatex">\(t\)</span> in hours; both slow down as they tire). (a) Find their positions as functions of time. (b) When and where do they meet? (c) Show that they meet only if the towns are less than <span class="arithmatex">\(30\)</span> km apart.</p>
+<p><strong>Solution.</strong> (a) Measure position <span class="arithmatex">\(x\)</span> from A toward B. Ana starts at <span class="arithmatex">\(x=0\)</span> and moves in the positive direction, so by Theorem <a href="#thm-pos">6.1.7</a></p>
+<div class="arithmatex">\[x_A(t)=0+\int_0^t\frac{18}{(u+1)^2}\,du=\left[-\frac{18}{u+1}\right]_0^t=18-\frac{18}{t+1}=\frac{18t}{t+1}.\]</div>
+<p>Ben starts at <span class="arithmatex">\(x=15\)</span> and moves in the negative direction, so his velocity is <span class="arithmatex">\(-v_B(t)\)</span> and</p>
+<div class="arithmatex">\[x_B(t)=15+\int_0^t\left(-\frac{12}{(u+1)^2}\right)du=15-\left(12-\frac{12}{t+1}\right)=3+\frac{12}{t+1}=\frac{3(t+5)}{t+1}.\]</div>
+<p>(b) They meet when <span class="arithmatex">\(x_A(t)=x_B(t)\)</span>: <span class="arithmatex">\(\frac{18t}{t+1}=15-\frac{12t}{t+1}\)</span>, so <span class="arithmatex">\(\frac{30t}{t+1}=15\)</span>, so <span class="arithmatex">\(30t=15t+15\)</span> and <span class="arithmatex">\(t=1\)</span> hour (1:00 p.m.). Then <span class="arithmatex">\(x_A(1)=\frac{18}2=9\)</span> km from A, and <span class="arithmatex">\(x_B(1)=\frac{3\cdot6}2=9\)</span> km. Ana has ridden <span class="arithmatex">\(9\)</span> km and Ben <span class="arithmatex">\(6\)</span> km.</p>
+<p>(c) Let the towns be <span class="arithmatex">\(D\)</span> km apart. Then <span class="arithmatex">\(x_A(t)=18p(t)\)</span> and <span class="arithmatex">\(x_B(t)=D-12p(t)\)</span> with <span class="arithmatex">\(p(t)=\frac t{t+1}\)</span>. They meet when <span class="arithmatex">\(30p(t)=D\)</span>, that is <span class="arithmatex">\(p(t)=\frac D{30}\)</span>. Now <span class="arithmatex">\(p(t)=1-\frac1{t+1}\)</span> increases from <span class="arithmatex">\(0\)</span> and stays below <span class="arithmatex">\(1\)</span>, and takes every value in <span class="arithmatex">\([0,1)\)</span>. So <span class="arithmatex">\(p(t)=\frac D{30}\)</span> has a solution if and only if <span class="arithmatex">\(D&lt;30\)</span>. (Ana can never ride more than <span class="arithmatex">\(18\)</span> km and Ben never more than <span class="arithmatex">\(12\)</span> km.)</p>
+<p><img alt="Diagram: \(18\); \(3\); Ana; Ben" class="calc-figure" src="../figures/notes-fig5.svg" width="483" /></p>
+<p><em>Figure.</em> Positions of Ana (rising to <span class="arithmatex">\(18\)</span>) and Ben (falling to <span class="arithmatex">\(3\)</span>): they meet at <span class="arithmatex">\((1,9)\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.19: A depleting resource and an improper integral</p>
+<p><span id="ex-e10"></span></p>
+<p>A mine extracts ore at the rate <span class="arithmatex">\(r(t)=12e^{-kt}\)</span> thousand tonnes per year, <span class="arithmatex">\(t\)</span> years from now, where <span class="arithmatex">\(k&gt;0\)</span> is a constant (the rate of extraction decays). The total reserve is <span class="arithmatex">\(300\)</span> thousand tonnes. (a) Find the amount <span class="arithmatex">\(Q(t)\)</span> extracted by time <span class="arithmatex">\(t\)</span> and its limit as <span class="arithmatex">\(t\to\infty\)</span>. (b) For which <span class="arithmatex">\(k\)</span> do the reserves last forever? (c) For <span class="arithmatex">\(k=0.05\)</span>, when has <span class="arithmatex">\(90\%\)</span> of everything that will ever be extracted been taken?</p>
+<p><strong>Solution.</strong> (a) With <span class="arithmatex">\(Q(0)=0\)</span>, Theorem <a href="#thm-net">6.1.14</a> gives <span class="arithmatex">\(Q(t)=\int_0^t12e^{-kx}\,dx=\left[-\frac{12}ke^{-kx}\right]_0^t=\frac{12}k\left(1-e^{-kt}\right)\)</span>. Because <span class="arithmatex">\(k&gt;0\)</span>, <span class="arithmatex">\(e^{-kt}\to0\)</span>, so <span class="arithmatex">\(Q(t)\to\frac{12}k\)</span>. This limit is, by definition, the improper integral <span class="arithmatex">\(\int_0^\infty12e^{-kx}\,dx\)</span> (Definition <a href="../../8.9/notes/#def-inf">8.9.1</a>): the total amount that will <em>ever</em> be extracted is <span class="arithmatex">\(\frac{12}k\)</span> thousand tonnes. (b) The reserves last forever if the total ever extracted does not exceed the reserve: <span class="arithmatex">\(\frac{12}k\le300\)</span>, that is <span class="arithmatex">\(k\ge\frac{12}{300}=0.04\)</span>. For <span class="arithmatex">\(k=0.04\)</span> exactly, the amount extracted approaches the entire reserve of <span class="arithmatex">\(300\)</span> but never reaches it. For <span class="arithmatex">\(k&lt;0.04\)</span> the reserves run out in finite time: solving <span class="arithmatex">\(Q(t)=300\)</span> is possible because the limit <span class="arithmatex">\(\frac{12}k\)</span> exceeds <span class="arithmatex">\(300\)</span>. (c) For <span class="arithmatex">\(k=0.05\)</span> the total is <span class="arithmatex">\(\frac{12}{0.05}=240\)</span> thousand tonnes (so the reserve is never used up: <span class="arithmatex">\(240&lt;300\)</span>). We want <span class="arithmatex">\(Q(t)=0.9\cdot240=216\)</span>: <span class="arithmatex">\(240\left(1-e^{-0.05t}\right)=216\)</span>, so <span class="arithmatex">\(e^{-0.05t}=1-0.9=0.1\)</span>, so <span class="arithmatex">\(-0.05t=\ln0.1=-\ln10\)</span> and <span class="arithmatex">\(t=\frac{\ln10}{0.05}=20\ln10\approx46.05\)</span> years.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>Everything in this section is about a rate of change that is a given function of time. In many problems the rate depends on the amount itself (a population grows faster when it is larger, a hot object cools faster when it is hotter); these <em>differential equations</em> are the subject of a later chapter. In this chapter the same slice-and-sum idea gives areas between curves, volumes of solids, lengths of curves and areas of surfaces, and then work, mass and the force of water on a dam. For motion in a plane or in space, the position is a vector-valued function and the velocity and acceleration are vectors; the integral formulas of this section then apply to each coordinate separately (vector-valued functions, in a later chapter), and the distance traveled becomes the length of a curve. In Calculus III and in physics courses the equations of constant acceleration of Theorem <a href="#thm-const">6.1.11</a> are the starting point for projectile motion.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Displacement and distance traveled</em> (Examples <a href="#ex-b1">6.1.20</a>–<a href="#ex-b2">6.1.21</a>): a polynomial velocity; a trigonometric velocity.</p>
+</li>
+<li>
+<p><em>Position from velocity</em> (Examples <a href="#ex-b3">6.1.22</a>–<a href="#ex-b4">6.1.23</a>): an exponential velocity; a velocity needing a substitution.</p>
+</li>
+<li>
+<p><em>Acceleration</em> (Examples <a href="#ex-b5">6.1.24</a>–<a href="#ex-b6">6.1.25</a>): braking at constant acceleration; a linear acceleration.</p>
+</li>
+<li>
+<p><em>Net change and future value</em> (Examples <a href="#ex-b7">6.1.26</a>–<a href="#ex-b8">6.1.27</a>): a tank filling; a marginal cost.</p>
+</li>
+<li>
+<p><em>Graphs and piecewise rates</em> (Examples <a href="#ex-b9">6.1.28</a>–<a href="#ex-b10">6.1.29</a>): a velocity graph with given areas; a piecewise production rate.</p>
+</li>
+<li>
+<p><em>Catching up, and averages</em> (Examples <a href="#ex-b11">6.1.30</a>–<a href="#ex-b12">6.1.31</a>): a car and a runner; an average velocity.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">6.1.32</a>–<a href="#ex-b14">6.1.33</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-displacement-and-distance-traveled">Group 1: Displacement and distance traveled<a class="headerlink" href="#group-1-displacement-and-distance-traveled" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.20: A polynomial velocity</p>
+<p><span id="ex-b1"></span></p>
+<p>An object moves along a line with velocity <span class="arithmatex">\(v(t)=2t^2-8t\)</span> (m/s) for <span class="arithmatex">\(0\le t\le5\)</span>. Find the displacement and the distance traveled.</p>
+<p><strong>Solution.</strong> Factor: <span class="arithmatex">\(v(t)=2t(t-4)\)</span>, so <span class="arithmatex">\(v=0\)</span> at <span class="arithmatex">\(t=0\)</span> and <span class="arithmatex">\(t=4\)</span>. On <span class="arithmatex">\((0,4)\)</span>: <span class="arithmatex">\(v(2)=8-16=-8&lt;0\)</span>. On <span class="arithmatex">\((4,5)\)</span>: <span class="arithmatex">\(v(5)=50-40=10&gt;0\)</span>. An antiderivative is <span class="arithmatex">\(F(t)=\frac23t^3-4t^2\)</span> (check: <span class="arithmatex">\(F'(t)=2t^2-8t\)</span>). Then <span class="arithmatex">\(F(0)=0\)</span>, <span class="arithmatex">\(F(4)=\frac{128}3-64=-\frac{64}3\)</span> and <span class="arithmatex">\(F(5)=\frac{250}3-100=-\frac{50}3\)</span>. The displacement is <span class="arithmatex">\(F(5)-F(0)=-\frac{50}3\approx-16.7\)</span> m. The distance is <span class="arithmatex">\(\abs{F(4)-F(0)}+\abs{F(5)-F(4)}=\frac{64}3+\abs{-\frac{50}3+\frac{64}3}=\frac{64}3+\frac{14}3=\frac{78}3=26\)</span> m. <em>Check:</em> <span class="arithmatex">\(26\ge\frac{50}3\)</span> (Theorem <a href="#thm-ineq">6.1.6</a>), and the object moves backward <span class="arithmatex">\(\frac{64}3\)</span> m and then forward <span class="arithmatex">\(\frac{14}3\)</span> m, ending <span class="arithmatex">\(\frac{50}3\)</span> m behind its start.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.21: A trigonometric velocity</p>
+<p><span id="ex-b2"></span></p>
+<p>The velocity of a particle is <span class="arithmatex">\(v(t)=6\cos\frac{\pi t}3\)</span> (cm/s) for <span class="arithmatex">\(0\le t\le4\)</span>. Find its displacement and the distance traveled.</p>
+<p><strong>Solution.</strong> <em>Sign of <span class="arithmatex">\(v\)</span>.</em> <span class="arithmatex">\(\cos\frac{\pi t}3=0\)</span> when <span class="arithmatex">\(\frac{\pi t}3=\frac\pi2+n\pi\)</span>, that is <span class="arithmatex">\(t=\frac32+3n\)</span>. The only zero in <span class="arithmatex">\([0,4]\)</span> is <span class="arithmatex">\(t=\frac32\)</span>. <span class="arithmatex">\(v(0)=6&gt;0\)</span> and <span class="arithmatex">\(v(4)=6\cos\frac{4\pi}3=-3&lt;0\)</span>, so <span class="arithmatex">\(v&gt;0\)</span> on <span class="arithmatex">\([0,\frac32)\)</span> and <span class="arithmatex">\(v&lt;0\)</span> on <span class="arithmatex">\((\frac32,4]\)</span>. <em>Antiderivative.</em> With <span class="arithmatex">\(u=\frac{\pi t}3\)</span>, <span class="arithmatex">\(F(t)=\frac{18}\pi\sin\frac{\pi t}3\)</span> (check: <span class="arithmatex">\(F'(t)=\frac{18}\pi\cdot\frac\pi3\cos\frac{\pi t}3=6\cos\frac{\pi t}3\)</span>; Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>). <em>Values.</em> <span class="arithmatex">\(F(0)=0\)</span>, <span class="arithmatex">\(F\left(\frac32\right)=\frac{18}\pi\sin\frac\pi2=\frac{18}\pi\)</span>, <span class="arithmatex">\(F(4)=\frac{18}\pi\sin\frac{4\pi}3=-\frac{18}\pi\cdot\frac{\sqrt3}2=-\frac{9\sqrt3}\pi\)</span>. <em>Displacement:</em> <span class="arithmatex">\(F(4)-F(0)=-\frac{9\sqrt3}\pi\approx-4.96\)</span> cm. <em>Distance:</em> <span class="arithmatex">\(\abs{F(\frac32)-F(0)}+\abs{F(4)-F(\frac32)}=\frac{18}\pi+\left(\frac{18}\pi+\frac{9\sqrt3}\pi\right)=\frac{36+9\sqrt3}\pi\approx16.42\)</span> cm.</p>
+</div>
+<h2 id="group-2-position-from-velocity">Group 2: Position from velocity<a class="headerlink" href="#group-2-position-from-velocity" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.22: An exponential velocity</p>
+<p><span id="ex-b3"></span></p>
+<p>A probe moves along a line with velocity <span class="arithmatex">\(v(t)=8e^{-2t}\)</span> (m/s) and starts at <span class="arithmatex">\(s(0)=-3\)</span> m. Find <span class="arithmatex">\(s(t)\)</span>, the time when it passes the origin, and its position as <span class="arithmatex">\(t\to\infty\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=-3+\int_0^t8e^{-2x}\,dx=-3+\left[-4e^{-2x}\right]_0^t=-3-4e^{-2t}+4=1-4e^{-2t}\)</span> (check: <span class="arithmatex">\(\frac{d}{dx}\left(-4e^{-2x}\right)=8e^{-2x}\)</span>). The probe passes the origin when <span class="arithmatex">\(s(t)=0\)</span>: <span class="arithmatex">\(4e^{-2t}=1\)</span>, so <span class="arithmatex">\(e^{-2t}=\frac14\)</span>, <span class="arithmatex">\(-2t=\ln\frac14=-\ln4\)</span>, and <span class="arithmatex">\(t=\frac{\ln4}2=\ln2\approx0.693\)</span> s. Since <span class="arithmatex">\(e^{-2t}\to0\)</span>, <span class="arithmatex">\(s(t)\to1\)</span>: the probe approaches <span class="arithmatex">\(s=1\)</span> m and never passes it (<span class="arithmatex">\(v&gt;0\)</span> always).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.23: A velocity that needs a substitution</p>
+<p><span id="ex-b4"></span></p>
+<p>A cart has velocity <span class="arithmatex">\(v(t)=\dfrac t{\sqrt{t^2+9}}\)</span> (m/s) and <span class="arithmatex">\(s(0)=2\)</span> m. Find <span class="arithmatex">\(s(t)\)</span> and <span class="arithmatex">\(s(4)\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=t^2+9\)</span>, <span class="arithmatex">\(du=2t\,dt\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>): <span class="arithmatex">\(\int\frac t{\sqrt{t^2+9}}\,dt=\frac12\int u^{-1/2}\,du=u^{1/2}+C=\sqrt{t^2+9}+C\)</span>. Check: <span class="arithmatex">\(\frac d{dt}\sqrt{t^2+9}=\frac{2t}{2\sqrt{t^2+9}}=\frac t{\sqrt{t^2+9}}\)</span>. The initial condition: <span class="arithmatex">\(s(0)=\sqrt9+C=3+C=2\)</span>, so <span class="arithmatex">\(C=-1\)</span> and <span class="arithmatex">\(s(t)=\sqrt{t^2+9}-1\)</span>. At <span class="arithmatex">\(t=4\)</span>: <span class="arithmatex">\(s(4)=\sqrt{25}-1=4\)</span> m. Since <span class="arithmatex">\(v&gt;0\)</span> for <span class="arithmatex">\(t&gt;0\)</span>, the distance traveled on <span class="arithmatex">\([0,4]\)</span> equals the displacement <span class="arithmatex">\(s(4)-s(0)=4-2=2\)</span> m.</p>
+</div>
+<h2 id="group-3-acceleration">Group 3: Acceleration<a class="headerlink" href="#group-3-acceleration" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.24: Stopping distance</p>
+<p><span id="ex-b5"></span></p>
+<p>A car moving at <span class="arithmatex">\(88\)</span> ft/s (<span class="arithmatex">\(60\)</span> mph) brakes with the constant acceleration <span class="arithmatex">\(-8\)</span> ft/s<span class="arithmatex">\(^2\)</span>. How long does it take to stop, and how far does it travel while stopping?</p>
+<p><strong>Solution.</strong> Take <span class="arithmatex">\(s(0)=0\)</span>. By Theorem <a href="#thm-const">6.1.11</a>, <span class="arithmatex">\(v(t)=88-8t\)</span> and <span class="arithmatex">\(s(t)=88t-4t^2\)</span>. The car stops when <span class="arithmatex">\(v=0\)</span>: <span class="arithmatex">\(t=\frac{88}8=11\)</span> s. Then <span class="arithmatex">\(s(11)=968-484=484\)</span> ft. <em>Check with the third formula</em> <span class="arithmatex">\(v^2=v_0^2+2\alpha(s-s_0)\)</span>: <span class="arithmatex">\(0=88^2+2(-8)s\)</span>, so <span class="arithmatex">\(s=\frac{7744}{16}=484\)</span> ft.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.25: A linear acceleration</p>
+<p><span id="ex-b6"></span></p>
+<p>An object has acceleration <span class="arithmatex">\(a(t)=6-4t\)</span> (m/s<span class="arithmatex">\(^2\)</span>), with <span class="arithmatex">\(v(0)=8\)</span> m/s and <span class="arithmatex">\(s(0)=5\)</span> m. Find <span class="arithmatex">\(v(t)\)</span> and <span class="arithmatex">\(s(t)\)</span>, the first time <span class="arithmatex">\(v=0\)</span>, and the position then.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-vel">6.1.10</a>, <span class="arithmatex">\(v(t)=8+\int_0^t(6-4x)\,dx=8+\left[6x-2x^2\right]_0^t=8+6t-2t^2\)</span>. By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=5+\int_0^t(8+6x-2x^2)\,dx=5+\left[8x+3x^2-\frac23x^3\right]_0^t=5+8t+3t^2-\frac23t^3\)</span>. <span class="arithmatex">\(v(t)=0\)</span>: <span class="arithmatex">\(2t^2-6t-8=0\)</span>, so <span class="arithmatex">\(t^2-3t-4=0\)</span>, <span class="arithmatex">\((t-4)(t+1)=0\)</span>, and <span class="arithmatex">\(t=4\)</span> s (the root <span class="arithmatex">\(-1\)</span> is before the start). Since <span class="arithmatex">\(v(0)=8&gt;0\)</span> and <span class="arithmatex">\(v\)</span> is a downward parabola crossing <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(t=4\)</span>, <span class="arithmatex">\(v\)</span> changes from positive to negative there, so <span class="arithmatex">\(s\)</span> is greatest at <span class="arithmatex">\(t=4\)</span>: <span class="arithmatex">\(s(4)=5+32+48-\frac{128}3=85-\frac{128}3=\frac{127}3\approx42.3\)</span> m.</p>
+</div>
+<h2 id="group-4-net-change-and-future-value">Group 4: Net change and future value<a class="headerlink" href="#group-4-net-change-and-future-value" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.26: A tank filling</p>
+<p><span id="ex-b7"></span></p>
+<p>Water flows into a tank at the rate <span class="arithmatex">\(V'(t)=12\sqrt t\)</span> liters per minute, and the tank holds <span class="arithmatex">\(200\)</span> L at <span class="arithmatex">\(t=0\)</span>. When does it hold <span class="arithmatex">\(1000\)</span> L?</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-net">6.1.14</a>, <span class="arithmatex">\(V(t)=200+\int_0^t12x^{1/2}\,dx=200+\left[8x^{3/2}\right]_0^t=200+8t^{3/2}\)</span> (check: <span class="arithmatex">\(\frac{d}{dx}8x^{3/2}=12x^{1/2}\)</span>). Set <span class="arithmatex">\(V(t)=1000\)</span>: <span class="arithmatex">\(8t^{3/2}=800\)</span>, so <span class="arithmatex">\(t^{3/2}=100\)</span> and <span class="arithmatex">\(t=100^{2/3}=10^{4/3}\approx21.5\)</span> minutes.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.27: A quadratic marginal cost</p>
+<p><span id="ex-b8"></span></p>
+<p>The marginal cost of making a part is <span class="arithmatex">\(C'(x)=60-0.04x+0.00001x^2\)</span> dollars per part. Find the cost of making parts number <span class="arithmatex">\(1001\)</span> through <span class="arithmatex">\(2000\)</span>.</p>
+<p><strong>Solution.</strong> The cost is <span class="arithmatex">\(C(2000)-C(1000)=\int_{1000}^{2000}C'(x)\,dx\)</span> (Theorem <a href="#thm-net">6.1.14</a>). An antiderivative is <span class="arithmatex">\(60x-0.02x^2+\frac{0.00001}3x^3\)</span>. Its values: at <span class="arithmatex">\(2000\)</span>, <span class="arithmatex">\(120000-80000+\frac{0.00001}3\cdot8\cdot10^9=40000+\frac{80000}3\)</span>; at <span class="arithmatex">\(1000\)</span>, <span class="arithmatex">\(60000-20000+\frac{0.00001}3\cdot10^9=40000+\frac{10000}3\)</span>. The difference is <span class="arithmatex">\(\frac{80000-10000}3=\frac{70000}3\approx\$23333.33\)</span>.</p>
+</div>
+<h2 id="group-5-graphs-and-piecewise-rates">Group 5: Graphs and piecewise rates<a class="headerlink" href="#group-5-graphs-and-piecewise-rates" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.28: Reading a velocity graph</p>
+<p><span id="ex-b9"></span></p>
+<p>The figure shows the velocity (m/s) of an object on <span class="arithmatex">\(0\le t\le7\)</span>. The three regions between the graph and the <span class="arithmatex">\(t\)</span>-axis have areas <span class="arithmatex">\(6\)</span>, <span class="arithmatex">\(9\)</span> and <span class="arithmatex">\(4\)</span>. Assume <span class="arithmatex">\(s(0)=-2\)</span> m. Find the displacement, the distance traveled, the position at <span class="arithmatex">\(t=2\)</span>, <span class="arithmatex">\(t=5\)</span> and <span class="arithmatex">\(t=7\)</span>, and the greatest and least positions.</p>
+<p><img alt="Diagram: \(6\); \(9\); \(4\)" class="calc-figure" src="../figures/notes-fig6.svg" width="447" /></p>
+<p><strong>Solution.</strong> The signs: <span class="arithmatex">\(v&gt;0\)</span> on <span class="arithmatex">\((0,2)\)</span>, <span class="arithmatex">\(v&lt;0\)</span> on <span class="arithmatex">\((2,5)\)</span> and <span class="arithmatex">\(v&gt;0\)</span> on <span class="arithmatex">\((5,7)\)</span>. The displacement over each piece is the signed area: <span class="arithmatex">\(+6\)</span>, <span class="arithmatex">\(-9\)</span>, <span class="arithmatex">\(+4\)</span>. <em>Displacement:</em> <span class="arithmatex">\(6-9+4=1\)</span> m. <em>Distance:</em> <span class="arithmatex">\(6+9+4=19\)</span> m. By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=-2+(\text{signed area from }0\text{ to }t)\)</span>. So <span class="arithmatex">\(s(2)=-2+6=4\)</span> m, <span class="arithmatex">\(s(5)=4-9=-5\)</span> m and <span class="arithmatex">\(s(7)=-5+4=-1\)</span> m. Since <span class="arithmatex">\(v\)</span> changes from <span class="arithmatex">\(+\)</span> to <span class="arithmatex">\(-\)</span> at <span class="arithmatex">\(t=2\)</span> and from <span class="arithmatex">\(-\)</span> to <span class="arithmatex">\(+\)</span> at <span class="arithmatex">\(t=5\)</span>, the greatest position is <span class="arithmatex">\(s(2)=4\)</span> m and the least is <span class="arithmatex">\(s(5)=-5\)</span> m (the other candidates are the endpoints: <span class="arithmatex">\(s(0)=-2\)</span> and <span class="arithmatex">\(s(7)=-1\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.29: A piecewise production rate</p>
+<p><span id="ex-b10"></span></p>
+<p>A well produces oil at the rate (barrels per day)</p>
+<div class="arithmatex">\[Q'(t)=\begin{cases}500&amp;0\le t&lt;10,\\1000-50t&amp;10\le t&lt;20,\\0&amp;t\ge20,\end{cases}\]</div>
+<p>with <span class="arithmatex">\(Q(0)=0\)</span>. How many barrels are produced in the first <span class="arithmatex">\(15\)</span> days? In total? How many between day <span class="arithmatex">\(30\)</span> and day <span class="arithmatex">\(40\)</span>?</p>
+<p><strong>Solution.</strong> The rate is continuous (at <span class="arithmatex">\(t=10\)</span>: <span class="arithmatex">\(1000-500=500\)</span>; at <span class="arithmatex">\(t=20\)</span>: <span class="arithmatex">\(1000-1000=0\)</span>). <em>First <span class="arithmatex">\(15\)</span> days:</em> <span class="arithmatex">\(\int_0^{10}500\,dt=5000\)</span>, and <span class="arithmatex">\(\int_{10}^{15}(1000-50t)\,dt=\left[1000t-25t^2\right]_{10}^{15}=(15000-5625)-(10000-2500)=9375-7500=1875\)</span>, so <span class="arithmatex">\(Q(15)=5000+1875=6875\)</span> barrels. <em>In total:</em> <span class="arithmatex">\(\int_{10}^{20}(1000-50t)\,dt=(20000-10000)-7500=2500\)</span>, so the total is <span class="arithmatex">\(5000+2500=7500\)</span> barrels. <em>Days <span class="arithmatex">\(30\)</span> to <span class="arithmatex">\(40\)</span>:</em> the rate is <span class="arithmatex">\(0\)</span> there, so no oil is produced (no integration needed).</p>
+</div>
+<h2 id="group-6-catching-up-and-averages">Group 6: Catching up, and averages<a class="headerlink" href="#group-6-catching-up-and-averages" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.30: A car and a runner</p>
+<p><span id="ex-b11"></span></p>
+<p>At <span class="arithmatex">\(t=0\)</span> a runner passes a parked car at the constant speed <span class="arithmatex">\(5\)</span> m/s, and the car starts moving in the same direction from rest with constant acceleration <span class="arithmatex">\(2\)</span> m/s<span class="arithmatex">\(^2\)</span>. When and where does the car catch the runner, and how fast is the car going then? When are they farthest apart (before the car catches up)?</p>
+<p><strong>Solution.</strong> Measure position from the starting point. Runner: <span class="arithmatex">\(s_R(t)=5t\)</span>. Car: <span class="arithmatex">\(v(t)=2t\)</span> and <span class="arithmatex">\(s_C(t)=t^2\)</span> (Theorem <a href="#thm-const">6.1.11</a> with <span class="arithmatex">\(v_0=s_0=0\)</span>, <span class="arithmatex">\(\alpha=2\)</span>). They are together when <span class="arithmatex">\(t^2=5t\)</span>, so <span class="arithmatex">\(t(t-5)=0\)</span>: <span class="arithmatex">\(t=0\)</span> (the start) or <span class="arithmatex">\(t=5\)</span> s. Position: <span class="arithmatex">\(5\cdot5=25\)</span> m. The car’s speed is <span class="arithmatex">\(v(5)=10\)</span> m/s. The gap <span class="arithmatex">\(g(t)=s_R-s_C=5t-t^2\)</span> is greatest when <span class="arithmatex">\(g'(t)=5-2t=0\)</span>, that is when the velocities are equal, <span class="arithmatex">\(t=\frac52\)</span> s. The gap is then <span class="arithmatex">\(g\left(\frac52\right)=\frac{25}2-\frac{25}4=\frac{25}4=6.25\)</span> m.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.31: An average velocity</p>
+<p><span id="ex-b12"></span></p>
+<p>A piston has velocity <span class="arithmatex">\(v(t)=t\sqrt{16-t^2}\)</span> (cm/s) for <span class="arithmatex">\(0\le t\le4\)</span>. Find its displacement and its average velocity on <span class="arithmatex">\([0,4]\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=16-t^2\)</span>, <span class="arithmatex">\(du=-2t\,dt\)</span>; <span class="arithmatex">\(t=0\mapsto u=16\)</span>, <span class="arithmatex">\(t=4\mapsto u=0\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>). Then <span class="arithmatex">\(\int_0^4t\sqrt{16-t^2}\,dt=-\frac12\int_{16}^0u^{1/2}\,du=\frac12\int_0^{16}u^{1/2}\,du=\frac12\cdot\frac23\left[u^{3/2}\right]_0^{16}=\frac13\cdot64=\frac{64}3\)</span>. Check: <span class="arithmatex">\(\frac d{dt}\left(-\frac13(16-t^2)^{3/2}\right)=-\frac13\cdot\frac32(16-t^2)^{1/2}(-2t)=t\sqrt{16-t^2}\)</span>. The displacement is <span class="arithmatex">\(\frac{64}3\approx21.3\)</span> cm. The average velocity is <span class="arithmatex">\(\frac{64/3}{4-0}=\frac{16}3\approx5.33\)</span> cm/s: a piston moving at the constant velocity <span class="arithmatex">\(\frac{16}3\)</span> cm/s would cover the same distance in <span class="arithmatex">\(4\)</span> s.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.32: Two runners with the same start and finish</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove: if two runners start at the same place at time <span class="arithmatex">\(a\)</span> and are again at the same place at time <span class="arithmatex">\(b\)</span>, with continuous velocities <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span>, then <span class="arithmatex">\(\int_a^bv_1\,dt=\int_a^bv_2\,dt\)</span>, whatever the velocities in between. Give an example in which the distances traveled differ.</p>
+<p><strong>Proof.</strong> Let <span class="arithmatex">\(s_1\)</span> and <span class="arithmatex">\(s_2\)</span> be their positions. By assumption <span class="arithmatex">\(s_1(a)=s_2(a)\)</span> and <span class="arithmatex">\(s_1(b)=s_2(b)\)</span>. By Theorem <a href="#thm-disp">6.1.2</a> applied to each runner, <span class="arithmatex">\(\int_a^bv_1\,dt=s_1(b)-s_1(a)\)</span> and <span class="arithmatex">\(\int_a^bv_2\,dt=s_2(b)-s_2(a)\)</span>. The two right-hand sides are equal, because <span class="arithmatex">\(s_1(b)=s_2(b)\)</span> and <span class="arithmatex">\(s_1(a)=s_2(a)\)</span>. Hence the integrals are equal.</p>
+<p><em>Example (and a common mistake).</em> On <span class="arithmatex">\([0,1]\)</span> let <span class="arithmatex">\(v_1(t)=6t(1-t)\)</span> and <span class="arithmatex">\(v_2(t)=1\)</span>. Then <span class="arithmatex">\(\int_0^1v_1\,dt=\left[3t^2-2t^3\right]_0^1=1\)</span> and <span class="arithmatex">\(\int_0^1v_2\,dt=1\)</span>: equal displacements, as the theorem says. Both distances equal <span class="arithmatex">\(1\)</span> too, since <span class="arithmatex">\(v_1,v_2\ge0\)</span>. But equal displacements do not force equal distances: the runner with velocity <span class="arithmatex">\(v_3(t)=\cos2\pi t\)</span> also has displacement <span class="arithmatex">\(\int_0^1\cos2\pi t\,dt=0\)</span> over <span class="arithmatex">\([0,1]\)</span>, the same as a runner who stands still, yet <span class="arithmatex">\(v_3\)</span> changes sign and the distance traveled is <span class="arithmatex">\(\int_0^1\abs{\cos2\pi t}\,dt=\frac2\pi\ne0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.1.33: Nonnegative acceleration</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove: if <span class="arithmatex">\(a(t)\ge0\)</span> for all <span class="arithmatex">\(t\ge0\)</span> and <span class="arithmatex">\(v(0)\ge0\)</span>, then <span class="arithmatex">\(s(t)\ge s(0)+v(0)\,t\)</span> for all <span class="arithmatex">\(t\ge0\)</span>.</p>
+<p><strong>Proof.</strong> By Theorem <a href="#thm-vel">6.1.10</a>, <span class="arithmatex">\(v(x)=v(0)+\int_0^xa(u)\,du\)</span>. Since <span class="arithmatex">\(a\ge0\)</span>, <span class="arithmatex">\(\int_0^xa(u)\,du\ge0\)</span>, so <span class="arithmatex">\(v(x)\ge v(0)\)</span> for every <span class="arithmatex">\(x\ge0\)</span>. By Theorem <a href="#thm-pos">6.1.7</a>, <span class="arithmatex">\(s(t)=s(0)+\int_0^tv(x)\,dx\ge s(0)+\int_0^tv(0)\,dx=s(0)+v(0)\,t\)</span>, because the integral preserves inequalities. (We did not need <span class="arithmatex">\(v(0)\ge0\)</span> for this inequality, only for the object to be moving forward.)</p>
+<p><em>Numerical check.</em> Take <span class="arithmatex">\(a(t)=2t\ge0\)</span>, <span class="arithmatex">\(v(0)=3\)</span>, <span class="arithmatex">\(s(0)=0\)</span>: <span class="arithmatex">\(v(t)=3+t^2\)</span>, <span class="arithmatex">\(s(t)=3t+\frac{t^3}3\)</span>. At <span class="arithmatex">\(t=3\)</span>: <span class="arithmatex">\(s(3)=9+9=18\ge0+3\cdot3=9\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcout">6.1.1</a>.</strong> East is positive, so the trips are <span class="arithmatex">\(+3\)</span> and <span class="arithmatex">\(-5\)</span>: displacement <span class="arithmatex">\(3+(-5)=-2\)</span> km (she ends <span class="arithmatex">\(2\)</span> km west of her start); distance traveled <span class="arithmatex">\(3+5=8\)</span> km.</p>
+<p><strong>Knowledge Check <a href="#kc-kcpos">6.1.2</a>.</strong> <span class="arithmatex">\(s(t)\)</span> is a function of <span class="arithmatex">\(t\)</span>. For fixed <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> the displacement <span class="arithmatex">\(s(b)-s(a)\)</span> is a number. Over <span class="arithmatex">\([0,\pi/2]\)</span> the displacement is <span class="arithmatex">\(s(\pi/2)-s(0)=2-2=0\)</span> (the mass is back at its starting position), and also <span class="arithmatex">\(\int_0^{\pi/2}3\cos2t\,dt=\left[\frac32\sin2t\right]_0^{\pi/2}=\frac32\sin\pi-0=0\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcacc">6.1.3</a>.</strong> <span class="arithmatex">\(v(t)=30-6t=0\)</span> gives <span class="arithmatex">\(t=5\)</span> s. Then <span class="arithmatex">\(s(5)=30\cdot5-3\cdot5^2=150-75=75\)</span> m. (Check: <span class="arithmatex">\(v^2=v_0^2+2\alpha s\)</span> gives <span class="arithmatex">\(0=900-12s\)</span>, <span class="arithmatex">\(s=75\)</span>.)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
