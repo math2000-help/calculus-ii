@@ -1,0 +1,3750 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../6.1/notes/">
+      
+      
+        <link rel="next" href="../../8.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 6: Applications of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 6: Applications of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.1 Velocity and Net Change
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.1 Velocity and Net Change
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.2 Regions Between Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.2 Regions Between Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#area-between-two-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area between two curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compound-regions-and-symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Compound regions and symmetry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curves-that-cross-net-area-and-total-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Curves that cross: net area and total area
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-with-respect-to-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Integrating with respect to <span class="arithmatex">\(y\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-basic-vertical-strips" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Basic vertical strips
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-crossing-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Crossing curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-compound-and-three-curve-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Compound and three-curve regions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-horizontal-strips" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Horizontal strips
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-inverse-functions-and-curves-below-the-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Inverse functions, and curves below the axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-unknown-parameters-and-integration-by-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Unknown parameters and integration by parts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.8 Numerical Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.8 Numerical Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.9 Improper Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.9 Improper Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.9/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#area-between-two-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Area between two curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compound-regions-and-symmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Compound regions and symmetry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curves-that-cross-net-area-and-total-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Curves that cross: net area and total area
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrating-with-respect-to-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Integrating with respect to <span class="arithmatex">\(y\)</span>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-basic-vertical-strips" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Basic vertical strips
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-crossing-curves" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Crossing curves
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-compound-and-three-curve-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Compound and three-curve regions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-horizontal-strips" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Horizontal strips
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-inverse-functions-and-curves-below-the-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Inverse functions, and curves below the axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-unknown-parameters-and-integration-by-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Unknown parameters and integration by parts
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="62-regions-between-curves">6.2 Regions Between Curves<a class="headerlink" href="#62-regions-between-curves" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>The graph of one function and the <span class="arithmatex">\(x\)</span>-axis trap a region whose area Calculus I computes with a definite integral. What if the region is trapped between two graphs instead? The idea is the same slice-and-sum idea as in Section 6.1: cut the region into thin vertical strips, find the area of one strip (height times thickness), and add. The height of a strip is now a difference, the upper curve minus the lower curve. The difficulties are all about the <em>curves</em>: where do they meet, which one is on top, and what happens if they cross or if the boundary changes its formula? We also learn when it is better to cut the region into <em>horizontal</em> strips, and we prove that the two ways of cutting give the same area. There is a close parallel with Section 6.1: when a curve crosses the other, the integral of the difference is a <em>net</em> area (like displacement) and the integral of the absolute value is the <em>total</em> area (like distance traveled).</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>set up and evaluate the area of a region between two curves, using vertical or horizontal strips, with the intersection points found by algebra;</p>
+</li>
+<li>
+<p>split a region when the top or bottom boundary changes formula, and find the total area when two curves cross;</p>
+</li>
+<li>
+<p>choose the direction of the strips that makes the work shorter, and check an answer by a second method or by geometry;</p>
+</li>
+<li>
+<p>use symmetry to halve the work;</p>
+</li>
+<li>
+<p>prove each of the theorems of this section.</p>
+</li>
+</ul>
+<h2 id="area-between-two-curves">Area between two curves<a class="headerlink" href="#area-between-two-curves" title="Permanent link">&para;</a></h2>
+<p>Calculus I measures area in this way. We take three facts about area as the <em>meaning</em> of area: <strong>(A1)</strong> the region between the graph of a continuous function <span class="arithmatex">\(h\ge0\)</span> on <span class="arithmatex">\([a,b]\)</span> and the <span class="arithmatex">\(x\)</span>-axis has area <span class="arithmatex">\(\int_a^bh(x)\,dx\)</span>; <strong>(A2)</strong> if a region is cut into two regions that overlap only along curves, the areas add; <strong>(A3)</strong> regions that differ by a translation or by a reflection have the same area. (That area is a well-defined number with these properties is a theorem of the theory of area, met in a later course on functions of several variables; we use it here.)</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 6.2.1: Area of a region between two curves</p>
+<p><span id="def-area"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> with <span class="arithmatex">\(f(x)\ge g(x)\)</span> for every <span class="arithmatex">\(x\)</span> in <span class="arithmatex">\([a,b]\)</span>. The region between the graphs is <span class="arithmatex">\(R=\{(x,y):a\le x\le b,\ g(x)\le y\le f(x)\}\)</span> and its <em>area</em> is</p>
+<div class="arithmatex">\[A=\int_a^b\bigl(f(x)-g(x)\bigr)\,dx .\]</div>
+</div>
+<p>The formula has a picture. The strip above the point <span class="arithmatex">\(x\)</span> has height <span class="arithmatex">\(f(x)-g(x)\)</span> (upper curve minus lower curve) and thickness <span class="arithmatex">\(dx\)</span>, so its area is <span class="arithmatex">\(\bigl(f(x)-g(x)\bigr)dx\)</span>, and the integral adds all the strips. The next theorem shows that the formula is not a new idea: it follows from (A1) to (A3).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.2.2: The formula agrees with Calculus I</p>
+<p><span id="thm-consist"></span></p>
+<p>Let <span class="arithmatex">\(f\ge g\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let <span class="arithmatex">\(R\)</span> be the region between their graphs.</p>
+<p><strong>(1)</strong> If <span class="arithmatex">\(g\ge0\)</span>, then the area of <span class="arithmatex">\(R\)</span> obtained from (A1) and (A2) is <span class="arithmatex">\(\int_a^bf\,dx-\int_a^bg\,dx=\int_a^b(f-g)\,dx\)</span>.</p>
+<p><strong>(2)</strong> For every constant <span class="arithmatex">\(c\)</span>, replacing <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> by <span class="arithmatex">\(f+c\)</span> and <span class="arithmatex">\(g+c\)</span> does not change <span class="arithmatex">\(\int_a^b(f-g)\,dx\)</span>. Hence the formula of Definition <a href="#def-area">6.2.1</a> gives the area of <span class="arithmatex">\(R\)</span> whether the curves lie above, below or across the <span class="arithmatex">\(x\)</span>-axis.</p>
+</div>
+<p><em>Proof.</em> (1) Let <span class="arithmatex">\(U\)</span> be the region between the graph of <span class="arithmatex">\(f\)</span> and the <span class="arithmatex">\(x\)</span>-axis, and <span class="arithmatex">\(V\)</span> the region between the graph of <span class="arithmatex">\(g\)</span> and the <span class="arithmatex">\(x\)</span>-axis (both over <span class="arithmatex">\([a,b]\)</span>). Since <span class="arithmatex">\(f\ge g\ge0\)</span>, the region <span class="arithmatex">\(U\)</span> is cut into <span class="arithmatex">\(V\)</span> and <span class="arithmatex">\(R\)</span>, which overlap only along the graph of <span class="arithmatex">\(g\)</span>. By (A1) the areas of <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(V\)</span> are <span class="arithmatex">\(\int_a^bf\)</span> and <span class="arithmatex">\(\int_a^bg\)</span>, and by (A2) <span class="arithmatex">\(\operatorname{area}(U)=\operatorname{area}(V)+\operatorname{area}(R)\)</span>. So <span class="arithmatex">\(\operatorname{area}(R)=\int_a^bf-\int_a^bg=\int_a^b(f-g)\)</span>, by the linearity of the integral.</p>
+<p>(2) The difference <span class="arithmatex">\((f+c)-(g+c)=f-g\)</span> is the same function, so the integral is the same. Now let <span class="arithmatex">\(m\)</span> be the least value of <span class="arithmatex">\(g\)</span> on <span class="arithmatex">\([a,b]\)</span> (it exists because <span class="arithmatex">\(g\)</span> is continuous on a closed interval) and take <span class="arithmatex">\(c=-m\)</span>. Then <span class="arithmatex">\(g+c\ge0\)</span>. Translating <span class="arithmatex">\(R\)</span> up by <span class="arithmatex">\(c\)</span> gives the region <span class="arithmatex">\(R_c\)</span> between the graphs of <span class="arithmatex">\(f+c\)</span> and <span class="arithmatex">\(g+c\)</span>, with <span class="arithmatex">\(\operatorname{area}(R)=\operatorname{area}(R_c)\)</span> by (A3), and <span class="arithmatex">\(\operatorname{area}(R_c)=\int_a^b\bigl((f+c)-(g+c)\bigr)=\int_a^b(f-g)\)</span> by part (1). ◻ ∎</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.2.1: Between a line and a parabola</p>
+<p><span id="kc-kcsum"></span></p>
+<p>Use Theorem <a href="#thm-consist">6.2.2</a>(1) to find the area of the region between <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=x^2\)</span> for <span class="arithmatex">\(0\le x\le1\)</span>. Which graph is on top?</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.2.1: Why a difference?</p>
+<p><span id="think-thdiff"></span></p>
+<p>Why is the height of a strip <span class="arithmatex">\(f(x)-g(x)\)</span>, and not <span class="arithmatex">\(\abs{f(x)}-\abs{g(x)}\)</span> or <span class="arithmatex">\(f(x)+g(x)\)</span>? Test your answer on <span class="arithmatex">\(f(x)=-1\)</span> and <span class="arithmatex">\(g(x)=-3\)</span> on <span class="arithmatex">\([0,2]\)</span>, where both graphs lie below the <span class="arithmatex">\(x\)</span>-axis.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The height of a strip is the vertical distance between the curves, the top value minus the bottom value, and this is a difference whatever the signs. For <span class="arithmatex">\(f=-1\)</span> and <span class="arithmatex">\(g=-3\)</span> the strip between <span class="arithmatex">\(y=-3\)</span> and <span class="arithmatex">\(y=-1\)</span> has height <span class="arithmatex">\(2=f-g=-1-(-3)\)</span>, so the area is <span class="arithmatex">\(\int_0^22\,dx=4\)</span>. The expression <span class="arithmatex">\(\abs f-\abs g=1-3=-2\)</span> gives the wrong sign and the wrong meaning, and <span class="arithmatex">\(f+g=-4\)</span> is not a distance between the curves at all.</p>
+</details>
+</div>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.2.3: Area between two curves (vertical strips)</p>
+<p><span id="proc-area"></span></p>
+<ol>
+<li>
+<p><em>Sketch</em> the curves. Mark every point where they meet.</p>
+</li>
+<li>
+<p><em>Intersections.</em> Solve <span class="arithmatex">\(f(x)=g(x)\)</span>. Keep the solutions that bound the region; a given vertical line also bounds it.</p>
+</li>
+<li>
+<p><em>Which is on top?</em> Between two consecutive intersections the difference <span class="arithmatex">\(f-g\)</span> is continuous and never <span class="arithmatex">\(0\)</span>, so it has one sign there (Intermediate Value Theorem): test one point in each piece.</p>
+</li>
+<li>
+<p><em>Integrate</em> (top <span class="arithmatex">\(-\)</span> bottom) over each piece, add the pieces, and check each antiderivative by differentiating.</p>
+</li>
+<li>
+<p><em>Check.</em> The area is positive; compare with a rough estimate, with a geometric formula, or with the same area computed another way.</p>
+</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Top minus bottom</p>
+<p>The order matters: a negative answer for a piece means you subtracted the wrong way round. The curve that is on top can change from piece to piece, and a single integral <span class="arithmatex">\(\int(f-g)\)</span> over a stretch where the curves cross is <em>not</em> the area (see Theorem <a href="#thm-cross">6.2.9</a>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.4: A region between a line and a parabola</p>
+<p><span id="ex-e1"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=2x+3\)</span> and <span class="arithmatex">\(y=x^2\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> Set <span class="arithmatex">\(x^2=2x+3\)</span>, so <span class="arithmatex">\(x^2-2x-3=0\)</span>, that is <span class="arithmatex">\((x-3)(x+1)=0\)</span>, and <span class="arithmatex">\(x=-1\)</span> or <span class="arithmatex">\(x=3\)</span>. The points are <span class="arithmatex">\((-1,1)\)</span> and <span class="arithmatex">\((3,9)\)</span>. <em>Which is on top?</em> The graphs meet only at <span class="arithmatex">\(x=-1\)</span> and <span class="arithmatex">\(x=3\)</span>, so one sign persists on <span class="arithmatex">\((-1,3)\)</span>. At <span class="arithmatex">\(x=0\)</span> the line has <span class="arithmatex">\(y=3\)</span> and the parabola <span class="arithmatex">\(y=0\)</span>: the line is on top. <em>Integral.</em> <span class="arithmatex">\(A=\int_{-1}^{3}(2x+3-x^2)\,dx\)</span>. An antiderivative is <span class="arithmatex">\(F(x)=x^2+3x-\frac{x^3}3\)</span> (check: <span class="arithmatex">\(F'(x)=2x+3-x^2\)</span>). Then <span class="arithmatex">\(F(3)=9+9-9=9\)</span> and <span class="arithmatex">\(F(-1)=1-3+\frac13=-\frac53\)</span>, so</p>
+<div class="arithmatex">\[A=F(3)-F(-1)=9+\frac53=\frac{32}3\approx10.67 .\]</div>
+<p><em>Check by a second method.</em> Complete the square: <span class="arithmatex">\(2x+3-x^2=4-(x-1)^2\)</span>. With <span class="arithmatex">\(u=x-1\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>), <span class="arithmatex">\(\int_{-1}^3\bigl(4-(x-1)^2\bigr)dx=\int_{-2}^{2}(4-u^2)\,du=2\left(8-\frac83\right)=\frac{32}3\)</span>.</p>
+<p><img alt="Diagram: \(4\); \(y=2x+3\); \(y=x^2\); \(A=32/3\)" class="calc-figure" src="../figures/notes-fig1.svg" width="329" /></p>
+<p><em>Figure.</em> The region between the line and the parabola; the dashed gap at <span class="arithmatex">\(x=1\)</span> is the largest, <span class="arithmatex">\(5-1=4\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.5: Exponential curves cut off by a vertical line</p>
+<p><span id="ex-e2"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(y=e^x\)</span>, <span class="arithmatex">\(y=e^{-x}\)</span> and the line <span class="arithmatex">\(x=\ln3\)</span>, to the right of the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Intersection.</em> <span class="arithmatex">\(e^x=e^{-x}\)</span> gives <span class="arithmatex">\(e^{2x}=1\)</span>, so <span class="arithmatex">\(x=0\)</span> (the exponential is one-to-one), at the point <span class="arithmatex">\((0,1)\)</span>. The vertical line <span class="arithmatex">\(x=\ln3\)</span> meets the curves at <span class="arithmatex">\((\ln3,3)\)</span> and <span class="arithmatex">\(\left(\ln3,\frac13\right)\)</span>, using <span class="arithmatex">\(e^{-\ln3}=\frac13\)</span>. <em>Which is on top?</em> At <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(e^1\approx2.72&gt;e^{-1}\approx0.37\)</span>, so <span class="arithmatex">\(e^x\)</span> is on top on <span class="arithmatex">\((0,\ln3)\)</span>. <em>Integral.</em> <span class="arithmatex">\(A=\int_0^{\ln3}(e^x-e^{-x})\,dx=\Bigl[e^x+e^{-x}\Bigr]_0^{\ln3}=\left(3+\frac13\right)-(1+1)=\frac43\)</span>. Check: <span class="arithmatex">\(\frac d{dx}(e^x+e^{-x})=e^x-e^{-x}\)</span>.</p>
+<p><img alt="Diagram: \(y=e^x\); $y=e^{-x; \(A=4/3\)" class="calc-figure" src="../figures/notes-fig2.svg" width="316" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=e^x\)</span> and <span class="arithmatex">\(y=e^{-x}\)</span> for <span class="arithmatex">\(0\le x\le\ln3\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.2.2: Why do the curves not need to be positive?</p>
+<p><span id="think-thref"></span></p>
+<p>In Example <a href="#ex-e1">6.2.4</a> the parabola lies partly <em>above</em> the <span class="arithmatex">\(x\)</span>-axis and in Example <a href="#ex-b10">6.2.28</a> of the bank both curves go below it. Explain, using a vertical shift, why the formula <span class="arithmatex">\(\int(f-g)\,dx\)</span> still gives the area.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Move both graphs up by a constant <span class="arithmatex">\(c\)</span> large enough that both lie above the <span class="arithmatex">\(x\)</span>-axis. The vertical distance between the graphs at each <span class="arithmatex">\(x\)</span> is unchanged, because <span class="arithmatex">\((f+c)-(g+c)=f-g\)</span>, and moving a region by a translation does not change its area (A3). So the area of the original region is the area of the shifted one, which Calculus I gives as <span class="arithmatex">\(\int(f+c)-\int(g+c)=\int(f-g)\)</span>. In Example <a href="#ex-b10">6.2.28</a>, shifting up by <span class="arithmatex">\(5\)</span> turns <span class="arithmatex">\(y=x^2-5\)</span> and <span class="arithmatex">\(y=-1\)</span> into <span class="arithmatex">\(y=x^2\)</span> and <span class="arithmatex">\(y=4\)</span>.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.6: A trigonometric region</p>
+<p><span id="ex-e3"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(y=\sin x\)</span> and <span class="arithmatex">\(y=\sin2x\)</span> between <span class="arithmatex">\(x=0\)</span> and their next intersection to the right.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(\sin2x=\sin x\)</span> means <span class="arithmatex">\(2\sin x\cos x-\sin x=0\)</span> (double-angle identity), so <span class="arithmatex">\(\sin x\,(2\cos x-1)=0\)</span>. Hence <span class="arithmatex">\(\sin x=0\)</span> (first solution <span class="arithmatex">\(x=0\)</span>) or <span class="arithmatex">\(\cos x=\frac12\)</span> (first positive solution <span class="arithmatex">\(x=\frac\pi3\)</span>). The region lies over <span class="arithmatex">\(\left[0,\frac\pi3\right]\)</span>. <em>Which is on top?</em> At <span class="arithmatex">\(x=\frac\pi6\)</span>: <span class="arithmatex">\(\sin\frac\pi3=\frac{\sqrt3}2\approx0.87\)</span> and <span class="arithmatex">\(\sin\frac\pi6=\frac12\)</span>, so <span class="arithmatex">\(\sin2x\)</span> is on top. <em>Integral.</em> <span class="arithmatex">\(A=\int_0^{\pi/3}(\sin2x-\sin x)\,dx=\Bigl[-\tfrac12\cos2x+\cos x\Bigr]_0^{\pi/3}\)</span>. (Check: the derivative is <span class="arithmatex">\(\sin2x-\sin x\)</span>, by the Chain Rule.) At <span class="arithmatex">\(\frac\pi3\)</span>: <span class="arithmatex">\(-\frac12\cos\frac{2\pi}3+\cos\frac\pi3=\frac14+\frac12=\frac34\)</span>; at <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(-\frac12+1=\frac12\)</span>. So <span class="arithmatex">\(A=\frac34-\frac12=\frac14\)</span>. <em>Plausibility.</em> The largest gap is about <span class="arithmatex">\(0.37\)</span> and the width is about <span class="arithmatex">\(1.05\)</span>, so <span class="arithmatex">\(A\)</span> lies between half and the whole of <span class="arithmatex">\(0.37\cdot1.05\approx0.38\)</span>, that is between <span class="arithmatex">\(0.19\)</span> and <span class="arithmatex">\(0.38\)</span>; <span class="arithmatex">\(0.25\)</span> fits.</p>
+<p><img alt="Diagram: \(y=\sin x\); \(y=\sin2x\); \(A=1/4\)" class="calc-figure" src="../figures/notes-fig3.svg" width="351" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=\sin x\)</span> and <span class="arithmatex">\(y=\sin2x\)</span> for <span class="arithmatex">\(0\le x\le\frac\pi3\)</span>.</p>
+</div>
+<h2 id="compound-regions-and-symmetry">Compound regions and symmetry<a class="headerlink" href="#compound-regions-and-symmetry" title="Permanent link">&para;</a></h2>
+<p>Often the lower boundary (or the upper one) is given by different formulas on different stretches, for example when it contains an absolute value. The strip height is then a different expression on each piece, and we integrate piece by piece, splitting where the formula changes.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.7: A region whose lower boundary has a corner</p>
+<p><span id="ex-e4"></span></p>
+<p>Find the area of the region bounded above by <span class="arithmatex">\(f(x)=10-x^2\)</span> and below by <span class="arithmatex">\(g(x)=\abs{3x}\)</span>.</p>
+<p><strong>Solution.</strong> By the definition of absolute value, <span class="arithmatex">\(g(x)=3x\)</span> for <span class="arithmatex">\(x\ge0\)</span> and <span class="arithmatex">\(g(x)=-3x\)</span> for <span class="arithmatex">\(x&lt;0\)</span>, so we treat <span class="arithmatex">\(x\ge0\)</span> and <span class="arithmatex">\(x&lt;0\)</span> separately.</p>
+<p><em>Intersections for <span class="arithmatex">\(x\ge0\)</span>.</em> <span class="arithmatex">\(10-x^2=3x\)</span> gives <span class="arithmatex">\(x^2+3x-10=0\)</span>, so <span class="arithmatex">\((x+5)(x-2)=0\)</span>; only <span class="arithmatex">\(x=2\)</span> has <span class="arithmatex">\(x\ge0\)</span>. <em>For <span class="arithmatex">\(x&lt;0\)</span>:</em> <span class="arithmatex">\(10-x^2=-3x\)</span> gives <span class="arithmatex">\(x^2-3x-10=0\)</span>, so <span class="arithmatex">\((x-5)(x+2)=0\)</span>; only <span class="arithmatex">\(x=-2\)</span> has <span class="arithmatex">\(x&lt;0\)</span>. The meeting points are <span class="arithmatex">\((\pm2,6)\)</span>. <em>Which is on top?</em> At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(f(0)=10&gt;0=g(0)\)</span>, so <span class="arithmatex">\(f\)</span> is on top on <span class="arithmatex">\((-2,2)\)</span> (the curves meet nowhere else there).</p>
+<p><em>The left piece, <span class="arithmatex">\(-2\le x\le0\)</span>,</em> where <span class="arithmatex">\(g=-3x\)</span>: <span class="arithmatex">\(\int_{-2}^0(10-x^2+3x)\,dx=\Bigl[10x-\frac{x^3}3+\frac{3x^2}2\Bigr]_{-2}^0=0-\left(-20+\frac83+6\right)=14-\frac83=\frac{34}3\)</span>. <em>The right piece, <span class="arithmatex">\(0\le x\le2\)</span>,</em> where <span class="arithmatex">\(g=3x\)</span>: <span class="arithmatex">\(\int_0^2(10-x^2-3x)\,dx=\Bigl[10x-\frac{x^3}3-\frac{3x^2}2\Bigr]_0^2=20-\frac83-6=\frac{34}3\)</span>.</p>
+<p>The area is <span class="arithmatex">\(A=\frac{34}3+\frac{34}3=\frac{68}3\approx22.67\)</span>. The two pieces are equal because the region is symmetric about the <span class="arithmatex">\(y\)</span>-axis (see Theorem <a href="#thm-sym">6.2.8</a> below).</p>
+<p><img alt="Diagram: \(34/3\); \(34/3\); \(y=10-x^2\); \(y=\lvert 3x\rvert\)" class="calc-figure" src="../figures/notes-fig4.svg" width="410" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=10-x^2\)</span> and <span class="arithmatex">\(y=\abs{3x}\)</span>: two pieces of area <span class="arithmatex">\(\frac{34}3\)</span>.</p>
+</div>
+<p>The symmetry that halved the work in Example <a href="#ex-e4">6.2.7</a> holds in general. Recall that <span class="arithmatex">\(h\)</span> is <em>even</em> if <span class="arithmatex">\(h(-x)=h(x)\)</span> and <em>odd</em> if <span class="arithmatex">\(h(-x)=-h(x)\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.2.8: Symmetry</p>
+<p><span id="thm-sym"></span></p>
+<p>Let <span class="arithmatex">\(h\)</span> be continuous on <span class="arithmatex">\([-a,a]\)</span>.</p>
+<p><strong>(1)</strong> If <span class="arithmatex">\(h\)</span> is even, <span class="arithmatex">\(\int_{-a}^ah\,dx=2\int_0^ah\,dx\)</span>. If <span class="arithmatex">\(h\)</span> is odd, <span class="arithmatex">\(\int_{-a}^ah\,dx=0\)</span>.</p>
+<p><strong>(2)</strong> If <span class="arithmatex">\(f\ge g\)</span> are both even, the area between their graphs on <span class="arithmatex">\([-a,a]\)</span> is <span class="arithmatex">\(2\int_0^a(f-g)\,dx\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) Write <span class="arithmatex">\(\int_{-a}^ah=\int_{-a}^0h+\int_0^ah\)</span>. In the first integral use the substitution <span class="arithmatex">\(u=-x\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>(2) with <span class="arithmatex">\(g(x)=-x\)</span>, <span class="arithmatex">\(g'(x)=-1\)</span> continuous): <span class="arithmatex">\(\int_{-a}^0h(-x)\,dx=-\int_{-a}^0h(-x)\,(-1)\,dx=-\int_{a}^{0}h(u)\,du=\int_0^ah(u)\,du\)</span>. If <span class="arithmatex">\(h\)</span> is even, <span class="arithmatex">\(h(-x)=h(x)\)</span> and so <span class="arithmatex">\(\int_{-a}^0h(x)\,dx=\int_0^ah\)</span>, giving <span class="arithmatex">\(2\int_0^ah\)</span>. If <span class="arithmatex">\(h\)</span> is odd, <span class="arithmatex">\(h(x)=-h(-x)\)</span>, so <span class="arithmatex">\(\int_{-a}^0h(x)\,dx=-\int_{-a}^0h(-x)\,dx=-\int_0^ah\)</span>, and the two halves cancel.</p>
+<p>(2) The difference <span class="arithmatex">\(f-g\)</span> is even (a difference of even functions) and continuous, so by part (1) and the definition, <span class="arithmatex">\(A=\int_{-a}^a(f-g)=2\int_0^a(f-g)\)</span>. ◻ ∎</p>
+<div class="admonition note">
+<p class="admonition-title">Odd pairs</p>
+<p>If <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> are both odd, then <span class="arithmatex">\(f-g\)</span> is odd and its integral is <span class="arithmatex">\(0\)</span>; but the <em>area</em> between the graphs is not <span class="arithmatex">\(0\)</span>. The function <span class="arithmatex">\(\abs{f-g}\)</span> is even (because <span class="arithmatex">\(\abs{(f-g)(-x)}=\abs{-(f-g)(x)}\)</span>), and by Theorem <a href="#thm-cross">6.2.9</a> below the area is <span class="arithmatex">\(2\int_0^a\abs{f-g}\,dx\)</span>.</p>
+</div>
+<h2 id="curves-that-cross-net-area-and-total-area">Curves that cross: net area and total area<a class="headerlink" href="#curves-that-cross-net-area-and-total-area" title="Permanent link">&para;</a></h2>
+<p>If the graphs cross inside <span class="arithmatex">\([a,b]\)</span>, the integral <span class="arithmatex">\(\int_a^b(f-g)\,dx\)</span> adds positive and negative pieces and is a <em>net</em> area, exactly as <span class="arithmatex">\(\int_a^bv\,dt\)</span> is the displacement. The area of the region between the graphs is the <em>total</em> area, which is the analogue of the distance traveled (Theorem <a href="../../6.1/notes/#thm-dist">6.1.3</a>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.2.9: Total area between crossing curves</p>
+<p><span id="thm-cross"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let <span class="arithmatex">\(R=\{(x,y):a\le x\le b,\ \min(f,g)\le y\le\max(f,g)\}\)</span> be the region between their graphs.</p>
+<p><strong>(1)</strong> The area of <span class="arithmatex">\(R\)</span> is <span class="arithmatex">\(A=\int_a^b\abs{f(x)-g(x)}\,dx\)</span>.</p>
+<p><strong>(2)</strong> Let <span class="arithmatex">\(a=c_0&lt;c_1&lt;\dots&lt;c_m=b\)</span> be such that <span class="arithmatex">\(f-g\)</span> has no zero in any open interval <span class="arithmatex">\((c_{j-1},c_j)\)</span> (for example the consecutive solutions of <span class="arithmatex">\(f=g\)</span> together with <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>). Then <span class="arithmatex">\(A=\sum_{j=1}^m\left|\int_{c_{j-1}}^{c_j}(f-g)\,dx\right|\)</span>.</p>
+<p><strong>(3)</strong> <span class="arithmatex">\(\left|\int_a^b(f-g)\,dx\right|\le A\)</span>, with equality if and only if <span class="arithmatex">\(f\ge g\)</span> on all of <span class="arithmatex">\([a,b]\)</span> or <span class="arithmatex">\(f\le g\)</span> on all of <span class="arithmatex">\([a,b]\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) Put <span class="arithmatex">\(F=\max(f,g)\)</span> and <span class="arithmatex">\(G=\min(f,g)\)</span>. They are continuous, because <span class="arithmatex">\(F=\frac12\bigl(f+g+\abs{f-g}\bigr)\)</span> and <span class="arithmatex">\(G=\frac12\bigl(f+g-\abs{f-g}\bigr)\)</span> (check the two cases: if <span class="arithmatex">\(f\ge g\)</span> then <span class="arithmatex">\(\abs{f-g}=f-g\)</span> and the formulas give <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span>; if <span class="arithmatex">\(f&lt;g\)</span> they give <span class="arithmatex">\(g\)</span> and <span class="arithmatex">\(f\)</span>). Moreover <span class="arithmatex">\(F\ge G\)</span> and <span class="arithmatex">\(F-G=\abs{f-g}\)</span>. Definition <a href="#def-area">6.2.1</a> applied to <span class="arithmatex">\(F\)</span> and <span class="arithmatex">\(G\)</span> gives <span class="arithmatex">\(A=\int_a^b(F-G)=\int_a^b\abs{f-g}\)</span>.</p>
+<p>(2) On an interval <span class="arithmatex">\((c_{j-1},c_j)\)</span> the continuous function <span class="arithmatex">\(f-g\)</span> is never <span class="arithmatex">\(0\)</span>, so it keeps one sign there: if it took values of opposite signs, the Intermediate Value Theorem would give a zero between them. By continuity the same sign (or <span class="arithmatex">\(0\)</span>) holds on the closed interval. If <span class="arithmatex">\(f-g\ge0\)</span> on the piece, <span class="arithmatex">\(\int\abs{f-g}=\int(f-g)=\abs{\int(f-g)}\)</span>; if <span class="arithmatex">\(f-g\le0\)</span>, then <span class="arithmatex">\(\int\abs{f-g}=-\int(f-g)=\abs{\int(f-g)}\)</span>. Now add over the pieces, using additivity of the integral over adjacent intervals.</p>
+<p>(3) This is Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a> applied to the continuous function <span class="arithmatex">\(v=f-g\)</span>: <span class="arithmatex">\(\abs{\int_a^bv}\le\int_a^b\abs v=A\)</span>, with equality if and only if <span class="arithmatex">\(v\ge0\)</span> everywhere or <span class="arithmatex">\(v\le0\)</span> everywhere. ◻ ∎</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.2.2: Net area versus total area</p>
+<p><span id="kc-kccross"></span></p>
+<p>Let <span class="arithmatex">\(f(x)=x\)</span> and <span class="arithmatex">\(g(x)=-x\)</span> on <span class="arithmatex">\([-1,1]\)</span>. Compute <span class="arithmatex">\(\int_{-1}^1(f-g)\,dx\)</span> and <span class="arithmatex">\(\int_{-1}^1\abs{f-g}\,dx\)</span>. Which one is the area of the region between the graphs, and why do they differ?</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.2.3: Zero net area</p>
+<p><span id="think-thzero"></span></p>
+<p>Can the integral <span class="arithmatex">\(\int_a^b(f-g)\,dx\)</span> be <span class="arithmatex">\(0\)</span> although the graphs of <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> are different and enclose a region of positive area? What is the matching statement about displacement and distance in Section 6.1?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Yes. For <span class="arithmatex">\(f(x)=x\)</span> and <span class="arithmatex">\(g(x)=-x\)</span> on <span class="arithmatex">\([-1,1]\)</span> the net integral is <span class="arithmatex">\(\int_{-1}^1 2x\,dx=0\)</span>, but the region between the graphs is two triangles of area <span class="arithmatex">\(1\)</span> each, so the area is <span class="arithmatex">\(2\)</span> (Knowledge Check <a href="#kc-kccross">6.2.2</a>). The parallel in Section 6.1 is displacement <span class="arithmatex">\(0\)</span> with positive distance traveled: walking east and then back west. Net area corresponds to displacement and total area to distance traveled (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>).</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.10: Two curves that cross inside the interval</p>
+<p><span id="ex-e5"></span></p>
+<p>Find (a) the area of the region between <span class="arithmatex">\(y=x^3\)</span> and <span class="arithmatex">\(y=x\)</span> for <span class="arithmatex">\(0\le x\le2\)</span>, and (b) the net area <span class="arithmatex">\(\int_0^2(x^3-x)\,dx\)</span>. (c) Find the area of the region enclosed by the two curves alone.</p>
+<p><strong>Solution.</strong> (a) <em>Where do they cross?</em> <span class="arithmatex">\(x^3-x=x(x-1)(x+1)=0\)</span> at <span class="arithmatex">\(x=0,\pm1\)</span>. On <span class="arithmatex">\([0,2]\)</span> the zeros are <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(1\)</span>, so the pieces are <span class="arithmatex">\([0,1]\)</span> and <span class="arithmatex">\([1,2]\)</span>. <em>Which is on top?</em> At <span class="arithmatex">\(x=\frac12\)</span>: <span class="arithmatex">\(x^3=\frac18&lt;\frac12=x\)</span>, so the line is on top on <span class="arithmatex">\((0,1)\)</span>. At <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(8&gt;2\)</span>, so the cubic is on top on <span class="arithmatex">\((1,2)\)</span>. <em>Integrals.</em> With the antiderivative <span class="arithmatex">\(\frac{x^2}2-\frac{x^4}4\)</span> of <span class="arithmatex">\(x-x^3\)</span> (check: its derivative is <span class="arithmatex">\(x-x^3\)</span>):</p>
+<div class="arithmatex">\[\int_0^1(x-x^3)\,dx=\frac12-\frac14=\frac14,\qquad
+\int_1^2(x^3-x)\,dx=\Bigl[\frac{x^4}4-\frac{x^2}2\Bigr]_1^2=(4-2)-\left(\frac14-\frac12\right)=\frac94.\]</div>
+<p>So <span class="arithmatex">\(A=\frac14+\frac94=\frac52\)</span>.</p>
+<p>(b) The net area is <span class="arithmatex">\(\int_0^2(x^3-x)\,dx=\Bigl[\frac{x^4}4-\frac{x^2}2\Bigr]_0^2=4-2=2\)</span>, which is <span class="arithmatex">\(\frac94-\frac14\)</span>: the piece below counts <span class="arithmatex">\(-\frac14\)</span>. As Theorem <a href="#thm-cross">6.2.9</a>(3) says, <span class="arithmatex">\(2\le\frac52\)</span>, with strict inequality because the curves cross.</p>
+<p>(c) The two curves alone enclose the region between <span class="arithmatex">\(x=-1\)</span> and <span class="arithmatex">\(x=1\)</span> (they cross at <span class="arithmatex">\(x=-1,0,1\)</span>). The functions <span class="arithmatex">\(x^3\)</span> and <span class="arithmatex">\(x\)</span> are both odd, so by the Remark after Theorem <a href="#thm-sym">6.2.8</a> the area is <span class="arithmatex">\(2\int_0^1\abs{x^3-x}\,dx=2\cdot\frac14=\frac12\)</span> (it consists of two congruent pieces, one on each side of the origin).</p>
+<p><img alt="Diagram: \(\frac14\); \(\frac94\); \(y=x\); \(y=x^3\)" class="calc-figure" src="../figures/notes-fig5.svg" width="368" /></p>
+<p><em>Figure.</em> The two curves cross at <span class="arithmatex">\(x=1\)</span>. The area between them over <span class="arithmatex">\([0,2]\)</span> is <span class="arithmatex">\(\frac14+\frac94=\frac52\)</span>; the net area is <span class="arithmatex">\(\frac94-\frac14=2\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.11: Three boundary curves</p>
+<p><span id="ex-e6"></span></p>
+<p>Find the area of the region in the first quadrant that lies between the lines <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=4x\)</span> and below the hyperbola <span class="arithmatex">\(y=\frac1x\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(y=4x\)</span> meets <span class="arithmatex">\(y=\frac1x\)</span> where <span class="arithmatex">\(4x=\frac1x\)</span>, so <span class="arithmatex">\(x^2=\frac14\)</span> and <span class="arithmatex">\(x=\frac12\)</span>, at <span class="arithmatex">\((\frac12,2)\)</span>. The line <span class="arithmatex">\(y=x\)</span> meets the hyperbola where <span class="arithmatex">\(x=\frac1x\)</span>, so <span class="arithmatex">\(x=1\)</span>, at <span class="arithmatex">\((1,1)\)</span>. The two lines meet at the origin. <em>The boundary changes at <span class="arithmatex">\(x=\frac12\)</span>.</em> For <span class="arithmatex">\(0\le x\le\frac12\)</span> the region lies between <span class="arithmatex">\(y=x\)</span> (bottom) and <span class="arithmatex">\(y=4x\)</span> (top); for <span class="arithmatex">\(\frac12\le x\le1\)</span> the top is the hyperbola (at <span class="arithmatex">\(x=\frac34\)</span>: <span class="arithmatex">\(\frac1x=\frac43&lt;3=4x\)</span>, so the hyperbola is the lower of the two curves above <span class="arithmatex">\(x=\frac12\)</span>, hence the boundary there) and the bottom is still <span class="arithmatex">\(y=x\)</span>.</p>
+<p><em>First piece.</em> <span class="arithmatex">\(\int_0^{1/2}(4x-x)\,dx=\int_0^{1/2}3x\,dx=\frac32x^2\Big|_0^{1/2}=\frac38\)</span>. <em>Second piece.</em> <span class="arithmatex">\(\int_{1/2}^1\left(\frac1x-x\right)dx=\Bigl[\ln x-\frac{x^2}2\Bigr]_{1/2}^1=\left(0-\frac12\right)-\left(-\ln2-\frac18\right)=\ln2-\frac38\)</span>.</p>
+<p>Hence <span class="arithmatex">\(A=\frac38+\left(\ln2-\frac38\right)=\ln2\approx0.693\)</span>: the rational parts cancel.</p>
+<p><img alt="Diagram: \(\frac38\); \(\ln2-\frac38\); \(y=4x\); \(y=x\); \(y=1/x\)" class="calc-figure" src="../figures/notes-fig6.svg" width="394" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=4x\)</span>, below <span class="arithmatex">\(y=1/x\)</span>. Its area is <span class="arithmatex">\(\ln2\)</span>.</p>
+</div>
+<h2 id="integrating-with-respect-to-y">Integrating with respect to <span class="arithmatex">\(y\)</span><a class="headerlink" href="#integrating-with-respect-to-y" title="Permanent link">&para;</a></h2>
+<p>Sometimes the region is easier to describe by the horizontal strip: for each height <span class="arithmatex">\(y\)</span> in an interval <span class="arithmatex">\([c,d]\)</span>, the region extends from a left curve <span class="arithmatex">\(x=q(y)\)</span> to a right curve <span class="arithmatex">\(x=p(y)\)</span>. We need no new definition.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.2.12: Area with respect to <span class="arithmatex">\(y\)</span></p>
+<p><span id="thm-yslice"></span></p>
+<p>Let <span class="arithmatex">\(p\)</span> and <span class="arithmatex">\(q\)</span> be continuous on <span class="arithmatex">\([c,d]\)</span> with <span class="arithmatex">\(p(y)\ge q(y)\)</span> for all <span class="arithmatex">\(y\)</span> in <span class="arithmatex">\([c,d]\)</span>. The region <span class="arithmatex">\(S=\{(x,y):c\le y\le d,\ q(y)\le x\le p(y)\}\)</span> has area</p>
+<div class="arithmatex">\[A=\int_c^d\bigl(p(y)-q(y)\bigr)\,dy .\]</div>
+</div>
+<p><em>Proof.</em> Reflect <span class="arithmatex">\(S\)</span> in the line <span class="arithmatex">\(y=x\)</span>, that is, swap the coordinates of every point. The point <span class="arithmatex">\((x,y)\)</span> goes to <span class="arithmatex">\((u,v)=(y,x)\)</span>, and the conditions <span class="arithmatex">\(c\le y\le d\)</span> and <span class="arithmatex">\(q(y)\le x\le p(y)\)</span> become <span class="arithmatex">\(c\le u\le d\)</span> and <span class="arithmatex">\(q(u)\le v\le p(u)\)</span>. So the image is the region between the graphs of <span class="arithmatex">\(q\)</span> and <span class="arithmatex">\(p\)</span> over <span class="arithmatex">\([c,d]\)</span> in the sense of Definition <a href="#def-area">6.2.1</a> (with <span class="arithmatex">\(u\)</span> as the horizontal variable). By (A3) the two regions have the same area, and by the definition the image has area <span class="arithmatex">\(\int_c^d\bigl(p(u)-q(u)\bigr)\,du\)</span>, which is the stated integral with the dummy variable named <span class="arithmatex">\(y\)</span>. ◻ ∎</p>
+<p>The factors have the same meaning as before: <span class="arithmatex">\(p(y)-q(y)\)</span> is the length of the horizontal strip (right curve minus left curve) and <span class="arithmatex">\(dy\)</span> is its thickness. To use the formula we write each boundary curve as <span class="arithmatex">\(x=\text{(function of }y)\)</span>.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.13: Two parabolas that open sideways</p>
+<p><span id="ex-e7"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=6-y\)</span>.</p>
+<p><strong>Solution.</strong> The curve <span class="arithmatex">\(x=y^2\)</span> opens to the right. Strips parallel to the <span class="arithmatex">\(x\)</span>-axis are natural. <em>Intersections:</em> <span class="arithmatex">\(y^2=6-y\)</span>, so <span class="arithmatex">\(y^2+y-6=0\)</span>, that is <span class="arithmatex">\((y+3)(y-2)=0\)</span>, and <span class="arithmatex">\(y=-3\)</span> or <span class="arithmatex">\(y=2\)</span>. The points are <span class="arithmatex">\((9,-3)\)</span> and <span class="arithmatex">\((4,2)\)</span>. <em>Right curve and left curve.</em> At <span class="arithmatex">\(y=0\)</span>: <span class="arithmatex">\(x=6-y=6\)</span> and <span class="arithmatex">\(x=y^2=0\)</span>, so <span class="arithmatex">\(x=6-y\)</span> is the right curve on <span class="arithmatex">\((-3,2)\)</span>. <em>Integral.</em> <span class="arithmatex">\(A=\int_{-3}^{2}\bigl((6-y)-y^2\bigr)\,dy=\Bigl[6y-\frac{y^2}2-\frac{y^3}3\Bigr]_{-3}^{2}\)</span>. Check: the derivative of the bracket is <span class="arithmatex">\(6-y-y^2\)</span>. At <span class="arithmatex">\(y=2\)</span>: <span class="arithmatex">\(12-2-\frac83=\frac{22}3\)</span>. At <span class="arithmatex">\(y=-3\)</span>: <span class="arithmatex">\(-18-\frac92+9=-\frac{27}2\)</span>. So <span class="arithmatex">\(A=\frac{22}3+\frac{27}2=\frac{44+81}6=\frac{125}6\approx20.83\)</span>. <em>What vertical strips would cost.</em> For <span class="arithmatex">\(0\le x\le4\)</span> the region lies between <span class="arithmatex">\(y=-\sqrt x\)</span> and <span class="arithmatex">\(y=\sqrt x\)</span>; for <span class="arithmatex">\(4\le x\le9\)</span> it lies between the line <span class="arithmatex">\(y=6-x\)</span> (top) and <span class="arithmatex">\(y=-\sqrt x\)</span> (bottom). That is two integrals, <span class="arithmatex">\(\int_0^4 2\sqrt x\,dx=\frac{32}3\)</span> and <span class="arithmatex">\(\int_4^9\bigl(6-x+\sqrt x\bigr)dx=\frac{61}6\)</span>, with the same total <span class="arithmatex">\(\frac{32}3+\frac{61}6=\frac{125}6\)</span>. Horizontal strips needed one integral.</p>
+<p><img alt="Diagram: \(6-y-y^2\); \(A=125/6\); \(x=y^2\); \(x=6-y\)" class="calc-figure" src="../figures/notes-fig7.svg" width="346" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=6-y\)</span>, with one horizontal strip of length <span class="arithmatex">\(6-y-y^2\)</span> (here at <span class="arithmatex">\(y=-1\)</span>: from <span class="arithmatex">\(x=1\)</span> to <span class="arithmatex">\(x=7\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.14: A region bounded by a square root, a line and the axis</p>
+<p><span id="ex-e8"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(y=\sqrt x\)</span>, the line <span class="arithmatex">\(y=x-6\)</span> and the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Intersection of the curve and the line.</em> <span class="arithmatex">\(\sqrt x=x-6\)</span> forces <span class="arithmatex">\(x\ge6\)</span>. Squaring, <span class="arithmatex">\(x=(x-6)^2\)</span>, so <span class="arithmatex">\(x^2-13x+36=0\)</span>, that is <span class="arithmatex">\((x-4)(x-9)=0\)</span>. The root <span class="arithmatex">\(x=4\)</span> is rejected, because <span class="arithmatex">\(4-6&lt;0\)</span> (squaring introduced it); <span class="arithmatex">\(x=9\)</span> works: <span class="arithmatex">\(\sqrt9=3=9-6\)</span>. The point is <span class="arithmatex">\((9,3)\)</span>. The line meets the <span class="arithmatex">\(x\)</span>-axis at <span class="arithmatex">\((6,0)\)</span>. <em>Vertical strips need two integrals,</em> because the lower boundary is the <span class="arithmatex">\(x\)</span>-axis for <span class="arithmatex">\(0\le x\le6\)</span> and the line for <span class="arithmatex">\(6\le x\le9\)</span>:</p>
+<div class="arithmatex">\[A=\int_0^6\sqrt x\,dx+\int_6^9\bigl(\sqrt x-x+6\bigr)\,dx .\]</div>
+<p>The first integral is <span class="arithmatex">\(\frac23\,x^{3/2}\Big|_0^6=\frac23\cdot6\sqrt6=4\sqrt6\)</span> (since <span class="arithmatex">\(6^{3/2}=6\sqrt6\)</span>). The second is <span class="arithmatex">\(\Bigl[\frac23x^{3/2}-\frac{x^2}2+6x\Bigr]_6^9=\left(18-\frac{81}2+54\right)-\left(4\sqrt6-18+36\right)=\frac{63}2-18-4\sqrt6=\frac{27}2-4\sqrt6\)</span>. The terms in <span class="arithmatex">\(\sqrt6\)</span> cancel, so <span class="arithmatex">\(A=4\sqrt6+\frac{27}2-4\sqrt6=\frac{27}2\)</span>.</p>
+<p><em>Horizontal strips need one integral.</em> For <span class="arithmatex">\(0\le y\le3\)</span> the left boundary is the curve, written <span class="arithmatex">\(x=y^2\)</span> (solve <span class="arithmatex">\(y=\sqrt x\)</span> for <span class="arithmatex">\(x\)</span>; valid for <span class="arithmatex">\(y\ge0\)</span>), and the right boundary is the line, written <span class="arithmatex">\(x=y+6\)</span>. They meet at <span class="arithmatex">\(y=3\)</span>, since <span class="arithmatex">\(y^2=y+6\)</span> gives <span class="arithmatex">\((y-3)(y+2)=0\)</span>.</p>
+<div class="arithmatex">\[A=\int_0^3\bigl((y+6)-y^2\bigr)\,dy=\Bigl[\frac{y^2}2+6y-\frac{y^3}3\Bigr]_0^3=\frac92+18-9=\frac{27}2=13.5 .\]</div>
+<p>The two methods agree, as they must (Theorem <a href="#thm-agree">6.2.15</a> below explains why in a case of this kind), and the second is shorter.</p>
+<p><img alt="Diagram: \(x=y^2\); \(A=27/2\); \(y=\sqrt x\); \(y=x-6\)" class="calc-figure" src="../figures/notes-fig8.svg" width="374" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=\sqrt x\)</span> and above the <span class="arithmatex">\(x\)</span>-axis and the line <span class="arithmatex">\(y=x-6\)</span>. The dashed strip at <span class="arithmatex">\(y=1\)</span> runs from <span class="arithmatex">\(x=1\)</span> to <span class="arithmatex">\(x=7\)</span>.</p>
+</div>
+<p>Both ways of cutting must give the same number, because both compute the area of the same region. For regions between increasing curves we can also see the agreement directly, from the substitution rule and integration by parts, without any geometry.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.2.15: Slicing by <span class="arithmatex">\(x\)</span> and slicing by <span class="arithmatex">\(y\)</span> agree</p>
+<p><span id="thm-agree"></span></p>
+<p>Let <span class="arithmatex">\(\varphi\)</span> be continuous and strictly increasing on <span class="arithmatex">\([a,b]\)</span>, with <span class="arithmatex">\(\varphi(a)=c\)</span>, <span class="arithmatex">\(\varphi(b)=d\)</span> and inverse function <span class="arithmatex">\(\psi=\varphi^{-1}\)</span> on <span class="arithmatex">\([c,d]\)</span>. Suppose that <span class="arithmatex">\(\varphi\)</span> or <span class="arithmatex">\(\psi\)</span> has a continuous derivative.</p>
+<p><strong>(1)</strong> <span class="arithmatex">\(\displaystyle\int_a^b\varphi(x)\,dx+\int_c^d\psi(y)\,dy=bd-ac\)</span>.</p>
+<p><strong>(2)</strong> Let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> be two such functions on <span class="arithmatex">\([a,b]\)</span> with <span class="arithmatex">\(f(a)=g(a)=c\)</span>, <span class="arithmatex">\(f(b)=g(b)=d\)</span> and <span class="arithmatex">\(f\ge g\)</span>. Then the region between their graphs has the same area whether it is computed with vertical strips, <span class="arithmatex">\(\int_a^b(f-g)\,dx\)</span>, or with horizontal strips, <span class="arithmatex">\(\int_c^d\bigl(g^{-1}(y)-f^{-1}(y)\bigr)\,dy\)</span>.</p>
+</div>
+<p><em>Proof.</em> (1) The inverse <span class="arithmatex">\(\psi\)</span> of a continuous strictly increasing function is continuous and increasing (Intermediate Value Theorem), so both integrals exist. First suppose that <span class="arithmatex">\(\varphi\)</span> has a continuous derivative. The substitution <span class="arithmatex">\(y=\varphi(x)\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>(2), with <span class="arithmatex">\(f=\psi\)</span> and <span class="arithmatex">\(g=\varphi\)</span>) and <span class="arithmatex">\(\psi(\varphi(x))=x\)</span> give</p>
+<div class="arithmatex">\[\int_c^d\psi(y)\,dy=\int_{\varphi(a)}^{\varphi(b)}\psi(y)\,dy=\int_a^b\psi(\varphi(x))\,\varphi'(x)\,dx=\int_a^bx\,\varphi'(x)\,dx .\]</div>
+<p>Integration by parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>, with <span class="arithmatex">\(u=x\)</span> and <span class="arithmatex">\(v=\varphi\)</span>) gives <span class="arithmatex">\(\int_a^bx\,\varphi'(x)\,dx=\Bigl[x\varphi(x)\Bigr]_a^b-\int_a^b\varphi(x)\,dx=bd-ac-\int_a^b\varphi\)</span>. Rearranging gives (1). If instead <span class="arithmatex">\(\psi\)</span> has a continuous derivative, apply what we just proved to <span class="arithmatex">\(\psi\)</span> on <span class="arithmatex">\([c,d]\)</span> (its inverse is <span class="arithmatex">\(\varphi\)</span>, and <span class="arithmatex">\(\psi(c)=a\)</span>, <span class="arithmatex">\(\psi(d)=b\)</span>): <span class="arithmatex">\(\int_c^d\psi+\int_a^b\varphi=db-ca\)</span>, which is the same statement.</p>
+<p>(2) Put <span class="arithmatex">\(K=bd-ac\)</span>. By part (1), <span class="arithmatex">\(\int_c^dg^{-1}=K-\int_a^bg\)</span> and <span class="arithmatex">\(\int_c^df^{-1}=K-\int_a^bf\)</span>. Since <span class="arithmatex">\(f\ge g\)</span> and both are increasing, <span class="arithmatex">\(g^{-1}\ge f^{-1}\)</span>: if <span class="arithmatex">\(y=f(x_1)\)</span>, then <span class="arithmatex">\(g(x_1)\le f(x_1)=y\)</span>, so <span class="arithmatex">\(x_1\le g^{-1}(y)\)</span>, that is <span class="arithmatex">\(f^{-1}(y)\le g^{-1}(y)\)</span>. The region between the graphs is <span class="arithmatex">\(\{g(x)\le y\le f(x)\}\)</span>, and for increasing functions this says <span class="arithmatex">\(f^{-1}(y)\le x\le g^{-1}(y)\)</span>; so Theorem <a href="#thm-yslice">6.2.12</a> gives the area <span class="arithmatex">\(\int_c^d(g^{-1}-f^{-1})\,dy=\bigl(K-\int_a^bg\bigr)-\bigl(K-\int_a^bf\bigr)=\int_a^b(f-g)\,dx\)</span>. ◻ ∎</p>
+<div class="admonition note">
+<p class="admonition-title">A picture of part (1)</p>
+<p>Take <span class="arithmatex">\(\varphi(x)=x^2\)</span> on <span class="arithmatex">\([1,2]\)</span>, so <span class="arithmatex">\(c=1\)</span>, <span class="arithmatex">\(d=4\)</span> and <span class="arithmatex">\(\psi(y)=\sqrt y\)</span>. The area under the graph is <span class="arithmatex">\(\int_1^2x^2\,dx=\frac73\)</span>; the area between the graph and the <span class="arithmatex">\(y\)</span>-axis is <span class="arithmatex">\(\int_1^4\sqrt y\,dy=\frac{14}3\)</span>. Together they fill the L-shaped region (the rectangle <span class="arithmatex">\([0,2]\times[0,4]\)</span> without the square <span class="arithmatex">\([0,1]\times[0,1]\)</span>) of area <span class="arithmatex">\(8-1=7=\frac73+\frac{14}3\)</span>.</p>
+<p><img alt="Diagram: \(7/3\); \(14/3\)" class="calc-figure" src="../figures/notes-fig9.svg" width="285" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.2.3: Horizontal strips</p>
+<p><span id="kc-kcy"></span></p>
+<p>Write the area of the region bounded by <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=4\)</span> as an integral with respect to <span class="arithmatex">\(y\)</span>, and evaluate it.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.16: Calculus and geometry together</p>
+<p><span id="ex-e9"></span></p>
+<p>Find the area of the region in the first quadrant that lies inside the circle <span class="arithmatex">\(x^2+y^2=4\)</span> and above the line <span class="arithmatex">\(y=2-x\)</span>.</p>
+<p><strong>Solution.</strong> In the first quadrant the circle is the graph of <span class="arithmatex">\(y=\sqrt{4-x^2}\)</span>. The line <span class="arithmatex">\(y=2-x\)</span> meets the circle where <span class="arithmatex">\(\sqrt{4-x^2}=2-x\)</span>: squaring, <span class="arithmatex">\(4-x^2=4-4x+x^2\)</span>, so <span class="arithmatex">\(2x^2-4x=0\)</span> and <span class="arithmatex">\(x=0\)</span> or <span class="arithmatex">\(x=2\)</span>; both satisfy <span class="arithmatex">\(2-x\ge0\)</span>. The points are <span class="arithmatex">\((0,2)\)</span> and <span class="arithmatex">\((2,0)\)</span>. At <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(\sqrt3\approx1.73&gt;1=2-x\)</span>, so the circle is on top.</p>
+<div class="arithmatex">\[A=\int_0^2\Bigl(\sqrt{4-x^2}-(2-x)\Bigr)\,dx=\int_0^2\sqrt{4-x^2}\,dx-\int_0^2(2-x)\,dx .\]</div>
+<p><em>The first integral is geometry:</em> the region under <span class="arithmatex">\(y=\sqrt{4-x^2}\)</span> over <span class="arithmatex">\([0,2]\)</span> is a quarter of the disk of radius <span class="arithmatex">\(2\)</span>, with area <span class="arithmatex">\(\frac14\pi\cdot2^2=\pi\)</span>. (Calculus gives the same: the antiderivative is <span class="arithmatex">\(F(x)=\frac x2\sqrt{4-x^2}+2\sin^{-1}\frac x2\)</span>, found by the substitution <span class="arithmatex">\(x=2\sin\theta\)</span> of Procedure <a href="../../8.4/notes/#proc-trigsub">8.4.4</a>; check by differentiating. Then <span class="arithmatex">\(F(2)-F(0)=2\cdot\frac\pi2-0=\pi\)</span>.) <em>The second is a triangle</em> with legs <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(2\)</span>: <span class="arithmatex">\(\int_0^2(2-x)\,dx=\Bigl[2x-\frac{x^2}2\Bigr]_0^2=4-2=2\)</span>, which is <span class="arithmatex">\(\frac12\cdot2\cdot2\)</span>. Hence <span class="arithmatex">\(A=\pi-2\approx1.14\)</span>. <em>Check by a formula from geometry:</em> the region is a circular segment of radius <span class="arithmatex">\(r=2\)</span> and central angle <span class="arithmatex">\(\theta=\frac\pi2\)</span>, whose area is <span class="arithmatex">\(\frac{r^2}2(\theta-\sin\theta)=2\left(\frac\pi2-1\right)=\pi-2\)</span>.</p>
+<p><img alt="Diagram: \(A=\pi-2\); \(x^2+y^2=4\); \(y=2-x\)" class="calc-figure" src="../figures/notes-fig10.svg" width="312" /></p>
+<p><em>Figure.</em> The segment of the disk above the chord <span class="arithmatex">\(y=2-x\)</span>: quarter disk <span class="arithmatex">\(\pi\)</span> minus triangle <span class="arithmatex">\(2\)</span>.</p>
+</div>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.2.17: Choosing vertical or horizontal strips</p>
+<p><span id="proc-choose"></span></p>
+<ol>
+<li>
+<p>Sketch the region and draw one typical strip in each direction.</p>
+</li>
+<li>
+<p>Prefer the direction in which the <em>same two curves</em> bound the strip all the way across; if the top or bottom changes formula, you must split into several integrals.</p>
+</li>
+<li>
+<p>Prefer the direction in which the boundary curves are easy to write: <span class="arithmatex">\(x=f(y)\)</span> needs the curves solved for <span class="arithmatex">\(x\)</span>, which is easy for <span class="arithmatex">\(x=y^2\)</span> and hard for <span class="arithmatex">\(y=x^5+x\)</span>.</p>
+</li>
+<li>
+<p>Prefer the direction that gives the simpler integrals. When in doubt, set up both and compare.</p>
+</li>
+<li>
+<p>If both directions are easy, do both: agreement is an excellent check (Examples <a href="#ex-e7">6.2.13</a> and <a href="#ex-e8">6.2.14</a>).</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.18: A line through the origin that bisects a region</p>
+<p><span id="ex-e10"></span></p>
+<p>The region <span class="arithmatex">\(R\)</span> lies between the parabola <span class="arithmatex">\(y=x^2\)</span> and the line <span class="arithmatex">\(y=x\)</span>. For which slope <span class="arithmatex">\(m\)</span> with <span class="arithmatex">\(0&lt;m&lt;1\)</span> does the line <span class="arithmatex">\(y=mx\)</span> cut <span class="arithmatex">\(R\)</span> into two parts of equal area?</p>
+<p><strong>Solution.</strong> <em>Area of <span class="arithmatex">\(R\)</span>.</em> The graphs meet where <span class="arithmatex">\(x^2=x\)</span>, at <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=1\)</span>, with <span class="arithmatex">\(y=x\)</span> on top, so <span class="arithmatex">\(\operatorname{area}(R)=\int_0^1(x-x^2)\,dx=\frac12-\frac13=\frac16\)</span>. Half of this is <span class="arithmatex">\(\frac1{12}\)</span>. <em>The lower part.</em> The line <span class="arithmatex">\(y=mx\)</span> meets the parabola where <span class="arithmatex">\(x^2=mx\)</span>, at <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=m\)</span>. On <span class="arithmatex">\((0,m)\)</span> we have <span class="arithmatex">\(x^2&lt;mx&lt;x\)</span> (divide by <span class="arithmatex">\(x&gt;0\)</span>: <span class="arithmatex">\(x&lt;m&lt;1\)</span>), so the line lies inside <span class="arithmatex">\(R\)</span>, and the part of <span class="arithmatex">\(R\)</span> below it is the region between <span class="arithmatex">\(y=mx\)</span> and <span class="arithmatex">\(y=x^2\)</span>:</p>
+<div class="arithmatex">\[A_m=\int_0^m(mx-x^2)\,dx=\Bigl[\frac{mx^2}2-\frac{x^3}3\Bigr]_0^m=\frac{m^3}2-\frac{m^3}3=\frac{m^3}6 .\]</div>
+<p><em>Solve.</em> <span class="arithmatex">\(\frac{m^3}6=\frac1{12}\)</span> gives <span class="arithmatex">\(m^3=\frac12\)</span>, so <span class="arithmatex">\(m=2^{-1/3}\approx0.794\)</span>. This lies in <span class="arithmatex">\((0,1)\)</span>. The upper part then also has area <span class="arithmatex">\(\frac16-\frac1{12}=\frac1{12}\)</span>.</p>
+<p><img alt="Diagram: \(y=x\); \(y=mx\); \(y=x^2\)" class="calc-figure" src="../figures/notes-fig11.svg" width="343" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=x^2\)</span> and <span class="arithmatex">\(y=x\)</span> (area <span class="arithmatex">\(\frac16\)</span>) is cut by <span class="arithmatex">\(y=mx\)</span> into two parts of area <span class="arithmatex">\(\frac1{12}\)</span> when <span class="arithmatex">\(m=2^{-1/3}\)</span>. The part below the green line is shaded darker.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>The slice-and-sum idea of this section is the same in the rest of the chapter. In a later section the strips become thin slabs and disks whose cross-sectional areas, often differences of squares of the functions above, are summed to give a volume; others use the length of a curve and the area of a surface of revolution. Areas of regions described by polar coordinates are treated in the chapter on parametric and polar curves; in a later course, double integrals extend the idea to regions that are not between two graphs.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Basic vertical strips</em> (Examples <a href="#ex-b1">6.2.19</a>–<a href="#ex-b2">6.2.20</a>): a root and a line; a rational curve and a line, using symmetry.</p>
+</li>
+<li>
+<p><em>Crossing curves</em> (Examples <a href="#ex-b3">6.2.21</a>–<a href="#ex-b4">6.2.22</a>): net versus total area for a cubic and the <span class="arithmatex">\(x\)</span>-axis; sine and cosine.</p>
+</li>
+<li>
+<p><em>Compound and three-curve regions</em> (Examples <a href="#ex-b5">6.2.23</a>–<a href="#ex-b6">6.2.24</a>): two lines and a hyperbola; a parabola and an absolute value.</p>
+</li>
+<li>
+<p><em>Horizontal strips</em> (Examples <a href="#ex-b7">6.2.25</a>–<a href="#ex-b8">6.2.26</a>): a line and a parabola opening sideways; a logarithm and a chord, by both methods.</p>
+</li>
+<li>
+<p><em>Curves and inverse functions, curves below the axis</em> (Examples <a href="#ex-b9">6.2.27</a>–<a href="#ex-b10">6.2.28</a>): <span class="arithmatex">\(x^3\)</span> and <span class="arithmatex">\(\sqrt[3]{x}\)</span>; both curves below the <span class="arithmatex">\(x\)</span>-axis.</p>
+</li>
+<li>
+<p><em>Unknown parameters and integration by parts</em> (Examples <a href="#ex-b11">6.2.29</a>–<a href="#ex-b12">6.2.30</a>): finding a height for a given area; <span class="arithmatex">\(\ln x\)</span> and <span class="arithmatex">\((\ln x)^2\)</span>.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">6.2.31</a>–<a href="#ex-b14">6.2.32</a>).</p>
+</li>
+</ol>
+<h2 id="group-1-basic-vertical-strips">Group 1: Basic vertical strips<a class="headerlink" href="#group-1-basic-vertical-strips" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.19: A root and a line</p>
+<p><span id="ex-b1"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=\sqrt x\)</span> and <span class="arithmatex">\(y=\frac x2\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(\sqrt x=\frac x2\)</span> gives (for <span class="arithmatex">\(x\ge0\)</span>) <span class="arithmatex">\(x=\frac{x^2}4\)</span>, so <span class="arithmatex">\(x(x-4)=0\)</span> and <span class="arithmatex">\(x=0\)</span> or <span class="arithmatex">\(x=4\)</span>; both satisfy <span class="arithmatex">\(\sqrt x=\frac x2\)</span> (<span class="arithmatex">\(0=0\)</span> and <span class="arithmatex">\(2=2\)</span>). <em>Top.</em> At <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(\sqrt1=1&gt;\frac12\)</span>, so <span class="arithmatex">\(\sqrt x\)</span> is on top. <em>Integral.</em> <span class="arithmatex">\(A=\int_0^4\Bigl(x^{1/2}-\frac x2\Bigr)dx=\Bigl[\frac23x^{3/2}-\frac{x^2}4\Bigr]_0^4=\frac23\cdot8-4=\frac{16}3-4=\frac43\)</span>. <em>Check:</em> the region sits inside the rectangle <span class="arithmatex">\([0,4]\times[0,2]\)</span> of area <span class="arithmatex">\(8\)</span> and clearly fills a small part of it; <span class="arithmatex">\(\frac43\approx1.33\)</span> is plausible.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.20: A rational curve above a line</p>
+<p><span id="ex-b2"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(y=\dfrac8{x^2+4}\)</span> and <span class="arithmatex">\(y=1\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(\frac8{x^2+4}=1\)</span> gives <span class="arithmatex">\(x^2+4=8\)</span>, so <span class="arithmatex">\(x=\pm2\)</span>. At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(\frac84=2&gt;1\)</span>, so the curve is on top. <em>Symmetry.</em> Both functions are even, so by Theorem <a href="#thm-sym">6.2.8</a>(2) <span class="arithmatex">\(A=2\int_0^2\Bigl(\frac8{x^2+4}-1\Bigr)dx\)</span>. <em>Antiderivative.</em> <span class="arithmatex">\(\int\frac8{x^2+4}dx=8\cdot\frac12\tan^{-1}\frac x2=4\tan^{-1}\frac x2\)</span> (check: <span class="arithmatex">\(\frac d{dx}4\tan^{-1}\frac x2=4\cdot\frac{1/2}{1+x^2/4}=\frac8{4+x^2}\)</span>). So</p>
+<div class="arithmatex">\[A=2\Bigl[4\tan^{-1}\frac x2-x\Bigr]_0^2=2\left(4\cdot\frac\pi4-2\right)=2\pi-4\approx2.28 .\]</div>
+</div>
+<h2 id="group-2-crossing-curves">Group 2: Crossing curves<a class="headerlink" href="#group-2-crossing-curves" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.21: A cubic and the <span class="arithmatex">\(x\)</span>-axis: net area and total area</p>
+<p><span id="ex-b3"></span></p>
+<p>Let <span class="arithmatex">\(f(x)=x^3-4x\)</span>. Find <span class="arithmatex">\(\int_{-2}^3f\,dx\)</span> and the total area between the graph of <span class="arithmatex">\(f\)</span> and the <span class="arithmatex">\(x\)</span>-axis over <span class="arithmatex">\([-2,3]\)</span>.</p>
+<p><strong>Solution.</strong> <em>Zeros.</em> <span class="arithmatex">\(x^3-4x=x(x-2)(x+2)\)</span>, so <span class="arithmatex">\(f=0\)</span> at <span class="arithmatex">\(-2,0,2\)</span>. <em>Signs.</em> <span class="arithmatex">\(f(-1)=-1+4=3&gt;0\)</span>, <span class="arithmatex">\(f(1)=-3&lt;0\)</span>, <span class="arithmatex">\(f(3)=15&gt;0\)</span>. So <span class="arithmatex">\(f\ge0\)</span> on <span class="arithmatex">\([-2,0]\)</span>, <span class="arithmatex">\(f\le0\)</span> on <span class="arithmatex">\([0,2]\)</span>, <span class="arithmatex">\(f\ge0\)</span> on <span class="arithmatex">\([2,3]\)</span>. <em>Antiderivative.</em> <span class="arithmatex">\(F(x)=\frac{x^4}4-2x^2\)</span> (check: <span class="arithmatex">\(F'=x^3-4x\)</span>). Values: <span class="arithmatex">\(F(-2)=4-8=-4\)</span>, <span class="arithmatex">\(F(0)=0\)</span>, <span class="arithmatex">\(F(2)=-4\)</span>, <span class="arithmatex">\(F(3)=\frac{81}4-18=\frac94\)</span>. <em>Net.</em> <span class="arithmatex">\(\int_{-2}^3f=F(3)-F(-2)=\frac94+4=\frac{25}4\)</span>. <em>Pieces.</em> <span class="arithmatex">\(\int_{-2}^0f=F(0)-F(-2)=4\)</span>; <span class="arithmatex">\(\int_0^2f=F(2)-F(0)=-4\)</span>; <span class="arithmatex">\(\int_2^3f=F(3)-F(2)=\frac94+4=\frac{25}4\)</span>. <em>Total.</em> <span class="arithmatex">\(A=\abs4+\abs{-4}+\abs{\frac{25}4}=4+4+\frac{25}4=\frac{57}4=14.25\)</span> (Theorem <a href="#thm-cross">6.2.9</a>(2)). Indeed <span class="arithmatex">\(\frac{25}4\le\frac{57}4\)</span>, as part (3) requires.</p>
+<p><img alt="Diagram: \(4\); \(-4\); $\frac{25" class="calc-figure" src="../figures/notes-fig12.svg" width="480" /></p>
+<p><em>Figure.</em> The three pieces: net area <span class="arithmatex">\(4-4+\frac{25}4=\frac{25}4\)</span>, total area <span class="arithmatex">\(4+4+\frac{25}4=\frac{57}4\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.22: Sine and cosine</p>
+<p><span id="ex-b4"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=\sin x\)</span> and <span class="arithmatex">\(y=\cos x\)</span> for <span class="arithmatex">\(0\le x\le\pi\)</span>, and compare it with <span class="arithmatex">\(\int_0^\pi(\sin x-\cos x)\,dx\)</span>.</p>
+<p><strong>Solution.</strong> <em>Crossing.</em> <span class="arithmatex">\(\sin x=\cos x\)</span> on <span class="arithmatex">\([0,\pi]\)</span> only at <span class="arithmatex">\(x=\frac\pi4\)</span> (where <span class="arithmatex">\(\tan x=1\)</span>; <span class="arithmatex">\(\cos x=0\)</span> at <span class="arithmatex">\(\frac\pi2\)</span> gives <span class="arithmatex">\(\sin x=1\ne0\)</span>, so no solutions are lost by dividing). <em>Top.</em> At <span class="arithmatex">\(0\)</span>: <span class="arithmatex">\(\cos0=1&gt;0=\sin0\)</span>, so <span class="arithmatex">\(\cos\)</span> is on top on <span class="arithmatex">\([0,\frac\pi4)\)</span>; at <span class="arithmatex">\(\frac\pi2\)</span>: <span class="arithmatex">\(1&gt;0\)</span>, so <span class="arithmatex">\(\sin\)</span> is on top on <span class="arithmatex">\((\frac\pi4,\pi]\)</span>. <em>Pieces.</em> With the antiderivative <span class="arithmatex">\(\sin x+\cos x\)</span> of <span class="arithmatex">\(\cos x-\sin x\)</span>:</p>
+<div class="arithmatex">\[\int_0^{\pi/4}(\cos x-\sin x)\,dx=\Bigl[\sin x+\cos x\Bigr]_0^{\pi/4}=\sqrt2-1,\]</div>
+<div class="arithmatex">\[\int_{\pi/4}^{\pi}(\sin x-\cos x)\,dx=\Bigl[-\cos x-\sin x\Bigr]_{\pi/4}^{\pi}=(1-0)-\left(-\frac{\sqrt2}2-\frac{\sqrt2}2\right)=1+\sqrt2 .\]</div>
+<p>So <span class="arithmatex">\(A=(\sqrt2-1)+(1+\sqrt2)=2\sqrt2\approx2.83\)</span>. The net integral is <span class="arithmatex">\(\int_0^\pi(\sin x-\cos x)\,dx=\bigl[-\cos x-\sin x\bigr]_0^\pi=1-(-1)=2\)</span>, which is smaller, as it should be: <span class="arithmatex">\(2\le2\sqrt2\)</span>.</p>
+</div>
+<h2 id="group-3-compound-and-three-curve-regions">Group 3: Compound and three-curve regions<a class="headerlink" href="#group-3-compound-and-three-curve-regions" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.23: Two lines and a hyperbola</p>
+<p><span id="ex-b5"></span></p>
+<p>Find the area of the region in the first quadrant between the lines <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=\frac x4\)</span> and below the hyperbola <span class="arithmatex">\(y=\frac4x\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(x=\frac4x\)</span> gives <span class="arithmatex">\(x=2\)</span>, point <span class="arithmatex">\((2,2)\)</span>. <span class="arithmatex">\(\frac x4=\frac4x\)</span> gives <span class="arithmatex">\(x^2=16\)</span>, <span class="arithmatex">\(x=4\)</span>, point <span class="arithmatex">\((4,1)\)</span>. The lines meet at the origin. For <span class="arithmatex">\(0\le x\le2\)</span> the region lies between <span class="arithmatex">\(y=\frac x4\)</span> (bottom) and <span class="arithmatex">\(y=x\)</span> (top); for <span class="arithmatex">\(2\le x\le4\)</span> it lies between <span class="arithmatex">\(y=\frac x4\)</span> (bottom) and <span class="arithmatex">\(y=\frac4x\)</span> (top) (at <span class="arithmatex">\(x=3\)</span>: <span class="arithmatex">\(\frac43&lt;3\)</span> and <span class="arithmatex">\(\frac43&gt;\frac34\)</span>). <em>First piece.</em> <span class="arithmatex">\(\int_0^2\left(x-\frac x4\right)dx=\int_0^2\frac{3x}4\,dx=\frac38x^2\Big|_0^2=\frac32\)</span>. <em>Second piece.</em> <span class="arithmatex">\(\int_2^4\left(\frac4x-\frac x4\right)dx=\Bigl[4\ln x-\frac{x^2}8\Bigr]_2^4=\left(4\ln4-2\right)-\left(4\ln2-\frac12\right)=4\ln2-\frac32\)</span>, because <span class="arithmatex">\(4\ln4=8\ln2\)</span>. Hence <span class="arithmatex">\(A=\frac32+4\ln2-\frac32=4\ln2\approx2.77\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.24: A parabola and an absolute value</p>
+<p><span id="ex-b6"></span></p>
+<p>Find the area of the region bounded above by <span class="arithmatex">\(y=9-x^2\)</span> and below by <span class="arithmatex">\(y=\abs x+3\)</span>.</p>
+<p><strong>Solution.</strong> Both functions are even, so by Theorem <a href="#thm-sym">6.2.8</a>(2) we may take twice the part with <span class="arithmatex">\(x\ge0\)</span>, where <span class="arithmatex">\(\abs x=x\)</span>. <em>Intersection:</em> <span class="arithmatex">\(9-x^2=x+3\)</span> gives <span class="arithmatex">\(x^2+x-6=0\)</span>, <span class="arithmatex">\((x+3)(x-2)=0\)</span>; the solution with <span class="arithmatex">\(x\ge0\)</span> is <span class="arithmatex">\(x=2\)</span>, at <span class="arithmatex">\((2,5)\)</span>. At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(9&gt;3\)</span>, so the parabola is on top.</p>
+<div class="arithmatex">\[A=2\int_0^2\bigl(9-x^2-x-3\bigr)\,dx=2\int_0^2\bigl(6-x-x^2\bigr)\,dx=2\Bigl[6x-\frac{x^2}2-\frac{x^3}3\Bigr]_0^2=2\left(12-2-\frac83\right)=\frac{44}3 .\]</div>
+<p><img alt="Diagram: \(A=44/3\); \(y=9-x^2\); \(y=\lvert x\rvert+3\)" class="calc-figure" src="../figures/notes-fig13.svg" width="397" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=9-x^2\)</span> and <span class="arithmatex">\(y=\abs x+3\)</span>.</p>
+</div>
+<h2 id="group-4-horizontal-strips">Group 4: Horizontal strips<a class="headerlink" href="#group-4-horizontal-strips" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.25: A line and a parabola opening sideways</p>
+<p><span id="ex-b7"></span></p>
+<p>Find the area of the region bounded by <span class="arithmatex">\(x=3y\)</span> and <span class="arithmatex">\(x=y^2\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(y^2=3y\)</span> gives <span class="arithmatex">\(y(y-3)=0\)</span>: <span class="arithmatex">\(y=0\)</span> and <span class="arithmatex">\(y=3\)</span>, points <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\((9,3)\)</span>. <em>Right and left.</em> At <span class="arithmatex">\(y=1\)</span>: <span class="arithmatex">\(3y=3&gt;1=y^2\)</span>, so the line is on the right. <em>Integral.</em> <span class="arithmatex">\(A=\int_0^3(3y-y^2)\,dy=\Bigl[\frac{3y^2}2-\frac{y^3}3\Bigr]_0^3=\frac{27}2-9=\frac92\)</span>.</p>
+<p><img alt="Diagram: \(3y-y^2\); \(x=3y\); \(x=y^2\)" class="calc-figure" src="../figures/notes-fig14.svg" width="374" /></p>
+<p><em>Figure.</em> Horizontal strip at <span class="arithmatex">\(y=1\)</span>: from <span class="arithmatex">\(x=1\)</span> to <span class="arithmatex">\(x=3\)</span>, length <span class="arithmatex">\(3y-y^2=2\)</span>. Area <span class="arithmatex">\(\frac92\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.26: A logarithm and a chord, by both methods</p>
+<p><span id="ex-b8"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=\ln x\)</span> and the line through <span class="arithmatex">\((1,0)\)</span> and <span class="arithmatex">\((e,1)\)</span>.</p>
+<p><strong>Solution.</strong> The line is <span class="arithmatex">\(y=\dfrac{x-1}{e-1}\)</span> (slope <span class="arithmatex">\(\frac1{e-1}\)</span>, value <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=1\)</span>, value <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=e\)</span>). The curve and the line meet at <span class="arithmatex">\(x=1\)</span> and <span class="arithmatex">\(x=e\)</span>. At <span class="arithmatex">\(x=2\)</span>: <span class="arithmatex">\(\ln2\approx0.693&gt;\frac1{e-1}\approx0.582\)</span>, so the curve is on top. <em>Vertical strips.</em> <span class="arithmatex">\(A=\int_1^e\Bigl(\ln x-\frac{x-1}{e-1}\Bigr)dx\)</span>. By integration by parts (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>), <span class="arithmatex">\(\int\ln x\,dx=x\ln x-x\)</span> (check: derivative <span class="arithmatex">\(\ln x+1-1\)</span>). So <span class="arithmatex">\(\int_1^e\ln x\,dx=(e-e)-(0-1)=1\)</span>, and <span class="arithmatex">\(\int_1^e\frac{x-1}{e-1}dx=\frac1{e-1}\cdot\frac{(e-1)^2}2=\frac{e-1}2\)</span>. Hence <span class="arithmatex">\(A=1-\frac{e-1}2=\frac{3-e}2\approx0.141\)</span>. <em>Horizontal strips.</em> For <span class="arithmatex">\(0\le y\le1\)</span>, the curve is <span class="arithmatex">\(x=e^y\)</span> and the line is <span class="arithmatex">\(x=1+(e-1)y\)</span>; the line is on the right (at <span class="arithmatex">\(y=\frac12\)</span>: <span class="arithmatex">\(1+\frac{e-1}2\approx1.86&gt;e^{1/2}\approx1.65\)</span>). So <span class="arithmatex">\(A=\int_0^1\bigl(1+(e-1)y-e^y\bigr)dy=\Bigl[y+\frac{(e-1)y^2}2-e^y\Bigr]_0^1=\left(1+\frac{e-1}2-e\right)-(0+0-1)=2+\frac{e-1}2-e=\frac{3-e}2\)</span>. The two answers agree. (Here the horizontal method needed no integration by parts.)</p>
+</div>
+<h2 id="group-5-inverse-functions-and-curves-below-the-axis">Group 5: Inverse functions, and curves below the axis<a class="headerlink" href="#group-5-inverse-functions-and-curves-below-the-axis" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.27: <span class="arithmatex">\(x^3\)</span> and its inverse</p>
+<p><span id="ex-b9"></span></p>
+<p>Find the area of the region in the first quadrant bounded by <span class="arithmatex">\(y=x^3\)</span> and <span class="arithmatex">\(y=\sqrt[3]x\)</span>. Check it with Theorem <a href="#thm-agree">6.2.15</a>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(x^3=x^{1/3}\)</span> gives <span class="arithmatex">\(x=0\)</span> or <span class="arithmatex">\(x^{8/3}=1\)</span>, i.e. <span class="arithmatex">\(x=1\)</span>. At <span class="arithmatex">\(x=\frac18\)</span>: <span class="arithmatex">\(x^{1/3}=\frac12&gt;\frac1{512}=x^3\)</span>, so the cube root is on top. <span class="arithmatex">\(A=\int_0^1\bigl(x^{1/3}-x^3\bigr)dx=\Bigl[\frac34x^{4/3}-\frac{x^4}4\Bigr]_0^1=\frac34-\frac14=\frac12\)</span>. <em>Check with Theorem <a href="#thm-agree">6.2.15</a>(1):</em> <span class="arithmatex">\(\varphi(x)=x^3\)</span> on <span class="arithmatex">\([0,1]\)</span> has inverse <span class="arithmatex">\(\psi(y)=y^{1/3}\)</span>, and <span class="arithmatex">\(\int_0^1x^3+\int_0^1y^{1/3}\,dy=\frac14+\frac34=1=1\cdot1-0\cdot0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.28: Both curves below the axis</p>
+<p><span id="ex-b10"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=x^2-5\)</span> and <span class="arithmatex">\(y=-1\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> <span class="arithmatex">\(x^2-5=-1\)</span> gives <span class="arithmatex">\(x=\pm2\)</span>. At <span class="arithmatex">\(x=0\)</span>: <span class="arithmatex">\(-5&lt;-1\)</span>, so the line is on top. The whole region lies below the <span class="arithmatex">\(x\)</span>-axis. <em>Subtract (top <span class="arithmatex">\(-\)</span> bottom):</em> <span class="arithmatex">\((-1)-(x^2-5)=4-x^2\)</span>. By symmetry,</p>
+<div class="arithmatex">\[A=2\int_0^2(4-x^2)\,dx=2\Bigl[4x-\frac{x^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3 .\]</div>
+<p><em>Check by shifting</em> (Theorem <a href="#thm-consist">6.2.2</a>(2)): moving both curves up <span class="arithmatex">\(5\)</span> gives <span class="arithmatex">\(y=x^2\)</span> and <span class="arithmatex">\(y=4\)</span>, whose area is <span class="arithmatex">\(\int_{-2}^2(4-x^2)\,dx=\frac{32}3\)</span> again. Note that no absolute values were needed; the area comes out positive without them.</p>
+</div>
+<h2 id="group-6-unknown-parameters-and-integration-by-parts">Group 6: Unknown parameters and integration by parts<a class="headerlink" href="#group-6-unknown-parameters-and-integration-by-parts" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.29: Which height gives a prescribed area?</p>
+<p><span id="ex-b11"></span></p>
+<p>For which <span class="arithmatex">\(c&gt;0\)</span> does the region between <span class="arithmatex">\(y=x^2\)</span> and the horizontal line <span class="arithmatex">\(y=c\)</span> have area <span class="arithmatex">\(36\)</span>?</p>
+<p><strong>Solution.</strong> The curves meet where <span class="arithmatex">\(x^2=c\)</span>, at <span class="arithmatex">\(x=\pm\sqrt c\)</span>, and the line is on top. By symmetry, <span class="arithmatex">\(A(c)=2\int_0^{\sqrt c}(c-x^2)\,dx=2\Bigl[cx-\frac{x^3}3\Bigr]_0^{\sqrt c}=2\left(c^{3/2}-\frac{c^{3/2}}3\right)=\frac43c^{3/2}\)</span>. Setting <span class="arithmatex">\(A(c)=36\)</span>: <span class="arithmatex">\(c^{3/2}=27\)</span>, so <span class="arithmatex">\(c=27^{2/3}=9\)</span>. (Check: <span class="arithmatex">\(\frac43\cdot9^{3/2}=\frac43\cdot27=36\)</span>. Since <span class="arithmatex">\(A(c)\)</span> is increasing in <span class="arithmatex">\(c\)</span>, there is only one solution.)</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.30: Logarithm and its square</p>
+<p><span id="ex-b12"></span></p>
+<p>Find the area of the region between <span class="arithmatex">\(y=\ln x\)</span> and <span class="arithmatex">\(y=(\ln x)^2\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersections.</em> Put <span class="arithmatex">\(u=\ln x\)</span>: <span class="arithmatex">\(u=u^2\)</span> gives <span class="arithmatex">\(u=0\)</span> or <span class="arithmatex">\(u=1\)</span>, i.e. <span class="arithmatex">\(x=1\)</span> or <span class="arithmatex">\(x=e\)</span>. For <span class="arithmatex">\(1&lt;x&lt;e\)</span> we have <span class="arithmatex">\(0&lt;\ln x&lt;1\)</span>, and then <span class="arithmatex">\((\ln x)^2&lt;\ln x\)</span> (multiply <span class="arithmatex">\(\ln x&lt;1\)</span> by <span class="arithmatex">\(\ln x&gt;0\)</span>), so <span class="arithmatex">\(\ln x\)</span> is on top. <span class="arithmatex">\(A=\int_1^e\bigl(\ln x-\ln^2x\bigr)dx\)</span>.</p>
+<p><em>Antiderivatives (by parts).</em> <span class="arithmatex">\(\int\ln x\,dx=x\ln x-x\)</span>. For <span class="arithmatex">\(\int\ln^2x\,dx\)</span> take <span class="arithmatex">\(u=\ln^2x\)</span>, <span class="arithmatex">\(dv=dx\)</span>, so <span class="arithmatex">\(du=\frac{2\ln x}x\,dx\)</span> and <span class="arithmatex">\(v=x\)</span>: <span class="arithmatex">\(\int\ln^2x\,dx=x\ln^2x-2\int\ln x\,dx=x\ln^2x-2x\ln x+2x\)</span> (Theorem <a href="../../8.2/notes/#thm-parts">8.2.1</a>). Check by differentiating: <span class="arithmatex">\(\ln^2x+2\ln x-2\ln x-2+2=\ln^2x\)</span>. <em>Evaluate.</em> An antiderivative of <span class="arithmatex">\(\ln x-\ln^2x\)</span> is <span class="arithmatex">\(G(x)=-x\ln^2x+3x\ln x-3x\)</span>. <span class="arithmatex">\(G(e)=-e+3e-3e=-e\)</span> and <span class="arithmatex">\(G(1)=-3\)</span>, so <span class="arithmatex">\(A=-e-(-3)=3-e\approx0.282\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.31: Archimedes’ parabolic segment</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove: for <span class="arithmatex">\(p&lt;q\)</span>, the area between the parabola <span class="arithmatex">\(y=x^2\)</span> and the chord joining the points of the parabola with <span class="arithmatex">\(x=p\)</span> and <span class="arithmatex">\(x=q\)</span> is <span class="arithmatex">\(\dfrac{(q-p)^3}6\)</span>. Check with <span class="arithmatex">\(p=1\)</span>, <span class="arithmatex">\(q=4\)</span>.</p>
+<p><strong>Proof.</strong> The chord through <span class="arithmatex">\((p,p^2)\)</span> and <span class="arithmatex">\((q,q^2)\)</span> has slope <span class="arithmatex">\(\frac{q^2-p^2}{q-p}=p+q\)</span>, so it is <span class="arithmatex">\(y=p^2+(p+q)(x-p)=(p+q)x-pq\)</span>. The chord minus the parabola is <span class="arithmatex">\((p+q)x-pq-x^2=-(x-p)(x-q)=(x-p)(q-x)\)</span>, which is <span class="arithmatex">\(\ge0\)</span> on <span class="arithmatex">\([p,q]\)</span>; so the chord is on top. Put <span class="arithmatex">\(L=q-p\)</span> and <span class="arithmatex">\(u=x-p\)</span> (Theorem <a href="../../8.1/notes/#thm-subst">8.1.1</a>; then <span class="arithmatex">\(q-x=L-u\)</span> and <span class="arithmatex">\(u\)</span> runs from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(L\)</span>):</p>
+<div class="arithmatex">\[A=\int_p^q(x-p)(q-x)\,dx=\int_0^Lu(L-u)\,du=\Bigl[\frac{Lu^2}2-\frac{u^3}3\Bigr]_0^L=\frac{L^3}2-\frac{L^3}3=\frac{L^3}6 .\]</div>
+<p><em>Check.</em> <span class="arithmatex">\(p=1\)</span>, <span class="arithmatex">\(q=4\)</span>: the chord is <span class="arithmatex">\(y=5x-4\)</span>, and <span class="arithmatex">\(\int_1^4(5x-4-x^2)\,dx=\Bigl[\frac{5x^2}2-4x-\frac{x^3}3\Bigr]_1^4=\left(40-16-\frac{64}3\right)-\left(\frac52-4-\frac13\right)=\frac83+\frac{11}6=\frac92=\frac{3^3}6\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.2.32: Powers and their inverse powers</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove: for every real <span class="arithmatex">\(n&gt;1\)</span> the region in the first quadrant between <span class="arithmatex">\(y=x^n\)</span> and <span class="arithmatex">\(y=x^{1/n}\)</span> has area <span class="arithmatex">\(\dfrac{n-1}{n+1}\)</span>. Check with <span class="arithmatex">\(n=3\)</span> and <span class="arithmatex">\(n=2\)</span>.</p>
+<p><strong>Proof.</strong> The curves meet where <span class="arithmatex">\(x^n=x^{1/n}\)</span>, that is at <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=1\)</span> (for <span class="arithmatex">\(x&gt;0\)</span> take logarithms: <span class="arithmatex">\(n\ln x=\frac1n\ln x\)</span>, so <span class="arithmatex">\(\left(n-\frac1n\right)\ln x=0\)</span> and <span class="arithmatex">\(\ln x=0\)</span> because <span class="arithmatex">\(n\ne\frac1n\)</span>). For <span class="arithmatex">\(0&lt;x&lt;1\)</span> we have <span class="arithmatex">\(\ln x&lt;0\)</span> and <span class="arithmatex">\(\frac1n&lt;n\)</span>, so <span class="arithmatex">\(\frac1n\ln x&gt;n\ln x\)</span>; therefore <span class="arithmatex">\(x^{1/n}&gt;x^n\)</span> and the root is on top. Then</p>
+<div class="arithmatex">\[A=\int_0^1\bigl(x^{1/n}-x^n\bigr)dx=\Bigl[\frac{x^{1/n+1}}{\frac1n+1}-\frac{x^{n+1}}{n+1}\Bigr]_0^1=\frac{n}{n+1}-\frac1{n+1}=\frac{n-1}{n+1},\]</div>
+<p>using <span class="arithmatex">\(\frac1{1/n+1}=\frac n{1+n}\)</span> (the antiderivatives vanish at <span class="arithmatex">\(x=0\)</span> because the exponents <span class="arithmatex">\(\frac1n+1\)</span> and <span class="arithmatex">\(n+1\)</span> are positive).</p>
+<p><em>Check.</em> <span class="arithmatex">\(n=3\)</span>: <span class="arithmatex">\(\frac24=\frac12\)</span>, as in Example <a href="#ex-b9">6.2.27</a>. <span class="arithmatex">\(n=2\)</span>: <span class="arithmatex">\(\int_0^1(\sqrt x-x^2)\,dx=\frac23-\frac13=\frac13=\frac{2-1}{2+1}\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcsum">6.2.1</a>.</strong> At <span class="arithmatex">\(x=\frac12\)</span>: <span class="arithmatex">\(x=\frac12&gt;\frac14=x^2\)</span>, so <span class="arithmatex">\(y=x\)</span> is on top. <span class="arithmatex">\(A=\int_0^1(x-x^2)\,dx=\Bigl[\frac{x^2}2-\frac{x^3}3\Bigr]_0^1=\frac12-\frac13=\frac16\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kccross">6.2.2</a>.</strong> <span class="arithmatex">\(\int_{-1}^1(f-g)\,dx=\int_{-1}^12x\,dx=\bigl[x^2\bigr]_{-1}^1=0\)</span> and <span class="arithmatex">\(\int_{-1}^1\abs{2x}\,dx=2\int_0^12x\,dx=2\)</span>. The area of the region between the graphs is <span class="arithmatex">\(2\)</span>: two triangles, one on each side of the <span class="arithmatex">\(y\)</span>-axis, each with a vertical side of length <span class="arithmatex">\(2\)</span> at <span class="arithmatex">\(x=\pm1\)</span> and height <span class="arithmatex">\(1\)</span>, so each has area <span class="arithmatex">\(\frac12\cdot2\cdot1=1\)</span>. The two numbers differ because <span class="arithmatex">\(f-g=2x\)</span> changes sign at <span class="arithmatex">\(0\)</span>: the net integral lets the part below cancel the part above, while the area counts both as positive (Theorem <a href="#thm-cross">6.2.9</a>).</p>
+<p><strong>Knowledge Check <a href="#kc-kcy">6.2.3</a>.</strong> The curves <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=4\)</span> meet at <span class="arithmatex">\(y=\pm2\)</span>, and <span class="arithmatex">\(x=4\)</span> is on the right. <span class="arithmatex">\(A=\int_{-2}^2(4-y^2)\,dy=2\Bigl[4y-\frac{y^3}3\Bigr]_0^2=2\left(8-\frac83\right)=\frac{32}3\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
