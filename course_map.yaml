@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 8, Integration Techniques (done: 8.1 to 8.9), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
+  project: "Chapter 6, Applications of Integration (done: 6.1), Chapter 8, Integration Techniques (done: 8.1 to 8.9), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -50,3 +50,4 @@ modules:
   - {id: "12.2", chapter: 12, title: "Polar Coordinates", prereqs: ["12.1"], status: done}
   - {id: "12.3", chapter: 12, title: "Calculus in Polar Coordinates", prereqs: ["12.2"], status: done}
   - {id: "12.4", chapter: 12, title: "Conic Sections", prereqs: ["12.3"], status: done}
+  - {id: "6.1", chapter: 6, title: "Velocity and Net Change", prereqs: ["12.4"], status: done}
