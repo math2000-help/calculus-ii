@@ -1,0 +1,702 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{6}{1}{Velocity and Net Change}
+\calcxdoc{8.1}
+\calcxdoc{8.9}
+
+\begin{document}
+
+\section{Velocity and Net Change}
+
+\begin{guide}
+If you know how fast something is changing, can you find out how much it has changed? Differentiation goes from a quantity to its rate; integration goes back. This section uses the Fundamental Theorem of Calculus from Calculus I to turn rates into totals. We start with the case you can feel: an object moving along a line, whose velocity is the rate of change of its position. We separate two questions that sound alike but are not: \emph{how far did it end up from where it started} (displacement) and \emph{how far did it actually travel} (distance traveled). We then find the position from the velocity, and the velocity from the acceleration. The same idea works for any quantity with a known rate: the water in a reservoir, a population, the cost of making more books. Each time, accumulating the rate gives the net change, and the net change plus the starting value gives the future value. The idea behind this is slice-and-sum, which is also how the rest of this chapter finds areas, volumes and lengths.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item distinguish position, displacement and distance traveled, and compute displacement and distance traveled from a velocity function or from a velocity graph;
+  \item find the position function from the velocity and the initial position, and the velocity from the acceleration and the initial velocity, by an antiderivative or by an integral from $0$ to $t$;
+  \item compute the net change and the future value of any quantity from its rate of change, with correct units;
+  \item handle rates that change sign, rates given in pieces, and rates whose total stays bounded for all time;
+  \item prove each of the theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Position, displacement and distance traveled}
+
+An object moves along a line, say a straight road, with a fixed direction called positive. Its \emph{position} at time $t$ is a number $s(t)$: the signed distance from a chosen origin. Its \emph{velocity} is $v(t)=s'(t)$ (a number that is positive when it moves in the positive direction and negative when it moves the other way), and its \emph{speed} is $\abs{v(t)}$. Throughout this section we assume that $s$ is differentiable and that $v=s'$ is continuous.
+
+\begin{defn}{Displacement and distance traveled}{disp}
+Let $a<b$. The \emph{displacement} of the object over the time interval $[a,b]$ is the signed number $s(b)-s(a)$: the change in position, positive if it ends up on the positive side of where it started and negative otherwise.
+
+To define the \emph{distance traveled}, cut $[a,b]$ into $n$ pieces by times $a=t_0<t_1<\dots<t_n=b$. During the $k$th piece the object moves from $s(t_{k-1})$ to $s(t_k)$, so it covers at least the distance $\abs{s(t_k)-s(t_{k-1})}$, with the direction ignored. The \emph{distance traveled} is the limit of the sums
+\[
+\sum_{k=1}^n\abs{s(t_k)-s(t_{k-1})}
+\]
+as the longest piece shrinks to $0$ (Theorem~\ref{thm:dist} shows that the limit exists).
+\end{defn}
+
+The distance traveled is what the odometer of a car reads: it only increases. The displacement is what you get from the position at the end minus the position at the beginning: it can be positive, negative or zero. If you walk $3$ blocks east and then $3$ blocks west, your displacement is $0$ but you have traveled $6$ blocks.
+
+\begin{thm}{Displacement is the integral of the velocity}{disp}
+If $s$ is differentiable with a continuous derivative $v=s'$ on $[a,b]$, then the displacement is
+\[
+s(b)-s(a)=\int_a^bv(t)\,dt .
+\]
+\end{thm}
+\begin{proof}
+By definition $v=s'$, so $s$ is an antiderivative of the continuous function $v$ on $[a,b]$. The Fundamental Theorem of Calculus (Part~2, from Calculus I) says that $\int_a^bv(t)\,dt=s(b)-s(a)$ for every antiderivative $s$ of $v$.
+\end{proof}
+
+Geometrically, the displacement is the \emph{net area} between the graph of $v$ and the $t$-axis: the area above the axis counts $+$ and the area below counts $-$. The distance traveled counts all the area as positive.
+
+\begin{thm}{Distance traveled is the integral of the speed}{dist}
+Under the same assumptions, the sums in Definition~\ref{def:disp} converge as the longest piece shrinks to $0$, and the distance traveled is
+\[
+\int_a^b\abs{v(t)}\,dt .
+\]
+\end{thm}
+\begin{proof}
+On the $k$th piece $[t_{k-1},t_k]$ the function $s$ is continuous and differentiable, so the Mean Value Theorem (Calculus I) gives a number $t_k^*$ in $(t_{k-1},t_k)$ with
+\[
+s(t_k)-s(t_{k-1})=s'(t_k^*)\,(t_k-t_{k-1})=v(t_k^*)\,\Delta t_k,\qquad \Delta t_k=t_k-t_{k-1}.
+\]
+Take absolute values: $\abs{s(t_k)-s(t_{k-1})}=\abs{v(t_k^*)}\,\Delta t_k$, because $\Delta t_k>0$. Therefore
+\[
+\sum_{k=1}^n\abs{s(t_k)-s(t_{k-1})}=\sum_{k=1}^n\abs{v(t_k^*)}\,\Delta t_k ,
+\]
+which is a Riemann sum for the function $\abs{v}$ on $[a,b]$ (with the sample points $t_k^*$). The function $\abs{v}$ is continuous, because $v$ is, so it is integrable, and its Riemann sums converge to $\int_a^b\abs{v(t)}\,dt$ as the longest piece shrinks to $0$, whatever the sample points are.
+\end{proof}
+
+How do we compute $\int_a^b\abs{v}$ when $v$ changes sign? A continuous function can change sign only where it is zero (the Intermediate Value Theorem), so between two consecutive zeros of $v$ it is either always positive or always negative. There $\abs{v}=v$ or $\abs{v}=-v$, and the integral of $\abs v$ over the piece equals $\abs{\text{displacement over that piece}}$.
+
+\begin{proc}{Displacement and distance traveled from a velocity function}{dd}
+Let $v$ be continuous on $[a,b]$.
+\begin{enumerate}[nosep]
+  \item Solve $v(t)=0$ on $[a,b]$. The zeros $a=c_0<c_1<\dots<c_m=b$ (with $a$ and $b$ added) cut the interval into pieces on which $v$ has one sign. Test one point in each piece to find the sign.
+  \item Find an antiderivative $F$ of $v$ and check it by differentiating.
+  \item The displacement is $F(b)-F(a)$.
+  \item The distance traveled is $\sum_{j=1}^m\abs{F(c_j)-F(c_{j-1})}$: the absolute value of the displacement over each piece, added.
+  \item Check: the distance is at least the absolute value of the displacement (Theorem~\ref{thm:ineq} below), and the units are units of length.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{Displacement and distance for a quadratic velocity}{e1}
+A particle moves along a line with velocity $v(t)=3t^2-12t+9$ (in m/s) for $0\le t\le5$ (in s). Find its displacement and the distance it travels, and describe the motion.
+
+\textbf{Solution.} \emph{Step 1: the sign of $v$.} Factor, taking out the $3$ first: $3t^2-12t+9=3(t^2-4t+3)=3(t-1)(t-3)$.
+%@ e1-fac | expand(3*(x-1)*(x-3)-(3*x**2-12*x+9)) == 0 | the $3$ first: $3t^2-12t+9=3(t^2-4t+3)=3(t-1)(t-3)$.
+The zeros are $t=1$ and $t=3$, both in $[0,5]$, so the pieces are $[0,1]$, $[1,3]$ and $[3,5]$. At $t=0$: $v(0)=9>0$. At $t=2$: $v(2)=3\cdot4-24+9=-3<0$. At $t=4$: $v(4)=48-48+9=9>0$. (Each piece has one sign, since $v$ can change sign only at a zero.)
+%@ e1-sg | 3*0**2-12*0+9 == 9 and 3*2**2-12*2+9 == -3 and 3*4**2-12*4+9 == 9 | $v(4)=48-48+9=9>0$. (Each piece has one sign, since $v$ can change sign only at a zero.)
+\emph{Step 2: an antiderivative.} By the power rule, $F(t)=t^3-6t^2+9t$ has $F'(t)=3t^2-12t+9=v(t)$.
+%@ e1-F | ANT(x**3-6*x**2+9*x, 3*x**2-12*x+9, [Q(1,2),Q(2,1),Q(7,3)]) == 0 | rule, $F(t)=t^3-6t^2+9t$ has $F'(t)=3t^2-12t+9=v(t)$.
+\emph{Step 3: values of $F$ at the endpoints and zeros.} $F(0)=0$, $F(1)=1-6+9=4$, $F(3)=27-54+27=0$, $F(5)=125-150+45=20$.
+%@ e1-Fv | 1**3-6*1**2+9*1 == 4 and 3**3-6*3**2+9*3 == 0 and 0 == 0 and 5**3-6*5**2+9*5 == 20 | $F(3)=27-54+27=0$, $F(5)=125-150+45=20$.
+\emph{Step 4: displacement.} $\int_0^5v\,dt=F(5)-F(0)=20-0=20$ m.
+%@ e1-d | (5**3-6*5**2+9*5)-0 == 20 | 4: displacement.} $\int_0^5v\,dt=F(5)-F(0)=20-0=20$ m.
+\emph{Step 5: distance traveled.} On each piece the distance is the absolute value of the displacement: $\abs{F(1)-F(0)}=4$, $\abs{F(3)-F(1)}=\abs{-4}=4$, $\abs{F(5)-F(3)}=20$. The distance is $4+4+20=28$ m.
+%@ e1-s | abs(4-0)+abs(0-4)+abs(20-0) == 28 | $\abs{F(5)-F(3)}=20$. The distance is $4+4+20=28$ m.
+\emph{Conclusion and check.} The particle moves $4$ m in the positive direction, then $4$ m back to where it started, then $20$ m in the positive direction: displacement $20$ m, distance $28$ m. As required, $28\ge\abs{20}$. The figure below shows the net area: the three regions have areas $4$, $4$ and $20$; the middle one counts as $-4$ in the displacement and $+4$ in the distance.
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=0.19cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:1,samples=25,variable=\t] ({\t},{3*\t*\t-12*\t+9}) -- (1,0) -- cycle;
+  \fill[red!15] (1,0) -- plot[domain=1:3,samples=40,variable=\t] ({\t},{3*\t*\t-12*\t+9}) -- (3,0) -- cycle;
+  \fill[blue!15] (3,0) -- plot[domain=3:5,samples=40,variable=\t] ({\t},{3*\t*\t-12*\t+9}) -- (5,0) -- cycle;
+  \draw[->] (-0.3,0) -- (5.6,0) node[right] {$t$};
+  \draw[->] (0,-5) -- (0,27) node[above] {$v$};
+  \draw[very thick,blue!70!black,domain=0:5,samples=60,variable=\t] plot ({\t},{3*\t*\t-12*\t+9});
+  \fill (1,0) circle (1.6pt) node[above right,font=\small] {$1$};
+%@ g-e1-z1 | 3*1**2-12*1+9 == 0 | circle (1.6pt) node[above right,font=\small] {$1$};
+  \fill (3,0) circle (1.6pt) node[above left,font=\small] {$3$};
+%@ g-e1-z3 | 3*3**2-12*3+9 == 0 | circle (1.6pt) node[above left,font=\small] {$3$};
+  \fill (0,9) circle (1.6pt) node[left,font=\small] {$9$};
+%@ g-e1-v0 | 3*0**2-12*0+9 == 9 | (0,9) circle (1.6pt) node[left,font=\small] {$9$};
+  \fill (5,24) circle (1.6pt) node[above left,font=\small] {$24$};
+%@ g-e1-v5 | 3*5**2-12*5+9 == 24 | circle (1.6pt) node[above left,font=\small] {$24$};
+  \fill (2,-3) circle (1.6pt) node[below,font=\small] {$(2,-3)$};
+%@ g-e1-min | 3*2**2-12*2+9 == -3 | circle (1.6pt) node[below,font=\small] {$(2,-3)$};
+  \node[font=\small] at (0.3,2.5) {$4$};
+%@ g-e1-a1 | (1**3-6*1**2+9*1)-0 == 4 |   \node[font=\small] at (0.3,2.5) {$4$};
+  \node[font=\small] at (2,-1.4) {$-4$};
+%@ g-e1-a2 | (3**3-6*3**2+9*3)-(1**3-6*1**2+9*1) == -4 |   \node[font=\small] at (2,-1.4) {$-4$};
+  \node[font=\small] at (4,4) {$20$};
+%@ g-e1-a3 | (5**3-6*5**2+9*5)-(3**3-6*3**2+9*3) == 20 |   \node[font=\small] at (4,4) {$20$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The graph of $v(t)=3t^2-12t+9$. Displacement $=4-4+20=20$; distance traveled $=4+4+20=28$.
+\end{center}
+\end{exmp}
+
+\begin{kc}{Out and back}{kcout}
+A runner jogs $3$ km east along a straight road, turns around, and jogs $5$ km west. Taking east as the positive direction, what are her displacement and the distance she has traveled?
+\end{kc}
+
+\begin{thm}{The displacement never exceeds the distance}{ineq}
+If $v$ is continuous on $[a,b]$, then
+\[
+\abs{\int_a^bv(t)\,dt}\le\int_a^b\abs{v(t)}\,dt ,
+\]
+with equality if and only if $v\ge0$ on all of $[a,b]$ or $v\le0$ on all of $[a,b]$.
+\end{thm}
+\begin{proof}
+For every $t$ we have $-\abs{v(t)}\le v(t)\le\abs{v(t)}$. Integrating (the integral preserves inequalities) gives $-\int_a^b\abs v\le\int_a^bv\le\int_a^b\abs v$, which is the inequality.
+
+\emph{If $v\ge0$ on $[a,b]$,} then $\abs v=v$ and both sides are equal. \emph{If $v\le0$,} then $\abs v=-v$ and $\abs{\int v}=\abs{-\int\abs v}=\int\abs v$.
+
+\emph{Conversely, suppose equality holds.} Then $\int_a^bv=\int_a^b\abs v$ or $\int_a^bv=-\int_a^b\abs v$. In the first case let $g=\abs v-v$. It is continuous, $g\ge0$, and $\int_a^bg=0$. If $g(c)>0$ for some $c$, then by continuity $g>g(c)/2$ on a subinterval of length $\delta>0$, so $\int_a^bg\ge\delta\,g(c)/2>0$, a contradiction. So $g\equiv0$, that is $\abs v=v$ and $v\ge0$. In the second case apply the first case to $-v$ (which has $\abs{-v}=\abs v$): it gives $-v\ge0$, that is $v\le0$.
+\end{proof}
+
+\begin{think}{Zero displacement}{thzero}
+Describe a motion on $[0,4]$ whose displacement is $0$ but whose distance traveled is $12$. What does the graph of $v$ look like? Can the distance be $0$ if the displacement is $0$?
+\end{think}
+
+\subsection*{Position from velocity}
+
+The displacement needs only the velocity. To say \emph{where} the object is at time $t$, we also need to know where it started.
+
+\begin{thm}{Position from velocity}{pos}
+Let $v=s'$ be continuous on $[0,\infty)$ (or on an interval starting at $0$). Then for every $t\ge0$,
+\[
+s(t)=s(0)+\int_0^tv(x)\,dx .
+\]
+\end{thm}
+\begin{proof}
+Apply Theorem~\ref{thm:disp} on the interval $[0,t]$: $\int_0^tv(x)\,dx=s(t)-s(0)$. Add $s(0)$ to both sides.
+\end{proof}
+
+In words: \emph{position at time $t$ = initial position + displacement over $[0,t]$.} The same holds with any starting time $t_0$ in place of $0$.
+
+\begin{warn}[A dummy variable]
+In $s(t)=s(0)+\int_0^tv(x)\,dx$ the letter $t$ is the upper limit, so it cannot also be the variable of integration. Use another letter, here $x$. The integral $\int_0^tv(t)\,dt$ is ambiguous and should not be written.
+\end{warn}
+
+There are two ways to find $s(t)$: (1) \emph{the antiderivative method:} $s(t)=\int v(t)\,dt=V(t)+C$, then use $s(0)$ to find $C$; (2) \emph{the integral method:} Theorem~\ref{thm:pos}. They always agree. The integral method builds the initial condition into the formula.
+
+\begin{exmp}{Position of an oscillator by two methods}{e2}
+A mass on a spring moves along a line with velocity $v(t)=3\cos2t$ (in cm/s, $t$ in s). At $t=0$ it is at $s(0)=2$ cm. (a) Find $s(t)$ by both methods. (b) Find the greatest and least positions and when they are first reached. (c) When does it first return to its starting position, and in which direction is it then moving?
+
+\textbf{Solution.} (a) \emph{Method 1 (antiderivative).} With $u=2t$, $\int3\cos2t\,dt=\frac32\sin2t+C$ (Theorem~\ref{8.1-thm:subst}). Check: $\frac{d}{dt}\left(\frac32\sin2t\right)=\frac32\cdot2\cos2t=3\cos2t$. The initial condition: $s(0)=\frac32\sin0+C=C=2$. So $s(t)=\frac32\sin2t+2$.
+%@ e2-m1 | ANT(Q(3,2)*sin(2*x)+2, 3*cos(2*x), [Q(1,3),Q(3,2),Q(5,1)]) == 0 and Q(3,2)*sin(0)+2 == 2 | $s(0)=\frac32\sin0+C=C=2$. So $s(t)=\frac32\sin2t+2$.
+
+\emph{Method 2 (integral).} By Theorem~\ref{thm:pos}, $s(t)=2+\int_0^t3\cos2x\,dx=2+\left[\frac32\sin2x\right]_0^t=2+\frac32\sin2t-\frac32\sin0=2+\frac32\sin2t$.
+%@ e2-m2 | Q(3,2)*sin(0) == 0 and 2+Q(3,2)*sin(2*x)-Q(3,2)*sin(0)-(Q(3,2)*sin(2*x)+2) == 0 | \emph{Method 2 (integral).} By Theorem~\ref{thm:pos}, $s(t)=2+\int_0^t3\cos2x\,dx=2+\left[\frac32\sin2x\right]_0^t=2+\frac32\sin2t-\frac32\sin0=2+\frac32\sin2t$.
+
+The two answers agree: $s(t)=2+\frac32\sin2t$.
+
+(b) Because $-1\le\sin2t\le1$, we get $2-\frac32\le s\le2+\frac32$, so $\frac12\le s\le\frac72$. The greatest position $\frac72$ occurs when $\sin2t=1$, first at $2t=\frac\pi2$, that is $t=\frac\pi4$. The least position $\frac12$ occurs when $\sin2t=-1$, first at $2t=\frac{3\pi}2$, that is $t=\frac{3\pi}4$. (Check with $v$: $v(\pi/4)=3\cos\frac\pi2=0$, and $v$ changes from $+$ to $-$ there.) In particular the mass never reaches $s=0$.
+%@ e2-b | 2+Q(3,2) == Q(7,2) and 2-Q(3,2) == Q(1,2) and cos(2*(pi/4)) == 0 and 3*cos(2*(3*pi/4)) == 0 and 2+Q(3,2)*sin(2*(pi/4)) == Q(7,2) | $-$ there.) In particular the mass never reaches $s=0$.
+
+(c) It is back at $s=2$ when $\frac32\sin2t=0$, first when $2t=\pi$, that is $t=\frac\pi2$. There $v(\pi/2)=3\cos\pi=-3<0$: the mass is moving in the negative direction (downward in the picture of a vertical spring if positive is up).
+%@ e2-c | 2+Q(3,2)*sin(2*(pi/2)) == 2 and 3*cos(2*(pi/2)) == -3 | $v(\pi/2)=3\cos\pi=-3<0$: the mass is moving in the negative direction (downward in the picture of a vertical spring if positive is up).
+\end{exmp}
+
+\begin{kc}{Displacement or position?}{kcpos}
+For the motion in Example~\ref{ex:e2}, is $s(t)$ a number or a function? For fixed times $t=a$ and $t=b$, is the displacement $s(b)-s(a)$ a number or a function? What is the displacement over $[0,\pi/2]$?
+\end{kc}
+
+\begin{think}{Why do we need $s(0)$?}{thinit}
+Two objects have the same velocity function $v(t)=3\cos2t$ for all $t$, but one starts at $s(0)=2$ and the other at $s(0)=-5$. Which of the following are the same for both: the displacement over $[0,\pi/2]$, the distance traveled over $[0,\pi/2]$, the position at $t=\pi/2$, the time of the first maximum?
+\end{think}
+
+\begin{exmp}{A piecewise velocity: a delivery drone}{e3}
+A drone flies in a straight line. Its velocity (in m/s) is
+\[
+v(t)=\begin{cases}4t&0\le t<5,\\20&5\le t<15,\\80-4t&15\le t\le20.\end{cases}
+\]
+Find (a) the distance it flies, (b) its position at $t=12$ s, and (c) its average velocity over $[0,20]$. Assume $s(0)=0$.
+
+\textbf{Solution.} Here $v\ge0$ everywhere (at $t=20$, $v=80-80=0$, and the pieces join: $4\cdot5=20$ and $80-4\cdot15=20$), so the distance equals the displacement, and by Theorem~\ref{thm:disp} we integrate each piece separately, over the interval where its formula holds.
+%@ e3-cont | 4*5 == 20 and 80-4*15 == 20 and 80-4*20 == 0 | $80-4\cdot15=20$), so the distance equals the displacement, and by Theorem~\ref{thm:disp} we integrate each piece separately, over the interval where its formula holds.
+(a) \[\int_0^{5}4t\,dt=\left[2t^2\right]_0^5=50,\qquad\int_5^{15}20\,dt=\left[20t\right]_5^{15}=300-100=200,\]
+%@ e3-a12 | ANT(2*x**2, 4*x, [Q(1,2),Q(3,1)]) == 0 and 2*5**2-2*0**2 == 50 and 20*15-20*5 == 200 | (a) \[\int_0^{5}4t\,dt=\left[2t^2\right]_0^5=50,\qquad\int_5^{15}20\,dt=\left[20t\right]_5^{15}=300-100=200,\]
+and, with $\int(80-4t)\,dt=80t-2t^2$,
+\[\int_{15}^{20}(80-4t)\,dt=\left[80t-2t^2\right]_{15}^{20}=(1600-800)-(1200-450)=800-750=50.\]
+%@ e3-a3 | ANT(80*x-2*x**2, 80-4*x, [Q(1,2),Q(3,1)]) == 0 and (80*20-2*20**2)-(80*15-2*15**2) == 50 | \[\int_{15}^{20}(80-4t)\,dt=\left[80t-2t^2\right]_{15}^{20}=(1600-800)-(1200-450)=800-750=50.\]
+The distance is $50+200+50=300$ m. Check with geometry: the region under the graph is a trapezoid with parallel sides $20$ and $10$ (on the $t$-axis) and height $20$, so its area is $\frac{20+10}2\cdot20=300$. \checkmark
+%@ e3-tot | Q(20+10,2)*20 == 300 and 50+200+50 == 300 | so its area is $\frac{20+10}2\cdot20=300$. \checkmark
+
+(b) Position at $t=12$: $s(12)=s(0)+\int_0^{12}v\,dx=0+\int_0^54x\,dx+\int_5^{12}20\,dx=50+20(12-5)=50+140=190$ m.
+%@ e3-b | 50+20*(12-5) == 190 | $s(12)=s(0)+\int_0^{12}v\,dx=0+\int_0^54x\,dx+\int_5^{12}20\,dx=50+20(12-5)=50+140=190$ m.
+
+(c) The average velocity over $[0,20]$ is the displacement divided by the elapsed time: $\frac{300}{20}=15$ m/s. This is the constant velocity that would cover the same $300$ m in $20$ s.
+%@ e3-c | Q(300,20) == 15 | velocity that would cover the same $300$ m in $20$ s.
+
+\begin{center}
+\begin{tikzpicture}[x=0.38cm,y=0.12cm]
+  \fill[blue!12] (0,0) -- (5,20) -- (15,20) -- (20,0) -- cycle;
+  \draw[->] (-0.5,0) -- (21.5,0) node[right] {$t$};
+  \draw[->] (0,-2) -- (0,26) node[above] {$v$};
+  \draw[very thick,blue!70!black] (0,0) -- (5,20) -- (15,20) -- (20,0);
+  \fill (5,20) circle (1.6pt) node[above left,font=\small] {$(5,20)$};
+%@ g-e3-p1 | 4*5 == 20 | circle (1.6pt) node[above left,font=\small] {$(5,20)$};
+  \fill (15,20) circle (1.6pt) node[above right,font=\small] {$(15,20)$};
+%@ g-e3-p2 | 80-4*15 == 20 | (1.6pt) node[above right,font=\small] {$(15,20)$};
+  \fill (20,0) circle (1.6pt) node[below,font=\small] {$20$};
+%@ g-e3-p3 | 80-4*20 == 0 | (20,0) circle (1.6pt) node[below,font=\small] {$20$};
+  \node[font=\small] at (2.9,5.5) {$50$};
+%@ g-e3-a1 | 2*5**2-2*0**2 == 50 |   \node[font=\small] at (2.9,5.5) {$50$};
+  \node[font=\small] at (10,10) {$200$};
+%@ g-e3-a2 | 20*15-20*5 == 200 |   \node[font=\small] at (10,10) {$200$};
+  \node[font=\small] at (17.6,5.5) {$50$};
+%@ g-e3-a3 | (80*20-2*20**2)-(80*15-2*15**2) == 50 |   \node[font=\small] at (17.6,5.5) {$50$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The velocity of the drone. The area under the graph is the distance, $50+200+50=300$ m.
+\end{center}
+\end{exmp}
+
+\subsection*{Acceleration}
+
+Acceleration is to velocity what velocity is to position: $a(t)=v'(t)$. Everything above applies once $s$ is replaced by $v$ and $v$ by $a$.
+
+\begin{thm}{Velocity from acceleration}{vel}
+Let $a=v'$ be continuous on $[0,\infty)$. The change in velocity over $[c,d]$ is $v(d)-v(c)=\int_c^da(x)\,dx$, and for every $t\ge0$
+\[
+v(t)=v(0)+\int_0^ta(x)\,dx .
+\]
+\end{thm}
+\begin{proof}
+The function $v$ is an antiderivative of the continuous function $a$, so the Fundamental Theorem of Calculus gives $\int_c^da(x)\,dx=v(d)-v(c)$. Taking $c=0$ and $d=t$ and adding $v(0)$ gives the second formula.
+\end{proof}
+
+To find the position from the acceleration, apply this theorem and then Theorem~\ref{thm:pos}: first $v$ from $a$ and $v(0)$, then $s$ from $v$ and $s(0)$. A very common case is a constant acceleration, such as gravity near the surface of the Earth, $a=-g$ with $g\approx9.8$ m/s$^2$ (taking up as positive).
+
+\begin{thm}{Constant acceleration}{const}
+If $a(t)=\alpha$ is constant, then
+\[
+v(t)=v_0+\alpha t,\qquad s(t)=s_0+v_0t+\tfrac12\alpha t^2,\qquad v(t)^2=v_0^2+2\alpha\,(s(t)-s_0),
+\]
+where $v_0=v(0)$ and $s_0=s(0)$.
+\end{thm}
+\begin{proof}
+By Theorem~\ref{thm:vel}, $v(t)=v_0+\int_0^t\alpha\,dx=v_0+\alpha t$. By Theorem~\ref{thm:pos}, $s(t)=s_0+\int_0^t(v_0+\alpha x)\,dx=s_0+\left[v_0x+\frac12\alpha x^2\right]_0^t=s_0+v_0t+\frac12\alpha t^2$. For the third formula, compute $v^2-v_0^2=(v_0+\alpha t)^2-v_0^2=2v_0\alpha t+\alpha^2t^2=2\alpha\left(v_0t+\tfrac12\alpha t^2\right)=2\alpha(s-s_0)$.
+%@ pr-const | expand((b+a*x)**2-b**2-2*a*(b*x+a*x**2/2)) == 0 | t^2\right)=2\alpha(s-s_0)$.
+\end{proof}
+
+\begin{exmp}{A stone thrown from a bridge}{e4}
+A stone is thrown straight up with velocity $19.6$ m/s from a bridge $24.5$ m above a river. Measure $s$ upward from the river, so $s(0)=24.5$, and take $a=-9.8$ m/s$^2$. Find (a) $v(t)$ and $s(t)$; (b) the greatest height and when it is reached; (c) when and how fast the stone hits the river; (d) the displacement and the distance traveled from launch to impact.
+
+\textbf{Solution.} (a) By Theorem~\ref{thm:const} with $\alpha=-9.8$, $v_0=19.6$, $s_0=24.5$: $v(t)=19.6-9.8t$ and $s(t)=24.5+19.6t-4.9t^2$.
+%@ e4-a | ANT(Q(245,10)+Q(196,10)*x-Q(49,10)*x**2, Q(196,10)-Q(98,10)*x, [Q(1,2),Q(3,1)]) == 0 and Q(98,10)/2 == Q(49,10) | $v(t)=19.6-9.8t$ and $s(t)=24.5+19.6t-4.9t^2$.
+
+(b) The stone is highest when it stops rising, $v(t)=0$: $19.6-9.8t=0$, so $t=2$ s (and $v$ changes from positive to negative there). The height is $s(2)=24.5+39.2-19.6=44.1$ m.
+%@ e4-b | Q(196,10)/Q(98,10) == 2 and Q(245,10)+Q(196,10)*2-Q(49,10)*2**2 == Q(441,10) | there). The height is $s(2)=24.5+39.2-19.6=44.1$ m.
+
+(c) The stone hits the river when $s(t)=0$, with $t>0$: $24.5+19.6t-4.9t^2=0$. Divide by $-4.9$: $t^2-4t-5=0$, that is $(t-5)(t+1)=0$. Only $t=5$ s makes sense. The velocity is $v(5)=19.6-49=-29.4$ m/s, so the stone is moving downward at $29.4$ m/s.
+%@ e4-c | expand((x-5)*(x+1)-(x**2-4*x-5)) == 0 and Q(245,10)+Q(196,10)*5-Q(49,10)*5**2 == 0 and Q(196,10)-Q(98,10)*5 == -Q(294,10) | m/s, so the stone is moving downward at $29.4$ m/s.
+\emph{Check with the third formula of Theorem~\ref{thm:const}:} $v^2=19.6^2+2(-9.8)(0-24.5)=384.16+480.2=864.36$, and $29.4^2=864.36$. \checkmark
+%@ e4-chk | Q(196,10)**2+2*(-Q(98,10))*(0-Q(245,10)) == Q(86436,100) and Q(294,10)**2 == Q(86436,100) | and $29.4^2=864.36$. \checkmark
+
+(d) The displacement is $s(5)-s(0)=0-24.5=-24.5$ m. For the distance, $v$ changes sign at $t=2$, so we add the two legs: up, $s(2)-s(0)=44.1-24.5=19.6$ m; down, $\abs{s(5)-s(2)}=\abs{0-44.1}=44.1$ m. The distance traveled is $19.6+44.1=63.7$ m. (As expected, $63.7\ge24.5$.)
+%@ e4-d | Q(441,10)-Q(245,10) == Q(196,10) and abs(0-Q(441,10)) == Q(441,10) and Q(196,10)+Q(441,10) == Q(637,10) | is $19.6+44.1=63.7$ m. (As expected, $63.7\ge24.5$.)
+
+\begin{center}
+\begin{tikzpicture}[x=1.6cm,y=0.075cm]
+  \draw[->] (-0.3,0) -- (5.7,0) node[right] {$t$};
+  \draw[->] (0,-4) -- (0,52) node[above] {$s$};
+  \draw[very thick,blue!70!black,domain=0:5,samples=60,variable=\t] plot ({\t},{24.5+19.6*\t-4.9*\t*\t});
+  \draw[dashed] (2,0) -- (2,44.1);
+  \fill (0,24.5) circle (1.6pt) node[left,font=\small] {$24.5$};
+%@ g-e4-s0 | Q(245,10)+Q(196,10)*0-Q(49,10)*0**2 == Q(245,10) | circle (1.6pt) node[left,font=\small] {$24.5$};
+  \fill (2,44.1) circle (1.6pt) node[above,font=\small] {$(2,44.1)$};
+%@ g-e4-top | Q(245,10)+Q(196,10)*2-Q(49,10)*2**2 == Q(441,10) | circle (1.6pt) node[above,font=\small] {$(2,44.1)$};
+  \fill (5,0) circle (1.6pt) node[below,font=\small] {$5$};
+%@ g-e4-hit | Q(245,10)+Q(196,10)*5-Q(49,10)*5**2 == 0 | (5,0) circle (1.6pt) node[below,font=\small] {$5$};
+\end{tikzpicture}
+\par\small\emph{Figure.} Height of the stone above the river: $s(t)=24.5+19.6t-4.9t^2$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A variable acceleration}{e5}
+An object has acceleration $a(t)=\dfrac{12}{(t+2)^2}$ (in m/s$^2$) for $t\ge0$, with $v(0)=3$ m/s and $s(0)=0$. Find $v(t)$ and $s(t)$, the position at $t=4$, and the limit of the velocity as $t\to\infty$.
+
+\textbf{Solution.} \emph{Velocity.} By Theorem~\ref{thm:vel}, $v(t)=3+\int_0^t\frac{12}{(x+2)^2}\,dx$. An antiderivative of $12(x+2)^{-2}$ is $-12(x+2)^{-1}$ (substitute $u=x+2$, Theorem~\ref{8.1-thm:subst}); check: $\frac{d}{dx}\left(-12(x+2)^{-1}\right)=12(x+2)^{-2}$. So
+\[
+v(t)=3+\left[-\frac{12}{x+2}\right]_0^t=3-\frac{12}{t+2}+\frac{12}2=9-\frac{12}{t+2}.
+\]
+%@ e5-v | ANT(-12/(x+2), 12/(x+2)**2, [Q(1,2),Q(3,1)]) == 0 and 3-12/(x+2)+Q(12,2)-(9-12/(x+2)) == 0 | \]
+\emph{Position.} By Theorem~\ref{thm:pos}, $s(t)=0+\int_0^t\left(9-\frac{12}{x+2}\right)dx=\left[9x-12\ln(x+2)\right]_0^t=9t-12\ln(t+2)+12\ln2$, that is $s(t)=9t-12\ln\frac{t+2}2$. (We used $x+2>0$, so no absolute value is needed in the logarithm.)
+%@ e5-s | ANT(9*x-12*log(x+2), 9-12/(x+2), [Q(1,2),Q(3,1)]) == 0 and NUM(9*Q(3,1)-12*log(Q(3,1)+2)+12*log(2), 9*Q(3,1)-12*log((Q(3,1)+2)/2)) + NUM(9*Q(7,2)-12*log(Q(7,2)+2)+12*log(2), 9*Q(7,2)-12*log((Q(7,2)+2)/2)) == 0 | $x+2>0$, so no absolute value is needed in the logarithm.)
+\emph{At $t=4$:} $s(4)=36-12\ln3\approx22.82$ m.
+%@ e5-s4 | abs((36-12*log(3)).evalf(30)-Q(2282,100)) < Q(1,100) and NUM(9*4-12*log(Q(4+2,2)), 36-12*log(3)) == 0 | \emph{At $t=4$:} $s(4)=36-12\ln3\approx22.82$ m.
+\emph{Long-term velocity.} $\lim_{t\to\infty}\left(9-\frac{12}{t+2}\right)=9$ m/s. The object speeds up and levels off at $9$ m/s even though the acceleration is always positive (it tends to $0$ quickly).
+%@ e5-lim | limit(9-12/(x+2), x, oo) == 9 | is always positive (it tends to $0$ quickly).
+\end{exmp}
+
+\begin{kc}{Constant acceleration}{kcacc}
+A car brakes from $30$ m/s at the constant acceleration $-6$ m/s$^2$. How long does it take to stop, and how far does it travel in that time?
+\end{kc}
+
+\subsection*{Net change and future value}
+
+Nothing in the arguments above used the fact that $s$ was a position. Any quantity $Q(t)$ that changes with time has a rate of change $Q'(t)$, and the same theorems hold.
+
+\begin{thm}{Net change and future value}{net}
+Let $Q$ be differentiable with a continuous rate of change $Q'$ on $[a,b]$. The \emph{net change} in $Q$ between $t=a$ and $t=b$ is
+\[
+Q(b)-Q(a)=\int_a^bQ'(t)\,dt ,
+\]
+and, given the initial value $Q(0)$, the \emph{future value} at time $t\ge0$ is
+\[
+Q(t)=Q(0)+\int_0^tQ'(x)\,dx .
+\]
+\end{thm}
+\begin{proof}
+$Q$ is an antiderivative of the continuous function $Q'$, so the Fundamental Theorem of Calculus gives the first formula. For $[0,t]$ it says $\int_0^tQ'(x)\,dx=Q(t)-Q(0)$; add $Q(0)$.
+\end{proof}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Motion on a line & Any quantity\\
+\midrule
+position $s(t)$ & amount $Q(t)$ (volume, population, cost)\\
+velocity $s'(t)=v(t)$ & rate of change $Q'(t)$\\
+displacement $s(b)-s(a)=\int_a^bv\,dt$ & net change $Q(b)-Q(a)=\int_a^bQ'\,dt$\\
+future position $s(0)+\int_0^tv\,dx$ & future value $Q(0)+\int_0^tQ'\,dx$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warn}[Units]
+The integrand $Q'(x)\,dx$ is (units of $Q$ per unit of time)$\,\times\,$(units of time), which is in the units of $Q$. For instance, a rate in liters per minute integrated over minutes gives liters. Always check that the units of the limits, the rate and the answer are consistent, and write the units in the answer.
+\end{warn}
+
+\begin{exmp}{A cell culture and its limiting population}{e6}
+A culture has $250$ cells when nutrient is added at $t=0$. The population grows at the rate $P'(t)=60e^{-0.2t}$ cells per hour. (a) Find $P(t)$. (b) How many cells are added between $t=2$ and $t=5$? (c) What happens to $P$ as $t\to\infty$?
+
+\textbf{Solution.} (a) An antiderivative of $60e^{-0.2x}$ is $-300e^{-0.2x}$, because $\frac{d}{dx}\left(-300e^{-0.2x}\right)=-300(-0.2)e^{-0.2x}=60e^{-0.2x}$. By Theorem~\ref{thm:net},
+\[
+P(t)=250+\int_0^t60e^{-0.2x}\,dx=250+\left[-300e^{-0.2x}\right]_0^t=250-300e^{-0.2t}+300=550-300e^{-0.2t}.
+\]
+%@ e6-a | ANT(-300*exp(-Q(1,5)*x), 60*exp(-Q(1,5)*x), [Q(1,2),Q(3,1)]) == 0 and 250-300*exp(-Q(1,5)*x)+300-(550-300*exp(-Q(1,5)*x)) == 0 | \]
+Check: $P(0)=550-300=250$. \checkmark
+
+(b) The number added between $t=2$ and $t=5$ is the net change $P(5)-P(2)=\left(550-300e^{-1}\right)-\left(550-300e^{-0.4}\right)=300\left(e^{-0.4}-e^{-1}\right)\approx90.7$ cells.
+%@ e6-b | NUM((550-300*exp(-1))-(550-300*exp(-Q(2,5))), 300*(exp(-Q(2,5))-exp(-1))) == 0 and abs((300*(exp(-Q(2,5))-exp(-1))).evalf(30)-Q(9073,100)) < Q(1,100) | $P(5)-P(2)=\left(550-300e^{-1}\right)-\left(550-300e^{-0.4}\right)=300\left(e^{-0.4}-e^{-1}\right)\approx90.7$ cells.
+(c) As $t\to\infty$, $e^{-0.2t}\to0$, so $P(t)\to550$: the population levels off at $550$ cells, although the growth rate is positive for every $t$. Equivalently, the improper integral $\int_0^\infty60e^{-0.2x}\,dx=\lim_{t\to\infty}\int_0^t60e^{-0.2x}\,dx$ (Definition~\ref{8.9-def:inf}) converges to $300$, and $250+300=550$.
+%@ e6-c | limit(550-300*exp(-Q(1,5)*x), x, oo) == 550 | converges to $300$, and $250+300=550$.
+
+\begin{center}
+\begin{tikzpicture}[x=0.28cm,y=0.0085cm]
+  \draw[->] (-0.5,0) -- (31,0) node[right] {$t$};
+  \draw[->] (0,-30) -- (0,640) node[above] {$P$};
+  \draw[dashed] (0,550) -- (30,550);
+  \draw[very thick,blue!70!black,domain=0:30,samples=60,variable=\t] plot ({\t},{550-300*exp(-0.2*\t)});
+  \fill (0,250) circle (1.6pt) node[left,font=\small] {$250$};
+%@ g-e6-p0 | 550-300*exp(0) == 250 | (0,250) circle (1.6pt) node[left,font=\small] {$250$};
+  \fill (2,550-300*0.67032) circle (1.6pt) node[below right,font=\small] {$P(2)$};
+%@ g-e6-p2 | abs((550-300*exp(-Q(2,5))).evalf(30)-(550-300*0.67032)) < Q(1,1000) | circle (1.6pt) node[below right,font=\small] {$P(2)$};
+  \fill (5,550-300*0.36788) circle (1.6pt) node[below right,font=\small] {$P(5)$};
+%@ g-e6-p5 | abs((550-300*exp(-1)).evalf(30)-(550-300*0.36788)) < Q(1,1000) | circle (1.6pt) node[below right,font=\small] {$P(5)$};
+  \node[above,font=\small] at (22,550) {$P=550$};
+\end{tikzpicture}
+\par\small\emph{Figure.} $P(t)=550-300e^{-0.2t}$: increasing, but approaching $550$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Marginal cost}{e7}
+A publisher estimates the marginal cost of printing a title as $C'(x)=45-0.003x$ dollars per book, where $x$ is the number of books printed so far ($0\le x\le10000$). Find the cost of printing the $2001$st through the $5000$th book, and compare it with the cost of the $5001$st through the $8000$th.
+
+\textbf{Solution.} The cost of the books numbered $2001$ through $5000$ is $C(5000)-C(2000)=\int_{2000}^{5000}C'(x)\,dx$ by Theorem~\ref{thm:net} (we treat $x$ as continuous). An antiderivative of $45-0.003x$ is $45x-0.0015x^2$. So
+\[
+\begin{aligned}
+\int_{2000}^{5000}(45-0.003x)\,dx&=\Big[45x-0.0015x^2\Big]_{2000}^{5000}=(225000-37500)-(90000-6000)\\
+&=187500-84000=103500
+\end{aligned}
+\]
+dollars. Similarly, for the books numbered $5001$ through $8000$,
+\[
+\Big[45x-0.0015x^2\Big]_{5000}^{8000}=(360000-96000)-(225000-37500)=264000-187500=76500
+\]
+dollars. The cost of the second block of $3000$ books is smaller, because the marginal cost is decreasing: each additional book costs less than the one before.
+%@ e7-ant | ANT(45*x-Q(15,10000)*x**2, 45-Q(3,1000)*x, [Q(1,2),Q(3,1)]) == 0 and (45*5000-Q(15,10000)*5000**2)-(45*2000-Q(15,10000)*2000**2) == 103500 and (45*8000-Q(15,10000)*8000**2)-(45*5000-Q(15,10000)*5000**2) == 76500 | $3000$ books is smaller, because the marginal cost is decreasing: each additional book costs less than the one before.
+\end{exmp}
+
+\begin{think}{A positive rate and a bounded total}{thbdd}
+In Example~\ref{ex:e6} the growth rate $P'(t)=60e^{-0.2t}$ is positive for every $t$, yet $P(t)$ never exceeds $550$. How can adding a positive amount at every moment not make $P$ grow without bound? What would you need to know about $P'$ to be sure that $P$ stays bounded?
+\end{think}
+
+
+\subsection*{Rates that change sign, and averages}
+
+A rate of change can be positive for a while and then negative; the quantity then rises and falls. The net change adds the signed areas, exactly as the displacement does. The \emph{average rate of change} of $Q$ over $[a,b]$ is $\dfrac{Q(b)-Q(a)}{b-a}=\dfrac1{b-a}\int_a^bQ'(t)\,dt$, which is the average value of $Q'$ on $[a,b]$ (Calculus I). It is the constant rate that would produce the same net change in the same time: for a velocity, the \emph{average velocity}, the constant velocity with the same displacement.
+
+\begin{exmp}{A fish pond whose rate changes sign}{e8}
+The number of fish in a pond changes at the rate $N'(t)=40-10t$ fish per week (hatching minus harvesting and losses), $t$ in weeks, and $N(0)=100$. Find $N(t)$; when is the population greatest, and what is it then; when does the pond run out of fish? What is the net change over $[0,4]$ and over $[4,10]$?
+
+\textbf{Solution.} \emph{Future value.} By Theorem~\ref{thm:net}, $N(t)=100+\int_0^t(40-10x)\,dx=100+\left[40x-5x^2\right]_0^t=100+40t-5t^2$.
+%@ e8-N | ANT(40*x-5*x**2, 40-10*x, [Q(1,2),Q(3,1)]) == 0 and 100+40*x-5*x**2-(100+(40*x-5*x**2)-(40*0-5*0**2)) == 0 | \textbf{Solution.} \emph{Future value.} By Theorem~\ref{thm:net}, $N(t)=100+\int_0^t(40-10x)\,dx=100+\left[40x-5x^2\right]_0^t=100+40t-5t^2$.
+\emph{The maximum.} The rate $40-10t$ is positive for $t<4$, zero at $t=4$ and negative for $t>4$, so $N$ increases until $t=4$ and decreases afterwards: the greatest population is $N(4)=100+160-80=180$ fish at $t=4$ weeks.
+%@ e8-max | 40-10*4 == 0 and 100+40*4-5*4**2 == 180 | is $N(4)=100+160-80=180$ fish at $t=4$ weeks.
+\emph{When the pond is empty.} $N(t)=0$ means $5t^2-40t-100=0$. Divide by $5$: $t^2-8t-20=0$, that is $(t-10)(t+2)=0$. The positive solution is $t=10$ weeks. (The model is meaningful only for $0\le t\le10$, because a population cannot be negative.)
+%@ e8-zero | expand((x-10)*(x+2)-(x**2-8*x-20)) == 0 and 100+40*10-5*10**2 == 0 | t\le10$, because a population cannot be negative.)
+\emph{Net changes.} $N(4)-N(0)=180-100=80$ fish gained over $[0,4]$. $N(10)-N(4)=0-180=-180$, a loss of $180$ over $[4,10]$. Check with the integral: $\int_4^{10}(40-10t)\,dt=\left[40t-5t^2\right]_4^{10}=(400-500)-(160-80)=-100-80=-180$. \checkmark
+%@ e8-net | 180-100 == 80 and (40*10-5*10**2)-(40*4-5*4**2) == -180 | $\int_4^{10}(40-10t)\,dt=\left[40t-5t^2\right]_4^{10}=(400-500)-(160-80)=-100-80=-180$. \checkmark
+The total amount of change in the pond, ignoring direction, is $80+180=260$ fish (the analogue of the distance traveled: $\int_0^{10}\abs{N'(t)}\,dt=260$).
+\end{exmp}
+
+\begin{exmp}{Two cyclists approaching each other}{e9}
+Towns A and B are $15$ km apart on a straight road. At noon Ana leaves A for B with speed $v_A(t)=\dfrac{18}{(t+1)^2}$ km/h and Ben leaves B for A with speed $v_B(t)=\dfrac{12}{(t+1)^2}$ km/h ($t$ in hours; both slow down as they tire). (a) Find their positions as functions of time. (b) When and where do they meet? (c) Show that they meet only if the towns are less than $30$ km apart.
+
+\textbf{Solution.} (a) Measure position $x$ from A toward B. Ana starts at $x=0$ and moves in the positive direction, so by Theorem~\ref{thm:pos}
+\[
+x_A(t)=0+\int_0^t\frac{18}{(u+1)^2}\,du=\left[-\frac{18}{u+1}\right]_0^t=18-\frac{18}{t+1}=\frac{18t}{t+1}.
+\]
+%@ e9-A | ANT(-18/(x+1), 18/(x+1)**2, [Q(1,2),Q(3,1)]) == 0 and simplify(18-18/(x+1)-18*x/(x+1)) == 0 | \]
+Ben starts at $x=15$ and moves in the negative direction, so his velocity is $-v_B(t)$ and
+\[
+x_B(t)=15+\int_0^t\left(-\frac{12}{(u+1)^2}\right)du=15-\left(12-\frac{12}{t+1}\right)=3+\frac{12}{t+1}=\frac{3(t+5)}{t+1}.
+%@ e9-B | simplify(15-(12-12/(x+1))-(3+12/(x+1))) == 0 and simplify(3+12/(x+1)-3*(x+5)/(x+1)) == 0 | =\frac{3(t+5)}{t+1}.
+\]
+(b) They meet when $x_A(t)=x_B(t)$: $\frac{18t}{t+1}=15-\frac{12t}{t+1}$, so $\frac{30t}{t+1}=15$, so $30t=15t+15$ and $t=1$ hour (1:00 p.m.). Then $x_A(1)=\frac{18}2=9$ km from A, and $x_B(1)=\frac{3\cdot6}2=9$ km. \checkmark Ana has ridden $9$ km and Ben $6$ km.
+%@ e9-meet | 30*1 == 15*1+15 and Q(18*1,1+1) == 9 and Q(3*(1+5),1+1) == 9 and 15-9 == 6 | km. \checkmark Ana has ridden $9$ km and Ben $6$ km.
+
+(c) Let the towns be $D$ km apart. Then $x_A(t)=18p(t)$ and $x_B(t)=D-12p(t)$ with $p(t)=\frac t{t+1}$. They meet when $30p(t)=D$, that is $p(t)=\frac D{30}$. Now $p(t)=1-\frac1{t+1}$ increases from $0$ and stays below $1$, and takes every value in $[0,1)$. So $p(t)=\frac D{30}$ has a solution if and only if $D<30$. (Ana can never ride more than $18$ km and Ben never more than $12$ km.)
+%@ e9-D | simplify(x/(x+1)-(1-1/(x+1))) == 0 | more than $18$ km and Ben never more than $12$ km.)
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=0.2cm]
+  \draw[->] (-0.3,0) -- (5.5,0) node[right] {$t$};
+  \draw[->] (0,-1.5) -- (0,20.5) node[above] {$x$};
+  \draw[dashed] (0,18) -- (5,18);
+  \draw[dashed] (0,3) -- (5,3);
+  \draw[very thick,blue!70!black,domain=0:5,samples=60,variable=\t] plot ({\t},{18*\t/(\t+1)});
+  \draw[very thick,red!70!black,domain=0:5,samples=60,variable=\t] plot ({\t},{3*(\t+5)/(\t+1)});
+  \fill (0,15) circle (1.6pt) node[left,font=\small] {$15$};
+%@ g-e9-B0 | 3*(0+5)/(0+1) == 15 | (0,15) circle (1.6pt) node[left,font=\small] {$15$};
+  \fill (1,9) circle (1.6pt) node[below right,font=\small] {$(1,9)$};
+%@ g-e9-meet | Q(18*1,1+1) == 9 | circle (1.6pt) node[below right,font=\small] {$(1,9)$};
+  \node[right,font=\small] at (5,18) {$18$};
+%@ g-e9-asA | 18*Q(1,1) == 18 |   \node[right,font=\small] at (5,18) {$18$};
+  \node[right,font=\small] at (5,3) {$3$};
+%@ g-e9-asB | 15-12 == 3 |   \node[right,font=\small] at (5,3) {$3$};
+  \node[font=\small,blue!70!black] at (3.4,13.2) {Ana};
+  \node[font=\small,red!70!black] at (3.4,6.8) {Ben};
+\end{tikzpicture}
+\par\small\emph{Figure.} Positions of Ana (rising to $18$) and Ben (falling to $3$): they meet at $(1,9)$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A depleting resource and an improper integral}{e10}
+A mine extracts ore at the rate $r(t)=12e^{-kt}$ thousand tonnes per year, $t$ years from now, where $k>0$ is a constant (the rate of extraction decays). The total reserve is $300$ thousand tonnes. (a) Find the amount $Q(t)$ extracted by time $t$ and its limit as $t\to\infty$. (b) For which $k$ do the reserves last forever? (c) For $k=0.05$, when has $90\%$ of everything that will ever be extracted been taken?
+
+\textbf{Solution.} (a) With $Q(0)=0$, Theorem~\ref{thm:net} gives $Q(t)=\int_0^t12e^{-kx}\,dx=\left[-\frac{12}ke^{-kx}\right]_0^t=\frac{12}k\left(1-e^{-kt}\right)$. Because $k>0$, $e^{-kt}\to0$, so $Q(t)\to\frac{12}k$. This limit is, by definition, the improper integral $\int_0^\infty12e^{-kx}\,dx$ (Definition~\ref{8.9-def:inf}): the total amount that will \emph{ever} be extracted is $\frac{12}k$ thousand tonnes.
+%@ e10-a | simplify(diff(-Integer(12)/Symbol('p')*exp(-Symbol('p')*x), x)-12*exp(-Symbol('p')*x)) == 0 | be extracted is $\frac{12}k$ thousand tonnes.
+(b) The reserves last forever if the total ever extracted does not exceed the reserve: $\frac{12}k\le300$, that is $k\ge\frac{12}{300}=0.04$. For $k=0.04$ exactly, the amount extracted approaches the entire reserve of $300$ but never reaches it. For $k<0.04$ the reserves run out in finite time: solving $Q(t)=300$ is possible because the limit $\frac{12}k$ exceeds $300$.
+%@ e10-b | Q(12,300) == Q(4,100) | possible because the limit $\frac{12}k$ exceeds $300$.
+(c) For $k=0.05$ the total is $\frac{12}{0.05}=240$ thousand tonnes (so the reserve is never used up: $240<300$). We want $Q(t)=0.9\cdot240=216$: $240\left(1-e^{-0.05t}\right)=216$, so $e^{-0.05t}=1-0.9=0.1$, so $-0.05t=\ln0.1=-\ln10$ and $t=\frac{\ln10}{0.05}=20\ln10\approx46.05$ years.
+%@ e10-c | abs((20*log(10)).evalf(30)-Q(4605,100)) < Q(1,100) and NUM(12/Q(5,100)*(1-exp(-Q(5,100)*20*log(10)))-216, 0) == 0 | and $t=\frac{\ln10}{0.05}=20\ln10\approx46.05$ years.
+\end{exmp}
+
+\subsection*{Looking ahead}
+
+Everything in this section is about a rate of change that is a given function of time. In many problems the rate depends on the amount itself (a population grows faster when it is larger, a hot object cools faster when it is hotter); these \emph{differential equations} are the subject of a later chapter. In this chapter the same slice-and-sum idea gives areas between curves, volumes of solids, lengths of curves and areas of surfaces, and then work, mass and the force of water on a dam. For motion in a plane or in space, the position is a vector-valued function and the velocity and acceleration are vectors; the integral formulas of this section then apply to each coordinate separately (vector-valued functions, in a later chapter), and the distance traveled becomes the length of a curve. In Calculus~III and in physics courses the equations of constant acceleration of Theorem~\ref{thm:const} are the starting point for projectile motion.
+
+% ---------------------------------------------------------------------
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Displacement and distance traveled} (Examples~\ref{ex:b1}--\ref{ex:b2}): a polynomial velocity; a trigonometric velocity.
+  \item \emph{Position from velocity} (Examples~\ref{ex:b3}--\ref{ex:b4}): an exponential velocity; a velocity needing a substitution.
+  \item \emph{Acceleration} (Examples~\ref{ex:b5}--\ref{ex:b6}): braking at constant acceleration; a linear acceleration.
+  \item \emph{Net change and future value} (Examples~\ref{ex:b7}--\ref{ex:b8}): a tank filling; a marginal cost.
+  \item \emph{Graphs and piecewise rates} (Examples~\ref{ex:b9}--\ref{ex:b10}): a velocity graph with given areas; a piecewise production rate.
+  \item \emph{Catching up, and averages} (Examples~\ref{ex:b11}--\ref{ex:b12}): a car and a runner; an average velocity.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}).
+\end{enumerate}
+
+\subsection*{Group 1: Displacement and distance traveled}
+
+\begin{exmp}{A polynomial velocity}{b1}
+An object moves along a line with velocity $v(t)=2t^2-8t$ (m/s) for $0\le t\le5$. Find the displacement and the distance traveled.
+
+\textbf{Solution.} Factor: $v(t)=2t(t-4)$, so $v=0$ at $t=0$ and $t=4$. On $(0,4)$: $v(2)=8-16=-8<0$. On $(4,5)$: $v(5)=50-40=10>0$. An antiderivative is $F(t)=\frac23t^3-4t^2$ (check: $F'(t)=2t^2-8t$).
+%@ b1-F | ANT(Q(2,3)*x**3-4*x**2, 2*x**2-8*x, [Q(1,2),Q(3,1)]) == 0 and 2*2**2-8*2 == -8 and 2*5**2-8*5 == 10 | is $F(t)=\frac23t^3-4t^2$ (check: $F'(t)=2t^2-8t$).
+Then $F(0)=0$, $F(4)=\frac{128}3-64=-\frac{64}3$ and $F(5)=\frac{250}3-100=-\frac{50}3$. The displacement is $F(5)-F(0)=-\frac{50}3\approx-16.7$ m. The distance is $\abs{F(4)-F(0)}+\abs{F(5)-F(4)}=\frac{64}3+\abs{-\frac{50}3+\frac{64}3}=\frac{64}3+\frac{14}3=\frac{78}3=26$ m.
+%@ b1-d | Q(2,3)*4**3-4*4**2 == -Q(64,3) and Q(2,3)*5**3-4*5**2 == -Q(50,3) and Q(64,3)+(-Q(50,3)+Q(64,3)) == 26 | $\abs{F(4)-F(0)}+\abs{F(5)-F(4)}=\frac{64}3+\abs{-\frac{50}3+\frac{64}3}=\frac{64}3+\frac{14}3=\frac{78}3=26$ m.
+\emph{Check:} $26\ge\frac{50}3$ (Theorem~\ref{thm:ineq}), and the object moves backward $\frac{64}3$ m and then forward $\frac{14}3$ m, ending $\frac{50}3$ m behind its start.
+\end{exmp}
+
+\begin{exmp}{A trigonometric velocity}{b2}
+The velocity of a particle is $v(t)=6\cos\frac{\pi t}3$ (cm/s) for $0\le t\le4$. Find its displacement and the distance traveled.
+
+\textbf{Solution.} \emph{Sign of $v$.} $\cos\frac{\pi t}3=0$ when $\frac{\pi t}3=\frac\pi2+n\pi$, that is $t=\frac32+3n$. The only zero in $[0,4]$ is $t=\frac32$. $v(0)=6>0$ and $v(4)=6\cos\frac{4\pi}3=-3<0$, so $v>0$ on $[0,\frac32)$ and $v<0$ on $(\frac32,4]$.
+%@ b2-sg | 6*cos(0) == 6 and 6*cos(4*pi/3) == -3 and cos(pi*Q(3,2)/3) == 0 | so $v>0$ on $[0,\frac32)$ and $v<0$ on $(\frac32,4]$.
+\emph{Antiderivative.} With $u=\frac{\pi t}3$, $F(t)=\frac{18}\pi\sin\frac{\pi t}3$ (check: $F'(t)=\frac{18}\pi\cdot\frac\pi3\cos\frac{\pi t}3=6\cos\frac{\pi t}3$; Theorem~\ref{8.1-thm:subst}).
+%@ b2-F | ANT(18/pi*sin(pi*x/3), 6*cos(pi*x/3), [Q(1,2),Q(7,3)]) == 0 | t}3=6\cos\frac{\pi t}3$; Theorem~\ref{8.1-thm:subst}).
+\emph{Values.} $F(0)=0$, $F\left(\frac32\right)=\frac{18}\pi\sin\frac\pi2=\frac{18}\pi$, $F(4)=\frac{18}\pi\sin\frac{4\pi}3=-\frac{18}\pi\cdot\frac{\sqrt3}2=-\frac{9\sqrt3}\pi$.
+%@ b2-v | 18/pi*sin(pi/2) == 18/pi and 18/pi*sin(4*pi/3)+9*sqrt(3)/pi == 0 | \emph{Values.} $F(0)=0$, $F\left(\frac32\right)=\frac{18}\pi\sin\frac\pi2=\frac{18}\pi$, $F(4)=\frac{18}\pi\sin\frac{4\pi}3=-\frac{18}\pi\cdot\frac{\sqrt3}2=-\frac{9\sqrt3}\pi$.
+\emph{Displacement:} $F(4)-F(0)=-\frac{9\sqrt3}\pi\approx-4.96$ cm. \emph{Distance:} $\abs{F(\frac32)-F(0)}+\abs{F(4)-F(\frac32)}=\frac{18}\pi+\left(\frac{18}\pi+\frac{9\sqrt3}\pi\right)=\frac{36+9\sqrt3}\pi\approx16.42$ cm.
+%@ b2-d | abs((-9*sqrt(3)/pi).evalf(30)+Q(496,100)) < Q(1,100) and abs(((36+9*sqrt(3))/pi).evalf(30)-Q(1642,100)) < Q(1,100) and NUM(18/pi+(18/pi+9*sqrt(3)/pi), (36+9*sqrt(3))/pi) == 0 | $\abs{F(\frac32)-F(0)}+\abs{F(4)-F(\frac32)}=\frac{18}\pi+\left(\frac{18}\pi+\frac{9\sqrt3}\pi\right)=\frac{36+9\sqrt3}\pi\approx16.42$ cm.
+\end{exmp}
+
+\subsection*{Group 2: Position from velocity}
+
+\begin{exmp}{An exponential velocity}{b3}
+A probe moves along a line with velocity $v(t)=8e^{-2t}$ (m/s) and starts at $s(0)=-3$ m. Find $s(t)$, the time when it passes the origin, and its position as $t\to\infty$.
+
+\textbf{Solution.} By Theorem~\ref{thm:pos}, $s(t)=-3+\int_0^t8e^{-2x}\,dx=-3+\left[-4e^{-2x}\right]_0^t=-3-4e^{-2t}+4=1-4e^{-2t}$ (check: $\frac{d}{dx}\left(-4e^{-2x}\right)=8e^{-2x}$).
+%@ b3-s | ANT(-4*exp(-2*x), 8*exp(-2*x), [Q(1,2),Q(3,1)]) == 0 and -3-4*exp(-2*x)+4-(1-4*exp(-2*x)) == 0 | (check: $\frac{d}{dx}\left(-4e^{-2x}\right)=8e^{-2x}$).
+The probe passes the origin when $s(t)=0$: $4e^{-2t}=1$, so $e^{-2t}=\frac14$, $-2t=\ln\frac14=-\ln4$, and $t=\frac{\ln4}2=\ln2\approx0.693$ s. Since $e^{-2t}\to0$, $s(t)\to1$: the probe approaches $s=1$ m and never passes it ($v>0$ always).
+%@ b3-z | NUM(1-4*exp(-2*log(2)), 0) == 0 and limit(1-4*exp(-2*x), x, oo) == 1 | approaches $s=1$ m and never passes it ($v>0$ always).
+\end{exmp}
+
+\begin{exmp}{A velocity that needs a substitution}{b4}
+A cart has velocity $v(t)=\dfrac t{\sqrt{t^2+9}}$ (m/s) and $s(0)=2$ m. Find $s(t)$ and $s(4)$.
+
+\textbf{Solution.} Let $u=t^2+9$, $du=2t\,dt$ (Theorem~\ref{8.1-thm:subst}): $\int\frac t{\sqrt{t^2+9}}\,dt=\frac12\int u^{-1/2}\,du=u^{1/2}+C=\sqrt{t^2+9}+C$. Check: $\frac d{dt}\sqrt{t^2+9}=\frac{2t}{2\sqrt{t^2+9}}=\frac t{\sqrt{t^2+9}}$. The initial condition: $s(0)=\sqrt9+C=3+C=2$, so $C=-1$ and $s(t)=\sqrt{t^2+9}-1$.
+%@ b4-s | ANT(sqrt(x**2+9), x/sqrt(x**2+9), [Q(1,2),Q(3,1)]) == 0 and sqrt(0**2+9)-1 == 2 | so $C=-1$ and $s(t)=\sqrt{t^2+9}-1$.
+At $t=4$: $s(4)=\sqrt{25}-1=4$ m. Since $v>0$ for $t>0$, the distance traveled on $[0,4]$ equals the displacement $s(4)-s(0)=4-2=2$ m.
+%@ b4-4 | sqrt(4**2+9)-1 == 4 and (sqrt(4**2+9)-1)-2 == 2 | on $[0,4]$ equals the displacement $s(4)-s(0)=4-2=2$ m.
+\end{exmp}
+
+\subsection*{Group 3: Acceleration}
+
+\begin{exmp}{Stopping distance}{b5}
+A car moving at $88$ ft/s ($60$ mph) brakes with the constant acceleration $-8$ ft/s$^2$. How long does it take to stop, and how far does it travel while stopping?
+
+\textbf{Solution.} Take $s(0)=0$. By Theorem~\ref{thm:const}, $v(t)=88-8t$ and $s(t)=88t-4t^2$. The car stops when $v=0$: $t=\frac{88}8=11$ s. Then $s(11)=968-484=484$ ft.
+%@ b5-s | Q(88,8) == 11 and 88*11-4*11**2 == 484 | $t=\frac{88}8=11$ s. Then $s(11)=968-484=484$ ft.
+\emph{Check with the third formula} $v^2=v_0^2+2\alpha(s-s_0)$: $0=88^2+2(-8)s$, so $s=\frac{7744}{16}=484$ ft. \checkmark
+%@ b5-chk | Q(88**2,16) == 484 | so $s=\frac{7744}{16}=484$ ft. \checkmark
+\end{exmp}
+
+\begin{exmp}{A linear acceleration}{b6}
+An object has acceleration $a(t)=6-4t$ (m/s$^2$), with $v(0)=8$ m/s and $s(0)=5$ m. Find $v(t)$ and $s(t)$, the first time $v=0$, and the position then.
+
+\textbf{Solution.} By Theorem~\ref{thm:vel}, $v(t)=8+\int_0^t(6-4x)\,dx=8+\left[6x-2x^2\right]_0^t=8+6t-2t^2$. By Theorem~\ref{thm:pos}, $s(t)=5+\int_0^t(8+6x-2x^2)\,dx=5+\left[8x+3x^2-\frac23x^3\right]_0^t=5+8t+3t^2-\frac23t^3$.
+%@ b6-vs | ANT(6*x-2*x**2, 6-4*x, [Q(1,2),Q(3,1)]) == 0 and ANT(8*x+3*x**2-Q(2,3)*x**3, 8+6*x-2*x**2, [Q(1,2),Q(3,1)]) == 0 | \textbf{Solution.} By Theorem~\ref{thm:vel}, $v(t)=8+\int_0^t(6-4x)\,dx=8+\left[6x-2x^2\right]_0^t=8+6t-2t^2$. By Theorem~\ref{thm:pos}, $s(t)=5+\int_0^t(8+6x-2x^2)\,dx=5+\left[8x+3x^2-\frac23x^3\right]_0^t=5+8t+3t^2-\frac23t^3$.
+$v(t)=0$: $2t^2-6t-8=0$, so $t^2-3t-4=0$, $(t-4)(t+1)=0$, and $t=4$ s (the root $-1$ is before the start). Since $v(0)=8>0$ and $v$ is a downward parabola crossing $0$ at $t=4$, $v$ changes from positive to negative there, so $s$ is greatest at $t=4$: $s(4)=5+32+48-\frac{128}3=85-\frac{128}3=\frac{127}3\approx42.3$ m.
+%@ b6-t | expand((x-4)*(x+1)-(x**2-3*x-4)) == 0 and 8+6*4-2*4**2 == 0 and 5+8*4+3*4**2-Q(2,3)*4**3 == Q(127,3) | $s(4)=5+32+48-\frac{128}3=85-\frac{128}3=\frac{127}3\approx42.3$ m.
+\end{exmp}
+
+\subsection*{Group 4: Net change and future value}
+
+\begin{exmp}{A tank filling}{b7}
+Water flows into a tank at the rate $V'(t)=12\sqrt t$ liters per minute, and the tank holds $200$ L at $t=0$. When does it hold $1000$ L?
+
+\textbf{Solution.} By Theorem~\ref{thm:net}, $V(t)=200+\int_0^t12x^{1/2}\,dx=200+\left[8x^{3/2}\right]_0^t=200+8t^{3/2}$ (check: $\frac{d}{dx}8x^{3/2}=12x^{1/2}$). Set $V(t)=1000$: $8t^{3/2}=800$, so $t^{3/2}=100$ and $t=100^{2/3}=10^{4/3}\approx21.5$ minutes.
+%@ b7-V | ANT(8*x**Q(3,2), 12*sqrt(x), [Q(1,2),Q(4,1)]) == 0 and abs((100**Q(2,3)).evalf(30)-Q(2154,100)) < Q(1,100) and NUM(8*(100**Q(2,3))**Q(3,2), 800) == 0 | and $t=100^{2/3}=10^{4/3}\approx21.5$ minutes.
+\end{exmp}
+
+\begin{exmp}{A quadratic marginal cost}{b8}
+The marginal cost of making a part is $C'(x)=60-0.04x+0.00001x^2$ dollars per part. Find the cost of making parts number $1001$ through $2000$.
+
+\textbf{Solution.} The cost is $C(2000)-C(1000)=\int_{1000}^{2000}C'(x)\,dx$ (Theorem~\ref{thm:net}). An antiderivative is $60x-0.02x^2+\frac{0.00001}3x^3$. Its values: at $2000$, $120000-80000+\frac{0.00001}3\cdot8\cdot10^9=40000+\frac{80000}3$; at $1000$, $60000-20000+\frac{0.00001}3\cdot10^9=40000+\frac{10000}3$. The difference is $\frac{80000-10000}3=\frac{70000}3\approx\$23333.33$.
+%@ b8 | ANT(60*x-Q(2,100)*x**2+Q(1,300000)*x**3, 60-Q(4,100)*x+Q(1,100000)*x**2, [Q(1,2),Q(3,1)]) == 0 and (60*2000-Q(2,100)*2000**2+Q(1,300000)*2000**3)-(60*1000-Q(2,100)*1000**2+Q(1,300000)*1000**3) == Q(70000,3) | $\frac{80000-10000}3=\frac{70000}3\approx\$23333.33$.
+\end{exmp}
+
+\subsection*{Group 5: Graphs and piecewise rates}
+
+\begin{exmp}{Reading a velocity graph}{b9}
+The figure shows the velocity (m/s) of an object on $0\le t\le7$. The three regions between the graph and the $t$-axis have areas $6$, $9$ and $4$. Assume $s(0)=-2$ m. Find the displacement, the distance traveled, the position at $t=2$, $t=5$ and $t=7$, and the greatest and least positions.
+
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=0.3cm]
+  \fill[blue!12] (0,0) -- (1,6) -- (2,0) -- cycle;
+  \fill[red!12] (2,0) -- (3.5,-6) -- (5,0) -- cycle;
+  \fill[blue!12] (5,0) -- (6,4) -- (7,0) -- cycle;
+  \draw[->] (-0.4,0) -- (7.7,0) node[right] {$t$};
+  \draw[->] (0,-8) -- (0,8) node[above] {$v$};
+  \draw[very thick,blue!70!black] (0,0) -- (1,6) -- (2,0) -- (3.5,-6) -- (5,0) -- (6,4) -- (7,0);
+  \fill (1,6) circle (1.6pt) node[above,font=\small] {$(1,6)$};
+%@ g-b9-p1 | Q(1,2)*2*6 == 6 | (1,6) circle (1.6pt) node[above,font=\small] {$(1,6)$};
+  \fill (3.5,-6) circle (1.6pt) node[below,font=\small] {$(3.5,-6)$};
+%@ g-b9-p2 | Q(1,2)*3*6 == 9 | circle (1.6pt) node[below,font=\small] {$(3.5,-6)$};
+  \fill (6,4) circle (1.6pt) node[above,font=\small] {$(6,4)$};
+%@ g-b9-p3 | Q(1,2)*2*4 == 4 | (6,4) circle (1.6pt) node[above,font=\small] {$(6,4)$};
+  \node[font=\small] at (1,2.2) {$6$};
+%@ g-b9-a1 | Q(1,2)*2*6 == 6 |   \node[font=\small] at (1,2.2) {$6$};
+  \node[font=\small] at (3.5,-2.3) {$9$};
+%@ g-b9-a2 | Q(1,2)*3*6 == 9 |   \node[font=\small] at (3.5,-2.3) {$9$};
+  \node[font=\small] at (6,1.3) {$4$};
+%@ g-b9-a3 | Q(1,2)*2*4 == 4 |   \node[font=\small] at (6,1.3) {$4$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{Solution.} The signs: $v>0$ on $(0,2)$, $v<0$ on $(2,5)$ and $v>0$ on $(5,7)$. The displacement over each piece is the signed area: $+6$, $-9$, $+4$. \emph{Displacement:} $6-9+4=1$ m. \emph{Distance:} $6+9+4=19$ m.
+%@ b9-a | 6-9+4 == 1 and 6+9+4 == 19 | $6-9+4=1$ m. \emph{Distance:} $6+9+4=19$ m.
+By Theorem~\ref{thm:pos}, $s(t)=-2+(\text{signed area from }0\text{ to }t)$. So $s(2)=-2+6=4$ m, $s(5)=4-9=-5$ m and $s(7)=-5+4=-1$ m. Since $v$ changes from $+$ to $-$ at $t=2$ and from $-$ to $+$ at $t=5$, the greatest position is $s(2)=4$ m and the least is $s(5)=-5$ m (the other candidates are the endpoints: $s(0)=-2$ and $s(7)=-1$).
+%@ b9-p | -2+6 == 4 and 4-9 == -5 and -5+4 == -1 and -2+6-9+4 == -1 | candidates are the endpoints: $s(0)=-2$ and $s(7)=-1$).
+\end{exmp}
+
+\begin{exmp}{A piecewise production rate}{b10}
+A well produces oil at the rate (barrels per day)
+\[
+Q'(t)=\begin{cases}500&0\le t<10,\\1000-50t&10\le t<20,\\0&t\ge20,\end{cases}
+\]
+with $Q(0)=0$. How many barrels are produced in the first $15$ days? In total? How many between day $30$ and day $40$?
+
+\textbf{Solution.} The rate is continuous (at $t=10$: $1000-500=500$; at $t=20$: $1000-1000=0$). \emph{First $15$ days:} $\int_0^{10}500\,dt=5000$, and $\int_{10}^{15}(1000-50t)\,dt=\left[1000t-25t^2\right]_{10}^{15}=(15000-5625)-(10000-2500)=9375-7500=1875$, so $Q(15)=5000+1875=6875$ barrels.
+%@ b10-15 | 1000-50*10 == 500 and 1000-50*20 == 0 and ANT(1000*x-25*x**2, 1000-50*x, [Q(1,2),Q(3,1)]) == 0 and (1000*15-25*15**2)-(1000*10-25*10**2) == 1875 and 5000+1875 == 6875 | so $Q(15)=5000+1875=6875$ barrels.
+\emph{In total:} $\int_{10}^{20}(1000-50t)\,dt=(20000-10000)-7500=2500$, so the total is $5000+2500=7500$ barrels. \emph{Days $30$ to $40$:} the rate is $0$ there, so no oil is produced (no integration needed).
+%@ b10-t | (1000*20-25*20**2)-(1000*10-25*10**2) == 2500 and 5000+2500 == 7500 | $0$ there, so no oil is produced (no integration needed).
+\end{exmp}
+
+\subsection*{Group 6: Catching up, and averages}
+
+\begin{exmp}{A car and a runner}{b11}
+At $t=0$ a runner passes a parked car at the constant speed $5$ m/s, and the car starts moving in the same direction from rest with constant acceleration $2$ m/s$^2$. When and where does the car catch the runner, and how fast is the car going then? When are they farthest apart (before the car catches up)?
+
+\textbf{Solution.} Measure position from the starting point. Runner: $s_R(t)=5t$. Car: $v(t)=2t$ and $s_C(t)=t^2$ (Theorem~\ref{thm:const} with $v_0=s_0=0$, $\alpha=2$). They are together when $t^2=5t$, so $t(t-5)=0$: $t=0$ (the start) or $t=5$ s. Position: $5\cdot5=25$ m. The car's speed is $v(5)=10$ m/s.
+%@ b11-m | 5**2 == 5*5 and 5*5 == 25 and 2*5 == 10 | $5\cdot5=25$ m. The car's speed is $v(5)=10$ m/s.
+The gap $g(t)=s_R-s_C=5t-t^2$ is greatest when $g'(t)=5-2t=0$, that is when the velocities are equal, $t=\frac52$ s. The gap is then $g\left(\frac52\right)=\frac{25}2-\frac{25}4=\frac{25}4=6.25$ m.
+%@ b11-g | 5-2*Q(5,2) == 0 and 5*Q(5,2)-Q(5,2)**2 == Q(25,4) | $g\left(\frac52\right)=\frac{25}2-\frac{25}4=\frac{25}4=6.25$ m.
+\end{exmp}
+
+\begin{exmp}{An average velocity}{b12}
+A piston has velocity $v(t)=t\sqrt{16-t^2}$ (cm/s) for $0\le t\le4$. Find its displacement and its average velocity on $[0,4]$.
+
+\textbf{Solution.} Let $u=16-t^2$, $du=-2t\,dt$; $t=0\mapsto u=16$, $t=4\mapsto u=0$ (Theorem~\ref{8.1-thm:subst}). Then $\int_0^4t\sqrt{16-t^2}\,dt=-\frac12\int_{16}^0u^{1/2}\,du=\frac12\int_0^{16}u^{1/2}\,du=\frac12\cdot\frac23\left[u^{3/2}\right]_0^{16}=\frac13\cdot64=\frac{64}3$. Check: $\frac d{dt}\left(-\frac13(16-t^2)^{3/2}\right)=-\frac13\cdot\frac32(16-t^2)^{1/2}(-2t)=t\sqrt{16-t^2}$.
+%@ b12-d | ANT(-Q(1,3)*(16-x**2)**Q(3,2), x*sqrt(16-x**2), [Q(1,2),Q(3,1)]) == 0 and (-Q(1,3)*(16-4**2)**Q(3,2))-(-Q(1,3)*(16-0**2)**Q(3,2)) == Q(64,3) | \textbf{Solution.} Let $u=16-t^2$, $du=-2t\,dt$; $t=0\mapsto u=16$, $t=4\mapsto u=0$ (Theorem~\ref{8.1-thm:subst}). Then $\int_0^4t\sqrt{16-t^2}\,dt=-\frac12\int_{16}^0u^{1/2}\,du=\frac12\int_0^{16}u^{1/2}\,du=\frac12\cdot\frac23\left[u^{3/2}\right]_0^{16}=\frac13\cdot64=\frac{64}3$. Check: $\frac d{dt}\left(-\frac13(16-t^2)^{3/2}\right)=-\frac13\cdot\frac32(16-t^2)^{1/2}(-2t)=t\sqrt{16-t^2}$.
+The displacement is $\frac{64}3\approx21.3$ cm. The average velocity is $\frac{64/3}{4-0}=\frac{16}3\approx5.33$ cm/s: a piston moving at the constant velocity $\frac{16}3$ cm/s would cover the same distance in $4$ s.
+%@ b12-a | Q(64,3)/4 == Q(16,3) | cm/s would cover the same distance in $4$ s.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Two runners with the same start and finish}{b13}
+Prove: if two runners start at the same place at time $a$ and are again at the same place at time $b$, with continuous velocities $v_1$ and $v_2$, then $\int_a^bv_1\,dt=\int_a^bv_2\,dt$, whatever the velocities in between. Give an example in which the distances traveled differ.
+
+\textbf{Proof.} Let $s_1$ and $s_2$ be their positions. By assumption $s_1(a)=s_2(a)$ and $s_1(b)=s_2(b)$. By Theorem~\ref{thm:disp} applied to each runner, $\int_a^bv_1\,dt=s_1(b)-s_1(a)$ and $\int_a^bv_2\,dt=s_2(b)-s_2(a)$. The two right-hand sides are equal, because $s_1(b)=s_2(b)$ and $s_1(a)=s_2(a)$. Hence the integrals are equal.
+
+\emph{Example (and a common mistake).} On $[0,1]$ let $v_1(t)=6t(1-t)$ and $v_2(t)=1$. Then $\int_0^1v_1\,dt=\left[3t^2-2t^3\right]_0^1=1$ and $\int_0^1v_2\,dt=1$: equal displacements, as the theorem says. Both distances equal $1$ too, since $v_1,v_2\ge0$. But equal displacements do not force equal distances: the runner with velocity $v_3(t)=\cos2\pi t$ also has displacement $\int_0^1\cos2\pi t\,dt=0$ over $[0,1]$, the same as a runner who stands still, yet $v_3$ changes sign and the distance traveled is $\int_0^1\abs{\cos2\pi t}\,dt=\frac2\pi\ne0$.
+%@ b13 | ANT(3*x**2-2*x**3, 6*x*(1-x), [Q(1,2),Q(3,1)]) == 0 and ANT(sin(2*pi*x)/(2*pi), cos(2*pi*x), [Q(1,3),Q(2,1)]) == 0 and 4*(sin(2*pi*Q(1,4))/(2*pi)) == 2/pi and 3*1**2-2*1**3 == 1 | is $\int_0^1\abs{\cos2\pi t}\,dt=\frac2\pi\ne0$.
+\end{exmp}
+
+\begin{exmp}{Nonnegative acceleration}{b14}
+Prove: if $a(t)\ge0$ for all $t\ge0$ and $v(0)\ge0$, then $s(t)\ge s(0)+v(0)\,t$ for all $t\ge0$.
+
+\textbf{Proof.} By Theorem~\ref{thm:vel}, $v(x)=v(0)+\int_0^xa(u)\,du$. Since $a\ge0$, $\int_0^xa(u)\,du\ge0$, so $v(x)\ge v(0)$ for every $x\ge0$. By Theorem~\ref{thm:pos}, $s(t)=s(0)+\int_0^tv(x)\,dx\ge s(0)+\int_0^tv(0)\,dx=s(0)+v(0)\,t$, because the integral preserves inequalities. (We did not need $v(0)\ge0$ for this inequality, only for the object to be moving forward.)
+
+\emph{Numerical check.} Take $a(t)=2t\ge0$, $v(0)=3$, $s(0)=0$: $v(t)=3+t^2$, $s(t)=3t+\frac{t^3}3$. At $t=3$: $s(3)=9+9=18\ge0+3\cdot3=9$. \checkmark
+%@ b14 | ANT(3*x+x**3/3, 3+x**2, [Q(1,2),Q(3,1)]) == 0 and 3*3+Q(3**3,3) == 18 | At $t=3$: $s(3)=9+9=18\ge0+3\cdot3=9$. \checkmark
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Answers and discussion}
+
+\begin{description}
+
+  \item[Knowledge Check \ref{kc:kcout}.] East is positive, so the trips are $+3$ and $-5$: displacement $3+(-5)=-2$ km (she ends $2$ km west of her start); distance traveled $3+5=8$ km.
+%@ ans-kc1 | 3+(-5) == -2 and 3+5 == 8 | km west of her start); distance traveled $3+5=8$ km.
+
+  \item[Knowledge Check \ref{kc:kcpos}.] $s(t)$ is a function of $t$. For fixed $a$ and $b$ the displacement $s(b)-s(a)$ is a number. Over $[0,\pi/2]$ the displacement is $s(\pi/2)-s(0)=2-2=0$ (the mass is back at its starting position), and also $\int_0^{\pi/2}3\cos2t\,dt=\left[\frac32\sin2t\right]_0^{\pi/2}=\frac32\sin\pi-0=0$.
+%@ ans-kc2 | 2-2 == 0 and Q(3,2)*sin(pi)-Q(3,2)*sin(0) == 0 |   \item[Knowledge Check \ref{kc:kcpos}.] $s(t)$ is a function of $t$. For fixed $a$ and $b$ the displacement $s(b)-s(a)$ is a number. Over $[0,\pi/2]$ the displacement is $s(\pi/2)-s(0)=2-2=0$ (the mass is back at its starting position), and also $\int_0^{\pi/2}3\cos2t\,dt=\left[\frac32\sin2t\right]_0^{\pi/2}=\frac32\sin\pi-0=0$.
+
+  \item[Knowledge Check \ref{kc:kcacc}.] $v(t)=30-6t=0$ gives $t=5$ s. Then $s(5)=30\cdot5-3\cdot5^2=150-75=75$ m. (Check: $v^2=v_0^2+2\alpha s$ gives $0=900-12s$, $s=75$.)
+%@ ans-kc3 | Q(30,6) == 5 and 30*5-Q(6,2)*5**2 == 75 and Q(900,12) == 75 | $v^2=v_0^2+2\alpha s$ gives $0=900-12s$, $s=75$.)
+
+  \item[Pause and think \ref{think:thzero}.] For instance the object moves forward at the velocity $v=3$ for $2$ s (distance $6$) and backward at $v=-3$ for $2$ s (distance $6$): displacement $6-6=0$, distance $6+6=12$. The graph of $v$ has equal areas above and below the $t$-axis. The distance can be $0$ with displacement $0$ only if $\int_0^4\abs v=0$, and by the equality part of Theorem~\ref{thm:ineq}'s proof ($\abs v\ge0$ continuous with integral $0$), $v\equiv0$: the object never moves.
+%@ ans-th1 | 3*2+(-3)*2 == 0 and 3*2+3*2 == 12 | with integral $0$), $v\equiv0$: the object never moves.
+
+  \item[Pause and think \ref{think:thinit}.] The velocity function is the same, so the displacement and the distance over $[0,\pi/2]$ are the same for both (they depend only on $v$): both $0$ for the displacement, and $\int_0^{\pi/2}\abs{3\cos2t}\,dt=2\cdot\frac32=3$ for the distance, because $3\cos2t$ changes sign at $t=\frac\pi4$ and $\frac32\sin2t$ goes from $0$ to $\frac32$ and back to $0$. The time of the first maximum of $s$ is the same too ($t=\frac\pi4$, where $v$ changes sign), since $s$ differs only by a constant. The \emph{positions} at $t=\pi/2$ are different: $2$ for one and $-5$ for the other. The initial position shifts the whole position curve up or down; it does not change the displacement.
+%@ ans-th2 | Q(3,2)*sin(2*(pi/4))-Q(3,2)*sin(0)+(Q(3,2)*sin(2*(pi/4))-Q(3,2)*sin(2*(pi/2))) == 3 | $-5$ for the other. The initial position shifts the whole position curve up or down; it does not change the displacement.
+
+  \item[Pause and think \ref{think:thbdd}.] The amounts added get smaller and smaller, quickly enough that their sum stays finite: $\int_0^\infty60e^{-0.2x}\,dx=300$ (Definition~\ref{8.9-def:inf}). A positive rate does not by itself make the total unbounded; what matters is how fast the rate dies out. For comparison, the rate $\frac1{x+1}$ is also positive and tends to $0$, but $\int_0^t\frac{dx}{x+1}=\ln(t+1)\to\infty$. To be sure $P$ is bounded, one needs the improper integral $\int_0^\infty P'$ to converge, for instance by comparison with a convergent integral such as that of an exponential.
+%@ ans-th3 | limit(60*exp(-Q(1,5)*x), x, oo) == 0 and Integer(300) == 300 | $\int_0^\infty P'$ to converge, for instance by comparison with a convergent integral such as that of an exponential.
+
+\end{description}
+
+\end{document}
