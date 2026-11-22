@@ -1,0 +1,955 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{6}{6}{Surface Area}
+\calcxdoc{6.1}
+\calcxdoc{6.3}
+\calcxdoc{6.4}
+\calcxdoc{6.5}
+\calcxapp
+
+\begin{document}
+
+\section{Surface Area}
+
+\begin{guide}
+How much paint covers a funnel? The paint is a thin layer on a \emph{surface}, so we need the area of a curved surface. Sections 6.3 and 6.4 found the volume of a solid of revolution; now we find the area of its boundary. A flat region has an area by Riemann sums, and a curve has a length by inscribed polygons (Section 6.5), but a curved surface has neither; we must first say what its area \emph{means}. We do this honestly. For a cone and a cylinder, which can be unrolled flat without stretching, the area is the area of the flat piece. A surface of revolution is then approximated by chains of cone pieces (\emph{frusta}, one for each segment of an inscribed polygon), and its area is the limit of their areas. We prove that the limit exists and equals $2\pi\int R\,\sqrt{1+f'^2}\,dx$, where $R$ is the distance to the axis. We check the formula on the cylinder, the cone, the sphere (Archimedes' theorem: a zone of a sphere has an area that depends only on its height) and the torus, and use it for curves that turn the integral into a substitution or a perfect square, or that can be handled only numerically.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item say what is assumed (the area of a cone, and the area of a surface of revolution as a limit of frusta) and what is proved;
+  \item prove and use $S=2\pi\int_a^bR(x)\sqrt{1+f'(x)^2}\,dx$ with $R$ the distance from the curve to the axis, for the $x$-axis, the $y$-axis and the lines $y=k$ and $x=k$, and the same formula in $y$ for a curve $x=g(y)$;
+  \item recognize the curves for which the integral needs only a substitution or a perfect square, and give numerical values (checked against a frustum sum and a bound) for the others;
+  \item handle a vertical tangent at an end by switching to $x=g(y)$;
+  \item prove and use the surface areas of the cylinder, cone, sphere and spherical zone, and find the area of a torus;
+  \item bound a surface area by $2\pi m L$ and $2\pi M L$, where $L$ is the length of the curve.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{What does the area of a curved surface mean?}
+
+For the length of a curve (Section~6.5) we took the least upper bound of the lengths of inscribed polygons. The same idea does \emph{not} work for surfaces: if we inscribe in a cylinder a surface made of flat triangles, the total area of the triangles can be made as large as we like (the ``Schwarz lantern''; we do not prove this here), so there is no least upper bound, and it is not the area we want. We need a different starting point. Two kinds of surface can be \emph{flattened without stretching}, and their area is the area of the flat piece: the lateral surface of a cylinder, which unrolls to a rectangle, and the lateral surface of a cone, which unrolls to a sector of a disk.
+
+\begin{defn}{Area of a cylinder and of a cone (S1)}{cone}
+A right circular cylinder of radius $r$ and height $l$ has lateral area $2\pi r\,l$: cut along a vertical line and unroll it to a rectangle of width $2\pi r$ and height $l$. A right circular cone of base radius $r$ and slant height $l$ (the distance from the apex to the base circle along the surface) has lateral area
+\[
+\pi\,r\,l :
+\]
+cut along a line through the apex and unroll it to a plane sector of radius $l$ whose curved edge has length $2\pi r$. This sector is the fraction $\dfrac{2\pi r}{2\pi l}=\dfrac rl$ of the disk of radius $l$, so its area is $\dfrac rl\cdot\pi l^2=\pi r\,l$. We take these as the \emph{meaning} of the area of a cylinder and of a cone.
+\end{defn}
+
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm]
+  \draw[thick] (-1.5,0) arc (180:360:1.5 and 0.4);
+  \draw[thick,dashed] (-1.5,0) arc (180:0:1.5 and 0.4);
+  \draw[thick] (-1.5,0) -- (0,4) -- (1.5,0);
+  \draw[dashed] (0,4) -- (0,0) -- (1.5,0);
+  \fill (0,4) circle (1.5pt);
+%@ f1-apex | 3**2+4**2 == 5**2 and Q(3,2)*2 == 3 | \fill (0,4) circle (1.5pt);
+  \node[font=\small,right] at (0.1,2) {$h$};
+  \node[font=\small,above right] at (0.75,2.0) {$l$};
+  \node[font=\small,below] at (0.75,-0.4) {$r$};
+  \draw[->,thick] (2.4,2) -- (3.3,2);
+  \begin{scope}[xshift=7cm,yshift=2cm]
+    \draw[thick,fill=blue!8] (0,0) -- (2.5,0) arc (0:216:2.5) -- cycle;
+    \fill (0,0) circle (1.5pt);
+%@ f1-sec | Q(2*3,5) == Q(6,5) and Q(216,360) == Q(3,5) and Q(3,5)*2*pi*5 == 6*pi | \fill (0,0) circle (1.5pt);
+    \draw[dashed] (0,0) -- (2.5,0);
+    \node[font=\small,above] at (1.25,0) {$l$};
+    \node[font=\small] at (0,-2.9) {curved edge of length $2\pi r$};
+  \end{scope}
+\end{tikzpicture}
+\par\small\emph{Figure.} A cone ($r=3$, $h=4$, $l=5$ in the units of the picture) is cut along a line through the apex and unrolled to a sector of radius $l$ and arc length $2\pi r$. The sector is the fraction $\frac35$ of a disk (an angle of $216^\circ$), so its area is $\frac35\pi\cdot5^2=15\pi=\pi r\,l$.
+\end{center}
+
+A \emph{frustum} is a cone with the top sliced off, the surface made when a segment that does not cross an axis is revolved about the axis. With the cone area, we can find its area.
+
+\begin{thm}{The area of a frustum}{frustum}
+Revolve a line segment of length $l>0$ about an axis in its plane, where the segment lies on one side of the axis, and let $r_1\ge0$ and $r_2\ge0$ be the distances of its endpoints from the axis. The surface generated has area
+\[
+\pi\,(r_1+r_2)\,l .
+\]
+In particular a cone ($r_1=0$) has area $\pi r_2 l$ and a cylinder ($r_1=r_2=r$) has area $2\pi r\,l$. (If $r_1=r_2=0$ the segment lies on the axis and the area is $0$.)
+\end{thm}
+\begin{proof}
+If $r_1=r_2=r$ the segment is parallel to the axis, the surface is a cylinder, and its area is $2\pi rl=\pi(r+r)l$ by (S1). If one distance is $0$, the surface is a cone and the area is $\pi rl$ by (S1), which is $\pi(0+r)l$. Because the formula is symmetric in $r_1$ and $r_2$ we may now assume $0<r_1<r_2$. Extend the segment beyond its short end until it meets the axis at the apex $V$; the surface is the cone of base radius $r_2$ with the small cone of base radius $r_1$ cut off (Figure). Let $s_1$ and $s_2=s_1+l$ be the distances from $V$ to the ends of the segment, the slant heights of the two cones. The triangles formed by the axis, the radius and the slant line are similar, so $\dfrac{r_1}{s_1}=\dfrac{r_2}{s_1+l}$, that is $r_2s_1=r_1s_1+r_1l$, so
+\[
+s_1=\frac{r_1\,l}{r_2-r_1},\qquad s_2=s_1+l=\frac{r_2\,l}{r_2-r_1}.
+\]
+The area of the frustum is the area of the big cone minus the area of the small one, which by (S1) is
+\[
+\pi r_2s_2-\pi r_1s_1=\frac{\pi\,l\,(r_2^2-r_1^2)}{r_2-r_1}=\pi\,(r_1+r_2)\,l .
+\]
+(For $r_1=1$, $r_2=2$, $l=\sqrt{10}$, the figure below: $s_1=\sqrt{10}$, $s_2=2\sqrt{10}$, and $\pi\cdot2\sqrt{10}\cdot2-\pi\cdot\sqrt{10}\cdot1=3\pi\sqrt{10}$.)
+%@ pr-frustum | (Integer(1)*sqrt(10))/(2-1) == sqrt(10) and (Integer(2)*sqrt(10))/(2-1) == 2*sqrt(10) and pi*2*2*sqrt(10)-pi*1*sqrt(10) == 3*pi*sqrt(10) and pi*(1+2)*sqrt(10) == 3*pi*sqrt(10) | $\pi\cdot2\sqrt{10}\cdot2-\pi\cdot\sqrt{10}\cdot1=3\pi\sqrt{10}$.)
+\end{proof}
+
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.15cm]
+  \draw[->] (-0.4,0) -- (7.0,0) node[right] {axis};
+  \draw[thick,dashed] (0,0) -- (3,1);
+  \draw[thick,dashed] (0,0) -- (3,-1);
+  \draw[thick] (3,1) -- (6,2);
+  \draw[thick] (3,-1) -- (6,-2);
+  \draw[thick] (3,0) ellipse (0.25 and 1);
+  \draw[thick] (6,0) ellipse (0.25 and 2);
+  \draw[thick,orange!80!black] (3,0) -- (3,1);
+  \draw[thick,orange!80!black] (6,0) -- (6,2);
+  \fill (0,0) circle (1.5pt) node[below,font=\small] {$V$};
+%@ f2-v | Q(0,3) == 0 | \fill (0,0) circle (1.5pt) node[below,font=\small] {$V$};
+  \fill (3,1) circle (1.5pt);
+%@ f2-p1 | Q(3,3) == 1 and sqrt(3**2+1**2) == sqrt(10) | \fill (3,1) circle (1.5pt);
+  \fill (6,2) circle (1.5pt);
+%@ f2-p2 | Q(6,3) == 2 and sqrt(6**2+2**2) == 2*sqrt(10) | \fill (6,2) circle (1.5pt);
+  \node[font=\small,orange!80!black,anchor=east] at (2.92,0.5) {$r_1$};
+  \node[font=\small,orange!80!black,anchor=east] at (5.92,1.0) {$r_2$};
+  \node[font=\small,above left] at (1.5,0.5) {$s_1$};
+  \node[font=\small,above left] at (4.5,1.5) {$l$};
+\end{tikzpicture}
+\par\small\emph{Figure.} A frustum (solid lines) is a cone of slant height $s_2=s_1+l$ minus a cone of slant height $s_1$ (dashed). The radii are $r_1$ and $r_2$ and the slant height of the frustum is $l$. Here $r_1=1$, $r_2=2$, $s_1=\sqrt{10}$ and $l=\sqrt{10}$.
+\end{center}
+
+Now let $f$ be continuous on $[a,b]$ and let its graph be revolved about an axis. As in Section~6.5, a partition $\Pi$ ($a=x_0<x_1<\cdots<x_n=b$) gives an inscribed polygon with vertices $P_k=(x_k,f(x_k))$, segments of length $\lambda_k=\sqrt{\Delta x_k^2+\Delta y_k^2}$, and the segment $P_{k-1}P_k$ generates a frustum. The \emph{mesh} of $\Pi$ is the largest $\Delta x_k$.
+
+\begin{defn}{Area of a surface of revolution (S2)}{surf}
+Let a curve be revolved about a horizontal or vertical line (the \emph{axis}) that the curve may touch but does not cross, and let $R(x)$ denote the distance from the point $(x,f(x))$ of the curve to the axis. For a partition $\Pi$ the \emph{frustum sum} is the total area of the frusta, which by Theorem~\ref{thm:frustum} is
+\[
+\Sigma(\Pi)=\sum_{k=1}^n\pi\bigl(R(x_{k-1})+R(x_k)\bigr)\,\lambda_k .
+\]
+The \emph{area of the surface of revolution} is the limit $S=\lim_{n\to\infty}\Sigma(\Pi_n)$ for partitions whose mesh tends to $0$. (We prove below that for a curve with a continuous derivative this limit exists and does not depend on the partitions.) We take this as the \emph{meaning} of surface area.
+\end{defn}
+
+\begin{remark}[What is assumed and what is proved]
+\emph{Assumed (meaning of area):} (S1), that the lateral area of a cone and of a cylinder is the area of the flat sector or rectangle it unrolls to, and (S2), that the area of a surface of revolution is the limit of the frustum sums. \emph{Proved below:} the frustum formula (Theorem~\ref{thm:frustum}); that the limit in (S2) exists, does not depend on the partitions, and equals $2\pi\int R\sqrt{1+f'^2}\,dx$ (Theorem~\ref{thm:surf}); the formula in the variable $y$ (Theorem~\ref{thm:yform}); the bounds (Theorem~\ref{thm:bounds}); and the areas of the cylinder, cone, sphere, spherical zones and torus. \emph{Calculus~I facts used:} the Mean Value Theorem, the Fundamental Theorem of Calculus, the Extreme Value Theorem, that the integral preserves inequalities and is additive, and (F4) of Section~6.5: for a continuous $h$, every Riemann sum $\sum h(\xi_k)\Delta x_k$ (with $\xi_k$ in the $k$th subinterval) is as close as we like to $\int_a^bh$ once every $\Delta x_k$ is small enough.
+\end{remark}
+
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=0.9cm]
+  \draw[->] (-0.3,0) -- (4.7,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0:4,samples=40,variable=\t] plot ({\t},{1+\t-\t*\t/6});
+  \draw[thick,blue!70!black,domain=0:4,samples=40,variable=\t] plot ({\t},{-1-\t+\t*\t/6});
+  \draw[thick,red!70!black] (0,1) -- (1,1.8333) -- (2,2.3333) -- (3,2.5) -- (4,2.3333);
+  \draw[thick,red!70!black] (0,-1) -- (1,-1.8333) -- (2,-2.3333) -- (3,-2.5) -- (4,-2.3333);
+  \draw[gray] (0,0) ellipse (0.12 and 1);
+  \draw[gray] (1,0) ellipse (0.12 and 1.8333);
+  \draw[gray] (2,0) ellipse (0.12 and 2.3333);
+  \draw[gray] (3,0) ellipse (0.12 and 2.5);
+  \draw[gray] (4,0) ellipse (0.12 and 2.3333);
+  \fill (0,1) circle (1.4pt);
+%@ f3-p0 | 1+0-Q(0,1)**2/6 == 1 | \fill (0,1) circle (1.4pt);
+  \fill (1,1.8333) circle (1.4pt);
+%@ f3-p1 | 1+1-Q(1,6) == Q(11,6) | \fill (1,1.8333) circle (1.4pt);
+  \fill (2,2.3333) circle (1.4pt);
+%@ f3-p2 | 1+2-Q(4,6) == Q(7,3) | \fill (2,2.3333) circle (1.4pt);
+  \fill (3,2.5) circle (1.4pt);
+%@ f3-p3 | 1+3-Q(9,6) == Q(5,2) | \fill (3,2.5) circle (1.4pt);
+  \fill (4,2.3333) circle (1.4pt);
+%@ f3-p4 | 1+4-Q(16,6) == Q(7,3) | \fill (4,2.3333) circle (1.4pt);
+  \node[font=\small,blue!70!black] at (3.7,1.1) {$y=f(x)$};
+  \node[font=\small] at (0,-2.9) {$a$};
+  \node[font=\small] at (4,-2.9) {$b$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve $y=f(x)$ and its mirror image in the axis (blue), the inscribed polygon and its mirror image (red), and the circles of revolution at the vertices $x_0,\dots,x_4$ (gray). Each segment of the polygon generates one frustum; the frustum sum $\Sigma(\Pi)$ is the total area of the four frusta.
+\end{center}
+
+The frustum sum is a sum of terms of the form (average radius)$\times$(circumference)$\times$(slant height): $\pi(R_{k-1}+R_k)\lambda_k=2\pi\cdot\frac{R_{k-1}+R_k}2\cdot\lambda_k$. This is a Riemann sum for $\int2\pi R\,ds$ in disguise, where $ds=\sqrt{1+f'^2}\,dx$ is the element of arc length of Section~6.5. The following theorem makes this precise, and also deals with the difficulty that $R$ is evaluated at the two ends $x_{k-1}$ and $x_k$ while the square root, by the Mean Value Theorem, is evaluated at another point $\xi_k$.
+
+\begin{thm}{The surface area formula}{surf}
+Let $f$ be continuous on $[a,b]$ with a continuous derivative, and let its graph be revolved about a horizontal or vertical line that the graph does not cross. Let $R(x)$ be the distance from $(x,f(x))$ to the axis ($R(x)=\lvert f(x)-k\rvert$ for the line $y=k$, $R(x)=\lvert x-k\rvert$ for the line $x=k$). Then the limit in (S2) exists, does not depend on the partitions, and
+\[
+S=\int_a^b2\pi\,R(x)\sqrt{1+f'(x)^2}\,dx .
+\]
+\end{thm}
+\begin{proof}
+Write $h(x)=\sqrt{1+f'(x)^2}$, continuous and at most $H$ on $[a,b]$ for some number $H$ (Extreme Value Theorem), and $I=\int_a^b2\pi R\,h\,dx$. Take a partition $\Pi$ with mesh $\delta$.
+
+\emph{Step 1 (the Mean Value Theorem).} On each $[x_{k-1},x_k]$ there is a point $c_k$ with $\Delta y_k=f'(c_k)\Delta x_k$, so $\lambda_k=\sqrt{\Delta x_k^2+f'(c_k)^2\Delta x_k^2}=h(c_k)\Delta x_k$. Hence
+\[
+\Sigma(\Pi)=\sum_{k=1}^n\pi\bigl(R(x_{k-1})+R(x_k)\bigr)h(c_k)\Delta x_k .
+\]
+\emph{Step 2 (compare with a Riemann sum).} Let $T=\sum_k2\pi R(c_k)h(c_k)\Delta x_k$, a Riemann sum for the continuous function $2\pi Rh$. Let $M_k$ and $m_k$ be the largest and smallest values of the continuous function $R$ on $[x_{k-1},x_k]$. The three numbers $R(x_{k-1})$, $R(x_k)$, $R(c_k)$ all lie in $[m_k,M_k]$, so $\lvert R(x_{k-1})+R(x_k)-2R(c_k)\rvert\le2(M_k-m_k)$. Therefore
+\[
+\lvert\Sigma(\Pi)-T\rvert\le\sum_k\pi\cdot2(M_k-m_k)\,H\,\Delta x_k=2\pi H\,(U-L),
+\]
+where $U=\sum M_k\Delta x_k$ and $L=\sum m_k\Delta x_k$.
+
+\emph{Step 3 ($U-L$ is small).} By the Extreme Value Theorem $M_k=R(u_k)$ and $m_k=R(v_k)$ for points $u_k,v_k$ of the $k$th subinterval, so $U$ and $L$ are Riemann sums of $R$. By (F4) both are within $\varepsilon$ of $\int_a^bR\,dx$ when $\delta$ is small, so $U-L<2\varepsilon$. (This is the statement that a continuous $R$ has small oscillation on small intervals.)
+
+\emph{Step 4 (conclusion).} By (F4) again $\lvert T-I\rvert<\varepsilon$ for small $\delta$. Hence $\lvert\Sigma(\Pi)-I\rvert\le\lvert\Sigma-T\rvert+\lvert T-I\rvert<4\pi H\varepsilon+\varepsilon$ whenever $\delta$ is small enough. As $\varepsilon$ is arbitrary, $\Sigma(\Pi)\to I$ as the mesh tends to $0$, whatever the partitions are.
+\end{proof}
+
+For the $x$-axis and a curve above it, $R=f$ and $S=2\pi\int_a^bf\sqrt{1+f'^2}\,dx$. For the $y$-axis ($0\le a<b$), $R=x$. The same statement holds with the roles of $x$ and $y$ exchanged.
+
+\begin{thm}{Surface area for a curve $x=g(y)$}{yform}
+Let $g$ be continuous on $[c,d]$ with a continuous derivative, and revolve the curve $x=g(y)$ about a horizontal or vertical line that it does not cross. Let $R(y)$ be the distance from $(g(y),y)$ to the axis. Then
+\[
+S=\int_c^d2\pi\,R(y)\sqrt{1+g'(y)^2}\,dy .
+\]
+\end{thm}
+\begin{proof}
+Reflect the plane in the line $y=x$. The reflection preserves distances, so it carries the curve $x=g(y)$ to the graph $y=g(x)$ over $[c,d]$, the axis to a line of the other direction, the inscribed polygons to inscribed polygons, and the radii $r_1,r_2$ and the segment lengths $l$ to the same numbers. By Theorem~\ref{thm:frustum} the frustum sums are equal, so the surfaces have the same area. Apply Theorem~\ref{thm:surf} to $y=g(x)$ and rename the variable.
+\end{proof}
+
+\begin{proc}{Choosing the radius}{radius}
+(1) Draw the curve and the axis. (2) Decide whether $x$ or $y$ is the independent variable: pick the one for which $\sqrt{1+(\text{derivative})^2}$ simplifies, or the one for which the derivative stays finite on the whole interval (Theorem~\ref{6.5-thm:xofy}). (3) Write the radius as the distance from a point of the curve to the axis, \emph{in the same variable}: for the curve $y=f(x)$ it is $f(x)$ about the $x$-axis, $x$ about the $y$-axis, $\lvert f(x)-k\rvert$ about $y=k$, $\lvert x-k\rvert$ about $x=k$. (4) Integrate $2\pi R\,ds$.
+\end{proc}
+
+\subsection*{Knowledge check}
+\begin{kc}{Frusta and cones}{k1}
+(a) Find the area of a cone of base radius $5$ and height $12$. (b) Find the area of the frustum with radii $2$ and $5$ and slant height $5$.
+\end{kc}
+
+\begin{kc}{Which radius?}{k2}
+The curve $y=x^2$, $1\le x\le2$, is revolved about (a) the $x$-axis, (b) the $y$-axis, (c) the line $y=-3$, (d) the line $x=5$. Give the radius $R(x)$ in each case. Do not integrate.
+\end{kc}
+
+\begin{kc}{A vertical tangent}{k3}
+The curve $y=\sqrt[3]{x}$, $0\le x\le1$, is revolved about the $x$-axis. Why is $\int_0^12\pi\sqrt[3]{x}\sqrt{1+f'(x)^2}\,dx$ not a good way to write the area, and what is a better one?
+\end{kc}
+
+\begin{think}{Why frusta?}{t1}
+We approximated a curve by segments to find its length. For a surface, why do we use frusta (one for each segment), and not flat triangles, as the pieces?
+\end{think}
+
+\subsection*{Bounds for the area}
+
+Since $R$ is the radius of the circle that a point of the curve sweeps out, and $ds$ the arc-length element, we have $dS=2\pi R\,ds$: the area of a thin band is its circumference times its width, measured along the curve. If the radius is between two numbers, so is the area per unit length.
+
+\begin{thm}{Bounds for the surface area}{bounds}
+With the notation of Theorem~\ref{thm:surf}, let $L=\int_a^b\sqrt{1+f'^2}\,dx$ be the length of the curve (Theorem~\ref{6.5-thm:arclen}). If $m\le R(x)\le M$ on $[a,b]$ then
+\[
+2\pi\,m\,L\le S\le2\pi\,M\,L ,
+\]
+and there is a point $\xi$ in $[a,b]$ with $S=2\pi\,R(\xi)\,L$: the area is the circumference of a circle of the ``average radius'' times the length of the curve.
+\end{thm}
+\begin{proof}
+Multiply $m\le R(x)\le M$ by the positive number $2\pi h(x)$ and integrate over $[a,b]$; the integral preserves inequalities (Theorem~\ref{6.1-thm:ineq}), which gives $2\pi mL\le S\le2\pi ML$. Dividing by $2\pi L>0$ shows that $S/(2\pi L)$ lies between the least and the greatest value of the continuous function $R$ on $[a,b]$, so by the Intermediate Value Theorem $R(\xi)=S/(2\pi L)$ at some $\xi$.
+\end{proof}
+
+\subsection*{Archimedes: the sphere}
+
+\begin{thm}{The area of a sphere (Archimedes)}{arch}
+Let a sphere have radius $a$. (i) A \emph{zone} between two parallel planes at distance $v-u$ apart, both cutting the sphere, has area $2\pi a\,(v-u)$. (ii) A \emph{cap} of height $a-b$, where $0\le b<a$ is the distance of its plane from the centre, has area $2\pi a\,(a-b)$. (iii) The whole sphere has area $4\pi a^2$.
+\end{thm}
+\begin{proof}
+(i) Take the sphere as the surface made by revolving $y=\sqrt{a^2-x^2}$ about the $x$-axis, with $-a<u<v<a$. On $[u,v]$ the function $f(x)=\sqrt{a^2-x^2}$ is positive with $f'(x)=-x/\sqrt{a^2-x^2}$, continuous. Then $1+f'^2=\dfrac{a^2-x^2+x^2}{a^2-x^2}=\dfrac{a^2}{a^2-x^2}$, so $f\sqrt{1+f'^2}=\sqrt{a^2-x^2}\cdot\dfrac a{\sqrt{a^2-x^2}}=a$, a constant, and by Theorem~\ref{thm:surf} $S=\int_u^v2\pi a\,dx=2\pi a(v-u)$.
+
+(ii) Let $0<b<a$ and $\eta=\sqrt{a^2-b^2}$, so $0<\eta<a$. The cap $x\ge b$ is generated by revolving the curve $x=g(y)=\sqrt{a^2-y^2}$, $0\le y\le\eta$, about the $x$-axis (here $g(\eta)=b>0$). On $[0,\eta]$ we have $g(y)\ge b>0$, so $g'(y)=-y/g(y)$ is continuous. The radius is $R=y$ and $1+g'^2=\dfrac{g^2+y^2}{g^2}=\dfrac{a^2}{g^2}$. By Theorem~\ref{thm:yform}
+\[
+S=\int_0^\eta2\pi y\,\frac{a}{\sqrt{a^2-y^2}}\,dy=2\pi a\Bigl[-\sqrt{a^2-y^2}\Bigr]_0^\eta=2\pi a\,(a-b).
+\]
+
+(iii) Cut the sphere by the planes $x=\pm b$ with $0<b<a$ into a zone of height $2b$ and two caps of height $a-b$. By (i) and (ii) the area is $2\pi a(2b)+2\cdot2\pi a(a-b)=4\pi a^2$, whatever $b$ is. (Each cap is the reflection of the other, so (ii) holds for the cap $x\le-b$ too, and a hemisphere has area $2\pi a^2$.)
+\end{proof}
+
+\begin{think}{Why is the area so simple?}{t2}
+On the sphere, $R\,ds=a\,dx$ (the proof shows $f\sqrt{1+f'^2}=a$). Explain in a sentence what this says about a thin band of the sphere and the cylinder of radius $a$ around it.
+\end{think}
+
+\subsection*{Worked examples}
+
+\begin{exmp}{A line: the formula and the frustum agree}{e1}
+Revolve $y=1+\dfrac x2$, $0\le x\le4$, about the $x$-axis. Find the surface area by the formula, and check it with Theorem~\ref{thm:frustum}.
+
+\textbf{Solution.} \emph{Set-up.} The graph lies above the $x$-axis, so the radius is $R=f(x)=1+\frac x2$. The derivative is $f'(x)=\frac12$, continuous, and $\sqrt{1+f'(x)^2}=\sqrt{1+\frac14}=\frac{\sqrt5}2$.
+
+\emph{Integral.} By Theorem~\ref{thm:surf}, since the factor $\frac{\sqrt5}2$ is constant,
+\[
+S=\int_0^42\pi\Bigl(1+\frac x2\Bigr)\frac{\sqrt5}2\,dx=\pi\sqrt5\int_0^4\Bigl(1+\frac x2\Bigr)dx=\pi\sqrt5\Bigl[x+\frac{x^2}4\Bigr]_0^4=\pi\sqrt5\,(4+4)=8\sqrt5\,\pi\approx56.2 .
+%@ e1-S | ANT(x+x**2/4, 1+x/2, [Q(1,2),Q(3,1)]) == 0 and sqrt(1+Q(1,2)**2) == sqrt(5)/2 and 4+Q(16,4) == 8 and RND(8*sqrt(5)*pi,1) == Q(562,10) | 4)=8\sqrt5\,\pi\approx56.2 .
+\]
+\emph{Check.} The graph is a single segment, so the surface is one frustum. Its radii are $f(0)=1$ and $f(4)=3$ and its slant height is $l=\sqrt{4^2+2^2}=2\sqrt5$. By Theorem~\ref{thm:frustum} its area is $\pi(1+3)\cdot2\sqrt5=8\sqrt5\,\pi$, the same.
+%@ e1-chk | 1+Q(4,2) == 3 and sqrt(4**2+2**2) == 2*sqrt(5) and pi*(1+3)*2*sqrt(5) == 8*sqrt(5)*pi | rt5=8\sqrt5\,\pi$, the same.
+
+\textbf{Answer.} $S=8\sqrt5\,\pi\approx56.2$.
+\begin{center}
+\begin{tikzpicture}[x=1.1cm,y=0.75cm]
+  \draw[->] (-0.3,0) -- (4.8,0) node[right] {$x$};
+  \draw[very thick,blue!70!black] (0,1) -- (4,3);
+  \draw[thick,blue!70!black] (0,-1) -- (4,-3);
+  \draw[gray] (0,0) ellipse (0.12 and 1);
+  \draw[gray] (4,0) ellipse (0.12 and 3);
+  \fill (0,1) circle (1.6pt);
+%@ f4-p0 | 1+Q(0,2) == 1 | \fill (0,1) circle (1.6pt);
+  \fill (4,3) circle (1.6pt);
+%@ f4-p1 | 1+Q(4,2) == 3 | \fill (4,3) circle (1.6pt);
+  \node[font=\small,above left] at (0,1) {$(0,1)$};
+  \node[font=\small,above left] at (4,3) {$(4,3)$};
+  \node[font=\small,blue!70!black,above left] at (3.0,2.5) {$y=1+\frac x2$};
+  \draw[thick,orange!80!black] (2,0) -- (2,2);
+  \fill[orange!80!black] (2,2) circle (1.6pt);
+%@ f4-r | 1+Q(2,2) == 2 | black] (2,2) circle (1.6pt);
+  \node[font=\small,orange!80!black,right] at (2,0.9) {$R=1+\frac x2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The segment, its mirror image and the circles of radii $1$ and $3$ at its ends: one frustum. The orange segment is the radius $R=f(x)$, the distance from the axis to the curve (shown at $x=2$, where $R=2$).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A square root: multiply inside the root}{e2}
+Find the area of the surface made by revolving $y=\sqrt{6x}$, $1\le x\le4$, about the $x$-axis.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac12(6x)^{-1/2}\cdot6=\dfrac3{\sqrt{6x}}$, continuous on $[1,4]$.
+
+\emph{Simplify $f\sqrt{1+f'^2}$.} Since $f>0$ we may put $f$ under the root: $f\sqrt{1+f'^2}=\sqrt{f^2+(f\,f')^2}$. Here $f\,f'=\sqrt{6x}\cdot\dfrac3{\sqrt{6x}}=3$ and $f^2=6x$, so
+\[
+f\sqrt{1+f'^2}=\sqrt{6x+9}.
+\]
+\emph{Integral.} By Theorem~\ref{thm:surf}, $S=2\pi\int_1^4\sqrt{6x+9}\,dx$. Substitute $u=6x+9$, $du=6\,dx$; the limits become $u=15$ (at $x=1$) and $u=33$ (at $x=4$):
+\[
+S=2\pi\int_{15}^{33}u^{1/2}\frac{du}6=\frac\pi3\Bigl[\frac23u^{3/2}\Bigr]_{15}^{33}=\frac{2\pi}9\bigl(33^{3/2}-15^{3/2}\bigr)\approx91.79 .
+%@ e2-S | simplify(diff(x*0+sqrt(6*x),x)-3/sqrt(6*x)) == 0 and simplify(sqrt(6*x)*3/sqrt(6*x)) == 3 and ANT((6*x+9)**Q(3,2)/9, sqrt(6*x+9), [Q(1,2),Q(3,1)]) == 0 and 6*1+9 == 15 and 6*4+9 == 33 and RND(2*pi*(33**Q(3,2)-15**Q(3,2))/9,2) == Q(9179,100) | 15^{3/2}\bigr)\approx91.79 .
+\]
+\emph{Check.} One frustum on the chord from $(1,\sqrt6)$ to $(4,\sqrt{24}=2\sqrt6)$ has radii $\sqrt6$ and $2\sqrt6$ and slant height $\sqrt{3^2+(\sqrt6)^2}=\sqrt{15}$, so its area is $\pi\cdot3\sqrt6\cdot\sqrt{15}=9\pi\sqrt{10}\approx89.41$, close to $S\approx91.79$ (the frustum sum with more frusta gets closer).
+%@ e2-chk | sqrt(24)-sqrt(6) == sqrt(6) and sqrt(9+6) == sqrt(15) and pi*(sqrt(6)+sqrt(24))*sqrt(15) == 9*pi*sqrt(10) and RND(9*pi*sqrt(10),2) == Q(8941,100) | .79$ (the frustum sum with more frusta gets closer).
+
+\textbf{Answer.} $S=\dfrac{2\pi}9\bigl(33^{3/2}-15^{3/2}\bigr)\approx91.79$.
+\begin{center}
+\begin{tikzpicture}[x=1.1cm,y=0.65cm]
+  \draw[->] (-0.3,0) -- (4.9,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0.5:4.3,samples=40,variable=\t] plot ({\t},{sqrt(6*\t)});
+  \draw[thick,blue!70!black,domain=0.5:4.3,samples=40,variable=\t] plot ({\t},{-sqrt(6*\t)});
+  \draw[gray] (1,0) ellipse (0.12 and 2.4495);
+  \draw[gray] (4,0) ellipse (0.12 and 4.899);
+  \draw[dashed] (1,2.4495) -- (4,4.899);
+  \fill (1,2.4495) circle (1.6pt);
+%@ f5-p1 | RND(sqrt(6),4) == Q(24495,10000) | l (1,2.4495) circle (1.6pt);
+  \fill (4,4.899) circle (1.6pt);
+%@ f5-p2 | RND(sqrt(24),4) == Q(48990,10000) | ll (4,4.899) circle (1.6pt);
+  \node[font=\small,left] at (1,2.7) {$(1,\sqrt6)$};
+  \node[font=\small,above left] at (4,4.899) {$(4,2\sqrt6)$};
+  \node[font=\small,blue!70!black,above left] at (2.7,4.95) {$y=\sqrt{6x}$};
+  \draw[thick,orange!80!black] (2,0) -- (2,3.4641);
+  \fill[orange!80!black] (2,3.4641) circle (1.6pt);
+%@ f5-r | RND(sqrt(12),4) == Q(34641,10000) | ] (2,3.4641) circle (1.6pt);
+  \node[font=\small,orange!80!black,right] at (2,1.6) {$R=\sqrt{6x}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e2}, its mirror image, the end circles and (dashed) the chord of the one-frustum check. The orange segment is the radius $R=f(x)$ at $x=2$, where $R=\sqrt{12}$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A funnel: a perfect square}{e3}
+A funnel has the shape of the surface made by revolving $y=\dfrac{x^3}6+\dfrac1{2x}$, $1\le x\le2$, about the $x$-axis (lengths in centimetres). Find its surface area, and the volume of paint in a coat $0.02$ cm thick.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\dfrac{x^2}2-\dfrac1{2x^2}$, continuous on $[1,2]$.
+
+\emph{A perfect square.} Write $A=\frac{x^2}2$ and $B=\frac1{2x^2}$, so $f'=A-B$ and $AB=\frac14$. Then $1+f'^2=1+A^2-2AB+B^2=A^2+2AB+B^2=(A+B)^2$ because $1=4AB$. Since $A+B>0$, $\sqrt{1+f'^2}=\dfrac{x^2}2+\dfrac1{2x^2}$.
+
+\emph{Integral.} Multiply out $f\cdot(A+B)$ term by term:
+\[
+\Bigl(\frac{x^3}6+\frac1{2x}\Bigr)\Bigl(\frac{x^2}2+\frac1{2x^2}\Bigr)=\frac{x^5}{12}+\frac x{12}+\frac x4+\frac1{4x^3}=\frac{x^5}{12}+\frac x3+\frac1{4x^3}.
+%@ e3-a | simplify(1+(x**2/2-1/(2*x**2))**2-(x**2/2+1/(2*x**2))**2) == 0 and expand((x**3/6+1/(2*x))*(x**2/2+1/(2*x**2))) == x**5/12+x/3+1/(4*x**3) | }{12}+\frac x3+\frac1{4x^3}.
+\]
+Antiderivative: $\dfrac{x^6}{72}+\dfrac{x^2}6-\dfrac1{8x^2}$. By Theorem~\ref{thm:surf},
+\[
+S=2\pi\Bigl[\frac{x^6}{72}+\frac{x^2}6-\frac1{8x^2}\Bigr]_1^2=2\pi\Bigl[\Bigl(\frac89+\frac23-\frac1{32}\Bigr)-\Bigl(\frac1{72}+\frac16-\frac18\Bigr)\Bigr]=2\pi\Bigl(\frac{439}{288}-\frac1{18}\Bigr)=\frac{47\pi}{16}\approx9.23\ \text{cm}^2 .
+%@ e3-S | ANT(x**6/72+x**2/6-1/(8*x**2), x**5/12+x/3+1/(4*x**3), [Q(3,2),Q(2,1)]) == 0 and Q(8,9)+Q(2,3)-Q(1,32) == Q(439,288) and Q(1,72)+Q(1,6)-Q(1,8) == Q(1,18) and 2*(Q(439,288)-Q(1,18)) == Q(47,16) and RND(47*pi/16,2) == Q(923,100) | 6}\approx9.23\ \text{cm}^2 .
+\]
+\emph{Paint.} A coat of thickness $0.02$ cm over $\frac{47\pi}{16}$ cm$^2$ has volume about $0.02\cdot\frac{47\pi}{16}\approx0.185$ cm$^3$.
+%@ e3-paint | RND(Q(2,100)*47*pi/16,3) == Q(185,1000) | pi}{16}\approx0.185$ cm$^3$.
+
+\textbf{Answer.} $S=\dfrac{47\pi}{16}\approx9.23$ cm$^2$; paint $\approx0.185$ cm$^3$.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=1.3cm]
+  \draw[->] (0.4,0) -- (2.5,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0.85:2.15,samples=40,variable=\t] plot ({\t},{\t*\t*\t/6+1/(2*\t)});
+  \draw[thick,blue!70!black,domain=0.85:2.15,samples=40,variable=\t] plot ({\t},{-\t*\t*\t/6-1/(2*\t)});
+  \draw[gray] (1,0) ellipse (0.06 and 0.6667);
+  \draw[gray] (2,0) ellipse (0.06 and 1.5833);
+  \fill (1,0.6667) circle (1.6pt);
+%@ f6-p1 | Q(1,6)+Q(1,2) == Q(2,3) | l (1,0.6667) circle (1.6pt);
+  \fill (2,1.5833) circle (1.6pt);
+%@ f6-p2 | Q(8,6)+Q(1,4) == Q(19,12) | l (2,1.5833) circle (1.6pt);
+  \node[font=\small,left] at (0.97,0.9) {$(1,\frac23)$};
+  \node[font=\small,right] at (2.05,1.58) {$(2,\frac{19}{12})$};
+  \node[font=\small,blue!70!black,above left] at (1.75,1.5) {$y=\frac{x^3}6+\frac1{2x}$};
+  \draw[thick,orange!80!black] (1.25,0) -- (1.25,0.7255);
+  \fill[orange!80!black] (1.25,0.7255) circle (1.6pt);
+%@ f6-r | Q(125,384)+Q(2,5) == Q(1393,1920) and RND(Q(1393,1920),4) == Q(7255,10000) | 1.25,0.7255) circle (1.6pt);
+  \node[font=\small,orange!80!black,right] at (1.25,0.36) {$R=f(x)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The funnel of Example~\ref{ex:e3}: the curve, its mirror image and the circles at $x=1$ and $x=2$. The orange segment is the radius $R=f(x)$ at $x=\frac54$, where $R=\frac{1393}{1920}\approx0.726$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A catenary: $\sqrt{1+f'^2}=f$}{e4}
+Revolve $y=\cosh x=\dfrac{e^x+e^{-x}}2$, $0\le x\le\ln3$, about the $x$-axis. Find the area.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\dfrac{e^x-e^{-x}}2$, continuous. \emph{Simplify.} $f^2-f'^2=\dfrac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}4=\dfrac{4e^xe^{-x}}4=1$, so $1+f'^2=f^2$ and $\sqrt{1+f'^2}=f$ because $f>0$. Hence $f\sqrt{1+f'^2}=f^2=\dfrac{e^{2x}+2+e^{-2x}}4$.
+
+\emph{Integral.}
+\[
+\begin{aligned}
+S&=2\pi\int_0^{\ln3}\frac{e^{2x}+2+e^{-2x}}4\,dx=2\pi\Bigl[\frac{e^{2x}}8+\frac x2-\frac{e^{-2x}}8\Bigr]_0^{\ln3}\\
+&=2\pi\Bigl(\frac98+\frac{\ln3}2-\frac1{72}\Bigr)=\pi\Bigl(\frac{20}9+\ln3\Bigr)\approx10.43 ,
+%@ e4-S | simplify(1+(exp(x)-exp(-x))**2/4-((exp(x)+exp(-x))/2)**2) == 0 and simplify(diff(exp(2*x)/8+x/2-exp(-2*x)/8,x)-((exp(x)+exp(-x))/2)**2) == 0 and simplify(2*pi*((exp(2*x)/8+x/2-exp(-2*x)/8).subs(x,log(3))-(exp(2*x)/8+x/2-exp(-2*x)/8).subs(x,0))-pi*(Q(20,9)+log(3))) == 0 and RND(pi*(Q(20,9)+log(3)),2) == Q(1043,100) | 0}9+\ln3\Bigr)\approx10.43 ,
+\end{aligned}
+\]
+using $e^{2\ln3}=9$, $e^{-2\ln3}=\frac19$ and $\frac98-\frac1{72}=\frac{80}{72}=\frac{10}9$; the lower limit gives $\frac18-0-\frac18=0$.
+
+\emph{Check.} The end radii are $f(0)=1$ and $f(\ln3)=\frac{3+1/3}2=\frac53$, and one frustum over the chord of length $\sqrt{(\ln3)^2+(\frac23)^2}\approx1.285$ has area $\pi\cdot\frac83\cdot1.285\approx10.77$, near $S$ (a bit larger, because the chord is above the curve).
+%@ e4-chk | Q(3,1)+Q(1,3) == Q(10,3) and Q(10,3)/2 == Q(5,3) and RND(sqrt(log(3)**2+Q(2,3)**2),3) == Q(1285,1000) and RND(pi*Q(8,3)*sqrt(log(3)**2+Q(2,3)**2),2) == Q(1077,100) | .77$, near $S$ (a bit larger, because the chord is above the curve).
+
+\textbf{Answer.} $S=\pi\bigl(\frac{20}9+\ln3\bigr)\approx10.43$.
+\begin{center}
+\begin{tikzpicture}[x=3.8cm,y=1.1cm]
+  \draw[->] (-0.2,0) -- (1.4,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0:1.0986,samples=40,variable=\t] plot ({\t},{(exp(\t)+exp(-\t))/2});
+  \draw[thick,blue!70!black,domain=0:1.0986,samples=40,variable=\t] plot ({\t},{-(exp(\t)+exp(-\t))/2});
+  \draw[gray] (0,0) ellipse (0.04 and 1);
+  \draw[gray] (1.0986,0) ellipse (0.04 and 1.6667);
+  \fill (0,1) circle (1.6pt);
+%@ f7-p0 | (exp(0)+exp(-0))/2 == 1 | \fill (0,1) circle (1.6pt);
+  \fill (1.0986,1.6667) circle (1.6pt);
+%@ f7-p1 | simplify((exp(log(3))+exp(-log(3)))/2) == Q(5,3) and RND(log(3),4) == Q(10986,10000) | 0986,1.6667) circle (1.6pt);
+  \node[font=\small,above left] at (0,1) {$(0,1)$};
+  \node[font=\small,above] at (1.1,1.7) {$(\ln3,\frac53)$};
+  \node[font=\small,blue!70!black,above left] at (0.6,1.75) {$y=\cosh x$};
+  \draw[thick,orange!80!black] (0.5,0) -- (0.5,1.1276);
+  \fill[orange!80!black] (0.5,1.1276) circle (1.6pt);
+%@ f7-r | RND((exp(Q(1,2))+exp(-Q(1,2)))/2,4) == Q(11276,10000) | (0.5,1.1276) circle (1.6pt);
+  \node[font=\small,orange!80!black,right] at (0.5,0.55) {$R=\cosh x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The catenary of Example~\ref{ex:e4}, its mirror image and the end circles of radii $1$ and $\frac53$. The orange segment is the radius $R=f(x)$ at $x=\frac12$, where $R=\cosh\frac12\approx1.128$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Change the variable: $x=g(y)$}{e5}
+The curve $y=\ln\dfrac{x+\sqrt{x^2-1}}4$ runs from $(\frac{17}8,0)$ to $(\frac{65}{16},\ln2)$. Find the area when it is revolved about the $y$-axis.
+
+\textbf{Solution.} \emph{Why not $x$?} With $y=f(x)$ one finds $f'=\dfrac1{\sqrt{x^2-1}}$, so $S=2\pi\int x\cdot\dfrac x{\sqrt{x^2-1}}\,dx$, which needs a trigonometric substitution, a method we avoid here. So we solve for $x$. Put $u=e^y$; then $x=2u+\frac1{8u}$ means $16u^2-8xu+1=0$, whose root with $4u=x+\sqrt{x^2-1}$ is the one in the formula. Hence
+\[
+x=g(y)=2e^y+\frac{e^{-y}}8,\qquad 0\le y\le\ln2 ,
+\]
+and $g(0)=2+\frac18=\frac{17}8$, $g(\ln2)=4+\frac1{16}=\frac{65}{16}$, the two given endpoints.
+%@ e5-g | 2+Q(1,8) == Q(17,8) and 2*2+Q(1,16) == Q(65,16) and expand(16*((x+sqrt(x**2-1))/4)**2-8*x*((x+sqrt(x**2-1))/4)+1) == 0 | }{16}$, the two given endpoints.
+\emph{Derivative and simplification.} $g'(y)=2e^y-\frac{e^{-y}}8$. With $A=2e^y$ and $B=\frac{e^{-y}}8$ we have $g'=A-B$ and $AB=\frac14$, so $1+g'^2=(A+B)^2=g^2$ and $\sqrt{1+g'^2}=g$ (as $g>0$).
+
+\emph{Integral.} About the $y$-axis the radius is $R=g(y)$, so by Theorem~\ref{thm:yform}, using $g^2=4e^{2y}+2\cdot2\cdot\frac18+\frac{e^{-2y}}{64}=4e^{2y}+\frac12+\frac{e^{-2y}}{64}$,
+\[
+\begin{aligned}
+S&=2\pi\int_0^{\ln2}\Bigl(4e^{2y}+\frac12+\frac{e^{-2y}}{64}\Bigr)dy=2\pi\Bigl[2e^{2y}+\frac y2-\frac{e^{-2y}}{128}\Bigr]_0^{\ln2}\\
+&=2\pi\Bigl(\frac{3075}{512}+\frac{\ln2}2\Bigr)=\pi\Bigl(\frac{3075}{256}+\ln2\Bigr)\approx39.91 ,
+%@ e5-S | simplify(1+(2*exp(x)-exp(-x)/8)**2-(2*exp(x)+exp(-x)/8)**2) == 0 and expand((2*exp(x)+exp(-x)/8)**2) == 4*exp(2*x)+Q(1,2)+exp(-2*x)/64 and simplify(diff(2*exp(2*x)-exp(-2*x)/128+x/2,x)-(4*exp(2*x)+Q(1,2)+exp(-2*x)/64)) == 0 and 8-Q(1,512)-(2-Q(1,128)) == Q(3075,512) and RND(pi*(Q(3075,256)+log(2)),2) == Q(3991,100) | 56}+\ln2\Bigr)\approx39.91 ,
+\end{aligned}
+\]
+since at $y=\ln2$ the bracket is $8+\frac{\ln2}2-\frac1{512}$ and at $y=0$ it is $2-\frac1{128}$.
+
+\textbf{Answer.} $S=\pi\bigl(\frac{3075}{256}+\ln2\bigr)\approx39.91$.
+\begin{center}
+\begin{tikzpicture}[x=1.0cm,y=3.2cm]
+  \draw[->] (0,-0.1) -- (0,0.95) node[above] {$y$};
+  \draw[->] (-4.8,0) -- (4.9,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0:0.6931,samples=40,variable=\t] plot ({2*exp(\t)+exp(-\t)/8},{\t});
+  \draw[thick,blue!70!black,domain=0:0.6931,samples=40,variable=\t] plot ({-2*exp(\t)-exp(-\t)/8},{\t});
+  \draw[gray] (0,0) ellipse (2.125 and 0.05);
+  \draw[gray] (0,0.6931) ellipse (4.0625 and 0.05);
+  \fill (2.125,0) circle (1.6pt);
+%@ f8-p1 | 2+Q(1,8) == Q(17,8) | ll (2.125,0) circle (1.6pt);
+  \fill (4.0625,0.6931) circle (1.6pt);
+%@ f8-p2 | 2*2+Q(1,16) == Q(65,16) and RND(log(2),4) == Q(6931,10000) | 0625,0.6931) circle (1.6pt);
+  \node[font=\small,below right] at (2.125,0) {$(\frac{17}8,0)$};
+  \node[font=\small,above right] at (4.0625,0.6931) {$(\frac{65}{16},\ln2)$};
+  \node[font=\small,blue!70!black,right] at (3.55,0.3) {$x=2e^y+\frac18e^{-y}$};
+  \draw[thick,orange!80!black] (0,0.3466) -- (2.9168,0.3466);
+  \fill[orange!80!black] (2.9168,0.3466) circle (1.6pt);
+%@ f8-r | simplify(2*sqrt(2)+sqrt(2)/16-33*sqrt(2)/16) == 0 and RND(33*sqrt(2)/16,4) == Q(29168,10000) and RND(log(2)/2,4) == Q(3466,10000) | 9168,0.3466) circle (1.6pt);
+  \node[font=\small,orange!80!black,above] at (1.45,0.3466) {$R=g(y)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve $x=2e^y+\frac18e^{-y}$ of Example~\ref{ex:e5} and its mirror image in the $y$-axis, with the circles of radii $\frac{17}8$ and $\frac{65}{16}$ at its ends. The orange segment is the radius $R=g(y)$ from the $y$-axis to the curve, at $y=\frac{\ln2}2$, where $R=\frac{33\sqrt2}{16}\approx2.917$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{One curve, three axes}{e6}
+The curve $y=\dfrac{x^3}3+\dfrac1{4x}$, $1\le x\le2$ (Example~\ref{6.5-ex:e3}) has length $L=\frac{59}{24}$ and $\sqrt{1+f'^2}=x^2+\frac1{4x^2}$. Find the surface area when it is revolved about (a) the $y$-axis, (b) the line $y=-1$, (c) the line $x=3$.
+
+\textbf{Solution.} The only thing that changes is the radius $R$, the distance from $(x,f(x))$ to the axis. The factor $\sqrt{1+f'^2}=x^2+\frac1{4x^2}$ is the same in all three.
+
+\emph{(a) The $y$-axis.} $R=x$ (as $x>0$):
+\[
+\begin{aligned}
+S&=2\pi\int_1^2x\Bigl(x^2+\frac1{4x^2}\Bigr)dx=2\pi\int_1^2\Bigl(x^3+\frac1{4x}\Bigr)dx\\
+&=2\pi\Bigl[\frac{x^4}4+\frac{\ln x}4\Bigr]_1^2\\
+&=2\pi\Bigl(4+\frac{\ln2}4-\frac14\Bigr)=\frac\pi2\,(15+\ln2)\approx24.65 .
+%@ e6-a | simplify(diff(x**4/4+log(x)/4,x)-x*(x**2+1/(4*x**2))) == 0 and simplify(2*pi*((x**4/4+log(x)/4).subs(x,2)-(x**4/4+log(x)/4).subs(x,1))-pi*(15+log(2))/2) == 0 and RND(pi*(15+log(2))/2,2) == Q(2465,100) | pi2\,(15+\ln2)\approx24.65 .
+\end{aligned}
+\]
+\emph{(b) The line $y=-1$.} The curve lies above the line ($f>0$), so $R=f(x)-(-1)=f(x)+1$. Then $S=2\pi\int_1^2f(A+B)\,dx+2\pi\int_1^2(A+B)\,dx$ with $A+B=x^2+\frac1{4x^2}$. The second integral is $2\pi L=\frac{59\pi}{12}$. For the first, $f\,(A+B)=\bigl(\frac{x^3}3+\frac1{4x}\bigr)\bigl(x^2+\frac1{4x^2}\bigr)=\frac{x^5}3+\frac x{12}+\frac x4+\frac1{16x^3}=\frac{x^5}3+\frac x3+\frac1{16x^3}$, with antiderivative $\frac{x^6}{18}+\frac{x^2}6-\frac1{32x^2}$, so
+\[
+2\pi\Bigl[\frac{x^6}{18}+\frac{x^2}6-\frac1{32x^2}\Bigr]_1^2=2\pi\Bigl(\frac{4855}{1152}-\frac{55}{288}\Bigr)=\frac{515\pi}{64},
+\qquad S=\frac{515\pi}{64}+\frac{59\pi}{12}=\frac{2489\pi}{192}\approx40.73 .
+%@ e6-b | expand((x**3/3+1/(4*x))*(x**2+1/(4*x**2))) == x**5/3+x/3+1/(16*x**3) and ANT(x**6/18+x**2/6-1/(32*x**2), x**5/3+x/3+1/(16*x**3), [Q(3,2),Q(2,1)]) == 0 and Q(64,18)+Q(4,6)-Q(1,128) == Q(4855,1152) and Q(1,18)+Q(1,6)-Q(1,32) == Q(55,288) and 2*(Q(4855,1152)-Q(55,288)) == Q(515,64) and Q(515,64)+Q(59,12) == Q(2489,192) and RND(Q(2489,192)*pi,2) == Q(4073,100) | {2489\pi}{192}\approx40.73 .
+\]
+\emph{(c) The line $x=3$.} The curve lies to the left of the line ($x\le2<3$), so $R=3-x$:
+\[
+\begin{aligned}
+S&=2\pi\int_1^2(3-x)\Bigl(x^2+\frac1{4x^2}\Bigr)dx=2\pi\int_1^2\Bigl(3x^2+\frac3{4x^2}-x^3-\frac1{4x}\Bigr)dx\\
+&=2\pi\Bigl[x^3-\frac3{4x}-\frac{x^4}4-\frac{\ln x}4\Bigr]_1^2=\frac\pi4\,(29-\ln4)\approx21.69 .
+%@ e6-c | simplify(diff(x**3-3/(4*x)-x**4/4-log(x)/4,x)-(3-x)*(x**2+1/(4*x**2))) == 0 and 8-Q(3,8)-4 == Q(29,8) and 1-Q(3,4)-Q(1,4) == 0 and simplify(2*((x**3-3/(4*x)-x**4/4-log(x)/4).subs(x,2)-(x**3-3/(4*x)-x**4/4-log(x)/4).subs(x,1))-(29-2*log(2))/4) == 0 and RND(pi*(29-log(4))/4,2) == Q(2169,100) | pi4\,(29-\ln4)\approx21.69 .
+\end{aligned}
+\]
+\emph{Check by the bounds.} For (a) $1\le R\le2$, so Theorem~\ref{thm:bounds} gives $2\pi L\le S\le4\pi L$, that is $15.45\le S\le30.89$, and $24.65$ is in this range.
+%@ e6-chk | RND(2*pi*Q(59,24),2) == Q(1545,100) and RND(4*pi*Q(59,24),2) == Q(3089,100) | nd $24.65$ is in this range.
+
+\textbf{Answer.} (a) $\frac\pi2(15+\ln2)\approx24.65$; (b) $\frac{2489\pi}{192}\approx40.73$; (c) $\frac\pi4(29-\ln4)\approx21.69$.
+\begin{center}
+\begin{tikzpicture}[x=1.7cm,y=1.0cm]
+  \draw[->] (-0.3,0) -- (4.0,0) node[right] {$x$};
+  \draw[->] (0,-1.5) -- (0,4.2) node[above] {$y$};
+  \draw[dashed,red!70!black] (-0.3,-1) -- (3.9,-1) node[right,font=\small] {$y=-1$};
+  \draw[dashed,red!70!black] (3,-1.5) -- (3,4.2) node[above,font=\small] {$x=3$};
+  \draw[very thick,blue!70!black,domain=0.45:2.3,samples=40,variable=\t] plot ({\t},{\t*\t*\t/3+1/(4*\t)});
+  \node[font=\small,blue!70!black,anchor=west] at (0.15,3.6) {$y=\frac{x^3}3+\frac1{4x}$};
+  \fill (1,0.5833) circle (1.6pt);
+%@ f9-p1 | Q(1,3)+Q(1,4) == Q(7,12) | l (1,0.5833) circle (1.6pt);
+  \fill (2,2.7917) circle (1.6pt);
+%@ f9-p2 | Q(8,3)+Q(1,8) == Q(67,24) | l (2,2.7917) circle (1.6pt);
+  \node[font=\small,below left] at (1,0.5833) {$(1,\frac7{12})$};
+  \node[font=\small,left] at (1.95,2.95) {$(2,\frac{67}{24})$};
+  \draw[thick,orange!80!black] (0,1.2917) -- (1.5,1.2917);
+  \draw[thick,orange!80!black] (1.5,-1) -- (1.5,1.2917);
+  \draw[thick,orange!80!black] (2,2.7917) -- (3,2.7917);
+  \fill[orange!80!black] (1.5,1.2917) circle (1.6pt);
+%@ f9-r | Q(9,8)+Q(1,6) == Q(31,24) and RND(Q(31,24),4) == Q(12917,10000) | (1.5,1.2917) circle (1.6pt);
+  \node[font=\small,orange!80!black,above] at (0.75,1.29) {$R=x$};
+  \node[font=\small,orange!80!black,right] at (1.5,-0.45) {$R=f(x)+1$};
+  \node[font=\small,orange!80!black,above] at (2.62,2.79) {$R=3-x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e6} and the three axes: the $y$-axis, the line $y=-1$ and the line $x=3$. The curve is the same; only the distance to the axis changes. The orange segments are the radii: $R=x$ for the $y$-axis and $R=f(x)+1$ for $y=-1$ (both drawn at $x=\frac32$), and $R=3-x$ for $x=3$ (drawn at $x=2$).
+\end{center}
+\end{exmp}
+
+\begin{think}{Shells and surfaces}{t3}
+The shell formula of Section~6.4 is $2\pi\int x\,h(x)\,dx$ with $h$ the height of the strip, and the surface formula about the $y$-axis is $2\pi\int x\sqrt{1+f'^2}\,dx$. Both have the circumference $2\pi x$. What does $h$ measure, what does $\sqrt{1+f'^2}\,dx$ measure, and why can the second never be smaller than the first with $h\,dx=dx$?
+\end{think}
+
+\begin{exmp}{A vertical tangent: switch to $x=g(y)$}{e7}
+Revolve $y=\sqrt x$, $0\le x\le4$, about the $x$-axis.
+
+\textbf{Solution.} \emph{The problem.} $f'(x)=\frac1{2\sqrt x}$ is not defined at $x=0$ (the tangent is vertical there), so Theorem~\ref{thm:surf} does not apply on $[0,4]$. Solve for $x$: the same curve is $x=g(y)=y^2$ for $0\le y\le2$, and $g'(y)=2y$ is continuous.
+
+\emph{Set-up.} About the $x$-axis the radius is $R=y$. By Theorem~\ref{thm:yform},
+\[
+S=\int_0^22\pi\,y\sqrt{1+4y^2}\,dy .
+\]
+\emph{Substitution.} $u=1+4y^2$, $du=8y\,dy$, so $y\,dy=\frac{du}8$; $u=1$ at $y=0$ and $u=17$ at $y=2$:
+\[
+S=2\pi\int_1^{17}u^{1/2}\frac{du}8=\frac\pi4\Bigl[\frac23u^{3/2}\Bigr]_1^{17}=\frac\pi6\bigl(17\sqrt{17}-1\bigr)\approx36.18 .
+%@ e7-S | 1+4*0**2 == 1 and 1+4*2**2 == 17 and ANT(x**Q(3,2), x**Q(1,2)*Q(3,2), [Q(1,1),Q(17,1)]) == 0 and Q(1,4)*Q(2,3) == Q(1,6) and RND(pi*(17*sqrt(17)-1)/6,2) == Q(3618,100) | rt{17}-1\bigr)\approx36.18 .
+\]
+\emph{Remark.} Written in $x$ the same area is $2\pi\int_0^4\sqrt x\sqrt{1+\frac1{4x}}\,dx=2\pi\int_0^4\sqrt{x+\frac14}\,dx=\frac{4\pi}3\bigl[(x+\tfrac14)^{3/2}\bigr]_0^4=\frac\pi6(17\sqrt{17}-1)$, the same number, but the derivative is not continuous at $0$, so this integral is not covered by the theorem as stated; the form in $y$ is.
+%@ e7-rem | simplify(x*(1+1/(4*x))-(x+Q(1,4))) == 0 and (Q(17,4))**Q(3,2)-(Q(1,4))**Q(3,2) == (17*sqrt(17)-1)/8 and Q(4,3)*(17*sqrt(17)-1)/8 == (17*sqrt(17)-1)/6 | t $0$, so this integral is not covered by the theorem as stated; the form in $y$ is.
+\emph{Check.} The cone obtained from the chord from $(0,0)$ to $(4,2)$ has radii $0$ and $2$ and slant height $\sqrt{20}$, so area $\pi\cdot2\sqrt{20}\approx28.10$; the curve bulges above the chord, and $S\approx36.18$ is larger.
+%@ e7-chk | RND(pi*2*sqrt(20),2) == Q(2810,100) | d $S\approx36.18$ is larger.
+
+\textbf{Answer.} $S=\dfrac\pi6\bigl(17\sqrt{17}-1\bigr)\approx36.18$.
+\begin{center}
+\begin{tikzpicture}[x=1.2cm,y=0.9cm]
+  \draw[->] (-0.3,0) -- (4.8,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0:4,samples=50,variable=\t] plot ({\t},{sqrt(\t)});
+  \draw[thick,blue!70!black,domain=0:4,samples=50,variable=\t] plot ({\t},{-sqrt(\t)});
+  \draw[dashed] (0,0) -- (4,2);
+  \draw[gray] (4,0) ellipse (0.12 and 2);
+  \fill (0,0) circle (1.6pt);
+%@ f10-p0 | 0**2 == 0 | \fill (0,0) circle (1.6pt);
+  \fill (4,2) circle (1.6pt);
+%@ f10-p1 | sqrt(4) == 2 | \fill (4,2) circle (1.6pt);
+  \node[font=\small,above left] at (0,0) {$(0,0)$};
+  \node[font=\small,above left] at (4,2) {$(4,2)$};
+  \node[font=\small,blue!70!black,above left] at (2.9,2.25) {$y=\sqrt x$};
+  \draw[thick,orange!80!black] (2,0) -- (2,1.4142);
+  \fill[orange!80!black] (2,1.4142) circle (1.6pt);
+%@ f10-r | RND(sqrt(2),4) == Q(14142,10000) | ] (2,1.4142) circle (1.6pt);
+  \node[font=\small,orange!80!black,right] at (2.05,0.5) {$R=y$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e7}, its mirror image and the circle of radius $2$ at $x=4$; the tangent at the origin is vertical. The dashed chord is the cone of the check. The orange segment is the radius $R=y=\sqrt x$ at $x=2$ (the curve in the form $x=y^2$ has $R=y$ throughout).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{No closed form: a number, checked two ways}{e8}
+Revolve $y=x^2$, $0\le x\le1$, about the $x$-axis. Find the area.
+
+\textbf{Solution.} \emph{Set-up.} $f'=2x$ and $R=x^2$, so $S=2\pi\int_0^1x^2\sqrt{1+4x^2}\,dx$. The integrand has no antiderivative that the substitutions of this chapter can find (it needs a trigonometric or hyperbolic substitution together with integration by parts), so we find the number by numerical integration (a calculator or Simpson's rule): $S\approx3.810$.
+%@ e8-S | RND(Integral(2*pi*x**2*sqrt(1+4*x**2),(x,0,1)).evalf(30),3) == Q(3810,1000) | on's rule): $S\approx3.810$.
+
+\emph{Check 1: a frustum sum.} With $4$ equal pieces ($x=0,\frac14,\frac12,\frac34,1$; $y=0,\frac1{16},\frac14,\frac9{16},1$) the segments have lengths $\frac{\sqrt{17}}{16},\frac5{16},\frac{\sqrt{41}}{16},\frac{\sqrt{65}}{16}$ (from $\sqrt{(\frac14)^2+\Delta y^2}$ with $\Delta y=\frac1{16},\frac3{16},\frac5{16},\frac7{16}$), and the frusta have total area
+\[
+\pi\Bigl[\frac1{16}\cdot\frac{\sqrt{17}}{16}+\frac5{16}\cdot\frac5{16}+\frac{13}{16}\cdot\frac{\sqrt{41}}{16}+\frac{25}{16}\cdot\frac{\sqrt{65}}{16}\Bigr]\approx3.852 ,
+%@ e8-fr | sqrt(Q(1,4)**2+Q(1,16)**2) == sqrt(17)/16 and sqrt(Q(1,4)**2+Q(3,16)**2) == Q(5,16) and sqrt(Q(1,4)**2+Q(5,16)**2) == sqrt(41)/16 and sqrt(Q(1,4)**2+Q(7,16)**2) == sqrt(65)/16 and Q(1,4)+Q(9,16) == Q(13,16) and Q(9,16)+1 == Q(25,16) and RND(pi*(Q(1,256)*sqrt(17)+Q(25,256)+Q(13,256)*sqrt(41)+Q(25,256)*sqrt(65)),3) == Q(3852,1000) | 65}}{16}\Bigr]\approx3.852 ,
+\]
+close to $3.810$ (with $2$ pieces the frustum sum is $3.979$, so the sums approach $S$ as the pieces get shorter).
+
+\emph{Check 2: bounds on each piece.} Let $L_k$ be the length of the curve over the $k$th quarter ($0.2601,\ 0.3138,\ 0.4008,\ 0.5042$, by numerical integration of $\sqrt{1+4x^2}$). On each quarter $R=x^2$ is between its values at the ends, so Theorem~\ref{thm:bounds} on each piece, added, gives
+\[
+2\pi\bigl(0\cdot L_1+\tfrac1{16}L_2+\tfrac14L_3+\tfrac9{16}L_4\bigr)\le S\le2\pi\bigl(\tfrac1{16}L_1+\tfrac14L_2+\tfrac9{16}L_3+1\cdot L_4\bigr),
+\]
+that is $2.535\le S\le5.180$, which contains $3.810$. (With one piece the bounds would be only $0\le S\le9.29$.)
+%@ e8-bd | RND(Integral(sqrt(1+4*x**2),(x,0,Q(1,4))).evalf(30),4) == Q(2601,10000) and RND(Integral(sqrt(1+4*x**2),(x,Q(1,4),Q(1,2))).evalf(30),4) == Q(3138,10000) and RND(Integral(sqrt(1+4*x**2),(x,Q(1,2),Q(3,4))).evalf(30),4) == Q(4008,10000) and RND(Integral(sqrt(1+4*x**2),(x,Q(3,4),1)).evalf(30),4) == Q(5042,10000) and RND(2*pi*(Q(1,16)*Integral(sqrt(1+4*x**2),(x,Q(1,4),Q(1,2)))+Q(1,4)*Integral(sqrt(1+4*x**2),(x,Q(1,2),Q(3,4)))+Q(9,16)*Integral(sqrt(1+4*x**2),(x,Q(3,4),1))).evalf(30),3) == Q(2535,1000) and RND(2*pi*(Q(1,16)*Integral(sqrt(1+4*x**2),(x,0,Q(1,4)))+Q(1,4)*Integral(sqrt(1+4*x**2),(x,Q(1,4),Q(1,2)))+Q(9,16)*Integral(sqrt(1+4*x**2),(x,Q(1,2),Q(3,4)))+Integral(sqrt(1+4*x**2),(x,Q(3,4),1))).evalf(30),3) == Q(5180,1000) | ld be only $0\le S\le9.29$.)
+
+\textbf{Answer.} $S\approx3.810$.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=2.6cm]
+  \draw[->] (-0.1,0) -- (1.25,0) node[right] {$x$};
+  \draw[very thick,blue!70!black,domain=0:1,samples=40,variable=\t] plot ({\t},{\t*\t});
+  \draw[thick,blue!70!black,domain=0:1,samples=40,variable=\t] plot ({\t},{-\t*\t});
+  \draw[thick,red!70!black] (0,0) -- (0.25,0.0625) -- (0.5,0.25) -- (0.75,0.5625) -- (1,1);
+  \draw[thick,red!70!black] (0,0) -- (0.25,-0.0625) -- (0.5,-0.25) -- (0.75,-0.5625) -- (1,-1);
+  \draw[gray] (1,0) ellipse (0.04 and 1);
+  \fill (0.5,0.25) circle (1.6pt);
+%@ f11-p1 | Q(1,2)**2 == Q(1,4) | l (0.5,0.25) circle (1.6pt);
+  \fill (1,1) circle (1.6pt);
+%@ f11-p2 | 1**2 == 1 | \fill (1,1) circle (1.6pt);
+  \node[font=\small,above left] at (0.5,0.25) {$(\frac12,\frac14)$};
+  \node[font=\small,above left] at (1,1) {$(1,1)$};
+  \node[font=\small,blue!70!black,above left] at (0.45,0.8) {$y=x^2$};
+  \draw[thick,orange!80!black] (0.5,0) -- (0.5,0.25);
+  \node[font=\small,orange!80!black,right] at (0.52,0.1) {$R=x^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e8}, its mirror image (blue) and the four-frustum polygon (red). The orange segment is the radius $R=x^2$ at $x=\frac12$, where $R=\frac14$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Archimedes: zones and caps of a sphere}{e9}
+A sphere has radius $5$. Find the area of (a) the zone between the planes $x=-2$ and $x=1$, and (b) the cap cut off by the plane $x=2$ (the part with $x\ge2$).
+
+\textbf{Solution.} \emph{(a)} The zone is made by revolving $y=\sqrt{25-x^2}$, $-2\le x\le1$. Here $f\sqrt{1+f'^2}=5$ (Theorem~\ref{thm:arch}), since $f^2(1+f'^2)=(25-x^2)+x^2=25$. So $S=\int_{-2}^12\pi\cdot5\,dx=10\pi\cdot3=30\pi\approx94.2$.
+%@ e9-a | simplify((25-x**2)*(1+x**2/(25-x**2))-25) == 0 and 10*(1-(-2)) == 30 and RND(30*pi,1) == Q(942,10) | \pi\cdot3=30\pi\approx94.2$.
+\emph{(b)} The cap has $b=2$ and height $5-2=3$. Here $\eta=\sqrt{25-4}=\sqrt{21}$ and the curve is $x=\sqrt{25-y^2}$ for $0\le y\le\sqrt{21}$, revolved about the $x$-axis. With $\sqrt{1+g'^2}=\frac5{\sqrt{25-y^2}}$,
+\[
+S=\int_0^{\sqrt{21}}2\pi y\frac5{\sqrt{25-y^2}}\,dy=10\pi\Bigl[-\sqrt{25-y^2}\Bigr]_0^{\sqrt{21}}=10\pi\,(5-2)=30\pi .
+%@ e9-b | simplify(1+(x/sqrt(25-x**2))**2-25/(25-x**2)) == 0 and simplify(diff(-sqrt(25-x**2),x)-x/sqrt(25-x**2)) == 0 and sqrt(25-21) == 2 and -2+5 == 3 and 10*3 == 30 | rt{21}}=10\pi\,(5-2)=30\pi .
+\]
+The two have the same area because they have the same height $3$: $2\pi a\cdot3$ with $a=5$. The whole sphere is $4\pi\cdot25=100\pi$.
+
+\textbf{Answer.} (a) $30\pi$; (b) $30\pi$.
+\begin{center}
+\begin{tikzpicture}[scale=0.55]
+  \draw[->] (-5.6,0) -- (6.0,0) node[right] {$x$};
+  \draw[->] (0,-5.5) -- (0,5.6) node[above] {$y$};
+  \draw (0,0) circle (5);
+  \draw[very thick,blue!70!black] (113.58:5) arc (113.58:78.46:5);
+  \draw[very thick,blue!70!black] (-113.58:5) arc (-113.58:-78.46:5);
+  \draw[very thick,orange!80!black] (66.42:5) arc (66.42:0:5) ;
+  \draw[very thick,orange!80!black] (-66.42:5) arc (-66.42:0:5);
+  \draw[dashed] (-2,-4.5826) -- (-2,4.5826);
+  \draw[dashed] (1,-4.8990) -- (1,4.8990);
+  \draw[dashed] (2,-4.5826) -- (2,4.5826);
+  \fill (-2,4.5826) circle (2pt);
+%@ f12-p1 | RND(acos(Q(-2,5))*180/pi,2) == Q(11358,100) and RND(sqrt(21),4) == Q(45826,10000) | ll (-2,4.5826) circle (2pt);
+  \fill (1,4.899) circle (2pt);
+%@ f12-p2 | RND(acos(Q(1,5))*180/pi,2) == Q(7846,100) and RND(sqrt(24),3) == Q(4899,1000) | fill (1,4.899) circle (2pt);
+  \fill (2,4.5826) circle (2pt);
+%@ f12-p3 | RND(acos(Q(2,5))*180/pi,2) == Q(6642,100) | ill (2,4.5826) circle (2pt);
+  \node[font=\small,above left] at (-2,4.5826) {$x=-2$};
+  \node[font=\small,above] at (1.1,4.95) {$x=1$};
+  \node[font=\small,above right] at (2.1,4.4) {$x=2$};
+  \node[font=\small,blue!70!black] at (-0.3,3.2) {zone};
+  \node[font=\small,orange!80!black] at (4.0,2.3) {cap};
+  \draw[thick,green!50!black] (-1.5,0) -- (-1.5,4.7697);
+  \fill[green!50!black] (-1.5,4.7697) circle (2pt);
+%@ f12-r | RND(sqrt(91)/2,4) == Q(47697,10000) and 25-Q(9,4) == Q(91,4) | (-1.5,4.7697) circle (2pt);
+  \node[font=\small,green!50!black,right] at (-1.45,1.0) {$R$};
+  \node[font=\small] at (0,-6.0) {$x^2+y^2=25$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The circle of radius $5$ revolved about the $x$-axis: the zone $-2\le x\le1$ (blue) and the cap $x\ge2$ (orange) both have height $3$ and area $30\pi$. The green segment is the radius $R=\sqrt{25-x^2}$ at $x=-\frac32$, where $R=\frac{\sqrt{91}}2\approx4.77$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{The torus}{e10}
+A torus is generated by revolving the circle $x^2+(y-R)^2=r^2$ ($0<r<R$) about the $x$-axis: this is the torus of Theorem~\ref{6.4-thm:ballTorus} with the axes renamed, tube radius $r$ and distance $R$ from the axis to the centre of the tube. Find its surface area, and compare with its volume for $R=5$, $r=3$.
+
+\textbf{Solution.} \emph{Idea.} The upper half of the circle, $y=R+\sqrt{r^2-x^2}$, and the lower half, $y=R-\sqrt{r^2-x^2}$, have vertical tangents at $x=\pm r$. So cut the circle at $x=\pm b$ with $0<b<r$, and let $\eta=\sqrt{r^2-b^2}$.
+
+\emph{The middle part, $\lvert x\rvert\le b$.} For $f=R\pm\sqrt{r^2-x^2}$, $f'=\mp\frac{x}{\sqrt{r^2-x^2}}$ and $\sqrt{1+f'^2}=\frac r{\sqrt{r^2-x^2}}$ (as in Theorem~\ref{thm:arch}). The radius is $f$, so for the upper and lower halves together
+\[
+2\pi\int_{-b}^{b}\Bigl[\Bigl(R+\sqrt{r^2-x^2}\Bigr)+\Bigl(R-\sqrt{r^2-x^2}\Bigr)\Bigr]\frac r{\sqrt{r^2-x^2}}\,dx=4\pi Rr\int_{-b}^b\frac{dx}{\sqrt{r^2-x^2}}=8\pi Rr\arcsin\frac br ,
+\]
+because the terms $\pm\sqrt{r^2-x^2}\cdot\frac r{\sqrt{r^2-x^2}}=\pm r$ cancel, and $\frac d{dx}\arcsin\frac xr=\frac1{\sqrt{r^2-x^2}}$.
+
+\emph{The outer parts, $b\le\lvert x\rvert\le r$.} On the right, the upper arc is $x=\sqrt{r^2-(y-R)^2}$ for $R\le y\le R+\eta$ and the lower arc is the same function for $R-\eta\le y\le R$; the radius is $y$ and $\sqrt{1+g'^2}=\frac r{\sqrt{r^2-(y-R)^2}}$. With $w=y-R$ the two arcs together give
+\[
+2\pi\int_{-\eta}^{\eta}(R+w)\frac r{\sqrt{r^2-w^2}}\,dw=2\pi Rr\cdot2\arcsin\frac\eta r+0=4\pi Rr\arcsin\frac\eta r ,
+\]
+because $\frac{wr}{\sqrt{r^2-w^2}}$ is an odd function, whose integral over $[-\eta,\eta]$ is $0$. The left side gives the same, so the outer parts total $8\pi Rr\arcsin\frac\eta r$.
+
+\emph{Total.} Since $(\frac br)^2+(\frac\eta r)^2=1$, if $\theta=\arcsin\frac br$ then $\frac\eta r=\cos\theta=\sin(\frac\pi2-\theta)$, so $\arcsin\frac\eta r=\frac\pi2-\theta$. Hence
+\[
+S=8\pi Rr\Bigl(\arcsin\frac br+\arcsin\frac\eta r\Bigr)=8\pi Rr\cdot\frac\pi2=4\pi^2Rr .
+\]
+\emph{Numbers.} For $R=5$, $r=3$: $S=60\pi^2\approx592.2$, and (Theorem~\ref{6.4-thm:ballTorus}) $V=2\pi^2Rr^2=90\pi^2\approx888.3$. Note $V=\frac r2S$, just as the ball has $V=\frac a3S$. (With $b=\frac95$, $\eta=\frac{12}5$ the two arcsines are $\arcsin\frac35\approx0.6435$ and $\arcsin\frac45\approx0.9273$, which add to $\frac\pi2\approx1.5708$.)
+%@ e10-S | Q(9,5)**2+Q(12,5)**2 == 9 and RND(asin(Q(3,5)),4) == Q(6435,10000) and RND(asin(Q(4,5)),4) == Q(9273,10000) and RND(asin(Q(3,5))+asin(Q(4,5)),6) == RND(pi/2,6) and 4*pi**2*5*3 == 60*pi**2 and 2*pi**2*5*3**2 == 90*pi**2 and Q(3,2)*60 == 90 and RND(60*pi**2,1) == Q(5922,10) and RND(90*pi**2,1) == Q(8883,10) | o $\frac\pi2\approx1.5708$.)
+
+\textbf{Answer.} $S=4\pi^2Rr$; for $R=5$, $r=3$: $S=60\pi^2$ and $V=90\pi^2$. The area is the circumference $2\pi r$ of the tube times the length $2\pi R$ of the circle travelled by its centre (compare Pappus' theorem, in words only, in Looking ahead).
+\begin{center}
+\begin{tikzpicture}[scale=0.62]
+  \draw[->] (-4.5,0) -- (4.8,0) node[right] {$x$};
+  \draw[->] (0,-0.4) -- (0,8.7) node[above] {$y$};
+  \draw[thick,blue!70!black] (0,5) circle (3);
+  \fill (0,5) circle (1.6pt);
+%@ f13-c | 5-3 == 2 and 5+3 == 8 | \fill (0,5) circle (1.6pt);
+  \draw[dashed] (-1.8,1.4) -- (-1.8,8.6);
+  \draw[dashed] (1.8,1.4) -- (1.8,8.6);
+  \fill (1.8,7.4) circle (1.6pt);
+%@ f13-p1 | Q(9,5)**2+Q(12,5)**2 == 9 and 5+Q(12,5) == Q(37,5) | ll (1.8,7.4) circle (1.6pt);
+  \fill (1.8,2.6) circle (1.6pt);
+%@ f13-p2 | 5-Q(12,5) == Q(13,5) and RND(Q(13,5),1) == Q(26,10) | ll (1.8,2.6) circle (1.6pt);
+  \node[font=\small,right] at (3.05,5) {$(r,R)$};
+  \node[font=\small,left] at (-3.05,7.0) {$y=R+\sqrt{r^2-x^2}$};
+  \node[font=\small,left] at (-3.05,3.0) {$y=R-\sqrt{r^2-x^2}$};
+  \node[font=\small,above right] at (1.8,7.4) {$x=b$};
+  \draw[thick,orange!80!black] (1.8,0) -- (1.8,7.4);
+  \node[font=\small,orange!80!black,left] at (1.75,0.9) {radius $=y$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The circle of Example~\ref{ex:e10} with $R=5$, $r=3$ (so it spans $2\le y\le8$) and the cuts $x=\pm b$ with $b=\frac95$; the points $(\frac95,\frac{37}5)$ and $(\frac95,\frac{13}5)$ lie on the circle. The orange segment is the radius of revolution $y$ (distance to the axis) for the upper point; the tube radius is $r=3$.
+\end{center}
+\end{exmp}
+
+\subsection*{Looking ahead}
+
+When a curve is given by $x=f(t)$, $y=g(t)$ or in polar form, the same circumference-times-arc-length idea gives a surface area, with the speed of the moving point in place of $\sqrt{1+f'^2}$ (a later chapter on parametric and polar curves). Surfaces that are not surfaces of revolution need two-variable integrals, called surface integrals, and a later course on functions of several variables treats them, along with parametric surfaces. For the volume of the torus and its area, a theorem of Pappus says that each is the size of the plane figure (the area $\pi r^2$ of the disk for the volume, the length $2\pi r$ of the circle for the area) times the length $2\pi R$ of the path of its centre; here we met it as the results $V=2\pi^2Rr^2$ and $S=4\pi^2Rr$. A curious fact for later: a ``horn'' that stretches to infinity can have a finite volume and an infinite surface area; see Homework Problem~13. The Calculus~I area and volume ideas return in all of these.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Lines and set-up} (Examples~\ref{ex:b1}--\ref{ex:b2}): a line checked against the frustum formula; writing and simplifying surface-area integrals without evaluating them.
+  \item \emph{Perfect squares: powers} (Examples~\ref{ex:b3}--\ref{ex:b4}): $y=\frac{x^4}8+\frac1{4x^2}$ about the $x$-axis; a logarithm curve about the $y$-axis.
+  \item \emph{Perfect squares: exponentials} (Examples~\ref{ex:b5}--\ref{ex:b6}): $y=\frac{e^{2x}}2+\frac{e^{-2x}}8$ about the $x$-axis; an exponential curve $x=g(y)$ about the $y$-axis.
+  \item \emph{Substitution and cusps} (Examples~\ref{ex:b7}--\ref{ex:b8}): a square-root curve that needs a substitution; a cusp at an end, handled by switching to $x=g(y)$.
+  \item \emph{Numerical values and bounds} (Examples~\ref{ex:b9}--\ref{ex:b10}): $y=\sin x$ with a frustum check; a belt of a sphere and its average radius.
+  \item \emph{Comparing} (Examples~\ref{ex:b11}--\ref{ex:b12}): a cone and a cylinder; the same arc about two different axes.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}): shifting a graph; scaling a graph.
+\end{enumerate}
+
+\subsection*{Group 1: Lines and set-up}
+
+\begin{exmp}{A line from $4$ to $12$}{b1}
+Find the area of the surface made by revolving $y=\frac34x$, $4\le x\le12$, about the $x$-axis, by the formula and by Theorem~\ref{thm:frustum}.
+
+\textbf{Solution.} $f'=\frac34$, so $1+f'^2=1+\frac9{16}=\frac{25}{16}$ and $\sqrt{1+f'^2}=\frac54$. The radius is $R=\frac34x$:
+\[
+S=\int_4^{12}2\pi\cdot\frac34x\cdot\frac54\,dx=\frac{15\pi}8\int_4^{12}x\,dx=\frac{15\pi}8\Bigl[\frac{x^2}2\Bigr]_4^{12}=\frac{15\pi}8\,(72-8)=120\pi .
+\]
+%@ b1 | 1+Q(3,4)**2 == Q(25,16) and sqrt(Q(25,16)) == Q(5,4) and 2*Q(3,4)*Q(5,4) == Q(15,8) and Q(15,8)*(Q(144,2)-Q(16,2)) == 120 | \Bigl[\frac{x^2}2\Bigr]_4^{12}=\frac{15\pi}8\,(72-8)=120\pi .
+\emph{Check.} The radii are $\frac34\cdot4=3$ and $\frac34\cdot12=9$ and the slant height is $\sqrt{8^2+6^2}=10$, so the frustum has area $\pi(3+9)\cdot10=120\pi$.
+%@ b1-chk | Q(3,4)*4 == 3 and Q(3,4)*12 == 9 and sqrt(8**2+6**2) == 10 and pi*(3+9)*10 == 120*pi | \pi(3+9)\cdot10=120\pi$.
+
+\textbf{Answer.} $S=120\pi\approx377.0$.
+\end{exmp}
+
+\begin{exmp}{Set up and simplify}{b2}
+Write, simplify and do not evaluate the integral for the surface area of (a) $y=x^2+1$, $0\le x\le2$, about the $x$-axis; (b) $y=\ln x$, $1\le x\le e$, about the $y$-axis; (c) $x=y^2$, $0\le y\le2$, about the $x$-axis.
+
+\textbf{Solution.} (a) $R=f=x^2+1$ and $f'=2x$, so $S=\int_0^22\pi(x^2+1)\sqrt{1+4x^2}\,dx$.
+%@ b2-a | diff(x**2+1,x) == 2*x | \int_0^22\pi(x^2+1)\sqrt{1+4x^2}\,dx$.
+
+(b) About the $y$-axis $R=x$ and $f'=\frac1x$, so $\sqrt{1+f'^2}=\sqrt{\frac{x^2+1}{x^2}}=\frac{\sqrt{x^2+1}}x$ ($x>0$). Then the factor $x$ cancels: $S=\int_1^e2\pi x\frac{\sqrt{x^2+1}}x\,dx=2\pi\int_1^e\sqrt{x^2+1}\,dx$ (a method for it comes in a later chapter).
+%@ b2-b | simplify(diff(log(x),x)-1/x) == 0 and simplify(x**2*(1+1/x**2)-(x**2+1)) == 0 and log(exp(1)) == 1 | method for it comes in a later chapter).
+
+(c) The curve is given as $x=g(y)$, $g'=2y$; about the $x$-axis $R=y$. By Theorem~\ref{thm:yform}, $S=\int_0^22\pi y\sqrt{1+4y^2}\,dy$, the integral of Example~\ref{ex:e7} (the same surface).
+%@ b2-c | diff(x**2,x) == 2*x and 0**2 == 0 and 2**2 == 4 | the integral of Example~\ref{ex:e7} (the same surface).
+\end{exmp}
+
+\subsection*{Group 2: Perfect squares with powers}
+
+\begin{exmp}{A quartic with an inverse square}{b3}
+Find the area when $y=\dfrac{x^4}8+\dfrac1{4x^2}$, $1\le x\le2$, is revolved about the $x$-axis.
+
+\textbf{Solution.} $f'=\frac{x^3}2-\frac1{2x^3}$. With $A=\frac{x^3}2$, $B=\frac1{2x^3}$ we have $AB=\frac14$, so $1+f'^2=(A+B)^2$ and $\sqrt{1+f'^2}=\frac{x^3}2+\frac1{2x^3}$. Multiply out:
+\[
+f(A+B)=\Bigl(\frac{x^4}8+\frac1{4x^2}\Bigr)\Bigl(\frac{x^3}2+\frac1{2x^3}\Bigr)=\frac{x^7}{16}+\frac x{16}+\frac x8+\frac1{8x^5}=\frac{x^7}{16}+\frac{3x}{16}+\frac1{8x^5}.
+\]
+An antiderivative is $\frac{x^8}{128}+\frac{3x^2}{32}-\frac1{32x^4}$, so
+\[
+S=2\pi\Bigl[\frac{x^8}{128}+\frac{3x^2}{32}-\frac1{32x^4}\Bigr]_1^2=2\pi\Bigl[\Bigl(2+\frac38-\frac1{512}\Bigr)-\frac9{128}\Bigr]=2\pi\cdot\frac{1179}{512}=\frac{1179\pi}{256}\approx14.47 .
+\]
+%@ b3 | simplify(1+(x**3/2-1/(2*x**3))**2-(x**3/2+1/(2*x**3))**2) == 0 and expand((x**4/8+1/(4*x**2))*(x**3/2+1/(2*x**3))) == x**7/16+3*x/16+1/(8*x**5) and ANT(x**8/128+3*x**2/32-1/(32*x**4), x**7/16+3*x/16+1/(8*x**5), [Q(3,2),Q(2,1)]) == 0 and Q(1,128)+Q(3,32)-Q(1,32) == Q(9,128) and 2+Q(3,8)-Q(1,512)-Q(9,128) == Q(1179,512) and RND(1179*pi/256,2) == Q(1447,100) | \frac{1179}{512}=\frac{1179\pi}{256}\approx14.47 .
+\textbf{Answer.} $S=\dfrac{1179\pi}{256}\approx14.47$.
+\end{exmp}
+
+\begin{exmp}{A logarithm about the $y$-axis}{b4}
+Revolve $y=\dfrac{x^2}8-\ln x$, $1\le x\le4$, about the $y$-axis. Find the area.
+
+\textbf{Solution.} $f'=\frac x4-\frac1x$, and $1+f'^2=1+\frac{x^2}{16}-\frac12+\frac1{x^2}=\frac{x^2}{16}+\frac12+\frac1{x^2}=\bigl(\frac x4+\frac1x\bigr)^2$ (because $2\cdot\frac x4\cdot\frac1x=\frac12$), so $\sqrt{1+f'^2}=\frac x4+\frac1x$ for $x>0$. About the $y$-axis the radius is $x$:
+\[
+S=2\pi\int_1^4x\Bigl(\frac x4+\frac1x\Bigr)dx=2\pi\int_1^4\Bigl(\frac{x^2}4+1\Bigr)dx=2\pi\Bigl[\frac{x^3}{12}+x\Bigr]_1^4=2\pi\Bigl(\frac{28}3-\frac{13}{12}\Bigr)=\frac{33\pi}2\approx51.84 .
+\]
+%@ b4 | simplify(diff(x**2/8-log(x),x)-(x/4-1/x)) == 0 and simplify(1+(x/4-1/x)**2-(x/4+1/x)**2) == 0 and ANT(x**3/12+x, x**2/4+1, [Q(3,2),Q(2,1)]) == 0 and Q(64,12)+4 == Q(28,3) and Q(1,12)+1 == Q(13,12) and 2*(Q(28,3)-Q(13,12)) == Q(33,2) and RND(33*pi/2,2) == Q(5184,100) | \Bigl(\frac{28}3-\frac{13}{12}\Bigr)=\frac{33\pi}2\approx51.84 .
+\textbf{Answer.} $S=\dfrac{33\pi}2\approx51.84$.
+\end{exmp}
+
+\subsection*{Group 3: Perfect squares with exponentials}
+
+\begin{exmp}{A hanging chain turned about the axis}{b5}
+Revolve $y=\dfrac{e^{2x}}2+\dfrac{e^{-2x}}8$, $0\le x\le\dfrac{\ln2}2$, about the $x$-axis.
+
+\textbf{Solution.} $f'=e^{2x}-\frac{e^{-2x}}4$. With $A=e^{2x}$, $B=\frac{e^{-2x}}4$, $AB=\frac14$, so $1+f'^2=(A+B)^2$, and $A+B=2f$, so $\sqrt{1+f'^2}=2f$. Then $S=2\pi\int f\cdot2f\,dx=\pi\int4f^2\,dx$ with $4f^2=e^{4x}+\frac12+\frac{e^{-4x}}{16}$:
+\[
+S=\pi\Bigl[\frac{e^{4x}}4+\frac x2-\frac{e^{-4x}}{64}\Bigr]_0^{(\ln2)/2}=\pi\Bigl[\Bigl(1+\frac{\ln2}4-\frac1{256}\Bigr)-\Bigl(\frac14-\frac1{64}\Bigr)\Bigr]=\pi\Bigl(\frac{195}{256}+\frac{\ln2}4\Bigr)\approx2.94 ,
+\]
+using $e^{4\cdot(\ln2)/2}=e^{2\ln2}=4$.
+%@ b5 | simplify(1+(exp(2*x)-exp(-2*x)/4)**2-(exp(2*x)+exp(-2*x)/4)**2) == 0 and simplify(exp(2*x)+exp(-2*x)/4-2*(exp(2*x)/2+exp(-2*x)/8)) == 0 and expand(4*(exp(2*x)/2+exp(-2*x)/8)**2) == exp(4*x)+Q(1,2)+exp(-4*x)/16 and simplify(diff(exp(4*x)/4+x/2-exp(-4*x)/64,x)-(exp(4*x)+Q(1,2)+exp(-4*x)/16)) == 0 and 1-Q(1,256)-(Q(1,4)-Q(1,64)) == Q(195,256) and RND(pi*(Q(195,256)+log(2)/4),2) == Q(294,100) | e^{4\cdot(\ln2)/2}=e^{2\ln2}=4$.
+\textbf{Answer.} $S=\pi\bigl(\frac{195}{256}+\frac{\ln2}4\bigr)\approx2.94$.
+\end{exmp}
+
+\begin{exmp}{An exponential $x=g(y)$ about the $y$-axis}{b6}
+Revolve $x=e^{2y}+\dfrac{e^{-2y}}{16}$, $0\le y\le\dfrac{\ln2}2$, about the $y$-axis.
+
+\textbf{Solution.} $g'=2e^{2y}-\frac{e^{-2y}}8$. With $A=2e^{2y}$, $B=\frac{e^{-2y}}8$ we have $AB=\frac14$, so $1+g'^2=(A+B)^2$ and $\sqrt{1+g'^2}=A+B=2e^{2y}+\frac{e^{-2y}}8$. The radius about the $y$-axis is $g(y)$. Multiply out:
+\[
+g\,(A+B)=\Bigl(e^{2y}+\frac{e^{-2y}}{16}\Bigr)\Bigl(2e^{2y}+\frac{e^{-2y}}8\Bigr)=2e^{4y}+\frac18+\frac18+\frac{e^{-4y}}{128}=2e^{4y}+\frac14+\frac{e^{-4y}}{128}.
+\]
+By Theorem~\ref{thm:yform},
+\[
+S=2\pi\Bigl[\frac{e^{4y}}2+\frac y4-\frac{e^{-4y}}{512}\Bigr]_0^{(\ln2)/2}=2\pi\Bigl[\Bigl(2+\frac{\ln2}8-\frac1{2048}\Bigr)-\Bigl(\frac12-\frac1{512}\Bigr)\Bigr]=\pi\Bigl(\frac{3075}{1024}+\frac{\ln2}4\Bigr)\approx9.98 .
+\]
+%@ b6 | simplify(1+(2*exp(2*x)-exp(-2*x)/8)**2-(2*exp(2*x)+exp(-2*x)/8)**2) == 0 and expand((exp(2*x)+exp(-2*x)/16)*(2*exp(2*x)+exp(-2*x)/8)) == 2*exp(4*x)+Q(1,4)+exp(-4*x)/128 and simplify(diff(exp(4*x)/2+x/4-exp(-4*x)/512,x)-(2*exp(4*x)+Q(1,4)+exp(-4*x)/128)) == 0 and 2-Q(1,2048)-(Q(1,2)-Q(1,512)) == Q(3075,2048) and RND(pi*(Q(3075,1024)+log(2)/4),2) == Q(998,100) | \frac{3075}{1024}+\frac{\ln2}4\Bigr)\approx9.98 .
+\textbf{Answer.} $S=\pi\bigl(\frac{3075}{1024}+\frac{\ln2}4\bigr)\approx9.98$.
+\end{exmp}
+
+\subsection*{Group 4: Substitution and cusps}
+
+\begin{exmp}{A shifted square root}{b7}
+Revolve $y=\sqrt{4x+3}$, $0\le x\le3$, about the $x$-axis.
+
+\textbf{Solution.} $f'=\frac2{\sqrt{4x+3}}$, so $f\,f'=2$ and $f^2=4x+3$. Then $f\sqrt{1+f'^2}=\sqrt{f^2+(ff')^2}=\sqrt{4x+7}$. Put $u=4x+7$, $du=4\,dx$ ($u=7$ at $x=0$, $u=19$ at $x=3$):
+\[
+S=2\pi\int_7^{19}u^{1/2}\frac{du}4=\frac\pi2\Bigl[\frac23u^{3/2}\Bigr]_7^{19}=\frac\pi3\bigl(19\sqrt{19}-7\sqrt7\bigr)\approx67.33 .
+\]
+%@ b7 | simplify(sqrt(4*x+3)*2/sqrt(4*x+3)) == 2 and 4*0+7 == 7 and 4*3+7 == 19 and ANT((4*x+7)**Q(3,2)/6, sqrt(4*x+7), [Q(1,1),Q(3,1)]) == 0 and Q(1,2)*Q(2,3) == Q(1,3) and RND(pi*(19*sqrt(19)-7*sqrt(7))/3,2) == Q(6733,100) | \frac\pi3\bigl(19\sqrt{19}-7\sqrt7\bigr)\approx67.33 .
+\textbf{Answer.} $S=\dfrac\pi3\bigl(19\sqrt{19}-7\sqrt7\bigr)\approx67.33$.
+\end{exmp}
+
+\begin{exmp}{A cusp at the end: $y=x^{2/3}$}{b8}
+Revolve $y=x^{2/3}$, $0\le x\le8$, about the $x$-axis.
+
+\textbf{Solution.} $f'=\frac23x^{-1/3}$ is not defined at $x=0$ (a cusp with vertical tangent). Solve for $x$: $x=g(y)=y^{3/2}$ for $0\le y\le4$ (at $x=8$, $y=8^{2/3}=4$), with $g'=\frac32y^{1/2}$ continuous, and $1+g'^2=1+\frac{9y}4$. The radius is $y$, so $S=2\pi\int_0^4y\sqrt{1+\frac{9y}4}\,dy$.
+
+\emph{Substitution.} $u=1+\frac{9y}4$, so $y=\frac49(u-1)$, $dy=\frac49\,du$, and $u=1$ at $y=0$, $u=10$ at $y=4$:
+\[
+\begin{aligned}
+S&=2\pi\cdot\frac{16}{81}\int_1^{10}(u-1)\sqrt u\,du=\frac{32\pi}{81}\Bigl[\frac25u^{5/2}-\frac23u^{3/2}\Bigr]_1^{10}\\
+&=\frac{32\pi}{81}\Bigl[\Bigl(40-\frac{20}3\Bigr)\sqrt{10}+\frac4{15}\Bigr]\\
+&=\frac{128\pi}{1215}\bigl(125\sqrt{10}+1\bigr)\approx131.16 ,
+\end{aligned}
+\]
+because $40-\frac{20}3=\frac{100}3=\frac4{15}\cdot125$ and $-(\frac25-\frac23)=\frac4{15}$.
+%@ b8 | simplify(diff(x**Q(3,2),x)-Q(3,2)*sqrt(x)) == 0 and 1+Q(9,4)*0 == 1 and 1+Q(9,4)*4 == 10 and 2*Q(16,81) == Q(32,81) and ANT(2*x**Q(5,2)/5-2*x**Q(3,2)/3, (x-1)*sqrt(x), [Q(2,1),Q(10,1)]) == 0 and Q(2,5)*100-Q(2,3)*10 == Q(100,3) and Q(4,15)*125 == Q(100,3) and Q(2,5)-Q(2,3) == -Q(4,15) and Q(32,81)*Q(4,15) == Q(128,1215) and RND(128*pi*(1+125*sqrt(10))/1215,2) == Q(13116,100) | \frac{128\pi}{1215}\bigl(125\sqrt{10}+1\bigr)\approx131.16 ,
+\textbf{Answer.} $S=\dfrac{128\pi}{1215}\bigl(125\sqrt{10}+1\bigr)\approx131.16$.
+\end{exmp}
+
+\subsection*{Group 5: Numerical values and bounds}
+
+\begin{exmp}{One arch of the sine}{b9}
+Revolve $y=\sin x$, $0\le x\le\pi$, about the $x$-axis. Find the area numerically and check it with a frustum sum.
+
+\textbf{Solution.} $f'=\cos x$ and $R=\sin x$, so $S=2\pi\int_0^\pi\sin x\sqrt{1+\cos^2x}\,dx$. The substitution $u=\cos x$ turns this into $2\pi\int_{-1}^1\sqrt{1+u^2}\,du$, which needs a method of a later chapter; numerically $S\approx14.42$.
+%@ b9-S | RND(Integral(2*pi*sin(x)*sqrt(1+cos(x)**2),(x,0,pi)).evalf(30),2) == Q(1442,100) | numerically $S\approx14.42$.
+\emph{Check.} Use the vertices $x=0,\frac\pi4,\frac\pi2,\frac{3\pi}4,\pi$, with $y=0,\frac{\sqrt2}2,1,\frac{\sqrt2}2,0$. By symmetry the four frusta come in two equal pairs, with total area
+\[
+2\pi\Bigl[\frac{\sqrt2}2\sqrt{\Bigl(\frac\pi4\Bigr)^2+\frac12}+\Bigl(\frac{\sqrt2}2+1\Bigr)\sqrt{\Bigl(\frac\pi4\Bigr)^2+\Bigl(1-\frac{\sqrt2}2\Bigr)^2}\Bigr]\approx13.69 ,
+%@ b9-fr | RND(2*pi*(sqrt(2)/2*sqrt((pi/4)**2+Q(1,2))+(sqrt(2)/2+1)*sqrt((pi/4)**2+(1-sqrt(2)/2)**2)),2) == Q(1369,100) | Bigr)^2}\Bigr]\approx13.69 ,
+\]
+within about $5\%$ of $S$; the sum comes closer as the number of frusta increases.
+
+\textbf{Answer.} $S\approx14.42$.
+\end{exmp}
+
+\begin{exmp}{A belt of a sphere: the average radius}{b10}
+The circle $x^2+y^2=25$ is revolved about the $x$-axis, and the belt $-3\le x\le3$ is cut out. Find its area, the length $L$ of the arc, and the average radius $S/(2\pi L)$ of Theorem~\ref{thm:bounds}.
+
+\textbf{Solution.} \emph{Area.} By Theorem~\ref{thm:arch}(i) with $a=5$: $S=2\pi\cdot5\cdot6=60\pi\approx188.5$.
+
+\emph{Length.} With $f=\sqrt{25-x^2}$, $\sqrt{1+f'^2}=\frac5{\sqrt{25-x^2}}$, so $L=\int_{-3}^3\frac5{\sqrt{25-x^2}}dx=5\bigl[\arcsin\frac x5\bigr]_{-3}^3=10\arcsin\frac35\approx6.435$.
+
+\emph{Average radius.} $\dfrac S{2\pi L}=\dfrac{60\pi}{2\pi\cdot6.435}=\dfrac{30}{6.435}\approx4.66$. On $[-3,3]$ the radius $\sqrt{25-x^2}$ lies between $\sqrt{25-9}=4$ and $5$, and indeed $4\le4.66\le5$, as Theorem~\ref{thm:bounds} says (it gives $2\pi\cdot4L\le S\le2\pi\cdot5L$, i.e. $161.7\le S\le202.2$).
+%@ b10 | simplify((25-x**2)*(1+x**2/(25-x**2))-25) == 0 and 2*5*6 == 60 and RND(60*pi,1) == Q(1885,10) and RND(10*asin(Q(3,5)),3) == Q(6435,1000) and RND(30/(10*asin(Q(3,5))),2) == Q(466,100) and sqrt(25-9) == 4 and RND(8*pi*10*asin(Q(3,5)),1) == Q(1617,10) and RND(10*pi*10*asin(Q(3,5)),1) == Q(2022,10) | i.e. $161.7\le S\le202.2$).
+
+\textbf{Answer.} $S=60\pi$, $L\approx6.435$, average radius $\approx4.66$.
+\end{exmp}
+
+\subsection*{Group 6: Comparing}
+
+\begin{exmp}{A cone against its cylinder}{b11}
+A cone of base radius $r$ and height $h$ sits inside the cylinder of the same radius and height. Compare their lateral areas. (The volume of the cone is $\frac13$ of that of the cylinder.)
+
+\textbf{Solution.} The cone has slant height $\sqrt{r^2+h^2}$ and area $\pi r\sqrt{r^2+h^2}$; the cylinder has area $2\pi rh$. The ratio is
+\[
+\frac{\pi r\sqrt{r^2+h^2}}{2\pi rh}=\frac{\sqrt{r^2+h^2}}{2h}>\frac{\sqrt{h^2}}{2h}=\frac12,
+\]
+because $r>0$. So the cone always has more than \emph{half} the lateral area of the cylinder, in contrast to its third of the volume. For $r=5$, $h=12$ the ratio is $\frac{13}{24}\approx0.542$; it equals $1$ only when $r^2+h^2=4h^2$, that is $r=\sqrt3\,h$.
+%@ b11 | sqrt(25+144) == 13 and sqrt(25+144)/(2*12) == Q(13,24) and RND(Q(13,24),3) == Q(542,1000) and 3*1**2+1 == 4 | h^2$, that is $r=\sqrt3\,h$.
+
+\textbf{Answer.} The ratio is $\dfrac{\sqrt{r^2+h^2}}{2h}>\dfrac12$.
+\end{exmp}
+
+\begin{exmp}{The same arc about two axes}{b12}
+The arc $y=x^2$, $0\le x\le1$, is revolved about the $y$-axis. Find the area and compare with Example~\ref{ex:e8} (the $x$-axis, $\approx3.81$).
+
+\textbf{Solution.} About the $y$-axis $R=x$, so $S=2\pi\int_0^1x\sqrt{1+4x^2}\,dx$. With $u=1+4x^2$, $du=8x\,dx$ ($u=1$ and $u=5$):
+\[
+S=2\pi\int_1^5u^{1/2}\frac{du}8=\frac\pi4\Bigl[\frac23u^{3/2}\Bigr]_1^5=\frac\pi6\bigl(5\sqrt5-1\bigr)\approx5.33 .
+\]
+%@ b12 | 1+4*0**2 == 1 and 1+4*1**2 == 5 and ANT(x**Q(3,2), x**Q(1,2)*Q(3,2), [Q(1,1),Q(5,1)]) == 0 and Q(1,4)*Q(2,3) == Q(1,6) and RND(pi*(5*sqrt(5)-1)/6,2) == Q(533,100) and RND(pi*(5*sqrt(5)-1)/6/Integral(2*pi*x**2*sqrt(1+4*x**2),(x,0,1)).evalf(30),2) == Q(140,100) | \frac\pi6\bigl(5\sqrt5-1\bigr)\approx5.33 .
+The area is about $1.4$ times that of Example~\ref{ex:e8}, though the arc is the same, because the radius $x$ is larger than the radius $x^2$ at every point of $(0,1)$.
+
+\textbf{Answer.} $S=\frac\pi6(5\sqrt5-1)\approx5.33$.
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Proof: shifting a graph upward}{b13}
+\textbf{Statement.} Let $f\ge0$ have a continuous derivative on $[a,b]$, let $S(f)$ be the area made by revolving its graph about the $x$-axis and $L$ its length, and let $C\ge0$. Then $S(f+C)=S(f)+2\pi C\,L$.
+
+\textbf{Plan.} The graph of $f+C$ has the same derivative; only the radius changes, from $f$ to $f+C$.
+
+\textbf{Proof.} $(f+C)'=f'$, which is continuous, and $f+C\ge0$. By Theorem~\ref{thm:surf},
+\[
+\begin{aligned}
+S(f+C)&=\int_a^b2\pi\bigl(f+C\bigr)\sqrt{1+f'^2}\,dx\\
+&=\int_a^b2\pi f\sqrt{1+f'^2}\,dx+2\pi C\int_a^b\sqrt{1+f'^2}\,dx=S(f)+2\pi C\,L,
+\end{aligned}
+\]
+by linearity of the integral and Theorem~\ref{6.5-thm:arclen}. For $f=\frac{x^3}3+\frac1{4x}$ on $[1,2]$ and $C=2$: $S(f)=\frac{515\pi}{64}$ and $L=\frac{59}{24}$ (Example~\ref{ex:e6}), so $S(f+2)=\frac{515\pi}{64}+\frac{59\pi}6=\frac{3433\pi}{192}\approx56.17$. $\blacksquare$
+%@ b13 | Q(515,64)+Q(59,6) == Q(3433,192) and 2*2*Q(59,24) == Q(59,6) and RND(Q(3433,192)*pi,2) == Q(5617,100) | $S(f+2)=\frac{515\pi}{64}+\frac{59\pi}6=\frac{3433\pi}{192}\approx56.17$. $\blacksquare$
+
+\textbf{A common mistake.} Adding $C$ to the \emph{area} formula as $S(f)+C$, or adding $C$ inside the square root. The shift changes the radius only, so the extra area is the circumference-like term $2\pi C$ times the length of the curve (a cylinder of radius $C$ and the same arc length).
+\end{exmp}
+
+\begin{exmp}{Proof: scaling a graph}{b14}
+\textbf{Statement.} Let $f$ have a continuous derivative on $[a,b]$, $f\ge0$, and let $\lambda>0$. The graph of $f_\lambda(x)=\lambda f(x/\lambda)$ over $[\lambda a,\lambda b]$ (the original graph enlarged by the factor $\lambda$ in both directions) has area $S_\lambda=\lambda^2S$, where $S$ is the area for $f$.
+
+\textbf{Plan.} Differentiate $f_\lambda$ by the Chain Rule, substitute $u=x/\lambda$ and collect the powers of $\lambda$.
+
+\textbf{Proof.} $f_\lambda'(x)=\lambda f'(x/\lambda)\cdot\frac1\lambda=f'(x/\lambda)$, continuous. By Theorem~\ref{thm:surf}
+\[
+S_\lambda=\int_{\lambda a}^{\lambda b}2\pi\,\lambda f\Bigl(\frac x\lambda\Bigr)\sqrt{1+f'\Bigl(\frac x\lambda\Bigr)^2}\,dx .
+\]
+Let $u=x/\lambda$, $dx=\lambda\,du$; $x=\lambda a$ gives $u=a$ and $x=\lambda b$ gives $u=b$. Then $S_\lambda=\lambda\cdot\lambda\int_a^b2\pi f(u)\sqrt{1+f'(u)^2}\,du=\lambda^2S$. (For $f=x^2$ on $[0,1]$, $\lambda=2$: $f_2=\frac{x^2}2$ on $[0,2]$ has area $\approx15.239=4\cdot3.810$.) $\blacksquare$
+%@ b14 | diff(2*(x/2)**2,x) == x and RND(Integral(2*pi*(x**2/2)*sqrt(1+x**2),(x,0,2)).evalf(30),3) == Q(15239,1000) and RND(4*Integral(2*pi*x**2*sqrt(1+4*x**2),(x,0,1)).evalf(30),3) == Q(15239,1000) | $\approx15.239=4\cdot3.810$.) $\blacksquare$
+
+\textbf{A common mistake.} Expecting the area to scale like a length ($\lambda$) or like a volume ($\lambda^3$). One factor $\lambda$ comes from the radius, the other from the arc length.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+
+  \item[Knowledge Check \ref{kc:k1}.] (a) The slant height is $l=\sqrt{5^2+12^2}=13$, so the area is $\pi\cdot5\cdot13=65\pi$. (b) $\pi(2+5)\cdot5=35\pi$.
+%@ ans-k1 | sqrt(5**2+12**2) == 13 and pi*5*13 == 65*pi and pi*(2+5)*5 == 35*pi | \pi(2+5)\cdot5=35\pi$.
+
+  \item[Knowledge Check \ref{kc:k2}.] The radius is the distance from the point $(x,x^2)$ to the axis: (a) $x^2$; (b) $x$; (c) $x^2-(-3)=x^2+3$; (d) $5-x$ (since $x\le2<5$).
+%@ ans-k2 | 2**2+3 == 7 and 5-2 == 3 and 1**2+3 == 4 | (d) $5-x$ (since $x\le2<5$).
+
+  \item[Knowledge Check \ref{kc:k3}.] For $f=\sqrt[3]x$, $f'=\frac13x^{-2/3}$ is not defined at $x=0$ (the tangent is vertical), so Theorem~\ref{thm:surf} does not apply on $[0,1]$. Use $x=g(y)=y^3$ for $0\le y\le1$, $g'=3y^2$, $R=y$: $S=\int_0^12\pi y\sqrt{1+9y^4}\,dy$.
+%@ ans-k3 | simplify(diff(x**Q(1,3),x)-x**(-Q(2,3))/3) == 0 and diff(x**3,x) == 3*x**2 and (3*x**2)**2 == 9*x**4 | \sqrt{1+9y^4}\,dy$.
+
+  \item[Pause and think \ref{think:t1}.] A surface of revolution is made of circles, so a segment of the inscribed polygon sweeps out a frustum whose area we know exactly (Theorem~\ref{thm:frustum}), and the sums of these areas converge (Theorem~\ref{thm:surf}). Flat triangles inscribed in a cylinder do not converge: with many long thin triangles that are twisted against the surface (the Schwarz lantern) the total area grows without bound as the triangles get smaller. Matching the \emph{direction} of the pieces to the surface matters for area, in a way it does not for length.
+
+  \item[Pause and think \ref{think:t2}.] A thin band of the sphere between $x$ and $x+dx$ has area $2\pi R\,ds=2\pi a\,dx$, which is the area of the band of the cylinder of radius $a$ between the same two planes. So the sphere and the cylinder (touching it along the equator) have the same area above each interval of $x$, which is why every zone of the sphere has area $2\pi a\times$ height, and the sphere has $4\pi a^2$, the area of the cylinder of height $2a$ without its caps.
+
+  \item[Pause and think \ref{think:t3}.] In the shell formula $h\,dx$ is the area of a thin vertical strip (height times width), and the shell is the strip swept around the axis, with volume $2\pi x\cdot h\,dx$. In the surface formula $\sqrt{1+f'^2}\,dx$ is the length of the piece of the \emph{curve} over $dx$, so $2\pi x\sqrt{1+f'^2}\,dx$ is the area of the band swept out. Since $\sqrt{1+f'^2}\ge1$, the piece of curve is at least as long as $dx$ (Theorem~\ref{6.5-thm:basic}), so $S\ge2\pi\int x\,dx$, with equality only for a horizontal graph.
+\end{description}
+
+\end{document}
