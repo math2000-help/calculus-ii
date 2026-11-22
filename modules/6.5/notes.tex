@@ -1,0 +1,1078 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{6}{5}{Length of Curves}
+\calcxdoc{6.1}
+\calcxdoc{6.2}
+\calcxdoc{6.3}
+\calcxdoc{6.4}
+\calcxapp
+
+\begin{document}
+
+\section{Length of Curves}
+
+\begin{guide}
+How far do you walk if you follow a curved path? For a straight path the answer is the distance formula, which is Pythagoras' theorem. For a curved path the idea of this section is to \emph{approximate the curve by a polygon}, a chain of straight segments whose lengths we know, and to let the polygons follow the curve more and more closely. Each segment of the polygon is the hypotenuse of a small right triangle with legs $\Delta x$ and $\Delta y$, the Mean Value Theorem turns $\Delta y/\Delta x$ into a slope $f'$, and the sum of the segment lengths becomes a Riemann sum for $\int_a^b\sqrt{1+f'(x)^2}\,dx$. We start by saying precisely what the \emph{length of a curve} means (the least number that no inscribed polygon exceeds), prove the formula from that definition, and then use it. The formula has a catch: the square root rarely has an antiderivative that we can write down. So the examples fall into three kinds: curves for which $1+f'^2$ is a perfect square, curves that need only a substitution, and curves whose integral we can only set up and evaluate numerically. A curve may also be steeper than any slope at an endpoint (a vertical tangent); then we describe it as $x=g(y)$ instead.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item explain what the length of a curve means (polygons, the supremum) and why the length of a segment is its distance;
+  \item prove and use $L=\int_a^b\sqrt{1+f'(x)^2}\,dx$ for a graph $y=f(x)$ and $L=\int_c^d\sqrt{1+g'(y)^2}\,dy$ for $x=g(y)$;
+  \item choose $x$ or $y$ as the variable when a tangent is vertical, and recognize curves for which $1+f'^2$ is a perfect square;
+  \item set up the integral and give its numerical value when it cannot be evaluated by Calculus~I methods, and test the value against the chord and a polygon;
+  \item find the circumference of a circle from the formula, and bound the length of a curve from below and above.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{Approximating a curve by a polygon}
+
+Let $f$ be continuous on $[a,b]$ and let $C$ be its graph. Choose points $a=x_0<x_1<\cdots<x_n=b$ (a \emph{partition} $\Pi$) and join the points $P_k=(x_k,f(x_k))$ on the curve by straight segments. The result is a \emph{polygon inscribed in} $C$. Write $\Delta x_k=x_k-x_{k-1}>0$ and $\Delta y_k=f(x_k)-f(x_{k-1})$. The $k$th segment is the hypotenuse of a right triangle with legs $\Delta x_k$ and $\abs{\Delta y_k}$, so by the distance formula its length is $\sqrt{\Delta x_k^2+\Delta y_k^2}$, and the polygon has length
+\[
+\ell(\Pi)=\sum_{k=1}^n\sqrt{\Delta x_k^{\,2}+\Delta y_k^{\,2}} .
+\]
+
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.5cm]
+  \draw[->] (-0.3,0) -- (4.6,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.1) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:4,samples=40,variable=\t] plot ({\t},{1+\t-\t*\t/6});
+  \draw[thick,red!70!black] (0,1) -- (1,1.8333) -- (2,2.3333) -- (3,2.5) -- (4,2.3333);
+  \fill (0,1) circle (1.6pt) node[below right,font=\small] {$P_0$};
+%@ f1-p0 | 1+0-Q(0,1)**2/6 == 1 | 0,1) circle (1.6pt) node[below right,font=\small] {$P_0$};
+  \fill (1,1.8333) circle (1.6pt) node[above left,font=\small] {$P_1$};
+%@ f1-p1 | 1+1-Q(1,6) == Q(11,6) | 8333) circle (1.6pt) node[above left,font=\small] {$P_1$};
+  \fill (2,2.3333) circle (1.6pt) node[below right,font=\small] {$P_2$};
+%@ f1-p2 | 1+2-Q(4,6) == Q(7,3) | 333) circle (1.6pt) node[below right,font=\small] {$P_2$};
+  \fill (3,2.5) circle (1.6pt) node[above,font=\small] {$P_3$};
+%@ f1-p3 | 1+3-Q(9,6) == Q(5,2) | (3,2.5) circle (1.6pt) node[above,font=\small] {$P_3$};
+  \fill (4,2.3333) circle (1.6pt) node[above right,font=\small] {$P_4$};
+%@ f1-p4 | 1+4-Q(16,6) == Q(7,3) | 333) circle (1.6pt) node[above right,font=\small] {$P_4$};
+  \node[font=\small,blue!70!black] at (3.6,1.25) {$y=f(x)$};
+  \node[font=\small] at (0,-0.4) {$a=x_0$};
+  \node[font=\small] at (4,-0.4) {$x_4=b$};
+  \draw[gray] (2.5,2.42) ellipse (0.8 and 0.3);
+  \draw[->,gray,dashed] (3.3,2.55) -- (5.3,2.2);
+  \begin{scope}[x=4cm,y=24cm,xshift=-1.8cm,yshift=-54cm]
+    \draw[very thick,blue!70!black,domain=2:3,samples=30,variable=\t] plot ({\t},{1+\t-\t*\t/6});
+    \draw[thick,red!70!black] (2,2.3333) -- (3,2.5);
+    \draw[thick] (2,2.3333) -- (3,2.3333) -- (3,2.5);
+    \draw[dashed,orange!80!black] (2.2,2.4250) -- (2.8,2.4917);
+    \fill (2,2.3333) circle (1.6pt);
+%@ f1-z1 | 1+2-Q(4,6) == Q(7,3) | \fill (2,2.3333) circle (1.6pt);
+    \fill (3,2.5) circle (1.6pt);
+%@ f1-z2 | 1+3-Q(9,6) == Q(5,2) | \fill (3,2.5) circle (1.6pt);
+    \fill (2.5,2.4583) circle (1.6pt);
+%@ f1-z3 | 1+Q(5,2)-Q(25,4)/6 == Q(59,24) and 1-Q(5,2)/3 == (Q(5,2)-Q(7,3))/(3-2) | \fill (2.5,2.4583) circle (1.6pt);
+    \node[font=\small,below] at (2.5,2.3333) {$\Delta x$};
+    \node[font=\small,right] at (3,2.4167) {$\lvert\Delta y_3\rvert$};
+      \node[font=\small,below,orange!80!black] at (2.5,2.4583) {$\xi_3$};
+    \node[font=\small,orange!80!black,anchor=south east] at (2.95,2.5167) {slope $f'(\xi_3)$};
+  \end{scope}
+\end{tikzpicture}
+\par\small\emph{Figure.} The polygon $P_0P_1P_2P_3P_4$ and a magnified view of the third segment (vertical scale exaggerated). The segment is the hypotenuse of a right triangle with legs $\Delta x$ and $\abs{\Delta y_3}$; the Mean Value Theorem gives a point $\xi_3$ between $x_2$ and $x_3$ where the tangent (dashed) is parallel to the segment, so $\Delta y_3=f'(\xi_3)\,\Delta x$.
+\end{center}
+
+\begin{defn}{Length of a curve}{length}
+The \emph{length} $L$ of the graph of $f$ on $[a,b]$ is the supremum (the least upper bound) of the lengths $\ell(\Pi)$ of all inscribed polygons, taken over all partitions $\Pi$ of $[a,b]$. If the polygon lengths are not bounded above, the curve has no finite length.
+\end{defn}
+
+\textbf{Why this definition.} A straight segment is the shortest path between its endpoints, so a polygon inscribed in a curve is never longer than the curve; and putting in more vertices can only make the polygon longer (Theorem~\ref{thm:basic}). So the polygon lengths creep up towards a limit, and the length of the curve is the number they cannot pass. The same definition works for any curve traced by a continuous map $\gamma(t)=(X(t),Y(t))$, $a\le t\le b$, with vertices $\gamma(t_k)$ and the same polygon length $\ell=\sum\abs{\gamma(t_k)-\gamma(t_{k-1})}$. We need this for a curve $x=g(y)$ (the map $y\mapsto(g(y),y)$) and for circles.
+
+\textbf{What the proofs use.} Four facts, all from Calculus~I or geometry: \textbf{(F1)} the distance formula and the triangle inequality, $\abs{PR}\le\abs{PQ}+\abs{QR}$ for points of the plane; \textbf{(F2)} the Mean Value Theorem and the Fundamental Theorem of Calculus (Theorem~\ref{6.1-thm:disp}); \textbf{(F3)} the integral preserves inequalities and is additive over adjacent intervals; \textbf{(F4)} if $h$ is continuous on $[a,b]$, then Riemann sums $\sum h(\xi_k)\Delta x_k$ with $\xi_k\in[x_{k-1},x_k]$ get as close as we like to $\int_a^bh$ once every $\Delta x_k$ is small enough, whatever the points $\xi_k$ (this is the definition of the integral). Nothing else is needed: in particular we \emph{prove} below that a graph with a continuous derivative has a finite length, so no appendix section is required. (Appendix~I shows that the length of a curve traced once does not depend on the parametrization, Theorem~\ref{app-thm:invariance}.)
+
+\begin{kc}{A two-segment polygon}{kcpoly}
+Inscribe in the graph of $y=x^2$ on $[0,1]$ the polygon with vertices at $x=0$, $x=\frac12$ and $x=1$. Find its length, and compare it with the chord from $(0,0)$ to $(1,1)$.
+\end{kc}
+
+\begin{think}{Never too long}{thpoly}
+Why can an inscribed polygon never be longer than the curve it is inscribed in, and why does adding a vertex never make it shorter? What does this tell you about whether the sum of the segment lengths overestimates or underestimates the length of the curve?
+\end{think}
+
+\begin{thm}{Basic properties of length}{basic}
+Let $\gamma:[a,b]\to\R^2$ be continuous, with length $L$ as in Definition~\ref{def:length}.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item Adding a vertex to a polygon does not shorten it. Hence $\ell(\Pi)\ge\abs{\gamma(b)-\gamma(a)}$ for every partition, and $L\ge\abs{\gamma(b)-\gamma(a)}$: \emph{the length is at least the chord}.
+  \item (\emph{Additivity.}) For $a<c<b$, $L[a,b]=L[a,c]+L[c,b]$ (both sides may be infinite).
+  \item (\emph{Rigid motions.}) If $\varphi$ is a rigid motion of the plane (a translation, rotation or reflection, any map with $\abs{\varphi(P)\varphi(Q)}=\abs{PQ}$), then $\varphi\circ\gamma$ has the same length as $\gamma$. Running the curve in the opposite direction does not change its length.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) Let $Q$ be a new vertex lying between $P_{k-1}$ and $P_k$ along the curve. By the triangle inequality $\abs{P_{k-1}P_k}\le\abs{P_{k-1}Q}+\abs{QP_k}$, so replacing the segment $P_{k-1}P_k$ by the two segments through $Q$ does not decrease the length; repeating this adds any finite number of vertices. The partition $\{a,b\}$ gives the single segment from $\gamma(a)$ to $\gamma(b)$, of length $\abs{\gamma(b)-\gamma(a)}$, and every partition is obtained from it by adding vertices, so $\ell(\Pi)\ge\abs{\gamma(b)-\gamma(a)}$, and the supremum is at least this.
+
+(2) Let $\Pi'$ be a partition of $[a,c]$ and $\Pi''$ one of $[c,b]$. Together they form a partition of $[a,b]$ whose polygon has length $\ell(\Pi')+\ell(\Pi'')$, so $L[a,b]\ge\ell(\Pi')+\ell(\Pi'')$. Taking the supremum over $\Pi'$ and then over $\Pi''$ gives $L[a,b]\ge L[a,c]+L[c,b]$. Conversely, let $\Pi$ be any partition of $[a,b]$ and add $c$ to it. By (1) the length does not decrease, and the new polygon is made of a polygon on $[a,c]$ and one on $[c,b]$, so $\ell(\Pi)\le L[a,c]+L[c,b]$. Taking the supremum over $\Pi$ gives $L[a,b]\le L[a,c]+L[c,b]$.
+
+(3) A rigid motion keeps all distances, so the polygon with vertices $\varphi(\gamma(t_k))$ has exactly the length of the polygon with vertices $\gamma(t_k)$, for the same partition; hence the two suprema are equal. For the reverse curve $\delta(t)=\gamma(a+b-t)$, a partition $t_0<\cdots<t_n$ of $\delta$ corresponds to the partition $a+b-t_n<\cdots<a+b-t_0$ of $\gamma$, and the two polygons have the same vertices listed in the opposite order, hence the same length.
+
+For instance, for $y=x^2$ on $[0,1]$ the polygon with vertices $x=0,\frac12,1$ has length $\frac{\sqrt5}4+\frac{\sqrt{13}}4$, the sum of the lengths of its parts on $[0,\frac12]$ and $[\frac12,1]$; it exceeds the chord $\sqrt2$.
+%@ pr-basic | sqrt(Q(1,4)+Q(1,16)) == sqrt(5)/4 and sqrt(Q(1,4)+Q(9,16)) == sqrt(13)/4 and sqrt(2) < (sqrt(5)+sqrt(13))/4 and sqrt(1+1) == sqrt(2) | 12]$ and $[\frac12,1]$; it exceeds the chord $\sqrt2$.
+\end{proof}
+
+\begin{thm}{The length of a line segment}{line}
+Let $f(x)=mx+c$ on $[a,b]$. Then every inscribed polygon has the same length, so
+\[
+L=(b-a)\sqrt{1+m^2},
+\]
+and this is the distance between the endpoints $(a,ma+c)$ and $(b,mb+c)$ given by the distance formula.
+\end{thm}
+\begin{proof}
+On the $k$th interval $\Delta y_k=m\,\Delta x_k$, so the segment has length
+\[
+\sqrt{\Delta x_k^2+m^2\Delta x_k^2}=\Delta x_k\sqrt{1+m^2}
+\]
+(because $\Delta x_k>0$). Adding, $\ell(\Pi)=\sqrt{1+m^2}\sum\Delta x_k=(b-a)\sqrt{1+m^2}$, whatever the partition; so the supremum is this number. The distance formula gives $\sqrt{(b-a)^2+(mb-ma)^2}=\sqrt{(b-a)^2(1+m^2)}=(b-a)\sqrt{1+m^2}$ as $b-a>0$. (For $y=2x$ on $[0,1]$ every polygon has length $\sqrt5$, the distance from $(0,0)$ to $(1,2)$.)
+%@ pr-line | sqrt(1**2+(2*1-2*0)**2) == sqrt(5) and (1-0)*sqrt(1+2**2) == sqrt(5) | $\sqrt5$, the distance from $(0,0)$ to $(1,2)$.)
+\end{proof}
+
+\subsection*{The arc length formula}
+
+For a curve that is not a line the segments are not all alike, and the length is a limit of sums. The next theorem shows that the limit exists and is an integral.
+
+\begin{thm}{Arc length of a graph $y=f(x)$}{arclen}
+Let $f$ have a continuous derivative on $[a,b]$. Then the graph has a finite length, and
+\[
+L=\int_a^b\sqrt{1+f'(x)^2}\,dx .
+\]
+Moreover, $\ell(\Pi_n)\to L$ for every sequence of partitions $\Pi_n$ whose longest subinterval tends to $0$.
+\end{thm}
+\begin{proof}
+Put $h(x)=\sqrt{1+f'(x)^2}$, a continuous function, and $I=\int_a^bh$. Let $\Pi$ be a partition, with $\Delta x_k$ and $\Delta y_k$ as before, and $\lambda_k=\sqrt{\Delta x_k^2+\Delta y_k^2}>0$ the length of the $k$th segment.
+
+\emph{Step 1: no polygon is longer than $I$.} Put $p=\Delta x_k/\lambda_k$ and $q=\Delta y_k/\lambda_k$, so $p^2+q^2=1$ and $\lambda_k=\lambda_k(p^2+q^2)=p\,\Delta x_k+q\,\Delta y_k$. By the Fundamental Theorem, $\Delta y_k=\int_{x_{k-1}}^{x_k}f'(t)\,dt$, so
+\[
+\lambda_k=\int_{x_{k-1}}^{x_k}\bigl(p+q\,f'(t)\bigr)\,dt .
+\]
+For every real $s$ we have $p+qs\le\sqrt{1+s^2}$, because $(1+s^2)(p^2+q^2)-(p+qs)^2=(q-ps)^2\ge0$ and $p^2+q^2=1$. Hence $p+qf'(t)\le h(t)$, and since the integral preserves inequalities, $\lambda_k\le\int_{x_{k-1}}^{x_k}h$. Adding over $k$ gives $\ell(\Pi)\le\int_a^bh=I$. So $L\le I$, and in particular $L$ is finite.
+
+\emph{Step 2: the Mean Value Theorem.} On each $[x_{k-1},x_k]$ the function $f$ is continuous and differentiable, so there is $\xi_k$ between $x_{k-1}$ and $x_k$ with $\Delta y_k=f'(\xi_k)\,\Delta x_k$. Then
+\[
+\lambda_k=\sqrt{\Delta x_k^2+f'(\xi_k)^2\Delta x_k^2}=\sqrt{1+f'(\xi_k)^2}\;\Delta x_k=h(\xi_k)\,\Delta x_k ,
+\]
+using $\Delta x_k>0$. So $\ell(\Pi)=\sum_kh(\xi_k)\,\Delta x_k$ is a Riemann sum for $h$ (with the tags $\xi_k$).
+
+\emph{Step 3: the squeeze.} Let $\varepsilon>0$. Because $h$ is continuous, (F4) gives $\delta>0$ such that every Riemann sum of $h$ for a partition with all $\Delta x_k<\delta$ is within $\varepsilon$ of $I$. For such a partition, Step 2 gives $\ell(\Pi)>I-\varepsilon$, so $L\ge\ell(\Pi)>I-\varepsilon$. As $\varepsilon$ is arbitrary, $L\ge I$. With Step 1, $L=I$. Finally, if the longest subinterval of $\Pi_n$ tends to $0$, then eventually $I-\varepsilon<\ell(\Pi_n)\le I$, so $\ell(\Pi_n)\to I=L$.
+
+(For $f(x)=x^2$ on $[\frac12,1]$ the Mean Value Theorem gives $\frac{\Delta y}{\Delta x}=\frac{3/4}{1/2}=\frac32=2\xi$, so $\xi=\frac34$, the midpoint. On $[0,1]$ the two-segment polygon of Knowledge Check~\ref{kc:kcpoly} has length $\approx1.4604$, just below $L=\int_0^1\sqrt{1+4x^2}\,dx\approx1.4789$.)
+%@ pr-arclen | (1-Q(1,4))/(1-Q(1,2)) == Q(3,2) and 2*Q(3,4) == Q(3,2) and RND((sqrt(5)+sqrt(13))/4,4) == Q(14604,10000) and RND(Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30),4) == Q(14789,10000) | $, just below $L=\int_0^1\sqrt{1+4x^2}\,dx\approx1.4789$.)
+\end{proof}
+
+The continuity of $f'$ was used twice: in Step~1 and Step~3 to integrate $\sqrt{1+f'^2}$, and in (F4) for the convergence of the Riemann sums. The integrand is the length of the vector $(1,f'(x))$, the tangent vector to the graph; it is never smaller than $1$, and it is large where the curve is steep.
+
+A curve may also be given as $x=g(y)$, with $x$ as a function of $y$. The roles of $x$ and $y$ are swapped by the reflection $(x,y)\mapsto(y,x)$, which keeps distances.
+
+\begin{thm}{Arc length of a curve $x=g(y)$}{xofy}
+Let $g$ have a continuous derivative on $[c,d]$. The curve $x=g(y)$, $c\le y\le d$, has length
+\[
+L=\int_c^d\sqrt{1+g'(y)^2}\,dy .
+\]
+\end{thm}
+\begin{proof}
+The reflection $\sigma(x,y)=(y,x)$ is a rigid motion and takes the curve $\{(g(y),y)\}$ to the graph $\{(y,g(y))\}$ of $g$ over $[c,d]$. By Theorem~\ref{thm:basic}(3) the two curves have the same length, and by Theorem~\ref{thm:arclen} (with $y$ as the name of the variable) the graph has length $\int_c^d\sqrt{1+g'(y)^2}\,dy$. (For the vertical segment $g(y)=x_0$ the formula gives $d-c$.)
+%@ pr-xofy | integrate(sqrt(1+0**2),(x,2,5)) == 3 and 5-2 == 3 | $g(y)=x_0$ the formula gives $d-c$.)
+\end{proof}
+
+When the same curve can be described both ways, the two formulas must give the same length. The next theorem shows this, and it also covers a curve whose slope is infinite at an endpoint: then $f'$ is not defined there, but $g$ may still be nice.
+
+\begin{thm}{The same curve in two ways}{both}
+Let $f$ be continuous and strictly monotone on $[a,b]$, with inverse function $g$ defined on the interval $J$ between $f(a)$ and $f(b)$, with endpoints $c<d$. If $g$ has a continuous derivative on $J$, then the graph of $f$ has length
+\[
+L=\int_c^d\sqrt{1+g'(y)^2}\,dy ,
+\]
+even if $f'$ is not defined at an endpoint. If, in addition, $f$ has a continuous derivative that is never $0$ on $[a,b]$, then
+$\displaystyle\int_a^b\sqrt{1+f'(x)^2}\,dx=\int_c^d\sqrt{1+g'(y)^2}\,dy .$
+\end{thm}
+\begin{proof}
+The set of points $\{(x,f(x))\}$ is the set $\{(g(y),y)\}$. For a partition $a=x_0<\cdots<x_n=b$ put $y_k=f(x_k)$. These are $n+1$ distinct points of $J$, in increasing order if $f$ increases and in decreasing order if $f$ decreases, and $(x_k,f(x_k))=(g(y_k),y_k)$: the same vertices, so the same polygon (listed in the opposite order if $f$ decreases, which does not change its length). Conversely, every partition of $J$ comes from a partition of $[a,b]$, because $f$ is a bijection from $[a,b]$ onto $J$. So the polygons inscribed in the curve by partitions of $[a,b]$ and those by partitions of $[c,d]$ are the same polygons, and the two suprema agree. The supremum over partitions of $[c,d]$ is $\int_c^d\sqrt{1+g'^2}\,dy$ by Theorem~\ref{thm:xofy}. If $f'$ is continuous and never $0$, the supremum over partitions of $[a,b]$ is $\int_a^b\sqrt{1+f'^2}\,dx$ by Theorem~\ref{thm:arclen}; so the two integrals are equal. (Check: for $y=x^2$ on $[1,2]$ and $x=\sqrt y$ on $[1,4]$ both integrals equal $\approx3.1678$.)
+%@ pr-both | NUM(Integral(sqrt(1+4*x**2),(x,1,2)).evalf(30), Integral(sqrt(1+1/(4*x)),(x,1,4)).evalf(30)) == 0 and RND(Integral(sqrt(1+4*x**2),(x,1,2)).evalf(30),4) == Q(15839,5000) | \sqrt y$ on $[1,4]$ both integrals equal $\approx3.1678$.)
+\end{proof}
+
+\begin{proc}{Finding the length of a curve}{len}
+\begin{enumerate}[nosep]
+  \item Sketch the curve. Decide whether to use $y=f(x)$ or $x=g(y)$: the derivative must exist and be continuous on the whole closed interval, so avoid a variable in which the curve has a vertical tangent at an end.
+  \item Compute the derivative and simplify $1+f'^2$ (or $1+g'^2$). Look for a perfect square.
+  \item Take the square root, integrate with the methods of Calculus~I (a substitution, a perfect square), and evaluate with the Fundamental Theorem.
+  \item If no such antiderivative exists, write the integral and find its value numerically.
+  \item Test the answer: it must be at least the chord (Theorem~\ref{thm:basic}(1)) and at least $b-a$.
+\end{enumerate}
+\end{proc}
+
+\begin{warn}[The square root does not split]
+The integrand is $\sqrt{1+f'(x)^2}$, not $1+f'(x)$ and not $1+\abs{f'(x)}$: a root of a sum is not the sum of the roots. For the line $y=x$ on $[0,1]$ the length is $\sqrt2$, while $\int_0^1(1+1)\,dx=2$.
+%@ wn-split | sqrt(1+1**2) == sqrt(2) and integrate(sqrt(1+1),(x,0,1)) == sqrt(2) and 1+1 == 2 | 0,1]$ the length is $\sqrt2$, while $\int_0^1(1+1)\,dx=2$.
+\end{warn}
+
+\begin{kc}{Setting up}{kcsetup}
+Write, but do not evaluate, the integral for the length of the curve $x=\sin y$ for $0\le y\le\pi$.
+\end{kc}
+
+\begin{think}{What the integrand measures}{thint}
+A hiker follows the graph of $y=f(x)$ from $x=a$ to $x=b$. Why is the length of the path never less than $b-a$, and when is it equal to $b-a$? What does the factor $\sqrt{1+f'(x)^2}$ say about the steepness of the path at $x$?
+\end{think}
+
+\begin{kc}{Which variable?}{kcvar}
+For each of $y=x^3$, $y=x^{1/3}$ and $y=x^{2/3}$ on $[0,1]$, say whether Theorem~\ref{thm:arclen} applies, and if not, describe the curve in the form $x=g(y)$.
+\end{kc}
+
+% ---------------------------------------------------------------------
+\subsection*{Lines first}
+
+\begin{exmp}{A line in two ways}{e1}
+Find the length of the line $y=\frac34x-1$ for $-4\le x\le8$ with the formula, and check it with the distance formula.
+
+\textbf{Solution.} \emph{Formula.} Here $f'(x)=\frac34$, so $1+f'(x)^2=1+\frac9{16}=\frac{25}{16}$ and $\sqrt{1+f'(x)^2}=\frac54$. By Theorem~\ref{thm:arclen},
+\[
+L=\int_{-4}^8\frac54\,dx=\frac54\bigl(8-(-4)\bigr)=\frac54\cdot12=15 .
+%@ e1-L | 1+Q(3,4)**2 == Q(25,16) and sqrt(Q(25,16)) == Q(5,4) and integrate(Q(5,4),(x,-4,8)) == 15 and Q(5,4)*12 == 15 | 8\frac54\,dx=\frac54\bigl(8-(-4)\bigr)=\frac54\cdot12=15 .
+\]
+\emph{Check.} The endpoints are $(-4,-4)$ and $(8,5)$ (put $x=-4$ and $x=8$ in $y=\frac34x-1$). The legs of the right triangle are $\Delta x=12$ and $\Delta y=9$, so the distance is $\sqrt{12^2+9^2}=\sqrt{225}=15$, the same number, as Theorem~\ref{thm:line} says.
+%@ e1-chk | Q(3,4)*(-4)-1 == -4 and Q(3,4)*8-1 == 5 and sqrt(12**2+9**2) == 15 and 5-(-4) == 9 | 225}=15$, the same number, as Theorem~\ref{thm:line} says.
+
+\textbf{Answer.} $L=15$.
+\begin{center}
+\begin{tikzpicture}[x=0.5cm,y=0.5cm]
+  \draw[->] (-5,0) -- (9.2,0) node[right] {$x$};
+  \draw[->] (0,-5) -- (0,6.3) node[above] {$y$};
+  \draw[very thick,blue!70!black] (-4,-4) -- (8,5);
+  \draw[thick,dashed] (-4,-4) -- (8,-4) -- (8,5);
+  \fill (-4,-4) circle (1.6pt) node[above left,font=\small] {$(-4,-4)$};
+%@ f2-p1 | Q(3,4)*(-4)-1 == -4 | ) circle (1.6pt) node[above left,font=\small] {$(-4,-4)$};
+  \fill (8,5) circle (1.6pt) node[above left,font=\small] {$(8,5)$};
+%@ f2-p2 | Q(3,4)*8-1 == 5 | ,5) circle (1.6pt) node[above left,font=\small] {$(8,5)$};
+  \fill (8,-4) circle (1.6pt) node[below right,font=\small] {$(8,-4)$};
+%@ f2-p3 | Q(3,4)*(-4)-1 == -4 and 8 == 8 | ) circle (1.6pt) node[below right,font=\small] {$(8,-4)$};
+  \node[font=\small] at (2,-4.8) {$\Delta x=12$};
+  \node[font=\small,anchor=west] at (8.3,0.5) {$\Delta y=9$};
+  \node[font=\small,blue!70!black] at (3.6,1.6) {$L=15$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The line segment is the hypotenuse of a $12$--$9$--$15$ right triangle.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Curves whose integral we can do}
+
+Most arc length integrals cannot be evaluated by the methods of Calculus~I, because of the square root. Two situations do work: after a substitution the integrand becomes a power, or $1+f'^2$ turns out to be a perfect square.
+
+\begin{exmp}{A power curve: a substitution}{e2}
+Find the length of $y=x^{3/2}$ for $1\le x\le5$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac32x^{1/2}$, continuous on $[1,5]$, and $f'(x)^2=\frac94x$.
+
+\emph{Integrand.} $1+f'(x)^2=1+\frac94x=\frac{4+9x}4$, so $\sqrt{1+f'(x)^2}=\frac12\sqrt{4+9x}$.
+
+\emph{Substitution.} By Theorem~\ref{thm:arclen}, $L=\frac12\int_1^5\sqrt{4+9x}\,dx$. Let $u=4+9x$, so $du=9\,dx$; when $x=1$, $u=13$, and when $x=5$, $u=49$. Then
+\[
+L=\frac12\cdot\frac19\int_{13}^{49}u^{1/2}\,du=\frac1{18}\cdot\frac23\Bigl[u^{3/2}\Bigr]_{13}^{49}=\frac1{27}\Bigl(49^{3/2}-13^{3/2}\Bigr)=\frac{343-13\sqrt{13}}{27}\approx10.97 .
+%@ e2-L | ANT(Q(1,27)*(4+9*x)**Q(3,2), sqrt(4+9*x)/2, [Q(1,2),Q(3,1)]) == 0 and 49**Q(3,2) == 343 and 13**Q(3,2) == 13*sqrt(13) and RND((343-13*sqrt(13))/27,2) == Q(1097,100) and integrate(sqrt(1+Q(9,4)*x),(x,1,5)) == (343-13*sqrt(13))/27 | 2}-13^{3/2}\Bigr)=\frac{343-13\sqrt{13}}{27}\approx10.97 .
+\]
+\emph{Check.} The chord from $(1,1)$ to $(5,5\sqrt5)\approx(5,11.18)$ has length $\sqrt{16+10.18^2}\approx10.94$, a little less than $L\approx10.97$, as it must be (Theorem~\ref{thm:basic}(1)); the curve is nearly straight.
+%@ e2-chk | RND(sqrt(4**2+(5*sqrt(5)-1)**2),2) < Q(1097,100) and 1**Q(3,2) == 1 and 5**Q(3,2) == 5*sqrt(5) and RND(sqrt(4**2+(5*sqrt(5)-1)**2),2) == Q(1094,100) | ~\ref{thm:basic}(1)); the curve is nearly straight.
+
+\textbf{Answer.} $L=\dfrac{343-13\sqrt{13}}{27}\approx10.97$.
+\begin{center}
+\begin{tikzpicture}[x=0.85cm,y=0.4cm]
+  \draw[->] (-0.3,0) -- (6.2,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,12.6) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:5.5,samples=40,variable=\t] plot ({\t},{\t*sqrt(\t)});
+  \draw[dashed] (1,1) -- (5,11.1803);
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ f3-p1 | 1**Q(3,2) == 1 | 1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+  \fill (5,11.1803) circle (1.6pt) node[below right,font=\small] {$(5,5\sqrt5)$};
+%@ f3-p2 | 5**Q(3,2) == 5*sqrt(5) and RND(5*sqrt(5),4) == Q(111803,10000) | (1.6pt) node[below right,font=\small] {$(5,5\sqrt5)$};
+  \node[font=\small,blue!70!black] at (3.2,9) {$y=x^{3/2}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve $y=x^{3/2}$ and its chord (dashed) from $(1,1)$ to $(5,5\sqrt5)$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A perfect square with a power}{e3}
+Find the length of $y=\dfrac{x^3}3+\dfrac1{4x}$ for $1\le x\le2$.
+
+\textbf{Solution.} \emph{Derivative.} Write $y=\frac13x^3+\frac14x^{-1}$. Then $f'(x)=x^2-\frac14x^{-2}=x^2-\frac1{4x^2}$, continuous on $[1,2]$.
+
+\emph{A perfect square.} Square the derivative: $f'(x)^2=x^4-2\cdot x^2\cdot\frac1{4x^2}+\frac1{16x^4}=x^4-\frac12+\frac1{16x^4}$. Adding $1$ turns the middle term $-\frac12$ into $+\frac12$:
+\[
+1+f'(x)^2=x^4+\frac12+\frac1{16x^4}=\Bigl(x^2+\frac1{4x^2}\Bigr)^2 ,
+\]
+because $2\cdot x^2\cdot\frac1{4x^2}=\frac12$. For $x>0$ the number $x^2+\frac1{4x^2}$ is positive, so $\sqrt{1+f'(x)^2}=x^2+\frac1{4x^2}$.
+
+\emph{Integral.} By Theorem~\ref{thm:arclen},
+\[
+L=\int_1^2\Bigl(x^2+\frac14x^{-2}\Bigr)dx=\Bigl[\frac{x^3}3-\frac1{4x}\Bigr]_1^2=\Bigl(\frac83-\frac18\Bigr)-\Bigl(\frac13-\frac14\Bigr)=\frac{59}{24}\approx2.458 .
+%@ e3-L | simplify(diff(x**3/3+1/(4*x),x)-(x**2-1/(4*x**2))) == 0 and simplify(1+(x**2-1/(4*x**2))**2-(x**2+1/(4*x**2))**2) == 0 and ANT(x**3/3-1/(4*x), x**2+1/(4*x**2), [Q(3,2),Q(2,1)]) == 0 and Q(8,3)-Q(1,8)-(Q(1,3)-Q(1,4)) == Q(59,24) | )-\Bigl(\frac13-\frac14\Bigr)=\frac{59}{24}\approx2.458 .
+\]
+\emph{Check.} The endpoints are $(1,\frac7{12})$ and $(2,\frac{67}{24})$, and the chord has length $\sqrt{1+(\frac{53}{24})^2}\approx2.424$, less than $L\approx2.458$.
+%@ e3-chk | Q(1,3)+Q(1,4) == Q(7,12) and Q(8,3)+Q(1,8) == Q(67,24) and Q(67,24)-Q(7,12) == Q(53,24) and RND(sqrt(1+Q(53,24)**2),3) == Q(2424,1000) | \frac{53}{24})^2}\approx2.424$, less than $L\approx2.458$.
+
+\textbf{Answer.} $L=\dfrac{59}{24}\approx2.458$.
+\begin{center}
+\begin{tikzpicture}[x=2.3cm,y=1.1cm]
+  \draw[->] (-0.2,0) -- (2.7,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.4) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.45:2.3,samples=40,variable=\t] plot ({\t},{\t*\t*\t/3+1/(4*\t)});
+  \draw[dashed] (1,0.5833) -- (2,2.7917);
+  \fill (1,0.5833) circle (1.6pt) node[below right,font=\small] {$(1,\frac7{12})$};
+%@ f4-p1 | Q(1,3)+Q(1,4) == Q(7,12) | (1.6pt) node[below right,font=\small] {$(1,\frac7{12})$};
+  \fill (2,2.7917) circle (1.6pt) node[below right,font=\small] {$(2,\frac{67}{24})$};
+%@ f4-p2 | Q(8,3)+Q(1,8) == Q(67,24) | .6pt) node[below right,font=\small] {$(2,\frac{67}{24})$};
+  \node[font=\small,blue!70!black] at (0.45,2.6) {$y=\frac{x^3}3+\frac1{4x}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e3} between $x=1$ and $x=2$, with its chord.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A perfect square with a logarithm}{e4}
+Find the length of $y=\dfrac{x^2}4-\dfrac{\ln x}2$ for $1\le x\le e$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac x2-\frac1{2x}$, continuous on $[1,e]$ (the interval is in $x>0$).
+
+\emph{A perfect square.} $f'(x)^2=\frac{x^2}4-2\cdot\frac x2\cdot\frac1{2x}+\frac1{4x^2}=\frac{x^2}4-\frac12+\frac1{4x^2}$, so
+\[
+1+f'(x)^2=\frac{x^2}4+\frac12+\frac1{4x^2}=\Bigl(\frac x2+\frac1{2x}\Bigr)^2,\qquad\text{and}\qquad\sqrt{1+f'(x)^2}=\frac x2+\frac1{2x}\quad(x>0).
+\]
+\emph{Integral.} Here $\int\frac1{2x}\,dx=\frac12\ln x$ (Calculus~I, $x>0$), so
+\[
+L=\int_1^e\Bigl(\frac x2+\frac1{2x}\Bigr)dx=\Bigl[\frac{x^2}4+\frac{\ln x}2\Bigr]_1^e=\Bigl(\frac{e^2}4+\frac12\Bigr)-\Bigl(\frac14+0\Bigr)=\frac{e^2+1}4\approx2.097 .
+%@ e4-L | simplify(diff(x**2/4-log(x)/2,x)-(x/2-1/(2*x))) == 0 and simplify(1+(x/2-1/(2*x))**2-(x/2+1/(2*x))**2) == 0 and ANT(x**2/4+log(x)/2, x/2+1/(2*x), [Q(3,2),Q(2,1)]) == 0 and RND((exp(2)+1)/4,3) == Q(2097,1000) and (exp(2)/4+Q(1,2))-(Q(1,4)+0) == (exp(2)+1)/4 | 12\Bigr)-\Bigl(\frac14+0\Bigr)=\frac{e^2+1}4\approx2.097 .
+\]
+\emph{Check.} The endpoints are $(1,\frac14)$ and $(e,\frac{e^2}4-\frac12)\approx(2.718,1.347)$; the chord has length $\approx2.039<L$.
+%@ e4-chk | RND(sqrt((exp(1)-1)**2+(exp(2)/4-Q(1,2)-Q(1,4))**2),3) == Q(2039,1000) and Q(1,1)**2/4-log(1)/2 == Q(1,4) | (2.718,1.347)$; the chord has length $\approx2.039<L$.
+
+\textbf{Answer.} $L=\dfrac{e^2+1}4\approx2.097$.
+\begin{center}
+\begin{tikzpicture}[x=1.9cm,y=1.7cm]
+  \draw[->] (-0.2,0) -- (3.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,1.95) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.4:3.1,samples=40,variable=\t] plot ({\t},{\t*\t/4-ln(\t)/2});
+  \draw[dashed] (1,0.25) -- (2.7183,1.3473);
+  \fill (1,0.25) circle (1.6pt) node[below right,font=\small] {$(1,\frac14)$};
+%@ f5-p1 | Q(1,1)**2/4-log(1)/2 == Q(1,4) | (1.6pt) node[below right,font=\small] {$(1,\frac14)$};
+  \fill (2.7183,1.3473) circle (1.6pt) node[below right,font=\small] {$(e,\frac{e^2}4-\frac12)$};
+%@ f5-p2 | RND(exp(2)/4-Q(1,2),4) == Q(13473,10000) | [below right,font=\small] {$(e,\frac{e^2}4-\frac12)$};
+  \node[font=\small,blue!70!black] at (1.0,1.35) {$y=\frac{x^2}4-\frac{\ln x}2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e4} for $1\le x\le e$ and its chord.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A perfect square with exponentials}{e5}
+Find the length of $y=e^x+\dfrac{e^{-x}}4$ for $0\le x\le\ln3$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=e^x-\frac14e^{-x}$.
+
+\emph{A perfect square.} $f'(x)^2=e^{2x}-2\cdot e^x\cdot\frac14e^{-x}+\frac1{16}e^{-2x}=e^{2x}-\frac12+\frac1{16}e^{-2x}$, using $e^xe^{-x}=1$. Then
+\[
+1+f'(x)^2=e^{2x}+\frac12+\frac1{16}e^{-2x}=\Bigl(e^x+\frac14e^{-x}\Bigr)^2,\qquad\sqrt{1+f'(x)^2}=e^x+\frac14e^{-x},
+\]
+which is positive for every $x$.
+
+\emph{Integral.} $\int e^{-x}\,dx=-e^{-x}$, so, with $e^{\ln3}=3$ and $e^{-\ln3}=\frac13$,
+\[
+L=\int_0^{\ln3}\Bigl(e^x+\frac14e^{-x}\Bigr)dx=\Bigl[e^x-\frac14e^{-x}\Bigr]_0^{\ln3}=\Bigl(3-\frac1{12}\Bigr)-\Bigl(1-\frac14\Bigr)=\frac{13}6\approx2.167 .
+%@ e5-L | simplify(diff(exp(x)+exp(-x)/4,x)-(exp(x)-exp(-x)/4)) == 0 and simplify(1+(exp(x)-exp(-x)/4)**2-(exp(x)+exp(-x)/4)**2) == 0 and ANT(exp(x)-exp(-x)/4, exp(x)+exp(-x)/4, [Q(1,2),Q(3,2)]) == 0 and exp(log(3)) == 3 and (3-Q(1,12))-(1-Q(1,4)) == Q(13,6) | 1{12}\Bigr)-\Bigl(1-\frac14\Bigr)=\frac{13}6\approx2.167 .
+\]
+\emph{Check.} The endpoints are $(0,\frac54)$ and $(\ln3,\frac{37}{12})\approx(1.099,3.083)$, and the chord has length $\approx2.137<L$.
+%@ e5-chk | exp(0)+exp(-0)/4 == Q(5,4) and exp(log(3))+exp(-log(3))/4 == Q(37,12) and RND(sqrt(log(3)**2+(Q(37,12)-Q(5,4))**2),3) == Q(2137,1000) | (1.099,3.083)$, and the chord has length $\approx2.137<L$.
+
+\textbf{Answer.} $L=\dfrac{13}6\approx2.167$.
+\begin{center}
+\begin{tikzpicture}[x=2.8cm,y=1.1cm]
+  \draw[->] (-0.4,0) -- (1.5,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,4.4) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-0.25:1.3,samples=40,variable=\t] plot ({\t},{exp(\t)+exp(-\t)/4});
+  \draw[dashed] (0,1.25) -- (1.0986,3.0833);
+  \fill (0,1.25) circle (1.6pt) node[below right,font=\small] {$(0,\frac54)$};
+%@ f6-p1 | exp(0)+exp(-0)/4 == Q(5,4) | (1.6pt) node[below right,font=\small] {$(0,\frac54)$};
+  \fill (1.0986,3.0833) circle (1.6pt) node[below right,font=\small] {$(\ln3,\frac{37}{12})$};
+%@ f6-p2 | exp(log(3))+exp(-log(3))/4 == Q(37,12) | ) node[below right,font=\small] {$(\ln3,\frac{37}{12})$};
+  \node[font=\small,blue!70!black] at (0.45,3.7) {$y=e^x+\frac{e^{-x}}4$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e5} for $0\le x\le\ln3$ and its chord.
+\end{center}
+\end{exmp}
+
+The perfect squares are not luck. If $f'=A-B$ with $4AB=1$ (both $x^2$ and $\frac1{4x^2}$ above have product $\frac14$), then $1+f'^2=(A+B)^2$. This gives a family of curves with closed-form lengths, and the bank contains more of them.
+
+% ---------------------------------------------------------------------
+\subsection*{Vertical tangents: switch the variable}
+
+Theorem~\ref{thm:arclen} needs $f'$ continuous on the \emph{closed} interval. If the graph has a vertical tangent at an endpoint, $f'$ is not defined there, but Theorem~\ref{thm:both} lets us describe the curve with $y$ as the variable.
+
+\begin{exmp}{A cusp at the origin}{e6}
+Find the length of the curve $y=x^{2/3}$ for $0\le x\le1$.
+
+\textbf{Solution.} \emph{Why not $x$.} $f'(x)=\frac23x^{-1/3}$ is not defined at $x=0$ and grows without bound as $x\to0^+$: the graph has a vertical tangent (a cusp) at the origin, so Theorem~\ref{thm:arclen} does not apply on $[0,1]$.
+
+\emph{Describe the curve with $y$ as the variable.} For $x\ge0$, $y=x^{2/3}$ means $x=y^{3/2}$, and $x$ from $0$ to $1$ corresponds to $y$ from $0$ to $1$. So the curve is $x=g(y)=y^{3/2}$, $0\le y\le1$, and $g'(y)=\frac32y^{1/2}$ is continuous on $[0,1]$. By Theorem~\ref{thm:both} the length is
+\[
+L=\int_0^1\sqrt{1+\frac94y}\,dy=\frac12\int_0^1\sqrt{4+9y}\,dy .
+\]
+\emph{Substitution.} Let $u=4+9y$, $du=9\,dy$; $y=0$ gives $u=4$ and $y=1$ gives $u=13$. Then
+\[
+L=\frac12\cdot\frac19\int_4^{13}u^{1/2}\,du=\frac1{18}\cdot\frac23\Bigl[u^{3/2}\Bigr]_4^{13}=\frac1{27}\bigl(13\sqrt{13}-8\bigr)\approx1.440 .
+%@ e6-L | ANT(Q(1,27)*(4+9*x)**Q(3,2), sqrt(4+9*x)/2, [Q(1,2),Q(3,1)]) == 0 and 13**Q(3,2) == 13*sqrt(13) and 4**Q(3,2) == 8 and RND((13*sqrt(13)-8)/27,3) == Q(1440,1000) and integrate(sqrt(1+Q(9,4)*x),(x,0,1)) == (13*sqrt(13)-8)/27 | ]_4^{13}=\frac1{27}\bigl(13\sqrt{13}-8\bigr)\approx1.440 .
+\]
+\emph{Check.} The chord from $(0,0)$ to $(1,1)$ is $\sqrt2\approx1.414<L$.
+
+\textbf{Answer.} $L=\dfrac{13\sqrt{13}-8}{27}\approx1.440$. (The integral in $x$, $\int_0^1\sqrt{1+\frac4{9x^{2/3}}}\,dx$, is improper at $0$; improper integrals are studied in a later chapter, and it has this same value.)
+\begin{center}
+\begin{tikzpicture}[x=3.0cm,y=2.6cm]
+  \draw[->] (-0.6,0) -- (1.35,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1.15,samples=40,variable=\t] plot ({\t},{\t^(0.6667)});
+  \draw[thick,blue!40,domain=0:0.55,samples=30,variable=\t] plot ({-\t},{\t^(0.6667)});
+  \draw[dashed] (0,0) -- (1,1);
+  \fill (0,0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+%@ f7-p1 | 0**Q(2,3) == 0 and 0**Q(3,2) == 0 | 0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ f7-p2 | 1**Q(2,3) == 1 and 1**Q(3,2) == 1 | 1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+  \node[font=\small,blue!70!black] at (0.55,1.12) {$y=x^{2/3}\ (x=y^{3/2})$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve $y=x^{2/3}$ has a vertical tangent (a cusp) at the origin. The right branch is also the curve $x=y^{3/2}$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Ingenuity: an inverse function}{e7}
+Find the length of $y=\dfrac12\ln\bigl(2x+\sqrt{4x^2-1}\bigr)$ for $\frac12\le x\le\frac{17}{16}$.
+
+\textbf{Solution.} \emph{The tangent at the left end.} Put $s=\sqrt{4x^2-1}$, so $s'=\frac{4x}s$. Then
+\[
+f'(x)=\frac12\cdot\frac{2+4x/s}{2x+s}=\frac12\cdot\frac{2(s+2x)}{s\,(2x+s)}=\frac1s=\frac1{\sqrt{4x^2-1}} ,
+\]
+which is not defined at $x=\frac12$ (where $s=0$): the tangent is vertical there. We therefore solve for $x$.
+%@ e7-d | simplify(diff(log(2*x+sqrt(4*x**2-1))/2,x)-1/sqrt(4*x**2-1)) == 0 and 4*Q(1,4)-1 == 0 | . We therefore solve for $x$.
+
+\emph{Solve for $x$.} From $y=\frac12\ln(2x+s)$: $e^{2y}=2x+s$, so $e^{2y}-2x=s$. Squaring, $e^{4y}-4xe^{2y}+4x^2=4x^2-1$, hence $e^{4y}+1=4xe^{2y}$ and
+\[
+x=g(y)=\frac{e^{2y}+e^{-2y}}4 .
+\]
+\emph{Limits.} At $x=\frac12$, $s=0$ and $y=\frac12\ln1=0$. At $x=\frac{17}{16}$, $s=\sqrt{\frac{289}{64}-1}=\frac{15}8$, $2x+s=\frac{17}8+\frac{15}8=4$ and $y=\frac12\ln4=\ln2$. So $0\le y\le\ln2$.
+%@ e7-lim | sqrt(4*Q(17,16)**2-1) == Q(15,8) and 2*Q(17,16)+Q(15,8) == 4 and simplify(log(4)/2-log(2)) == 0 and (1+1)/Integer(4) == Q(1,2) | {15}8=4$ and $y=\frac12\ln4=\ln2$. So $0\le y\le\ln2$.
+
+\emph{A perfect square.} $g'(y)=\frac{e^{2y}-e^{-2y}}2$ and $g'(y)^2=\frac{e^{4y}-2+e^{-4y}}4$, so
+\[
+1+g'(y)^2=\frac{e^{4y}+2+e^{-4y}}4=\Bigl(\frac{e^{2y}+e^{-2y}}2\Bigr)^2,\qquad\sqrt{1+g'(y)^2}=\frac{e^{2y}+e^{-2y}}2 .
+\]
+\emph{Integral.} By Theorem~\ref{thm:both}, with $e^{2\ln2}=4$,
+\[
+L=\int_0^{\ln2}\frac{e^{2y}+e^{-2y}}2\,dy=\Bigl[\frac{e^{2y}-e^{-2y}}4\Bigr]_0^{\ln2}=\frac{4-\frac14}4-0=\frac{15}{16}.
+%@ e7-L | simplify(diff((exp(2*x)+exp(-2*x))/4,x)-(exp(2*x)-exp(-2*x))/2) == 0 and simplify(1+((exp(2*x)-exp(-2*x))/2)**2-((exp(2*x)+exp(-2*x))/2)**2) == 0 and ANT((exp(2*x)-exp(-2*x))/4, (exp(2*x)+exp(-2*x))/2, [Q(1,2),Q(3,2)]) == 0 and exp(2*log(2)) == 4 and (4-Q(1,4))/4 == Q(15,16) | ^{-2y}}4\Bigr]_0^{\ln2}=\frac{4-\frac14}4-0=\frac{15}{16}.
+\]
+\emph{Check.} The endpoints are $(\frac12,0)$ and $(\frac{17}{16},\ln2)$, with chord $\sqrt{(\frac9{16})^2+(\ln2)^2}\approx0.893<\frac{15}{16}$. (In the variable $x$ the integral is $\int_{1/2}^{17/16}\frac{2x}{\sqrt{4x^2-1}}\,dx=\bigl[\frac12\sqrt{4x^2-1}\bigr]_{1/2}^{17/16}$, an improper integral at $\frac12$ with the same value $\frac{15}{16}$.)
+%@ e7-chk | RND(sqrt(Q(9,16)**2+log(2)**2),3) == Q(893,1000) and Q(15,16) > Q(893,1000) and sqrt(4*Q(17,16)**2-1)/2 == Q(15,16) | $\frac12$ with the same value $\frac{15}{16}$.)
+
+\textbf{Answer.} $L=\dfrac{15}{16}$.
+\begin{center}
+\begin{tikzpicture}[x=4cm,y=6cm]
+  \draw[->] (-0.1,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.05) -- (0,0.85) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.5:1.2,samples=40,variable=\t] plot ({\t},{ln(2*\t+sqrt(4*\t*\t-1))/2});
+  \draw[dashed] (0.5,0) -- (1.0625,0.6931);
+  \draw[dotted,thick] (0.5,-0.04) -- (0.5,0.3);
+  \fill (0.5,0) circle (1.6pt) node[below,font=\small] {$(\frac12,0)$};
+%@ f8-p1 | log(2*Q(1,2)+sqrt(4*Q(1,4)-1))/2 == 0 | 0) circle (1.6pt) node[below,font=\small] {$(\frac12,0)$};
+  \fill (1.0625,0.6931) circle (1.6pt) node[below right,font=\small] {$(\frac{17}{16},\ln2)$};
+%@ f8-p2 | NUM(log(2*Q(17,16)+sqrt(4*Q(17,16)**2-1))/2, log(2)) == 0 | ) node[below right,font=\small] {$(\frac{17}{16},\ln2)$};
+  \node[font=\small,blue!70!black,anchor=west] at (0.05,0.78) {$y=\frac12\ln\bigl(2x+\surd(4x^2-1)\bigr)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:e7}. The dotted line marks the vertical tangent at $(\frac12,0)$.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Bounds for the length}
+
+Even when we cannot evaluate the integral, we can say how large $L$ is. The chord is a lower bound by Theorem~\ref{thm:basic}(1); the next theorem adds the others. Because it compares integrands, it also compares the lengths of different curves.
+
+\begin{thm}{Bounds for the length}{bounds}
+Let $f'$ be continuous on $[a,b]$, let $L$ be the length of the graph, and let $D=\sqrt{(b-a)^2+(f(b)-f(a))^2}$ be the length of the chord.
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item $D\le L$.
+  \item $\max\Bigl\{\,b-a,\ \displaystyle\int_a^b\abs{f'(x)}\,dx\Bigr\}\le L\le(b-a)+\displaystyle\int_a^b\abs{f'(x)}\,dx$, and $\displaystyle\int_a^b\abs{f'}\ge\abs{f(b)-f(a)}$.
+  \item If $\abs{f'(x)}\le M$ for all $x$ in $[a,b]$, then $L\le(b-a)\sqrt{1+M^2}$.
+  \item If $g'$ is continuous on $[a,b]$ and $\abs{f'(x)}\le\abs{g'(x)}$ for all $x$, then the length of the graph of $f$ is at most the length of the graph of $g$ over $[a,b]$.
+  \item If $f$ is increasing or decreasing, then $D\le L\le(b-a)+\abs{f(b)-f(a)}$: the curve is no shorter than the chord and no longer than the two legs of the right triangle on the chord.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) is Theorem~\ref{thm:basic}(1). For (2), let $s$ be any real number. Then $1\le\sqrt{1+s^2}$, and $\abs s=\sqrt{s^2}\le\sqrt{1+s^2}\le1+\abs s$, because $(1+\abs s)^2=1+2\abs s+s^2\ge1+s^2$. Put $s=f'(x)$ and integrate over $[a,b]$ (the integral preserves inequalities): $b-a\le L$, $\int_a^b\abs{f'}\le L$ and $L\le(b-a)+\int_a^b\abs{f'}$. Finally $\int_a^b\abs{f'}\ge\abs{\int_a^bf'}=\abs{f(b)-f(a)}$ by Theorem~\ref{6.1-thm:ineq} and the Fundamental Theorem. (3) $1+f'(x)^2\le1+M^2$, so $\sqrt{1+f'^2}\le\sqrt{1+M^2}$; integrate. (4) $f'^2\le g'^2$ gives $\sqrt{1+f'^2}\le\sqrt{1+g'^2}$; integrate. (5) If $f$ is monotone, $f'$ does not change sign, so $\abs{\int_a^bf'}=\int_a^b\abs{f'}$ (the equality case of Theorem~\ref{6.1-thm:ineq}), that is, $\int_a^b\abs{f'}=\abs{f(b)-f(a)}$; now use (1) and (2). (For $y=x^2$ on $[0,1]$: $D=\sqrt2$, $b-a=1$, $\int_0^1\abs{2x}\,dx=1$, and $M=2$, so $\sqrt2\le L\le2$ and also $L\le\sqrt5$.)
+%@ pr-bounds | sqrt(1**2+1**2) == sqrt(2) and integrate(2*x,(x,0,1)) == 1 and 1*sqrt(1+2**2) == sqrt(5) and 1+1 == 2 | $, and $M=2$, so $\sqrt2\le L\le2$ and also $L\le\sqrt5$.)
+\end{proof}
+
+\begin{center}
+\begin{tikzpicture}[x=3.6cm,y=3.6cm]
+  \draw[->] (-0.2,0) -- (1.5,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[thick,dashed,red!70!black] (0,0) -- (1,1);
+  \draw[thick,green!50!black] (0,0) -- (1,0) -- (1,1);
+  \fill (0,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+%@ f9-p1 | 0**2 == 0 | ,0) circle (1.6pt) node[below left,font=\small] {$(0,0)$};
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ f9-p2 | 1**2 == 1 | ,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+  \node[font=\small,green!50!black] at (0.5,-0.12) {$b-a=1$};
+  \node[font=\small,green!50!black,anchor=west] at (1.05,0.5) {$\lvert f(b)-f(a)\rvert=1$};
+  \node[font=\small,red!70!black] at (0.28,0.6) {chord $\sqrt2$};
+  \node[font=\small,blue!70!black] at (0.85,0.45) {$L$};
+\end{tikzpicture}
+\par\small\emph{Figure.} For $y=x^2$ on $[0,1]$ the length $L$ lies between the chord $\sqrt2$ and the two legs $1+1=2$.
+\end{center}
+
+\begin{think}{Why an eighth of a circle?}{thcirc}
+The semicircle $y=\sqrt{a^2-x^2}$ for $-a\le x\le a$ looks like the natural curve to use for the circumference. Why does Theorem~\ref{thm:arclen} not apply to it directly? How does cutting the circle into eight equal arcs avoid the difficulty?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{The circumference of a circle}
+
+The circle gives a check on the whole theory: its length should be $2\pi a$.
+
+\begin{thm}{The circumference of a circle}{circle}
+The arc of the circle $x^2+y^2=a^2$ ($a>0$) over $0\le x\le a/\sqrt2$ has length $\pi a/4$, and the circle has length (circumference) $2\pi a$. The upper half circle $y=\sqrt{a^2-x^2}$ over $[-a,a]$ has length $\pi a$, which is the limit of the lengths $2a\arcsin(b/a)$ of the parts over $[-b,b]$ as $b\to a^-$.
+\end{thm}
+\begin{proof}
+\emph{One eighth.} Let $f(x)=\sqrt{a^2-x^2}$ on $[0,a/\sqrt2]$. There $a^2-x^2\ge a^2/2>0$, so $f'(x)=-\dfrac x{\sqrt{a^2-x^2}}$ is continuous. Then $1+f'(x)^2=1+\dfrac{x^2}{a^2-x^2}=\dfrac{a^2}{a^2-x^2}$ and $\sqrt{1+f'(x)^2}=\dfrac a{\sqrt{a^2-x^2}}$ ($a>0$). From Calculus~I, $\frac d{dx}\arcsin\frac xa=\frac1{\sqrt{a^2-x^2}}$, so
+\[
+L_1=\int_0^{a/\sqrt2}\frac a{\sqrt{a^2-x^2}}\,dx=a\Bigl[\arcsin\frac xa\Bigr]_0^{a/\sqrt2}=a\Bigl(\arcsin\frac1{\sqrt2}-0\Bigr)=\frac{\pi a}4,
+\]
+because $\sin\frac\pi4=\frac1{\sqrt2}$ and $\frac\pi4$ lies in $[-\frac\pi2,\frac\pi2]$.
+
+\emph{The whole circle.} The eight points of the circle at the angles $0,\frac\pi4,\dots,\frac{7\pi}4$ cut it into eight arcs. The first arc, from the angle $\frac\pi4$ to $\frac\pi2$, is the one above. Each of the other seven is its image under a rotation about the origin through a multiple of $\frac\pi4$, a rigid motion, so by Theorem~\ref{thm:basic}(3) each has length $\frac{\pi a}4$; by additivity, Theorem~\ref{thm:basic}(2), applied seven times, the circle has length $8\cdot\frac{\pi a}4=2\pi a$.
+
+\emph{The semicircle.} For $0<b<a$ the part of the semicircle over $[-b,b]$ is the graph of $f$ with $f'$ continuous, and its length is $\int_{-b}^ba/\sqrt{a^2-x^2}\,dx=2a\arcsin\frac ba$. The rest of the semicircle consists of two end arcs, mirror images of each other. The right one is the curve $x=g(y)=\sqrt{a^2-y^2}$ for $0\le y\le\eta=\sqrt{a^2-b^2}<a$, where $g'$ is continuous, and by Theorem~\ref{thm:bounds}(2) its length is at most $\eta+\int_0^\eta\abs{g'}=\eta+(g(0)-g(\eta))=\eta+(a-b)$, because $g$ decreases from $a$ to $b$. As $b\to a^-$, both $\eta\to0$ and $a-b\to0$, so the end arcs have lengths tending to $0$ while $2a\arcsin\frac ba\to2a\cdot\frac\pi2=\pi a$. By additivity the semicircle has length $\pi a$.
+(For $a=1$: $\arcsin\frac1{\sqrt2}=\frac\pi4$ and $8\cdot\frac\pi4=2\pi$.)
+%@ pr-circle | ANT(3*asin(x/3), 3/sqrt(9-x**2), [Q(1,1),Q(2,1)]) == 0 and ANT(5*asin(x/5), 5/sqrt(25-x**2), [Q(1,1),Q(3,1)]) == 0 and simplify(1+(x/sqrt(a**2-x**2))**2-a**2/(a**2-x**2)) == 0 and asin(1/sqrt(2)) == pi/4 and 8*(pi/4) == 2*pi | \frac1{\sqrt2}=\frac\pi4$ and $8\cdot\frac\pi4=2\pi$.)
+\end{proof}
+
+The integral $\int_{-a}^a\frac a{\sqrt{a^2-x^2}}\,dx$ is an \emph{improper} integral (the integrand is unbounded at both ends), a topic of a later chapter; the proof above has found its value directly.
+\begin{center}
+\begin{tikzpicture}[x=2.1cm,y=2.1cm]
+  \draw[->] (-1.3,0) -- (1.4,0) node[right] {$x$};
+  \draw[->] (0,-1.3) -- (0,1.4) node[above] {$y$};
+  \draw[thick,black!50] (0,0) circle (1);
+  \draw[very thick,blue!70!black,domain=0:0.7071,samples=30,variable=\t] plot ({\t},{sqrt(1-\t*\t)});
+  \fill (0,1) circle (1.6pt) node[above left,font=\small] {$(0,a)$};
+%@ f10-p1 | 0**2+1**2 == 1 | ,1) circle (1.6pt) node[above left,font=\small] {$(0,a)$};
+  \fill (0.7071,0.7071) circle (1.6pt) node[above right,font=\small] {$(a/\surd2,a/\surd2)$};
+%@ f10-p2 | (a/sqrt(2))**2+(a/sqrt(2))**2 == a**2 | ) node[above right,font=\small] {$(a/\surd2,a/\surd2)$};
+  \fill (1,0) circle (1.2pt);
+%@ f10-p3 | 1**2+0**2 == 1 | \fill (1,0) circle (1.2pt);
+  \fill (-1,0) circle (1.2pt);
+%@ f10-p4 | (-1)**2+0**2 == 1 | \fill (-1,0) circle (1.2pt);
+  \fill (0,-1) circle (1.2pt);
+%@ f10-p5 | 0**2+(-1)**2 == 1 | \fill (0,-1) circle (1.2pt);
+  \fill (0.7071,-0.7071) circle (1.2pt);
+%@ f10-p6 | (a/sqrt(2))**2+(-a/sqrt(2))**2 == a**2 | \fill (0.7071,-0.7071) circle (1.2pt);
+  \fill (-0.7071,0.7071) circle (1.2pt);
+%@ f10-p7 | (-a/sqrt(2))**2+(a/sqrt(2))**2 == a**2 | \fill (-0.7071,0.7071) circle (1.2pt);
+  \fill (-0.7071,-0.7071) circle (1.2pt);
+%@ f10-p8 | (-a/sqrt(2))**2+(-a/sqrt(2))**2 == a**2 | \fill (-0.7071,-0.7071) circle (1.2pt);
+  \node[font=\small,blue!70!black] at (0.32,1.1) {$\frac{\pi a}4$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The eight points that cut the circle (here $a=1$) into eight equal arcs. The arc over $0\le x\le a/\sqrt2$ is drawn thick; its length is $\frac{\pi a}4$.
+\end{center}
+
+\begin{exmp}{An arc of a circle}{e8}
+Find the length of the curve $y=\sqrt{36-x^2}$ for $0\le x\le3$, and check it with geometry.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=-\dfrac x{\sqrt{36-x^2}}$, continuous on $[0,3]$, because $36-x^2\ge27>0$ there.
+
+\emph{Integrand.} $1+f'(x)^2=1+\dfrac{x^2}{36-x^2}=\dfrac{36}{36-x^2}$, so $\sqrt{1+f'(x)^2}=\dfrac6{\sqrt{36-x^2}}$.
+
+\emph{Integral.} Since $\frac d{dx}\bigl(6\arcsin\frac x6\bigr)=\frac6{6\sqrt{1-x^2/36}}=\frac6{\sqrt{36-x^2}}$ (Calculus~I),
+\[
+L=\int_0^3\frac6{\sqrt{36-x^2}}\,dx=6\Bigl[\arcsin\frac x6\Bigr]_0^3=6\Bigl(\arcsin\frac12-0\Bigr)=6\cdot\frac\pi6=\pi\approx3.142 .
+%@ e8-L | simplify(1+(x/sqrt(36-x**2))**2-36/(36-x**2)) == 0 and ANT(6*asin(x/6), 6/sqrt(36-x**2), [Q(1,1),Q(2,1)]) == 0 and asin(Q(1,2)) == pi/6 and 6*(pi/6) == pi | (\arcsin\frac12-0\Bigr)=6\cdot\frac\pi6=\pi\approx3.142 .
+\]
+\emph{Check by geometry.} The circle has radius $6$. The end points are $(0,6)$ and $(3,3\sqrt3)$ (because $36-9=27$), and $\sin\theta=\frac36=\frac12$ for the angle $\theta=\frac\pi6$ between them, so the arc has length $r\theta=6\cdot\frac\pi6=\pi$. The chord is $\sqrt{9+(6-3\sqrt3)^2}\approx3.106<\pi$.
+%@ e8-chk | 3**2+(3*sqrt(3))**2 == 36 and RND(sqrt(9+(6-3*sqrt(3))**2),3) == Q(3106,1000) and 6*(pi/6) == pi | $. The chord is $\sqrt{9+(6-3\sqrt3)^2}\approx3.106<\pi$.
+
+\textbf{Answer.} $L=\pi$.
+\begin{center}
+\begin{tikzpicture}[x=0.62cm,y=0.62cm]
+  \draw[->] (-0.5,0) -- (7,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,7) node[above] {$y$};
+  \draw[thick,black!50,domain=0:6,samples=40,variable=\t] plot ({\t},{sqrt(36-\t*\t)});
+  \draw[very thick,blue!70!black,domain=0:3,samples=30,variable=\t] plot ({\t},{sqrt(36-\t*\t)});
+  \draw[dashed] (0,0) -- (3,5.196);
+  \fill (0,6) circle (1.6pt) node[left,font=\small] {$(0,6)$};
+%@ f11-p1 | 0**2+6**2 == 36 | (0,6) circle (1.6pt) node[left,font=\small] {$(0,6)$};
+  \fill (3,5.196) circle (1.6pt) node[above right,font=\small] {$(3,3\sqrt3)$};
+%@ f11-p2 | 3**2+(3*sqrt(3))**2 == 36 and RND(3*sqrt(3),3) == Q(5196,1000) | (1.6pt) node[above right,font=\small] {$(3,3\sqrt3)$};
+  \node[font=\small] at (1.2,2.2) {$\frac\pi6$};
+  \node[font=\small,blue!70!black] at (3.4,6.5) {$L=\pi$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The arc of the circle of radius $6$ between $(0,6)$ and $(3,3\sqrt3)$, which subtends the angle $\frac\pi6$ at the origin.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Integrals we cannot do yet}
+
+Even simple curves, such as $y=x^2$ or $y=\sin x$, lead to a square root whose antiderivative cannot be found with substitution and the other methods of Calculus~I (a method that handles $\sqrt{1+4x^2}$ comes in a later chapter). This is typical of arc length. The integral is still a definite integral of a continuous function, so it has a value, which numerical integration (a later section) gives to as many digits as we like. We then \emph{check} the value against Theorem~\ref{thm:bounds}: it must lie above the chord and above every inscribed polygon.
+
+\begin{exmp}{Set up, evaluate numerically, check}{e9}
+Write the integral for the length of (a) $y=x^2$ for $0\le x\le1$ and (b) $y=\sin x$ for $0\le x\le\pi$. Give a numerical value of each and check it.
+
+\textbf{Solution.} (a) $f'(x)=2x$ is continuous, so $L=\int_0^1\sqrt{1+4x^2}\,dx$. Numerical integration gives $L\approx1.4789$.
+
+\emph{Checks.} The chord from $(0,0)$ to $(1,1)$ has length $\sqrt2\approx1.4142<L$. The polygon with the five vertices at $x=0,\frac14,\frac12,\frac34,1$ has segments of lengths $\frac{\sqrt{17}}{16}$, $\frac5{16}$, $\frac{\sqrt{41}}{16}$, $\frac{\sqrt{65}}{16}$ (for instance the second one joins $(\frac14,\frac1{16})$ to $(\frac12,\frac14)$, with $\Delta x=\frac14$ and $\Delta y=\frac3{16}$, and $\sqrt{\frac1{16}+\frac9{256}}=\frac5{16}$), so its length is $\frac{\sqrt{17}+5+\sqrt{41}+\sqrt{65}}{16}\approx1.4743<L$; more vertices have given a number closer to $L$, as Theorem~\ref{thm:arclen} predicts. Finally Theorem~\ref{thm:bounds} gives $L\le1+\int_0^12x\,dx=2$.
+%@ e9-a | RND(Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30),4) == Q(14789,10000) and sqrt(Q(1,16)+Q(1,256)) == sqrt(17)/16 and sqrt(Q(1,16)+Q(9,256)) == Q(5,16) and sqrt(Q(1,16)+Q(25,256)) == sqrt(41)/16 and sqrt(Q(1,16)+Q(49,256)) == sqrt(65)/16 and RND(sqrt(2),4) == Q(14142,10000) and 1+integrate(2*x,(x,0,1)) == 2 and RND((sqrt(17)+5+sqrt(41)+sqrt(65))/16,4) == Q(14743,10000) | ~\ref{thm:bounds} gives $L\le1+\int_0^12x\,dx=2$.
+
+(b) $f'(x)=\cos x$, so $L=\int_0^\pi\sqrt{1+\cos^2x}\,dx\approx3.8202$. The chord joins $(0,0)$ to $(\pi,0)$ and has length $\pi\approx3.1416$. The polygon with vertices at $x=0,\frac\pi4,\frac\pi2,\frac{3\pi}4,\pi$ (heights $0,\frac{\sqrt2}2,1,\frac{\sqrt2}2,0$) has length $2\Bigl(\sqrt{\frac{\pi^2}{16}+\frac12}+\sqrt{\frac{\pi^2}{16}+\bigl(1-\frac{\sqrt2}2\bigr)^2}\Bigr)\approx3.7901<L$. By Theorem~\ref{thm:bounds}, $L\le\pi+\int_0^\pi\abs{\cos x}\,dx=\pi+2\approx5.14$.
+%@ e9-b | RND(Integral(sqrt(1+cos(x)**2),(x,0,pi)).evalf(30),4) == Q(38202,10000) and 2*integrate(cos(x),(x,0,pi/2)) == 2 and RND(pi,4) == Q(31416,10000) and RND(pi+2,2) == Q(514,100) and RND(2*(sqrt(pi**2/16+Q(1,2))+sqrt(pi**2/16+(1-sqrt(2)/2)**2)),4) == Q(37901,10000) | }, $L\le\pi+\int_0^\pi\abs{\cos x}\,dx=\pi+2\approx5.14$.
+
+\textbf{Answer.} (a) $\approx1.4789$; (b) $\approx3.8202$.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=3.2cm]
+  \draw[->] (-0.2,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1.1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[thick,red!70!black] (0,0) -- (0.25,0.0625) -- (0.5,0.25) -- (0.75,0.5625) -- (1,1);
+  \draw[dashed] (0,0) -- (1,1);
+  \fill (0.25,0.0625) circle (1.4pt);
+%@ f12-p1 | Q(1,4)**2 == Q(1,16) | \fill (0.25,0.0625) circle (1.4pt);
+  \fill (0.5,0.25) circle (1.4pt);
+%@ f12-p2 | Q(1,2)**2 == Q(1,4) | \fill (0.5,0.25) circle (1.4pt);
+  \fill (0.75,0.5625) circle (1.4pt);
+%@ f12-p3 | Q(3,4)**2 == Q(9,16) | \fill (0.75,0.5625) circle (1.4pt);
+  \fill (1,1) circle (1.4pt) node[above left,font=\small] {$(1,1)$};
+%@ f12-p4 | 1**2 == 1 | ,1) circle (1.4pt) node[above left,font=\small] {$(1,1)$};
+  \node[font=\small,blue!70!black] at (0.35,0.75) {$y=x^2$};
+\end{tikzpicture}\quad
+\begin{tikzpicture}[x=1.0cm,y=2.4cm]
+  \draw[->] (-0.3,0) -- (3.6,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:3.1416,samples=40,variable=\t] plot ({\t},{sin(\t r)});
+  \draw[thick,red!70!black] (0,0) -- (0.7854,0.7071) -- (1.5708,1) -- (2.3562,0.7071) -- (3.1416,0);
+  \fill (0.7854,0.7071) circle (1.4pt);
+%@ f13-p1 | sin(pi/4) == sqrt(2)/2 | \fill (0.7854,0.7071) circle (1.4pt);
+  \fill (1.5708,1) circle (1.4pt);
+%@ f13-p2 | sin(pi/2) == 1 | \fill (1.5708,1) circle (1.4pt);
+  \fill (2.3562,0.7071) circle (1.4pt);
+%@ f13-p3 | sin(3*pi/4) == sqrt(2)/2 | \fill (2.3562,0.7071) circle (1.4pt);
+  \fill (3.1416,0) circle (1.4pt) node[below,font=\small] {$(\pi,0)$};
+%@ f13-p4 | sin(pi) == 0 | 416,0) circle (1.4pt) node[below,font=\small] {$(\pi,0)$};
+  \node[font=\small,blue!70!black] at (1.6,1.18) {$y=\sin x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} Left: $y=x^2$ with its chord (dashed) and the polygon with four segments. Right: $y=\sin x$ on $[0,\pi]$ with a polygon with four segments; its chord lies on the $x$-axis.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Cosine against a parabola}{e10}
+Which of the curves $y=1-x^2$ and $y=\cos\frac{\pi x}2$ has the greater length on $[-1,1]$?
+
+\textbf{Solution.} \emph{Set-up.} Both pass through $(-1,0)$, $(0,1)$ and $(1,0)$ and are even functions. The reflection in the $y$-axis is a rigid motion that carries the part over $[-1,0]$ onto the part over $[0,1]$, so by Theorem~\ref{thm:basic}(2), (3) each length is twice the length over $[0,1]$. With $f'(x)=-2x$ for the parabola and $g'(x)=-\frac\pi2\sin\frac{\pi x}2$ for the cosine,
+\[
+L_{\text{parabola}}=2\int_0^1\sqrt{1+4x^2}\,dx,\qquad L_{\text{cosine}}=2\int_0^1\sqrt{1+\frac{\pi^2}4\sin^2\frac{\pi x}2}\,dx .
+\]
+\emph{Slopes do not decide.} At $x=\frac12$ the cosine is steeper ($\frac\pi2\sin\frac\pi4\approx1.11$ against $1$), at $x=1$ the parabola is ($2$ against $\frac\pi2$), so Theorem~\ref{thm:bounds}(4) cannot be used. Both lengths lie between the chord $2$ and $(b-a)+\int\abs{f'}=2+2=4$.
+
+\emph{Numerical values.} Numerical integration gives $L_{\text{parabola}}\approx2.9579$ (twice the value of Example~\ref{ex:e9}(a)) and $L_{\text{cosine}}\approx2.9274$. The parabola is longer, by about $0.03$.
+%@ e10-L | RND(2*Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30),4) == Q(29579,10000) and RND(2*Integral(sqrt(1+(pi/2*sin(pi*x/2))**2),(x,0,1)).evalf(30),4) == Q(29274,10000) and RND((pi/2)*sin(pi/4),2) == Q(111,100) and 2+2 == 4 and RND(2*Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30)-2*Integral(sqrt(1+(pi/2*sin(pi*x/2))**2),(x,0,1)).evalf(30),2) == Q(3,100) | }}\approx2.9274$. The parabola is longer, by about $0.03$.
+
+\emph{Check.} With the five vertices at $x=-1,-\frac12,0,\frac12,1$ the parabola (heights $0,\frac34,1,\frac34,0$) has a polygon of length $\frac{\sqrt{13}+\sqrt5}2\approx2.9208$, and the cosine (heights $0,\frac{\sqrt2}2,1,\frac{\sqrt2}2,0$) has one of length $\sqrt3+2\sqrt{\frac14+\bigl(1-\frac{\sqrt2}2\bigr)^2}\approx2.8910$. Each is below the corresponding length and above the chord $2$, and the polygon lengths show the same order as the lengths.
+%@ e10-chk | RND(sqrt(Q(13,1))/2+sqrt(5)/2,4) == Q(29208,10000) and RND(sqrt(3)+2*sqrt(Q(1,4)+(1-sqrt(2)/2)**2),4) == Q(28910,10000) and sqrt(Q(1,4)+Q(9,16)) == sqrt(13)/4 and sqrt(Q(1,4)+Q(1,16)) == sqrt(5)/4 | \emph{Check.} With the five vertices at $x=-1,-\frac12,0,\frac12,1$ the parabola (heights $0,\frac34,1,\frac34,0$) has a polygon of length $\frac{\sqrt{13}+\sqrt5}2\approx2.9208$, and the cosine (heights $0,\frac{\sqrt2}2,1,\frac{\sqrt2}2,0$) has one of length $\sqrt3+2\sqrt{\frac14+\bigl(1-\frac{\sqrt2}2\bigr)^2}\approx2.8910$. Each is below the corresponding length and above the chord $2$, and the polygon lengths show the same order as the lengths.
+
+\textbf{Answer.} The parabola $y=1-x^2$ is longer ($\approx2.958$ against $\approx2.927$). \emph{This order is established numerically; with the methods of this course we cannot prove it by comparing integrands.}
+\begin{center}
+\begin{tikzpicture}[x=2.8cm,y=3.0cm]
+  \draw[->] (-1.25,0) -- (1.35,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-1:1,samples=40,variable=\t] plot ({\t},{1-\t*\t});
+  \draw[very thick,red!70!black,domain=-1:1,samples=40,variable=\t] plot ({\t},{cos(90*\t)});
+  \fill (-1,0) circle (1.6pt) node[below,font=\small] {$(-1,0)$};
+%@ f14-p1 | 1-(-1)**2 == 0 and cos(-pi/2) == 0 | (-1,0) circle (1.6pt) node[below,font=\small] {$(-1,0)$};
+  \fill (1,0) circle (1.6pt) node[below,font=\small] {$(1,0)$};
+%@ f14-p2 | 1-1**2 == 0 and cos(pi/2) == 0 | (1,0) circle (1.6pt) node[below,font=\small] {$(1,0)$};
+  \fill (0,1) circle (1.6pt) node[above,font=\small] {$(0,1)$};
+%@ f14-p3 | 1-0**2 == 1 and cos(0) == 1 | (0,1) circle (1.6pt) node[above,font=\small] {$(0,1)$};
+  \node[font=\small,blue!70!black] at (-0.5,-0.38) {$y=1-x^2$};
+  \node[font=\small,red!70!black] at (0.45,-0.38) {$y=\cos\frac{\pi x}2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The parabola (blue) and the cosine (red) between the same three points. The two curves cross only at these points.
+\end{center}
+\end{exmp}
+
+\subsection*{Looking ahead}
+
+The idea of cutting a curve into short pieces, taking the length of each and adding is used again for curves given by $x=f(t)$, $y=g(t)$ and for polar curves (a later chapter), where the integrand becomes the \emph{speed} of a moving point. A later section of this chapter rotates an arc about an axis to find the area of a surface, with the same square root in the integrand. In a later course, curves in space have a length given by an integral of the speed.
+
+% =====================================================================
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Lines and set-up} (Examples~\ref{ex:b1}--\ref{ex:b2}): a line given as $x=g(y)$, checked by the distance formula; writing and simplifying arc length integrals without evaluating them.
+  \item \emph{Perfect squares: powers} (Examples~\ref{ex:b3}--\ref{ex:b4}): $y=\frac{x^4}{16}+\frac1{2x^2}$; a curve with fractional powers.
+  \item \emph{Perfect squares: exponentials} (Examples~\ref{ex:b5}--\ref{ex:b6}): the curve $y=e^{x/2}+e^{-x/2}$ (a hanging chain); an exponential curve $x=g(y)$.
+  \item \emph{Substitution and cusps} (Examples~\ref{ex:b7}--\ref{ex:b8}): a shifted power curve; a cusp inside the interval, handled by additivity.
+  \item \emph{Numerical values and bounds} (Examples~\ref{ex:b9}--\ref{ex:b10}): a square-root curve and the reflection of a parabola; a suspension cable.
+  \item \emph{Comparing and recovering curves} (Examples~\ref{ex:b11}--\ref{ex:b12}): which functions have a given arc length; which of two curves is longer from their slopes alone.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}): a reflected graph has the same length; the length of a stretched graph.
+\end{enumerate}
+
+\subsection*{Group 1: Lines and set-up}
+
+\begin{exmp}{A line given as $x=g(y)$}{b1}
+Find the length of the line $x=\frac23y+1$ for $0\le y\le9$ with the formula of Theorem~\ref{thm:xofy}, and check it with the distance formula.
+
+\textbf{Solution.} Here $g'(y)=\frac23$, so $1+g'(y)^2=1+\frac49=\frac{13}9$ and $\sqrt{1+g'(y)^2}=\frac{\sqrt{13}}3$. Therefore
+\[
+L=\int_0^9\frac{\sqrt{13}}3\,dy=\frac{\sqrt{13}}3\cdot9=3\sqrt{13}\approx10.82 .
+%@ b1 | 1+Q(2,3)**2 == Q(13,9) and sqrt(Q(13,9)) == sqrt(13)/3 and integrate(sqrt(13)/3,(x,0,9)) == 3*sqrt(13) and RND(3*sqrt(13),2) == Q(1082,100) | 13}}3\,dy=\frac{\sqrt{13}}3\cdot9=3\sqrt{13}\approx10.82 .
+\]
+\emph{Check.} The endpoints are $(1,0)$ and $(7,9)$ (put $y=0$ and $y=9$), so $\Delta x=6$, $\Delta y=9$ and the distance is $\sqrt{36+81}=\sqrt{117}=3\sqrt{13}$.
+%@ b1-chk | Q(2,3)*0+1 == 1 and Q(2,3)*9+1 == 7 and sqrt(6**2+9**2) == 3*sqrt(13) | $\sqrt{36+81}=\sqrt{117}=3\sqrt{13}$.
+
+\textbf{Answer.} $L=3\sqrt{13}$.
+\end{exmp}
+
+\begin{exmp}{Set up and simplify}{b2}
+Write, simplify and do not evaluate the integral for the length of (a) $y=x^3-2x$ for $-1\le x\le2$; (b) $y=4\sin\frac x2$ for $0\le x\le2\pi$; (c) $x=\ln y$ for $1\le y\le e$.
+
+\textbf{Solution.} In each case we find the derivative, check that it is continuous on the interval, and simplify $1+(\text{derivative})^2$.
+
+(a) $f'(x)=3x^2-2$. Then $1+f'(x)^2=1+9x^4-12x^2+4=9x^4-12x^2+5$, and $L=\int_{-1}^2\sqrt{9x^4-12x^2+5}\,dx$.
+%@ b2-a | expand(1+(3*x**2-2)**2-(9*x**4-12*x**2+5)) == 0 and diff(x**3-2*x,x) == 3*x**2-2 | 9x^4-12x^2+5$, and $L=\int_{-1}^2\sqrt{9x^4-12x^2+5}\,dx$.
+
+(b) $f'(x)=4\cdot\frac12\cos\frac x2=2\cos\frac x2$ (Chain Rule), so $1+f'(x)^2=1+4\cos^2\frac x2$ and $L=\int_0^{2\pi}\sqrt{1+4\cos^2\frac x2}\,dx$.
+%@ b2-b | simplify(diff(4*sin(x/2),x)-2*cos(x/2)) == 0 and simplify(1+(2*cos(x/2))**2-(1+4*cos(x/2)**2)) == 0 | 2$ and $L=\int_0^{2\pi}\sqrt{1+4\cos^2\frac x2}\,dx$.
+
+(c) Here $x=g(y)=\ln y$ and $g'(y)=\frac1y$, continuous on $[1,e]$. Then $1+g'(y)^2=1+\frac1{y^2}=\frac{y^2+1}{y^2}$, and since $y>0$, $\sqrt{1+g'(y)^2}=\frac{\sqrt{y^2+1}}y$. So $L=\int_1^e\frac{\sqrt{y^2+1}}y\,dy$ (a method for it comes in a later chapter).
+%@ b2-c | simplify(diff(log(x),x)-1/x) == 0 and simplify(1+1/x**2-(x**2+1)/x**2) == 0 and log(exp(1)) == 1 | {y^2+1}}y\,dy$ (a method for it comes in a later chapter).
+
+\textbf{Answer.} (a) $\int_{-1}^2\sqrt{9x^4-12x^2+5}\,dx$; (b) $\int_0^{2\pi}\sqrt{1+4\cos^2\frac x2}\,dx$; (c) $\int_1^e\frac{\sqrt{y^2+1}}y\,dy$.
+\end{exmp}
+
+\subsection*{Group 2: Perfect squares with powers}
+
+\begin{exmp}{Fourth and inverse square}{b3}
+Find the length of $y=\dfrac{x^4}{16}+\dfrac1{2x^2}$ for $1\le x\le2$.
+
+\textbf{Solution.} \emph{Derivative.} $y=\frac1{16}x^4+\frac12x^{-2}$, so $f'(x)=\frac{x^3}4-x^{-3}=\frac{x^3}4-\frac1{x^3}$.
+
+\emph{Perfect square.} $f'(x)^2=\frac{x^6}{16}-2\cdot\frac{x^3}4\cdot\frac1{x^3}+\frac1{x^6}=\frac{x^6}{16}-\frac12+\frac1{x^6}$, so $1+f'(x)^2=\frac{x^6}{16}+\frac12+\frac1{x^6}=\Bigl(\frac{x^3}4+\frac1{x^3}\Bigr)^2$, and for $x>0$, $\sqrt{1+f'(x)^2}=\frac{x^3}4+\frac1{x^3}$.
+
+\emph{Integral.}
+\[
+L=\int_1^2\Bigl(\frac{x^3}4+x^{-3}\Bigr)dx=\Bigl[\frac{x^4}{16}-\frac1{2x^2}\Bigr]_1^2=\Bigl(1-\frac18\Bigr)-\Bigl(\frac1{16}-\frac12\Bigr)=\frac78+\frac7{16}=\frac{21}{16} .
+%@ b3 | simplify(diff(x**4/16+1/(2*x**2),x)-(x**3/4-1/x**3)) == 0 and simplify(1+(x**3/4-1/x**3)**2-(x**3/4+1/x**3)**2) == 0 and ANT(x**4/16-1/(2*x**2), x**3/4+1/x**3, [Q(3,2),Q(2,1)]) == 0 and (1-Q(1,8))-(Q(1,16)-Q(1,2)) == Q(21,16) | 1{16}-\frac12\Bigr)=\frac78+\frac7{16}=\frac{21}{16} .
+\]
+\emph{Check.} The endpoints are $(1,\frac9{16})$ and $(2,\frac98)$; the chord has length $\sqrt{1+(\frac9{16})^2}\approx1.147<\frac{21}{16}=1.3125$.
+%@ b3-chk | Q(1,16)+Q(1,2) == Q(9,16) and 1+Q(1,8) == Q(9,8) and RND(sqrt(1+Q(9,16)**2),3) == Q(1147,1000) and Q(21,16) == Q(13125,10000) | \sqrt{1+(\frac9{16})^2}\approx1.147<\frac{21}{16}=1.3125$.
+
+\textbf{Answer.} $L=\frac{21}{16}$.
+\end{exmp}
+
+\begin{exmp}{Fractional powers}{b4}
+Find the length of $y=\dfrac38x^{4/3}-\dfrac34x^{2/3}$ for $1\le x\le8$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac38\cdot\frac43x^{1/3}-\frac34\cdot\frac23x^{-1/3}=\frac12x^{1/3}-\frac12x^{-1/3}$, continuous on $[1,8]$.
+
+\emph{Perfect square.} $f'(x)^2=\frac14x^{2/3}-2\cdot\frac12x^{1/3}\cdot\frac12x^{-1/3}+\frac14x^{-2/3}=\frac14x^{2/3}-\frac12+\frac14x^{-2/3}$ (as $x^{1/3}x^{-1/3}=1$). So $1+f'(x)^2=\frac14x^{2/3}+\frac12+\frac14x^{-2/3}=\Bigl(\frac12x^{1/3}+\frac12x^{-1/3}\Bigr)^2$, and $\sqrt{1+f'(x)^2}=\frac12\bigl(x^{1/3}+x^{-1/3}\bigr)$.
+
+\emph{Integral.} $\int x^{1/3}dx=\frac34x^{4/3}$ and $\int x^{-1/3}dx=\frac32x^{2/3}$, so
+\[
+L=\frac12\int_1^8\bigl(x^{1/3}+x^{-1/3}\bigr)dx=\Bigl[\frac38x^{4/3}+\frac34x^{2/3}\Bigr]_1^8=\Bigl(\frac38\cdot16+\frac34\cdot4\Bigr)-\Bigl(\frac38+\frac34\Bigr)=9-\frac98=\frac{63}8 .
+%@ b4 | simplify(diff(Q(3,8)*x**Q(4,3)-Q(3,4)*x**Q(2,3),x)-(x**Q(1,3)/2-x**(-Q(1,3))/2)) == 0 and simplify(1+(x**Q(1,3)/2-x**(-Q(1,3))/2)**2-(x**Q(1,3)/2+x**(-Q(1,3))/2)**2) == 0 and ANT(Q(3,8)*x**Q(4,3)+Q(3,4)*x**Q(2,3), (x**Q(1,3)+x**(-Q(1,3)))/2, [Q(2,1),Q(5,1)]) == 0 and 8**Q(4,3) == 16 and 8**Q(2,3) == 4 and (Q(3,8)*16+Q(3,4)*4)-(Q(3,8)+Q(3,4)) == Q(63,8) | 4\Bigr)-\Bigl(\frac38+\frac34\Bigr)=9-\frac98=\frac{63}8 .
+\]
+\emph{Check.} The endpoints are $(1,-\frac38)$ and $(8,3)$; the chord has length $\sqrt{49+(\frac{27}8)^2}\approx7.771<7.875=\frac{63}8$.
+%@ b4-chk | Q(3,8)-Q(3,4) == -Q(3,8) and Q(3,8)*16-Q(3,4)*4 == 3 and RND(sqrt(49+Q(27,8)**2),3) == Q(7771,1000) and Q(63,8) == Q(7875,1000) | $\sqrt{49+(\frac{27}8)^2}\approx7.771<7.875=\frac{63}8$.
+
+\textbf{Answer.} $L=\frac{63}8$.
+\begin{center}
+\begin{tikzpicture}[x=0.62cm,y=0.75cm]
+  \draw[->] (-0.5,0) -- (9.2,0) node[right] {$x$};
+  \draw[->] (0,-1) -- (0,3.8) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.05:8.5,samples=50,variable=\t] plot ({\t},{0.375*\t^(1.3333)-0.75*\t^(0.6667)});
+  \draw[dashed] (1,-0.375) -- (8,3);
+  \fill (1,-0.375) circle (1.6pt) node[below,font=\small] {$(1,-\frac38)$};
+%@ f15-p1 | Q(3,8)-Q(3,4) == -Q(3,8) | ) circle (1.6pt) node[below,font=\small] {$(1,-\frac38)$};
+  \fill (8,3) circle (1.6pt) node[below right,font=\small] {$(8,3)$};
+%@ f15-p2 | Q(3,8)*8**Q(4,3)-Q(3,4)*8**Q(2,3) == 3 | 3) circle (1.6pt) node[below right,font=\small] {$(8,3)$};
+  \node[font=\small,blue!70!black] at (3.0,2.2) {$y=\frac38x^{4/3}-\frac34x^{2/3}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve of Example~\ref{ex:b4} and its chord.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 3: Perfect squares with exponentials}
+
+\begin{exmp}{A hanging chain}{b5}
+Find the length of $y=e^{x/2}+e^{-x/2}$ for $0\le x\le2$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac12e^{x/2}-\frac12e^{-x/2}=\frac{e^{x/2}-e^{-x/2}}2$.
+
+\emph{Perfect square.} $f'(x)^2=\frac{e^x-2+e^{-x}}4$ (using $e^{x/2}e^{-x/2}=1$), so $1+f'(x)^2=\frac{e^x+2+e^{-x}}4=\Bigl(\frac{e^{x/2}+e^{-x/2}}2\Bigr)^2$ and $\sqrt{1+f'(x)^2}=\frac{e^{x/2}+e^{-x/2}}2>0$.
+
+\emph{Integral.} $\int\frac{e^{x/2}}2dx=e^{x/2}$ and $\int\frac{e^{-x/2}}2dx=-e^{-x/2}$, so
+\[
+L=\int_0^2\frac{e^{x/2}+e^{-x/2}}2\,dx=\Bigl[e^{x/2}-e^{-x/2}\Bigr]_0^2=\bigl(e-e^{-1}\bigr)-(1-1)=e-\frac1e\approx2.350 .
+%@ b5 | simplify(diff(exp(x/2)+exp(-x/2),x)-(exp(x/2)-exp(-x/2))/2) == 0 and simplify(1+((exp(x/2)-exp(-x/2))/2)**2-((exp(x/2)+exp(-x/2))/2)**2) == 0 and ANT(exp(x/2)-exp(-x/2), (exp(x/2)+exp(-x/2))/2, [Q(1,2),Q(3,2)]) == 0 and RND(exp(1)-exp(-1),3) == Q(2350,1000) and (exp(1)-exp(-1))-(1-1) == exp(1)-exp(-1) | ]_0^2=\bigl(e-e^{-1}\bigr)-(1-1)=e-\frac1e\approx2.350 .
+\]
+\emph{Check.} The endpoints are $(0,2)$ and $(2,e+\frac1e)\approx(2,3.086)$; the chord has length $\approx2.276<L$.
+%@ b5-chk | exp(0)+exp(-0) == 2 and RND(sqrt(4+(exp(1)+exp(-1)-2)**2),3) == Q(2276,1000) and RND(exp(1)+exp(-1),3) == Q(3086,1000) | )\approx(2,3.086)$; the chord has length $\approx2.276<L$.
+
+\textbf{Answer.} $L=e-\frac1e$.
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=1.3cm]
+  \draw[->] (-1.0,0) -- (2.7,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,4.2) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=-0.9:2.4,samples=50,variable=\t] plot ({\t},{exp(\t/2)+exp(-\t/2)});
+  \draw[dashed] (0,2) -- (2,3.0862);
+  \fill (0,2) circle (1.6pt) node[above left,font=\small] {$(0,2)$};
+%@ f16-p1 | exp(0)+exp(-0) == 2 | ,2) circle (1.6pt) node[above left,font=\small] {$(0,2)$};
+  \fill (2,3.0862) circle (1.6pt) node[below right,font=\small] {$(2,e+\frac1e)$};
+%@ f16-p2 | RND(exp(1)+exp(-1),4) == Q(30862,10000) | (1.6pt) node[below right,font=\small] {$(2,e+\frac1e)$};
+  \node[font=\small,blue!70!black] at (-0.55,3.6) {$y=e^{x/2}+e^{-x/2}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The chain-like curve of Example~\ref{ex:b5} for $0\le x\le2$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{An exponential in the variable $y$}{b6}
+Find the length of the curve $x=e^{2y}+\dfrac{e^{-2y}}{16}$ for $0\le y\le\frac12\ln2$.
+
+\textbf{Solution.} \emph{Derivative.} $g'(y)=2e^{2y}-\frac18e^{-2y}$.
+
+\emph{Perfect square.} $g'(y)^2=4e^{4y}-2\cdot2\cdot\frac18+\frac1{64}e^{-4y}=4e^{4y}-\frac12+\frac1{64}e^{-4y}$, so $1+g'(y)^2=4e^{4y}+\frac12+\frac1{64}e^{-4y}=\Bigl(2e^{2y}+\frac18e^{-2y}\Bigr)^2$ and $\sqrt{1+g'(y)^2}=2e^{2y}+\frac18e^{-2y}$.
+
+\emph{Integral.} By Theorem~\ref{thm:xofy}, using $e^{2\cdot\frac12\ln2}=e^{\ln2}=2$,
+\[
+L=\int_0^{(\ln2)/2}\Bigl(2e^{2y}+\frac18e^{-2y}\Bigr)dy=\Bigl[e^{2y}-\frac1{16}e^{-2y}\Bigr]_0^{(\ln2)/2}=\Bigl(2-\frac1{32}\Bigr)-\Bigl(1-\frac1{16}\Bigr)=\frac{33}{32} .
+%@ b6 | simplify(diff(exp(2*x)+exp(-2*x)/16,x)-(2*exp(2*x)-exp(-2*x)/8)) == 0 and simplify(1+(2*exp(2*x)-exp(-2*x)/8)**2-(2*exp(2*x)+exp(-2*x)/8)**2) == 0 and ANT(exp(2*x)-exp(-2*x)/16, 2*exp(2*x)+exp(-2*x)/8, [Q(1,2),Q(1,3)]) == 0 and exp(log(2)) == 2 and (2-Q(1,32))-(1-Q(1,16)) == Q(33,32) | -\frac1{32}\Bigr)-\Bigl(1-\frac1{16}\Bigr)=\frac{33}{32} .
+\]
+\emph{Check.} The endpoints are $(\frac{17}{16},0)$ and $(\frac{65}{32},\frac12\ln2)$; the chord has length $\approx1.0289<\frac{33}{32}=1.03125$.
+%@ b6-chk | 1+Q(1,16) == Q(17,16) and 2+Q(1,32) == Q(65,32) and RND(sqrt(Q(31,32)**2+(log(2)/2)**2),4) == Q(10289,10000) and Q(33,32) == Q(103125,100000) | $\approx1.0289<\frac{33}{32}=1.03125$.
+
+\textbf{Answer.} $L=\frac{33}{32}$.
+\end{exmp}
+
+\subsection*{Group 4: Substitution and cusps}
+
+\begin{exmp}{A shifted power curve}{b7}
+Find the length of $y=\dfrac23(x-1)^{3/2}$ for $1\le x\le10$.
+
+\textbf{Solution.} \emph{Derivative.} $f'(x)=\frac23\cdot\frac32(x-1)^{1/2}=\sqrt{x-1}$, continuous on $[1,10]$, and $f'(x)^2=x-1$.
+
+\emph{Integrand.} $1+f'(x)^2=1+(x-1)=x$, so $\sqrt{1+f'(x)^2}=\sqrt x$.
+
+\emph{Integral.} $L=\int_1^{10}x^{1/2}\,dx=\frac23\Bigl[x^{3/2}\Bigr]_1^{10}=\frac23\bigl(10\sqrt{10}-1\bigr)\approx20.42$.
+%@ b7 | simplify(diff(Q(2,3)*(x-1)**Q(3,2),x)-sqrt(x-1)) == 0 and ANT(Q(2,3)*x**Q(3,2), sqrt(x), [Q(2,1),Q(5,1)]) == 0 and 10**Q(3,2) == 10*sqrt(10) and RND(Q(2,3)*(10*sqrt(10)-1),2) == Q(2042,100) and integrate(sqrt(x),(x,1,10)) == Q(2,3)*(10*sqrt(10)-1) | ]_1^{10}=\frac23\bigl(10\sqrt{10}-1\bigr)\approx20.42$.
+\emph{Check.} The endpoints are $(1,0)$ and $(10,18)$ (since $9^{3/2}=27$), and the chord is $\sqrt{81+324}=\sqrt{405}\approx20.12<L$.
+%@ b7-chk | Q(2,3)*9**Q(3,2) == 18 and 9**Q(3,2) == 27 and RND(sqrt(81+18**2),2) == Q(2012,100) and 81+324 == 405 | $\sqrt{81+324}=\sqrt{405}\approx20.12<L$.
+
+\textbf{Answer.} $L=\frac23\bigl(10\sqrt{10}-1\bigr)\approx20.42$.
+\end{exmp}
+
+\begin{exmp}{A cusp inside the interval}{b8}
+Find the length of $y=x^{2/3}$ for $-1\le x\le8$.
+
+\textbf{Solution.} \emph{Why we split.} $f'(x)=\frac23x^{-1/3}$ does not exist at $x=0$, which is inside the interval, and the graph has a cusp there. By additivity (Theorem~\ref{thm:basic}(2)) we add the lengths over $[-1,0]$ and $[0,8]$.
+
+\emph{The part over $[-1,0]$.} Since $(-x)^{2/3}=x^{2/3}$, the function is even, so the reflection in the $y$-axis (a rigid motion, Theorem~\ref{thm:basic}(3)) carries this part onto the part over $[0,1]$, whose length is $\frac{13\sqrt{13}-8}{27}$ by Example~\ref{ex:e6}.
+
+\emph{The part over $[0,8]$.} As in Example~\ref{ex:e6} the curve is $x=y^{3/2}$ for $0\le y\le4$ ($8^{2/3}=4$), so $L_2=\frac12\int_0^4\sqrt{4+9y}\,dy$. With $u=4+9y$ ($du=9\,dy$; $u=4$ to $u=40$),
+\[
+L_2=\frac1{18}\cdot\frac23\Bigl[u^{3/2}\Bigr]_4^{40}=\frac1{27}\bigl(40^{3/2}-8\bigr)=\frac{80\sqrt{10}-8}{27}\approx9.073 ,
+\]
+since $40^{3/2}=40\sqrt{40}=80\sqrt{10}$.
+
+\emph{Total.} $L=\dfrac{13\sqrt{13}-8}{27}+\dfrac{80\sqrt{10}-8}{27}=\dfrac{13\sqrt{13}+80\sqrt{10}-16}{27}\approx10.513$.
+%@ b8 | ANT(Q(1,27)*(4+9*x)**Q(3,2), sqrt(4+9*x)/2, [Q(1,2),Q(3,1)]) == 0 and 8**Q(2,3) == 4 and 40**Q(3,2) == 80*sqrt(10) and RND((80*sqrt(10)-8)/27,3) == Q(9073,1000) and RND((13*sqrt(13)+80*sqrt(10)-16)/27,3) == Q(10513,1000) and (13*sqrt(13)-8)/27+(80*sqrt(10)-8)/27 == (13*sqrt(13)+80*sqrt(10)-16)/27 | {27}=\dfrac{13\sqrt{13}+80\sqrt{10}-16}{27}\approx10.513$.
+\emph{Check.} The chord from $(-1,1)$ to $(8,4)$ is $\sqrt{81+9}\approx9.487<L$.
+%@ b8-chk | (-1)**2 == 1 and 81+9 == 90 and RND(sqrt(90),3) == Q(9487,1000) | $(-1,1)$ to $(8,4)$ is $\sqrt{81+9}\approx9.487<L$.
+
+\textbf{Answer.} $L=\dfrac{13\sqrt{13}+80\sqrt{10}-16}{27}\approx10.513$.
+\begin{center}
+\begin{tikzpicture}[x=0.62cm,y=0.9cm]
+  \draw[->] (-2,0) -- (9.2,0) node[right] {$x$};
+  \draw[->] (0,-0.4) -- (0,4.6) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:8.2,samples=40,variable=\t] plot ({\t},{\t^(0.6667)});
+  \draw[very thick,blue!70!black,domain=0:1,samples=20,variable=\t] plot ({-\t},{\t^(0.6667)});
+  \draw[dashed] (-1,1) -- (8,4);
+  \fill (-1,1) circle (1.6pt) node[above left,font=\small] {$(-1,1)$};
+%@ f17-p1 | (-1)**2 == 1 | 1) circle (1.6pt) node[above left,font=\small] {$(-1,1)$};
+  \fill (0,0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+%@ f17-p2 | 0**2 == 0 | 0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+  \fill (8,4) circle (1.6pt) node[below right,font=\small] {$(8,4)$};
+%@ f17-p3 | 8**Q(2,3) == 4 | 4) circle (1.6pt) node[below right,font=\small] {$(8,4)$};
+  \node[font=\small,blue!70!black] at (3.2,3.5) {$y=x^{2/3}$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The curve $y=x^{2/3}$ over $[-1,8]$ has a cusp at the origin, where the length is split.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 5: Numerical values and bounds}
+
+\begin{exmp}{A square root is a sideways parabola}{b9}
+Find the length of $y=\sqrt x$ for $0\le x\le1$.
+
+\textbf{Solution.} \emph{Why not $x$.} $f'(x)=\frac1{2\sqrt x}$ is not defined at $0$ (the tangent there is vertical). So we write $x=y^2$ for $0\le y\le1$, with $g'(y)=2y$ continuous.
+
+\emph{Integral.} By Theorem~\ref{thm:both}, $L=\int_0^1\sqrt{1+4y^2}\,dy$. This is exactly the integral of Example~\ref{ex:e9}(a), with the letter $y$ in place of $x$, and no method of Calculus~I evaluates it; its numerical value is $\approx1.4789$. The explanation is geometric: reflection in the line $y=x$ carries the parabola $y=x^2$ onto $y=\sqrt x$ (for $x\ge0$) and keeps lengths (Theorem~\ref{thm:basic}(3)).
+%@ b9 | RND(Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30),4) == Q(14789,10000) and diff(sqrt(x),x) == 1/(2*sqrt(x)) and diff(x**2,x) == 2*x and 1**2 == 1 | $x\ge0$) and keeps lengths (Theorem~\ref{thm:basic}(3)).
+\emph{Check.} The polygon with vertices $(0,0)$, $(\frac14,\frac12)$, $(1,1)$ has segments $\sqrt{\frac1{16}+\frac14}=\frac{\sqrt5}4$ and $\sqrt{\frac9{16}+\frac14}=\frac{\sqrt{13}}4$, total $\approx1.4604$, below $1.4789$ and above the chord $\sqrt2$.
+%@ b9-chk | sqrt(Q(1,16)+Q(1,4)) == sqrt(5)/4 and sqrt(Q(9,16)+Q(1,4)) == sqrt(13)/4 and RND((sqrt(5)+sqrt(13))/4,4) == Q(14604,10000) | 1.4604$, below $1.4789$ and above the chord $\sqrt2$.
+
+\textbf{Answer.} $L\approx1.4789$, the same as for $y=x^2$ on $[0,1]$.
+\begin{center}
+\begin{tikzpicture}[x=3.4cm,y=3.4cm]
+  \draw[->] (-0.15,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[dashed,gray] (0,0) -- (1.15,1.15);
+  \draw[very thick,blue!70!black,domain=0:1.1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[very thick,red!70!black,domain=0:1.1,samples=30,variable=\t] plot ({\t},{sqrt(\t)});
+  \fill (0,0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+%@ f18-p1 | sqrt(0) == 0**2 | 0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ f18-p2 | sqrt(1) == 1**2 | 1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+  \node[font=\small,blue!70!black] at (0.85,0.55) {$y=x^2$};
+  \node[font=\small,red!70!black] at (0.3,0.78) {$y=\sqrt x$};
+  \node[font=\small,gray] at (1.2,1.2) {$y=x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The two curves are mirror images in the line $y=x$, so they have the same length.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A suspension cable}{b10}
+The cable of a footbridge hangs between two towers $800$ m apart in the shape $y=\dfrac{x^2}{1600}$ for $-400\le x\le400$ ($x$ and $y$ in metres). Find the length of the cable (numerically) and check it.
+
+\textbf{Solution.} \emph{Set-up.} $f'(x)=\frac x{800}$, so $L=\int_{-400}^{400}\sqrt{1+\frac{x^2}{640000}}\,dx$, an integral that we cannot do yet. The numerical value is $L\approx832.18$ m. (By symmetry, Theorem~\ref{thm:basic}(2)--(3), $L=2\int_0^{400}$, with the same value.)
+%@ b10-L | RND(Integral(sqrt(1+x**2/640000),(x,-400,400)).evalf(30),2) == Q(83218,100) and diff(x**2/1600,x) == x/800 and 800**2 == 640000 | :basic}(2)--(3), $L=2\int_0^{400}$, with the same value.)
+
+\emph{Checks.} The tops of the towers are at height $y=\frac{400^2}{1600}=100$, so the chord is horizontal and has length $800$. The polygon with vertices at $x=-400,-200,0,200,400$ (heights $100,25,0,25,100$) has two segments of length $\sqrt{200^2+75^2}\approx213.60$ and two of length $\sqrt{200^2+25^2}\approx201.56$, total $\approx830.31$. For the upper bound, $\abs{f'}\le\frac{400}{800}=\frac12$, so by Theorem~\ref{thm:bounds}(3) $L\le800\sqrt{1+\frac14}=400\sqrt5\approx894.4$. So $830.3\le832.2\le894.4$.
+%@ b10-chk | 400**2/1600 == 100 and Q(200,1)**2+Q(75,1)**2 == 45625 and 200**2+25**2 == 40625 and RND(2*(sqrt(45625)+sqrt(40625)),2) == Q(83031,100) and RND(400*sqrt(5),1) == Q(8944,10) and 800*sqrt(1+Q(1,4)) == 400*sqrt(5) | 14}=400\sqrt5\approx894.4$. So $830.3\le832.2\le894.4$.
+
+\textbf{Answer.} $L\approx832.2$ m.
+\begin{center}
+\begin{tikzpicture}[x=0.0125cm,y=0.0375cm]
+  \draw[->] (-470,0) -- (470,0) node[right] {$x$ (m)};
+  \draw[->] (0,-12) -- (0,125) node[above] {$y$ (m)};
+  \draw[very thick,blue!70!black,domain=-400:400,samples=50,variable=\t] plot ({\t},{(\t/40)*(\t/40)});
+  \draw[thick,red!70!black] (-400,100) -- (-200,25) -- (0,0) -- (200,25) -- (400,100);
+  \draw[dashed] (-400,100) -- (400,100);
+  \fill (-400,100) circle (1.6pt) node[above left,font=\small] {$(-400,100)$};
+%@ f19-p1 | Q(400,1)**2/1600 == 100 | (1.6pt) node[above left,font=\small] {$(-400,100)$};
+  \fill (400,100) circle (1.6pt) node[above right,font=\small] {$(400,100)$};
+%@ f19-p2 | Q(400,1)**2/1600 == 100 | (1.6pt) node[above right,font=\small] {$(400,100)$};
+  \fill (0,0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+%@ f19-p3 | 0**2/1600 == 0 | 0) circle (1.6pt) node[below right,font=\small] {$(0,0)$};
+  \fill (200,25) circle (1.4pt);
+%@ f19-p4 | Q(200,1)**2/1600 == 25 | \fill (200,25) circle (1.4pt);
+  \fill (-200,25) circle (1.4pt);
+%@ f19-p5 | Q(-200,1)**2/1600 == 25 | \fill (-200,25) circle (1.4pt);
+  \node[font=\small] at (0,108) {chord $800$ m};
+\end{tikzpicture}
+\par\small\emph{Figure.} The cable (vertical scale exaggerated), the polygon with four segments (red) and the chord between the tower tops (dashed).
+\end{center}
+\end{exmp}
+
+\subsection*{Group 6: Comparing and recovering curves}
+
+\begin{exmp}{Which functions have this arc length?}{b11}
+(a) Find a function whose graph over $[0,2]$ has length $\int_0^2\sqrt{1+25x^6}\,dx$. (b) Find a function whose graph passes through $(1,2)$ and has length $\int_1^4\sqrt{1+\frac4x}\,dx$ over $[1,4]$.
+
+\textbf{Solution.} By Theorem~\ref{thm:arclen} the length is $\int\sqrt{1+f'^2}$, so we match $f'(x)^2$ with the term added to $1$ and then integrate $f'$.
+
+(a) $f'(x)^2=25x^6$, so $f'(x)=\pm5x^3$ and $f(x)=\pm\frac54x^4+C$ for any constant $C$. For instance $f(x)=\frac54x^4$ (its derivative $5x^3$ is continuous).
+%@ b11-a | diff(Q(5,4)*x**4,x) == 5*x**3 and 1+(5*x**3)**2 == 1+25*x**6 | $f(x)=\frac54x^4$ (its derivative $5x^3$ is continuous).
+
+(b) $f'(x)^2=\frac4x$, so $f'(x)=\pm\frac2{\sqrt x}$ (continuous on $[1,4]$) and $f(x)=\pm4\sqrt x+C$. Passing through $(1,2)$: with $+$, $4+C=2$ gives $C=-2$; with $-$, $-4+C=2$ gives $C=6$. So $f(x)=4\sqrt x-2$ or $f(x)=6-4\sqrt x$ (mirror images of each other in the line $y=2$).
+%@ b11-b | diff(4*sqrt(x)-2,x) == 2/sqrt(x) and diff(6-4*sqrt(x),x) == -2/sqrt(x) and 4*sqrt(1)-2 == 2 and 6-4*sqrt(1) == 2 and 1+(2/sqrt(x))**2 == 1+4/x | 4\sqrt x$ (mirror images of each other in the line $y=2$).
+
+\textbf{Answer.} (a) $\pm\frac54x^4+C$; (b) $4\sqrt x-2$ or $6-4\sqrt x$. The answer is never unique, because the length does not see a vertical shift or a reflection.
+\end{exmp}
+
+\begin{exmp}{Comparing from the slopes}{b12}
+Which curve is longer on $[0,1]$: $y=e^x$ or $y=1+x+\frac{x^2}2$?
+
+\textbf{Solution.} Let $f(x)=e^x$ and $g(x)=1+x+\frac{x^2}2$. Then $f'(x)=e^x$ and $g'(x)=1+x$. The function $h(x)=e^x-1-x$ has $h(0)=0$ and $h'(x)=e^x-1\ge0$ for $x\ge0$, so $h$ is nondecreasing and $h\ge0$ on $[0,1]$: $e^x\ge1+x$. Both derivatives are positive, so $\abs{g'(x)}=1+x\le e^x=\abs{f'(x)}$ for all $x$ in $[0,1]$, and by Theorem~\ref{thm:bounds}(4) the graph of $g$ is no longer than the graph of $f$. The endpoints differ, $(1,e)$ and $(1,\frac52)$, so a comparison of chords would not decide it, but the slopes do. Numerically, $L_g\approx1.8101\le L_f\approx2.0035$.
+%@ b12 | diff(exp(x)-1-x,x) == exp(x)-1 and exp(0)-1-0 == 0 and diff(1+x+x**2/2,x) == 1+x and RND(Integral(sqrt(1+(1+x)**2),(x,0,1)).evalf(30),4) == Q(18101,10000) and RND(Integral(sqrt(1+exp(2*x)),(x,0,1)).evalf(30),4) == Q(20035,10000) | . Numerically, $L_g\approx1.8101\le L_f\approx2.0035$.
+
+\textbf{Answer.} $y=e^x$ is longer.
+\begin{center}
+\begin{tikzpicture}[x=3.4cm,y=1.3cm]
+  \draw[->] (-0.15,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1,samples=30,variable=\t] plot ({\t},{exp(\t)});
+  \draw[very thick,red!70!black,domain=0:1,samples=30,variable=\t] plot ({\t},{1+\t+\t*\t/2});
+  \fill (0,1) circle (1.6pt) node[left,font=\small] {$(0,1)$};
+%@ f20-p1 | exp(0) == 1 and 1+0+0**2/2 == 1 | (0,1) circle (1.6pt) node[left,font=\small] {$(0,1)$};
+  \fill (1,2.7183) circle (1.6pt) node[above,font=\small] {$(1,e)$};
+%@ f20-p2 | RND(exp(1),4) == Q(27183,10000) | ,2.7183) circle (1.6pt) node[above,font=\small] {$(1,e)$};
+  \fill (1,2.5) circle (1.6pt) node[below right,font=\small] {$(1,\frac52)$};
+%@ f20-p3 | 1+1+Q(1,2) == Q(5,2) | (1.6pt) node[below right,font=\small] {$(1,\frac52)$};
+  \node[font=\small,blue!70!black] at (0.35,1.7) {$y=e^x$};
+  \node[font=\small,red!70!black] at (0.6,1.15) {$y=1+x+\frac{x^2}2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The two curves start together at $(0,1)$ and $e^x$ stays above and is steeper.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{Proof: a reflected graph has the same length}{b13}
+\textbf{Statement.} Let $f'$ be continuous on $[a,b]$ and let $g(x)=f(-x)$ for $-b\le x\le-a$. Then $g$ and $f$ have the same length.
+
+\textbf{Plan.} Write both lengths with Theorem~\ref{thm:arclen}, differentiate $g$ with the Chain Rule, and match the integrals with the substitution $u=-x$.
+
+\textbf{Proof.} By the Chain Rule $g'(x)=-f'(-x)$, which is continuous on $[-b,-a]$, and $g'(x)^2=f'(-x)^2$, the sign disappearing in the square. So
+\[
+L_g=\int_{-b}^{-a}\sqrt{1+f'(-x)^2}\,dx .
+\]
+Let $u=-x$, so $du=-dx$; $x=-b$ gives $u=b$ and $x=-a$ gives $u=a$. Then
+\[
+L_g=\int_b^a\sqrt{1+f'(u)^2}\,(-du)=\int_a^b\sqrt{1+f'(u)^2}\,du=L_f ,
+\]
+because reversing the limits changes the sign. (For $f(x)=x^3$ on $[1,2]$ and $g(x)=-x^3$ on $[-2,-1]$ both lengths are $\int_1^2\sqrt{1+9u^4}\,du\approx7.0825$.) $\blacksquare$
+%@ b13 | diff(-x**3,x) == -3*x**2 and NUM(Integral(sqrt(1+(-3*x**2)**2),(x,-2,-1)).evalf(30), Integral(sqrt(1+9*x**4),(x,1,2)).evalf(30)) == 0 and RND(Integral(sqrt(1+9*x**4),(x,1,2)).evalf(30),4) == Q(70825,10000) | $\int_1^2\sqrt{1+9u^4}\,du\approx7.0825$.) $\blacksquare$
+
+\textbf{A common mistake.} Using $g'(x)=f'(-x)$ and then worrying about a sign, or forgetting to reverse the limits after the substitution. The square removes the sign, and the reversed limits are repaired by $-du$.
+
+\textbf{Consequence.} If $f$ is even on $[-a,a]$, the graph over $[-a,0]$ is the reflection of the graph over $[0,a]$, so $L=2\int_0^a\sqrt{1+f'^2}\,dx$ (used in Example~\ref{ex:e10}).
+\end{exmp}
+
+\begin{exmp}{Proof: the length of a stretched graph}{b14}
+\textbf{Statement.} Let $f'$ be continuous on $[a,b]$ with length $L$, and let $c\ge1$. The graph of $g(x)=f(cx)$ over $[a/c,b/c]$ has length $L_c=\frac1c\int_a^b\sqrt{1+c^2f'(u)^2}\,du$ and
+\[
+\frac Lc\le L_c\le L .
+\]
+(For $0<c\le1$ the inequalities are reversed: $L\le L_c\le\frac Lc$.)
+
+\textbf{Plan.} Differentiate, substitute $u=cx$, and compare the integrands with $\sqrt{1+f'^2}$.
+
+\textbf{Proof.} By the Chain Rule $g'(x)=c\,f'(cx)$, continuous on $[a/c,b/c]$, so $L_c=\int_{a/c}^{b/c}\sqrt{1+c^2f'(cx)^2}\,dx$. Let $u=cx$, $dx=\frac1c\,du$; $x=\frac ac$ gives $u=a$ and $x=\frac bc$ gives $u=b$ ($c>0$). This gives the formula for $L_c$. Now, for every real number $s$ and $c\ge1$: $1+s^2\le1+c^2s^2$ and, because $c^2\ge1$, $1+c^2s^2\le c^2+c^2s^2=c^2(1+s^2)$. Taking square roots, $\sqrt{1+s^2}\le\sqrt{1+c^2s^2}\le c\sqrt{1+s^2}$. Put $s=f'(u)$, integrate over $[a,b]$ and multiply by $\frac1c$: $\frac1c\,L\le L_c\le\frac1c\cdot c\,L=L$. $\blacksquare$
+
+\textbf{Example.} $f(x)=x^2$ on $[0,1]$ has $L\approx1.4789$; for $c=2$, $g(x)=4x^2$ on $[0,\frac12]$ has $L_2=\int_0^{1/2}\sqrt{1+64x^2}\,dx\approx1.1617$, and indeed $0.7395\le1.1617\le1.4789$.
+%@ b14 | diff((c*x)**2,x) == 2*c**2*x and diff(4*x**2,x) == 8*x and RND(Integral(sqrt(1+64*x**2),(x,0,Q(1,2))).evalf(30),4) == Q(11617,10000) and RND(Integral(sqrt(1+4*x**2),(x,0,1)).evalf(30)/2,4) == Q(7395,10000) | \,dx\approx1.1617$, and indeed $0.7395\le1.1617\le1.4789$.
+
+\textbf{A common mistake.} Writing the length of $y=f(cx)$ as $\int_{a/c}^{b/c}\sqrt{1+f'(cx)^2}\,dx$, without the factor $c^2$. By the same substitution that integral equals $\frac Lc$, but it is \emph{not} the length of $y=f(cx)$, which needs $g'(x)=c\,f'(cx)$.
+\end{exmp}
+
+% =====================================================================
+\subsection*{Answers and discussion}
+
+\begin{description}
+
+  \item[Knowledge Check \ref{kc:kcpoly}.] The vertices are $(0,0)$, $(\frac12,\frac14)$ and $(1,1)$. The first segment has $\Delta x=\frac12$, $\Delta y=\frac14$ and length $\sqrt{\frac14+\frac1{16}}=\frac{\sqrt5}4$; the second has $\Delta x=\frac12$, $\Delta y=\frac34$ and length $\sqrt{\frac14+\frac9{16}}=\frac{\sqrt{13}}4$. The polygon has length $\frac{\sqrt5+\sqrt{13}}4\approx1.4604$, more than the chord $\sqrt2\approx1.4142$, as Theorem~\ref{thm:basic}(1) says.
+%@ ans-kc1 | sqrt(Q(1,4)+Q(1,16)) == sqrt(5)/4 and sqrt(Q(1,4)+Q(9,16)) == sqrt(13)/4 and RND(sqrt(2),4) == Q(14142,10000) and RND((sqrt(5)+sqrt(13))/4,4) == Q(14604,10000) | $\sqrt2\approx1.4142$, as Theorem~\ref{thm:basic}(1) says.
+
+  \item[Knowledge Check \ref{kc:kcsetup}.] With $g(y)=\sin y$, $g'(y)=\cos y$ is continuous, so by Theorem~\ref{thm:xofy} $L=\int_0^\pi\sqrt{1+\cos^2y}\,dy$ (it equals the length of $y=\sin x$ on $[0,\pi]$ in Example~\ref{ex:e9}(b), turned on its side, about $3.8202$).
+%@ ans-kc2 | diff(sin(x),x) == cos(x) and RND(Integral(sqrt(1+cos(x)**2),(x,0,pi)).evalf(30),4) == Q(38202,10000) | ~\ref{ex:e9}(b), turned on its side, about $3.8202$).
+
+  \item[Knowledge Check \ref{kc:kcvar}.] For $y=x^3$ the derivative $3x^2$ is continuous on $[0,1]$, so Theorem~\ref{thm:arclen} applies: $L=\int_0^1\sqrt{1+9x^4}\,dx$. For $y=x^{1/3}$ the derivative $\frac13x^{-2/3}$ is not defined at $0$ (the tangent there is vertical); use $x=y^3$ for $0\le y\le1$, with $g'(y)=3y^2$, so $L=\int_0^1\sqrt{1+9y^4}\,dy$ (the same number as for $y=x^3$, by the reflection in $y=x$). For $y=x^{2/3}$ the derivative is not defined at $0$ either; use $x=y^{3/2}$ for $0\le y\le1$ (Example~\ref{ex:e6}).
+%@ ans-kc3 | simplify(diff(x**Q(1,3),x)-x**(-Q(2,3))/3) == 0 and diff(x**3,x) == 3*x**2 and diff(x**Q(3,2),x) == Q(3,2)*sqrt(x) and NUM(Integral(sqrt(1+9*x**4),(x,0,1)).evalf(30), Integral(sqrt(1+9*x**4),(x,0,1)).evalf(30)) == 0 | ; use $x=y^{3/2}$ for $0\le y\le1$ (Example~\ref{ex:e6}).
+
+  \item[Pause and think \ref{think:thpoly}.] A straight segment is the shortest path between its two endpoints, so replacing a piece of the curve between two vertices by the segment cannot make it longer; that is why the polygon is never longer than the curve. Adding a vertex $Q$ replaces a segment $P_{k-1}P_k$ by $P_{k-1}Q$ and $QP_k$, and the triangle inequality $\abs{P_{k-1}P_k}\le\abs{P_{k-1}Q}+\abs{QP_k}$ says the new path is not shorter. So the polygon sums never overestimate: they climb towards a limit from below, and the length of the curve is the least number that no polygon exceeds.
+
+  \item[Pause and think \ref{think:thint}.] The factor $\sqrt{1+f'(x)^2}$ is at least $1$, so $L\ge\int_a^b1\,dx=b-a$ (a path cannot be shorter than its horizontal extent), and equality needs $\sqrt{1+f'^2}=1$ at every point, that is $f'=0$ everywhere: a horizontal path (a continuous integrand that is larger than $1$ at one point is larger on a small interval, which adds to the integral). The factor is the length of the tangent vector $(1,f'(x))$: it is $1$ on a flat part and large where the path is steep, so it measures the stretching of the horizontal step $dx$ into a piece of arc.
+%@ ans-th2 | sqrt(1+0**2) == 1 and sqrt(1+3**2) == sqrt(10) and integrate(1,(x,0,5)) == 5 | $dx$ into a piece of arc.
+
+  \item[Pause and think \ref{think:thcirc}.] For $f(x)=\sqrt{a^2-x^2}$ we have $f'(x)=-x/\sqrt{a^2-x^2}$, which is not defined at $x=\pm a$ (the tangent is vertical there), so $f'$ is not continuous on the closed interval $[-a,a]$ and Theorem~\ref{thm:arclen} does not apply; the integral is improper at both ends. On $[0,a/\sqrt2]$ the quantity $a^2-x^2$ is at least $a^2/2$, so $f'$ is continuous and bounded, and the theorem applies. Eight such arcs, related by rotations and reflections, make up the circle. (The proof of Theorem~\ref{thm:circle} also treats the semicircle directly, as a limit.)
+%@ ans-th3 | simplify(diff(sqrt(a**2-x**2),x)+x/sqrt(a**2-x**2)) == 0 and (a/sqrt(2))**2 == a**2/2 and 8*(pi/4) == 2*pi | :circle} also treats the semicircle directly, as a limit.)
+
+\end{description}
+
+\end{document}
