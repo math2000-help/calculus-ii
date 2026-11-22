@@ -1,0 +1,1213 @@
+\documentclass[11pt]{article}
+\usepackage[notes]{calc}
+\calcmodule{6}{4}{Volume By Shells}
+\calcxdoc{6.1}
+\calcxdoc{6.2}
+\calcxdoc{6.3}
+
+\begin{document}
+
+\section{Volume By Shells}
+
+\begin{guide}
+Section 6.3 cut a solid of revolution into thin disks or washers perpendicular to the axis. Here we cut the same solid in a second way, into thin cylindrical \emph{shells} around the axis, like the walls of nested tin cans. A shell of radius $r$, height $h$ and thickness $dr$ is a thin tube, and unrolled it is almost a flat slab of length $2\pi r$, height $h$ and thickness $dr$, so its volume is $2\pi r\,h\,dr$. The volume of the solid is the integral of these. Washers and shells give the same number for the same solid (both are proved from the same facts about volume), but one of them is often much easier. For the region under $y=x^2-x^3$ revolved about the $y$-axis, shells give a one-line integral, while washers would need the roots of a cubic. The difficulties are again about \emph{distances}: the radius of a shell is its distance from the axis, and its height is the length of a segment \emph{parallel} to the axis. We prove the formulas, use them for the sphere and the torus as a cross-check on Section 6.3, and learn how to choose between shells and washers.
+\end{guide}
+
+\textbf{By the end of this section you should be able to:}
+\begin{itemize}
+  \item describe a typical cylindrical shell by its radius, height and thickness, and say why its volume is $2\pi r\,h\,dr$;
+  \item set up and evaluate the volume of a solid of revolution by the shell method about the $y$-axis, the $x$-axis, and any vertical or horizontal line, for a region under a curve or between two curves;
+  \item choose between shells and washers (or disks) and carry out the same problem both ways;
+  \item use shells for solids that have no easy description by disks, and find the volumes of the sphere and the torus by shells;
+  \item prove each of the theorems of this section.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\subsection*{A second way to cut a solid of revolution}
+
+Let $R$ be the region under the graph of $y=f(x)$ for $a\le x\le b$, with $0\le a<b$ and $f\ge0$, and let $S$ be the solid obtained by revolving $R$ about the $y$-axis. A washer slice of Section 6.3 is perpendicular to the $y$-axis, so it needs $x$ as a function of $y$, which may be hard to get. Instead cut $R$ into thin vertical strips of width $dx$. The strip at $x$ has height $f(x)$ and is at distance $x$ from the axis. Revolved about the $y$-axis, it sweeps out a thin cylindrical shell with
+
+\begin{center}
+radius $r=x$ (the distance to the axis), \quad height $h=f(x)$ (the length of the strip, parallel to the axis), \quad thickness $dx$.
+\end{center}
+
+Why is its volume about $2\pi r\,h\,dr$? Cut the shell along a vertical line and unroll it: it becomes a slab of length (the circumference) $2\pi r$, height $h$ and thickness $dr$, and a slab has volume length $\times$ height $\times$ thickness. For a very thin shell the unrolling changes the volume very little; the next theorem shows that it changes it \emph{not at all} if we use the mean radius. We use the same foundations as in Section 6.3: the three facts \textbf{(V1)} (volume from cross-sectional area), \textbf{(V2)} (volumes of pieces add, and a piece never has a larger volume than the whole, because volumes are not negative) and \textbf{(V3)} (congruent solids have the same volume). They are taken as the meaning of volume and are not proved here.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % left: region and strip
+  \fill[blue!12] (0.4,0) -- plot[domain=0.4:2.8,samples=30,variable=\t]({\t},{1.0+1.6*(\t-0.4)*(3.2-\t)/1.2}) -- (2.8,0) -- cycle;
+  \draw[->] (0,0) -- (3.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.2) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.4:2.8,samples=30,variable=\t] plot ({\t},{1.0+1.6*(\t-0.4)*(3.2-\t)/1.2});
+  \draw[thick,red!70!black] (1.6,0) -- (1.6,3.56);
+  \draw[green!50!black,<->] (0,0.6) -- (1.6,0.6);
+  \node[font=\small,green!50!black] at (0.8,0.95) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (1.65,1.3) {$h=f(x)$};
+  % middle: shell
+  \draw[thick] (5.2,0.2) ellipse (0.9 and 0.25);
+  \draw[thick] (5.2,2.4) ellipse (0.9 and 0.25);
+  \draw[thick] (4.3,0.2) -- (4.3,2.4);
+  \draw[thick] (6.1,0.2) -- (6.1,2.4);
+  \draw[thick] (5.2,0.2) ellipse (0.75 and 0.2);
+  \draw[thick] (5.2,2.4) ellipse (0.75 and 0.2);
+  \draw[dashed] (5.2,0.2) -- (6.1,0.2);
+  \node[font=\small] at (5.65,-0.15) {$r$};
+  \node[font=\small] at (6.5,1.3) {$h$};
+  \node[font=\small] at (5.2,-0.75) {shell};
+  % right: unrolled slab
+  \draw[thick] (7.6,0.2) rectangle (10.4,2.4);
+  \draw[thick] (7.6,2.4) -- (7.85,2.65) -- (10.65,2.65) -- (10.4,2.4);
+  \draw[thick] (10.4,0.2) -- (10.65,0.45) -- (10.65,2.65);
+  \node[font=\small] at (9.0,-0.15) {length $2\pi r$};
+  \node[font=\small] at (7.2,1.3) {$h$};
+  \node[font=\small] at (10.2,2.95) {thickness $dr$};
+  \node[font=\small] at (9.0,-0.75) {unrolled slab};
+\end{tikzpicture}
+\par\small\emph{Figure.} A strip of height $h=f(x)$ at distance $r=x$ from the $y$-axis, the thin shell it sweeps out, and the slab obtained by cutting and unrolling the shell.
+\end{center}
+
+\begin{thm}{The volume of a cylindrical shell}{tube}
+Let $0\le r_1<r_2$ and $h\ge0$. The \emph{shell} (tube) of inner radius $r_1$, outer radius $r_2$ and height $h$ is the solid of points $(X,Y,Z)$ with $r_1\le\sqrt{X^2+Z^2}\le r_2$ and $y_0\le Y\le y_0+h$. Its volume is
+\[
+V=\pi\left(r_2^2-r_1^2\right)h=2\pi\cdot\frac{r_1+r_2}2\cdot h\cdot(r_2-r_1),
+\]
+that is, $2\pi\times$(mean radius)$\times$(height)$\times$(thickness).
+\end{thm}
+\begin{proof}
+The plane perpendicular to the $y$-axis at height $Y$, with $y_0\le Y\le y_0+h$, cuts the tube in a ring: the disk of radius $r_2$ with the open disk of radius $r_1$ removed. A disk of radius $r$ has area $\pi r^2$ (Calculus I), so by (V2) in the plane the ring has area $\pi r_2^2-\pi r_1^2$, the same for every $Y$. By Theorem~\ref{6.3-thm:yslice} (slicing along the $y$-axis), $V=\int_{y_0}^{y_0+h}\pi(r_2^2-r_1^2)\,dY=\pi(r_2^2-r_1^2)h$. Finally $r_2^2-r_1^2=(r_2+r_1)(r_2-r_1)$, and $\pi(r_2+r_1)=2\pi\cdot\frac{r_1+r_2}2$. (For instance $r_1=2$, $r_2=3$, $h=4$: $\pi(9-4)\cdot4=20\pi$, and $2\pi\cdot2.5\cdot4\cdot1=20\pi$.)
+%@ pr-tube | pi*(3**2-2**2)*4 == 20*pi and 2*pi*Q(5,2)*4*(3-2) == 20*pi and simplify(pi*(symbols('p')**2-symbols('q')**2)-2*pi*(symbols('p')+symbols('q'))/2*(symbols('p')-symbols('q'))) == 0 | cdot2.5\cdot4\cdot1=20\pi$.)
+\end{proof}
+
+\begin{kc}{A thin shell}{kcshell}
+A shell has radius $3$, height $5$ and thickness $0.01$. Use $2\pi r\,h\,dr$ to estimate its volume, and compare with Theorem~\ref{thm:tube} for inner radius $2.995$ and outer radius $3.005$.
+\end{kc}
+
+\begin{think}{Why $2\pi x$ and not just $x$?}{thfactor}
+Two strips of the same height and the same width are revolved about the $y$-axis, one at $x=1$ and one at $x=10$. Which sweeps out the larger shell, and by what factor? What does that say about the factor $x$ in the integrand of the shell method?
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{The shell method about the $y$-axis}
+
+The strips add up to the whole solid. We state the formula for a region between two curves, which includes the region under one curve ($g=0$).
+
+\begin{thm}{The shell method about the $y$-axis}{shell}
+Let $0\le a<b$, let $f$ and $g$ be continuous on $[a,b]$ with $g\le f$, let $R$ be the region between their graphs for $a\le x\le b$, and let $S$ be the solid obtained by revolving $R$ about the $y$-axis. Then
+\[
+V=2\pi\int_a^b x\,\bigl(f(x)-g(x)\bigr)\,dx ,
+\]
+the integral of (circumference $2\pi x$) $\times$ (height $f-g$, top minus bottom) $\times$ (thickness $dx$). In particular, if $g=0$ and $f\ge0$ then $V=2\pi\int_a^bx\,f(x)\,dx$.
+\end{thm}
+\begin{proof}
+\emph{Step 1: the region under one curve.} Let $g=0$ and $f\ge0$. Write $\rho=\sqrt{X^2+Z^2}$ for the distance from the $y$-axis; then $S=\{a\le\rho\le b,\ 0\le Y\le f(\rho)\}$. For $a\le x\le b$ let $V(x)$ be the volume of the part $S_x$ of $S$ with $\rho\le x$ (the solid made by the part of $R$ over $[a,x]$), so $V(a)=0$ and $V(b)$ is the volume we want.
+
+Take $x<b$ and $h>0$ with $x+h\le b$. Let $m$ and $M$ be the least and greatest values of $f$ on $[x,x+h]$. The part of $S$ with $x\le\rho\le x+h$ is $P=\{x\le\rho\le x+h,\ 0\le Y\le f(\rho)\}$. It contains the shell $T_m=\{x\le\rho\le x+h,\ 0\le Y\le m\}$ and lies inside the shell $T_M=\{x\le\rho\le x+h,\ 0\le Y\le M\}$. The solids $S_x$ and $P$ overlap only along the cylinder $\rho=x$ and together make $S_{x+h}$, so $V(x+h)-V(x)=\operatorname{vol}(P)$ by (V2); and by (V2) again $\operatorname{vol}(T_m)\le\operatorname{vol}(P)\le\operatorname{vol}(T_M)$. Theorem~\ref{thm:tube} gives $\operatorname{vol}(T_m)=\pi\bigl((x+h)^2-x^2\bigr)m=\pi h(2x+h)m$, and likewise for $T_M$. Hence
+\[
+\pi(2x+h)\,m\ \le\ \frac{V(x+h)-V(x)}h\ \le\ \pi(2x+h)\,M .
+\]
+As $h\to0^+$ both $m$ and $M$ tend to $f(x)$, because $f$ is continuous, so the right derivative of $V$ at $x$ is $2\pi x\,f(x)$. The same argument on $[x-h,x]$ (shells of radii $x-h$ and $x$, volume factor $\pi h(2x-h)$) gives the left derivative, the same number. So $V'(x)=2\pi x\,f(x)$ for $a\le x\le b$ (one-sided at the ends), a continuous function. By the net change theorem (Theorem~\ref{6.1-thm:net}, which is the Fundamental Theorem of Calculus), $V(b)=V(b)-V(a)=\int_a^b2\pi x\,f(x)\,dx$.
+
+\emph{Step 2: two curves.} The function $g$ is continuous, hence bounded below on $[a,b]$, so there is a constant $c$ with $g+c\ge0$. The translation $(X,Y,Z)\mapsto(X,Y+c,Z)$ is a rigid motion, so by (V3) the solid for $f,g$ has the same volume as the solid for $f+c,\ g+c$, and $(f+c)-(g+c)=f-g$. So we may assume $g\ge0$. Let $U_f$ and $U_g$ be the solids from the regions under $f$ and under $g$. Then $U_f$ is made of $U_g$ and $S$, which overlap only along the surface $Y=g(\rho)$, so $\operatorname{vol}(S)=\operatorname{vol}(U_f)-\operatorname{vol}(U_g)=2\pi\int_a^bxf\,dx-2\pi\int_a^bxg\,dx$ by Step 1, which is $2\pi\int_a^bx(f-g)\,dx$. (For instance $f=2$ and $g=1$ on $[0,1]$ give $2\pi\int_0^1x\,dx=\pi$: a cylinder of radius $1$ and height $1$.)
+%@ pr-shell | integrate(2*pi*x*(2-1),(x,0,1)) == pi and pi*1**2*1 == pi and 2*pi*Q(1,2) == pi | radius $1$ and height $1$.)
+\end{proof}
+
+\begin{proc}{The shell method}{shell}
+\begin{enumerate}[nosep]
+  \item Sketch the region and the axis of revolution.
+  \item Draw one typical segment of the region \emph{parallel to the axis}. Its length is the shell height $h$; its distance from the axis is the shell radius $r$.
+  \item The variable of integration is the one \emph{across} the segments, perpendicular to the axis: $x$ for a vertical axis, $y$ for a horizontal axis. Write the boundary curves in that variable (for a horizontal axis, $x$ as a function of $y$, as in Section 6.2) and find the limits.
+  \item Integrate $2\pi\,r\,h$ with respect to that variable, and test the answer for plausibility.
+\end{enumerate}
+\end{proc}
+
+\begin{warn}[The factor is the circumference not the radius]
+The integrand is $2\pi\cdot r\cdot h$: the circumference $2\pi r$ times the height, not $\pi r^2$ (that is a disk) and not $2\pi h$. And $r$ is the \emph{distance to the axis}, which equals $x$ only when the axis is the $y$-axis (Theorem~\ref{thm:lines} below).
+\end{warn}
+
+\begin{kc}{A shell integral}{kcint}
+The region under $y=x^2$ for $0\le x\le1$ is revolved about the $y$-axis. Write the radius and the height of a typical shell and evaluate the volume by shells.
+\end{kc}
+
+\begin{exmp}{A dome: the region under a parabola}{e1}
+Let $R$ be the region in the first quadrant under $y=4-x^2$ (between the axes and the curve). Find the volume of the solid obtained by revolving $R$ about the $y$-axis.
+
+\textbf{Solution.} \emph{Set-up.} The curve meets the axes at $(2,0)$ and $(0,4)$, so $0\le x\le2$. A vertical strip at $x$ is parallel to the axis; its distance from the axis is the radius $r=x$ and its length is the height $h=4-x^2$ (top $y=4-x^2$ minus bottom $y=0$).
+%@ e1-pts | 4-2**2 == 0 and 4-0**2 == 4 | and $(0,4)$, so $0\le x\le2$. A vertical strip at $x$ is
+\emph{Integral.} By Theorem~\ref{thm:shell},
+\[
+V=2\pi\int_0^2x\,(4-x^2)\,dx=2\pi\int_0^2\bigl(4x-x^3\bigr)\,dx=2\pi\Bigl[2x^2-\frac{x^4}4\Bigr]_0^2=2\pi(8-4)=8\pi\approx25.13 .
+%@ e1-V | ANT(2*x**2-x**4/4, 4*x-x**3, [Q(1,2),Q(3,1)]) == 0 and 2*2**2-Q(2**4,4) == 4 and integrate(2*pi*x*(4-x**2),(x,0,2)) == 8*pi | pi(8-4)=8\pi\approx25.13 .
+\]
+(The bracket is checked by differentiating: $\frac{d}{dx}\bigl(2x^2-\frac{x^4}4\bigr)=4x-x^3$.)
+
+\emph{Check by washers.} The solid is a paraboloid dome. Slicing by $y$ (Section 6.3) gives disks of radius $\sqrt{4-y}$, so $V=\pi\int_0^4(4-y)\,dy=\pi\bigl[4y-\frac{y^2}2\bigr]_0^4=8\pi$, the same, and half of the cylinder of radius $2$ and height $4$ ($16\pi$).
+%@ e1-chk | integrate(pi*(4-x),(x,0,4)) == 8*pi and pi*2**2*4 == 16*pi and 16*pi/2 == 8*pi | and height $4$ ($16\pi$).
+
+\begin{center}
+\begin{tikzpicture}[x=1.4cm,y=0.65cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:2,samples=30,variable=\t]({\t},{4-\t*\t}) -- (2,0) -- cycle;
+  \draw[->] (-0.4,0) -- (2.8,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,4.9) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:2.1,samples=30,variable=\t] plot ({\t},{4-\t*\t});
+  \draw[thick,red!70!black] (1,0) -- (1,3);
+  \draw[green!50!black,<->] (0,1.5) -- (1,1.5);
+  \node[font=\small,green!50!black] at (0.5,2.1) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (1.05,0.7) {$h=4-x^2$};
+  \fill (2,0) circle (1.6pt) node[below right,font=\small] {$(2,0)$};
+%@ g-e1-p1 | 4-2**2 == 0 | right,font=\small] {$(2,0)$};
+  \fill (0,4) circle (1.6pt) node[above right,font=\small] {$(0,4)$};
+%@ g-e1-p2 | 4-0**2 == 4 | right,font=\small] {$(0,4)$};
+  \fill (1,3) circle (1.6pt) node[above right,font=\small] {$(1,3)$};
+%@ g-e1-p3 | 4-1**2 == 3 | right,font=\small] {$(1,3)$};
+  \node[font=\small] at (2.1,3.3) {$V=8\pi$};
+%@ g-e1-V | 8*pi == integrate(2*pi*x*(4-x**2),(x,0,2)) | at (2.1,3.3) {$V=8\pi$};
+  % the solid, to the right
+  \draw[thick] (5.1,0) ellipse (2 and 0.45);
+  \draw[thick,domain=0:2,samples=30,variable=\t] plot ({5.1+\t},{4-\t*\t});
+  \draw[thick,domain=0:2,samples=30,variable=\t] plot ({5.1-\t},{4-\t*\t});
+  \draw[thick,red!70!black] (5.1,3) ellipse (1 and 0.22);
+  \draw[thick,red!70!black] (5.1,0) ellipse (1 and 0.22);
+  \draw[thick,red!70!black] (6.1,0) -- (6.1,3);
+  \draw[thick,red!70!black] (4.1,0) -- (4.1,3);
+  \node[font=\small] at (5.1,-0.95) {the dome and one shell};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region (shaded) with a typical strip at $x=1$ (red), at distance $r=1$ from the axis with height $h=4-1=3$. Revolved, the strip is the red shell in the picture of the dome (right).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A shell integral that needs a substitution}{e2}
+Let $R$ be the region under $y=\dfrac1{\sqrt{x^2+1}}$ for $0\le x\le2\sqrt2$. Find the volume of the solid obtained by revolving $R$ about the $y$-axis.
+
+\textbf{Solution.} A vertical strip at $x$ has radius $r=x$ and height $h=\dfrac1{\sqrt{x^2+1}}$, so by Theorem~\ref{thm:shell}
+\[
+V=2\pi\int_0^{2\sqrt2}\frac{x}{\sqrt{x^2+1}}\,dx .
+\]
+\emph{Substitution.} Let $u=x^2+1$, so $du=2x\,dx$ and $x\,dx=\frac12\,du$. When $x=0$, $u=1$; when $x=2\sqrt2$, $u=8+1=9$. Then
+\[
+V=2\pi\int_1^9\frac{1}{\sqrt u}\cdot\frac12\,du=\pi\int_1^9u^{-1/2}\,du=\pi\Bigl[2\sqrt u\Bigr]_1^9=\pi(6-2)=4\pi\approx12.57 .
+%@ e2-V | ANT(2*sqrt(x), x**Q(-1,2), [Q(2,1),Q(5,1)]) == 0 and (2*sqrt(2))**2+1 == 9 and 2*3-2*1 == 4 and integrate(2*pi*x/sqrt(x**2+1),(x,0,2*sqrt(2))) == 4*pi | pi(6-2)=4\pi\approx12.57 .
+\]
+\emph{Check.} The height decreases from $1$ at $x=0$ to $\frac13$ at $x=2\sqrt2$, so the solid lies inside the cylinder of radius $2\sqrt2$ and height $1$, of volume $\pi\cdot8\cdot1=8\pi$, and contains the cylinder of radius $2\sqrt2$ and height $\frac13$, of volume $\frac{8\pi}3$; $\frac{8\pi}3<4\pi<8\pi$.
+%@ e2-chk | 1/sqrt(0+1) == 1 and 1/sqrt(9) == Q(1,3) and pi*8*1 == 8*pi and Q(8,3)*pi < 4*pi and 4*pi < 8*pi | \frac{8\pi}3<4\pi<8\pi$.
+
+\begin{center}
+\begin{tikzpicture}[x=1.6cm,y=2.6cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:2.83,samples=40,variable=\t]({\t},{1/sqrt(\t*\t+1)}) -- (2.83,0) -- cycle;
+  \draw[->] (-0.3,0) -- (3.4,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:3.1,samples=40,variable=\t] plot ({\t},{1/sqrt(\t*\t+1)});
+  \draw[thick,red!70!black] (1,0) -- (1,0.7071);
+  \draw[green!50!black,<->] (0,0.18) -- (1,0.18);
+  \node[font=\small,green!50!black] at (0.5,0.3) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (1.05,0.3) {$h=\frac1{\sqrt{x^2+1}}$};
+  \fill (0,1) circle (1.6pt) node[left,font=\small] {$(0,1)$};
+%@ g-e2-p1 | 1/sqrt(0+1) == 1 | node[left,font=\small] {$(0,1)$};
+  \fill (2.83,0.3333) circle (1.6pt) node[above right,font=\small] {$(2\sqrt2,\frac13)$};
+%@ g-e2-p2 | 1/sqrt((2*sqrt(2))**2+1) == Q(1,3) | right,font=\small] {$(2\sqrt2,\frac13)$};
+  \fill (1,0.7071) circle (1.6pt) node[above right,font=\small] {$(1,\frac1{\sqrt2})$};
+%@ g-e2-p3 | 1/sqrt(1+1) == sqrt(2)/2 | right,font=\small] {$(1,\frac1{\sqrt2})$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=1/\sqrt{x^2+1}$ on $[0,2\sqrt2]$. The strip at $x=1$ (red) has radius $1$ and height $1/\sqrt2$.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Shells about the $x$-axis}
+
+When the axis is the $x$-axis the strips must be parallel to it, so they are horizontal, the variable of integration is $y$ and the curves are written as $x=p(y)$ (right) and $x=q(y)$ (left), as in Section 6.2. The formula is Theorem~\ref{thm:shell} with the roles of $x$ and $y$ exchanged.
+
+\begin{thm}{The shell method about the $x$-axis}{shellx}
+Let $0\le c<d$, let $p\ge q$ be continuous on $[c,d]$ and let $R$ be the region between $x=q(y)$ and $x=p(y)$ for $c\le y\le d$ (right minus left). The solid obtained by revolving $R$ about the $x$-axis has volume
+\[
+V=2\pi\int_c^dy\,\bigl(p(y)-q(y)\bigr)\,dy ,
+\]
+a shell of radius $y$ and height $p-q$ (the length of a horizontal strip) and thickness $dy$.
+\end{thm}
+\begin{proof}
+The solid is $S=\{c\le\sqrt{Y^2+Z^2}\le d,\ q(\sqrt{Y^2+Z^2})\le X\le p(\sqrt{Y^2+Z^2})\}$. Let $\sigma(X,Y,Z)=(Y,X,Z)$ be the reflection in the plane $x=y$, a rigid motion. Then $\sigma(S)=\{c\le\sqrt{u^2+z^2}\le d,\ q(\sqrt{u^2+z^2})\le v\le p(\sqrt{u^2+z^2})\}$ in the coordinates $(u,v,z)$, and this is the solid obtained by revolving about the $v$-axis the region between the graphs $v=q(u)$ and $v=p(u)$ for $c\le u\le d$. By Theorem~\ref{thm:shell} its volume is $2\pi\int_c^du\,(p(u)-q(u))\,du$, and by (V3) this is the volume of $S$. (For instance $p=2$ and $q=1$ on $[0,1]$ give $2\pi\int_0^1y\,dy=\pi$.)
+%@ pr-shellx | integrate(2*pi*x*(2-1),(x,0,1)) == pi and 2*pi*Q(1,2) == pi | 2\pi\int_0^1y\,dy=\pi$.)
+\end{proof}
+
+\begin{exmp}{Shells about the $x$-axis: a region beside a cube root}{e3}
+Let $R$ be the region in the first quadrant bounded by the $y$-axis, the line $y=2$ and the curve $y=\sqrt[3]x$. Find the volume of the solid obtained by revolving $R$ about the $x$-axis.
+
+\textbf{Solution.} \emph{Set-up.} The axis is horizontal, so we use horizontal strips and integrate with respect to $y$. Solving $y=\sqrt[3]x$ for $x$ gives $x=y^3$. At height $y$, with $0\le y\le2$, the region runs from the $y$-axis ($x=0$) to the curve ($x=y^3$), so the strip has length $h=y^3-0=y^3$, and its distance from the $x$-axis is $r=y$.
+%@ e3-set | 2**3 == 8 and 8**Q(1,3) == 2 and 0**3 == 0 | and its distance from the $x$-axis is $r=y$.
+\emph{Integral.} $V=2\pi\int_0^2y\cdot y^3\,dy=2\pi\int_0^2y^4\,dy=2\pi\Bigl[\frac{y^5}5\Bigr]_0^2=2\pi\cdot\frac{32}5=\frac{64\pi}5\approx40.21 .$
+%@ e3-V | ANT(x**5/5, x**4, [Q(1,2),Q(3,1)]) == 0 and 2*Q(32,5) == Q(64,5) and integrate(2*pi*x*x**3,(x,0,2)) == 64*pi/5 | frac{64\pi}5\approx40.21 .$
+
+\emph{Check by washers.} Slicing perpendicular to the $x$-axis, for $0\le x\le8$ the outer radius is $2$ and the inner radius is $\sqrt[3]x$, so $V=\pi\int_0^8\bigl(4-x^{2/3}\bigr)dx=\pi\bigl[4x-\frac35x^{5/3}\bigr]_0^8=\pi\bigl(32-\frac{96}5\bigr)=\frac{64\pi}5$. The two methods agree.
+%@ e3-chk | ANT(4*x-Q(3,5)*x**Q(5,3), 4-x**Q(2,3), [Q(1,2),Q(3,1)]) == 0 and 32-Q(3,5)*32 == Q(64,5) and integrate(pi*(4-x**Q(2,3)),(x,0,8)) == 64*pi/5 | 5$. The two methods agree.
+
+\begin{center}
+\begin{tikzpicture}[x=0.55cm,y=1.5cm]
+  \fill[blue!15] (0,0) -- (0,2) -- (8,2) -- plot[domain=8:0,samples=40,variable=\t]({\t},{\t^(1/3)}) -- cycle;
+  \draw[->] (-0.5,0) -- (9.5,0) node[right] {$x$};
+  \draw[->] (0,-0.25) -- (0,2.55) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:8.6,samples=60,variable=\t] plot ({\t},{\t^(1/3)});
+  \draw[very thick,blue!70!black] (0,2) -- (8,2);
+  \draw[thick,red!70!black] (0,1) -- (1,1);
+  \draw[green!50!black,<->] (0.3,0) -- (0.3,1);
+  \node[font=\small,green!50!black,anchor=west] at (0.4,0.45) {$r=y$};
+  \node[font=\small,red!70!black,anchor=west] at (1.1,1.0) {$h=y^3$};
+  \fill (8,2) circle (1.6pt) node[above right,font=\small] {$(8,2)$};
+%@ g-e3-p1 | 8**Q(1,3) == 2 | right,font=\small] {$(8,2)$};
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ g-e3-p2 | 1**3 == 1 | right,font=\small] {$(1,1)$};
+  \fill (0,2) circle (1.6pt) node[above left,font=\small] {$(0,2)$};
+%@ g-e3-p3 | 2**3 == 8 | left,font=\small] {$(0,2)$};
+  \node[font=\small,blue!70!black] at (5.6,1.3) {$y=\sqrt[3]x$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region left of the curve $y=\sqrt[3]x$ and below $y=2$. The red strip at height $y=1$ runs from the $y$-axis to $x=y^3=1$; its distance from the axis of revolution (the $x$-axis) is $r=1$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Two curves: the region between a line and a parabola}{e4}
+Let $R$ be the region in the first quadrant between $y=x^2$ and $y=6-x$, to the right of the $y$-axis. Find the volume of the solid obtained by revolving $R$ about the $y$-axis.
+
+\textbf{Solution.} \emph{Intersection.} $x^2=6-x$ gives $x^2+x-6=(x+3)(x-2)=0$, so $x=2$ in the first quadrant, at the point $(2,4)$. For $0\le x\le2$ the line is above the parabola (at $x=1$: $5>1$), so the strip at $x$ has height $h=(6-x)-x^2$ and radius $r=x$.
+%@ e4-pts | (2+3)*(2-2) == 0 and 2**2 == 4 and 6-2 == 4 and 6-1 > 1**2 | at $x=1$: $5>1$), so the strip at $x$ has height $h=(6-x)-x^2$ and radius $r=x$.
+\emph{Integral.} By Theorem~\ref{thm:shell},
+\[
+\begin{aligned}V&=2\pi\int_0^2x\,(6-x-x^2)\,dx=2\pi\int_0^2\bigl(6x-x^2-x^3\bigr)\,dx\\ &=2\pi\Bigl[3x^2-\frac{x^3}3-\frac{x^4}4\Bigr]_0^2=2\pi\Bigl(12-\frac83-4\Bigr)=\frac{32\pi}3\approx33.51 .
+%@ e4-V | ANT(3*x**2-x**3/3-x**4/4, 6*x-x**2-x**3, [Q(1,2),Q(3,1)]) == 0 and 12-Q(8,3)-4 == Q(16,3) and 2*Q(16,3) == Q(32,3) and integrate(2*pi*x*(6-x-x**2),(x,0,2)) == 32*pi/3 | frac{32\pi}3\approx33.51 .
+\end{aligned}
+\]
+\emph{Why shells.} With washers we would slice by $y$. For $0\le y\le4$ the region runs from the axis to the parabola ($x=\sqrt y$), but for $4\le y\le6$ it runs from the axis to the line ($x=6-y$), so two integrals are needed: $\pi\int_0^4y\,dy+\pi\int_4^6(6-y)^2dy=8\pi+\frac{8\pi}3=\frac{32\pi}3$, the same. The shells need one integral.
+%@ e4-chk | integrate(pi*x,(x,0,4)) == 8*pi and integrate(pi*(6-x)**2,(x,4,6)) == Q(8,3)*pi and 8+Q(8,3) == Q(32,3) | 3$, the same. The shells need one integral.
+
+\begin{center}
+\begin{tikzpicture}[x=2.5cm,y=0.5cm]
+  \fill[blue!15] plot[domain=0:2,samples=30,variable=\t]({\t},{\t*\t}) -- (2,4) -- (0,6) -- (0,0) -- cycle;
+  \draw[->] (-0.4,0) -- (3.2,0) node[right] {$x$};
+  \draw[->] (0,-0.5) -- (0,7.4) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:2.4,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[very thick,red!70!black,domain=0:3,samples=2,variable=\t] plot ({\t},{6-\t});
+  \draw[thick] (1,1) -- (1,5);
+  \draw[green!50!black,<->] (0,3) -- (1,3);
+  \node[font=\small,green!50!black] at (0.5,3.7) {$r=x$};
+  \node[font=\footnotesize,anchor=east] at (0.95,2.0) {$h=6-x-x^2$};
+  \fill (2,4) circle (1.6pt) node[left,xshift=-2pt,font=\small] {$(2,4)$};
+%@ g-e4-p1 | 2**2 == 4 and 6-2 == 4 | pt,font=\small] {$(2,4)$};
+  \fill (1,5) circle (1.6pt) node[above right,font=\small] {$(1,5)$};
+%@ g-e4-p2 | 6-1 == 5 | right,font=\small] {$(1,5)$};
+  \fill (1,1) circle (1.6pt) node[below right,font=\small] {$(1,1)$};
+%@ g-e4-p3 | 1**2 == 1 | right,font=\small] {$(1,1)$};
+  \fill (0,6) circle (1.6pt) node[left,font=\small] {$(0,6)$};
+%@ g-e4-p4 | 6-0 == 6 | node[left,font=\small] {$(0,6)$};
+  \node[font=\small,red!70!black,anchor=north] at (2.9,3.1) {$y=6-x$};
+  \node[font=\small,blue!70!black,anchor=west] at (2.45,5.76) {$y=x^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between the parabola and the line, with the strip at $x=1$ from $(1,1)$ up to $(1,5)$: height $h=5-1=4$ and radius $r=1$.
+\end{center}
+\end{exmp}
+
+
+% ---------------------------------------------------------------------
+\subsection*{Shells about other vertical and horizontal lines}
+
+As with washers, the axis need not be a coordinate axis. The only change is that the radius of a shell is its distance from the axis. Call the axis $x=k$ (vertical) or $y=k$ (horizontal), as in Section 6.3, and assume the region lies on one side of it.
+
+\begin{thm}{Shells about other lines}{lines}
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item \emph{Vertical axis $x=k$.} Let $f\ge g$ be continuous on $[a,b]$ and let $R$ be the region between their graphs. If the axis is to the left of $R$ ($k\le a$), the volume of the solid obtained by revolving $R$ about $x=k$ is $V=2\pi\int_a^b(x-k)\,(f-g)\,dx$. If the axis is to the right of $R$ ($k\ge b$), it is $V=2\pi\int_a^b(k-x)\,(f-g)\,dx$.
+  \item \emph{Horizontal axis $y=k$.} Let $p\ge q$ be continuous on $[c,d]$ and let $R$ be the region between $x=q(y)$ and $x=p(y)$. If the axis is below $R$ ($k\le c$), $V=2\pi\int_c^d(y-k)\,(p-q)\,dy$; if it is above $R$ ($k\ge d$), $V=2\pi\int_c^d(k-y)\,(p-q)\,dy$.
+\end{enumerate}
+In words: the radius is the distance from the strip to the axis, and the height is the length of the strip (parallel to the axis).
+\end{thm}
+\begin{proof}
+(1) Let $k\le a$. The translation $(X,Y,Z)\mapsto(X-k,Y,Z)$ carries the axis $x=k$ onto the $y$-axis and $R$ onto the region between the graphs of $u\mapsto f(u+k)$ and $u\mapsto g(u+k)$ for $a-k\le u\le b-k$, where $a-k\ge0$. By (V3) and Theorem~\ref{thm:shell} the volume is $2\pi\int_{a-k}^{b-k}u\bigl(f(u+k)-g(u+k)\bigr)du$, and the substitution $x=u+k$ turns this into $2\pi\int_a^b(x-k)(f-g)\,dx$. Now let $k\ge b$. The reflection $(X,Y,Z)\mapsto(2k-X,Y,Z)$ in the plane $X=k$ fixes the axis and carries $R$ onto the region between the graphs of $u\mapsto f(2k-u)$ and $u\mapsto g(2k-u)$ over $2k-b\le u\le2k-a$, which lies to the right of $x=k$ (since $2k-b\ge k$). By the first case and (V3), $V=2\pi\int_{2k-b}^{2k-a}(u-k)\bigl(f(2k-u)-g(2k-u)\bigr)du$, and the substitution $x=2k-u$ (so $u-k=k-x$ and the limits become $b$ and $a$, with $du=-dx$) gives $2\pi\int_a^b(k-x)(f-g)\,dx$.
+
+(2) The reflection $\sigma(X,Y,Z)=(Y,X,Z)$ carries the axis $y=k$ (with $Z=0$) onto the axis $x=k$ (with $Z=0$) and the region between $x=q(y)$ and $x=p(y)$ onto the region between the graphs of $q\le p$ with $u$ as the horizontal variable. Apply part (1) with $f=p$, $g=q$, and (V3). (For instance $f=2$, $g=1$ on $[0,1]$ about $x=-1$: $2\pi\int_0^1(x+1)\,dx=3\pi$, a cylinder of radius $2$ with a hole of radius $1$, height $1$.)
+%@ pr-lines | integrate(2*pi*(x+1)*(2-1),(x,0,1)) == 3*pi and pi*2**2*1-pi*1**2*1 == 3*pi | radius $1$, height $1$.)
+\end{proof}
+
+\begin{kc}{Which radius?}{kcaxis}
+The region under $y=x$ for $1\le x\le3$ is revolved about the line $x=5$. Write the radius and the height of a typical shell, and evaluate the volume.
+\end{kc}
+
+\begin{think}{A region on both sides of the axis}{thside}
+The region under $y=1-x^2$ for $-1\le x\le1$ is revolved about the $y$-axis. What does the integral $2\pi\int_{-1}^1x(1-x^2)\,dx$ give? Why is this not the volume, and what is the volume? Compare with the hypothesis $0\le a<b$ of Theorem~\ref{thm:shell}.
+\end{think}
+
+\begin{exmp}{The same region about two vertical lines}{e5}
+Let $R$ be the region under $y=x^2$ for $0\le x\le1$. Find the volume of the solid obtained by revolving $R$ (a) about the line $x=-1$ and (b) about the line $x=2$.
+
+\textbf{Solution.} The axes are vertical, so the strips are vertical, $h=x^2$ and we integrate in $x$.
+
+(a) \emph{Axis $x=-1$.} The axis is to the left of $R$ ($k=-1\le a=0$), so the radius is $r=x-(-1)=x+1$:
+\[
+V_a=2\pi\int_0^1(x+1)x^2\,dx=2\pi\int_0^1\bigl(x^3+x^2\bigr)dx=2\pi\Bigl[\frac{x^4}4+\frac{x^3}3\Bigr]_0^1=2\pi\cdot\frac7{12}=\frac{7\pi}6\approx3.665 .
+%@ e5-a | ANT(x**4/4+x**3/3, x**3+x**2, [Q(1,2),Q(3,1)]) == 0 and Q(1,4)+Q(1,3) == Q(7,12) and 2*Q(7,12) == Q(7,6) and integrate(2*pi*(x+1)*x**2,(x,0,1)) == 7*pi/6 | frac{7\pi}6\approx3.665 .
+\]
+(b) \emph{Axis $x=2$.} The axis is to the right of $R$ ($k=2\ge b=1$), so the radius is $r=2-x$:
+\[
+V_b=2\pi\int_0^1(2-x)x^2\,dx=2\pi\int_0^1\bigl(2x^2-x^3\bigr)dx=2\pi\Bigl[\frac{2x^3}3-\frac{x^4}4\Bigr]_0^1=2\pi\cdot\frac5{12}=\frac{5\pi}6\approx2.618 .
+%@ e5-b | ANT(2*x**3/3-x**4/4, 2*x**2-x**3, [Q(1,2),Q(3,1)]) == 0 and Q(2,3)-Q(1,4) == Q(5,12) and 2*Q(5,12) == Q(5,6) and integrate(2*pi*(2-x)*x**2,(x,0,1)) == 5*pi/6 | frac{5\pi}6\approx2.618 .
+\]
+\emph{Check.} The two radii add to $(x+1)+(2-x)=3$, so $V_a+V_b=2\pi\cdot3\int_0^1x^2\,dx=2\pi$; indeed $\frac{7\pi}6+\frac{5\pi}6=2\pi$. Also $V_a>V_b$, as it should: most of the region lies near $x=1$, which is $2$ from the first axis but only $1$ from the second.
+%@ e5-chk | Q(7,6)+Q(5,6) == 2 and 2*3*integrate(x**2,(x,0,1)) == 2 and Q(7,6) > Q(5,6) | only $1$ from the second.
+
+\begin{center}
+\begin{tikzpicture}[x=1.7cm,y=2.4cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:1,samples=30,variable=\t]({\t},{\t*\t}) -- (1,0) -- cycle;
+  \draw[->] (-1.4,0) -- (2.5,0) node[right] {$x$};
+  \draw[->] (0,-0.15) -- (0,1.3) node[above] {$y$};
+  \draw[dashed,thick,green!50!black] (-1,-0.1) -- (-1,1.2);
+  \draw[dashed,thick,red!70!black] (2,-0.1) -- (2,1.2);
+  \draw[very thick,blue!70!black,domain=0:1.1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[thick] (0.5,0) -- (0.5,0.25);
+  \draw[green!50!black,<->] (-1,0.12) -- (0.5,0.12);
+  \draw[red!70!black,<->] (0.5,0.12) -- (2,0.12);
+  \node[font=\small,green!50!black] at (-0.4,0.3) {$r=x+1$};
+  \node[font=\small,red!70!black] at (1.25,0.27) {$r=2-x$};
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ g-e5-p1 | 1**2 == 1 | left,font=\small] {$(1,1)$};
+  \fill (0.5,0.25) circle (1.6pt) node[below right,font=\small] {$(\frac12,\frac14)$};
+%@ g-e5-p2 | Q(1,2)**2 == Q(1,4) | small] {$(\frac12,\frac14)$};
+  \node[font=\small,green!50!black] at (-1.0,1.3) {$x=-1$};
+  \node[font=\small,red!70!black] at (2.0,1.3) {$x=2$};
+  \node[font=\small,blue!70!black] at (1.25,0.75) {$y=x^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=x^2$ with the two axes. The strip at $x=\frac12$ (height $h=\frac14$) is at distance $\frac12+1=\frac32$ from $x=-1$ (green arrow) and $2-\frac12=\frac32$ from $x=2$ (red arrow); at $x=\frac12$ the two radii happen to be equal, but they differ everywhere else.
+%@ g-e5-r | Q(1,2)+1 == Q(3,2) and 2-Q(1,2) == Q(3,2) | and $2-\frac12=\frac32$ from $x=2$ (red arrow); at $x=\frac12$ the two
+\end{center}
+\end{exmp}
+
+\begin{exmp}{The same region about two horizontal lines}{e6}
+Let $R$ be the region between $x=y^2$ and $x=2y$. Find the volume of the solid obtained by revolving $R$ (a) about the line $y=-1$ and (b) about the line $y=4$.
+
+\textbf{Solution.} \emph{Region.} The curves meet where $y^2=2y$, so $y=0$ or $y=2$, at $(0,0)$ and $(4,2)$. At $y=1$ the line has $x=2$ and the parabola $x=1$, so the line is the right curve $p(y)=2y$ and the parabola the left curve $q(y)=y^2$: the strip at height $y$ is horizontal, parallel to the axes, of length $h=2y-y^2$ ($0\le y\le2$).
+%@ e6-pts | 2*2 == 4 and 2**2 == 2*2 and 2*1 > 1**2 | $q(y)=y^2$: the strip at height $y$ is horizontal, parallel to the axes, of length $h=2y-y^2$ ($0\le y\le2$).
+
+(a) \emph{Axis $y=-1$} (below $R$, $k=-1\le c=0$): the radius is $y-(-1)=y+1$.
+\[
+\begin{aligned}V_a&=2\pi\int_0^2(y+1)(2y-y^2)\,dy=2\pi\int_0^2\bigl(-y^3+y^2+2y\bigr)dy\\ &=2\pi\Bigl[-\frac{y^4}4+\frac{y^3}3+y^2\Bigr]_0^2=2\pi\Bigl(-4+\frac83+4\Bigr)=\frac{16\pi}3\approx16.76 .
+%@ e6-a | expand((x+1)*(2*x-x**2)-(-x**3+x**2+2*x)) == 0 and ANT(-x**4/4+x**3/3+x**2, -x**3+x**2+2*x, [Q(1,2),Q(3,1)]) == 0 and 2*(-4+Q(8,3)+4) == Q(16,3) and integrate(2*pi*(x+1)*(2*x-x**2),(x,0,2)) == 16*pi/3 | frac{16\pi}3\approx16.76 .
+\end{aligned}
+\]
+(b) \emph{Axis $y=4$} (above $R$, $k=4\ge d=2$): the radius is $4-y$.
+\[
+\begin{aligned}V_b&=2\pi\int_0^2(4-y)(2y-y^2)\,dy=2\pi\int_0^2\bigl(y^3-6y^2+8y\bigr)dy\\ &=2\pi\Bigl[\frac{y^4}4-2y^3+4y^2\Bigr]_0^2=2\pi(4-16+16)=8\pi\approx25.13 .
+%@ e6-b | expand((4-x)*(2*x-x**2)-(x**3-6*x**2+8*x)) == 0 and ANT(x**4/4-2*x**3+4*x**2, x**3-6*x**2+8*x, [Q(1,2),Q(3,1)]) == 0 and 2*(4-16+16) == 8 and integrate(2*pi*(4-x)*(2*x-x**2),(x,0,2)) == 8*pi | 6+16)=8\pi\approx25.13 .
+\end{aligned}
+\]
+\emph{Check of (a) by washers.} For the horizontal axis the washers are perpendicular to it, so they are indexed by $x$: for $0\le x\le4$ the region lies between $y=\frac x2$ (below) and $y=\sqrt x$ (above), so about $y=-1$ the outer radius is $\sqrt x+1$ and the inner radius is $\frac x2+1$, and $V_a=\pi\int_0^4\Bigl((\sqrt x+1)^2-\bigl(\frac x2+1\bigr)^2\Bigr)dx=\pi\int_0^4\bigl(2\sqrt x-\frac{x^2}4\bigr)dx=\pi\bigl(\frac{32}3-\frac{16}3\bigr)=\frac{16\pi}3$. The solid in (b) is larger because its axis is farther from most of the region.
+%@ e6-chk | expand((sqrt(x)+1)**2-(x/2+1)**2-(2*sqrt(x)-x**2/4)) == 0 and Q(4,3)*8-Q(4**3,12) == Q(16,3) and integrate(pi*(2*sqrt(x)-x**2/4),(x,0,4)) == 16*pi/3 | from most of the region.
+
+\begin{center}
+\begin{tikzpicture}[x=1.5cm,y=0.95cm]
+  \fill[blue!15] plot[domain=0:2,samples=30,variable=\t]({\t*\t},{\t}) -- plot[domain=2:0,samples=2,variable=\t]({2*\t},{\t}) -- cycle;
+  \draw[->] (-0.4,-1.9) -- (4.9,-1.9) node[right] {$x$};
+  \draw[->] (0,-2.2) -- (0,4.9) node[above] {$y$};
+  \draw[dashed,thick,green!50!black] (-0.3,-1) -- (4.6,-1);
+  \draw[dashed,thick,red!70!black] (-0.3,4) -- (4.6,4);
+  \draw[very thick,blue!70!black,domain=0:2.2,samples=30,variable=\t] plot ({\t*\t},{\t});
+  \draw[very thick,red!70!black,domain=0:2.2,samples=2,variable=\t] plot ({2*\t},{\t});
+  \draw[thick] (1,1) -- (2,1);
+  \draw[green!50!black,<->] (1,-1) -- (1,1);
+  \draw[red!70!black,<->] (2,4) -- (2,1);
+  \node[font=\small,green!50!black,anchor=west] at (1.08,-0.1) {$r=y+1$};
+  \node[font=\small,red!70!black,anchor=west] at (2.05,2.9) {$r=4-y$};
+  \fill (4,2) circle (1.6pt) node[above right,font=\small] {$(4,2)$};
+%@ g-e6-p1 | 2**2 == 2*2 and 2*2 == 4 | right,font=\small] {$(4,2)$};
+  \fill (1,1) circle (1.6pt) node[left,font=\small] {$(1,1)$};
+%@ g-e6-p2 | 1**2 == 1 | node[left,font=\small] {$(1,1)$};
+  \fill (2,1) circle (1.6pt) node[above,font=\small] {$(2,1)$};
+%@ g-e6-p3 | 2*1 == 2 | node[above,font=\small] {$(2,1)$};
+  \node[font=\small,green!50!black] at (-0.05,-1.45) {$y=-1$};
+  \node[font=\small,red!70!black] at (-0.05,4.45) {$y=4$};
+  \node[font=\small,blue!70!black] at (0.6,2.3) {$x=y^2$};
+  \node[font=\small,red!70!black,anchor=west] at (3.3,1.2) {$x=2y$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $x=y^2$ and $x=2y$. The strip at $y=1$ runs from $(1,1)$ to $(2,1)$, length $h=2-1=1$; it is $y+1=2$ above the axis $y=-1$ (green) and $4-y=3$ below the axis $y=4$ (red).
+%@ g-e6-r | 1+1 == 2 and 4-1 == 3 and 2*1-1**2 == 1 | green) and $4-y=3$ below the axis $y=4$ (red).
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Shells or washers?}
+
+Washers and shells describe the \emph{same} solid, and by (V1) to (V3) the volume is one number, so the two integrals always agree (Examples~\ref{ex:e1}, \ref{ex:e3}, \ref{ex:e4} and \ref{ex:e6} checked this). The choice is only about which integral is easier. The key is the direction of the strips. A strip \emph{perpendicular} to the axis gives a disk or washer (Section 6.3); a strip \emph{parallel} to the axis gives a shell. The variable of integration is the coordinate along which the strips are stacked.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}\toprule
+Axis & Washers (strips perpendicular to the axis) & Shells (strips parallel to the axis)\\\midrule
+$x$-axis or $y=k$ & integrate $dx$; curves $y=f(x)$ & integrate $dy$; curves $x=p(y)$\\
+$y$-axis or $x=k$ & integrate $dy$; curves $x=p(y)$ & integrate $dx$; curves $y=f(x)$\\\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proc}{Choosing the method}{choose}
+\begin{enumerate}[nosep]
+  \item Look at how the region is given. If the boundary curves are \emph{functions of the variable that stacks the strips} in one method, choose that method: with curves $y=f(x)$ and a vertical axis, use shells ($dx$); with curves $y=f(x)$ and a horizontal axis, use washers ($dx$).
+  \item Avoid solving for an inverse function if you can (a cubic such as $y=x^2-x^3$ has no simple inverse), and avoid methods that split the region into pieces.
+  \item If both methods are possible and neither is clearly better, do one and check with the other.
+\end{enumerate}
+\end{proc}
+
+\begin{exmp}{One region, both axes, both methods}{e7}
+Let $R$ be the region under $y=2x-x^2$ for $0\le x\le2$. Find the volume of the solid obtained by revolving $R$ about (a) the $x$-axis and (b) the $y$-axis, each by washers and by shells, and compare the work.
+
+\textbf{Solution.} The parabola $y=x(2-x)$ meets the $x$-axis at $x=0,2$ and has its vertex at $(1,1)$.
+%@ e7-pts | 2*0-0**2 == 0 and 2*2-2**2 == 0 and 2*1-1**2 == 1 | has its vertex at $(1,1)$.
+
+(a) \emph{About the $x$-axis, washers.} The strips are vertical (perpendicular to the axis); the region touches the axis, so they are disks of radius $2x-x^2$:
+\[
+\begin{aligned}V&=\pi\int_0^2(2x-x^2)^2dx=\pi\int_0^2\bigl(4x^2-4x^3+x^4\bigr)dx\\ &=\pi\Bigl[\frac{4x^3}3-x^4+\frac{x^5}5\Bigr]_0^2=\pi\Bigl(\frac{32}3-16+\frac{32}5\Bigr)=\frac{16\pi}{15}\approx3.351 .
+%@ e7-a1 | expand((2*x-x**2)**2-(4*x**2-4*x**3+x**4)) == 0 and ANT(4*x**3/3-x**4+x**5/5, 4*x**2-4*x**3+x**4, [Q(1,2),Q(3,1)]) == 0 and Q(32,3)-16+Q(32,5) == Q(16,15) and integrate(pi*(2*x-x**2)**2,(x,0,2)) == 16*pi/15 | 16\pi}{15}\approx3.351 .
+\end{aligned}
+\]
+\emph{About the $x$-axis, shells.} The strips are now horizontal, so we need $x$ as a function of $y$ for $0\le y\le1$. From $y=2x-x^2$ we get $x^2-2x+y=0$, so $x=1\pm\sqrt{1-y}$ (the quadratic formula). The strip at height $y$ runs from $1-\sqrt{1-y}$ to $1+\sqrt{1-y}$, so $h=2\sqrt{1-y}$ and $r=y$:
+\[
+V=2\pi\int_0^1y\cdot2\sqrt{1-y}\,dy=4\pi\int_0^1y\sqrt{1-y}\,dy .
+%@ e7-s0 | simplify((1+sqrt(1-x))-(1-sqrt(1-x))-2*sqrt(1-x)) == 0 and simplify((1+sqrt(1-Q(3,4)))**2-2*(1+sqrt(1-Q(3,4)))+Q(3,4)) == 0 | int_0^1y\sqrt{1-y}\,dy .
+\]
+Substitute $u=1-y$, so $y=1-u$ and $dy=-du$; $y=0$ gives $u=1$ and $y=1$ gives $u=0$, and the minus sign reverses the limits:
+\[
+\int_0^1y\sqrt{1-y}\,dy=\int_0^1(1-u)\sqrt u\,du=\int_0^1\bigl(u^{1/2}-u^{3/2}\bigr)du=\Bigl[\frac23u^{3/2}-\frac25u^{5/2}\Bigr]_0^1=\frac4{15},
+%@ e7-s1 | ANT(Q(2,3)*x**Q(3,2)-Q(2,5)*x**Q(5,2), sqrt(x)-x**Q(3,2), [Q(1,2),Q(3,1)]) == 0 and Q(2,3)-Q(2,5) == Q(4,15) and integrate(x*sqrt(1-x),(x,0,1)) == Q(4,15) | 2}\Bigr]_0^1=\frac4{15},
+\]
+so $V=4\pi\cdot\frac4{15}=\frac{16\pi}{15}$, the same. Washers were shorter here: no inverse function and no substitution.
+%@ e7-s2 | 4*Q(4,15) == Q(16,15) and integrate(4*pi*x*sqrt(1-x),(x,0,1)) == 16*pi/15 | function and no substitution.
+
+(b) \emph{About the $y$-axis, shells.} The strips are vertical (parallel to the axis), $r=x$ and $h=2x-x^2$:
+\[
+V=2\pi\int_0^2x(2x-x^2)\,dx=2\pi\int_0^2\bigl(2x^2-x^3\bigr)dx=2\pi\Bigl[\frac{2x^3}3-\frac{x^4}4\Bigr]_0^2=2\pi\Bigl(\frac{16}3-4\Bigr)=\frac{8\pi}3\approx8.378 .
+%@ e7-b1 | ANT(2*x**3/3-x**4/4, 2*x**2-x**3, [Q(1,2),Q(3,1)]) == 0 and Q(16,3)-4 == Q(4,3) and 2*Q(4,3) == Q(8,3) and integrate(2*pi*x*(2*x-x**2),(x,0,2)) == 8*pi/3 | frac{8\pi}3\approx8.378 .
+\]
+\emph{About the $y$-axis, washers.} The strips are horizontal, indexed by $y\in[0,1]$. With $s=\sqrt{1-y}$ the region runs from $x=1-s$ to $x=1+s$, so it does not touch the axis and the solid has a hole: outer radius $1+s$, inner radius $1-s$, and $(1+s)^2-(1-s)^2=4s$:
+\[
+V=\pi\int_0^1\Bigl((1+s)^2-(1-s)^2\Bigr)dy=4\pi\int_0^1\sqrt{1-y}\,dy=4\pi\Bigl[-\frac23(1-y)^{3/2}\Bigr]_0^1=\frac{8\pi}3,
+%@ e7-b2 | expand((1+x)**2-(1-x)**2-4*x) == 0 and ANT(-Q(2,3)*(1-x)**Q(3,2), sqrt(1-x), [Q(1,2),Q(1,4)]) == 0 and 4*Q(2,3) == Q(8,3) and integrate(4*pi*sqrt(1-x),(x,0,1)) == 8*pi/3 | \Bigr]_0^1=\frac{8\pi}3,
+\]
+the same again. Shells were shorter here.
+
+\emph{Summary.} About the $x$-axis the region is described by $y=f(x)$ and washers need only $f$; about the $y$-axis it is shells that need only $f$. In each case the method whose strips are stacked in $x$ was easier.
+
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=2.8cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:2,samples=40,variable=\t]({\t},{2*\t-\t*\t}) -- (2,0) -- cycle;
+  \draw[->] (-0.3,0) -- (2.6,0) node[right] {$x$};
+  \draw[->] (0,-0.15) -- (0,1.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:2,samples=40,variable=\t] plot ({\t},{2*\t-\t*\t});
+  \draw[thick,red!70!black] (0.5,0) -- (0.5,0.75);
+  \draw[thick,green!50!black] (0.5,0.75) -- (1.5,0.75);
+  \fill (1,1) circle (1.6pt) node[above,font=\small] {$(1,1)$};
+%@ g-e7-p1 | 2*1-1**2 == 1 | node[above,font=\small] {$(1,1)$};
+  \fill (0.5,0.75) circle (1.6pt) node[above left,font=\small] {$(\frac12,\frac34)$};
+%@ g-e7-p2 | 2*Q(1,2)-Q(1,2)**2 == Q(3,4) | left,font=\small] {$(\frac12,\frac34)$};
+  \fill (1.5,0.75) circle (1.6pt) node[above right,font=\small] {$(\frac32,\frac34)$};
+%@ g-e7-p3 | 2*Q(3,2)-Q(3,2)**2 == Q(3,4) | right,font=\small] {$(\frac32,\frac34)$};
+  \fill (2,0) circle (1.6pt) node[below,font=\small] {$(2,0)$};
+%@ g-e7-p4 | 2*2-2**2 == 0 | node[below,font=\small] {$(2,0)$};
+  \node[font=\footnotesize,red!70!black,anchor=west] at (0.54,0.2) {disk radius $2x-x^2$};
+  \node[font=\small,green!50!black,anchor=north] at (1.0,0.73) {$h=2\sqrt{1-y}$};
+  \node[font=\small,green!50!black,anchor=north] at (1.0,0.55) {$r=y$};
+%@ g-e7-p5 | 2*sqrt(1-Q(3,4)) == 1 | north] at (1.0,0.55) {$r=y$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=2x-x^2$. The red vertical strip at $x=\frac12$ is perpendicular to the $x$-axis (a disk of radius $\frac34$); the green horizontal strip at $y=\frac34$ is parallel to it (a shell of radius $\frac34$ and height $\frac32-\frac12=1$).
+\end{center}
+\end{exmp}
+
+\begin{think}{Disks or shells for $y=x^2$?}{thchoose}
+The region under $y=x^2$ for $0\le x\le2$ is revolved about the $x$-axis. Which method is easier, disks or shells, and why? Set up both integrals and check that they give the same number.
+\end{think}
+
+% ---------------------------------------------------------------------
+\subsection*{Solids with no easy description by disks}
+
+Sometimes the washer method is not just longer but practically impossible, because the boundary curve cannot be solved for the other variable in a usable way.
+
+\begin{exmp}{A cubic curve about the $y$-axis}{e8}
+Let $R$ be the region in the first quadrant under $y=x^2-x^3$ (between the curve and the $x$-axis). Find the volume of the solid obtained by revolving $R$ about the $y$-axis.
+
+\textbf{Solution.} \emph{The region.} $x^2-x^3=x^2(1-x)$ is $\ge0$ exactly for $0\le x\le1$ and is zero at $x=0,1$. Its derivative $2x-3x^2=x(2-3x)$ vanishes at $x=\frac23$, where $y=\frac49-\frac8{27}=\frac4{27}$: the curve rises to a maximum $\frac4{27}$ and falls back to zero.
+%@ e8-pts | 1**2-1**3 == 0 and 2*Q(2,3)-3*Q(2,3)**2 == 0 and Q(2,3)**2-Q(2,3)**3 == Q(4,27) | and falls back to zero.
+\emph{Why not washers.} At height $y$ between $0$ and $\frac4{27}$ the region lies between the two solutions of $x^2-x^3=y$ in $(0,1)$, the roots of a cubic that has no simple formula, and the radii would be those roots.
+
+\emph{Shells.} The strip at $x$ is vertical, parallel to the axis: $r=x$ and $h=x^2-x^3$. By Theorem~\ref{thm:shell},
+\[
+V=2\pi\int_0^1x\,(x^2-x^3)\,dx=2\pi\int_0^1\bigl(x^3-x^4\bigr)dx=2\pi\Bigl[\frac{x^4}4-\frac{x^5}5\Bigr]_0^1=2\pi\Bigl(\frac14-\frac15\Bigr)=\frac{\pi}{10}\approx0.314 .
+%@ e8-V | ANT(x**4/4-x**5/5, x**3-x**4, [Q(1,2),Q(3,1)]) == 0 and Q(1,4)-Q(1,5) == Q(1,20) and 2*Q(1,20) == Q(1,10) and integrate(2*pi*x*(x**2-x**3),(x,0,1)) == pi/10 | frac{\pi}{10}\approx0.314 .
+\]
+\emph{Check.} The solid lies inside the cylinder of radius $1$ and height $\frac4{27}$, of volume $\frac{4\pi}{27}\approx0.465$, and $0.314<0.465$. It is a ring with a dimple in the middle, because the height is $0$ at the axis.
+%@ e8-chk | Q(4,27)*pi > pi/10 and pi*1**2*Q(4,27) == Q(4,27)*pi | height is $0$ at the axis.
+
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=9cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:1,samples=40,variable=\t]({\t},{\t*\t-\t*\t*\t}) -- (1,0) -- cycle;
+  \draw[->] (-0.1,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.03) -- (0,0.22) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1.05,samples=40,variable=\t] plot ({\t},{\t*\t-\t*\t*\t});
+  \draw[thick,red!70!black] (0.5,0) -- (0.5,0.125);
+  \draw[green!50!black,<->] (0,0.05) -- (0.5,0.05);
+  \node[font=\small,green!50!black] at (0.13,0.085) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (0.52,0.065) {$h=x^2-x^3$};
+  \fill (0.6667,0.1481) circle (1.6pt) node[above,font=\small] {$(\frac23,\frac4{27})$};
+%@ g-e8-p1 | Q(2,3)**2-Q(2,3)**3 == Q(4,27) | node[above,font=\small] {$(\frac23,\frac4{27})$};
+  \fill (1,0) circle (1.6pt) node[below,font=\small] {$(1,0)$};
+%@ g-e8-p2 | 1**2-1**3 == 0 | node[below,font=\small] {$(1,0)$};
+  \fill (0.5,0.125) circle (1.6pt) node[above left,font=\small] {$(\frac12,\frac18)$};
+%@ g-e8-p3 | Q(1,2)**2-Q(1,2)**3 == Q(1,8) | left,font=\small] {$(\frac12,\frac18)$};
+  % the solid: profile, vertical scale exaggerated
+  \draw[thick] (2.35,0) ellipse (0.9 and 0.13);
+  \draw[thick,domain=0:1,samples=40,variable=\t] plot ({2.35+0.9*\t},{\t*\t-\t*\t*\t});
+  \draw[thick,domain=0:1,samples=40,variable=\t] plot ({2.35-0.9*\t},{\t*\t-\t*\t*\t});
+  \draw[thick,red!70!black] (2.35,0.125) ellipse (0.45 and 0.065);
+  \node[font=\small] at (2.35,-0.07) {the solid (heights exaggerated)};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=x^2-x^3$ with the strip at $x=\frac12$ (height $\frac18$), and the ring-shaped solid it generates; the red circle is the shell of that strip.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{The ball and the torus by shells}
+
+Section 6.3 found the volume of the ball by disks (Theorem~\ref{6.3-thm:vols}). Shells give it again, and also the volume of a torus (a doughnut), which is not available from the sphere formula. Both checks use only Theorem~\ref{thm:shell}.
+
+\begin{thm}{The ball and the torus}{ballTorus}
+\begin{enumerate}[label=(\arabic*),nosep]
+  \item A ball of radius $r$ has volume $\frac43\pi r^3$.
+  \item Let $0<a<R$. The \emph{torus} obtained by revolving the disk of radius $a$ centred at $(R,0)$ about the $y$-axis has volume $V=2\pi^2Ra^2$: the area $\pi a^2$ of the disk times the length $2\pi R$ of the circle that its centre travels.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(1) The ball is the solid obtained by revolving the half-disk $0\le x\le r$, $-\sqrt{r^2-x^2}\le y\le\sqrt{r^2-x^2}$ about the $y$-axis (it is the set $\rho^2+Y^2\le r^2$). The strip at $x$ has radius $x$ and height $2\sqrt{r^2-x^2}$, so by Theorem~\ref{thm:shell}
+\[
+V=2\pi\int_0^rx\cdot2\sqrt{r^2-x^2}\,dx .
+\]
+Substitute $u=r^2-x^2$, $du=-2x\,dx$; $x=0$ gives $u=r^2$ and $x=r$ gives $u=0$, so $V=2\pi\int_0^{r^2}\sqrt u\,du=2\pi\cdot\frac23\bigl(r^2\bigr)^{3/2}=\frac43\pi r^3$ (as $r>0$). This agrees with Theorem~\ref{6.3-thm:vols}(4). (For $r=3$: $\frac43\pi\cdot27=36\pi$.)
+%@ pr-ball | ANT(Q(2,3)*x**Q(3,2), sqrt(x), [Q(1,2),Q(3,1)]) == 0 and integrate(2*pi*x*2*sqrt(9-x**2),(x,0,3)) == 36*pi and Q(4,3)*pi*27 == 36*pi | frac43\pi\cdot27=36\pi$.)
+
+(2) The circle $(x-R)^2+y^2=a^2$ bounds the disk; for $R-a\le x\le R+a$ the disk lies between $y=-\sqrt{a^2-(x-R)^2}$ and $y=\sqrt{a^2-(x-R)^2}$, and $R-a>0$, so the disk is to the right of the axis. By Theorem~\ref{thm:shell}
+\[
+V=2\pi\int_{R-a}^{R+a}x\cdot2\sqrt{a^2-(x-R)^2}\,dx=4\pi\int_{-a}^{a}(u+R)\sqrt{a^2-u^2}\,du\qquad(u=x-R).
+\]
+Split the integrand: $u\sqrt{a^2-u^2}$ is an odd function, so its integral over $[-a,a]$ is $0$ (Theorem~\ref{6.2-thm:sym}); and $\int_{-a}^a\sqrt{a^2-u^2}\,du$ is the area of the half-disk under $v=\sqrt{a^2-u^2}$, which is $\frac12\pi a^2$. Hence $V=4\pi R\cdot\frac12\pi a^2=2\pi^2Ra^2$. (For $R=3$, $a=2$: $2\pi^2\cdot3\cdot4=24\pi^2\approx236.9$.)
+%@ pr-torus | integrate(4*pi*(x+3)*sqrt(4-x**2),(x,-2,2)) == 24*pi**2 and 2*pi**2*3*4 == 24*pi**2 and integrate(x*sqrt(4-x**2),(x,-2,2)) == 0 | cdot4=24\pi^2\approx236.9$.)
+\end{proof}
+
+\begin{remark}[The torus by washers]
+Washers about the $y$-axis (Theorem~\ref{6.3-thm:dwy}) give $\pi\int_{-a}^a\bigl((R+\sqrt{a^2-y^2})^2-(R-\sqrt{a^2-y^2})^2\bigr)dy=4\pi R\int_{-a}^a\sqrt{a^2-y^2}\,dy$, the same integral, so the two methods agree. Here shells and washers are equally easy; the point of the theorem is that the same result comes from either description.
+%@ rem-tor | expand((3+sqrt(4-x**2))**2-(3-sqrt(4-x**2))**2-12*sqrt(4-x**2)) == 0 and integrate(pi*12*sqrt(4-x**2),(x,-2,2)) == 24*pi**2 | from either description.
+\end{remark}
+
+\begin{center}
+\begin{tikzpicture}[x=0.66cm,y=0.66cm]
+  \fill[blue!15] (3,0) circle (2);
+  \draw[->] (-0.4,0) -- (6.2,0) node[right] {$x$};
+  \draw[->] (0,-2.6) -- (0,2.9) node[above] {$y$};
+  \draw[very thick,blue!70!black] (3,0) circle (2);
+  \draw[thick,red!70!black] (4,-1.7321) -- (4,1.7321);
+  \draw[green!50!black,<->] (0,0.5) -- (4,0.5);
+  \node[font=\small,green!50!black] at (2,0.95) {$r=x=4$};
+  \node[font=\small,red!70!black,anchor=west] at (4.1,0.9) {$h=2\sqrt3$};
+  \fill (4,1.7321) circle (1.6pt) node[above right,font=\small] {$(4,\sqrt3)$};
+%@ g-tor-p1 | (4-3)**2+sqrt(3)**2 == 4 | right,font=\small] {$(4,\sqrt3)$};
+  \fill (4,-1.7321) circle (1.6pt) node[below right,font=\small] {$(4,-\sqrt3)$};
+%@ g-tor-p2 | (4-3)**2+(-sqrt(3))**2 == 4 | right,font=\small] {$(4,-\sqrt3)$};
+  \fill (3,0) circle (1.6pt) node[below,font=\small] {$(3,0)$};
+%@ g-tor-p3 | (3-3)**2+0**2 == 4-4 | node[below,font=\small] {$(3,0)$};
+  \fill (1,0) circle (1.6pt) node[below left,font=\small] {$1$};
+%@ g-tor-p4 | 3-2 == 1 | node[below left,font=\small] {$1$};
+  \fill (5,0) circle (1.6pt) node[below right,font=\small] {$5$};
+%@ g-tor-p5 | 3+2 == 5 | node[below right,font=\small] {$5$};
+  % torus, drawn about the same vertical axis
+  \draw[thick] (17,2) arc (0:-180:3 and 0.7);
+  \draw[thick,dashed] (17,2) arc (0:180:3 and 0.7);
+  \draw[thick] (17,-2) arc (0:-180:3 and 0.7);
+  \draw[thick,dashed] (17,-2) arc (0:180:3 and 0.7);
+  \draw[thick] (19,0) arc (0:-180:5 and 1.2);
+  \draw[thick,dashed] (19,0) arc (0:180:5 and 1.2);
+  \draw[thick] (15,0) arc (0:-180:1 and 0.22);
+  \draw[thick,dashed] (15,0) arc (0:180:1 and 0.22);
+  \draw[thick,blue!70!black] (17,0) circle (2);
+  \draw[thick,blue!70!black] (11,0) circle (2);
+  \node[font=\small] at (14,-3.2) {the torus};
+\end{tikzpicture}
+\par\small\emph{Figure.} Left: the disk of radius $a=2$ centred at $(R,0)=(3,0)$ with the strip at $x=4$ (radius $4$, height $2\sqrt{4-1}=2\sqrt3$). Right: the torus it generates (the circle is its cross section).
+\end{center}
+
+\begin{exmp}{A drilled ball}{e9}
+A cylindrical hole of radius $3$ is drilled through the centre of a ball of radius $5$. Find the volume of the material that remains, and check it with the formulas of Section 6.3.
+
+\textbf{Solution.} Take the axis of the hole as the $y$-axis. The remaining solid is made by revolving about the $y$-axis the part of the half-disk with $3\le x\le5$ (the part of the ball at a distance between $3$ and $5$ from the axis), which lies between $y=-\sqrt{25-x^2}$ and $y=\sqrt{25-x^2}$. A strip at $x$ has radius $x$ and height $2\sqrt{25-x^2}$, so
+\[
+V=2\pi\int_3^5x\cdot2\sqrt{25-x^2}\,dx=4\pi\int_3^5x\sqrt{25-x^2}\,dx .
+\]
+\emph{Substitution.} $u=25-x^2$, $du=-2x\,dx$, so $x\,dx=-\frac12du$. At $x=3$, $u=16$; at $x=5$, $u=0$. The minus sign reverses the limits:
+\[
+V=4\pi\int_0^{16}\frac12\sqrt u\,du=2\pi\Bigl[\frac23u^{3/2}\Bigr]_0^{16}=2\pi\cdot\frac23\cdot64=\frac{256\pi}3\approx268.1 .
+%@ e9-V | ANT(Q(2,3)*x**Q(3,2), sqrt(x), [Q(1,2),Q(3,1)]) == 0 and 25-3**2 == 16 and Q(2,3)*16**Q(3,2) == Q(128,3) and 2*Q(128,3) == Q(256,3) and integrate(4*pi*x*sqrt(25-x**2),(x,3,5)) == 256*pi/3 | frac{256\pi}3\approx268.1 .
+\]
+\emph{Check with Section 6.3.} The hole is a cylinder of radius $3$ and length $2\sqrt{25-9}=8$, with volume $\pi\cdot9\cdot8=72\pi$; and the ball sticks out of the cylinder at each end in a cap of height $5-4=1$, of volume $\frac13\pi h^2(3\cdot5-h)=\frac{14\pi}3$ (Theorem~\ref{6.3-thm:vols}(3)). The material removed is $72\pi+2\cdot\frac{14\pi}3$, so what remains is $\frac43\pi\cdot125-72\pi-\frac{28\pi}3=\frac{500\pi-216\pi-28\pi}3=\frac{256\pi}3$, the same.
+%@ e9-chk | 2*sqrt(25-9) == 8 and pi*9*8 == 72*pi and Q(1,3)*pi*1**2*(15-1) == Q(14,3)*pi and Q(4,3)*125-72-Q(28,3) == Q(256,3) | frac{256\pi}3$, the same.
+
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm]
+  \fill[blue!15] (3,4) -- plot[domain=3:5,samples=30,variable=\t]({\t},{sqrt(25-\t*\t)}) -- plot[domain=5:3,samples=30,variable=\t]({\t},{-sqrt(25-\t*\t)}) -- cycle;
+  \draw[->] (-0.4,0) -- (6.2,0) node[right] {$x$};
+  \draw[->] (0,-5.5) -- (0,5.6) node[above] {$y$};
+  \draw[thick,domain=0:5,samples=40,variable=\t] plot ({\t},{sqrt(25-\t*\t)});
+  \draw[thick,domain=0:5,samples=40,variable=\t] plot ({\t},{-sqrt(25-\t*\t)});
+  \draw[very thick,blue!70!black] (3,-4) -- (3,4);
+  \draw[thick,red!70!black] (4,-3) -- (4,3);
+  \draw[green!50!black,<->] (0,0.7) -- (4,0.7);
+  \node[font=\small,green!50!black] at (2,1.2) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (4.1,1.8) {$h=2\sqrt{25-x^2}$};
+  \fill (3,4) circle (1.6pt) node[above left,font=\small] {$(3,4)$};
+%@ g-e9-p1 | 3**2+4**2 == 25 | left,font=\small] {$(3,4)$};
+  \fill (3,-4) circle (1.6pt) node[below left,font=\small] {$(3,-4)$};
+%@ g-e9-p2 | 3**2+(-4)**2 == 25 | left,font=\small] {$(3,-4)$};
+  \fill (4,3) circle (1.6pt) node[above right,font=\small] {$(4,3)$};
+%@ g-e9-p3 | 4**2+3**2 == 25 | right,font=\small] {$(4,3)$};
+  \fill (5,0) circle (1.6pt) node[below right,font=\small] {$(5,0)$};
+%@ g-e9-p4 | 5**2+0**2 == 25 | right,font=\small] {$(5,0)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The part of the half-disk of radius $5$ with $x\ge3$ (shaded). The line $x=3$ meets the circle at $(3,\pm4)$, so the hole has length $8$. The red strip at $x=4$ runs from $(4,-3)$ to $(4,3)$ and has radius $4$ and height $6$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A bell that needs shells}{e10}
+Let $R$ be the region under $y=e^{-x^2}$ for $0\le x\le b$. Find the volume of the solid obtained by revolving $R$ about the $y$-axis, and evaluate it for $b=1$.
+
+\textbf{Solution.} The strip at $x$ has radius $x$ and height $e^{-x^2}$, so $V=2\pi\int_0^bx\,e^{-x^2}\,dx$. \emph{Substitution.} $u=-x^2$, $du=-2x\,dx$, so $x\,dx=-\frac12du$; $x=0$ gives $u=0$ and $x=b$ gives $u=-b^2$:
+\[
+V=2\pi\int_0^{-b^2}\Bigl(-\frac12\Bigr)e^u\,du=-\pi\Bigl[e^u\Bigr]_0^{-b^2}=\pi\bigl(1-e^{-b^2}\bigr).
+%@ e10-V | ANT(-exp(-x**2)/2, x*exp(-x**2), [Q(1,2),Q(3,1)]) == 0 and simplify(2*pi*(-exp(-1)/2+Q(1,2))-pi*(1-exp(-1))) == 0 and simplify(integrate(2*pi*x*exp(-x**2),(x,0,1))-pi*(1-exp(-1))) == 0 | pi\bigl(1-e^{-b^2}\bigr).
+\]
+For $b=1$ this is $\pi(1-e^{-1})\approx1.986$. Since $e^{-b^2}>0$, $V(b)<\pi$ for every $b$, and $V(b)$ increases towards $\pi$ as $b$ grows: the whole bell, which is infinitely wide, has a finite volume. (A later section on improper integrals gives the precise meaning of this limit.)
+%@ e10-N | abs((pi*(1-exp(-1))).evalf(30)-Q(1986,1000)) < Q(1,1000) and limit(pi*(1-exp(-x**2)),x,oo) == pi | precise meaning of this limit.)
+
+\emph{Why shells.} The washer method slices by $y$: at height $y$ the radius is $x=\sqrt{-\ln y}$, and the volume integral contains $\int\ln y\,dy$, which cannot be found with the methods available so far (it needs a technique from a later chapter). The shell integral needs only the substitution above.
+
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=2.8cm]
+  \fill[blue!15] (0,0) -- plot[domain=0:1.6,samples=40,variable=\t]({\t},{exp(-\t*\t)}) -- (1.6,0) -- cycle;
+  \draw[->] (-0.3,0) -- (2.2,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:2,samples=40,variable=\t] plot ({\t},{exp(-\t*\t)});
+  \draw[thick,red!70!black] (0.6,0) -- (0.6,0.6977);
+  \draw[green!50!black,<->] (0,0.15) -- (0.6,0.15);
+  \node[font=\small,green!50!black] at (0.3,0.27) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (0.65,0.3) {$h=e^{-x^2}$};
+  \fill (0,1) circle (1.6pt) node[left,font=\small] {$(0,1)$};
+%@ g-e10-p1 | exp(-0**2) == 1 | node[left,font=\small] {$(0,1)$};
+  \fill (1,0.3679) circle (1.6pt) node[above right,font=\small] {$(1,e^{-1})$};
+%@ g-e10-p2 | abs(exp(-1).evalf(30)-Q(3679,10000)) < Q(1,10000) | right,font=\small] {$(1,e^{-1})$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The bell $y=e^{-x^2}$. For $b=1$ the region ends at $x=1$, where the height is $e^{-1}\approx0.368$.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Looking ahead}
+
+Shells and slices are two ways to organise the same volume. In a later section the slice-and-sum idea is used again for the length of a curve and for the area of a surface of revolution, and in the section on physical applications to add up work, force and mass slice by slice. In a later course the notion of centroid gives a short formula for the volume of a solid of revolution (the theorem of Pappus: the area of the region times the distance travelled by its centroid; the torus formula $2\pi^2Ra^2=\pi a^2\cdot2\pi R$ is the first example, and Proof Example~\ref{ex:b14} below is a version of it). Multiple integrals in cylindrical coordinates compute a volume by exactly the shell idea (a shell has volume $2\pi r\,h\,dr$), and the volume of the infinite bell of Example~\ref{ex:e10} is the first example of an improper integral of the kind treated in the section on improper integrals.
+
+
+% ---------------------------------------------------------------------
+\subsection*{Example bank}
+
+\textbf{What's in this bank.} Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.
+\begin{enumerate}[nosep]
+  \item \emph{Shells about the $y$-axis} (Examples~\ref{ex:b1}--\ref{ex:b2}): a cube root, checked by washers; a sine of $2x^2$ (substitution).
+  \item \emph{Shells about the $x$-axis} (Examples~\ref{ex:b3}--\ref{ex:b4}): a parabola opening sideways; the curve $x=\frac1y$, where washers need two pieces.
+  \item \emph{Other vertical lines} (Examples~\ref{ex:b5}--\ref{ex:b6}): the region between $y=x$ and $y=x^2$ about $x=2$; a square root about $x=5$.
+  \item \emph{Other horizontal lines} (Examples~\ref{ex:b7}--\ref{ex:b8}): a region about $y=2$ with a washer check; a region between a parabola and a line about $y=-1$.
+  \item \emph{Choosing the method} (Examples~\ref{ex:b9}--\ref{ex:b10}): $y=1-x^2$ about the $x$-axis both ways; which axis gives the larger volume.
+  \item \emph{Drilled solids} (Examples~\ref{ex:b11}--\ref{ex:b12}): the napkin ring; the width of a hole that removes half a bowl.
+  \item \emph{Proofs} (Examples~\ref{ex:b13}--\ref{ex:b14}): the cone by shells; volume as a linear function of the distance to the axis.
+\end{enumerate}
+
+\subsection*{Group 1: Shells about the $y$-axis}
+
+\begin{exmp}{A cube root}{b1}
+The region under $y=\sqrt[3]x$ for $0\le x\le8$ is revolved about the $y$-axis. Find the volume.
+
+\textbf{Solution.} The strip at $x$ has radius $x$ and height $x^{1/3}$, so
+\[
+V=2\pi\int_0^8x\cdot x^{1/3}\,dx=2\pi\int_0^8x^{4/3}\,dx=2\pi\Bigl[\frac37x^{7/3}\Bigr]_0^8=2\pi\cdot\frac37\cdot128=\frac{768\pi}7\approx344.7 ,
+%@ b1 | ANT(Q(3,7)*x**Q(7,3), x**Q(4,3), [Q(1,2),Q(3,1)]) == 0 and 8**Q(7,3) == 128 and 2*Q(3,7)*128 == Q(768,7) and integrate(2*pi*x**Q(4,3),(x,0,8)) == 768*pi/7 | frac{768\pi}7\approx344.7 ,
+\]
+because $8^{7/3}=(8^{1/3})^7=2^7=128$. \emph{Check by washers.} At height $y\in[0,2]$ the region runs from the curve $x=y^3$ out to $x=8$: $V=\pi\int_0^2(64-y^6)\,dy=\pi\bigl(128-\frac{128}7\bigr)=\frac{768\pi}7$.
+%@ b1-chk | integrate(pi*(64-x**6),(x,0,2)) == 768*pi/7 and 128-Q(128,7) == Q(768,7) | 7\bigr)=\frac{768\pi}7$.
+\begin{center}
+\begin{tikzpicture}[x=0.5cm,y=1.3cm]
+  \fill[blue!12] (0,0) -- plot[domain=0:8,samples=40,variable=\t]({\t},{\t^(1/3)}) -- (8,0) -- cycle;
+  \draw[->] (-0.4,0) -- (9.4,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,2.5) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:8.6,samples=40,variable=\t] plot ({\t},{\t^(1/3)});
+  \draw[thick,red!70!black] (4,0) -- (4,1.5874);
+  \draw[green!50!black,<->] (0,0.5) -- (4,0.5);
+  \node[font=\small,green!50!black] at (2,0.8) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (4.1,0.7) {$h=x^{1/3}$};
+  \fill (8,2) circle (1.6pt) node[above right,font=\small] {$(8,2)$};
+%@ g-b1-p1 | 8**Q(1,3) == 2 | right,font=\small] {$(8,2)$};
+  \fill (1,1) circle (1.6pt) node[above,font=\small] {$(1,1)$};
+%@ g-b1-p2 | 1**Q(1,3) == 1 | node[above,font=\small] {$(1,1)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=\sqrt[3]x$ on $[0,8]$ and the strip at $x=4$ (radius $4$, height $4^{1/3}\approx1.59$).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A sine of $2x^2$}{b2}
+The region under $y=\sin(2x^2)$ for $0\le x\le\frac{\sqrt\pi}2$ is revolved about the $y$-axis. Find the volume.
+
+\textbf{Solution.} On this interval $2x^2$ runs from $0$ to $\frac\pi2$, so $\sin(2x^2)\ge0$ and the region lies above the axis. The strip at $x$ has radius $x$ and height $\sin(2x^2)$:
+\[
+V=2\pi\int_0^{\sqrt\pi/2}x\sin(2x^2)\,dx .
+\]
+\emph{Substitution.} Let $u=2x^2$, so $du=4x\,dx$ and $x\,dx=\frac14du$. At $x=0$, $u=0$; at $x=\frac{\sqrt\pi}2$, $u=2\cdot\frac\pi4=\frac\pi2$. Then
+\[
+V=2\pi\cdot\frac14\int_0^{\pi/2}\sin u\,du=\frac\pi2\Bigl[-\cos u\Bigr]_0^{\pi/2}=\frac\pi2(0+1)=\frac\pi2\approx1.571 .
+%@ b2 | ANT(-cos(x), sin(x), [Q(1,2),Q(3,1)]) == 0 and 2*(sqrt(pi)/2)**2 == pi/2 and simplify(integrate(2*pi*x*sin(2*x**2),(x,0,sqrt(pi)/2))-pi/2) == 0 | =\frac\pi2\approx1.571 .
+\]
+\emph{Check.} The height is at most $1$ and the radius at most $\frac{\sqrt\pi}2\approx0.886$, so the solid lies inside a cylinder of volume $\pi\cdot\frac\pi4\cdot1\approx2.47$, and $1.571<2.47$.
+%@ b2-chk | abs((pi*pi/4).evalf(30)-Q(247,100)) < Q(1,100) and (pi/2).evalf(30) < (pi**2/4).evalf(30) | approx2.47$, and $1.571<2.47$.
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=2.4cm]
+  \fill[blue!12] (0,0) -- plot[domain=0:0.8862,samples=40,variable=\t]({\t},{sin(2*\t*\t r)}) -- (0.8862,0) -- cycle;
+  \draw[->] (-0.1,0) -- (1.25,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.3) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1.05,samples=40,variable=\t] plot ({\t},{sin(2*\t*\t r)});
+  \draw[thick,red!70!black] (0.6,0) -- (0.6,0.6594);
+  \draw[green!50!black,<->] (0,0.2) -- (0.6,0.2);
+  \node[font=\small,green!50!black] at (0.13,0.33) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (0.62,0.3) {$h=\sin 2x^2$};
+  \fill (0.8862,1) circle (1.6pt) node[above,font=\small] {$(\frac{\sqrt\pi}2,1)$};
+%@ g-b2-p1 | sin(2*(sqrt(pi)/2)**2) == 1 | node[above,font=\small] {$(\frac{\sqrt\pi}2,1)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=\sin(2x^2)$ on $[0,\frac{\sqrt\pi}2]$; the curve reaches height $1$ at the right end.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 2: Shells about the $x$-axis}
+
+\begin{exmp}{A parabola opening sideways}{b3}
+Let $R$ be the region between the $y$-axis and the curve $x=4y-y^2$. Find the volume of the solid obtained by revolving $R$ about the $x$-axis.
+
+\textbf{Solution.} The curve meets $x=0$ where $y(4-y)=0$, so $0\le y\le4$, and $x=4y-y^2\ge0$ there. The strip at height $y$ is horizontal (parallel to the axis), of length $h=4y-y^2$, at distance $r=y$ from the axis:
+\[
+\begin{aligned}V&=2\pi\int_0^4y(4y-y^2)\,dy=2\pi\int_0^4\bigl(4y^2-y^3\bigr)dy\\ &=2\pi\Bigl[\frac{4y^3}3-\frac{y^4}4\Bigr]_0^4=2\pi\Bigl(\frac{256}3-64\Bigr)=\frac{128\pi}3\approx134.0 .
+%@ b3 | ANT(4*x**3/3-x**4/4, 4*x**2-x**3, [Q(1,2),Q(3,1)]) == 0 and Q(256,3)-64 == Q(64,3) and 2*Q(64,3) == Q(128,3) and integrate(2*pi*x*(4*x-x**2),(x,0,4)) == 128*pi/3 | frac{128\pi}3\approx134.0 .
+\end{aligned}
+\]
+\emph{Check by washers.} For $0\le x\le4$ the region at $x$ runs in $y$ from $2-\sqrt{4-x}$ to $2+\sqrt{4-x}$ (solve $y^2-4y+x=0$), so the washer has $R_{\mathrm{out}}^2-R_{\mathrm{in}}^2=(2+s)^2-(2-s)^2=8s$ with $s=\sqrt{4-x}$, and $V=8\pi\int_0^4\sqrt{4-x}\,dx=8\pi\cdot\frac23\cdot8=\frac{128\pi}3$.
+%@ b3-chk | expand((2+x)**2-(2-x)**2-8*x) == 0 and ANT(-Q(2,3)*(4-x)**Q(3,2), sqrt(4-x), [Q(1,2),Q(3,1)]) == 0 and integrate(8*pi*sqrt(4-x),(x,0,4)) == 128*pi/3 | 3\cdot8=\frac{128\pi}3$.
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.75cm]
+  \fill[blue!12] (0,0) -- plot[domain=0:4,samples=40,variable=\t]({4*\t-\t*\t},{\t}) -- (0,4) -- cycle;
+  \draw[->] (-0.4,0) -- (4.8,0) node[right] {$x$};
+  \draw[->] (0,-0.4) -- (0,4.9) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:4.2,samples=40,variable=\t] plot ({4*\t-\t*\t},{\t});
+  \draw[thick,red!70!black] (0,1.5) -- (3.75,1.5);
+  \draw[green!50!black,<->] (0.4,0) -- (0.4,1.5);
+  \node[font=\small,green!50!black,anchor=west] at (0.48,0.6) {$r=y$};
+  \node[font=\small,red!70!black] at (1.9,1.95) {$h=4y-y^2$};
+  \fill (4,2) circle (1.6pt) node[above right,font=\small] {$(4,2)$};
+%@ g-b3-p1 | 4*2-2**2 == 4 | right,font=\small] {$(4,2)$};
+  \fill (3.75,1.5) circle (1.6pt) node[below right,font=\small] {$(\frac{15}4,\frac32)$};
+%@ g-b3-p2 | 4*Q(3,2)-Q(3,2)**2 == Q(15,4) | $(\frac{15}4,\frac32)$};
+  \fill (0,4) circle (1.6pt) node[left,font=\small] {$(0,4)$};
+%@ g-b3-p3 | 4*4-4**2 == 0 | node[left,font=\small] {$(0,4)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between the $y$-axis and $x=4y-y^2$ (the vertex is at $(4,2)$). The strip at $y=\frac32$ has length $\frac{15}4$ and radius $\frac32$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Where washers need two pieces}{b4}
+Let $R$ be the region bounded by the $y$-axis, the curve $x=\frac1y$, and the lines $y=1$ and $y=3$. Find the volume of the solid obtained by revolving $R$ about the $x$-axis.
+
+\textbf{Solution.} The strip at height $y$, $1\le y\le3$, runs from $x=0$ to $x=\frac1y$, so $h=\frac1y$ and $r=y$, and $r\,h=1$:
+\[
+V=2\pi\int_1^3y\cdot\frac1y\,dy=2\pi\int_1^3dy=2\pi\cdot2=4\pi\approx12.57 .
+%@ b4 | x*(1/x) == 1 and integrate(2*pi*x*(1/x),(x,1,3)) == 4*pi and 2*(3-1) == 4 | cdot2=4\pi\approx12.57 .
+\]
+\emph{Check by washers.} Slicing perpendicular to the axis, at $x$ the region has $1\le y\le3$ if $0\le x\le\frac13$ (the curve $y=\frac1x\ge3$), and $1\le y\le\frac1x$ if $\frac13\le x\le1$. So two integrals are needed: $V=\pi\int_0^{1/3}(9-1)\,dx+\pi\int_{1/3}^1\Bigl(\frac1{x^2}-1\Bigr)dx=\frac{8\pi}3+\pi\Bigl[-\frac1x-x\Bigr]_{1/3}^1=\frac{8\pi}3+\frac{4\pi}3=4\pi$.
+%@ b4-chk | integrate(pi*(9-1),(x,0,Q(1,3))) == Q(8,3)*pi and ANT(-1/x-x, 1/x**2-1, [Q(1,2),Q(3,4)]) == 0 and (-1-1)-(-3-Q(1,3)) == Q(4,3) and Q(8,3)+Q(4,3) == 4 | pi}3+\frac{4\pi}3=4\pi$.
+\begin{center}
+\begin{tikzpicture}[x=3cm,y=1cm]
+  \fill[blue!12] (0,1) -- (0,3) -- (0.3333,3) -- plot[domain=3:1,samples=40,variable=\t]({1/\t},{\t}) -- cycle;
+  \draw[->] (-0.1,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.7) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0.8:3.2,samples=40,variable=\t] plot ({1/\t},{\t});
+  \draw[very thick,blue!70!black] (0,1) -- (1,1);
+  \draw[very thick,blue!70!black] (0,3) -- (0.3333,3);
+  \draw[thick,red!70!black] (0,2) -- (0.5,2);
+  \draw[green!50!black,<->] (0.15,0) -- (0.15,2);
+  \node[font=\small,green!50!black,anchor=west] at (0.17,0.6) {$r=y$};
+  \node[font=\small,red!70!black,anchor=west] at (0.62,2.0) {$h=\frac1y$};
+  \fill (1,1) circle (1.6pt) node[above right,font=\small] {$(1,1)$};
+%@ g-b4-p1 | 1/1 == 1 | right,font=\small] {$(1,1)$};
+  \fill (0.3333,3) circle (1.6pt) node[above right,font=\small] {$(\frac13,3)$};
+%@ g-b4-p2 | 1/Q(3,1) == Q(1,3) | right,font=\small] {$(\frac13,3)$};
+  \fill (0.5,2) circle (1.6pt) node[below left,font=\small] {$(\frac12,2)$};
+%@ g-b4-p3 | 1/Q(2,1) == Q(1,2) | \small] {$(\frac12,2)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region bounded by $x=\frac1y$, the $y$-axis, $y=1$ and $y=3$. The strip at $y=2$ has length $\frac12$ and radius $2$.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 3: Shells about other vertical lines}
+
+\begin{exmp}{Between a line and a parabola, about $x=2$}{b5}
+The region between $y=x$ and $y=x^2$ is revolved about the line $x=2$. Find the volume.
+
+\textbf{Solution.} The curves meet at $x=0$ and $x=1$, and $x>x^2$ on $(0,1)$, so the strip at $x$ has height $h=x-x^2$. The axis $x=2$ is to the right of the region ($k=2\ge b=1$), so the radius is $r=2-x$:
+\[
+\begin{aligned}V&=2\pi\int_0^1(2-x)(x-x^2)\,dx=2\pi\int_0^1\bigl(2x-3x^2+x^3\bigr)dx\\ &=2\pi\Bigl[x^2-x^3+\frac{x^4}4\Bigr]_0^1=2\pi\cdot\frac14=\frac\pi2\approx1.571 .
+%@ b5 | expand((2-x)*(x-x**2)-(2*x-3*x**2+x**3)) == 0 and ANT(x**2-x**3+x**4/4, 2*x-3*x**2+x**3, [Q(1,2),Q(3,1)]) == 0 and 1-1+Q(1,4) == Q(1,4) and integrate(2*pi*(2-x)*(x-x**2),(x,0,1)) == pi/2 | =\frac\pi2\approx1.571 .
+\end{aligned}
+\]
+\emph{Check by washers.} The strips are now horizontal. At height $y\in[0,1]$ the region runs from $x=y$ (the line) to $x=\sqrt y$ (the parabola). The axis is on the right, so the farther curve is $x=y$ (distance $2-y$) and the nearer is $x=\sqrt y$ (distance $2-\sqrt y$): $V=\pi\int_0^1\bigl((2-y)^2-(2-\sqrt y)^2\bigr)dy=\pi\int_0^1\bigl(4\sqrt y-5y+y^2\bigr)dy=\pi\bigl(\frac83-\frac52+\frac13\bigr)=\frac\pi2$.
+%@ b5-chk | expand((2-x)**2-(2-sqrt(x))**2-(4*sqrt(x)-5*x+x**2)) == 0 and Q(8,3)-Q(5,2)+Q(1,3) == Q(1,2) and integrate(pi*(4*sqrt(x)-5*x+x**2),(x,0,1)) == pi/2 | frac13\bigr)=\frac\pi2$.
+\begin{center}
+\begin{tikzpicture}[x=1.9cm,y=3.2cm]
+  \fill[blue!12] plot[domain=0:1,samples=2,variable=\t]({\t},{\t}) -- plot[domain=1:0,samples=30,variable=\t]({\t},{\t*\t}) -- cycle;
+  \draw[->] (-0.3,0) -- (2.6,0) node[right] {$x$};
+  \draw[->] (0,-0.15) -- (0,1.3) node[above] {$y$};
+  \draw[dashed,thick,red!70!black] (2,-0.1) -- (2,1.2);
+  \draw[very thick,blue!70!black,domain=0:1.1,samples=2,variable=\t] plot ({\t},{\t});
+  \draw[very thick,blue!70!black,domain=0:1.1,samples=30,variable=\t] plot ({\t},{\t*\t});
+  \draw[thick] (0.5,0.25) -- (0.5,0.5);
+  \node[font=\small,anchor=east] at (0.38,0.78) {$h=x-x^2$};
+  \draw[->,thin] (0.39,0.74) -- (0.49,0.43);
+  \draw[red!70!black,<->] (0.5,0.1) -- (2,0.1);
+  \node[font=\small,red!70!black] at (1.55,0.2) {$r=2-x$};
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ g-b5-p1 | 1**2 == 1 | left,font=\small] {$(1,1)$};
+  \fill (0.5,0.5) circle (1.6pt) node[left,font=\small] {$(\frac12,\frac12)$};
+%@ g-b5-p2 | Q(1,2) == Q(1,2)**1 and Q(1,2)-Q(1,2)**2 == Q(1,4) | small] {$(\frac12,\frac12)$};
+  \fill (0.5,0.25) circle (1.6pt) node[right,font=\small] {$(\frac12,\frac14)$};
+%@ g-b5-p3 | Q(1,2)**2 == Q(1,4) | small] {$(\frac12,\frac14)$};
+  \node[font=\small,red!70!black] at (2.0,1.3) {$x=2$};
+  \node[font=\small] at (0.62,0.9) {$y=x$};
+  \node[font=\small] at (1.25,0.5) {$y=x^2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region between $y=x$ and $y=x^2$ and the axis $x=2$. The strip at $x=\frac12$ runs from $(\frac12,\frac14)$ to $(\frac12,\frac12)$, height $\frac14$, at distance $2-\frac12=\frac32$ from the axis.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A square root about its right end}{b6}
+The region under $y=\sqrt{x-1}$ for $1\le x\le5$ is revolved about the line $x=5$. Find the volume.
+
+\textbf{Solution.} The axis passes through the right end of the region and is to the right of it ($k=5\ge b=5$), so the radius is $5-x$ and the height is $\sqrt{x-1}$:
+\[
+V=2\pi\int_1^5(5-x)\sqrt{x-1}\,dx .
+\]
+\emph{Substitution.} Let $u=x-1$, so $x=u+1$, $5-x=4-u$ and $dx=du$; $x=1$ gives $u=0$ and $x=5$ gives $u=4$. Then
+\[
+\begin{aligned}V&=2\pi\int_0^4(4-u)\sqrt u\,du=2\pi\int_0^4\bigl(4u^{1/2}-u^{3/2}\bigr)du\\ &=2\pi\Bigl[\frac83u^{3/2}-\frac25u^{5/2}\Bigr]_0^4=2\pi\Bigl(\frac{64}3-\frac{64}5\Bigr)=\frac{256\pi}{15}\approx53.62 .
+%@ b6 | ANT(Q(8,3)*x**Q(3,2)-Q(2,5)*x**Q(5,2), 4*sqrt(x)-x**Q(3,2), [Q(1,2),Q(3,1)]) == 0 and Q(8,3)*8-Q(2,5)*32 == Q(128,15) and 2*Q(128,15) == Q(256,15) and integrate(2*pi*(5-x)*sqrt(x-1),(x,1,5)) == 256*pi/15 | 56\pi}{15}\approx53.62 .
+\end{aligned}
+\]
+(Here $4^{3/2}=8$ and $4^{5/2}=32$.)
+\begin{center}
+\begin{tikzpicture}[x=1.1cm,y=1.1cm]
+  \fill[blue!12] (1,0) -- plot[domain=1:5,samples=40,variable=\t]({\t},{sqrt(\t-1)}) -- (5,0) -- cycle;
+  \draw[->] (-0.3,0) -- (6.3,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,2.7) node[above] {$y$};
+  \draw[dashed,thick,red!70!black] (5,-0.2) -- (5,2.4);
+  \draw[very thick,blue!70!black,domain=1:5,samples=40,variable=\t] plot ({\t},{sqrt(\t-1)});
+  \draw[thick] (3,0) -- (3,1.4142);
+  \node[font=\small,anchor=west] at (3.08,1.2) {$h=\sqrt{x-1}$};
+  \draw[red!70!black,<->] (3,0.4) -- (5,0.4);
+  \node[font=\small,red!70!black] at (4,0.7) {$r=5-x$};
+  \fill (5,2) circle (1.6pt) node[left,font=\small] {$(5,2)$};
+%@ g-b6-p1 | sqrt(5-1) == 2 | node[left,font=\small] {$(5,2)$};
+  \fill (1,0) circle (1.6pt) node[below,font=\small] {$(1,0)$};
+%@ g-b6-p2 | sqrt(1-1) == 0 | node[below,font=\small] {$(1,0)$};
+  \fill (3,1.4142) circle (1.6pt) node[above left,font=\small] {$(3,\sqrt2)$};
+%@ g-b6-p3 | sqrt(3-1) == sqrt(2) | left,font=\small] {$(3,\sqrt2)$};
+  \node[font=\small,red!70!black] at (5.0,2.65) {$x=5$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=\sqrt{x-1}$ and the axis $x=5$. The strip at $x=3$ has height $\sqrt2$ and radius $2$.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 4: Shells about other horizontal lines}
+
+\begin{exmp}{A region about $y=2$, checked by washers}{b7}
+Let $R$ be the region in the first quadrant bounded by the axes and the curve $x=4-y^2$. Find the volume of the solid obtained by revolving $R$ about the line $y=2$.
+
+\textbf{Solution.} The curve meets the $y$-axis at $y=2$, so $0\le y\le2$, and the strip at height $y$ runs from $x=0$ to $x=4-y^2$: $h=4-y^2$. The axis $y=2$ is above the region ($k=2\ge d=2$), so the radius is $2-y$:
+\[
+\begin{aligned}V&=2\pi\int_0^2(2-y)(4-y^2)\,dy=2\pi\int_0^2\bigl(8-4y-2y^2+y^3\bigr)dy\\ &=2\pi\Bigl[8y-2y^2-\frac23y^3+\frac{y^4}4\Bigr]_0^2=2\pi\Bigl(16-8-\frac{16}3+4\Bigr)=\frac{40\pi}3\approx41.89 .
+%@ b7 | expand((2-x)*(4-x**2)-(8-4*x-2*x**2+x**3)) == 0 and ANT(8*x-2*x**2-Q(2,3)*x**3+x**4/4, 8-4*x-2*x**2+x**3, [Q(1,2),Q(3,1)]) == 0 and 16-8-Q(16,3)+4 == Q(20,3) and 2*Q(20,3) == Q(40,3) and integrate(2*pi*(2-x)*(4-x**2),(x,0,2)) == 40*pi/3 | frac{40\pi}3\approx41.89 .
+\end{aligned}
+\]
+\emph{Check by washers.} The washers are perpendicular to the axis, so they are indexed by $x\in[0,4]$, and the region at $x$ is $0\le y\le\sqrt{4-x}$. About $y=2$ the outer radius is $2$ (to $y=0$) and the inner radius is $2-\sqrt{4-x}$ (to the curve): $V=\pi\int_0^4\Bigl(4-(2-\sqrt{4-x})^2\Bigr)dx=\pi\int_0^4\bigl(4\sqrt{4-x}-(4-x)\bigr)dx=\pi\bigl(\frac{64}3-8\bigr)=\frac{40\pi}3$.
+%@ b7-chk | expand(4-(2-sqrt(x))**2-(4*sqrt(x)-x)) == 0 and Q(64,3)-8 == Q(40,3) and integrate(pi*(4*sqrt(4-x)-(4-x)),(x,0,4)) == 40*pi/3 | -8\bigr)=\frac{40\pi}3$.
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.9cm]
+  \fill[blue!12] (0,0) -- (4,0) -- plot[domain=0:2,samples=40,variable=\t]({4-\t*\t},{\t}) -- cycle;
+  \draw[->] (-0.4,0) -- (5.4,0) node[right] {$x$};
+  \draw[->] (0,-0.4) -- (0,3.2) node[above] {$y$};
+  \draw[dashed,thick,red!70!black] (-0.3,2) -- (5,2);
+  \draw[very thick,blue!70!black,domain=0:2.2,samples=40,variable=\t] plot ({4-\t*\t},{\t});
+  \draw[thick] (0,1) -- (3,1);
+  \draw[red!70!black,<->] (1.5,1) -- (1.5,2);
+  \node[font=\small,red!70!black,anchor=west] at (1.55,1.55) {$r=2-y$};
+  \node[font=\small,anchor=north] at (1.2,1.0) {$h=4-y^2$};
+  \fill (4,0) circle (1.6pt) node[below right,font=\small] {$(4,0)$};
+%@ g-b7-p1 | 4-0**2 == 4 | right,font=\small] {$(4,0)$};
+  \fill (3,1) circle (1.6pt) node[right,font=\small] {$(3,1)$};
+%@ g-b7-p2 | 4-1**2 == 3 | right,font=\small] {$(3,1)$};
+  \fill (0,2) circle (1.6pt) node[below left,font=\small] {$(0,2)$};
+%@ g-b7-p3 | 4-2**2 == 0 | left,font=\small] {$(0,2)$};
+  \node[font=\small,red!70!black] at (5.2,2.3) {$y=2$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $x=4-y^2$ and the axis $y=2$. The strip at $y=1$ has length $3$ and is at distance $1$ from the axis.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{A parabola and a line, about $y=-1$}{b8}
+Let $R$ be the region bounded by $x=y^2$, $x=6-y$ and the $x$-axis. Find the volume of the solid obtained by revolving $R$ about the line $y=-1$.
+
+\textbf{Solution.} \emph{Intersection.} $y^2=6-y$ gives $y^2+y-6=(y+3)(y-2)=0$, so $y=2$ in the first quadrant, at $(4,2)$. For $0\le y\le2$ the line $x=6-y$ is to the right of the parabola $x=y^2$ (at $y=1$: $5>1$), so the strip has length $h=6-y-y^2$. The axis $y=-1$ is below the region ($k=-1\le c=0$), so $r=y+1$:
+\[
+\begin{aligned}V&=2\pi\int_0^2(y+1)(6-y-y^2)\,dy=2\pi\int_0^2\bigl(6+5y-2y^2-y^3\bigr)dy\\ &=2\pi\Bigl[6y+\frac52y^2-\frac23y^3-\frac{y^4}4\Bigr]_0^2=2\pi\Bigl(12+10-\frac{16}3-4\Bigr)=\frac{76\pi}3\approx79.59 .
+%@ b8 | (2+3)*(2-2) == 0 and 6-1 > 1**2 and expand((x+1)*(6-x-x**2)-(6+5*x-2*x**2-x**3)) == 0 and ANT(6*x+Q(5,2)*x**2-Q(2,3)*x**3-x**4/4, 6+5*x-2*x**2-x**3, [Q(1,2),Q(3,1)]) == 0 and 12+10-Q(16,3)-4 == Q(38,3) and 2*Q(38,3) == Q(76,3) and integrate(2*pi*(x+1)*(6-x-x**2),(x,0,2)) == 76*pi/3 | frac{76\pi}3\approx79.59 .
+\end{aligned}
+\]
+\emph{Check by washers.} Slicing by $x$: for $0\le x\le4$ the region is $0\le y\le\sqrt x$ and for $4\le x\le6$ it is $0\le y\le6-x$; about $y=-1$ the inner radius is $1$ and the outer radius is $y_{\max}+1$. So $V=\pi\int_0^4\bigl(x+2\sqrt x\bigr)dx+\pi\int_4^6\bigl(x^2-14x+48\bigr)dx=\pi\bigl(8+\frac{32}3\bigr)+\pi\Bigl[\frac{x^3}3-7x^2+48x\Bigr]_4^6=\frac{56\pi}3+\frac{20\pi}3=\frac{76\pi}3$.
+%@ b8-chk | integrate(pi*((sqrt(x)+1)**2-1),(x,0,4)) == Q(56,3)*pi and integrate(pi*((7-x)**2-1),(x,4,6)) == Q(20,3)*pi and Q(56,3)+Q(20,3) == Q(76,3) | frac{20\pi}3=\frac{76\pi}3$.
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=1.0cm]
+  \fill[blue!12] (0,0) -- (6,0) -- plot[domain=0:2,samples=2,variable=\t]({6-\t},{\t}) -- plot[domain=2:0,samples=30,variable=\t]({\t*\t},{\t}) -- cycle;
+  \draw[->] (-0.4,0) -- (6.9,0) node[right] {$x$};
+  \draw[->] (0,-1.5) -- (0,2.9) node[above] {$y$};
+  \draw[dashed,thick,red!70!black] (-0.3,-1) -- (6.3,-1);
+  \draw[very thick,blue!70!black,domain=0:2.1,samples=30,variable=\t] plot ({\t*\t},{\t});
+  \draw[very thick,blue!70!black,domain=0:2.1,samples=2,variable=\t] plot ({6-\t},{\t});
+  \draw[thick] (1,1) -- (5,1);
+  \draw[red!70!black,<->] (3,-1) -- (3,1);
+  \node[font=\small,red!70!black,anchor=west] at (3.05,-0.5) {$r=y+1$};
+  \node[font=\small,anchor=south] at (3.3,1.05) {$h=6-y-y^2$};
+  \fill (4,2) circle (1.6pt) node[above,font=\small] {$(4,2)$};
+%@ g-b8-p1 | 2**2 == 4 and 6-2 == 4 | node[above,font=\small] {$(4,2)$};
+  \fill (1,1) circle (1.6pt) node[below,font=\small] {$(1,1)$};
+%@ g-b8-p2 | 1**2 == 1 | below,font=\small] {$(1,1)$};
+  \fill (5,1) circle (1.6pt) node[right,font=\small] {$(5,1)$};
+%@ g-b8-p3 | 6-1 == 5 | node[right,font=\small] {$(5,1)$};
+  \fill (6,0) circle (1.6pt) node[above right,font=\small] {$(6,0)$};
+%@ g-b8-p4 | 6-0 == 6 | right,font=\small] {$(6,0)$};
+  \node[font=\small,red!70!black] at (6.6,-0.55) {$y=-1$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region bounded by $x=y^2$, $x=6-y$ and the $x$-axis (the corner is $(4,2)$) and the axis $y=-1$. The strip at $y=1$ runs from $(1,1)$ to $(5,1)$ (length $4=6-1-1$) at distance $2$ from the axis.
+%@ g-b8-r | 6-1-1**2 == 4 and 1+1 == 2 | at distance $2$ from the axis.
+\end{center}
+\end{exmp}
+
+
+% ---------------------------------------------------------------------
+\subsection*{Group 5: Choosing the method}
+
+\begin{exmp}{The parabola $y=1-x^2$ about the $x$-axis, both ways}{b9}
+Let $R$ be the region in the first quadrant under $y=1-x^2$. Find the volume of the solid obtained by revolving $R$ about the $x$-axis, by disks and by shells.
+
+\textbf{Solution.} \emph{Disks} (strips perpendicular to the axis, $dx$): the disk at $x\in[0,1]$ has radius $1-x^2$, so
+\[
+V=\pi\int_0^1(1-x^2)^2dx=\pi\int_0^1\bigl(1-2x^2+x^4\bigr)dx=\pi\Bigl[x-\frac23x^3+\frac15x^5\Bigr]_0^1=\pi\Bigl(1-\frac23+\frac15\Bigr)=\frac{8\pi}{15}.
+%@ b9a | expand((1-x**2)**2-(1-2*x**2+x**4)) == 0 and ANT(x-Q(2,3)*x**3+x**5/5, 1-2*x**2+x**4, [Q(1,2),Q(3,1)]) == 0 and 1-Q(2,3)+Q(1,5) == Q(8,15) and integrate(pi*(1-x**2)**2,(x,0,1)) == 8*pi/15 | 5\Bigr)=\frac{8\pi}{15}.
+\]
+\emph{Shells} (strips parallel to the axis, $dy$): write $x=\sqrt{1-y}$ for $0\le y\le1$. The strip at height $y$ runs from $x=0$ to $x=\sqrt{1-y}$, so $h=\sqrt{1-y}$ and $r=y$. With $u=1-y$, $y=1-u$, $dy=-du$ ($y=0\mapsto u=1$, $y=1\mapsto u=0$):
+\[
+V=2\pi\int_0^1y\sqrt{1-y}\,dy=2\pi\int_0^1(1-u)\sqrt u\,du=2\pi\Bigl[\frac23u^{3/2}-\frac25u^{5/2}\Bigr]_0^1=2\pi\cdot\frac4{15}=\frac{8\pi}{15}.
+%@ b9b | ANT(Q(2,3)*x**Q(3,2)-Q(2,5)*x**Q(5,2), sqrt(x)-x**Q(3,2), [Q(1,2),Q(3,1)]) == 0 and Q(2,3)-Q(2,5) == Q(4,15) and 2*Q(4,15) == Q(8,15) and integrate(2*pi*x*sqrt(1-x),(x,0,1)) == 8*pi/15 | frac4{15}=\frac{8\pi}{15}.
+\]
+Both agree. Disks are easier here: the curve is already $y=f(x)$ and the axis is horizontal (Procedure~\ref{proc:choose}).
+\begin{center}
+\begin{tikzpicture}[x=3.2cm,y=3.2cm]
+  \fill[blue!12] (0,0) -- plot[domain=0:1,samples=30,variable=\t]({\t},{1-\t*\t}) -- cycle;
+  \draw[->] (-0.1,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-0.1) -- (0,1.25) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:1,samples=30,variable=\t] plot ({\t},{1-\t*\t});
+  \draw[thick,red!70!black] (0.5,0) -- (0.5,0.75);
+  \node[font=\small,red!70!black,anchor=west] at (0.52,0.3) {$r=1-x^2$};
+  \draw[thick,green!50!black] (0,0.5) -- (0.7071,0.5);
+  \node[font=\small,green!50!black,anchor=south west] at (0.02,0.52) {$h=\sqrt{1-y}$};
+  \fill (0,1) circle (1.6pt) node[left,font=\small] {$(0,1)$};
+%@ g-b9-p1 | 1-0**2 == 1 | node[left,font=\small] {$(0,1)$};
+  \fill (1,0) circle (1.6pt) node[below,font=\small] {$(1,0)$};
+%@ g-b9-p2 | 1-1**2 == 0 | node[below,font=\small] {$(1,0)$};
+  \fill (0.5,0.75) circle (1.6pt) node[above right,font=\small] {$(\frac12,\frac34)$};
+%@ g-b9-p3 | 1-Q(1,2)**2 == Q(3,4) | right,font=\small] {$(\frac12,\frac34)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=1-x^2$. The red strip at $x=\frac12$ is perpendicular to the axis (a disk); the green strip at $y=\frac12$ is parallel to it (a shell).
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Which axis gives the larger solid?}{b10}
+The region under $y=\sqrt x$ for $0\le x\le4$ is revolved about the $x$-axis, and also about the $y$-axis. Which solid has the larger volume?
+
+\textbf{Solution.} \emph{About the $x$-axis} (disks, radius $\sqrt x$): $V_x=\pi\int_0^4x\,dx=\pi\bigl[\frac{x^2}2\bigr]_0^4=8\pi\approx25.13$. \emph{About the $y$-axis} (shells, $r=x$, $h=\sqrt x$): $V_y=2\pi\int_0^4x^{3/2}dx=2\pi\Bigl[\frac25x^{5/2}\Bigr]_0^4=2\pi\cdot\frac{64}5=\frac{128\pi}5\approx80.42$.
+%@ b10 | integrate(pi*x,(x,0,4)) == 8*pi and ANT(Q(2,5)*x**Q(5,2), x**Q(3,2), [Q(1,2),Q(3,1)]) == 0 and Q(2,5)*32 == Q(64,5) and 2*Q(64,5) == Q(128,5) and integrate(2*pi*x**Q(3,2),(x,0,4)) == 128*pi/5 | frac{128\pi}5\approx80.42$.
+The solid about the $y$-axis is $\frac{128}{5}\div8=3.2$ times as large. \emph{Why:} most of the area lies far from the $y$-axis (the region is long in $x$ and short in $y$), and the volume grows with the distance travelled.
+%@ b10-r | Q(128,5)/8 == Q(16,5) | with the distance travelled.
+\begin{center}
+\begin{tikzpicture}[x=1.2cm,y=1.2cm]
+  \fill[blue!12] (0,0) -- plot[domain=0:4,samples=30,variable=\t]({\t},{sqrt(\t)}) -- (4,0) -- cycle;
+  \draw[->] (-0.3,0) -- (4.9,0) node[right] {$x$};
+  \draw[->] (0,-0.3) -- (0,2.7) node[above] {$y$};
+  \draw[very thick,blue!70!black,domain=0:4.4,samples=30,variable=\t] plot ({\t},{sqrt(\t)});
+  \draw[thick,red!70!black] (2,0) -- (2,1.4142);
+  \node[font=\small,red!70!black,anchor=west] at (2.05,0.5) {$r=\sqrt x$ (about $x$-axis)};
+  \draw[green!50!black,<->] (0,0.5) -- (2,0.5);
+  \node[font=\small,green!50!black] at (1.15,0.75) {$r=x$};
+  \fill (4,2) circle (1.6pt) node[above right,font=\small] {$(4,2)$};
+%@ g-b10-p1 | sqrt(4) == 2 | right,font=\small] {$(4,2)$};
+  \fill (2,1.4142) circle (1.6pt) node[above left,font=\small] {$(2,\sqrt2)$};
+%@ g-b10-p2 | sqrt(2)**2 == 2 | left,font=\small] {$(2,\sqrt2)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region under $y=\sqrt x$ on $[0,4]$. About the $x$-axis the strip at $x=2$ has radius $\sqrt2$ (disk); about the $y$-axis it has radius $2$ (shell).
+\end{center}
+\end{exmp}
+
+\subsection*{Group 6: Drilled solids}
+
+\begin{exmp}{The napkin ring}{b11}
+A cylindrical hole is drilled through the centre of a ball of radius $R$, leaving a ring of height $H=2\sqrt{R^2-a^2}$, where $a$ is the radius of the hole. Show that the volume of the ring is $\frac{\pi}6H^3$, whatever $R$ is, and find it for $H=6$.
+
+\textbf{Solution.} The ring is obtained by revolving about the $y$-axis the region $a\le x\le R$, $|y|\le\sqrt{R^2-x^2}$. The strip at $x$ has radius $x$ and height $2\sqrt{R^2-x^2}$. With $u=R^2-x^2$, $du=-2x\,dx$ ($x=a\mapsto u=R^2-a^2$, $x=R\mapsto u=0$):
+\[
+V=2\pi\int_a^Rx\cdot2\sqrt{R^2-x^2}\,dx=2\pi\int_0^{R^2-a^2}\sqrt u\,du=2\pi\cdot\frac23\bigl(R^2-a^2\bigr)^{3/2}=\frac{4\pi}3\Bigl(\frac H2\Bigr)^3=\frac{\pi H^3}6 ,
+%@ b11 | simplify(integrate(2*pi*x*2*sqrt(r**2-x**2),(x,a,r))-4*pi*(r**2-a**2)**Q(3,2)/3) == 0 and simplify(4*pi/3*(sqrt(r**2-a**2))**3-pi*(2*sqrt(r**2-a**2))**3/6) == 0 | Bigr)^3=\frac{\pi H^3}6 ,
+\]
+since $\sqrt{R^2-a^2}=\frac H2$. For $H=6$: $V=\frac{\pi\cdot216}6=36\pi\approx113.1$, for \emph{every} $R\ge3$. (Check: $R=5$ gives $a=4$ and $\frac{4\pi}3\cdot27=36\pi$; $R=10$ gives $a^2=91$ and $\frac{4\pi}3\cdot9^{3/2}=36\pi$.)
+%@ b11-chk | pi*6**3/6 == 36*pi and Q(4,3)*pi*3**3 == 36*pi and 25-16 == 9 and Q(4,3)*pi*9**Q(3,2) == 36*pi and 100-91 == 9 | pi}3\cdot9^{3/2}=36\pi$.)
+\begin{center}
+\begin{tikzpicture}[x=0.7cm,y=0.6cm]
+  \fill[blue!12] (4,-3) -- (4,3) arc (36.87:0:5) -- (5,0) arc (0:-36.87:5) -- cycle;
+  \draw[->] (-0.4,0) -- (6.2,0) node[right] {$x$};
+  \draw[->] (0,-5.5) -- (0,5.5) node[above] {$y$};
+  \draw[thick,blue!70!black] (4,-3) -- (4,3);
+  \draw[very thick,blue!70!black,domain=-36.87:36.87,samples=40,variable=\t] plot ({5*cos(\t)},{5*sin(\t)});
+  \draw[thick,red!70!black] (4.5,-2.18) -- (4.5,2.18);
+  \draw[green!50!black,<->] (0,-0.5) -- (4.5,-0.5);
+  \node[font=\small,green!50!black] at (2.2,-0.9) {$r=x$};
+  \node[font=\small,red!70!black,anchor=west] at (4.55,1.0) {$h=2\sqrt{25-x^2}$};
+  \fill (4,3) circle (1.6pt) node[left,font=\small] {$(4,3)$};
+%@ g-b11-p1 | 4**2+3**2 == 25 | node[left,font=\small] {$(4,3)$};
+  \fill (5,0) circle (1.6pt) node[below right,font=\small] {$(5,0)$};
+%@ g-b11-p2 | 5**2+0**2 == 25 | right,font=\small] {$(5,0)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The region for $R=5$, $a=4$ (the hole): the part of the half-disk with $x\ge4$. Its height is $6=H$ at $x=4$.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{How wide a hole removes half of a ball?}{b12}
+A cylindrical hole is drilled through the centre of a ball of radius $1$. For which hole radius $a$ is exactly half of the ball's volume removed?
+
+\textbf{Solution.} What remains is the ring of Example~\ref{ex:b11} with $R=1$: $V_{\mathrm{ring}}=\frac{4\pi}3(1-a^2)^{3/2}$. The ball has volume $\frac{4\pi}3$, and half of it must remain, so $(1-a^2)^{3/2}=\frac12$. Raise to the power $\frac23$: $1-a^2=2^{-2/3}$, so
+\[
+a=\sqrt{1-2^{-2/3}}\approx\sqrt{1-0.6300}=\sqrt{0.3700}\approx0.608 .
+%@ b12 | simplify((1-(1-2**Q(-2,3)))**Q(3,2)-Q(1,2)) == 0 and abs(sqrt(1-2**Q(-2,3)).evalf(30)-Q(608,1000)) < Q(1,1000) | sqrt{0.3700}\approx0.608 .
+\]
+(The hole has about $61\%$ of the radius of the ball but removes half of its volume.) \emph{Check.} For $a=0.608$: $(1-0.3697)^{3/2}=0.6303^{1.5}\approx0.500$.
+%@ b12-chk | abs((1-Q(608,1000)**2)**Q(3,2)-Q(1,2)) < Q(1,500) | 6303^{1.5}\approx0.500$.
+\begin{center}
+\begin{tikzpicture}[x=3cm,y=3cm]
+  \fill[blue!12] (0.608,-0.794) -- (0.608,0.794) arc (52.5:0:1) -- (1,0) arc (0:-52.5:1) -- cycle;
+  \draw[->] (-0.2,0) -- (1.3,0) node[right] {$x$};
+  \draw[->] (0,-1.2) -- (0,1.25) node[above] {$y$};
+  \draw[thick,blue!70!black] (0.608,-0.794) -- (0.608,0.794);
+  \draw[very thick,blue!70!black,domain=-52.5:52.5,samples=40,variable=\t] plot ({cos(\t)},{sin(\t)});
+  \fill (0.608,0.794) circle (1.6pt) node[above left,font=\small] {$(a,\sqrt{1-a^2})$};
+%@ g-b12-p1 | abs(Q(608,1000)**2+Q(794,1000)**2-1) < Q(1,500) | left,font=\small] {$(a,\sqrt{1-a^2})$};
+  \fill (1,0) circle (1.6pt) node[below right,font=\small] {$(1,0)$};
+%@ g-b12-p2 | 1**2+0**2 == 1 | right,font=\small] {$(1,0)$};
+  \node[font=\small] at (0.45,0.2) {hole};
+\end{tikzpicture}
+\par\small\emph{Figure.} The half-disk of radius $1$ with the hole $0\le x\le a\approx0.608$ removed; the remaining region is revolved about the $y$-axis.
+\end{center}
+\end{exmp}
+
+\subsection*{Group 7: Proofs}
+
+\begin{exmp}{The volume of a cone by shells}{b13}
+Prove that a cone of base radius $r$ and height $h$ has volume $\frac13\pi r^2h$, using Theorem~\ref{thm:shell}.
+
+\begin{proof}
+The cone is the solid obtained by revolving about the $y$-axis the triangle under the line $y=h\bigl(1-\frac xr\bigr)$ for $0\le x\le r$ (it has height $h$ at $x=0$ and height $0$ at $x=r$). Here $f\ge0$ and $0\le a=0<b=r$, so Theorem~\ref{thm:shell} applies with $f(x)=h\bigl(1-\frac xr\bigr)$:
+\[
+V=2\pi\int_0^rx\,h\Bigl(1-\frac xr\Bigr)dx=2\pi h\int_0^r\Bigl(x-\frac{x^2}r\Bigr)dx=2\pi h\Bigl[\frac{x^2}2-\frac{x^3}{3r}\Bigr]_0^r=2\pi h\Bigl(\frac{r^2}2-\frac{r^2}3\Bigr)=\frac{\pi r^2h}3 .
+%@ b13 | simplify(integrate(2*pi*x*c*(1-x/r),(x,0,r))-pi*r**2*c/3) == 0 and ANT(x**2/2-x**3/(3*r), x-x**2/r, [Q(1,2),Q(3,1)]) == 0 and Q(1,2)-Q(1,3) == Q(1,6) and 2*Q(1,6) == Q(1,3) | Bigr)=\frac{\pi r^2h}3 .
+\]
+This agrees with Theorem~\ref{6.3-thm:vols}(1), which was proved by disks.
+\end{proof}
+\begin{center}
+\begin{tikzpicture}[x=2.2cm,y=2.2cm]
+  \fill[blue!12] (0,0) -- (1,0) -- (0,1) -- cycle;
+  \draw[->] (-0.2,0) -- (1.35,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,1.3) node[above] {$y$};
+  \draw[very thick,blue!70!black] (0,1) -- (1,0);
+  \draw[thick,red!70!black] (0.4,0) -- (0.4,0.6);
+  \node[font=\small,red!70!black,anchor=west] at (0.42,0.2) {$h\bigl(1-\frac xr\bigr)$};
+  \fill (0,1) circle (1.6pt) node[left,font=\small] {$(0,h)$};
+%@ g-b13-p1 | c*(1-0/r) == c | node[left,font=\small] {$(0,h)$};
+  \fill (1,0) circle (1.6pt) node[below,font=\small] {$(r,0)$};
+%@ g-b13-p2 | c*(1-r/r) == 0 | node[below,font=\small] {$(r,0)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The triangle under $y=h(1-x/r)$ that generates the cone.
+\end{center}
+\end{exmp}
+
+\begin{exmp}{Volume is linear in the distance to the axis}{b14}
+Let $R$ be the region between the graphs of $g\le f$ on $[a,b]$, with $0\le a<b$, and let $A=\int_a^b(f-g)\,dx$ be its area. For $0\le k\le a$ let $V(k)$ be the volume obtained by revolving $R$ about the line $x=k$. Prove that $V(k)=V(0)-2\pi kA$. Then find $V(k)$ for the rectangle $1\le x\le3$, $0\le y\le1$.
+
+\begin{proof}
+By Theorem~\ref{thm:lines} (case $k\le a$, with $x-k\ge0$ on $[a,b]$),
+\[
+V(k)=2\pi\int_a^b(x-k)(f-g)\,dx=2\pi\int_a^bx(f-g)\,dx-2\pi k\int_a^b(f-g)\,dx=V(0)-2\pi kA ,
+\]
+by splitting the integrand and taking the constant $2\pi k$ out of the integral. So $V$ is a linear function of $k$ with slope $-2\pi A$. (Equivalently $V(k)=2\pi A(\bar x-k)$ with $\bar x=\frac1A\int_a^bx(f-g)\,dx$, the $x$-coordinate of the centre of mass of $R$, as in the theorem of Pappus mentioned above.)
+%@ b14 | simplify(integrate(2*pi*(x-t)*(x**2+1),(x,a,b))-(integrate(2*pi*x*(x**2+1),(x,a,b))-2*pi*t*integrate(x**2+1,(x,a,b)))) == 0 | Pappus mentioned above.)
+\end{proof}
+\emph{The rectangle.} Here $f-g=1$, $A=2$ and $V(0)=2\pi\int_1^3x\,dx=2\pi\cdot4=8\pi$, so $V(k)=8\pi-4\pi k$ for $0\le k\le1$. Check at $k=1$: $2\pi\int_1^3(x-1)\,dx=2\pi\cdot2=4\pi=8\pi-4\pi$.
+%@ b14-chk | integrate(2*pi*x,(x,1,3)) == 8*pi and integrate(2*pi*(x-1),(x,1,3)) == 4*pi and 8*pi-4*pi*1 == 4*pi | pi\cdot2=4\pi=8\pi-4\pi$.
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=1.8cm]
+  \fill[blue!12] (1,0) rectangle (3,1);
+  \draw[->] (-0.3,0) -- (4.2,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,1.4) node[above] {$y$};
+  \draw[thick,blue!70!black] (1,0) rectangle (3,1);
+  \draw[dashed,red!70!black] (0.5,-0.15) -- (0.5,1.25);
+  \node[font=\small,red!70!black] at (0.5,1.4) {$x=k$};
+  \fill (1,1) circle (1.6pt) node[above left,font=\small] {$(1,1)$};
+%@ g-b14-p1 | 1*1 == 1 | left,font=\small] {$(1,1)$};
+  \fill (3,0) circle (1.6pt) node[below,font=\small] {$(3,0)$};
+%@ g-b14-p2 | 3-0 == 3 | node[below,font=\small] {$(3,0)$};
+\end{tikzpicture}
+\par\small\emph{Figure.} The rectangle $1\le x\le3$, $0\le y\le1$ and a vertical axis $x=k$ to its left; moving the axis to the right by $1$ lowers the volume by $2\pi A=4\pi$.
+\end{center}
+\end{exmp}
+
+% ---------------------------------------------------------------------
+\subsection*{Answers and discussion}
+
+\begin{description}
+
+  \item[Knowledge Check \ref{kc:kcshell}.] The estimate is $2\pi\cdot3\cdot5\cdot0.01=0.3\pi\approx0.942$. The exact tube volume is $\pi(3.005^2-2.995^2)\cdot5=\pi\cdot0.06\cdot5=0.3\pi$: the same, because $3$ is exactly the average of the two radii and $3.005^2-2.995^2=(3.005+2.995)(0.01)=0.06$.
+%@ ans-kc1 | 2*pi*3*5*Q(1,100) == 3*pi/10 and (Q(3005,1000)**2-Q(2995,1000)**2)*5*pi == 3*pi/10 | $\pi(3.005^2-2.995^2)\cdot5=\pi\cdot0.06\cdot5=0.3\pi$: the same, because
+
+  \item[Knowledge Check \ref{kc:kcint}.] The strip at $x$ has radius $x$ and height $x^2$, so $V=2\pi\int_0^1x\cdot x^2\,dx=2\pi\bigl[\frac{x^4}4\bigr]_0^1=\frac\pi2$.
+%@ ans-kc2 | integrate(2*pi*x*x**2,(x,0,1)) == pi/2 and 2*Q(1,4) == Q(1,2) | }4\bigr]_0^1=\frac\pi2$.
+
+  \item[Knowledge Check \ref{kc:kcaxis}.] The axis $x=5$ is to the right of the region, so $r=5-x$ and $h=x$: $V=2\pi\int_1^3(5-x)x\,dx=2\pi\bigl[\frac52x^2-\frac13x^3\bigr]_1^3=2\pi\bigl(\frac{27}2-\frac{13}6\bigr)=\frac{68\pi}3\approx71.2$.
+%@ ans-kc3 | ANT(Q(5,2)*x**2-x**3/3, 5*x-x**2, [Q(1,2),Q(3,1)]) == 0 and Q(45,2)-9-(Q(5,2)-Q(1,3)) == Q(34,3) and integrate(2*pi*(5-x)*x,(x,1,3)) == 68*pi/3 | frac{68\pi}3\approx71.2$.
+
+  \item[Pause and think \ref{think:thfactor}.] Same height and width, so the shell at $x=10$ is ten times as long around ($2\pi\cdot10$ against $2\pi\cdot1$) and has ten times the volume. A strip far from the axis sweeps more material, so each strip must be weighted by its distance $x$ from the axis; without the factor $x$ the integral $\int_a^bf\,dx$ would be just the area.
+
+  \item[Pause and think \ref{think:thside}.] The integrand $x(1-x^2)$ is odd, so the integral is $0$: it counts the left half as negative. Volume is never negative, and the left half of the region sweeps out the \emph{same} solid as the right half, so it must not be counted again. The volume is $2\pi\int_0^1x(1-x^2)\,dx=2\pi\bigl(\frac12-\frac14\bigr)=\frac\pi2$ (a paraboloid-shaped bowl of height $1$ and radius $1$). The hypothesis $0\le a<b$ rules out regions that cross the axis.
+%@ ans-th2 | integrate(x*(1-x**2),(x,-1,1)) == 0 and 2*pi*(Q(1,2)-Q(1,4)) == pi/2 and integrate(2*pi*x*(1-x**2),(x,0,1)) == pi/2 | 0\le a<b$ rules out regions that cross the axis.
+
+  \item[Pause and think \ref{think:thchoose}.] Disks are easier: the curve is $y=x^2$ and the axis is horizontal, so $V=\pi\int_0^2x^4dx=\frac{32\pi}5$. Shells need the inverse $x=\sqrt y$ and the strip $h=2-\sqrt y$ with $r=y$ for $0\le y\le4$: $V=2\pi\int_0^4(2y-y^{3/2})dy=2\pi\bigl(16-\frac{64}5\bigr)=\frac{32\pi}5$. Same number, but a harder integral.
+%@ ans-th3 | integrate(pi*x**4,(x,0,2)) == 32*pi/5 and integrate(2*pi*(2*x-x**Q(3,2)),(x,0,4)) == 32*pi/5 and 16-Q(64,5) == Q(16,5) | 5$. Same number, but a harder integral.
+
+\end{description}
+
+\end{document}
