@@ -1,0 +1,4068 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../6.3/notes/">
+      
+      
+        <link rel="next" href="../../8.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 6: Applications of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 6: Applications of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.1 Velocity and Net Change
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.1 Velocity and Net Change
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.2 Regions Between Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.2 Regions Between Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.3 Volume By Slicing
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.3 Volume By Slicing
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.4 Volume By Shells
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.4 Volume By Shells
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-second-way-to-cut-a-solid-of-revolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A second way to cut a solid of revolution
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-shell-method-about-the-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The shell method about the <span class="arithmatex">\(y\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-about-the-x-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells about the <span class="arithmatex">\(x\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-about-other-vertical-and-horizontal-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells about other vertical and horizontal lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-or-washers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells or washers?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solids-with-no-easy-description-by-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Solids with no easy description by disks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ball-and-the-torus-by-shells" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The ball and the torus by shells
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-shells-about-the-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Shells about the <span class="arithmatex">\(y\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-shells-about-the-x-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Shells about the <span class="arithmatex">\(x\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-shells-about-other-vertical-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Shells about other vertical lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-shells-about-other-horizontal-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Shells about other horizontal lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-choosing-the-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Choosing the method
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-drilled-solids" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Drilled solids
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.8 Numerical Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.8 Numerical Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.9 Improper Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.9 Improper Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.9/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-second-way-to-cut-a-solid-of-revolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A second way to cut a solid of revolution
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-shell-method-about-the-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The shell method about the <span class="arithmatex">\(y\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-about-the-x-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells about the <span class="arithmatex">\(x\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-about-other-vertical-and-horizontal-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells about other vertical and horizontal lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shells-or-washers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Shells or washers?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solids-with-no-easy-description-by-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Solids with no easy description by disks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ball-and-the-torus-by-shells" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The ball and the torus by shells
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-shells-about-the-y-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Shells about the <span class="arithmatex">\(y\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-shells-about-the-x-axis" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Shells about the <span class="arithmatex">\(x\)</span>-axis
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-shells-about-other-vertical-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Shells about other vertical lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-shells-about-other-horizontal-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Shells about other horizontal lines
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-choosing-the-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Choosing the method
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-drilled-solids" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Drilled solids
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="64-volume-by-shells">6.4 Volume By Shells<a class="headerlink" href="#64-volume-by-shells" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>Section 6.3 cut a solid of revolution into thin disks or washers perpendicular to the axis. Here we cut the same solid in a second way, into thin cylindrical <em>shells</em> around the axis, like the walls of nested tin cans. A shell of radius <span class="arithmatex">\(r\)</span>, height <span class="arithmatex">\(h\)</span> and thickness <span class="arithmatex">\(dr\)</span> is a thin tube, and unrolled it is almost a flat slab of length <span class="arithmatex">\(2\pi r\)</span>, height <span class="arithmatex">\(h\)</span> and thickness <span class="arithmatex">\(dr\)</span>, so its volume is <span class="arithmatex">\(2\pi r\,h\,dr\)</span>. The volume of the solid is the integral of these. Washers and shells give the same number for the same solid (both are proved from the same facts about volume), but one of them is often much easier. For the region under <span class="arithmatex">\(y=x^2-x^3\)</span> revolved about the <span class="arithmatex">\(y\)</span>-axis, shells give a one-line integral, while washers would need the roots of a cubic. The difficulties are again about <em>distances</em>: the radius of a shell is its distance from the axis, and its height is the length of a segment <em>parallel</em> to the axis. We prove the formulas, use them for the sphere and the torus as a cross-check on Section 6.3, and learn how to choose between shells and washers.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>describe a typical cylindrical shell by its radius, height and thickness, and say why its volume is <span class="arithmatex">\(2\pi r\,h\,dr\)</span>;</p>
+</li>
+<li>
+<p>set up and evaluate the volume of a solid of revolution by the shell method about the <span class="arithmatex">\(y\)</span>-axis, the <span class="arithmatex">\(x\)</span>-axis, and any vertical or horizontal line, for a region under a curve or between two curves;</p>
+</li>
+<li>
+<p>choose between shells and washers (or disks) and carry out the same problem both ways;</p>
+</li>
+<li>
+<p>use shells for solids that have no easy description by disks, and find the volumes of the sphere and the torus by shells;</p>
+</li>
+<li>
+<p>prove each of the theorems of this section.</p>
+</li>
+</ul>
+<h2 id="a-second-way-to-cut-a-solid-of-revolution">A second way to cut a solid of revolution<a class="headerlink" href="#a-second-way-to-cut-a-solid-of-revolution" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(R\)</span> be the region under the graph of <span class="arithmatex">\(y=f(x)\)</span> for <span class="arithmatex">\(a\le x\le b\)</span>, with <span class="arithmatex">\(0\le a&lt;b\)</span> and <span class="arithmatex">\(f\ge0\)</span>, and let <span class="arithmatex">\(S\)</span> be the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis. A washer slice of Section 6.3 is perpendicular to the <span class="arithmatex">\(y\)</span>-axis, so it needs <span class="arithmatex">\(x\)</span> as a function of <span class="arithmatex">\(y\)</span>, which may be hard to get. Instead cut <span class="arithmatex">\(R\)</span> into thin vertical strips of width <span class="arithmatex">\(dx\)</span>. The strip at <span class="arithmatex">\(x\)</span> has height <span class="arithmatex">\(f(x)\)</span> and is at distance <span class="arithmatex">\(x\)</span> from the axis. Revolved about the <span class="arithmatex">\(y\)</span>-axis, it sweeps out a thin cylindrical shell with</p>
+<p>radius <span class="arithmatex">\(r=x\)</span> (the distance to the axis), height <span class="arithmatex">\(h=f(x)\)</span> (the length of the strip, parallel to the axis), thickness <span class="arithmatex">\(dx\)</span>.</p>
+<p>Why is its volume about <span class="arithmatex">\(2\pi r\,h\,dr\)</span>? Cut the shell along a vertical line and unroll it: it becomes a slab of length (the circumference) <span class="arithmatex">\(2\pi r\)</span>, height <span class="arithmatex">\(h\)</span> and thickness <span class="arithmatex">\(dr\)</span>, and a slab has volume length <span class="arithmatex">\(\times\)</span> height <span class="arithmatex">\(\times\)</span> thickness. For a very thin shell the unrolling changes the volume very little; the next theorem shows that it changes it <em>not at all</em> if we use the mean radius. We use the same foundations as in Section 6.3: the three facts <strong>(V1)</strong> (volume from cross-sectional area), <strong>(V2)</strong> (volumes of pieces add, and a piece never has a larger volume than the whole, because volumes are not negative) and <strong>(V3)</strong> (congruent solids have the same volume). They are taken as the meaning of volume and are not proved here.</p>
+<p><img alt="Diagram: \(r=x\); \(h=f(x)\); \(r\); \(h\); shell; length \(2\pi r\); \(h\); thickness \(dr\); unrolled slab" class="calc-figure" src="../figures/notes-fig1.svg" width="595" /></p>
+<p><em>Figure.</em> A strip of height <span class="arithmatex">\(h=f(x)\)</span> at distance <span class="arithmatex">\(r=x\)</span> from the <span class="arithmatex">\(y\)</span>-axis, the thin shell it sweeps out, and the slab obtained by cutting and unrolling the shell.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.4.1: The volume of a cylindrical shell</p>
+<p><span id="thm-tube"></span></p>
+<p>Let <span class="arithmatex">\(0\le r_1&lt;r_2\)</span> and <span class="arithmatex">\(h\ge0\)</span>. The <em>shell</em> (tube) of inner radius <span class="arithmatex">\(r_1\)</span>, outer radius <span class="arithmatex">\(r_2\)</span> and height <span class="arithmatex">\(h\)</span> is the solid of points <span class="arithmatex">\((X,Y,Z)\)</span> with <span class="arithmatex">\(r_1\le\sqrt{X^2+Z^2}\le r_2\)</span> and <span class="arithmatex">\(y_0\le Y\le y_0+h\)</span>. Its volume is</p>
+<div class="arithmatex">\[V=\pi\left(r_2^2-r_1^2\right)h=2\pi\cdot\frac{r_1+r_2}2\cdot h\cdot(r_2-r_1),\]</div>
+<p>that is, <span class="arithmatex">\(2\pi\times\)</span>(mean radius)<span class="arithmatex">\(\times\)</span>(height)<span class="arithmatex">\(\times\)</span>(thickness).</p>
+</div>
+<p><em>Proof.</em> The plane perpendicular to the <span class="arithmatex">\(y\)</span>-axis at height <span class="arithmatex">\(Y\)</span>, with <span class="arithmatex">\(y_0\le Y\le y_0+h\)</span>, cuts the tube in a ring: the disk of radius <span class="arithmatex">\(r_2\)</span> with the open disk of radius <span class="arithmatex">\(r_1\)</span> removed. A disk of radius <span class="arithmatex">\(r\)</span> has area <span class="arithmatex">\(\pi r^2\)</span> (Calculus I), so by (V2) in the plane the ring has area <span class="arithmatex">\(\pi r_2^2-\pi r_1^2\)</span>, the same for every <span class="arithmatex">\(Y\)</span>. By Theorem <a href="../../6.3/notes/#thm-yslice">6.3.2</a> (slicing along the <span class="arithmatex">\(y\)</span>-axis), <span class="arithmatex">\(V=\int_{y_0}^{y_0+h}\pi(r_2^2-r_1^2)\,dY=\pi(r_2^2-r_1^2)h\)</span>. Finally <span class="arithmatex">\(r_2^2-r_1^2=(r_2+r_1)(r_2-r_1)\)</span>, and <span class="arithmatex">\(\pi(r_2+r_1)=2\pi\cdot\frac{r_1+r_2}2\)</span>. (For instance <span class="arithmatex">\(r_1=2\)</span>, <span class="arithmatex">\(r_2=3\)</span>, <span class="arithmatex">\(h=4\)</span>: <span class="arithmatex">\(\pi(9-4)\cdot4=20\pi\)</span>, and <span class="arithmatex">\(2\pi\cdot2.5\cdot4\cdot1=20\pi\)</span>.) ◻ ∎</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.4.1: A thin shell</p>
+<p><span id="kc-kcshell"></span></p>
+<p>A shell has radius <span class="arithmatex">\(3\)</span>, height <span class="arithmatex">\(5\)</span> and thickness <span class="arithmatex">\(0.01\)</span>. Use <span class="arithmatex">\(2\pi r\,h\,dr\)</span> to estimate its volume, and compare with Theorem <a href="#thm-tube">6.4.1</a> for inner radius <span class="arithmatex">\(2.995\)</span> and outer radius <span class="arithmatex">\(3.005\)</span>.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.4.1: Why <span class="arithmatex">\(2\pi x\)</span> and not just <span class="arithmatex">\(x\)</span>?</p>
+<p><span id="think-thfactor"></span></p>
+<p>Two strips of the same height and the same width are revolved about the <span class="arithmatex">\(y\)</span>-axis, one at <span class="arithmatex">\(x=1\)</span> and one at <span class="arithmatex">\(x=10\)</span>. Which sweeps out the larger shell, and by what factor? What does that say about the factor <span class="arithmatex">\(x\)</span> in the integrand of the shell method?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Same height and width, so the shell at <span class="arithmatex">\(x=10\)</span> is ten times as long around (<span class="arithmatex">\(2\pi\cdot10\)</span> against <span class="arithmatex">\(2\pi\cdot1\)</span>) and has ten times the volume. A strip far from the axis sweeps more material, so each strip must be weighted by its distance <span class="arithmatex">\(x\)</span> from the axis; without the factor <span class="arithmatex">\(x\)</span> the integral <span class="arithmatex">\(\int_a^bf\,dx\)</span> would be just the area.</p>
+</details>
+</div>
+<h2 id="the-shell-method-about-the-y-axis">The shell method about the <span class="arithmatex">\(y\)</span>-axis<a class="headerlink" href="#the-shell-method-about-the-y-axis" title="Permanent link">&para;</a></h2>
+<p>The strips add up to the whole solid. We state the formula for a region between two curves, which includes the region under one curve (<span class="arithmatex">\(g=0\)</span>).</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.4.2: The shell method about the <span class="arithmatex">\(y\)</span>-axis</p>
+<p><span id="thm-shell"></span></p>
+<p>Let <span class="arithmatex">\(0\le a&lt;b\)</span>, let <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> with <span class="arithmatex">\(g\le f\)</span>, let <span class="arithmatex">\(R\)</span> be the region between their graphs for <span class="arithmatex">\(a\le x\le b\)</span>, and let <span class="arithmatex">\(S\)</span> be the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis. Then</p>
+<div class="arithmatex">\[V=2\pi\int_a^b x\,\bigl(f(x)-g(x)\bigr)\,dx ,\]</div>
+<p>the integral of (circumference <span class="arithmatex">\(2\pi x\)</span>) <span class="arithmatex">\(\times\)</span> (height <span class="arithmatex">\(f-g\)</span>, top minus bottom) <span class="arithmatex">\(\times\)</span> (thickness <span class="arithmatex">\(dx\)</span>). In particular, if <span class="arithmatex">\(g=0\)</span> and <span class="arithmatex">\(f\ge0\)</span> then <span class="arithmatex">\(V=2\pi\int_a^bx\,f(x)\,dx\)</span>.</p>
+</div>
+<p><em>Proof.</em> <em>Step 1: the region under one curve.</em> Let <span class="arithmatex">\(g=0\)</span> and <span class="arithmatex">\(f\ge0\)</span>. Write <span class="arithmatex">\(\rho=\sqrt{X^2+Z^2}\)</span> for the distance from the <span class="arithmatex">\(y\)</span>-axis; then <span class="arithmatex">\(S=\{a\le\rho\le b,\ 0\le Y\le f(\rho)\}\)</span>. For <span class="arithmatex">\(a\le x\le b\)</span> let <span class="arithmatex">\(V(x)\)</span> be the volume of the part <span class="arithmatex">\(S_x\)</span> of <span class="arithmatex">\(S\)</span> with <span class="arithmatex">\(\rho\le x\)</span> (the solid made by the part of <span class="arithmatex">\(R\)</span> over <span class="arithmatex">\([a,x]\)</span>), so <span class="arithmatex">\(V(a)=0\)</span> and <span class="arithmatex">\(V(b)\)</span> is the volume we want.</p>
+<p>Take <span class="arithmatex">\(x&lt;b\)</span> and <span class="arithmatex">\(h&gt;0\)</span> with <span class="arithmatex">\(x+h\le b\)</span>. Let <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(M\)</span> be the least and greatest values of <span class="arithmatex">\(f\)</span> on <span class="arithmatex">\([x,x+h]\)</span>. The part of <span class="arithmatex">\(S\)</span> with <span class="arithmatex">\(x\le\rho\le x+h\)</span> is <span class="arithmatex">\(P=\{x\le\rho\le x+h,\ 0\le Y\le f(\rho)\}\)</span>. It contains the shell <span class="arithmatex">\(T_m=\{x\le\rho\le x+h,\ 0\le Y\le m\}\)</span> and lies inside the shell <span class="arithmatex">\(T_M=\{x\le\rho\le x+h,\ 0\le Y\le M\}\)</span>. The solids <span class="arithmatex">\(S_x\)</span> and <span class="arithmatex">\(P\)</span> overlap only along the cylinder <span class="arithmatex">\(\rho=x\)</span> and together make <span class="arithmatex">\(S_{x+h}\)</span>, so <span class="arithmatex">\(V(x+h)-V(x)=\operatorname{vol}(P)\)</span> by (V2); and by (V2) again <span class="arithmatex">\(\operatorname{vol}(T_m)\le\operatorname{vol}(P)\le\operatorname{vol}(T_M)\)</span>. Theorem <a href="#thm-tube">6.4.1</a> gives <span class="arithmatex">\(\operatorname{vol}(T_m)=\pi\bigl((x+h)^2-x^2\bigr)m=\pi h(2x+h)m\)</span>, and likewise for <span class="arithmatex">\(T_M\)</span>. Hence</p>
+<div class="arithmatex">\[\pi(2x+h)\,m\ \le\ \frac{V(x+h)-V(x)}h\ \le\ \pi(2x+h)\,M .\]</div>
+<p>As <span class="arithmatex">\(h\to0^+\)</span> both <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(M\)</span> tend to <span class="arithmatex">\(f(x)\)</span>, because <span class="arithmatex">\(f\)</span> is continuous, so the right derivative of <span class="arithmatex">\(V\)</span> at <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(2\pi x\,f(x)\)</span>. The same argument on <span class="arithmatex">\([x-h,x]\)</span> (shells of radii <span class="arithmatex">\(x-h\)</span> and <span class="arithmatex">\(x\)</span>, volume factor <span class="arithmatex">\(\pi h(2x-h)\)</span>) gives the left derivative, the same number. So <span class="arithmatex">\(V'(x)=2\pi x\,f(x)\)</span> for <span class="arithmatex">\(a\le x\le b\)</span> (one-sided at the ends), a continuous function. By the net change theorem (Theorem <a href="../../6.1/notes/#thm-net">6.1.14</a>, which is the Fundamental Theorem of Calculus), <span class="arithmatex">\(V(b)=V(b)-V(a)=\int_a^b2\pi x\,f(x)\,dx\)</span>.</p>
+<p><em>Step 2: two curves.</em> The function <span class="arithmatex">\(g\)</span> is continuous, hence bounded below on <span class="arithmatex">\([a,b]\)</span>, so there is a constant <span class="arithmatex">\(c\)</span> with <span class="arithmatex">\(g+c\ge0\)</span>. The translation <span class="arithmatex">\((X,Y,Z)\mapsto(X,Y+c,Z)\)</span> is a rigid motion, so by (V3) the solid for <span class="arithmatex">\(f,g\)</span> has the same volume as the solid for <span class="arithmatex">\(f+c,\ g+c\)</span>, and <span class="arithmatex">\((f+c)-(g+c)=f-g\)</span>. So we may assume <span class="arithmatex">\(g\ge0\)</span>. Let <span class="arithmatex">\(U_f\)</span> and <span class="arithmatex">\(U_g\)</span> be the solids from the regions under <span class="arithmatex">\(f\)</span> and under <span class="arithmatex">\(g\)</span>. Then <span class="arithmatex">\(U_f\)</span> is made of <span class="arithmatex">\(U_g\)</span> and <span class="arithmatex">\(S\)</span>, which overlap only along the surface <span class="arithmatex">\(Y=g(\rho)\)</span>, so <span class="arithmatex">\(\operatorname{vol}(S)=\operatorname{vol}(U_f)-\operatorname{vol}(U_g)=2\pi\int_a^bxf\,dx-2\pi\int_a^bxg\,dx\)</span> by Step 1, which is <span class="arithmatex">\(2\pi\int_a^bx(f-g)\,dx\)</span>. (For instance <span class="arithmatex">\(f=2\)</span> and <span class="arithmatex">\(g=1\)</span> on <span class="arithmatex">\([0,1]\)</span> give <span class="arithmatex">\(2\pi\int_0^1x\,dx=\pi\)</span>: a cylinder of radius <span class="arithmatex">\(1\)</span> and height <span class="arithmatex">\(1\)</span>.) ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.4.3: The shell method</p>
+<p><span id="proc-shell"></span></p>
+<ol>
+<li>
+<p>Sketch the region and the axis of revolution.</p>
+</li>
+<li>
+<p>Draw one typical segment of the region <em>parallel to the axis</em>. Its length is the shell height <span class="arithmatex">\(h\)</span>; its distance from the axis is the shell radius <span class="arithmatex">\(r\)</span>.</p>
+</li>
+<li>
+<p>The variable of integration is the one <em>across</em> the segments, perpendicular to the axis: <span class="arithmatex">\(x\)</span> for a vertical axis, <span class="arithmatex">\(y\)</span> for a horizontal axis. Write the boundary curves in that variable (for a horizontal axis, <span class="arithmatex">\(x\)</span> as a function of <span class="arithmatex">\(y\)</span>, as in Section 6.2) and find the limits.</p>
+</li>
+<li>
+<p>Integrate <span class="arithmatex">\(2\pi\,r\,h\)</span> with respect to that variable, and test the answer for plausibility.</p>
+</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The factor is the circumference not the radius</p>
+<p>The integrand is <span class="arithmatex">\(2\pi\cdot r\cdot h\)</span>: the circumference <span class="arithmatex">\(2\pi r\)</span> times the height, not <span class="arithmatex">\(\pi r^2\)</span> (that is a disk) and not <span class="arithmatex">\(2\pi h\)</span>. And <span class="arithmatex">\(r\)</span> is the <em>distance to the axis</em>, which equals <span class="arithmatex">\(x\)</span> only when the axis is the <span class="arithmatex">\(y\)</span>-axis (Theorem <a href="#thm-lines">6.4.9</a> below).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.4.2: A shell integral</p>
+<p><span id="kc-kcint"></span></p>
+<p>The region under <span class="arithmatex">\(y=x^2\)</span> for <span class="arithmatex">\(0\le x\le1\)</span> is revolved about the <span class="arithmatex">\(y\)</span>-axis. Write the radius and the height of a typical shell and evaluate the volume by shells.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.4: A dome: the region under a parabola</p>
+<p><span id="ex-e1"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant under <span class="arithmatex">\(y=4-x^2\)</span> (between the axes and the curve). Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Set-up.</em> The curve meets the axes at <span class="arithmatex">\((2,0)\)</span> and <span class="arithmatex">\((0,4)\)</span>, so <span class="arithmatex">\(0\le x\le2\)</span>. A vertical strip at <span class="arithmatex">\(x\)</span> is parallel to the axis; its distance from the axis is the radius <span class="arithmatex">\(r=x\)</span> and its length is the height <span class="arithmatex">\(h=4-x^2\)</span> (top <span class="arithmatex">\(y=4-x^2\)</span> minus bottom <span class="arithmatex">\(y=0\)</span>). <em>Integral.</em> By Theorem <a href="#thm-shell">6.4.2</a>,</p>
+<div class="arithmatex">\[V=2\pi\int_0^2x\,(4-x^2)\,dx=2\pi\int_0^2\bigl(4x-x^3\bigr)\,dx=2\pi\Bigl[2x^2-\frac{x^4}4\Bigr]_0^2=2\pi(8-4)=8\pi\approx25.13 .\]</div>
+<p>(The bracket is checked by differentiating: <span class="arithmatex">\(\frac{d}{dx}\bigl(2x^2-\frac{x^4}4\bigr)=4x-x^3\)</span>.)</p>
+<p><em>Check by washers.</em> The solid is a paraboloid dome. Slicing by <span class="arithmatex">\(y\)</span> (Section 6.3) gives disks of radius <span class="arithmatex">\(\sqrt{4-y}\)</span>, so <span class="arithmatex">\(V=\pi\int_0^4(4-y)\,dy=\pi\bigl[4y-\frac{y^2}2\bigr]_0^4=8\pi\)</span>, the same, and half of the cylinder of radius <span class="arithmatex">\(2\)</span> and height <span class="arithmatex">\(4\)</span> (<span class="arithmatex">\(16\pi\)</span>).</p>
+<p><img alt="Diagram: \(r=x\); \(h=4-x^2\); \(V=8\pi\); the dome and one shell" class="calc-figure" src="../figures/notes-fig2.svg" width="551" /></p>
+<p><em>Figure.</em> The region (shaded) with a typical strip at <span class="arithmatex">\(x=1\)</span> (red), at distance <span class="arithmatex">\(r=1\)</span> from the axis with height <span class="arithmatex">\(h=4-1=3\)</span>. Revolved, the strip is the red shell in the picture of the dome (right).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.5: A shell integral that needs a substitution</p>
+<p><span id="ex-e2"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region under <span class="arithmatex">\(y=\dfrac1{\sqrt{x^2+1}}\)</span> for <span class="arithmatex">\(0\le x\le2\sqrt2\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> A vertical strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(r=x\)</span> and height <span class="arithmatex">\(h=\dfrac1{\sqrt{x^2+1}}\)</span>, so by Theorem <a href="#thm-shell">6.4.2</a></p>
+<div class="arithmatex">\[V=2\pi\int_0^{2\sqrt2}\frac{x}{\sqrt{x^2+1}}\,dx .\]</div>
+<p><em>Substitution.</em> Let <span class="arithmatex">\(u=x^2+1\)</span>, so <span class="arithmatex">\(du=2x\,dx\)</span> and <span class="arithmatex">\(x\,dx=\frac12\,du\)</span>. When <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(u=1\)</span>; when <span class="arithmatex">\(x=2\sqrt2\)</span>, <span class="arithmatex">\(u=8+1=9\)</span>. Then</p>
+<div class="arithmatex">\[V=2\pi\int_1^9\frac{1}{\sqrt u}\cdot\frac12\,du=\pi\int_1^9u^{-1/2}\,du=\pi\Bigl[2\sqrt u\Bigr]_1^9=\pi(6-2)=4\pi\approx12.57 .\]</div>
+<p><em>Check.</em> The height decreases from <span class="arithmatex">\(1\)</span> at <span class="arithmatex">\(x=0\)</span> to <span class="arithmatex">\(\frac13\)</span> at <span class="arithmatex">\(x=2\sqrt2\)</span>, so the solid lies inside the cylinder of radius <span class="arithmatex">\(2\sqrt2\)</span> and height <span class="arithmatex">\(1\)</span>, of volume <span class="arithmatex">\(\pi\cdot8\cdot1=8\pi\)</span>, and contains the cylinder of radius <span class="arithmatex">\(2\sqrt2\)</span> and height <span class="arithmatex">\(\frac13\)</span>, of volume <span class="arithmatex">\(\frac{8\pi}3\)</span>; <span class="arithmatex">\(\frac{8\pi}3&lt;4\pi&lt;8\pi\)</span>.</p>
+<p><img alt="Diagram: \(r=x\); $h=\frac1{\sqrt{x^2+1" class="calc-figure" src="../figures/notes-fig3.svg" width="368" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=1/\sqrt{x^2+1}\)</span> on <span class="arithmatex">\([0,2\sqrt2]\)</span>. The strip at <span class="arithmatex">\(x=1\)</span> (red) has radius <span class="arithmatex">\(1\)</span> and height <span class="arithmatex">\(1/\sqrt2\)</span>.</p>
+</div>
+<h2 id="shells-about-the-x-axis">Shells about the <span class="arithmatex">\(x\)</span>-axis<a class="headerlink" href="#shells-about-the-x-axis" title="Permanent link">&para;</a></h2>
+<p>When the axis is the <span class="arithmatex">\(x\)</span>-axis the strips must be parallel to it, so they are horizontal, the variable of integration is <span class="arithmatex">\(y\)</span> and the curves are written as <span class="arithmatex">\(x=p(y)\)</span> (right) and <span class="arithmatex">\(x=q(y)\)</span> (left), as in Section 6.2. The formula is Theorem <a href="#thm-shell">6.4.2</a> with the roles of <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.4.6: The shell method about the <span class="arithmatex">\(x\)</span>-axis</p>
+<p><span id="thm-shellx"></span></p>
+<p>Let <span class="arithmatex">\(0\le c&lt;d\)</span>, let <span class="arithmatex">\(p\ge q\)</span> be continuous on <span class="arithmatex">\([c,d]\)</span> and let <span class="arithmatex">\(R\)</span> be the region between <span class="arithmatex">\(x=q(y)\)</span> and <span class="arithmatex">\(x=p(y)\)</span> for <span class="arithmatex">\(c\le y\le d\)</span> (right minus left). The solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(x\)</span>-axis has volume</p>
+<div class="arithmatex">\[V=2\pi\int_c^dy\,\bigl(p(y)-q(y)\bigr)\,dy ,\]</div>
+<p>a shell of radius <span class="arithmatex">\(y\)</span> and height <span class="arithmatex">\(p-q\)</span> (the length of a horizontal strip) and thickness <span class="arithmatex">\(dy\)</span>.</p>
+</div>
+<p><em>Proof.</em> The solid is <span class="arithmatex">\(S=\{c\le\sqrt{Y^2+Z^2}\le d,\ q(\sqrt{Y^2+Z^2})\le X\le p(\sqrt{Y^2+Z^2})\}\)</span>. Let <span class="arithmatex">\(\sigma(X,Y,Z)=(Y,X,Z)\)</span> be the reflection in the plane <span class="arithmatex">\(x=y\)</span>, a rigid motion. Then <span class="arithmatex">\(\sigma(S)=\{c\le\sqrt{u^2+z^2}\le d,\ q(\sqrt{u^2+z^2})\le v\le p(\sqrt{u^2+z^2})\}\)</span> in the coordinates <span class="arithmatex">\((u,v,z)\)</span>, and this is the solid obtained by revolving about the <span class="arithmatex">\(v\)</span>-axis the region between the graphs <span class="arithmatex">\(v=q(u)\)</span> and <span class="arithmatex">\(v=p(u)\)</span> for <span class="arithmatex">\(c\le u\le d\)</span>. By Theorem <a href="#thm-shell">6.4.2</a> its volume is <span class="arithmatex">\(2\pi\int_c^du\,(p(u)-q(u))\,du\)</span>, and by (V3) this is the volume of <span class="arithmatex">\(S\)</span>. (For instance <span class="arithmatex">\(p=2\)</span> and <span class="arithmatex">\(q=1\)</span> on <span class="arithmatex">\([0,1]\)</span> give <span class="arithmatex">\(2\pi\int_0^1y\,dy=\pi\)</span>.) ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.7: Shells about the <span class="arithmatex">\(x\)</span>-axis: a region beside a cube root</p>
+<p><span id="ex-e3"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant bounded by the <span class="arithmatex">\(y\)</span>-axis, the line <span class="arithmatex">\(y=2\)</span> and the curve <span class="arithmatex">\(y=\sqrt[3]x\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Set-up.</em> The axis is horizontal, so we use horizontal strips and integrate with respect to <span class="arithmatex">\(y\)</span>. Solving <span class="arithmatex">\(y=\sqrt[3]x\)</span> for <span class="arithmatex">\(x\)</span> gives <span class="arithmatex">\(x=y^3\)</span>. At height <span class="arithmatex">\(y\)</span>, with <span class="arithmatex">\(0\le y\le2\)</span>, the region runs from the <span class="arithmatex">\(y\)</span>-axis (<span class="arithmatex">\(x=0\)</span>) to the curve (<span class="arithmatex">\(x=y^3\)</span>), so the strip has length <span class="arithmatex">\(h=y^3-0=y^3\)</span>, and its distance from the <span class="arithmatex">\(x\)</span>-axis is <span class="arithmatex">\(r=y\)</span>. <em>Integral.</em> <span class="arithmatex">\(V=2\pi\int_0^2y\cdot y^3\,dy=2\pi\int_0^2y^4\,dy=2\pi\Bigl[\frac{y^5}5\Bigr]_0^2=2\pi\cdot\frac{32}5=\frac{64\pi}5\approx40.21 .\)</span></p>
+<p><em>Check by washers.</em> Slicing perpendicular to the <span class="arithmatex">\(x\)</span>-axis, for <span class="arithmatex">\(0\le x\le8\)</span> the outer radius is <span class="arithmatex">\(2\)</span> and the inner radius is <span class="arithmatex">\(\sqrt[3]x\)</span>, so <span class="arithmatex">\(V=\pi\int_0^8\bigl(4-x^{2/3}\bigr)dx=\pi\bigl[4x-\frac35x^{5/3}\bigr]_0^8=\pi\bigl(32-\frac{96}5\bigr)=\frac{64\pi}5\)</span>. The two methods agree.</p>
+<p><img alt="Diagram: \(r=y\); \(h=y^3\); \(y=\sqrt[3]x\)" class="calc-figure" src="../figures/notes-fig4.svg" width="353" /></p>
+<p><em>Figure.</em> The region left of the curve <span class="arithmatex">\(y=\sqrt[3]x\)</span> and below <span class="arithmatex">\(y=2\)</span>. The red strip at height <span class="arithmatex">\(y=1\)</span> runs from the <span class="arithmatex">\(y\)</span>-axis to <span class="arithmatex">\(x=y^3=1\)</span>; its distance from the axis of revolution (the <span class="arithmatex">\(x\)</span>-axis) is <span class="arithmatex">\(r=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.8: Two curves: the region between a line and a parabola</p>
+<p><span id="ex-e4"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant between <span class="arithmatex">\(y=x^2\)</span> and <span class="arithmatex">\(y=6-x\)</span>, to the right of the <span class="arithmatex">\(y\)</span>-axis. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Intersection.</em> <span class="arithmatex">\(x^2=6-x\)</span> gives <span class="arithmatex">\(x^2+x-6=(x+3)(x-2)=0\)</span>, so <span class="arithmatex">\(x=2\)</span> in the first quadrant, at the point <span class="arithmatex">\((2,4)\)</span>. For <span class="arithmatex">\(0\le x\le2\)</span> the line is above the parabola (at <span class="arithmatex">\(x=1\)</span>: <span class="arithmatex">\(5&gt;1\)</span>), so the strip at <span class="arithmatex">\(x\)</span> has height <span class="arithmatex">\(h=(6-x)-x^2\)</span> and radius <span class="arithmatex">\(r=x\)</span>. <em>Integral.</em> By Theorem <a href="#thm-shell">6.4.2</a>,</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^2x\,(6-x-x^2)\,dx=2\pi\int_0^2\bigl(6x-x^2-x^3\bigr)\,dx\\ &amp;=2\pi\Bigl[3x^2-\frac{x^3}3-\frac{x^4}4\Bigr]_0^2=2\pi\Bigl(12-\frac83-4\Bigr)=\frac{32\pi}3\approx33.51 .
+\end{aligned}\]</div>
+<p><em>Why shells.</em> With washers we would slice by <span class="arithmatex">\(y\)</span>. For <span class="arithmatex">\(0\le y\le4\)</span> the region runs from the axis to the parabola (<span class="arithmatex">\(x=\sqrt y\)</span>), but for <span class="arithmatex">\(4\le y\le6\)</span> it runs from the axis to the line (<span class="arithmatex">\(x=6-y\)</span>), so two integrals are needed: <span class="arithmatex">\(\pi\int_0^4y\,dy+\pi\int_4^6(6-y)^2dy=8\pi+\frac{8\pi}3=\frac{32\pi}3\)</span>, the same. The shells need one integral.</p>
+<p><img alt="Diagram: \(r=x\); \(h=6-x-x^2\); \(y=6-x\); \(y=x^2\)" class="calc-figure" src="../figures/notes-fig5.svg" width="496" /></p>
+<p><em>Figure.</em> The region between the parabola and the line, with the strip at <span class="arithmatex">\(x=1\)</span> from <span class="arithmatex">\((1,1)\)</span> up to <span class="arithmatex">\((1,5)\)</span>: height <span class="arithmatex">\(h=5-1=4\)</span> and radius <span class="arithmatex">\(r=1\)</span>.</p>
+</div>
+<h2 id="shells-about-other-vertical-and-horizontal-lines">Shells about other vertical and horizontal lines<a class="headerlink" href="#shells-about-other-vertical-and-horizontal-lines" title="Permanent link">&para;</a></h2>
+<p>As with washers, the axis need not be a coordinate axis. The only change is that the radius of a shell is its distance from the axis. Call the axis <span class="arithmatex">\(x=k\)</span> (vertical) or <span class="arithmatex">\(y=k\)</span> (horizontal), as in Section 6.3, and assume the region lies on one side of it.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.4.9: Shells about other lines</p>
+<p><span id="thm-lines"></span></p>
+<p><strong>(1)</strong> <em>Vertical axis <span class="arithmatex">\(x=k\)</span>.</em> Let <span class="arithmatex">\(f\ge g\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let <span class="arithmatex">\(R\)</span> be the region between their graphs. If the axis is to the left of <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k\le a\)</span>), the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about <span class="arithmatex">\(x=k\)</span> is <span class="arithmatex">\(V=2\pi\int_a^b(x-k)\,(f-g)\,dx\)</span>. If the axis is to the right of <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k\ge b\)</span>), it is <span class="arithmatex">\(V=2\pi\int_a^b(k-x)\,(f-g)\,dx\)</span>.</p>
+<p><strong>(2)</strong> <em>Horizontal axis <span class="arithmatex">\(y=k\)</span>.</em> Let <span class="arithmatex">\(p\ge q\)</span> be continuous on <span class="arithmatex">\([c,d]\)</span> and let <span class="arithmatex">\(R\)</span> be the region between <span class="arithmatex">\(x=q(y)\)</span> and <span class="arithmatex">\(x=p(y)\)</span>. If the axis is below <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k\le c\)</span>), <span class="arithmatex">\(V=2\pi\int_c^d(y-k)\,(p-q)\,dy\)</span>; if it is above <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k\ge d\)</span>), <span class="arithmatex">\(V=2\pi\int_c^d(k-y)\,(p-q)\,dy\)</span>.</p>
+<p>In words: the radius is the distance from the strip to the axis, and the height is the length of the strip (parallel to the axis).</p>
+</div>
+<p><em>Proof.</em> (1) Let <span class="arithmatex">\(k\le a\)</span>. The translation <span class="arithmatex">\((X,Y,Z)\mapsto(X-k,Y,Z)\)</span> carries the axis <span class="arithmatex">\(x=k\)</span> onto the <span class="arithmatex">\(y\)</span>-axis and <span class="arithmatex">\(R\)</span> onto the region between the graphs of <span class="arithmatex">\(u\mapsto f(u+k)\)</span> and <span class="arithmatex">\(u\mapsto g(u+k)\)</span> for <span class="arithmatex">\(a-k\le u\le b-k\)</span>, where <span class="arithmatex">\(a-k\ge0\)</span>. By (V3) and Theorem <a href="#thm-shell">6.4.2</a> the volume is <span class="arithmatex">\(2\pi\int_{a-k}^{b-k}u\bigl(f(u+k)-g(u+k)\bigr)du\)</span>, and the substitution <span class="arithmatex">\(x=u+k\)</span> turns this into <span class="arithmatex">\(2\pi\int_a^b(x-k)(f-g)\,dx\)</span>. Now let <span class="arithmatex">\(k\ge b\)</span>. The reflection <span class="arithmatex">\((X,Y,Z)\mapsto(2k-X,Y,Z)\)</span> in the plane <span class="arithmatex">\(X=k\)</span> fixes the axis and carries <span class="arithmatex">\(R\)</span> onto the region between the graphs of <span class="arithmatex">\(u\mapsto f(2k-u)\)</span> and <span class="arithmatex">\(u\mapsto g(2k-u)\)</span> over <span class="arithmatex">\(2k-b\le u\le2k-a\)</span>, which lies to the right of <span class="arithmatex">\(x=k\)</span> (since <span class="arithmatex">\(2k-b\ge k\)</span>). By the first case and (V3), <span class="arithmatex">\(V=2\pi\int_{2k-b}^{2k-a}(u-k)\bigl(f(2k-u)-g(2k-u)\bigr)du\)</span>, and the substitution <span class="arithmatex">\(x=2k-u\)</span> (so <span class="arithmatex">\(u-k=k-x\)</span> and the limits become <span class="arithmatex">\(b\)</span> and <span class="arithmatex">\(a\)</span>, with <span class="arithmatex">\(du=-dx\)</span>) gives <span class="arithmatex">\(2\pi\int_a^b(k-x)(f-g)\,dx\)</span>.</p>
+<p>(2) The reflection <span class="arithmatex">\(\sigma(X,Y,Z)=(Y,X,Z)\)</span> carries the axis <span class="arithmatex">\(y=k\)</span> (with <span class="arithmatex">\(Z=0\)</span>) onto the axis <span class="arithmatex">\(x=k\)</span> (with <span class="arithmatex">\(Z=0\)</span>) and the region between <span class="arithmatex">\(x=q(y)\)</span> and <span class="arithmatex">\(x=p(y)\)</span> onto the region between the graphs of <span class="arithmatex">\(q\le p\)</span> with <span class="arithmatex">\(u\)</span> as the horizontal variable. Apply part (1) with <span class="arithmatex">\(f=p\)</span>, <span class="arithmatex">\(g=q\)</span>, and (V3). (For instance <span class="arithmatex">\(f=2\)</span>, <span class="arithmatex">\(g=1\)</span> on <span class="arithmatex">\([0,1]\)</span> about <span class="arithmatex">\(x=-1\)</span>: <span class="arithmatex">\(2\pi\int_0^1(x+1)\,dx=3\pi\)</span>, a cylinder of radius <span class="arithmatex">\(2\)</span> with a hole of radius <span class="arithmatex">\(1\)</span>, height <span class="arithmatex">\(1\)</span>.) ◻ ∎</p>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.4.3: Which radius?</p>
+<p><span id="kc-kcaxis"></span></p>
+<p>The region under <span class="arithmatex">\(y=x\)</span> for <span class="arithmatex">\(1\le x\le3\)</span> is revolved about the line <span class="arithmatex">\(x=5\)</span>. Write the radius and the height of a typical shell, and evaluate the volume.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.4.2: A region on both sides of the axis</p>
+<p><span id="think-thside"></span></p>
+<p>The region under <span class="arithmatex">\(y=1-x^2\)</span> for <span class="arithmatex">\(-1\le x\le1\)</span> is revolved about the <span class="arithmatex">\(y\)</span>-axis. What does the integral <span class="arithmatex">\(2\pi\int_{-1}^1x(1-x^2)\,dx\)</span> give? Why is this not the volume, and what is the volume? Compare with the hypothesis <span class="arithmatex">\(0\le a&lt;b\)</span> of Theorem <a href="#thm-shell">6.4.2</a>.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The integrand <span class="arithmatex">\(x(1-x^2)\)</span> is odd, so the integral is <span class="arithmatex">\(0\)</span>: it counts the left half as negative. Volume is never negative, and the left half of the region sweeps out the <em>same</em> solid as the right half, so it must not be counted again. The volume is <span class="arithmatex">\(2\pi\int_0^1x(1-x^2)\,dx=2\pi\bigl(\frac12-\frac14\bigr)=\frac\pi2\)</span> (a paraboloid-shaped bowl of height <span class="arithmatex">\(1\)</span> and radius <span class="arithmatex">\(1\)</span>). The hypothesis <span class="arithmatex">\(0\le a&lt;b\)</span> rules out regions that cross the axis.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.10: The same region about two vertical lines</p>
+<p><span id="ex-e5"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region under <span class="arithmatex">\(y=x^2\)</span> for <span class="arithmatex">\(0\le x\le1\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> (a) about the line <span class="arithmatex">\(x=-1\)</span> and (b) about the line <span class="arithmatex">\(x=2\)</span>.</p>
+<p><strong>Solution.</strong> The axes are vertical, so the strips are vertical, <span class="arithmatex">\(h=x^2\)</span> and we integrate in <span class="arithmatex">\(x\)</span>.</p>
+<p>(a) <em>Axis <span class="arithmatex">\(x=-1\)</span>.</em> The axis is to the left of <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k=-1\le a=0\)</span>), so the radius is <span class="arithmatex">\(r=x-(-1)=x+1\)</span>:</p>
+<div class="arithmatex">\[V_a=2\pi\int_0^1(x+1)x^2\,dx=2\pi\int_0^1\bigl(x^3+x^2\bigr)dx=2\pi\Bigl[\frac{x^4}4+\frac{x^3}3\Bigr]_0^1=2\pi\cdot\frac7{12}=\frac{7\pi}6\approx3.665 .\]</div>
+<p>(b) <em>Axis <span class="arithmatex">\(x=2\)</span>.</em> The axis is to the right of <span class="arithmatex">\(R\)</span> (<span class="arithmatex">\(k=2\ge b=1\)</span>), so the radius is <span class="arithmatex">\(r=2-x\)</span>:</p>
+<div class="arithmatex">\[V_b=2\pi\int_0^1(2-x)x^2\,dx=2\pi\int_0^1\bigl(2x^2-x^3\bigr)dx=2\pi\Bigl[\frac{2x^3}3-\frac{x^4}4\Bigr]_0^1=2\pi\cdot\frac5{12}=\frac{5\pi}6\approx2.618 .\]</div>
+<p><em>Check.</em> The two radii add to <span class="arithmatex">\((x+1)+(2-x)=3\)</span>, so <span class="arithmatex">\(V_a+V_b=2\pi\cdot3\int_0^1x^2\,dx=2\pi\)</span>; indeed <span class="arithmatex">\(\frac{7\pi}6+\frac{5\pi}6=2\pi\)</span>. Also <span class="arithmatex">\(V_a&gt;V_b\)</span>, as it should: most of the region lies near <span class="arithmatex">\(x=1\)</span>, which is <span class="arithmatex">\(2\)</span> from the first axis but only <span class="arithmatex">\(1\)</span> from the second.</p>
+<p><img alt="Diagram: \(r=x+1\); \(r=2-x\); \(x=-1\); \(x=2\); \(y=x^2\)" class="calc-figure" src="../figures/notes-fig6.svg" width="376" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=x^2\)</span> with the two axes. The strip at <span class="arithmatex">\(x=\frac12\)</span> (height <span class="arithmatex">\(h=\frac14\)</span>) is at distance <span class="arithmatex">\(\frac12+1=\frac32\)</span> from <span class="arithmatex">\(x=-1\)</span> (green arrow) and <span class="arithmatex">\(2-\frac12=\frac32\)</span> from <span class="arithmatex">\(x=2\)</span> (red arrow); at <span class="arithmatex">\(x=\frac12\)</span> the two radii happen to be equal, but they differ everywhere else.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.11: The same region about two horizontal lines</p>
+<p><span id="ex-e6"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region between <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=2y\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> (a) about the line <span class="arithmatex">\(y=-1\)</span> and (b) about the line <span class="arithmatex">\(y=4\)</span>.</p>
+<p><strong>Solution.</strong> <em>Region.</em> The curves meet where <span class="arithmatex">\(y^2=2y\)</span>, so <span class="arithmatex">\(y=0\)</span> or <span class="arithmatex">\(y=2\)</span>, at <span class="arithmatex">\((0,0)\)</span> and <span class="arithmatex">\((4,2)\)</span>. At <span class="arithmatex">\(y=1\)</span> the line has <span class="arithmatex">\(x=2\)</span> and the parabola <span class="arithmatex">\(x=1\)</span>, so the line is the right curve <span class="arithmatex">\(p(y)=2y\)</span> and the parabola the left curve <span class="arithmatex">\(q(y)=y^2\)</span>: the strip at height <span class="arithmatex">\(y\)</span> is horizontal, parallel to the axes, of length <span class="arithmatex">\(h=2y-y^2\)</span> (<span class="arithmatex">\(0\le y\le2\)</span>).</p>
+<p>(a) <em>Axis <span class="arithmatex">\(y=-1\)</span></em> (below <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(k=-1\le c=0\)</span>): the radius is <span class="arithmatex">\(y-(-1)=y+1\)</span>.</p>
+<div class="arithmatex">\[\begin{aligned}V_a&amp;=2\pi\int_0^2(y+1)(2y-y^2)\,dy=2\pi\int_0^2\bigl(-y^3+y^2+2y\bigr)dy\\ &amp;=2\pi\Bigl[-\frac{y^4}4+\frac{y^3}3+y^2\Bigr]_0^2=2\pi\Bigl(-4+\frac83+4\Bigr)=\frac{16\pi}3\approx16.76 .
+\end{aligned}\]</div>
+<p>(b) <em>Axis <span class="arithmatex">\(y=4\)</span></em> (above <span class="arithmatex">\(R\)</span>, <span class="arithmatex">\(k=4\ge d=2\)</span>): the radius is <span class="arithmatex">\(4-y\)</span>.</p>
+<div class="arithmatex">\[\begin{aligned}V_b&amp;=2\pi\int_0^2(4-y)(2y-y^2)\,dy=2\pi\int_0^2\bigl(y^3-6y^2+8y\bigr)dy\\ &amp;=2\pi\Bigl[\frac{y^4}4-2y^3+4y^2\Bigr]_0^2=2\pi(4-16+16)=8\pi\approx25.13 .
+\end{aligned}\]</div>
+<p><em>Check of (a) by washers.</em> For the horizontal axis the washers are perpendicular to it, so they are indexed by <span class="arithmatex">\(x\)</span>: for <span class="arithmatex">\(0\le x\le4\)</span> the region lies between <span class="arithmatex">\(y=\frac x2\)</span> (below) and <span class="arithmatex">\(y=\sqrt x\)</span> (above), so about <span class="arithmatex">\(y=-1\)</span> the outer radius is <span class="arithmatex">\(\sqrt x+1\)</span> and the inner radius is <span class="arithmatex">\(\frac x2+1\)</span>, and <span class="arithmatex">\(V_a=\pi\int_0^4\Bigl((\sqrt x+1)^2-\bigl(\frac x2+1\bigr)^2\Bigr)dx=\pi\int_0^4\bigl(2\sqrt x-\frac{x^2}4\bigr)dx=\pi\bigl(\frac{32}3-\frac{16}3\bigr)=\frac{16\pi}3\)</span>. The solid in (b) is larger because its axis is farther from most of the region.</p>
+<p><img alt="Diagram: \(r=y+1\); \(r=4-y\); \(y=-1\); \(y=4\); \(x=y^2\); \(x=2y\)" class="calc-figure" src="../figures/notes-fig7.svg" width="448" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(x=y^2\)</span> and <span class="arithmatex">\(x=2y\)</span>. The strip at <span class="arithmatex">\(y=1\)</span> runs from <span class="arithmatex">\((1,1)\)</span> to <span class="arithmatex">\((2,1)\)</span>, length <span class="arithmatex">\(h=2-1=1\)</span>; it is <span class="arithmatex">\(y+1=2\)</span> above the axis <span class="arithmatex">\(y=-1\)</span> (green) and <span class="arithmatex">\(4-y=3\)</span> below the axis <span class="arithmatex">\(y=4\)</span> (red).</p>
+</div>
+<h2 id="shells-or-washers">Shells or washers?<a class="headerlink" href="#shells-or-washers" title="Permanent link">&para;</a></h2>
+<p>Washers and shells describe the <em>same</em> solid, and by (V1) to (V3) the volume is one number, so the two integrals always agree (Examples <a href="#ex-e1">6.4.4</a>, <a href="#ex-e3">6.4.7</a>, <a href="#ex-e4">6.4.8</a> and <a href="#ex-e6">6.4.11</a> checked this). The choice is only about which integral is easier. The key is the direction of the strips. A strip <em>perpendicular</em> to the axis gives a disk or washer (Section 6.3); a strip <em>parallel</em> to the axis gives a shell. The variable of integration is the coordinate along which the strips are stacked.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Axis</th>
+<th style="text-align: left;">Washers (strips perpendicular to the axis)</th>
+<th style="text-align: left;">Shells (strips parallel to the axis)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(x\)</span>-axis or <span class="arithmatex">\(y=k\)</span></td>
+<td style="text-align: left;">integrate <span class="arithmatex">\(dx\)</span>; curves <span class="arithmatex">\(y=f(x)\)</span></td>
+<td style="text-align: left;">integrate <span class="arithmatex">\(dy\)</span>; curves <span class="arithmatex">\(x=p(y)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span class="arithmatex">\(y\)</span>-axis or <span class="arithmatex">\(x=k\)</span></td>
+<td style="text-align: left;">integrate <span class="arithmatex">\(dy\)</span>; curves <span class="arithmatex">\(x=p(y)\)</span></td>
+<td style="text-align: left;">integrate <span class="arithmatex">\(dx\)</span>; curves <span class="arithmatex">\(y=f(x)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.4.12: Choosing the method</p>
+<p><span id="proc-choose"></span></p>
+<ol>
+<li>
+<p>Look at how the region is given. If the boundary curves are <em>functions of the variable that stacks the strips</em> in one method, choose that method: with curves <span class="arithmatex">\(y=f(x)\)</span> and a vertical axis, use shells (<span class="arithmatex">\(dx\)</span>); with curves <span class="arithmatex">\(y=f(x)\)</span> and a horizontal axis, use washers (<span class="arithmatex">\(dx\)</span>).</p>
+</li>
+<li>
+<p>Avoid solving for an inverse function if you can (a cubic such as <span class="arithmatex">\(y=x^2-x^3\)</span> has no simple inverse), and avoid methods that split the region into pieces.</p>
+</li>
+<li>
+<p>If both methods are possible and neither is clearly better, do one and check with the other.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.13: One region, both axes, both methods</p>
+<p><span id="ex-e7"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region under <span class="arithmatex">\(y=2x-x^2\)</span> for <span class="arithmatex">\(0\le x\le2\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about (a) the <span class="arithmatex">\(x\)</span>-axis and (b) the <span class="arithmatex">\(y\)</span>-axis, each by washers and by shells, and compare the work.</p>
+<p><strong>Solution.</strong> The parabola <span class="arithmatex">\(y=x(2-x)\)</span> meets the <span class="arithmatex">\(x\)</span>-axis at <span class="arithmatex">\(x=0,2\)</span> and has its vertex at <span class="arithmatex">\((1,1)\)</span>.</p>
+<p>(a) <em>About the <span class="arithmatex">\(x\)</span>-axis, washers.</em> The strips are vertical (perpendicular to the axis); the region touches the axis, so they are disks of radius <span class="arithmatex">\(2x-x^2\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=\pi\int_0^2(2x-x^2)^2dx=\pi\int_0^2\bigl(4x^2-4x^3+x^4\bigr)dx\\ &amp;=\pi\Bigl[\frac{4x^3}3-x^4+\frac{x^5}5\Bigr]_0^2=\pi\Bigl(\frac{32}3-16+\frac{32}5\Bigr)=\frac{16\pi}{15}\approx3.351 .
+\end{aligned}\]</div>
+<p><em>About the <span class="arithmatex">\(x\)</span>-axis, shells.</em> The strips are now horizontal, so we need <span class="arithmatex">\(x\)</span> as a function of <span class="arithmatex">\(y\)</span> for <span class="arithmatex">\(0\le y\le1\)</span>. From <span class="arithmatex">\(y=2x-x^2\)</span> we get <span class="arithmatex">\(x^2-2x+y=0\)</span>, so <span class="arithmatex">\(x=1\pm\sqrt{1-y}\)</span> (the quadratic formula). The strip at height <span class="arithmatex">\(y\)</span> runs from <span class="arithmatex">\(1-\sqrt{1-y}\)</span> to <span class="arithmatex">\(1+\sqrt{1-y}\)</span>, so <span class="arithmatex">\(h=2\sqrt{1-y}\)</span> and <span class="arithmatex">\(r=y\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_0^1y\cdot2\sqrt{1-y}\,dy=4\pi\int_0^1y\sqrt{1-y}\,dy .\]</div>
+<p>Substitute <span class="arithmatex">\(u=1-y\)</span>, so <span class="arithmatex">\(y=1-u\)</span> and <span class="arithmatex">\(dy=-du\)</span>; <span class="arithmatex">\(y=0\)</span> gives <span class="arithmatex">\(u=1\)</span> and <span class="arithmatex">\(y=1\)</span> gives <span class="arithmatex">\(u=0\)</span>, and the minus sign reverses the limits:</p>
+<div class="arithmatex">\[\int_0^1y\sqrt{1-y}\,dy=\int_0^1(1-u)\sqrt u\,du=\int_0^1\bigl(u^{1/2}-u^{3/2}\bigr)du=\Bigl[\frac23u^{3/2}-\frac25u^{5/2}\Bigr]_0^1=\frac4{15},\]</div>
+<p>so <span class="arithmatex">\(V=4\pi\cdot\frac4{15}=\frac{16\pi}{15}\)</span>, the same. Washers were shorter here: no inverse function and no substitution.</p>
+<p>(b) <em>About the <span class="arithmatex">\(y\)</span>-axis, shells.</em> The strips are vertical (parallel to the axis), <span class="arithmatex">\(r=x\)</span> and <span class="arithmatex">\(h=2x-x^2\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_0^2x(2x-x^2)\,dx=2\pi\int_0^2\bigl(2x^2-x^3\bigr)dx=2\pi\Bigl[\frac{2x^3}3-\frac{x^4}4\Bigr]_0^2=2\pi\Bigl(\frac{16}3-4\Bigr)=\frac{8\pi}3\approx8.378 .\]</div>
+<p><em>About the <span class="arithmatex">\(y\)</span>-axis, washers.</em> The strips are horizontal, indexed by <span class="arithmatex">\(y\in[0,1]\)</span>. With <span class="arithmatex">\(s=\sqrt{1-y}\)</span> the region runs from <span class="arithmatex">\(x=1-s\)</span> to <span class="arithmatex">\(x=1+s\)</span>, so it does not touch the axis and the solid has a hole: outer radius <span class="arithmatex">\(1+s\)</span>, inner radius <span class="arithmatex">\(1-s\)</span>, and <span class="arithmatex">\((1+s)^2-(1-s)^2=4s\)</span>:</p>
+<div class="arithmatex">\[V=\pi\int_0^1\Bigl((1+s)^2-(1-s)^2\Bigr)dy=4\pi\int_0^1\sqrt{1-y}\,dy=4\pi\Bigl[-\frac23(1-y)^{3/2}\Bigr]_0^1=\frac{8\pi}3,\]</div>
+<p>the same again. Shells were shorter here.</p>
+<p><em>Summary.</em> About the <span class="arithmatex">\(x\)</span>-axis the region is described by <span class="arithmatex">\(y=f(x)\)</span> and washers need only <span class="arithmatex">\(f\)</span>; about the <span class="arithmatex">\(y\)</span>-axis it is shells that need only <span class="arithmatex">\(f\)</span>. In each case the method whose strips are stacked in <span class="arithmatex">\(x\)</span> was easier.</p>
+<p><img alt="Diagram: disk radius \(2x-x^2\); $h=2\sqrt{1-y; \(r=y\)" class="calc-figure" src="../figures/notes-fig8.svg" width="363" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=2x-x^2\)</span>. The red vertical strip at <span class="arithmatex">\(x=\frac12\)</span> is perpendicular to the <span class="arithmatex">\(x\)</span>-axis (a disk of radius <span class="arithmatex">\(\frac34\)</span>); the green horizontal strip at <span class="arithmatex">\(y=\frac34\)</span> is parallel to it (a shell of radius <span class="arithmatex">\(\frac34\)</span> and height <span class="arithmatex">\(\frac32-\frac12=1\)</span>).</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.4.3: Disks or shells for <span class="arithmatex">\(y=x^2\)</span>?</p>
+<p><span id="think-thchoose"></span></p>
+<p>The region under <span class="arithmatex">\(y=x^2\)</span> for <span class="arithmatex">\(0\le x\le2\)</span> is revolved about the <span class="arithmatex">\(x\)</span>-axis. Which method is easier, disks or shells, and why? Set up both integrals and check that they give the same number.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>Disks are easier: the curve is <span class="arithmatex">\(y=x^2\)</span> and the axis is horizontal, so <span class="arithmatex">\(V=\pi\int_0^2x^4dx=\frac{32\pi}5\)</span>. Shells need the inverse <span class="arithmatex">\(x=\sqrt y\)</span> and the strip <span class="arithmatex">\(h=2-\sqrt y\)</span> with <span class="arithmatex">\(r=y\)</span> for <span class="arithmatex">\(0\le y\le4\)</span>: <span class="arithmatex">\(V=2\pi\int_0^4(2y-y^{3/2})dy=2\pi\bigl(16-\frac{64}5\bigr)=\frac{32\pi}5\)</span>. Same number, but a harder integral.</p>
+</details>
+</div>
+<h2 id="solids-with-no-easy-description-by-disks">Solids with no easy description by disks<a class="headerlink" href="#solids-with-no-easy-description-by-disks" title="Permanent link">&para;</a></h2>
+<p>Sometimes the washer method is not just longer but practically impossible, because the boundary curve cannot be solved for the other variable in a usable way.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.14: A cubic curve about the <span class="arithmatex">\(y\)</span>-axis</p>
+<p><span id="ex-e8"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant under <span class="arithmatex">\(y=x^2-x^3\)</span> (between the curve and the <span class="arithmatex">\(x\)</span>-axis). Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>The region.</em> <span class="arithmatex">\(x^2-x^3=x^2(1-x)\)</span> is <span class="arithmatex">\(\ge0\)</span> exactly for <span class="arithmatex">\(0\le x\le1\)</span> and is zero at <span class="arithmatex">\(x=0,1\)</span>. Its derivative <span class="arithmatex">\(2x-3x^2=x(2-3x)\)</span> vanishes at <span class="arithmatex">\(x=\frac23\)</span>, where <span class="arithmatex">\(y=\frac49-\frac8{27}=\frac4{27}\)</span>: the curve rises to a maximum <span class="arithmatex">\(\frac4{27}\)</span> and falls back to zero. <em>Why not washers.</em> At height <span class="arithmatex">\(y\)</span> between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(\frac4{27}\)</span> the region lies between the two solutions of <span class="arithmatex">\(x^2-x^3=y\)</span> in <span class="arithmatex">\((0,1)\)</span>, the roots of a cubic that has no simple formula, and the radii would be those roots.</p>
+<p><em>Shells.</em> The strip at <span class="arithmatex">\(x\)</span> is vertical, parallel to the axis: <span class="arithmatex">\(r=x\)</span> and <span class="arithmatex">\(h=x^2-x^3\)</span>. By Theorem <a href="#thm-shell">6.4.2</a>,</p>
+<div class="arithmatex">\[V=2\pi\int_0^1x\,(x^2-x^3)\,dx=2\pi\int_0^1\bigl(x^3-x^4\bigr)dx=2\pi\Bigl[\frac{x^4}4-\frac{x^5}5\Bigr]_0^1=2\pi\Bigl(\frac14-\frac15\Bigr)=\frac{\pi}{10}\approx0.314 .\]</div>
+<p><em>Check.</em> The solid lies inside the cylinder of radius <span class="arithmatex">\(1\)</span> and height <span class="arithmatex">\(\frac4{27}\)</span>, of volume <span class="arithmatex">\(\frac{4\pi}{27}\approx0.465\)</span>, and <span class="arithmatex">\(0.314&lt;0.465\)</span>. It is a ring with a dimple in the middle, because the height is <span class="arithmatex">\(0\)</span> at the axis.</p>
+<p><img alt="Diagram: \(r=x\); \(h=x^2-x^3\); the solid (heights exaggerated)" class="calc-figure" src="../figures/notes-fig9.svg" width="562" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=x^2-x^3\)</span> with the strip at <span class="arithmatex">\(x=\frac12\)</span> (height <span class="arithmatex">\(\frac18\)</span>), and the ring-shaped solid it generates; the red circle is the shell of that strip.</p>
+</div>
+<h2 id="the-ball-and-the-torus-by-shells">The ball and the torus by shells<a class="headerlink" href="#the-ball-and-the-torus-by-shells" title="Permanent link">&para;</a></h2>
+<p>Section 6.3 found the volume of the ball by disks (Theorem <a href="../../6.3/notes/#thm-vols">6.3.18</a>). Shells give it again, and also the volume of a torus (a doughnut), which is not available from the sphere formula. Both checks use only Theorem <a href="#thm-shell">6.4.2</a>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.4.15: The ball and the torus</p>
+<p><span id="thm-ballTorus"></span></p>
+<p><strong>(1)</strong> A ball of radius <span class="arithmatex">\(r\)</span> has volume <span class="arithmatex">\(\frac43\pi r^3\)</span>.</p>
+<p><strong>(2)</strong> Let <span class="arithmatex">\(0&lt;a&lt;R\)</span>. The <em>torus</em> obtained by revolving the disk of radius <span class="arithmatex">\(a\)</span> centred at <span class="arithmatex">\((R,0)\)</span> about the <span class="arithmatex">\(y\)</span>-axis has volume <span class="arithmatex">\(V=2\pi^2Ra^2\)</span>: the area <span class="arithmatex">\(\pi a^2\)</span> of the disk times the length <span class="arithmatex">\(2\pi R\)</span> of the circle that its centre travels.</p>
+</div>
+<p><em>Proof.</em> (1) The ball is the solid obtained by revolving the half-disk <span class="arithmatex">\(0\le x\le r\)</span>, <span class="arithmatex">\(-\sqrt{r^2-x^2}\le y\le\sqrt{r^2-x^2}\)</span> about the <span class="arithmatex">\(y\)</span>-axis (it is the set <span class="arithmatex">\(\rho^2+Y^2\le r^2\)</span>). The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(2\sqrt{r^2-x^2}\)</span>, so by Theorem <a href="#thm-shell">6.4.2</a></p>
+<div class="arithmatex">\[V=2\pi\int_0^rx\cdot2\sqrt{r^2-x^2}\,dx .\]</div>
+<p>Substitute <span class="arithmatex">\(u=r^2-x^2\)</span>, <span class="arithmatex">\(du=-2x\,dx\)</span>; <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(u=r^2\)</span> and <span class="arithmatex">\(x=r\)</span> gives <span class="arithmatex">\(u=0\)</span>, so <span class="arithmatex">\(V=2\pi\int_0^{r^2}\sqrt u\,du=2\pi\cdot\frac23\bigl(r^2\bigr)^{3/2}=\frac43\pi r^3\)</span> (as <span class="arithmatex">\(r&gt;0\)</span>). This agrees with Theorem <a href="../../6.3/notes/#thm-vols">6.3.18</a>(4). (For <span class="arithmatex">\(r=3\)</span>: <span class="arithmatex">\(\frac43\pi\cdot27=36\pi\)</span>.)</p>
+<p>(2) The circle <span class="arithmatex">\((x-R)^2+y^2=a^2\)</span> bounds the disk; for <span class="arithmatex">\(R-a\le x\le R+a\)</span> the disk lies between <span class="arithmatex">\(y=-\sqrt{a^2-(x-R)^2}\)</span> and <span class="arithmatex">\(y=\sqrt{a^2-(x-R)^2}\)</span>, and <span class="arithmatex">\(R-a&gt;0\)</span>, so the disk is to the right of the axis. By Theorem <a href="#thm-shell">6.4.2</a></p>
+<div class="arithmatex">\[V=2\pi\int_{R-a}^{R+a}x\cdot2\sqrt{a^2-(x-R)^2}\,dx=4\pi\int_{-a}^{a}(u+R)\sqrt{a^2-u^2}\,du\qquad(u=x-R).\]</div>
+<p>Split the integrand: <span class="arithmatex">\(u\sqrt{a^2-u^2}\)</span> is an odd function, so its integral over <span class="arithmatex">\([-a,a]\)</span> is <span class="arithmatex">\(0\)</span> (Theorem <a href="../../6.2/notes/#thm-sym">6.2.8</a>); and <span class="arithmatex">\(\int_{-a}^a\sqrt{a^2-u^2}\,du\)</span> is the area of the half-disk under <span class="arithmatex">\(v=\sqrt{a^2-u^2}\)</span>, which is <span class="arithmatex">\(\frac12\pi a^2\)</span>. Hence <span class="arithmatex">\(V=4\pi R\cdot\frac12\pi a^2=2\pi^2Ra^2\)</span>. (For <span class="arithmatex">\(R=3\)</span>, <span class="arithmatex">\(a=2\)</span>: <span class="arithmatex">\(2\pi^2\cdot3\cdot4=24\pi^2\approx236.9\)</span>.) ◻ ∎</p>
+<div class="admonition note">
+<p class="admonition-title">The torus by washers</p>
+<p>Washers about the <span class="arithmatex">\(y\)</span>-axis (Theorem <a href="../../6.3/notes/#thm-dwy">6.3.11</a>) give <span class="arithmatex">\(\pi\int_{-a}^a\bigl((R+\sqrt{a^2-y^2})^2-(R-\sqrt{a^2-y^2})^2\bigr)dy=4\pi R\int_{-a}^a\sqrt{a^2-y^2}\,dy\)</span>, the same integral, so the two methods agree. Here shells and washers are equally easy; the point of the theorem is that the same result comes from either description.</p>
+</div>
+<p><img alt="Diagram: \(r=x=4\); \(h=2\sqrt3\); the torus" class="calc-figure" src="../figures/notes-fig10.svg" width="669" /></p>
+<p><em>Figure.</em> Left: the disk of radius <span class="arithmatex">\(a=2\)</span> centred at <span class="arithmatex">\((R,0)=(3,0)\)</span> with the strip at <span class="arithmatex">\(x=4\)</span> (radius <span class="arithmatex">\(4\)</span>, height <span class="arithmatex">\(2\sqrt{4-1}=2\sqrt3\)</span>). Right: the torus it generates (the circle is its cross section).</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.16: A drilled ball</p>
+<p><span id="ex-e9"></span></p>
+<p>A cylindrical hole of radius <span class="arithmatex">\(3\)</span> is drilled through the centre of a ball of radius <span class="arithmatex">\(5\)</span>. Find the volume of the material that remains, and check it with the formulas of Section 6.3.</p>
+<p><strong>Solution.</strong> Take the axis of the hole as the <span class="arithmatex">\(y\)</span>-axis. The remaining solid is made by revolving about the <span class="arithmatex">\(y\)</span>-axis the part of the half-disk with <span class="arithmatex">\(3\le x\le5\)</span> (the part of the ball at a distance between <span class="arithmatex">\(3\)</span> and <span class="arithmatex">\(5\)</span> from the axis), which lies between <span class="arithmatex">\(y=-\sqrt{25-x^2}\)</span> and <span class="arithmatex">\(y=\sqrt{25-x^2}\)</span>. A strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(2\sqrt{25-x^2}\)</span>, so</p>
+<div class="arithmatex">\[V=2\pi\int_3^5x\cdot2\sqrt{25-x^2}\,dx=4\pi\int_3^5x\sqrt{25-x^2}\,dx .\]</div>
+<p><em>Substitution.</em> <span class="arithmatex">\(u=25-x^2\)</span>, <span class="arithmatex">\(du=-2x\,dx\)</span>, so <span class="arithmatex">\(x\,dx=-\frac12du\)</span>. At <span class="arithmatex">\(x=3\)</span>, <span class="arithmatex">\(u=16\)</span>; at <span class="arithmatex">\(x=5\)</span>, <span class="arithmatex">\(u=0\)</span>. The minus sign reverses the limits:</p>
+<div class="arithmatex">\[V=4\pi\int_0^{16}\frac12\sqrt u\,du=2\pi\Bigl[\frac23u^{3/2}\Bigr]_0^{16}=2\pi\cdot\frac23\cdot64=\frac{256\pi}3\approx268.1 .\]</div>
+<p><em>Check with Section 6.3.</em> The hole is a cylinder of radius <span class="arithmatex">\(3\)</span> and length <span class="arithmatex">\(2\sqrt{25-9}=8\)</span>, with volume <span class="arithmatex">\(\pi\cdot9\cdot8=72\pi\)</span>; and the ball sticks out of the cylinder at each end in a cap of height <span class="arithmatex">\(5-4=1\)</span>, of volume <span class="arithmatex">\(\frac13\pi h^2(3\cdot5-h)=\frac{14\pi}3\)</span> (Theorem <a href="../../6.3/notes/#thm-vols">6.3.18</a>(3)). The material removed is <span class="arithmatex">\(72\pi+2\cdot\frac{14\pi}3\)</span>, so what remains is <span class="arithmatex">\(\frac43\pi\cdot125-72\pi-\frac{28\pi}3=\frac{500\pi-216\pi-28\pi}3=\frac{256\pi}3\)</span>, the same.</p>
+<p><img alt="Diagram: \(r=x\); $h=2\sqrt{25-x^2" class="calc-figure" src="../figures/notes-fig11.svg" width="318" /></p>
+<p><em>Figure.</em> The part of the half-disk of radius <span class="arithmatex">\(5\)</span> with <span class="arithmatex">\(x\ge3\)</span> (shaded). The line <span class="arithmatex">\(x=3\)</span> meets the circle at <span class="arithmatex">\((3,\pm4)\)</span>, so the hole has length <span class="arithmatex">\(8\)</span>. The red strip at <span class="arithmatex">\(x=4\)</span> runs from <span class="arithmatex">\((4,-3)\)</span> to <span class="arithmatex">\((4,3)\)</span> and has radius <span class="arithmatex">\(4\)</span> and height <span class="arithmatex">\(6\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.17: A bell that needs shells</p>
+<p><span id="ex-e10"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region under <span class="arithmatex">\(y=e^{-x^2}\)</span> for <span class="arithmatex">\(0\le x\le b\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(y\)</span>-axis, and evaluate it for <span class="arithmatex">\(b=1\)</span>.</p>
+<p><strong>Solution.</strong> The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(e^{-x^2}\)</span>, so <span class="arithmatex">\(V=2\pi\int_0^bx\,e^{-x^2}\,dx\)</span>. <em>Substitution.</em> <span class="arithmatex">\(u=-x^2\)</span>, <span class="arithmatex">\(du=-2x\,dx\)</span>, so <span class="arithmatex">\(x\,dx=-\frac12du\)</span>; <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(x=b\)</span> gives <span class="arithmatex">\(u=-b^2\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_0^{-b^2}\Bigl(-\frac12\Bigr)e^u\,du=-\pi\Bigl[e^u\Bigr]_0^{-b^2}=\pi\bigl(1-e^{-b^2}\bigr).\]</div>
+<p>For <span class="arithmatex">\(b=1\)</span> this is <span class="arithmatex">\(\pi(1-e^{-1})\approx1.986\)</span>. Since <span class="arithmatex">\(e^{-b^2}&gt;0\)</span>, <span class="arithmatex">\(V(b)&lt;\pi\)</span> for every <span class="arithmatex">\(b\)</span>, and <span class="arithmatex">\(V(b)\)</span> increases towards <span class="arithmatex">\(\pi\)</span> as <span class="arithmatex">\(b\)</span> grows: the whole bell, which is infinitely wide, has a finite volume. (A later section on improper integrals gives the precise meaning of this limit.)</p>
+<p><em>Why shells.</em> The washer method slices by <span class="arithmatex">\(y\)</span>: at height <span class="arithmatex">\(y\)</span> the radius is <span class="arithmatex">\(x=\sqrt{-\ln y}\)</span>, and the volume integral contains <span class="arithmatex">\(\int\ln y\,dy\)</span>, which cannot be found with the methods available so far (it needs a technique from a later chapter). The shell integral needs only the substitution above.</p>
+<p><img alt="Diagram: \(r=x\); $h=e^{-x^2" class="calc-figure" src="../figures/notes-fig12.svg" width="333" /></p>
+<p><em>Figure.</em> The bell <span class="arithmatex">\(y=e^{-x^2}\)</span>. For <span class="arithmatex">\(b=1\)</span> the region ends at <span class="arithmatex">\(x=1\)</span>, where the height is <span class="arithmatex">\(e^{-1}\approx0.368\)</span>.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>Shells and slices are two ways to organise the same volume. In a later section the slice-and-sum idea is used again for the length of a curve and for the area of a surface of revolution, and in the section on physical applications to add up work, force and mass slice by slice. In a later course the notion of centroid gives a short formula for the volume of a solid of revolution (the theorem of Pappus: the area of the region times the distance travelled by its centroid; the torus formula <span class="arithmatex">\(2\pi^2Ra^2=\pi a^2\cdot2\pi R\)</span> is the first example, and Proof Example <a href="#ex-b14">6.4.31</a> below is a version of it). Multiple integrals in cylindrical coordinates compute a volume by exactly the shell idea (a shell has volume <span class="arithmatex">\(2\pi r\,h\,dr\)</span>), and the volume of the infinite bell of Example <a href="#ex-e10">6.4.17</a> is the first example of an improper integral of the kind treated in the section on improper integrals.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Shells about the <span class="arithmatex">\(y\)</span>-axis</em> (Examples <a href="#ex-b1">6.4.18</a>–<a href="#ex-b2">6.4.19</a>): a cube root, checked by washers; a sine of <span class="arithmatex">\(2x^2\)</span> (substitution).</p>
+</li>
+<li>
+<p><em>Shells about the <span class="arithmatex">\(x\)</span>-axis</em> (Examples <a href="#ex-b3">6.4.20</a>–<a href="#ex-b4">6.4.21</a>): a parabola opening sideways; the curve <span class="arithmatex">\(x=\frac1y\)</span>, where washers need two pieces.</p>
+</li>
+<li>
+<p><em>Other vertical lines</em> (Examples <a href="#ex-b5">6.4.22</a>–<a href="#ex-b6">6.4.23</a>): the region between <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=x^2\)</span> about <span class="arithmatex">\(x=2\)</span>; a square root about <span class="arithmatex">\(x=5\)</span>.</p>
+</li>
+<li>
+<p><em>Other horizontal lines</em> (Examples <a href="#ex-b7">6.4.24</a>–<a href="#ex-b8">6.4.25</a>): a region about <span class="arithmatex">\(y=2\)</span> with a washer check; a region between a parabola and a line about <span class="arithmatex">\(y=-1\)</span>.</p>
+</li>
+<li>
+<p><em>Choosing the method</em> (Examples <a href="#ex-b9">6.4.26</a>–<a href="#ex-b10">6.4.27</a>): <span class="arithmatex">\(y=1-x^2\)</span> about the <span class="arithmatex">\(x\)</span>-axis both ways; which axis gives the larger volume.</p>
+</li>
+<li>
+<p><em>Drilled solids</em> (Examples <a href="#ex-b11">6.4.28</a>–<a href="#ex-b12">6.4.29</a>): the napkin ring; the width of a hole that removes half a bowl.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">6.4.30</a>–<a href="#ex-b14">6.4.31</a>): the cone by shells; volume as a linear function of the distance to the axis.</p>
+</li>
+</ol>
+<h2 id="group-1-shells-about-the-y-axis">Group 1: Shells about the <span class="arithmatex">\(y\)</span>-axis<a class="headerlink" href="#group-1-shells-about-the-y-axis" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.18: A cube root</p>
+<p><span id="ex-b1"></span></p>
+<p>The region under <span class="arithmatex">\(y=\sqrt[3]x\)</span> for <span class="arithmatex">\(0\le x\le8\)</span> is revolved about the <span class="arithmatex">\(y\)</span>-axis. Find the volume.</p>
+<p><strong>Solution.</strong> The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(x^{1/3}\)</span>, so</p>
+<div class="arithmatex">\[V=2\pi\int_0^8x\cdot x^{1/3}\,dx=2\pi\int_0^8x^{4/3}\,dx=2\pi\Bigl[\frac37x^{7/3}\Bigr]_0^8=2\pi\cdot\frac37\cdot128=\frac{768\pi}7\approx344.7 ,\]</div>
+<p>because <span class="arithmatex">\(8^{7/3}=(8^{1/3})^7=2^7=128\)</span>. <em>Check by washers.</em> At height <span class="arithmatex">\(y\in[0,2]\)</span> the region runs from the curve <span class="arithmatex">\(x=y^3\)</span> out to <span class="arithmatex">\(x=8\)</span>: <span class="arithmatex">\(V=\pi\int_0^2(64-y^6)\,dy=\pi\bigl(128-\frac{128}7\bigr)=\frac{768\pi}7\)</span>.</p>
+<p><img alt="Diagram: \(r=x\); $h=x^{1/3" class="calc-figure" src="../figures/notes-fig13.svg" width="287" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=\sqrt[3]x\)</span> on <span class="arithmatex">\([0,8]\)</span> and the strip at <span class="arithmatex">\(x=4\)</span> (radius <span class="arithmatex">\(4\)</span>, height <span class="arithmatex">\(4^{1/3}\approx1.59\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.19: A sine of <span class="arithmatex">\(2x^2\)</span></p>
+<p><span id="ex-b2"></span></p>
+<p>The region under <span class="arithmatex">\(y=\sin(2x^2)\)</span> for <span class="arithmatex">\(0\le x\le\frac{\sqrt\pi}2\)</span> is revolved about the <span class="arithmatex">\(y\)</span>-axis. Find the volume.</p>
+<p><strong>Solution.</strong> On this interval <span class="arithmatex">\(2x^2\)</span> runs from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(\frac\pi2\)</span>, so <span class="arithmatex">\(\sin(2x^2)\ge0\)</span> and the region lies above the axis. The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(\sin(2x^2)\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_0^{\sqrt\pi/2}x\sin(2x^2)\,dx .\]</div>
+<p><em>Substitution.</em> Let <span class="arithmatex">\(u=2x^2\)</span>, so <span class="arithmatex">\(du=4x\,dx\)</span> and <span class="arithmatex">\(x\,dx=\frac14du\)</span>. At <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(u=0\)</span>; at <span class="arithmatex">\(x=\frac{\sqrt\pi}2\)</span>, <span class="arithmatex">\(u=2\cdot\frac\pi4=\frac\pi2\)</span>. Then</p>
+<div class="arithmatex">\[V=2\pi\cdot\frac14\int_0^{\pi/2}\sin u\,du=\frac\pi2\Bigl[-\cos u\Bigr]_0^{\pi/2}=\frac\pi2(0+1)=\frac\pi2\approx1.571 .\]</div>
+<p><em>Check.</em> The height is at most <span class="arithmatex">\(1\)</span> and the radius at most <span class="arithmatex">\(\frac{\sqrt\pi}2\approx0.886\)</span>, so the solid lies inside a cylinder of volume <span class="arithmatex">\(\pi\cdot\frac\pi4\cdot1\approx2.47\)</span>, and <span class="arithmatex">\(1.571&lt;2.47\)</span>.</p>
+<p><img alt="Diagram: \(r=x\); \(h=\sin 2x^2\)" class="calc-figure" src="../figures/notes-fig14.svg" width="258" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=\sin(2x^2)\)</span> on <span class="arithmatex">\([0,\frac{\sqrt\pi}2]\)</span>; the curve reaches height <span class="arithmatex">\(1\)</span> at the right end.</p>
+</div>
+<h2 id="group-2-shells-about-the-x-axis">Group 2: Shells about the <span class="arithmatex">\(x\)</span>-axis<a class="headerlink" href="#group-2-shells-about-the-x-axis" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.20: A parabola opening sideways</p>
+<p><span id="ex-b3"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region between the <span class="arithmatex">\(y\)</span>-axis and the curve <span class="arithmatex">\(x=4y-y^2\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> The curve meets <span class="arithmatex">\(x=0\)</span> where <span class="arithmatex">\(y(4-y)=0\)</span>, so <span class="arithmatex">\(0\le y\le4\)</span>, and <span class="arithmatex">\(x=4y-y^2\ge0\)</span> there. The strip at height <span class="arithmatex">\(y\)</span> is horizontal (parallel to the axis), of length <span class="arithmatex">\(h=4y-y^2\)</span>, at distance <span class="arithmatex">\(r=y\)</span> from the axis:</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^4y(4y-y^2)\,dy=2\pi\int_0^4\bigl(4y^2-y^3\bigr)dy\\ &amp;=2\pi\Bigl[\frac{4y^3}3-\frac{y^4}4\Bigr]_0^4=2\pi\Bigl(\frac{256}3-64\Bigr)=\frac{128\pi}3\approx134.0 .
+\end{aligned}\]</div>
+<p><em>Check by washers.</em> For <span class="arithmatex">\(0\le x\le4\)</span> the region at <span class="arithmatex">\(x\)</span> runs in <span class="arithmatex">\(y\)</span> from <span class="arithmatex">\(2-\sqrt{4-x}\)</span> to <span class="arithmatex">\(2+\sqrt{4-x}\)</span> (solve <span class="arithmatex">\(y^2-4y+x=0\)</span>), so the washer has <span class="arithmatex">\(R_{\mathrm{out}}^2-R_{\mathrm{in}}^2=(2+s)^2-(2-s)^2=8s\)</span> with <span class="arithmatex">\(s=\sqrt{4-x}\)</span>, and <span class="arithmatex">\(V=8\pi\int_0^4\sqrt{4-x}\,dx=8\pi\cdot\frac23\cdot8=\frac{128\pi}3\)</span>.</p>
+<p><img alt="Diagram: \(r=y\); \(h=4y-y^2\)" class="calc-figure" src="../figures/notes-fig15.svg" width="307" /></p>
+<p><em>Figure.</em> The region between the <span class="arithmatex">\(y\)</span>-axis and <span class="arithmatex">\(x=4y-y^2\)</span> (the vertex is at <span class="arithmatex">\((4,2)\)</span>). The strip at <span class="arithmatex">\(y=\frac32\)</span> has length <span class="arithmatex">\(\frac{15}4\)</span> and radius <span class="arithmatex">\(\frac32\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.21: Where washers need two pieces</p>
+<p><span id="ex-b4"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region bounded by the <span class="arithmatex">\(y\)</span>-axis, the curve <span class="arithmatex">\(x=\frac1y\)</span>, and the lines <span class="arithmatex">\(y=1\)</span> and <span class="arithmatex">\(y=3\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> The strip at height <span class="arithmatex">\(y\)</span>, <span class="arithmatex">\(1\le y\le3\)</span>, runs from <span class="arithmatex">\(x=0\)</span> to <span class="arithmatex">\(x=\frac1y\)</span>, so <span class="arithmatex">\(h=\frac1y\)</span> and <span class="arithmatex">\(r=y\)</span>, and <span class="arithmatex">\(r\,h=1\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_1^3y\cdot\frac1y\,dy=2\pi\int_1^3dy=2\pi\cdot2=4\pi\approx12.57 .\]</div>
+<p><em>Check by washers.</em> Slicing perpendicular to the axis, at <span class="arithmatex">\(x\)</span> the region has <span class="arithmatex">\(1\le y\le3\)</span> if <span class="arithmatex">\(0\le x\le\frac13\)</span> (the curve <span class="arithmatex">\(y=\frac1x\ge3\)</span>), and <span class="arithmatex">\(1\le y\le\frac1x\)</span> if <span class="arithmatex">\(\frac13\le x\le1\)</span>. So two integrals are needed: <span class="arithmatex">\(V=\pi\int_0^{1/3}(9-1)\,dx+\pi\int_{1/3}^1\Bigl(\frac1{x^2}-1\Bigr)dx=\frac{8\pi}3+\pi\Bigl[-\frac1x-x\Bigr]_{1/3}^1=\frac{8\pi}3+\frac{4\pi}3=4\pi\)</span>.</p>
+<p><img alt="Diagram: \(r=y\); \(h=\frac1y\)" class="calc-figure" src="../figures/notes-fig16.svg" width="252" /></p>
+<p><em>Figure.</em> The region bounded by <span class="arithmatex">\(x=\frac1y\)</span>, the <span class="arithmatex">\(y\)</span>-axis, <span class="arithmatex">\(y=1\)</span> and <span class="arithmatex">\(y=3\)</span>. The strip at <span class="arithmatex">\(y=2\)</span> has length <span class="arithmatex">\(\frac12\)</span> and radius <span class="arithmatex">\(2\)</span>.</p>
+</div>
+<h2 id="group-3-shells-about-other-vertical-lines">Group 3: Shells about other vertical lines<a class="headerlink" href="#group-3-shells-about-other-vertical-lines" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.22: Between a line and a parabola, about <span class="arithmatex">\(x=2\)</span></p>
+<p><span id="ex-b5"></span></p>
+<p>The region between <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=x^2\)</span> is revolved about the line <span class="arithmatex">\(x=2\)</span>. Find the volume.</p>
+<p><strong>Solution.</strong> The curves meet at <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=1\)</span>, and <span class="arithmatex">\(x&gt;x^2\)</span> on <span class="arithmatex">\((0,1)\)</span>, so the strip at <span class="arithmatex">\(x\)</span> has height <span class="arithmatex">\(h=x-x^2\)</span>. The axis <span class="arithmatex">\(x=2\)</span> is to the right of the region (<span class="arithmatex">\(k=2\ge b=1\)</span>), so the radius is <span class="arithmatex">\(r=2-x\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^1(2-x)(x-x^2)\,dx=2\pi\int_0^1\bigl(2x-3x^2+x^3\bigr)dx\\ &amp;=2\pi\Bigl[x^2-x^3+\frac{x^4}4\Bigr]_0^1=2\pi\cdot\frac14=\frac\pi2\approx1.571 .
+\end{aligned}\]</div>
+<p><em>Check by washers.</em> The strips are now horizontal. At height <span class="arithmatex">\(y\in[0,1]\)</span> the region runs from <span class="arithmatex">\(x=y\)</span> (the line) to <span class="arithmatex">\(x=\sqrt y\)</span> (the parabola). The axis is on the right, so the farther curve is <span class="arithmatex">\(x=y\)</span> (distance <span class="arithmatex">\(2-y\)</span>) and the nearer is <span class="arithmatex">\(x=\sqrt y\)</span> (distance <span class="arithmatex">\(2-\sqrt y\)</span>): <span class="arithmatex">\(V=\pi\int_0^1\bigl((2-y)^2-(2-\sqrt y)^2\bigr)dy=\pi\int_0^1\bigl(4\sqrt y-5y+y^2\bigr)dy=\pi\bigl(\frac83-\frac52+\frac13\bigr)=\frac\pi2\)</span>.</p>
+<p><img alt="Diagram: \(h=x-x^2\); \(r=2-x\); \(x=2\); \(y=x\); \(y=x^2\)" class="calc-figure" src="../figures/notes-fig17.svg" width="343" /></p>
+<p><em>Figure.</em> The region between <span class="arithmatex">\(y=x\)</span> and <span class="arithmatex">\(y=x^2\)</span> and the axis <span class="arithmatex">\(x=2\)</span>. The strip at <span class="arithmatex">\(x=\frac12\)</span> runs from <span class="arithmatex">\((\frac12,\frac14)\)</span> to <span class="arithmatex">\((\frac12,\frac12)\)</span>, height <span class="arithmatex">\(\frac14\)</span>, at distance <span class="arithmatex">\(2-\frac12=\frac32\)</span> from the axis.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.23: A square root about its right end</p>
+<p><span id="ex-b6"></span></p>
+<p>The region under <span class="arithmatex">\(y=\sqrt{x-1}\)</span> for <span class="arithmatex">\(1\le x\le5\)</span> is revolved about the line <span class="arithmatex">\(x=5\)</span>. Find the volume.</p>
+<p><strong>Solution.</strong> The axis passes through the right end of the region and is to the right of it (<span class="arithmatex">\(k=5\ge b=5\)</span>), so the radius is <span class="arithmatex">\(5-x\)</span> and the height is <span class="arithmatex">\(\sqrt{x-1}\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_1^5(5-x)\sqrt{x-1}\,dx .\]</div>
+<p><em>Substitution.</em> Let <span class="arithmatex">\(u=x-1\)</span>, so <span class="arithmatex">\(x=u+1\)</span>, <span class="arithmatex">\(5-x=4-u\)</span> and <span class="arithmatex">\(dx=du\)</span>; <span class="arithmatex">\(x=1\)</span> gives <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(x=5\)</span> gives <span class="arithmatex">\(u=4\)</span>. Then</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^4(4-u)\sqrt u\,du=2\pi\int_0^4\bigl(4u^{1/2}-u^{3/2}\bigr)du\\ &amp;=2\pi\Bigl[\frac83u^{3/2}-\frac25u^{5/2}\Bigr]_0^4=2\pi\Bigl(\frac{64}3-\frac{64}5\Bigr)=\frac{256\pi}{15}\approx53.62 .
+\end{aligned}\]</div>
+<p>(Here <span class="arithmatex">\(4^{3/2}=8\)</span> and <span class="arithmatex">\(4^{5/2}=32\)</span>.)</p>
+<p><img alt="Diagram: $h=\sqrt{x-1; \(r=5-x\); \(x=5\)" class="calc-figure" src="../figures/notes-fig18.svg" width="408" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=\sqrt{x-1}\)</span> and the axis <span class="arithmatex">\(x=5\)</span>. The strip at <span class="arithmatex">\(x=3\)</span> has height <span class="arithmatex">\(\sqrt2\)</span> and radius <span class="arithmatex">\(2\)</span>.</p>
+</div>
+<h2 id="group-4-shells-about-other-horizontal-lines">Group 4: Shells about other horizontal lines<a class="headerlink" href="#group-4-shells-about-other-horizontal-lines" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.24: A region about <span class="arithmatex">\(y=2\)</span>, checked by washers</p>
+<p><span id="ex-b7"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant bounded by the axes and the curve <span class="arithmatex">\(x=4-y^2\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the line <span class="arithmatex">\(y=2\)</span>.</p>
+<p><strong>Solution.</strong> The curve meets the <span class="arithmatex">\(y\)</span>-axis at <span class="arithmatex">\(y=2\)</span>, so <span class="arithmatex">\(0\le y\le2\)</span>, and the strip at height <span class="arithmatex">\(y\)</span> runs from <span class="arithmatex">\(x=0\)</span> to <span class="arithmatex">\(x=4-y^2\)</span>: <span class="arithmatex">\(h=4-y^2\)</span>. The axis <span class="arithmatex">\(y=2\)</span> is above the region (<span class="arithmatex">\(k=2\ge d=2\)</span>), so the radius is <span class="arithmatex">\(2-y\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^2(2-y)(4-y^2)\,dy=2\pi\int_0^2\bigl(8-4y-2y^2+y^3\bigr)dy\\ &amp;=2\pi\Bigl[8y-2y^2-\frac23y^3+\frac{y^4}4\Bigr]_0^2=2\pi\Bigl(16-8-\frac{16}3+4\Bigr)=\frac{40\pi}3\approx41.89 .
+\end{aligned}\]</div>
+<p><em>Check by washers.</em> The washers are perpendicular to the axis, so they are indexed by <span class="arithmatex">\(x\in[0,4]\)</span>, and the region at <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(0\le y\le\sqrt{4-x}\)</span>. About <span class="arithmatex">\(y=2\)</span> the outer radius is <span class="arithmatex">\(2\)</span> (to <span class="arithmatex">\(y=0\)</span>) and the inner radius is <span class="arithmatex">\(2-\sqrt{4-x}\)</span> (to the curve): <span class="arithmatex">\(V=\pi\int_0^4\Bigl(4-(2-\sqrt{4-x})^2\Bigr)dx=\pi\int_0^4\bigl(4\sqrt{4-x}-(4-x)\bigr)dx=\pi\bigl(\frac{64}3-8\bigr)=\frac{40\pi}3\)</span>.</p>
+<p><img alt="Diagram: \(r=2-y\); \(h=4-y^2\); \(y=2\)" class="calc-figure" src="../figures/notes-fig19.svg" width="334" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(x=4-y^2\)</span> and the axis <span class="arithmatex">\(y=2\)</span>. The strip at <span class="arithmatex">\(y=1\)</span> has length <span class="arithmatex">\(3\)</span> and is at distance <span class="arithmatex">\(1\)</span> from the axis.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.25: A parabola and a line, about <span class="arithmatex">\(y=-1\)</span></p>
+<p><span id="ex-b8"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region bounded by <span class="arithmatex">\(x=y^2\)</span>, <span class="arithmatex">\(x=6-y\)</span> and the <span class="arithmatex">\(x\)</span>-axis. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the line <span class="arithmatex">\(y=-1\)</span>.</p>
+<p><strong>Solution.</strong> <em>Intersection.</em> <span class="arithmatex">\(y^2=6-y\)</span> gives <span class="arithmatex">\(y^2+y-6=(y+3)(y-2)=0\)</span>, so <span class="arithmatex">\(y=2\)</span> in the first quadrant, at <span class="arithmatex">\((4,2)\)</span>. For <span class="arithmatex">\(0\le y\le2\)</span> the line <span class="arithmatex">\(x=6-y\)</span> is to the right of the parabola <span class="arithmatex">\(x=y^2\)</span> (at <span class="arithmatex">\(y=1\)</span>: <span class="arithmatex">\(5&gt;1\)</span>), so the strip has length <span class="arithmatex">\(h=6-y-y^2\)</span>. The axis <span class="arithmatex">\(y=-1\)</span> is below the region (<span class="arithmatex">\(k=-1\le c=0\)</span>), so <span class="arithmatex">\(r=y+1\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}V&amp;=2\pi\int_0^2(y+1)(6-y-y^2)\,dy=2\pi\int_0^2\bigl(6+5y-2y^2-y^3\bigr)dy\\ &amp;=2\pi\Bigl[6y+\frac52y^2-\frac23y^3-\frac{y^4}4\Bigr]_0^2=2\pi\Bigl(12+10-\frac{16}3-4\Bigr)=\frac{76\pi}3\approx79.59 .
+\end{aligned}\]</div>
+<p><em>Check by washers.</em> Slicing by <span class="arithmatex">\(x\)</span>: for <span class="arithmatex">\(0\le x\le4\)</span> the region is <span class="arithmatex">\(0\le y\le\sqrt x\)</span> and for <span class="arithmatex">\(4\le x\le6\)</span> it is <span class="arithmatex">\(0\le y\le6-x\)</span>; about <span class="arithmatex">\(y=-1\)</span> the inner radius is <span class="arithmatex">\(1\)</span> and the outer radius is <span class="arithmatex">\(y_{\max}+1\)</span>. So <span class="arithmatex">\(V=\pi\int_0^4\bigl(x+2\sqrt x\bigr)dx+\pi\int_4^6\bigl(x^2-14x+48\bigr)dx=\pi\bigl(8+\frac{32}3\bigr)+\pi\Bigl[\frac{x^3}3-7x^2+48x\Bigr]_4^6=\frac{56\pi}3+\frac{20\pi}3=\frac{76\pi}3\)</span>.</p>
+<p><img alt="Diagram: \(r=y+1\); \(h=6-y-y^2\); \(y=-1\)" class="calc-figure" src="../figures/notes-fig20.svg" width="335" /></p>
+<p><em>Figure.</em> The region bounded by <span class="arithmatex">\(x=y^2\)</span>, <span class="arithmatex">\(x=6-y\)</span> and the <span class="arithmatex">\(x\)</span>-axis (the corner is <span class="arithmatex">\((4,2)\)</span>) and the axis <span class="arithmatex">\(y=-1\)</span>. The strip at <span class="arithmatex">\(y=1\)</span> runs from <span class="arithmatex">\((1,1)\)</span> to <span class="arithmatex">\((5,1)\)</span> (length <span class="arithmatex">\(4=6-1-1\)</span>) at distance <span class="arithmatex">\(2\)</span> from the axis.</p>
+</div>
+<h2 id="group-5-choosing-the-method">Group 5: Choosing the method<a class="headerlink" href="#group-5-choosing-the-method" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.26: The parabola <span class="arithmatex">\(y=1-x^2\)</span> about the <span class="arithmatex">\(x\)</span>-axis, both ways</p>
+<p><span id="ex-b9"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region in the first quadrant under <span class="arithmatex">\(y=1-x^2\)</span>. Find the volume of the solid obtained by revolving <span class="arithmatex">\(R\)</span> about the <span class="arithmatex">\(x\)</span>-axis, by disks and by shells.</p>
+<p><strong>Solution.</strong> <em>Disks</em> (strips perpendicular to the axis, <span class="arithmatex">\(dx\)</span>): the disk at <span class="arithmatex">\(x\in[0,1]\)</span> has radius <span class="arithmatex">\(1-x^2\)</span>, so</p>
+<div class="arithmatex">\[V=\pi\int_0^1(1-x^2)^2dx=\pi\int_0^1\bigl(1-2x^2+x^4\bigr)dx=\pi\Bigl[x-\frac23x^3+\frac15x^5\Bigr]_0^1=\pi\Bigl(1-\frac23+\frac15\Bigr)=\frac{8\pi}{15}.\]</div>
+<p><em>Shells</em> (strips parallel to the axis, <span class="arithmatex">\(dy\)</span>): write <span class="arithmatex">\(x=\sqrt{1-y}\)</span> for <span class="arithmatex">\(0\le y\le1\)</span>. The strip at height <span class="arithmatex">\(y\)</span> runs from <span class="arithmatex">\(x=0\)</span> to <span class="arithmatex">\(x=\sqrt{1-y}\)</span>, so <span class="arithmatex">\(h=\sqrt{1-y}\)</span> and <span class="arithmatex">\(r=y\)</span>. With <span class="arithmatex">\(u=1-y\)</span>, <span class="arithmatex">\(y=1-u\)</span>, <span class="arithmatex">\(dy=-du\)</span> (<span class="arithmatex">\(y=0\mapsto u=1\)</span>, <span class="arithmatex">\(y=1\mapsto u=0\)</span>):</p>
+<div class="arithmatex">\[V=2\pi\int_0^1y\sqrt{1-y}\,dy=2\pi\int_0^1(1-u)\sqrt u\,du=2\pi\Bigl[\frac23u^{3/2}-\frac25u^{5/2}\Bigr]_0^1=2\pi\cdot\frac4{15}=\frac{8\pi}{15}.\]</div>
+<p>Both agree. Disks are easier here: the curve is already <span class="arithmatex">\(y=f(x)\)</span> and the axis is horizontal (Procedure <a href="#proc-choose">6.4.12</a>).</p>
+<p><img alt="Diagram: \(r=1-x^2\); $h=\sqrt{1-y" class="calc-figure" src="../figures/notes-fig21.svg" width="298" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=1-x^2\)</span>. The red strip at <span class="arithmatex">\(x=\frac12\)</span> is perpendicular to the axis (a disk); the green strip at <span class="arithmatex">\(y=\frac12\)</span> is parallel to it (a shell).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.27: Which axis gives the larger solid?</p>
+<p><span id="ex-b10"></span></p>
+<p>The region under <span class="arithmatex">\(y=\sqrt x\)</span> for <span class="arithmatex">\(0\le x\le4\)</span> is revolved about the <span class="arithmatex">\(x\)</span>-axis, and also about the <span class="arithmatex">\(y\)</span>-axis. Which solid has the larger volume?</p>
+<p><strong>Solution.</strong> <em>About the <span class="arithmatex">\(x\)</span>-axis</em> (disks, radius <span class="arithmatex">\(\sqrt x\)</span>): <span class="arithmatex">\(V_x=\pi\int_0^4x\,dx=\pi\bigl[\frac{x^2}2\bigr]_0^4=8\pi\approx25.13\)</span>. <em>About the <span class="arithmatex">\(y\)</span>-axis</em> (shells, <span class="arithmatex">\(r=x\)</span>, <span class="arithmatex">\(h=\sqrt x\)</span>): <span class="arithmatex">\(V_y=2\pi\int_0^4x^{3/2}dx=2\pi\Bigl[\frac25x^{5/2}\Bigr]_0^4=2\pi\cdot\frac{64}5=\frac{128\pi}5\approx80.42\)</span>. The solid about the <span class="arithmatex">\(y\)</span>-axis is <span class="arithmatex">\(\frac{128}{5}\div8=3.2\)</span> times as large. <em>Why:</em> most of the area lies far from the <span class="arithmatex">\(y\)</span>-axis (the region is long in <span class="arithmatex">\(x\)</span> and short in <span class="arithmatex">\(y\)</span>), and the volume grows with the distance travelled.</p>
+<p><img alt="Diagram: \(r=\sqrt x\) (about \(x\)-axis); \(r=x\)" class="calc-figure" src="../figures/notes-fig22.svg" width="356" /></p>
+<p><em>Figure.</em> The region under <span class="arithmatex">\(y=\sqrt x\)</span> on <span class="arithmatex">\([0,4]\)</span>. About the <span class="arithmatex">\(x\)</span>-axis the strip at <span class="arithmatex">\(x=2\)</span> has radius <span class="arithmatex">\(\sqrt2\)</span> (disk); about the <span class="arithmatex">\(y\)</span>-axis it has radius <span class="arithmatex">\(2\)</span> (shell).</p>
+</div>
+<h2 id="group-6-drilled-solids">Group 6: Drilled solids<a class="headerlink" href="#group-6-drilled-solids" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.28: The napkin ring</p>
+<p><span id="ex-b11"></span></p>
+<p>A cylindrical hole is drilled through the centre of a ball of radius <span class="arithmatex">\(R\)</span>, leaving a ring of height <span class="arithmatex">\(H=2\sqrt{R^2-a^2}\)</span>, where <span class="arithmatex">\(a\)</span> is the radius of the hole. Show that the volume of the ring is <span class="arithmatex">\(\frac{\pi}6H^3\)</span>, whatever <span class="arithmatex">\(R\)</span> is, and find it for <span class="arithmatex">\(H=6\)</span>.</p>
+<p><strong>Solution.</strong> The ring is obtained by revolving about the <span class="arithmatex">\(y\)</span>-axis the region <span class="arithmatex">\(a\le x\le R\)</span>, <span class="arithmatex">\(|y|\le\sqrt{R^2-x^2}\)</span>. The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(2\sqrt{R^2-x^2}\)</span>. With <span class="arithmatex">\(u=R^2-x^2\)</span>, <span class="arithmatex">\(du=-2x\,dx\)</span> (<span class="arithmatex">\(x=a\mapsto u=R^2-a^2\)</span>, <span class="arithmatex">\(x=R\mapsto u=0\)</span>):</p>
+<div class="arithmatex">\[V=2\pi\int_a^Rx\cdot2\sqrt{R^2-x^2}\,dx=2\pi\int_0^{R^2-a^2}\sqrt u\,du=2\pi\cdot\frac23\bigl(R^2-a^2\bigr)^{3/2}=\frac{4\pi}3\Bigl(\frac H2\Bigr)^3=\frac{\pi H^3}6 ,\]</div>
+<p>since <span class="arithmatex">\(\sqrt{R^2-a^2}=\frac H2\)</span>. For <span class="arithmatex">\(H=6\)</span>: <span class="arithmatex">\(V=\frac{\pi\cdot216}6=36\pi\approx113.1\)</span>, for <em>every</em> <span class="arithmatex">\(R\ge3\)</span>. (Check: <span class="arithmatex">\(R=5\)</span> gives <span class="arithmatex">\(a=4\)</span> and <span class="arithmatex">\(\frac{4\pi}3\cdot27=36\pi\)</span>; <span class="arithmatex">\(R=10\)</span> gives <span class="arithmatex">\(a^2=91\)</span> and <span class="arithmatex">\(\frac{4\pi}3\cdot9^{3/2}=36\pi\)</span>.)</p>
+<p><img alt="Diagram: \(r=x\); $h=2\sqrt{25-x^2" class="calc-figure" src="../figures/notes-fig23.svg" width="311" /></p>
+<p><em>Figure.</em> The region for <span class="arithmatex">\(R=5\)</span>, <span class="arithmatex">\(a=4\)</span> (the hole): the part of the half-disk with <span class="arithmatex">\(x\ge4\)</span>. Its height is <span class="arithmatex">\(6=H\)</span> at <span class="arithmatex">\(x=4\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.29: How wide a hole removes half of a ball?</p>
+<p><span id="ex-b12"></span></p>
+<p>A cylindrical hole is drilled through the centre of a ball of radius <span class="arithmatex">\(1\)</span>. For which hole radius <span class="arithmatex">\(a\)</span> is exactly half of the ball’s volume removed?</p>
+<p><strong>Solution.</strong> What remains is the ring of Example <a href="#ex-b11">6.4.28</a> with <span class="arithmatex">\(R=1\)</span>: <span class="arithmatex">\(V_{\mathrm{ring}}=\frac{4\pi}3(1-a^2)^{3/2}\)</span>. The ball has volume <span class="arithmatex">\(\frac{4\pi}3\)</span>, and half of it must remain, so <span class="arithmatex">\((1-a^2)^{3/2}=\frac12\)</span>. Raise to the power <span class="arithmatex">\(\frac23\)</span>: <span class="arithmatex">\(1-a^2=2^{-2/3}\)</span>, so</p>
+<div class="arithmatex">\[a=\sqrt{1-2^{-2/3}}\approx\sqrt{1-0.6300}=\sqrt{0.3700}\approx0.608 .\]</div>
+<p>(The hole has about <span class="arithmatex">\(61\%\)</span> of the radius of the ball but removes half of its volume.) <em>Check.</em> For <span class="arithmatex">\(a=0.608\)</span>: <span class="arithmatex">\((1-0.3697)^{3/2}=0.6303^{1.5}\approx0.500\)</span>.</p>
+<p><img alt="Diagram: hole" class="calc-figure" src="../figures/notes-fig24.svg" width="267" /></p>
+<p><em>Figure.</em> The half-disk of radius <span class="arithmatex">\(1\)</span> with the hole <span class="arithmatex">\(0\le x\le a\approx0.608\)</span> removed; the remaining region is revolved about the <span class="arithmatex">\(y\)</span>-axis.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.30: The volume of a cone by shells</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove that a cone of base radius <span class="arithmatex">\(r\)</span> and height <span class="arithmatex">\(h\)</span> has volume <span class="arithmatex">\(\frac13\pi r^2h\)</span>, using Theorem <a href="#thm-shell">6.4.2</a>.</p>
+<p><em>Proof.</em> The cone is the solid obtained by revolving about the <span class="arithmatex">\(y\)</span>-axis the triangle under the line <span class="arithmatex">\(y=h\bigl(1-\frac xr\bigr)\)</span> for <span class="arithmatex">\(0\le x\le r\)</span> (it has height <span class="arithmatex">\(h\)</span> at <span class="arithmatex">\(x=0\)</span> and height <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=r\)</span>). Here <span class="arithmatex">\(f\ge0\)</span> and <span class="arithmatex">\(0\le a=0&lt;b=r\)</span>, so Theorem <a href="#thm-shell">6.4.2</a> applies with <span class="arithmatex">\(f(x)=h\bigl(1-\frac xr\bigr)\)</span>:</p>
+<div class="arithmatex">\[V=2\pi\int_0^rx\,h\Bigl(1-\frac xr\Bigr)dx=2\pi h\int_0^r\Bigl(x-\frac{x^2}r\Bigr)dx=2\pi h\Bigl[\frac{x^2}2-\frac{x^3}{3r}\Bigr]_0^r=2\pi h\Bigl(\frac{r^2}2-\frac{r^2}3\Bigr)=\frac{\pi r^2h}3 .\]</div>
+<p>This agrees with Theorem <a href="../../6.3/notes/#thm-vols">6.3.18</a>(1), which was proved by disks. ◻ ∎</p>
+<p><img alt="Diagram: \(h\bigl(1-\frac xr\bigr)\)" class="calc-figure" src="../figures/notes-fig25.svg" width="239" /></p>
+<p><em>Figure.</em> The triangle under <span class="arithmatex">\(y=h(1-x/r)\)</span> that generates the cone.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.4.31: Volume is linear in the distance to the axis</p>
+<p><span id="ex-b14"></span></p>
+<p>Let <span class="arithmatex">\(R\)</span> be the region between the graphs of <span class="arithmatex">\(g\le f\)</span> on <span class="arithmatex">\([a,b]\)</span>, with <span class="arithmatex">\(0\le a&lt;b\)</span>, and let <span class="arithmatex">\(A=\int_a^b(f-g)\,dx\)</span> be its area. For <span class="arithmatex">\(0\le k\le a\)</span> let <span class="arithmatex">\(V(k)\)</span> be the volume obtained by revolving <span class="arithmatex">\(R\)</span> about the line <span class="arithmatex">\(x=k\)</span>. Prove that <span class="arithmatex">\(V(k)=V(0)-2\pi kA\)</span>. Then find <span class="arithmatex">\(V(k)\)</span> for the rectangle <span class="arithmatex">\(1\le x\le3\)</span>, <span class="arithmatex">\(0\le y\le1\)</span>.</p>
+<p><em>Proof.</em> By Theorem <a href="#thm-lines">6.4.9</a> (case <span class="arithmatex">\(k\le a\)</span>, with <span class="arithmatex">\(x-k\ge0\)</span> on <span class="arithmatex">\([a,b]\)</span>),</p>
+<div class="arithmatex">\[V(k)=2\pi\int_a^b(x-k)(f-g)\,dx=2\pi\int_a^bx(f-g)\,dx-2\pi k\int_a^b(f-g)\,dx=V(0)-2\pi kA ,\]</div>
+<p>by splitting the integrand and taking the constant <span class="arithmatex">\(2\pi k\)</span> out of the integral. So <span class="arithmatex">\(V\)</span> is a linear function of <span class="arithmatex">\(k\)</span> with slope <span class="arithmatex">\(-2\pi A\)</span>. (Equivalently <span class="arithmatex">\(V(k)=2\pi A(\bar x-k)\)</span> with <span class="arithmatex">\(\bar x=\frac1A\int_a^bx(f-g)\,dx\)</span>, the <span class="arithmatex">\(x\)</span>-coordinate of the centre of mass of <span class="arithmatex">\(R\)</span>, as in the theorem of Pappus mentioned above.) ◻ ∎</p>
+<p><em>The rectangle.</em> Here <span class="arithmatex">\(f-g=1\)</span>, <span class="arithmatex">\(A=2\)</span> and <span class="arithmatex">\(V(0)=2\pi\int_1^3x\,dx=2\pi\cdot4=8\pi\)</span>, so <span class="arithmatex">\(V(k)=8\pi-4\pi k\)</span> for <span class="arithmatex">\(0\le k\le1\)</span>. Check at <span class="arithmatex">\(k=1\)</span>: <span class="arithmatex">\(2\pi\int_1^3(x-1)\,dx=2\pi\cdot2=4\pi=8\pi-4\pi\)</span>.</p>
+<p><img alt="Diagram: \(x=k\)" class="calc-figure" src="../figures/notes-fig26.svg" width="336" /></p>
+<p><em>Figure.</em> The rectangle <span class="arithmatex">\(1\le x\le3\)</span>, <span class="arithmatex">\(0\le y\le1\)</span> and a vertical axis <span class="arithmatex">\(x=k\)</span> to its left; moving the axis to the right by <span class="arithmatex">\(1\)</span> lowers the volume by <span class="arithmatex">\(2\pi A=4\pi\)</span>.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-kcshell">6.4.1</a>.</strong> The estimate is <span class="arithmatex">\(2\pi\cdot3\cdot5\cdot0.01=0.3\pi\approx0.942\)</span>. The exact tube volume is <span class="arithmatex">\(\pi(3.005^2-2.995^2)\cdot5=\pi\cdot0.06\cdot5=0.3\pi\)</span>: the same, because <span class="arithmatex">\(3\)</span> is exactly the average of the two radii and <span class="arithmatex">\(3.005^2-2.995^2=(3.005+2.995)(0.01)=0.06\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcint">6.4.2</a>.</strong> The strip at <span class="arithmatex">\(x\)</span> has radius <span class="arithmatex">\(x\)</span> and height <span class="arithmatex">\(x^2\)</span>, so <span class="arithmatex">\(V=2\pi\int_0^1x\cdot x^2\,dx=2\pi\bigl[\frac{x^4}4\bigr]_0^1=\frac\pi2\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-kcaxis">6.4.3</a>.</strong> The axis <span class="arithmatex">\(x=5\)</span> is to the right of the region, so <span class="arithmatex">\(r=5-x\)</span> and <span class="arithmatex">\(h=x\)</span>: <span class="arithmatex">\(V=2\pi\int_1^3(5-x)x\,dx=2\pi\bigl[\frac52x^2-\frac13x^3\bigr]_1^3=2\pi\bigl(\frac{27}2-\frac{13}6\bigr)=\frac{68\pi}3\approx71.2\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
