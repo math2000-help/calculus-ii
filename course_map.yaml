@@ -5,7 +5,7 @@
 course:
   title: Calculus II
   textbook: "Briggs, Cochran et al., Calculus: Early Transcendentals, 3rd edition"
-  project: "Chapter 6, Applications of Integration (done: 6.1 to 6.4), Chapter 8, Integration Techniques (done: 8.1 to 8.9), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
+  project: "Chapter 6, Applications of Integration (done: 6.1 to 6.5), Chapter 8, Integration Techniques (done: 8.1 to 8.9), Chapter 10, Sequences and Infinite Series (done), Chapter 11, Power Series (done), and Chapter 12, Parametric and Polar Curves (done)"
   dropped_on_purpose: []
 appendix:
   file: appendix/appendix.tex
@@ -29,6 +29,7 @@ modules:
   - {id: "6.2", chapter: 6, title: "Regions Between Curves", prereqs: ["6.1"], status: done}
   - {id: "6.3", chapter: 6, title: "Volume By Slicing", prereqs: ["6.2"], status: done}
   - {id: "6.4", chapter: 6, title: "Volume By Shells", prereqs: ["6.3"], status: done}
+  - {id: "6.5", chapter: 6, title: "Length of Curves", prereqs: ["6.4"], status: done}
   - {id: "8.1", chapter: 8, title: "Basic Approaches", prereqs: [], status: done}
   - {id: "8.2", chapter: 8, title: "Integration by Parts", prereqs: ["8.1"], status: done}
   - {id: "8.3", chapter: 8, title: "Trigonometric Integrals", prereqs: ["8.2"], status: done}
