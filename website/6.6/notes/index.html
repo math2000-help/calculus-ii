@@ -1,0 +1,4166 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../6.5/notes/">
+      
+      
+        <link rel="next" href="../../8.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 6: Applications of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 6: Applications of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.1 Velocity and Net Change
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.1 Velocity and Net Change
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.2 Regions Between Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.2 Regions Between Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.3 Volume By Slicing
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.3 Volume By Slicing
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.4 Volume By Shells
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.4 Volume By Shells
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.5 Length of Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.5 Length of Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.6 Surface Area
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.6 Surface Area
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-area-of-a-curved-surface-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What does the area of a curved surface mean?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounds-for-the-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bounds for the area
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archimedes-the-sphere" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Archimedes: the sphere
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Worked examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-lines-and-set-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Lines and set-up
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-perfect-squares-with-powers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Perfect squares with powers
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-perfect-squares-with-exponentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Perfect squares with exponentials
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-substitution-and-cusps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Substitution and cusps
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-numerical-values-and-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Numerical values and bounds
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-comparing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Comparing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.8 Numerical Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.8 Numerical Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.9 Improper Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.9 Improper Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.9/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-does-the-area-of-a-curved-surface-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What does the area of a curved surface mean?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounds-for-the-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bounds for the area
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archimedes-the-sphere" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Archimedes: the sphere
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Worked examples
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-lines-and-set-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Lines and set-up
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-perfect-squares-with-powers" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Perfect squares with powers
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-perfect-squares-with-exponentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Perfect squares with exponentials
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-substitution-and-cusps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Substitution and cusps
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-numerical-values-and-bounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Numerical values and bounds
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-comparing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Comparing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="66-surface-area">6.6 Surface Area<a class="headerlink" href="#66-surface-area" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>How much paint covers a funnel? The paint is a thin layer on a <em>surface</em>, so we need the area of a curved surface. Sections 6.3 and 6.4 found the volume of a solid of revolution; now we find the area of its boundary. A flat region has an area by Riemann sums, and a curve has a length by inscribed polygons (Section 6.5), but a curved surface has neither; we must first say what its area <em>means</em>. We do this honestly. For a cone and a cylinder, which can be unrolled flat without stretching, the area is the area of the flat piece. A surface of revolution is then approximated by chains of cone pieces (<em>frusta</em>, one for each segment of an inscribed polygon), and its area is the limit of their areas. We prove that the limit exists and equals <span class="arithmatex">\(2\pi\int R\,\sqrt{1+f'^2}\,dx\)</span>, where <span class="arithmatex">\(R\)</span> is the distance to the axis. We check the formula on the cylinder, the cone, the sphere (Archimedes’ theorem: a zone of a sphere has an area that depends only on its height) and the torus, and use it for curves that turn the integral into a substitution or a perfect square, or that can be handled only numerically.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>say what is assumed (the area of a cone, and the area of a surface of revolution as a limit of frusta) and what is proved;</p>
+</li>
+<li>
+<p>prove and use <span class="arithmatex">\(S=2\pi\int_a^bR(x)\sqrt{1+f'(x)^2}\,dx\)</span> with <span class="arithmatex">\(R\)</span> the distance from the curve to the axis, for the <span class="arithmatex">\(x\)</span>-axis, the <span class="arithmatex">\(y\)</span>-axis and the lines <span class="arithmatex">\(y=k\)</span> and <span class="arithmatex">\(x=k\)</span>, and the same formula in <span class="arithmatex">\(y\)</span> for a curve <span class="arithmatex">\(x=g(y)\)</span>;</p>
+</li>
+<li>
+<p>recognize the curves for which the integral needs only a substitution or a perfect square, and give numerical values (checked against a frustum sum and a bound) for the others;</p>
+</li>
+<li>
+<p>handle a vertical tangent at an end by switching to <span class="arithmatex">\(x=g(y)\)</span>;</p>
+</li>
+<li>
+<p>prove and use the surface areas of the cylinder, cone, sphere and spherical zone, and find the area of a torus;</p>
+</li>
+<li>
+<p>bound a surface area by <span class="arithmatex">\(2\pi m L\)</span> and <span class="arithmatex">\(2\pi M L\)</span>, where <span class="arithmatex">\(L\)</span> is the length of the curve.</p>
+</li>
+</ul>
+<h2 id="what-does-the-area-of-a-curved-surface-mean">What does the area of a curved surface mean?<a class="headerlink" href="#what-does-the-area-of-a-curved-surface-mean" title="Permanent link">&para;</a></h2>
+<p>For the length of a curve (Section 6.5) we took the least upper bound of the lengths of inscribed polygons. The same idea does <em>not</em> work for surfaces: if we inscribe in a cylinder a surface made of flat triangles, the total area of the triangles can be made as large as we like (the “Schwarz lantern”; we do not prove this here), so there is no least upper bound, and it is not the area we want. We need a different starting point. Two kinds of surface can be <em>flattened without stretching</em>, and their area is the area of the flat piece: the lateral surface of a cylinder, which unrolls to a rectangle, and the lateral surface of a cone, which unrolls to a sector of a disk.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 6.6.1: Area of a cylinder and of a cone (S1)</p>
+<p><span id="def-cone"></span></p>
+<p>A right circular cylinder of radius <span class="arithmatex">\(r\)</span> and height <span class="arithmatex">\(l\)</span> has lateral area <span class="arithmatex">\(2\pi r\,l\)</span>: cut along a vertical line and unroll it to a rectangle of width <span class="arithmatex">\(2\pi r\)</span> and height <span class="arithmatex">\(l\)</span>. A right circular cone of base radius <span class="arithmatex">\(r\)</span> and slant height <span class="arithmatex">\(l\)</span> (the distance from the apex to the base circle along the surface) has lateral area</p>
+<div class="arithmatex">\[\pi\,r\,l :\]</div>
+<p>cut along a line through the apex and unroll it to a plane sector of radius <span class="arithmatex">\(l\)</span> whose curved edge has length <span class="arithmatex">\(2\pi r\)</span>. This sector is the fraction <span class="arithmatex">\(\dfrac{2\pi r}{2\pi l}=\dfrac rl\)</span> of the disk of radius <span class="arithmatex">\(l\)</span>, so its area is <span class="arithmatex">\(\dfrac rl\cdot\pi l^2=\pi r\,l\)</span>. We take these as the <em>meaning</em> of the area of a cylinder and of a cone.</p>
+</div>
+<p><img alt="Diagram: \(h\); \(l\); \(r\); \(l\); curved edge of length \(2\pi r\)" class="calc-figure" src="../figures/notes-fig1.svg" width="536" /></p>
+<p><em>Figure.</em> A cone (<span class="arithmatex">\(r=3\)</span>, <span class="arithmatex">\(h=4\)</span>, <span class="arithmatex">\(l=5\)</span> in the units of the picture) is cut along a line through the apex and unrolled to a sector of radius <span class="arithmatex">\(l\)</span> and arc length <span class="arithmatex">\(2\pi r\)</span>. The sector is the fraction <span class="arithmatex">\(\frac35\)</span> of a disk (an angle of <span class="arithmatex">\(216^\circ\)</span>), so its area is <span class="arithmatex">\(\frac35\pi\cdot5^2=15\pi=\pi r\,l\)</span>.</p>
+<p>A <em>frustum</em> is a cone with the top sliced off, the surface made when a segment that does not cross an axis is revolved about the axis. With the cone area, we can find its area.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.6.2: The area of a frustum</p>
+<p><span id="thm-frustum"></span></p>
+<p>Revolve a line segment of length <span class="arithmatex">\(l&gt;0\)</span> about an axis in its plane, where the segment lies on one side of the axis, and let <span class="arithmatex">\(r_1\ge0\)</span> and <span class="arithmatex">\(r_2\ge0\)</span> be the distances of its endpoints from the axis. The surface generated has area</p>
+<div class="arithmatex">\[\pi\,(r_1+r_2)\,l .\]</div>
+<p>In particular a cone (<span class="arithmatex">\(r_1=0\)</span>) has area <span class="arithmatex">\(\pi r_2 l\)</span> and a cylinder (<span class="arithmatex">\(r_1=r_2=r\)</span>) has area <span class="arithmatex">\(2\pi r\,l\)</span>. (If <span class="arithmatex">\(r_1=r_2=0\)</span> the segment lies on the axis and the area is <span class="arithmatex">\(0\)</span>.)</p>
+</div>
+<p><em>Proof.</em> If <span class="arithmatex">\(r_1=r_2=r\)</span> the segment is parallel to the axis, the surface is a cylinder, and its area is <span class="arithmatex">\(2\pi rl=\pi(r+r)l\)</span> by (S1). If one distance is <span class="arithmatex">\(0\)</span>, the surface is a cone and the area is <span class="arithmatex">\(\pi rl\)</span> by (S1), which is <span class="arithmatex">\(\pi(0+r)l\)</span>. Because the formula is symmetric in <span class="arithmatex">\(r_1\)</span> and <span class="arithmatex">\(r_2\)</span> we may now assume <span class="arithmatex">\(0&lt;r_1&lt;r_2\)</span>. Extend the segment beyond its short end until it meets the axis at the apex <span class="arithmatex">\(V\)</span>; the surface is the cone of base radius <span class="arithmatex">\(r_2\)</span> with the small cone of base radius <span class="arithmatex">\(r_1\)</span> cut off (Figure). Let <span class="arithmatex">\(s_1\)</span> and <span class="arithmatex">\(s_2=s_1+l\)</span> be the distances from <span class="arithmatex">\(V\)</span> to the ends of the segment, the slant heights of the two cones. The triangles formed by the axis, the radius and the slant line are similar, so <span class="arithmatex">\(\dfrac{r_1}{s_1}=\dfrac{r_2}{s_1+l}\)</span>, that is <span class="arithmatex">\(r_2s_1=r_1s_1+r_1l\)</span>, so</p>
+<div class="arithmatex">\[s_1=\frac{r_1\,l}{r_2-r_1},\qquad s_2=s_1+l=\frac{r_2\,l}{r_2-r_1}.\]</div>
+<p>The area of the frustum is the area of the big cone minus the area of the small one, which by (S1) is</p>
+<div class="arithmatex">\[\pi r_2s_2-\pi r_1s_1=\frac{\pi\,l\,(r_2^2-r_1^2)}{r_2-r_1}=\pi\,(r_1+r_2)\,l .\]</div>
+<p>(For <span class="arithmatex">\(r_1=1\)</span>, <span class="arithmatex">\(r_2=2\)</span>, <span class="arithmatex">\(l=\sqrt{10}\)</span>, the figure below: <span class="arithmatex">\(s_1=\sqrt{10}\)</span>, <span class="arithmatex">\(s_2=2\sqrt{10}\)</span>, and <span class="arithmatex">\(\pi\cdot2\sqrt{10}\cdot2-\pi\cdot\sqrt{10}\cdot1=3\pi\sqrt{10}\)</span>.) ◻ ∎</p>
+<p><img alt="Diagram: \(r_1\); \(r_2\); \(s_1\); \(l\)" class="calc-figure" src="../figures/notes-fig2.svg" width="492" /></p>
+<p><em>Figure.</em> A frustum (solid lines) is a cone of slant height <span class="arithmatex">\(s_2=s_1+l\)</span> minus a cone of slant height <span class="arithmatex">\(s_1\)</span> (dashed). The radii are <span class="arithmatex">\(r_1\)</span> and <span class="arithmatex">\(r_2\)</span> and the slant height of the frustum is <span class="arithmatex">\(l\)</span>. Here <span class="arithmatex">\(r_1=1\)</span>, <span class="arithmatex">\(r_2=2\)</span>, <span class="arithmatex">\(s_1=\sqrt{10}\)</span> and <span class="arithmatex">\(l=\sqrt{10}\)</span>.</p>
+<p>Now let <span class="arithmatex">\(f\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let its graph be revolved about an axis. As in Section 6.5, a partition <span class="arithmatex">\(\Pi\)</span> (<span class="arithmatex">\(a=x_0&lt;x_1&lt;\cdots&lt;x_n=b\)</span>) gives an inscribed polygon with vertices <span class="arithmatex">\(P_k=(x_k,f(x_k))\)</span>, segments of length <span class="arithmatex">\(\lambda_k=\sqrt{\Delta x_k^2+\Delta y_k^2}\)</span>, and the segment <span class="arithmatex">\(P_{k-1}P_k\)</span> generates a frustum. The <em>mesh</em> of <span class="arithmatex">\(\Pi\)</span> is the largest <span class="arithmatex">\(\Delta x_k\)</span>.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 6.6.3: Area of a surface of revolution (S2)</p>
+<p><span id="def-surf"></span></p>
+<p>Let a curve be revolved about a horizontal or vertical line (the <em>axis</em>) that the curve may touch but does not cross, and let <span class="arithmatex">\(R(x)\)</span> denote the distance from the point <span class="arithmatex">\((x,f(x))\)</span> of the curve to the axis. For a partition <span class="arithmatex">\(\Pi\)</span> the <em>frustum sum</em> is the total area of the frusta, which by Theorem <a href="#thm-frustum">6.6.2</a> is</p>
+<div class="arithmatex">\[\Sigma(\Pi)=\sum_{k=1}^n\pi\bigl(R(x_{k-1})+R(x_k)\bigr)\,\lambda_k .\]</div>
+<p>The <em>area of the surface of revolution</em> is the limit <span class="arithmatex">\(S=\lim_{n\to\infty}\Sigma(\Pi_n)\)</span> for partitions whose mesh tends to <span class="arithmatex">\(0\)</span>. (We prove below that for a curve with a continuous derivative this limit exists and does not depend on the partitions.) We take this as the <em>meaning</em> of surface area.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">What is assumed and what is proved</p>
+<p><em>Assumed (meaning of area):</em> (S1), that the lateral area of a cone and of a cylinder is the area of the flat sector or rectangle it unrolls to, and (S2), that the area of a surface of revolution is the limit of the frustum sums. <em>Proved below:</em> the frustum formula (Theorem <a href="#thm-frustum">6.6.2</a>); that the limit in (S2) exists, does not depend on the partitions, and equals <span class="arithmatex">\(2\pi\int R\sqrt{1+f'^2}\,dx\)</span> (Theorem <a href="#thm-surf">6.6.4</a>); the formula in the variable <span class="arithmatex">\(y\)</span> (Theorem <a href="#thm-yform">6.6.5</a>); the bounds (Theorem <a href="#thm-bounds">6.6.7</a>); and the areas of the cylinder, cone, sphere, spherical zones and torus. <em>Calculus I facts used:</em> the Mean Value Theorem, the Fundamental Theorem of Calculus, the Extreme Value Theorem, that the integral preserves inequalities and is additive, and (F4) of Section 6.5: for a continuous <span class="arithmatex">\(h\)</span>, every Riemann sum <span class="arithmatex">\(\sum h(\xi_k)\Delta x_k\)</span> (with <span class="arithmatex">\(\xi_k\)</span> in the <span class="arithmatex">\(k\)</span>th subinterval) is as close as we like to <span class="arithmatex">\(\int_a^bh\)</span> once every <span class="arithmatex">\(\Delta x_k\)</span> is small enough.</p>
+</div>
+<p><img alt="Diagram: \(y=f(x)\); \(a\); \(b\)" class="calc-figure" src="../figures/notes-fig3.svg" width="369" /></p>
+<p><em>Figure.</em> The curve <span class="arithmatex">\(y=f(x)\)</span> and its mirror image in the axis (blue), the inscribed polygon and its mirror image (red), and the circles of revolution at the vertices <span class="arithmatex">\(x_0,\dots,x_4\)</span> (gray). Each segment of the polygon generates one frustum; the frustum sum <span class="arithmatex">\(\Sigma(\Pi)\)</span> is the total area of the four frusta.</p>
+<p>The frustum sum is a sum of terms of the form (average radius)<span class="arithmatex">\(\times\)</span>(circumference)<span class="arithmatex">\(\times\)</span>(slant height): <span class="arithmatex">\(\pi(R_{k-1}+R_k)\lambda_k=2\pi\cdot\frac{R_{k-1}+R_k}2\cdot\lambda_k\)</span>. This is a Riemann sum for <span class="arithmatex">\(\int2\pi R\,ds\)</span> in disguise, where <span class="arithmatex">\(ds=\sqrt{1+f'^2}\,dx\)</span> is the element of arc length of Section 6.5. The following theorem makes this precise, and also deals with the difficulty that <span class="arithmatex">\(R\)</span> is evaluated at the two ends <span class="arithmatex">\(x_{k-1}\)</span> and <span class="arithmatex">\(x_k\)</span> while the square root, by the Mean Value Theorem, is evaluated at another point <span class="arithmatex">\(\xi_k\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.6.4: The surface area formula</p>
+<p><span id="thm-surf"></span></p>
+<p>Let <span class="arithmatex">\(f\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> with a continuous derivative, and let its graph be revolved about a horizontal or vertical line that the graph does not cross. Let <span class="arithmatex">\(R(x)\)</span> be the distance from <span class="arithmatex">\((x,f(x))\)</span> to the axis (<span class="arithmatex">\(R(x)=\lvert f(x)-k\rvert\)</span> for the line <span class="arithmatex">\(y=k\)</span>, <span class="arithmatex">\(R(x)=\lvert x-k\rvert\)</span> for the line <span class="arithmatex">\(x=k\)</span>). Then the limit in (S2) exists, does not depend on the partitions, and</p>
+<div class="arithmatex">\[S=\int_a^b2\pi\,R(x)\sqrt{1+f'(x)^2}\,dx .\]</div>
+</div>
+<p><em>Proof.</em> Write <span class="arithmatex">\(h(x)=\sqrt{1+f'(x)^2}\)</span>, continuous and at most <span class="arithmatex">\(H\)</span> on <span class="arithmatex">\([a,b]\)</span> for some number <span class="arithmatex">\(H\)</span> (Extreme Value Theorem), and <span class="arithmatex">\(I=\int_a^b2\pi R\,h\,dx\)</span>. Take a partition <span class="arithmatex">\(\Pi\)</span> with mesh <span class="arithmatex">\(\delta\)</span>.</p>
+<p><em>Step 1 (the Mean Value Theorem).</em> On each <span class="arithmatex">\([x_{k-1},x_k]\)</span> there is a point <span class="arithmatex">\(c_k\)</span> with <span class="arithmatex">\(\Delta y_k=f'(c_k)\Delta x_k\)</span>, so <span class="arithmatex">\(\lambda_k=\sqrt{\Delta x_k^2+f'(c_k)^2\Delta x_k^2}=h(c_k)\Delta x_k\)</span>. Hence</p>
+<div class="arithmatex">\[\Sigma(\Pi)=\sum_{k=1}^n\pi\bigl(R(x_{k-1})+R(x_k)\bigr)h(c_k)\Delta x_k .\]</div>
+<p><em>Step 2 (compare with a Riemann sum).</em> Let <span class="arithmatex">\(T=\sum_k2\pi R(c_k)h(c_k)\Delta x_k\)</span>, a Riemann sum for the continuous function <span class="arithmatex">\(2\pi Rh\)</span>. Let <span class="arithmatex">\(M_k\)</span> and <span class="arithmatex">\(m_k\)</span> be the largest and smallest values of the continuous function <span class="arithmatex">\(R\)</span> on <span class="arithmatex">\([x_{k-1},x_k]\)</span>. The three numbers <span class="arithmatex">\(R(x_{k-1})\)</span>, <span class="arithmatex">\(R(x_k)\)</span>, <span class="arithmatex">\(R(c_k)\)</span> all lie in <span class="arithmatex">\([m_k,M_k]\)</span>, so <span class="arithmatex">\(\lvert R(x_{k-1})+R(x_k)-2R(c_k)\rvert\le2(M_k-m_k)\)</span>. Therefore</p>
+<div class="arithmatex">\[\lvert\Sigma(\Pi)-T\rvert\le\sum_k\pi\cdot2(M_k-m_k)\,H\,\Delta x_k=2\pi H\,(U-L),\]</div>
+<p>where <span class="arithmatex">\(U=\sum M_k\Delta x_k\)</span> and <span class="arithmatex">\(L=\sum m_k\Delta x_k\)</span>.</p>
+<p><em>Step 3 (<span class="arithmatex">\(U-L\)</span> is small).</em> By the Extreme Value Theorem <span class="arithmatex">\(M_k=R(u_k)\)</span> and <span class="arithmatex">\(m_k=R(v_k)\)</span> for points <span class="arithmatex">\(u_k,v_k\)</span> of the <span class="arithmatex">\(k\)</span>th subinterval, so <span class="arithmatex">\(U\)</span> and <span class="arithmatex">\(L\)</span> are Riemann sums of <span class="arithmatex">\(R\)</span>. By (F4) both are within <span class="arithmatex">\(\varepsilon\)</span> of <span class="arithmatex">\(\int_a^bR\,dx\)</span> when <span class="arithmatex">\(\delta\)</span> is small, so <span class="arithmatex">\(U-L&lt;2\varepsilon\)</span>. (This is the statement that a continuous <span class="arithmatex">\(R\)</span> has small oscillation on small intervals.)</p>
+<p><em>Step 4 (conclusion).</em> By (F4) again <span class="arithmatex">\(\lvert T-I\rvert&lt;\varepsilon\)</span> for small <span class="arithmatex">\(\delta\)</span>. Hence <span class="arithmatex">\(\lvert\Sigma(\Pi)-I\rvert\le\lvert\Sigma-T\rvert+\lvert T-I\rvert&lt;4\pi H\varepsilon+\varepsilon\)</span> whenever <span class="arithmatex">\(\delta\)</span> is small enough. As <span class="arithmatex">\(\varepsilon\)</span> is arbitrary, <span class="arithmatex">\(\Sigma(\Pi)\to I\)</span> as the mesh tends to <span class="arithmatex">\(0\)</span>, whatever the partitions are. ◻ ∎</p>
+<p>For the <span class="arithmatex">\(x\)</span>-axis and a curve above it, <span class="arithmatex">\(R=f\)</span> and <span class="arithmatex">\(S=2\pi\int_a^bf\sqrt{1+f'^2}\,dx\)</span>. For the <span class="arithmatex">\(y\)</span>-axis (<span class="arithmatex">\(0\le a&lt;b\)</span>), <span class="arithmatex">\(R=x\)</span>. The same statement holds with the roles of <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> exchanged.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.6.5: Surface area for a curve <span class="arithmatex">\(x=g(y)\)</span></p>
+<p><span id="thm-yform"></span></p>
+<p>Let <span class="arithmatex">\(g\)</span> be continuous on <span class="arithmatex">\([c,d]\)</span> with a continuous derivative, and revolve the curve <span class="arithmatex">\(x=g(y)\)</span> about a horizontal or vertical line that it does not cross. Let <span class="arithmatex">\(R(y)\)</span> be the distance from <span class="arithmatex">\((g(y),y)\)</span> to the axis. Then</p>
+<div class="arithmatex">\[S=\int_c^d2\pi\,R(y)\sqrt{1+g'(y)^2}\,dy .\]</div>
+</div>
+<p><em>Proof.</em> Reflect the plane in the line <span class="arithmatex">\(y=x\)</span>. The reflection preserves distances, so it carries the curve <span class="arithmatex">\(x=g(y)\)</span> to the graph <span class="arithmatex">\(y=g(x)\)</span> over <span class="arithmatex">\([c,d]\)</span>, the axis to a line of the other direction, the inscribed polygons to inscribed polygons, and the radii <span class="arithmatex">\(r_1,r_2\)</span> and the segment lengths <span class="arithmatex">\(l\)</span> to the same numbers. By Theorem <a href="#thm-frustum">6.6.2</a> the frustum sums are equal, so the surfaces have the same area. Apply Theorem <a href="#thm-surf">6.6.4</a> to <span class="arithmatex">\(y=g(x)\)</span> and rename the variable. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.6.6: Choosing the radius</p>
+<p><span id="proc-radius"></span></p>
+<p>(1) Draw the curve and the axis. (2) Decide whether <span class="arithmatex">\(x\)</span> or <span class="arithmatex">\(y\)</span> is the independent variable: pick the one for which <span class="arithmatex">\(\sqrt{1+(\text{derivative})^2}\)</span> simplifies, or the one for which the derivative stays finite on the whole interval (Theorem <a href="../../6.5/notes/#thm-xofy">6.5.5</a>). (3) Write the radius as the distance from a point of the curve to the axis, <em>in the same variable</em>: for the curve <span class="arithmatex">\(y=f(x)\)</span> it is <span class="arithmatex">\(f(x)\)</span> about the <span class="arithmatex">\(x\)</span>-axis, <span class="arithmatex">\(x\)</span> about the <span class="arithmatex">\(y\)</span>-axis, <span class="arithmatex">\(\lvert f(x)-k\rvert\)</span> about <span class="arithmatex">\(y=k\)</span>, <span class="arithmatex">\(\lvert x-k\rvert\)</span> about <span class="arithmatex">\(x=k\)</span>. (4) Integrate <span class="arithmatex">\(2\pi R\,ds\)</span>.</p>
+</div>
+<h2 id="knowledge-check">Knowledge check<a class="headerlink" href="#knowledge-check" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.6.1: Frusta and cones</p>
+<p><span id="kc-k1"></span></p>
+<p>(a) Find the area of a cone of base radius <span class="arithmatex">\(5\)</span> and height <span class="arithmatex">\(12\)</span>. (b) Find the area of the frustum with radii <span class="arithmatex">\(2\)</span> and <span class="arithmatex">\(5\)</span> and slant height <span class="arithmatex">\(5\)</span>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.6.2: Which radius?</p>
+<p><span id="kc-k2"></span></p>
+<p>The curve <span class="arithmatex">\(y=x^2\)</span>, <span class="arithmatex">\(1\le x\le2\)</span>, is revolved about (a) the <span class="arithmatex">\(x\)</span>-axis, (b) the <span class="arithmatex">\(y\)</span>-axis, (c) the line <span class="arithmatex">\(y=-3\)</span>, (d) the line <span class="arithmatex">\(x=5\)</span>. Give the radius <span class="arithmatex">\(R(x)\)</span> in each case. Do not integrate.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.6.3: A vertical tangent</p>
+<p><span id="kc-k3"></span></p>
+<p>The curve <span class="arithmatex">\(y=\sqrt[3]{x}\)</span>, <span class="arithmatex">\(0\le x\le1\)</span>, is revolved about the <span class="arithmatex">\(x\)</span>-axis. Why is <span class="arithmatex">\(\int_0^12\pi\sqrt[3]{x}\sqrt{1+f'(x)^2}\,dx\)</span> not a good way to write the area, and what is a better one?</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.6.1: Why frusta?</p>
+<p><span id="think-t1"></span></p>
+<p>We approximated a curve by segments to find its length. For a surface, why do we use frusta (one for each segment), and not flat triangles, as the pieces?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>A surface of revolution is made of circles, so a segment of the inscribed polygon sweeps out a frustum whose area we know exactly (Theorem <a href="#thm-frustum">6.6.2</a>), and the sums of these areas converge (Theorem <a href="#thm-surf">6.6.4</a>). Flat triangles inscribed in a cylinder do not converge: with many long thin triangles that are twisted against the surface (the Schwarz lantern) the total area grows without bound as the triangles get smaller. Matching the <em>direction</em> of the pieces to the surface matters for area, in a way it does not for length.</p>
+</details>
+</div>
+<h2 id="bounds-for-the-area">Bounds for the area<a class="headerlink" href="#bounds-for-the-area" title="Permanent link">&para;</a></h2>
+<p>Since <span class="arithmatex">\(R\)</span> is the radius of the circle that a point of the curve sweeps out, and <span class="arithmatex">\(ds\)</span> the arc-length element, we have <span class="arithmatex">\(dS=2\pi R\,ds\)</span>: the area of a thin band is its circumference times its width, measured along the curve. If the radius is between two numbers, so is the area per unit length.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.6.7: Bounds for the surface area</p>
+<p><span id="thm-bounds"></span></p>
+<p>With the notation of Theorem <a href="#thm-surf">6.6.4</a>, let <span class="arithmatex">\(L=\int_a^b\sqrt{1+f'^2}\,dx\)</span> be the length of the curve (Theorem <a href="../../6.5/notes/#thm-arclen">6.5.4</a>). If <span class="arithmatex">\(m\le R(x)\le M\)</span> on <span class="arithmatex">\([a,b]\)</span> then</p>
+<div class="arithmatex">\[2\pi\,m\,L\le S\le2\pi\,M\,L ,\]</div>
+<p>and there is a point <span class="arithmatex">\(\xi\)</span> in <span class="arithmatex">\([a,b]\)</span> with <span class="arithmatex">\(S=2\pi\,R(\xi)\,L\)</span>: the area is the circumference of a circle of the “average radius” times the length of the curve.</p>
+</div>
+<p><em>Proof.</em> Multiply <span class="arithmatex">\(m\le R(x)\le M\)</span> by the positive number <span class="arithmatex">\(2\pi h(x)\)</span> and integrate over <span class="arithmatex">\([a,b]\)</span>; the integral preserves inequalities (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>), which gives <span class="arithmatex">\(2\pi mL\le S\le2\pi ML\)</span>. Dividing by <span class="arithmatex">\(2\pi L&gt;0\)</span> shows that <span class="arithmatex">\(S/(2\pi L)\)</span> lies between the least and the greatest value of the continuous function <span class="arithmatex">\(R\)</span> on <span class="arithmatex">\([a,b]\)</span>, so by the Intermediate Value Theorem <span class="arithmatex">\(R(\xi)=S/(2\pi L)\)</span> at some <span class="arithmatex">\(\xi\)</span>. ◻ ∎</p>
+<h2 id="archimedes-the-sphere">Archimedes: the sphere<a class="headerlink" href="#archimedes-the-sphere" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.6.8: The area of a sphere (Archimedes)</p>
+<p><span id="thm-arch"></span></p>
+<p>Let a sphere have radius <span class="arithmatex">\(a\)</span>. (i) A <em>zone</em> between two parallel planes at distance <span class="arithmatex">\(v-u\)</span> apart, both cutting the sphere, has area <span class="arithmatex">\(2\pi a\,(v-u)\)</span>. (ii) A <em>cap</em> of height <span class="arithmatex">\(a-b\)</span>, where <span class="arithmatex">\(0\le b&lt;a\)</span> is the distance of its plane from the centre, has area <span class="arithmatex">\(2\pi a\,(a-b)\)</span>. (iii) The whole sphere has area <span class="arithmatex">\(4\pi a^2\)</span>.</p>
+</div>
+<p><em>Proof.</em> (i) Take the sphere as the surface made by revolving <span class="arithmatex">\(y=\sqrt{a^2-x^2}\)</span> about the <span class="arithmatex">\(x\)</span>-axis, with <span class="arithmatex">\(-a&lt;u&lt;v&lt;a\)</span>. On <span class="arithmatex">\([u,v]\)</span> the function <span class="arithmatex">\(f(x)=\sqrt{a^2-x^2}\)</span> is positive with <span class="arithmatex">\(f'(x)=-x/\sqrt{a^2-x^2}\)</span>, continuous. Then <span class="arithmatex">\(1+f'^2=\dfrac{a^2-x^2+x^2}{a^2-x^2}=\dfrac{a^2}{a^2-x^2}\)</span>, so <span class="arithmatex">\(f\sqrt{1+f'^2}=\sqrt{a^2-x^2}\cdot\dfrac a{\sqrt{a^2-x^2}}=a\)</span>, a constant, and by Theorem <a href="#thm-surf">6.6.4</a> <span class="arithmatex">\(S=\int_u^v2\pi a\,dx=2\pi a(v-u)\)</span>.</p>
+<p>(ii) Let <span class="arithmatex">\(0&lt;b&lt;a\)</span> and <span class="arithmatex">\(\eta=\sqrt{a^2-b^2}\)</span>, so <span class="arithmatex">\(0&lt;\eta&lt;a\)</span>. The cap <span class="arithmatex">\(x\ge b\)</span> is generated by revolving the curve <span class="arithmatex">\(x=g(y)=\sqrt{a^2-y^2}\)</span>, <span class="arithmatex">\(0\le y\le\eta\)</span>, about the <span class="arithmatex">\(x\)</span>-axis (here <span class="arithmatex">\(g(\eta)=b&gt;0\)</span>). On <span class="arithmatex">\([0,\eta]\)</span> we have <span class="arithmatex">\(g(y)\ge b&gt;0\)</span>, so <span class="arithmatex">\(g'(y)=-y/g(y)\)</span> is continuous. The radius is <span class="arithmatex">\(R=y\)</span> and <span class="arithmatex">\(1+g'^2=\dfrac{g^2+y^2}{g^2}=\dfrac{a^2}{g^2}\)</span>. By Theorem <a href="#thm-yform">6.6.5</a></p>
+<div class="arithmatex">\[S=\int_0^\eta2\pi y\,\frac{a}{\sqrt{a^2-y^2}}\,dy=2\pi a\Bigl[-\sqrt{a^2-y^2}\Bigr]_0^\eta=2\pi a\,(a-b).\]</div>
+<p>(iii) Cut the sphere by the planes <span class="arithmatex">\(x=\pm b\)</span> with <span class="arithmatex">\(0&lt;b&lt;a\)</span> into a zone of height <span class="arithmatex">\(2b\)</span> and two caps of height <span class="arithmatex">\(a-b\)</span>. By (i) and (ii) the area is <span class="arithmatex">\(2\pi a(2b)+2\cdot2\pi a(a-b)=4\pi a^2\)</span>, whatever <span class="arithmatex">\(b\)</span> is. (Each cap is the reflection of the other, so (ii) holds for the cap <span class="arithmatex">\(x\le-b\)</span> too, and a hemisphere has area <span class="arithmatex">\(2\pi a^2\)</span>.) ◻ ∎</p>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.6.2: Why is the area so simple?</p>
+<p><span id="think-t2"></span></p>
+<p>On the sphere, <span class="arithmatex">\(R\,ds=a\,dx\)</span> (the proof shows <span class="arithmatex">\(f\sqrt{1+f'^2}=a\)</span>). Explain in a sentence what this says about a thin band of the sphere and the cylinder of radius <span class="arithmatex">\(a\)</span> around it.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>A thin band of the sphere between <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(x+dx\)</span> has area <span class="arithmatex">\(2\pi R\,ds=2\pi a\,dx\)</span>, which is the area of the band of the cylinder of radius <span class="arithmatex">\(a\)</span> between the same two planes. So the sphere and the cylinder (touching it along the equator) have the same area above each interval of <span class="arithmatex">\(x\)</span>, which is why every zone of the sphere has area <span class="arithmatex">\(2\pi a\times\)</span> height, and the sphere has <span class="arithmatex">\(4\pi a^2\)</span>, the area of the cylinder of height <span class="arithmatex">\(2a\)</span> without its caps.</p>
+</details>
+</div>
+<h2 id="worked-examples">Worked examples<a class="headerlink" href="#worked-examples" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.9: A line: the formula and the frustum agree</p>
+<p><span id="ex-e1"></span></p>
+<p>Revolve <span class="arithmatex">\(y=1+\dfrac x2\)</span>, <span class="arithmatex">\(0\le x\le4\)</span>, about the <span class="arithmatex">\(x\)</span>-axis. Find the surface area by the formula, and check it with Theorem <a href="#thm-frustum">6.6.2</a>.</p>
+<p><strong>Solution.</strong> <em>Set-up.</em> The graph lies above the <span class="arithmatex">\(x\)</span>-axis, so the radius is <span class="arithmatex">\(R=f(x)=1+\frac x2\)</span>. The derivative is <span class="arithmatex">\(f'(x)=\frac12\)</span>, continuous, and <span class="arithmatex">\(\sqrt{1+f'(x)^2}=\sqrt{1+\frac14}=\frac{\sqrt5}2\)</span>.</p>
+<p><em>Integral.</em> By Theorem <a href="#thm-surf">6.6.4</a>, since the factor <span class="arithmatex">\(\frac{\sqrt5}2\)</span> is constant,</p>
+<div class="arithmatex">\[S=\int_0^42\pi\Bigl(1+\frac x2\Bigr)\frac{\sqrt5}2\,dx=\pi\sqrt5\int_0^4\Bigl(1+\frac x2\Bigr)dx=\pi\sqrt5\Bigl[x+\frac{x^2}4\Bigr]_0^4=\pi\sqrt5\,(4+4)=8\sqrt5\,\pi\approx56.2 .\]</div>
+<p><em>Check.</em> The graph is a single segment, so the surface is one frustum. Its radii are <span class="arithmatex">\(f(0)=1\)</span> and <span class="arithmatex">\(f(4)=3\)</span> and its slant height is <span class="arithmatex">\(l=\sqrt{4^2+2^2}=2\sqrt5\)</span>. By Theorem <a href="#thm-frustum">6.6.2</a> its area is <span class="arithmatex">\(\pi(1+3)\cdot2\sqrt5=8\sqrt5\,\pi\)</span>, the same.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=8\sqrt5\,\pi\approx56.2\)</span>.</p>
+<p><img alt="Diagram: \((0,1)\); \((4,3)\); \(y=1+\frac x2\); \(R=1+\frac x2\)" class="calc-figure" src="../figures/notes-fig4.svg" width="355" /></p>
+<p><em>Figure.</em> The segment, its mirror image and the circles of radii <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(3\)</span> at its ends: one frustum. The orange segment is the radius <span class="arithmatex">\(R=f(x)\)</span>, the distance from the axis to the curve (shown at <span class="arithmatex">\(x=2\)</span>, where <span class="arithmatex">\(R=2\)</span>).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.10: A square root: multiply inside the root</p>
+<p><span id="ex-e2"></span></p>
+<p>Find the area of the surface made by revolving <span class="arithmatex">\(y=\sqrt{6x}\)</span>, <span class="arithmatex">\(1\le x\le4\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Derivative.</em> <span class="arithmatex">\(f'(x)=\frac12(6x)^{-1/2}\cdot6=\dfrac3{\sqrt{6x}}\)</span>, continuous on <span class="arithmatex">\([1,4]\)</span>.</p>
+<p><em>Simplify <span class="arithmatex">\(f\sqrt{1+f'^2}\)</span>.</em> Since <span class="arithmatex">\(f&gt;0\)</span> we may put <span class="arithmatex">\(f\)</span> under the root: <span class="arithmatex">\(f\sqrt{1+f'^2}=\sqrt{f^2+(f\,f')^2}\)</span>. Here <span class="arithmatex">\(f\,f'=\sqrt{6x}\cdot\dfrac3{\sqrt{6x}}=3\)</span> and <span class="arithmatex">\(f^2=6x\)</span>, so</p>
+<div class="arithmatex">\[f\sqrt{1+f'^2}=\sqrt{6x+9}.\]</div>
+<p><em>Integral.</em> By Theorem <a href="#thm-surf">6.6.4</a>, <span class="arithmatex">\(S=2\pi\int_1^4\sqrt{6x+9}\,dx\)</span>. Substitute <span class="arithmatex">\(u=6x+9\)</span>, <span class="arithmatex">\(du=6\,dx\)</span>; the limits become <span class="arithmatex">\(u=15\)</span> (at <span class="arithmatex">\(x=1\)</span>) and <span class="arithmatex">\(u=33\)</span> (at <span class="arithmatex">\(x=4\)</span>):</p>
+<div class="arithmatex">\[S=2\pi\int_{15}^{33}u^{1/2}\frac{du}6=\frac\pi3\Bigl[\frac23u^{3/2}\Bigr]_{15}^{33}=\frac{2\pi}9\bigl(33^{3/2}-15^{3/2}\bigr)\approx91.79 .\]</div>
+<p><em>Check.</em> One frustum on the chord from <span class="arithmatex">\((1,\sqrt6)\)</span> to <span class="arithmatex">\((4,\sqrt{24}=2\sqrt6)\)</span> has radii <span class="arithmatex">\(\sqrt6\)</span> and <span class="arithmatex">\(2\sqrt6\)</span> and slant height <span class="arithmatex">\(\sqrt{3^2+(\sqrt6)^2}=\sqrt{15}\)</span>, so its area is <span class="arithmatex">\(\pi\cdot3\sqrt6\cdot\sqrt{15}=9\pi\sqrt{10}\approx89.41\)</span>, close to <span class="arithmatex">\(S\approx91.79\)</span> (the frustum sum with more frusta gets closer).</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac{2\pi}9\bigl(33^{3/2}-15^{3/2}\bigr)\approx91.79\)</span>.</p>
+<p><img alt="Diagram: \((1,\sqrt6)\); \((4,2\sqrt6)\); $y=\sqrt{6x; $R=\sqrt{6x" class="calc-figure" src="../figures/notes-fig5.svg" width="329" /></p>
+<p><em>Figure.</em> The curve of Example <a href="#ex-e2">6.6.10</a>, its mirror image, the end circles and (dashed) the chord of the one-frustum check. The orange segment is the radius <span class="arithmatex">\(R=f(x)\)</span> at <span class="arithmatex">\(x=2\)</span>, where <span class="arithmatex">\(R=\sqrt{12}\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.11: A funnel: a perfect square</p>
+<p><span id="ex-e3"></span></p>
+<p>A funnel has the shape of the surface made by revolving <span class="arithmatex">\(y=\dfrac{x^3}6+\dfrac1{2x}\)</span>, <span class="arithmatex">\(1\le x\le2\)</span>, about the <span class="arithmatex">\(x\)</span>-axis (lengths in centimetres). Find its surface area, and the volume of paint in a coat <span class="arithmatex">\(0.02\)</span> cm thick.</p>
+<p><strong>Solution.</strong> <em>Derivative.</em> <span class="arithmatex">\(f'(x)=\dfrac{x^2}2-\dfrac1{2x^2}\)</span>, continuous on <span class="arithmatex">\([1,2]\)</span>.</p>
+<p><em>A perfect square.</em> Write <span class="arithmatex">\(A=\frac{x^2}2\)</span> and <span class="arithmatex">\(B=\frac1{2x^2}\)</span>, so <span class="arithmatex">\(f'=A-B\)</span> and <span class="arithmatex">\(AB=\frac14\)</span>. Then <span class="arithmatex">\(1+f'^2=1+A^2-2AB+B^2=A^2+2AB+B^2=(A+B)^2\)</span> because <span class="arithmatex">\(1=4AB\)</span>. Since <span class="arithmatex">\(A+B&gt;0\)</span>, <span class="arithmatex">\(\sqrt{1+f'^2}=\dfrac{x^2}2+\dfrac1{2x^2}\)</span>.</p>
+<p><em>Integral.</em> Multiply out <span class="arithmatex">\(f\cdot(A+B)\)</span> term by term:</p>
+<div class="arithmatex">\[\Bigl(\frac{x^3}6+\frac1{2x}\Bigr)\Bigl(\frac{x^2}2+\frac1{2x^2}\Bigr)=\frac{x^5}{12}+\frac x{12}+\frac x4+\frac1{4x^3}=\frac{x^5}{12}+\frac x3+\frac1{4x^3}.\]</div>
+<p>Antiderivative: <span class="arithmatex">\(\dfrac{x^6}{72}+\dfrac{x^2}6-\dfrac1{8x^2}\)</span>. By Theorem <a href="#thm-surf">6.6.4</a>,</p>
+<div class="arithmatex">\[S=2\pi\Bigl[\frac{x^6}{72}+\frac{x^2}6-\frac1{8x^2}\Bigr]_1^2=2\pi\Bigl[\Bigl(\frac89+\frac23-\frac1{32}\Bigr)-\Bigl(\frac1{72}+\frac16-\frac18\Bigr)\Bigr]=2\pi\Bigl(\frac{439}{288}-\frac1{18}\Bigr)=\frac{47\pi}{16}\approx9.23\ \text{cm}^2 .\]</div>
+<p><em>Paint.</em> A coat of thickness <span class="arithmatex">\(0.02\)</span> cm over <span class="arithmatex">\(\frac{47\pi}{16}\)</span> cm<span class="arithmatex">\(^2\)</span> has volume about <span class="arithmatex">\(0.02\cdot\frac{47\pi}{16}\approx0.185\)</span> cm<span class="arithmatex">\(^3\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac{47\pi}{16}\approx9.23\)</span> cm<span class="arithmatex">\(^2\)</span>; paint <span class="arithmatex">\(\approx0.185\)</span> cm<span class="arithmatex">\(^3\)</span>.</p>
+<p><img alt="Diagram: \((1,\frac23)\); $(2,\frac{19; $y=\frac{x^3; \(R=f(x)\)" class="calc-figure" src="../figures/notes-fig6.svg" width="380" /></p>
+<p><em>Figure.</em> The funnel of Example <a href="#ex-e3">6.6.11</a>: the curve, its mirror image and the circles at <span class="arithmatex">\(x=1\)</span> and <span class="arithmatex">\(x=2\)</span>. The orange segment is the radius <span class="arithmatex">\(R=f(x)\)</span> at <span class="arithmatex">\(x=\frac54\)</span>, where <span class="arithmatex">\(R=\frac{1393}{1920}\approx0.726\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.12: A catenary: <span class="arithmatex">\(\sqrt{1+f'^2}=f\)</span></p>
+<p><span id="ex-e4"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\cosh x=\dfrac{e^x+e^{-x}}2\)</span>, <span class="arithmatex">\(0\le x\le\ln3\)</span>, about the <span class="arithmatex">\(x\)</span>-axis. Find the area.</p>
+<p><strong>Solution.</strong> <em>Derivative.</em> <span class="arithmatex">\(f'(x)=\dfrac{e^x-e^{-x}}2\)</span>, continuous. <em>Simplify.</em> <span class="arithmatex">\(f^2-f'^2=\dfrac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}4=\dfrac{4e^xe^{-x}}4=1\)</span>, so <span class="arithmatex">\(1+f'^2=f^2\)</span> and <span class="arithmatex">\(\sqrt{1+f'^2}=f\)</span> because <span class="arithmatex">\(f&gt;0\)</span>. Hence <span class="arithmatex">\(f\sqrt{1+f'^2}=f^2=\dfrac{e^{2x}+2+e^{-2x}}4\)</span>.</p>
+<p><em>Integral.</em></p>
+<div class="arithmatex">\[\begin{aligned}
+S&amp;=2\pi\int_0^{\ln3}\frac{e^{2x}+2+e^{-2x}}4\,dx=2\pi\Bigl[\frac{e^{2x}}8+\frac x2-\frac{e^{-2x}}8\Bigr]_0^{\ln3}\\
+&amp;=2\pi\Bigl(\frac98+\frac{\ln3}2-\frac1{72}\Bigr)=\pi\Bigl(\frac{20}9+\ln3\Bigr)\approx10.43 ,
+\end{aligned}\]</div>
+<p>using <span class="arithmatex">\(e^{2\ln3}=9\)</span>, <span class="arithmatex">\(e^{-2\ln3}=\frac19\)</span> and <span class="arithmatex">\(\frac98-\frac1{72}=\frac{80}{72}=\frac{10}9\)</span>; the lower limit gives <span class="arithmatex">\(\frac18-0-\frac18=0\)</span>.</p>
+<p><em>Check.</em> The end radii are <span class="arithmatex">\(f(0)=1\)</span> and <span class="arithmatex">\(f(\ln3)=\frac{3+1/3}2=\frac53\)</span>, and one frustum over the chord of length <span class="arithmatex">\(\sqrt{(\ln3)^2+(\frac23)^2}\approx1.285\)</span> has area <span class="arithmatex">\(\pi\cdot\frac83\cdot1.285\approx10.77\)</span>, near <span class="arithmatex">\(S\)</span> (a bit larger, because the chord is above the curve).</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\pi\bigl(\frac{20}9+\ln3\bigr)\approx10.43\)</span>.</p>
+<p><img alt="Diagram: \((0,1)\); \((\ln3,\frac53)\); \(y=\cosh x\); \(R=\cosh x\)" class="calc-figure" src="../figures/notes-fig7.svg" width="358" /></p>
+<p><em>Figure.</em> The catenary of Example <a href="#ex-e4">6.6.12</a>, its mirror image and the end circles of radii <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(\frac53\)</span>. The orange segment is the radius <span class="arithmatex">\(R=f(x)\)</span> at <span class="arithmatex">\(x=\frac12\)</span>, where <span class="arithmatex">\(R=\cosh\frac12\approx1.128\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.13: Change the variable: <span class="arithmatex">\(x=g(y)\)</span></p>
+<p><span id="ex-e5"></span></p>
+<p>The curve <span class="arithmatex">\(y=\ln\dfrac{x+\sqrt{x^2-1}}4\)</span> runs from <span class="arithmatex">\((\frac{17}8,0)\)</span> to <span class="arithmatex">\((\frac{65}{16},\ln2)\)</span>. Find the area when it is revolved about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>Why not <span class="arithmatex">\(x\)</span>?</em> With <span class="arithmatex">\(y=f(x)\)</span> one finds <span class="arithmatex">\(f'=\dfrac1{\sqrt{x^2-1}}\)</span>, so <span class="arithmatex">\(S=2\pi\int x\cdot\dfrac x{\sqrt{x^2-1}}\,dx\)</span>, which needs a trigonometric substitution, a method we avoid here. So we solve for <span class="arithmatex">\(x\)</span>. Put <span class="arithmatex">\(u=e^y\)</span>; then <span class="arithmatex">\(x=2u+\frac1{8u}\)</span> means <span class="arithmatex">\(16u^2-8xu+1=0\)</span>, whose root with <span class="arithmatex">\(4u=x+\sqrt{x^2-1}\)</span> is the one in the formula. Hence</p>
+<div class="arithmatex">\[x=g(y)=2e^y+\frac{e^{-y}}8,\qquad 0\le y\le\ln2 ,\]</div>
+<p>and <span class="arithmatex">\(g(0)=2+\frac18=\frac{17}8\)</span>, <span class="arithmatex">\(g(\ln2)=4+\frac1{16}=\frac{65}{16}\)</span>, the two given endpoints. <em>Derivative and simplification.</em> <span class="arithmatex">\(g'(y)=2e^y-\frac{e^{-y}}8\)</span>. With <span class="arithmatex">\(A=2e^y\)</span> and <span class="arithmatex">\(B=\frac{e^{-y}}8\)</span> we have <span class="arithmatex">\(g'=A-B\)</span> and <span class="arithmatex">\(AB=\frac14\)</span>, so <span class="arithmatex">\(1+g'^2=(A+B)^2=g^2\)</span> and <span class="arithmatex">\(\sqrt{1+g'^2}=g\)</span> (as <span class="arithmatex">\(g&gt;0\)</span>).</p>
+<p><em>Integral.</em> About the <span class="arithmatex">\(y\)</span>-axis the radius is <span class="arithmatex">\(R=g(y)\)</span>, so by Theorem <a href="#thm-yform">6.6.5</a>, using <span class="arithmatex">\(g^2=4e^{2y}+2\cdot2\cdot\frac18+\frac{e^{-2y}}{64}=4e^{2y}+\frac12+\frac{e^{-2y}}{64}\)</span>,</p>
+<div class="arithmatex">\[\begin{aligned}
+S&amp;=2\pi\int_0^{\ln2}\Bigl(4e^{2y}+\frac12+\frac{e^{-2y}}{64}\Bigr)dy=2\pi\Bigl[2e^{2y}+\frac y2-\frac{e^{-2y}}{128}\Bigr]_0^{\ln2}\\
+&amp;=2\pi\Bigl(\frac{3075}{512}+\frac{\ln2}2\Bigr)=\pi\Bigl(\frac{3075}{256}+\ln2\Bigr)\approx39.91 ,
+\end{aligned}\]</div>
+<p>since at <span class="arithmatex">\(y=\ln2\)</span> the bracket is <span class="arithmatex">\(8+\frac{\ln2}2-\frac1{512}\)</span> and at <span class="arithmatex">\(y=0\)</span> it is <span class="arithmatex">\(2-\frac1{128}\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\pi\bigl(\frac{3075}{256}+\ln2\bigr)\approx39.91\)</span>.</p>
+<p><img alt="Diagram: $(\frac{17; $(\frac{65; $x=2e^y+\frac18e^{-y; \(R=g(y)\)" class="calc-figure" src="../figures/notes-fig8.svg" width="566" /></p>
+<p><em>Figure.</em> The curve <span class="arithmatex">\(x=2e^y+\frac18e^{-y}\)</span> of Example <a href="#ex-e5">6.6.13</a> and its mirror image in the <span class="arithmatex">\(y\)</span>-axis, with the circles of radii <span class="arithmatex">\(\frac{17}8\)</span> and <span class="arithmatex">\(\frac{65}{16}\)</span> at its ends. The orange segment is the radius <span class="arithmatex">\(R=g(y)\)</span> from the <span class="arithmatex">\(y\)</span>-axis to the curve, at <span class="arithmatex">\(y=\frac{\ln2}2\)</span>, where <span class="arithmatex">\(R=\frac{33\sqrt2}{16}\approx2.917\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.14: One curve, three axes</p>
+<p><span id="ex-e6"></span></p>
+<p>The curve <span class="arithmatex">\(y=\dfrac{x^3}3+\dfrac1{4x}\)</span>, <span class="arithmatex">\(1\le x\le2\)</span> (Example <a href="../../6.5/notes/#ex-e3">6.5.10</a>) has length <span class="arithmatex">\(L=\frac{59}{24}\)</span> and <span class="arithmatex">\(\sqrt{1+f'^2}=x^2+\frac1{4x^2}\)</span>. Find the surface area when it is revolved about (a) the <span class="arithmatex">\(y\)</span>-axis, (b) the line <span class="arithmatex">\(y=-1\)</span>, (c) the line <span class="arithmatex">\(x=3\)</span>.</p>
+<p><strong>Solution.</strong> The only thing that changes is the radius <span class="arithmatex">\(R\)</span>, the distance from <span class="arithmatex">\((x,f(x))\)</span> to the axis. The factor <span class="arithmatex">\(\sqrt{1+f'^2}=x^2+\frac1{4x^2}\)</span> is the same in all three.</p>
+<p><em>(a) The <span class="arithmatex">\(y\)</span>-axis.</em> <span class="arithmatex">\(R=x\)</span> (as <span class="arithmatex">\(x&gt;0\)</span>):</p>
+<div class="arithmatex">\[\begin{aligned}
+S&amp;=2\pi\int_1^2x\Bigl(x^2+\frac1{4x^2}\Bigr)dx=2\pi\int_1^2\Bigl(x^3+\frac1{4x}\Bigr)dx\\
+&amp;=2\pi\Bigl[\frac{x^4}4+\frac{\ln x}4\Bigr]_1^2\\
+&amp;=2\pi\Bigl(4+\frac{\ln2}4-\frac14\Bigr)=\frac\pi2\,(15+\ln2)\approx24.65 .
+\end{aligned}\]</div>
+<p><em>(b) The line <span class="arithmatex">\(y=-1\)</span>.</em> The curve lies above the line (<span class="arithmatex">\(f&gt;0\)</span>), so <span class="arithmatex">\(R=f(x)-(-1)=f(x)+1\)</span>. Then <span class="arithmatex">\(S=2\pi\int_1^2f(A+B)\,dx+2\pi\int_1^2(A+B)\,dx\)</span> with <span class="arithmatex">\(A+B=x^2+\frac1{4x^2}\)</span>. The second integral is <span class="arithmatex">\(2\pi L=\frac{59\pi}{12}\)</span>. For the first, <span class="arithmatex">\(f\,(A+B)=\bigl(\frac{x^3}3+\frac1{4x}\bigr)\bigl(x^2+\frac1{4x^2}\bigr)=\frac{x^5}3+\frac x{12}+\frac x4+\frac1{16x^3}=\frac{x^5}3+\frac x3+\frac1{16x^3}\)</span>, with antiderivative <span class="arithmatex">\(\frac{x^6}{18}+\frac{x^2}6-\frac1{32x^2}\)</span>, so</p>
+<div class="arithmatex">\[2\pi\Bigl[\frac{x^6}{18}+\frac{x^2}6-\frac1{32x^2}\Bigr]_1^2=2\pi\Bigl(\frac{4855}{1152}-\frac{55}{288}\Bigr)=\frac{515\pi}{64},
+\qquad S=\frac{515\pi}{64}+\frac{59\pi}{12}=\frac{2489\pi}{192}\approx40.73 .\]</div>
+<p><em>(c) The line <span class="arithmatex">\(x=3\)</span>.</em> The curve lies to the left of the line (<span class="arithmatex">\(x\le2&lt;3\)</span>), so <span class="arithmatex">\(R=3-x\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}
+S&amp;=2\pi\int_1^2(3-x)\Bigl(x^2+\frac1{4x^2}\Bigr)dx=2\pi\int_1^2\Bigl(3x^2+\frac3{4x^2}-x^3-\frac1{4x}\Bigr)dx\\
+&amp;=2\pi\Bigl[x^3-\frac3{4x}-\frac{x^4}4-\frac{\ln x}4\Bigr]_1^2=\frac\pi4\,(29-\ln4)\approx21.69 .
+\end{aligned}\]</div>
+<p><em>Check by the bounds.</em> For (a) <span class="arithmatex">\(1\le R\le2\)</span>, so Theorem <a href="#thm-bounds">6.6.7</a> gives <span class="arithmatex">\(2\pi L\le S\le4\pi L\)</span>, that is <span class="arithmatex">\(15.45\le S\le30.89\)</span>, and <span class="arithmatex">\(24.65\)</span> is in this range.</p>
+<p><strong>Answer.</strong> (a) <span class="arithmatex">\(\frac\pi2(15+\ln2)\approx24.65\)</span>; (b) <span class="arithmatex">\(\frac{2489\pi}{192}\approx40.73\)</span>; (c) <span class="arithmatex">\(\frac\pi4(29-\ln4)\approx21.69\)</span>.</p>
+<p><img alt="Diagram: $y=\frac{x^3; $(1,\frac7{12; $(2,\frac{67; \(R=x\); \(R=f(x)+1\); \(R=3-x\)" class="calc-figure" src="../figures/notes-fig9.svg" width="443" /></p>
+<p><em>Figure.</em> The curve of Example <a href="#ex-e6">6.6.14</a> and the three axes: the <span class="arithmatex">\(y\)</span>-axis, the line <span class="arithmatex">\(y=-1\)</span> and the line <span class="arithmatex">\(x=3\)</span>. The curve is the same; only the distance to the axis changes. The orange segments are the radii: <span class="arithmatex">\(R=x\)</span> for the <span class="arithmatex">\(y\)</span>-axis and <span class="arithmatex">\(R=f(x)+1\)</span> for <span class="arithmatex">\(y=-1\)</span> (both drawn at <span class="arithmatex">\(x=\frac32\)</span>), and <span class="arithmatex">\(R=3-x\)</span> for <span class="arithmatex">\(x=3\)</span> (drawn at <span class="arithmatex">\(x=2\)</span>).</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.6.3: Shells and surfaces</p>
+<p><span id="think-t3"></span></p>
+<p>The shell formula of Section 6.4 is <span class="arithmatex">\(2\pi\int x\,h(x)\,dx\)</span> with <span class="arithmatex">\(h\)</span> the height of the strip, and the surface formula about the <span class="arithmatex">\(y\)</span>-axis is <span class="arithmatex">\(2\pi\int x\sqrt{1+f'^2}\,dx\)</span>. Both have the circumference <span class="arithmatex">\(2\pi x\)</span>. What does <span class="arithmatex">\(h\)</span> measure, what does <span class="arithmatex">\(\sqrt{1+f'^2}\,dx\)</span> measure, and why can the second never be smaller than the first with <span class="arithmatex">\(h\,dx=dx\)</span>?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>In the shell formula <span class="arithmatex">\(h\,dx\)</span> is the area of a thin vertical strip (height times width), and the shell is the strip swept around the axis, with volume <span class="arithmatex">\(2\pi x\cdot h\,dx\)</span>. In the surface formula <span class="arithmatex">\(\sqrt{1+f'^2}\,dx\)</span> is the length of the piece of the <em>curve</em> over <span class="arithmatex">\(dx\)</span>, so <span class="arithmatex">\(2\pi x\sqrt{1+f'^2}\,dx\)</span> is the area of the band swept out. Since <span class="arithmatex">\(\sqrt{1+f'^2}\ge1\)</span>, the piece of curve is at least as long as <span class="arithmatex">\(dx\)</span> (Theorem <a href="../../6.5/notes/#thm-basic">6.5.2</a>), so <span class="arithmatex">\(S\ge2\pi\int x\,dx\)</span>, with equality only for a horizontal graph.</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.15: A vertical tangent: switch to <span class="arithmatex">\(x=g(y)\)</span></p>
+<p><span id="ex-e7"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\sqrt x\)</span>, <span class="arithmatex">\(0\le x\le4\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <em>The problem.</em> <span class="arithmatex">\(f'(x)=\frac1{2\sqrt x}\)</span> is not defined at <span class="arithmatex">\(x=0\)</span> (the tangent is vertical there), so Theorem <a href="#thm-surf">6.6.4</a> does not apply on <span class="arithmatex">\([0,4]\)</span>. Solve for <span class="arithmatex">\(x\)</span>: the same curve is <span class="arithmatex">\(x=g(y)=y^2\)</span> for <span class="arithmatex">\(0\le y\le2\)</span>, and <span class="arithmatex">\(g'(y)=2y\)</span> is continuous.</p>
+<p><em>Set-up.</em> About the <span class="arithmatex">\(x\)</span>-axis the radius is <span class="arithmatex">\(R=y\)</span>. By Theorem <a href="#thm-yform">6.6.5</a>,</p>
+<div class="arithmatex">\[S=\int_0^22\pi\,y\sqrt{1+4y^2}\,dy .\]</div>
+<p><em>Substitution.</em> <span class="arithmatex">\(u=1+4y^2\)</span>, <span class="arithmatex">\(du=8y\,dy\)</span>, so <span class="arithmatex">\(y\,dy=\frac{du}8\)</span>; <span class="arithmatex">\(u=1\)</span> at <span class="arithmatex">\(y=0\)</span> and <span class="arithmatex">\(u=17\)</span> at <span class="arithmatex">\(y=2\)</span>:</p>
+<div class="arithmatex">\[S=2\pi\int_1^{17}u^{1/2}\frac{du}8=\frac\pi4\Bigl[\frac23u^{3/2}\Bigr]_1^{17}=\frac\pi6\bigl(17\sqrt{17}-1\bigr)\approx36.18 .\]</div>
+<p><em>Remark.</em> Written in <span class="arithmatex">\(x\)</span> the same area is <span class="arithmatex">\(2\pi\int_0^4\sqrt x\sqrt{1+\frac1{4x}}\,dx=2\pi\int_0^4\sqrt{x+\frac14}\,dx=\frac{4\pi}3\bigl[(x+\tfrac14)^{3/2}\bigr]_0^4=\frac\pi6(17\sqrt{17}-1)\)</span>, the same number, but the derivative is not continuous at <span class="arithmatex">\(0\)</span>, so this integral is not covered by the theorem as stated; the form in <span class="arithmatex">\(y\)</span> is. <em>Check.</em> The cone obtained from the chord from <span class="arithmatex">\((0,0)\)</span> to <span class="arithmatex">\((4,2)\)</span> has radii <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(2\)</span> and slant height <span class="arithmatex">\(\sqrt{20}\)</span>, so area <span class="arithmatex">\(\pi\cdot2\sqrt{20}\approx28.10\)</span>; the curve bulges above the chord, and <span class="arithmatex">\(S\approx36.18\)</span> is larger.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac\pi6\bigl(17\sqrt{17}-1\bigr)\approx36.18\)</span>.</p>
+<p><img alt="Diagram: \((0,0)\); \((4,2)\); \(y=\sqrt x\); \(R=y\)" class="calc-figure" src="../figures/notes-fig10.svg" width="380" /></p>
+<p><em>Figure.</em> The curve of Example <a href="#ex-e7">6.6.15</a>, its mirror image and the circle of radius <span class="arithmatex">\(2\)</span> at <span class="arithmatex">\(x=4\)</span>; the tangent at the origin is vertical. The dashed chord is the cone of the check. The orange segment is the radius <span class="arithmatex">\(R=y=\sqrt x\)</span> at <span class="arithmatex">\(x=2\)</span> (the curve in the form <span class="arithmatex">\(x=y^2\)</span> has <span class="arithmatex">\(R=y\)</span> throughout).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.16: No closed form: a number, checked two ways</p>
+<p><span id="ex-e8"></span></p>
+<p>Revolve <span class="arithmatex">\(y=x^2\)</span>, <span class="arithmatex">\(0\le x\le1\)</span>, about the <span class="arithmatex">\(x\)</span>-axis. Find the area.</p>
+<p><strong>Solution.</strong> <em>Set-up.</em> <span class="arithmatex">\(f'=2x\)</span> and <span class="arithmatex">\(R=x^2\)</span>, so <span class="arithmatex">\(S=2\pi\int_0^1x^2\sqrt{1+4x^2}\,dx\)</span>. The integrand has no antiderivative that the substitutions of this chapter can find (it needs a trigonometric or hyperbolic substitution together with integration by parts), so we find the number by numerical integration (a calculator or Simpson’s rule): <span class="arithmatex">\(S\approx3.810\)</span>.</p>
+<p><em>Check 1: a frustum sum.</em> With <span class="arithmatex">\(4\)</span> equal pieces (<span class="arithmatex">\(x=0,\frac14,\frac12,\frac34,1\)</span>; <span class="arithmatex">\(y=0,\frac1{16},\frac14,\frac9{16},1\)</span>) the segments have lengths <span class="arithmatex">\(\frac{\sqrt{17}}{16},\frac5{16},\frac{\sqrt{41}}{16},\frac{\sqrt{65}}{16}\)</span> (from <span class="arithmatex">\(\sqrt{(\frac14)^2+\Delta y^2}\)</span> with <span class="arithmatex">\(\Delta y=\frac1{16},\frac3{16},\frac5{16},\frac7{16}\)</span>), and the frusta have total area</p>
+<div class="arithmatex">\[\pi\Bigl[\frac1{16}\cdot\frac{\sqrt{17}}{16}+\frac5{16}\cdot\frac5{16}+\frac{13}{16}\cdot\frac{\sqrt{41}}{16}+\frac{25}{16}\cdot\frac{\sqrt{65}}{16}\Bigr]\approx3.852 ,\]</div>
+<p>close to <span class="arithmatex">\(3.810\)</span> (with <span class="arithmatex">\(2\)</span> pieces the frustum sum is <span class="arithmatex">\(3.979\)</span>, so the sums approach <span class="arithmatex">\(S\)</span> as the pieces get shorter).</p>
+<p><em>Check 2: bounds on each piece.</em> Let <span class="arithmatex">\(L_k\)</span> be the length of the curve over the <span class="arithmatex">\(k\)</span>th quarter (<span class="arithmatex">\(0.2601,\ 0.3138,\ 0.4008,\ 0.5042\)</span>, by numerical integration of <span class="arithmatex">\(\sqrt{1+4x^2}\)</span>). On each quarter <span class="arithmatex">\(R=x^2\)</span> is between its values at the ends, so Theorem <a href="#thm-bounds">6.6.7</a> on each piece, added, gives</p>
+<div class="arithmatex">\[2\pi\bigl(0\cdot L_1+\tfrac1{16}L_2+\tfrac14L_3+\tfrac9{16}L_4\bigr)\le S\le2\pi\bigl(\tfrac1{16}L_1+\tfrac14L_2+\tfrac9{16}L_3+1\cdot L_4\bigr),\]</div>
+<p>that is <span class="arithmatex">\(2.535\le S\le5.180\)</span>, which contains <span class="arithmatex">\(3.810\)</span>. (With one piece the bounds would be only <span class="arithmatex">\(0\le S\le9.29\)</span>.)</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S\approx3.810\)</span>.</p>
+<p><img alt="Diagram: \((\frac12,\frac14)\); \((1,1)\); \(y=x^2\); \(R=x^2\)" class="calc-figure" src="../figures/notes-fig11.svg" width="258" /></p>
+<p><em>Figure.</em> The curve of Example <a href="#ex-e8">6.6.16</a>, its mirror image (blue) and the four-frustum polygon (red). The orange segment is the radius <span class="arithmatex">\(R=x^2\)</span> at <span class="arithmatex">\(x=\frac12\)</span>, where <span class="arithmatex">\(R=\frac14\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.17: Archimedes: zones and caps of a sphere</p>
+<p><span id="ex-e9"></span></p>
+<p>A sphere has radius <span class="arithmatex">\(5\)</span>. Find the area of (a) the zone between the planes <span class="arithmatex">\(x=-2\)</span> and <span class="arithmatex">\(x=1\)</span>, and (b) the cap cut off by the plane <span class="arithmatex">\(x=2\)</span> (the part with <span class="arithmatex">\(x\ge2\)</span>).</p>
+<p><strong>Solution.</strong> <em>(a)</em> The zone is made by revolving <span class="arithmatex">\(y=\sqrt{25-x^2}\)</span>, <span class="arithmatex">\(-2\le x\le1\)</span>. Here <span class="arithmatex">\(f\sqrt{1+f'^2}=5\)</span> (Theorem <a href="#thm-arch">6.6.8</a>), since <span class="arithmatex">\(f^2(1+f'^2)=(25-x^2)+x^2=25\)</span>. So <span class="arithmatex">\(S=\int_{-2}^12\pi\cdot5\,dx=10\pi\cdot3=30\pi\approx94.2\)</span>. <em>(b)</em> The cap has <span class="arithmatex">\(b=2\)</span> and height <span class="arithmatex">\(5-2=3\)</span>. Here <span class="arithmatex">\(\eta=\sqrt{25-4}=\sqrt{21}\)</span> and the curve is <span class="arithmatex">\(x=\sqrt{25-y^2}\)</span> for <span class="arithmatex">\(0\le y\le\sqrt{21}\)</span>, revolved about the <span class="arithmatex">\(x\)</span>-axis. With <span class="arithmatex">\(\sqrt{1+g'^2}=\frac5{\sqrt{25-y^2}}\)</span>,</p>
+<div class="arithmatex">\[S=\int_0^{\sqrt{21}}2\pi y\frac5{\sqrt{25-y^2}}\,dy=10\pi\Bigl[-\sqrt{25-y^2}\Bigr]_0^{\sqrt{21}}=10\pi\,(5-2)=30\pi .\]</div>
+<p>The two have the same area because they have the same height <span class="arithmatex">\(3\)</span>: <span class="arithmatex">\(2\pi a\cdot3\)</span> with <span class="arithmatex">\(a=5\)</span>. The whole sphere is <span class="arithmatex">\(4\pi\cdot25=100\pi\)</span>.</p>
+<p><strong>Answer.</strong> (a) <span class="arithmatex">\(30\pi\)</span>; (b) <span class="arithmatex">\(30\pi\)</span>.</p>
+<p><img alt="Diagram: \(x=-2\); \(x=1\); \(x=2\); zone; cap; \(R\); \(x^2+y^2=25\)" class="calc-figure" src="../figures/notes-fig12.svg" width="363" /></p>
+<p><em>Figure.</em> The circle of radius <span class="arithmatex">\(5\)</span> revolved about the <span class="arithmatex">\(x\)</span>-axis: the zone <span class="arithmatex">\(-2\le x\le1\)</span> (blue) and the cap <span class="arithmatex">\(x\ge2\)</span> (orange) both have height <span class="arithmatex">\(3\)</span> and area <span class="arithmatex">\(30\pi\)</span>. The green segment is the radius <span class="arithmatex">\(R=\sqrt{25-x^2}\)</span> at <span class="arithmatex">\(x=-\frac32\)</span>, where <span class="arithmatex">\(R=\frac{\sqrt{91}}2\approx4.77\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.18: The torus</p>
+<p><span id="ex-e10"></span></p>
+<p>A torus is generated by revolving the circle <span class="arithmatex">\(x^2+(y-R)^2=r^2\)</span> (<span class="arithmatex">\(0&lt;r&lt;R\)</span>) about the <span class="arithmatex">\(x\)</span>-axis: this is the torus of Theorem <a href="../../6.4/notes/#thm-ballTorus">6.4.15</a> with the axes renamed, tube radius <span class="arithmatex">\(r\)</span> and distance <span class="arithmatex">\(R\)</span> from the axis to the centre of the tube. Find its surface area, and compare with its volume for <span class="arithmatex">\(R=5\)</span>, <span class="arithmatex">\(r=3\)</span>.</p>
+<p><strong>Solution.</strong> <em>Idea.</em> The upper half of the circle, <span class="arithmatex">\(y=R+\sqrt{r^2-x^2}\)</span>, and the lower half, <span class="arithmatex">\(y=R-\sqrt{r^2-x^2}\)</span>, have vertical tangents at <span class="arithmatex">\(x=\pm r\)</span>. So cut the circle at <span class="arithmatex">\(x=\pm b\)</span> with <span class="arithmatex">\(0&lt;b&lt;r\)</span>, and let <span class="arithmatex">\(\eta=\sqrt{r^2-b^2}\)</span>.</p>
+<p><em>The middle part, <span class="arithmatex">\(\lvert x\rvert\le b\)</span>.</em> For <span class="arithmatex">\(f=R\pm\sqrt{r^2-x^2}\)</span>, <span class="arithmatex">\(f'=\mp\frac{x}{\sqrt{r^2-x^2}}\)</span> and <span class="arithmatex">\(\sqrt{1+f'^2}=\frac r{\sqrt{r^2-x^2}}\)</span> (as in Theorem <a href="#thm-arch">6.6.8</a>). The radius is <span class="arithmatex">\(f\)</span>, so for the upper and lower halves together</p>
+<div class="arithmatex">\[2\pi\int_{-b}^{b}\Bigl[\Bigl(R+\sqrt{r^2-x^2}\Bigr)+\Bigl(R-\sqrt{r^2-x^2}\Bigr)\Bigr]\frac r{\sqrt{r^2-x^2}}\,dx=4\pi Rr\int_{-b}^b\frac{dx}{\sqrt{r^2-x^2}}=8\pi Rr\arcsin\frac br ,\]</div>
+<p>because the terms <span class="arithmatex">\(\pm\sqrt{r^2-x^2}\cdot\frac r{\sqrt{r^2-x^2}}=\pm r\)</span> cancel, and <span class="arithmatex">\(\frac d{dx}\arcsin\frac xr=\frac1{\sqrt{r^2-x^2}}\)</span>.</p>
+<p><em>The outer parts, <span class="arithmatex">\(b\le\lvert x\rvert\le r\)</span>.</em> On the right, the upper arc is <span class="arithmatex">\(x=\sqrt{r^2-(y-R)^2}\)</span> for <span class="arithmatex">\(R\le y\le R+\eta\)</span> and the lower arc is the same function for <span class="arithmatex">\(R-\eta\le y\le R\)</span>; the radius is <span class="arithmatex">\(y\)</span> and <span class="arithmatex">\(\sqrt{1+g'^2}=\frac r{\sqrt{r^2-(y-R)^2}}\)</span>. With <span class="arithmatex">\(w=y-R\)</span> the two arcs together give</p>
+<div class="arithmatex">\[2\pi\int_{-\eta}^{\eta}(R+w)\frac r{\sqrt{r^2-w^2}}\,dw=2\pi Rr\cdot2\arcsin\frac\eta r+0=4\pi Rr\arcsin\frac\eta r ,\]</div>
+<p>because <span class="arithmatex">\(\frac{wr}{\sqrt{r^2-w^2}}\)</span> is an odd function, whose integral over <span class="arithmatex">\([-\eta,\eta]\)</span> is <span class="arithmatex">\(0\)</span>. The left side gives the same, so the outer parts total <span class="arithmatex">\(8\pi Rr\arcsin\frac\eta r\)</span>.</p>
+<p><em>Total.</em> Since <span class="arithmatex">\((\frac br)^2+(\frac\eta r)^2=1\)</span>, if <span class="arithmatex">\(\theta=\arcsin\frac br\)</span> then <span class="arithmatex">\(\frac\eta r=\cos\theta=\sin(\frac\pi2-\theta)\)</span>, so <span class="arithmatex">\(\arcsin\frac\eta r=\frac\pi2-\theta\)</span>. Hence</p>
+<div class="arithmatex">\[S=8\pi Rr\Bigl(\arcsin\frac br+\arcsin\frac\eta r\Bigr)=8\pi Rr\cdot\frac\pi2=4\pi^2Rr .\]</div>
+<p><em>Numbers.</em> For <span class="arithmatex">\(R=5\)</span>, <span class="arithmatex">\(r=3\)</span>: <span class="arithmatex">\(S=60\pi^2\approx592.2\)</span>, and (Theorem <a href="../../6.4/notes/#thm-ballTorus">6.4.15</a>) <span class="arithmatex">\(V=2\pi^2Rr^2=90\pi^2\approx888.3\)</span>. Note <span class="arithmatex">\(V=\frac r2S\)</span>, just as the ball has <span class="arithmatex">\(V=\frac a3S\)</span>. (With <span class="arithmatex">\(b=\frac95\)</span>, <span class="arithmatex">\(\eta=\frac{12}5\)</span> the two arcsines are <span class="arithmatex">\(\arcsin\frac35\approx0.6435\)</span> and <span class="arithmatex">\(\arcsin\frac45\approx0.9273\)</span>, which add to <span class="arithmatex">\(\frac\pi2\approx1.5708\)</span>.)</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=4\pi^2Rr\)</span>; for <span class="arithmatex">\(R=5\)</span>, <span class="arithmatex">\(r=3\)</span>: <span class="arithmatex">\(S=60\pi^2\)</span> and <span class="arithmatex">\(V=90\pi^2\)</span>. The area is the circumference <span class="arithmatex">\(2\pi r\)</span> of the tube times the length <span class="arithmatex">\(2\pi R\)</span> of the circle travelled by its centre (compare Pappus’ theorem, in words only, in Looking ahead).</p>
+<p><img alt="Diagram: \((r,R)\); $y=R+\sqrt{r^2-x^2; $y=R-\sqrt{r^2-x^2; \(x=b\); radius \(=y\)" class="calc-figure" src="../figures/notes-fig13.svg" width="428" /></p>
+<p><em>Figure.</em> The circle of Example <a href="#ex-e10">6.6.18</a> with <span class="arithmatex">\(R=5\)</span>, <span class="arithmatex">\(r=3\)</span> (so it spans <span class="arithmatex">\(2\le y\le8\)</span>) and the cuts <span class="arithmatex">\(x=\pm b\)</span> with <span class="arithmatex">\(b=\frac95\)</span>; the points <span class="arithmatex">\((\frac95,\frac{37}5)\)</span> and <span class="arithmatex">\((\frac95,\frac{13}5)\)</span> lie on the circle. The orange segment is the radius of revolution <span class="arithmatex">\(y\)</span> (distance to the axis) for the upper point; the tube radius is <span class="arithmatex">\(r=3\)</span>.</p>
+</div>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>When a curve is given by <span class="arithmatex">\(x=f(t)\)</span>, <span class="arithmatex">\(y=g(t)\)</span> or in polar form, the same circumference-times-arc-length idea gives a surface area, with the speed of the moving point in place of <span class="arithmatex">\(\sqrt{1+f'^2}\)</span> (a later chapter on parametric and polar curves). Surfaces that are not surfaces of revolution need two-variable integrals, called surface integrals, and a later course on functions of several variables treats them, along with parametric surfaces. For the volume of the torus and its area, a theorem of Pappus says that each is the size of the plane figure (the area <span class="arithmatex">\(\pi r^2\)</span> of the disk for the volume, the length <span class="arithmatex">\(2\pi r\)</span> of the circle for the area) times the length <span class="arithmatex">\(2\pi R\)</span> of the path of its centre; here we met it as the results <span class="arithmatex">\(V=2\pi^2Rr^2\)</span> and <span class="arithmatex">\(S=4\pi^2Rr\)</span>. A curious fact for later: a “horn” that stretches to infinity can have a finite volume and an infinite surface area; see Homework Problem 13. The Calculus I area and volume ideas return in all of these.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Lines and set-up</em> (Examples <a href="#ex-b1">6.6.19</a>–<a href="#ex-b2">6.6.20</a>): a line checked against the frustum formula; writing and simplifying surface-area integrals without evaluating them.</p>
+</li>
+<li>
+<p><em>Perfect squares: powers</em> (Examples <a href="#ex-b3">6.6.21</a>–<a href="#ex-b4">6.6.22</a>): <span class="arithmatex">\(y=\frac{x^4}8+\frac1{4x^2}\)</span> about the <span class="arithmatex">\(x\)</span>-axis; a logarithm curve about the <span class="arithmatex">\(y\)</span>-axis.</p>
+</li>
+<li>
+<p><em>Perfect squares: exponentials</em> (Examples <a href="#ex-b5">6.6.23</a>–<a href="#ex-b6">6.6.24</a>): <span class="arithmatex">\(y=\frac{e^{2x}}2+\frac{e^{-2x}}8\)</span> about the <span class="arithmatex">\(x\)</span>-axis; an exponential curve <span class="arithmatex">\(x=g(y)\)</span> about the <span class="arithmatex">\(y\)</span>-axis.</p>
+</li>
+<li>
+<p><em>Substitution and cusps</em> (Examples <a href="#ex-b7">6.6.25</a>–<a href="#ex-b8">6.6.26</a>): a square-root curve that needs a substitution; a cusp at an end, handled by switching to <span class="arithmatex">\(x=g(y)\)</span>.</p>
+</li>
+<li>
+<p><em>Numerical values and bounds</em> (Examples <a href="#ex-b9">6.6.27</a>–<a href="#ex-b10">6.6.28</a>): <span class="arithmatex">\(y=\sin x\)</span> with a frustum check; a belt of a sphere and its average radius.</p>
+</li>
+<li>
+<p><em>Comparing</em> (Examples <a href="#ex-b11">6.6.29</a>–<a href="#ex-b12">6.6.30</a>): a cone and a cylinder; the same arc about two different axes.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">6.6.31</a>–<a href="#ex-b14">6.6.32</a>): shifting a graph; scaling a graph.</p>
+</li>
+</ol>
+<h2 id="group-1-lines-and-set-up">Group 1: Lines and set-up<a class="headerlink" href="#group-1-lines-and-set-up" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.19: A line from <span class="arithmatex">\(4\)</span> to <span class="arithmatex">\(12\)</span></p>
+<p><span id="ex-b1"></span></p>
+<p>Find the area of the surface made by revolving <span class="arithmatex">\(y=\frac34x\)</span>, <span class="arithmatex">\(4\le x\le12\)</span>, about the <span class="arithmatex">\(x\)</span>-axis, by the formula and by Theorem <a href="#thm-frustum">6.6.2</a>.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\frac34\)</span>, so <span class="arithmatex">\(1+f'^2=1+\frac9{16}=\frac{25}{16}\)</span> and <span class="arithmatex">\(\sqrt{1+f'^2}=\frac54\)</span>. The radius is <span class="arithmatex">\(R=\frac34x\)</span>:</p>
+<div class="arithmatex">\[S=\int_4^{12}2\pi\cdot\frac34x\cdot\frac54\,dx=\frac{15\pi}8\int_4^{12}x\,dx=\frac{15\pi}8\Bigl[\frac{x^2}2\Bigr]_4^{12}=\frac{15\pi}8\,(72-8)=120\pi .\]</div>
+<p><em>Check.</em> The radii are <span class="arithmatex">\(\frac34\cdot4=3\)</span> and <span class="arithmatex">\(\frac34\cdot12=9\)</span> and the slant height is <span class="arithmatex">\(\sqrt{8^2+6^2}=10\)</span>, so the frustum has area <span class="arithmatex">\(\pi(3+9)\cdot10=120\pi\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=120\pi\approx377.0\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.20: Set up and simplify</p>
+<p><span id="ex-b2"></span></p>
+<p>Write, simplify and do not evaluate the integral for the surface area of (a) <span class="arithmatex">\(y=x^2+1\)</span>, <span class="arithmatex">\(0\le x\le2\)</span>, about the <span class="arithmatex">\(x\)</span>-axis; (b) <span class="arithmatex">\(y=\ln x\)</span>, <span class="arithmatex">\(1\le x\le e\)</span>, about the <span class="arithmatex">\(y\)</span>-axis; (c) <span class="arithmatex">\(x=y^2\)</span>, <span class="arithmatex">\(0\le y\le2\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(R=f=x^2+1\)</span> and <span class="arithmatex">\(f'=2x\)</span>, so <span class="arithmatex">\(S=\int_0^22\pi(x^2+1)\sqrt{1+4x^2}\,dx\)</span>.</p>
+<p>(b) About the <span class="arithmatex">\(y\)</span>-axis <span class="arithmatex">\(R=x\)</span> and <span class="arithmatex">\(f'=\frac1x\)</span>, so <span class="arithmatex">\(\sqrt{1+f'^2}=\sqrt{\frac{x^2+1}{x^2}}=\frac{\sqrt{x^2+1}}x\)</span> (<span class="arithmatex">\(x&gt;0\)</span>). Then the factor <span class="arithmatex">\(x\)</span> cancels: <span class="arithmatex">\(S=\int_1^e2\pi x\frac{\sqrt{x^2+1}}x\,dx=2\pi\int_1^e\sqrt{x^2+1}\,dx\)</span> (a method for it comes in a later chapter).</p>
+<p>(c) The curve is given as <span class="arithmatex">\(x=g(y)\)</span>, <span class="arithmatex">\(g'=2y\)</span>; about the <span class="arithmatex">\(x\)</span>-axis <span class="arithmatex">\(R=y\)</span>. By Theorem <a href="#thm-yform">6.6.5</a>, <span class="arithmatex">\(S=\int_0^22\pi y\sqrt{1+4y^2}\,dy\)</span>, the integral of Example <a href="#ex-e7">6.6.15</a> (the same surface).</p>
+</div>
+<h2 id="group-2-perfect-squares-with-powers">Group 2: Perfect squares with powers<a class="headerlink" href="#group-2-perfect-squares-with-powers" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.21: A quartic with an inverse square</p>
+<p><span id="ex-b3"></span></p>
+<p>Find the area when <span class="arithmatex">\(y=\dfrac{x^4}8+\dfrac1{4x^2}\)</span>, <span class="arithmatex">\(1\le x\le2\)</span>, is revolved about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\frac{x^3}2-\frac1{2x^3}\)</span>. With <span class="arithmatex">\(A=\frac{x^3}2\)</span>, <span class="arithmatex">\(B=\frac1{2x^3}\)</span> we have <span class="arithmatex">\(AB=\frac14\)</span>, so <span class="arithmatex">\(1+f'^2=(A+B)^2\)</span> and <span class="arithmatex">\(\sqrt{1+f'^2}=\frac{x^3}2+\frac1{2x^3}\)</span>. Multiply out:</p>
+<div class="arithmatex">\[f(A+B)=\Bigl(\frac{x^4}8+\frac1{4x^2}\Bigr)\Bigl(\frac{x^3}2+\frac1{2x^3}\Bigr)=\frac{x^7}{16}+\frac x{16}+\frac x8+\frac1{8x^5}=\frac{x^7}{16}+\frac{3x}{16}+\frac1{8x^5}.\]</div>
+<p>An antiderivative is <span class="arithmatex">\(\frac{x^8}{128}+\frac{3x^2}{32}-\frac1{32x^4}\)</span>, so</p>
+<div class="arithmatex">\[S=2\pi\Bigl[\frac{x^8}{128}+\frac{3x^2}{32}-\frac1{32x^4}\Bigr]_1^2=2\pi\Bigl[\Bigl(2+\frac38-\frac1{512}\Bigr)-\frac9{128}\Bigr]=2\pi\cdot\frac{1179}{512}=\frac{1179\pi}{256}\approx14.47 .\]</div>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac{1179\pi}{256}\approx14.47\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.22: A logarithm about the <span class="arithmatex">\(y\)</span>-axis</p>
+<p><span id="ex-b4"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\dfrac{x^2}8-\ln x\)</span>, <span class="arithmatex">\(1\le x\le4\)</span>, about the <span class="arithmatex">\(y\)</span>-axis. Find the area.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\frac x4-\frac1x\)</span>, and <span class="arithmatex">\(1+f'^2=1+\frac{x^2}{16}-\frac12+\frac1{x^2}=\frac{x^2}{16}+\frac12+\frac1{x^2}=\bigl(\frac x4+\frac1x\bigr)^2\)</span> (because <span class="arithmatex">\(2\cdot\frac x4\cdot\frac1x=\frac12\)</span>), so <span class="arithmatex">\(\sqrt{1+f'^2}=\frac x4+\frac1x\)</span> for <span class="arithmatex">\(x&gt;0\)</span>. About the <span class="arithmatex">\(y\)</span>-axis the radius is <span class="arithmatex">\(x\)</span>:</p>
+<div class="arithmatex">\[S=2\pi\int_1^4x\Bigl(\frac x4+\frac1x\Bigr)dx=2\pi\int_1^4\Bigl(\frac{x^2}4+1\Bigr)dx=2\pi\Bigl[\frac{x^3}{12}+x\Bigr]_1^4=2\pi\Bigl(\frac{28}3-\frac{13}{12}\Bigr)=\frac{33\pi}2\approx51.84 .\]</div>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac{33\pi}2\approx51.84\)</span>.</p>
+</div>
+<h2 id="group-3-perfect-squares-with-exponentials">Group 3: Perfect squares with exponentials<a class="headerlink" href="#group-3-perfect-squares-with-exponentials" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.23: A hanging chain turned about the axis</p>
+<p><span id="ex-b5"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\dfrac{e^{2x}}2+\dfrac{e^{-2x}}8\)</span>, <span class="arithmatex">\(0\le x\le\dfrac{\ln2}2\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=e^{2x}-\frac{e^{-2x}}4\)</span>. With <span class="arithmatex">\(A=e^{2x}\)</span>, <span class="arithmatex">\(B=\frac{e^{-2x}}4\)</span>, <span class="arithmatex">\(AB=\frac14\)</span>, so <span class="arithmatex">\(1+f'^2=(A+B)^2\)</span>, and <span class="arithmatex">\(A+B=2f\)</span>, so <span class="arithmatex">\(\sqrt{1+f'^2}=2f\)</span>. Then <span class="arithmatex">\(S=2\pi\int f\cdot2f\,dx=\pi\int4f^2\,dx\)</span> with <span class="arithmatex">\(4f^2=e^{4x}+\frac12+\frac{e^{-4x}}{16}\)</span>:</p>
+<div class="arithmatex">\[S=\pi\Bigl[\frac{e^{4x}}4+\frac x2-\frac{e^{-4x}}{64}\Bigr]_0^{(\ln2)/2}=\pi\Bigl[\Bigl(1+\frac{\ln2}4-\frac1{256}\Bigr)-\Bigl(\frac14-\frac1{64}\Bigr)\Bigr]=\pi\Bigl(\frac{195}{256}+\frac{\ln2}4\Bigr)\approx2.94 ,\]</div>
+<p>using <span class="arithmatex">\(e^{4\cdot(\ln2)/2}=e^{2\ln2}=4\)</span>. <strong>Answer.</strong> <span class="arithmatex">\(S=\pi\bigl(\frac{195}{256}+\frac{\ln2}4\bigr)\approx2.94\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.24: An exponential <span class="arithmatex">\(x=g(y)\)</span> about the <span class="arithmatex">\(y\)</span>-axis</p>
+<p><span id="ex-b6"></span></p>
+<p>Revolve <span class="arithmatex">\(x=e^{2y}+\dfrac{e^{-2y}}{16}\)</span>, <span class="arithmatex">\(0\le y\le\dfrac{\ln2}2\)</span>, about the <span class="arithmatex">\(y\)</span>-axis.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(g'=2e^{2y}-\frac{e^{-2y}}8\)</span>. With <span class="arithmatex">\(A=2e^{2y}\)</span>, <span class="arithmatex">\(B=\frac{e^{-2y}}8\)</span> we have <span class="arithmatex">\(AB=\frac14\)</span>, so <span class="arithmatex">\(1+g'^2=(A+B)^2\)</span> and <span class="arithmatex">\(\sqrt{1+g'^2}=A+B=2e^{2y}+\frac{e^{-2y}}8\)</span>. The radius about the <span class="arithmatex">\(y\)</span>-axis is <span class="arithmatex">\(g(y)\)</span>. Multiply out:</p>
+<div class="arithmatex">\[g\,(A+B)=\Bigl(e^{2y}+\frac{e^{-2y}}{16}\Bigr)\Bigl(2e^{2y}+\frac{e^{-2y}}8\Bigr)=2e^{4y}+\frac18+\frac18+\frac{e^{-4y}}{128}=2e^{4y}+\frac14+\frac{e^{-4y}}{128}.\]</div>
+<p>By Theorem <a href="#thm-yform">6.6.5</a>,</p>
+<div class="arithmatex">\[S=2\pi\Bigl[\frac{e^{4y}}2+\frac y4-\frac{e^{-4y}}{512}\Bigr]_0^{(\ln2)/2}=2\pi\Bigl[\Bigl(2+\frac{\ln2}8-\frac1{2048}\Bigr)-\Bigl(\frac12-\frac1{512}\Bigr)\Bigr]=\pi\Bigl(\frac{3075}{1024}+\frac{\ln2}4\Bigr)\approx9.98 .\]</div>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\pi\bigl(\frac{3075}{1024}+\frac{\ln2}4\bigr)\approx9.98\)</span>.</p>
+</div>
+<h2 id="group-4-substitution-and-cusps">Group 4: Substitution and cusps<a class="headerlink" href="#group-4-substitution-and-cusps" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.25: A shifted square root</p>
+<p><span id="ex-b7"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\sqrt{4x+3}\)</span>, <span class="arithmatex">\(0\le x\le3\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\frac2{\sqrt{4x+3}}\)</span>, so <span class="arithmatex">\(f\,f'=2\)</span> and <span class="arithmatex">\(f^2=4x+3\)</span>. Then <span class="arithmatex">\(f\sqrt{1+f'^2}=\sqrt{f^2+(ff')^2}=\sqrt{4x+7}\)</span>. Put <span class="arithmatex">\(u=4x+7\)</span>, <span class="arithmatex">\(du=4\,dx\)</span> (<span class="arithmatex">\(u=7\)</span> at <span class="arithmatex">\(x=0\)</span>, <span class="arithmatex">\(u=19\)</span> at <span class="arithmatex">\(x=3\)</span>):</p>
+<div class="arithmatex">\[S=2\pi\int_7^{19}u^{1/2}\frac{du}4=\frac\pi2\Bigl[\frac23u^{3/2}\Bigr]_7^{19}=\frac\pi3\bigl(19\sqrt{19}-7\sqrt7\bigr)\approx67.33 .\]</div>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac\pi3\bigl(19\sqrt{19}-7\sqrt7\bigr)\approx67.33\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.26: A cusp at the end: <span class="arithmatex">\(y=x^{2/3}\)</span></p>
+<p><span id="ex-b8"></span></p>
+<p>Revolve <span class="arithmatex">\(y=x^{2/3}\)</span>, <span class="arithmatex">\(0\le x\le8\)</span>, about the <span class="arithmatex">\(x\)</span>-axis.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\frac23x^{-1/3}\)</span> is not defined at <span class="arithmatex">\(x=0\)</span> (a cusp with vertical tangent). Solve for <span class="arithmatex">\(x\)</span>: <span class="arithmatex">\(x=g(y)=y^{3/2}\)</span> for <span class="arithmatex">\(0\le y\le4\)</span> (at <span class="arithmatex">\(x=8\)</span>, <span class="arithmatex">\(y=8^{2/3}=4\)</span>), with <span class="arithmatex">\(g'=\frac32y^{1/2}\)</span> continuous, and <span class="arithmatex">\(1+g'^2=1+\frac{9y}4\)</span>. The radius is <span class="arithmatex">\(y\)</span>, so <span class="arithmatex">\(S=2\pi\int_0^4y\sqrt{1+\frac{9y}4}\,dy\)</span>.</p>
+<p><em>Substitution.</em> <span class="arithmatex">\(u=1+\frac{9y}4\)</span>, so <span class="arithmatex">\(y=\frac49(u-1)\)</span>, <span class="arithmatex">\(dy=\frac49\,du\)</span>, and <span class="arithmatex">\(u=1\)</span> at <span class="arithmatex">\(y=0\)</span>, <span class="arithmatex">\(u=10\)</span> at <span class="arithmatex">\(y=4\)</span>:</p>
+<div class="arithmatex">\[\begin{aligned}
+S&amp;=2\pi\cdot\frac{16}{81}\int_1^{10}(u-1)\sqrt u\,du=\frac{32\pi}{81}\Bigl[\frac25u^{5/2}-\frac23u^{3/2}\Bigr]_1^{10}\\
+&amp;=\frac{32\pi}{81}\Bigl[\Bigl(40-\frac{20}3\Bigr)\sqrt{10}+\frac4{15}\Bigr]\\
+&amp;=\frac{128\pi}{1215}\bigl(125\sqrt{10}+1\bigr)\approx131.16 ,
+\end{aligned}\]</div>
+<p>because <span class="arithmatex">\(40-\frac{20}3=\frac{100}3=\frac4{15}\cdot125\)</span> and <span class="arithmatex">\(-(\frac25-\frac23)=\frac4{15}\)</span>. <strong>Answer.</strong> <span class="arithmatex">\(S=\dfrac{128\pi}{1215}\bigl(125\sqrt{10}+1\bigr)\approx131.16\)</span>.</p>
+</div>
+<h2 id="group-5-numerical-values-and-bounds">Group 5: Numerical values and bounds<a class="headerlink" href="#group-5-numerical-values-and-bounds" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.27: One arch of the sine</p>
+<p><span id="ex-b9"></span></p>
+<p>Revolve <span class="arithmatex">\(y=\sin x\)</span>, <span class="arithmatex">\(0\le x\le\pi\)</span>, about the <span class="arithmatex">\(x\)</span>-axis. Find the area numerically and check it with a frustum sum.</p>
+<p><strong>Solution.</strong> <span class="arithmatex">\(f'=\cos x\)</span> and <span class="arithmatex">\(R=\sin x\)</span>, so <span class="arithmatex">\(S=2\pi\int_0^\pi\sin x\sqrt{1+\cos^2x}\,dx\)</span>. The substitution <span class="arithmatex">\(u=\cos x\)</span> turns this into <span class="arithmatex">\(2\pi\int_{-1}^1\sqrt{1+u^2}\,du\)</span>, which needs a method of a later chapter; numerically <span class="arithmatex">\(S\approx14.42\)</span>. <em>Check.</em> Use the vertices <span class="arithmatex">\(x=0,\frac\pi4,\frac\pi2,\frac{3\pi}4,\pi\)</span>, with <span class="arithmatex">\(y=0,\frac{\sqrt2}2,1,\frac{\sqrt2}2,0\)</span>. By symmetry the four frusta come in two equal pairs, with total area</p>
+<div class="arithmatex">\[2\pi\Bigl[\frac{\sqrt2}2\sqrt{\Bigl(\frac\pi4\Bigr)^2+\frac12}+\Bigl(\frac{\sqrt2}2+1\Bigr)\sqrt{\Bigl(\frac\pi4\Bigr)^2+\Bigl(1-\frac{\sqrt2}2\Bigr)^2}\Bigr]\approx13.69 ,\]</div>
+<p>within about <span class="arithmatex">\(5\%\)</span> of <span class="arithmatex">\(S\)</span>; the sum comes closer as the number of frusta increases.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S\approx14.42\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.28: A belt of a sphere: the average radius</p>
+<p><span id="ex-b10"></span></p>
+<p>The circle <span class="arithmatex">\(x^2+y^2=25\)</span> is revolved about the <span class="arithmatex">\(x\)</span>-axis, and the belt <span class="arithmatex">\(-3\le x\le3\)</span> is cut out. Find its area, the length <span class="arithmatex">\(L\)</span> of the arc, and the average radius <span class="arithmatex">\(S/(2\pi L)\)</span> of Theorem <a href="#thm-bounds">6.6.7</a>.</p>
+<p><strong>Solution.</strong> <em>Area.</em> By Theorem <a href="#thm-arch">6.6.8</a>(i) with <span class="arithmatex">\(a=5\)</span>: <span class="arithmatex">\(S=2\pi\cdot5\cdot6=60\pi\approx188.5\)</span>.</p>
+<p><em>Length.</em> With <span class="arithmatex">\(f=\sqrt{25-x^2}\)</span>, <span class="arithmatex">\(\sqrt{1+f'^2}=\frac5{\sqrt{25-x^2}}\)</span>, so <span class="arithmatex">\(L=\int_{-3}^3\frac5{\sqrt{25-x^2}}dx=5\bigl[\arcsin\frac x5\bigr]_{-3}^3=10\arcsin\frac35\approx6.435\)</span>.</p>
+<p><em>Average radius.</em> <span class="arithmatex">\(\dfrac S{2\pi L}=\dfrac{60\pi}{2\pi\cdot6.435}=\dfrac{30}{6.435}\approx4.66\)</span>. On <span class="arithmatex">\([-3,3]\)</span> the radius <span class="arithmatex">\(\sqrt{25-x^2}\)</span> lies between <span class="arithmatex">\(\sqrt{25-9}=4\)</span> and <span class="arithmatex">\(5\)</span>, and indeed <span class="arithmatex">\(4\le4.66\le5\)</span>, as Theorem <a href="#thm-bounds">6.6.7</a> says (it gives <span class="arithmatex">\(2\pi\cdot4L\le S\le2\pi\cdot5L\)</span>, i.e. <span class="arithmatex">\(161.7\le S\le202.2\)</span>).</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=60\pi\)</span>, <span class="arithmatex">\(L\approx6.435\)</span>, average radius <span class="arithmatex">\(\approx4.66\)</span>.</p>
+</div>
+<h2 id="group-6-comparing">Group 6: Comparing<a class="headerlink" href="#group-6-comparing" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.29: A cone against its cylinder</p>
+<p><span id="ex-b11"></span></p>
+<p>A cone of base radius <span class="arithmatex">\(r\)</span> and height <span class="arithmatex">\(h\)</span> sits inside the cylinder of the same radius and height. Compare their lateral areas. (The volume of the cone is <span class="arithmatex">\(\frac13\)</span> of that of the cylinder.)</p>
+<p><strong>Solution.</strong> The cone has slant height <span class="arithmatex">\(\sqrt{r^2+h^2}\)</span> and area <span class="arithmatex">\(\pi r\sqrt{r^2+h^2}\)</span>; the cylinder has area <span class="arithmatex">\(2\pi rh\)</span>. The ratio is</p>
+<div class="arithmatex">\[\frac{\pi r\sqrt{r^2+h^2}}{2\pi rh}=\frac{\sqrt{r^2+h^2}}{2h}&gt;\frac{\sqrt{h^2}}{2h}=\frac12,\]</div>
+<p>because <span class="arithmatex">\(r&gt;0\)</span>. So the cone always has more than <em>half</em> the lateral area of the cylinder, in contrast to its third of the volume. For <span class="arithmatex">\(r=5\)</span>, <span class="arithmatex">\(h=12\)</span> the ratio is <span class="arithmatex">\(\frac{13}{24}\approx0.542\)</span>; it equals <span class="arithmatex">\(1\)</span> only when <span class="arithmatex">\(r^2+h^2=4h^2\)</span>, that is <span class="arithmatex">\(r=\sqrt3\,h\)</span>.</p>
+<p><strong>Answer.</strong> The ratio is <span class="arithmatex">\(\dfrac{\sqrt{r^2+h^2}}{2h}&gt;\dfrac12\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.30: The same arc about two axes</p>
+<p><span id="ex-b12"></span></p>
+<p>The arc <span class="arithmatex">\(y=x^2\)</span>, <span class="arithmatex">\(0\le x\le1\)</span>, is revolved about the <span class="arithmatex">\(y\)</span>-axis. Find the area and compare with Example <a href="#ex-e8">6.6.16</a> (the <span class="arithmatex">\(x\)</span>-axis, <span class="arithmatex">\(\approx3.81\)</span>).</p>
+<p><strong>Solution.</strong> About the <span class="arithmatex">\(y\)</span>-axis <span class="arithmatex">\(R=x\)</span>, so <span class="arithmatex">\(S=2\pi\int_0^1x\sqrt{1+4x^2}\,dx\)</span>. With <span class="arithmatex">\(u=1+4x^2\)</span>, <span class="arithmatex">\(du=8x\,dx\)</span> (<span class="arithmatex">\(u=1\)</span> and <span class="arithmatex">\(u=5\)</span>):</p>
+<div class="arithmatex">\[S=2\pi\int_1^5u^{1/2}\frac{du}8=\frac\pi4\Bigl[\frac23u^{3/2}\Bigr]_1^5=\frac\pi6\bigl(5\sqrt5-1\bigr)\approx5.33 .\]</div>
+<p>The area is about <span class="arithmatex">\(1.4\)</span> times that of Example <a href="#ex-e8">6.6.16</a>, though the arc is the same, because the radius <span class="arithmatex">\(x\)</span> is larger than the radius <span class="arithmatex">\(x^2\)</span> at every point of <span class="arithmatex">\((0,1)\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(S=\frac\pi6(5\sqrt5-1)\approx5.33\)</span>.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.31: Proof: shifting a graph upward</p>
+<p><span id="ex-b13"></span></p>
+<p><strong>Statement.</strong> Let <span class="arithmatex">\(f\ge0\)</span> have a continuous derivative on <span class="arithmatex">\([a,b]\)</span>, let <span class="arithmatex">\(S(f)\)</span> be the area made by revolving its graph about the <span class="arithmatex">\(x\)</span>-axis and <span class="arithmatex">\(L\)</span> its length, and let <span class="arithmatex">\(C\ge0\)</span>. Then <span class="arithmatex">\(S(f+C)=S(f)+2\pi C\,L\)</span>.</p>
+<p><strong>Plan.</strong> The graph of <span class="arithmatex">\(f+C\)</span> has the same derivative; only the radius changes, from <span class="arithmatex">\(f\)</span> to <span class="arithmatex">\(f+C\)</span>.</p>
+<p><strong>Proof.</strong> <span class="arithmatex">\((f+C)'=f'\)</span>, which is continuous, and <span class="arithmatex">\(f+C\ge0\)</span>. By Theorem <a href="#thm-surf">6.6.4</a>,</p>
+<div class="arithmatex">\[\begin{aligned}
+S(f+C)&amp;=\int_a^b2\pi\bigl(f+C\bigr)\sqrt{1+f'^2}\,dx\\
+&amp;=\int_a^b2\pi f\sqrt{1+f'^2}\,dx+2\pi C\int_a^b\sqrt{1+f'^2}\,dx=S(f)+2\pi C\,L,
+\end{aligned}\]</div>
+<p>by linearity of the integral and Theorem <a href="../../6.5/notes/#thm-arclen">6.5.4</a>. For <span class="arithmatex">\(f=\frac{x^3}3+\frac1{4x}\)</span> on <span class="arithmatex">\([1,2]\)</span> and <span class="arithmatex">\(C=2\)</span>: <span class="arithmatex">\(S(f)=\frac{515\pi}{64}\)</span> and <span class="arithmatex">\(L=\frac{59}{24}\)</span> (Example <a href="#ex-e6">6.6.14</a>), so <span class="arithmatex">\(S(f+2)=\frac{515\pi}{64}+\frac{59\pi}6=\frac{3433\pi}{192}\approx56.17\)</span>. <span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>A common mistake.</strong> Adding <span class="arithmatex">\(C\)</span> to the <em>area</em> formula as <span class="arithmatex">\(S(f)+C\)</span>, or adding <span class="arithmatex">\(C\)</span> inside the square root. The shift changes the radius only, so the extra area is the circumference-like term <span class="arithmatex">\(2\pi C\)</span> times the length of the curve (a cylinder of radius <span class="arithmatex">\(C\)</span> and the same arc length).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.6.32: Proof: scaling a graph</p>
+<p><span id="ex-b14"></span></p>
+<p><strong>Statement.</strong> Let <span class="arithmatex">\(f\)</span> have a continuous derivative on <span class="arithmatex">\([a,b]\)</span>, <span class="arithmatex">\(f\ge0\)</span>, and let <span class="arithmatex">\(\lambda&gt;0\)</span>. The graph of <span class="arithmatex">\(f_\lambda(x)=\lambda f(x/\lambda)\)</span> over <span class="arithmatex">\([\lambda a,\lambda b]\)</span> (the original graph enlarged by the factor <span class="arithmatex">\(\lambda\)</span> in both directions) has area <span class="arithmatex">\(S_\lambda=\lambda^2S\)</span>, where <span class="arithmatex">\(S\)</span> is the area for <span class="arithmatex">\(f\)</span>.</p>
+<p><strong>Plan.</strong> Differentiate <span class="arithmatex">\(f_\lambda\)</span> by the Chain Rule, substitute <span class="arithmatex">\(u=x/\lambda\)</span> and collect the powers of <span class="arithmatex">\(\lambda\)</span>.</p>
+<p><strong>Proof.</strong> <span class="arithmatex">\(f_\lambda'(x)=\lambda f'(x/\lambda)\cdot\frac1\lambda=f'(x/\lambda)\)</span>, continuous. By Theorem <a href="#thm-surf">6.6.4</a></p>
+<div class="arithmatex">\[S_\lambda=\int_{\lambda a}^{\lambda b}2\pi\,\lambda f\Bigl(\frac x\lambda\Bigr)\sqrt{1+f'\Bigl(\frac x\lambda\Bigr)^2}\,dx .\]</div>
+<p>Let <span class="arithmatex">\(u=x/\lambda\)</span>, <span class="arithmatex">\(dx=\lambda\,du\)</span>; <span class="arithmatex">\(x=\lambda a\)</span> gives <span class="arithmatex">\(u=a\)</span> and <span class="arithmatex">\(x=\lambda b\)</span> gives <span class="arithmatex">\(u=b\)</span>. Then <span class="arithmatex">\(S_\lambda=\lambda\cdot\lambda\int_a^b2\pi f(u)\sqrt{1+f'(u)^2}\,du=\lambda^2S\)</span>. (For <span class="arithmatex">\(f=x^2\)</span> on <span class="arithmatex">\([0,1]\)</span>, <span class="arithmatex">\(\lambda=2\)</span>: <span class="arithmatex">\(f_2=\frac{x^2}2\)</span> on <span class="arithmatex">\([0,2]\)</span> has area <span class="arithmatex">\(\approx15.239=4\cdot3.810\)</span>.) <span class="arithmatex">\(\blacksquare\)</span></p>
+<p><strong>A common mistake.</strong> Expecting the area to scale like a length (<span class="arithmatex">\(\lambda\)</span>) or like a volume (<span class="arithmatex">\(\lambda^3\)</span>). One factor <span class="arithmatex">\(\lambda\)</span> comes from the radius, the other from the arc length.</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-k1">6.6.1</a>.</strong> (a) The slant height is <span class="arithmatex">\(l=\sqrt{5^2+12^2}=13\)</span>, so the area is <span class="arithmatex">\(\pi\cdot5\cdot13=65\pi\)</span>. (b) <span class="arithmatex">\(\pi(2+5)\cdot5=35\pi\)</span>.</p>
+<p><strong>Knowledge Check <a href="#kc-k2">6.6.2</a>.</strong> The radius is the distance from the point <span class="arithmatex">\((x,x^2)\)</span> to the axis: (a) <span class="arithmatex">\(x^2\)</span>; (b) <span class="arithmatex">\(x\)</span>; (c) <span class="arithmatex">\(x^2-(-3)=x^2+3\)</span>; (d) <span class="arithmatex">\(5-x\)</span> (since <span class="arithmatex">\(x\le2&lt;5\)</span>).</p>
+<p><strong>Knowledge Check <a href="#kc-k3">6.6.3</a>.</strong> For <span class="arithmatex">\(f=\sqrt[3]x\)</span>, <span class="arithmatex">\(f'=\frac13x^{-2/3}\)</span> is not defined at <span class="arithmatex">\(x=0\)</span> (the tangent is vertical), so Theorem <a href="#thm-surf">6.6.4</a> does not apply on <span class="arithmatex">\([0,1]\)</span>. Use <span class="arithmatex">\(x=g(y)=y^3\)</span> for <span class="arithmatex">\(0\le y\le1\)</span>, <span class="arithmatex">\(g'=3y^2\)</span>, <span class="arithmatex">\(R=y\)</span>: <span class="arithmatex">\(S=\int_0^12\pi y\sqrt{1+9y^4}\,dy\)</span>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
