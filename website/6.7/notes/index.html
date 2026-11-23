@@ -1,0 +1,4618 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        <link rel="prev" href="../../6.6/notes/">
+      
+      
+        <link rel="next" href="../../8.1/notes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.3">
+    
+    
+      
+        <title>Notes - Calculus II</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e2cf241e.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Calculus II" class="md-header__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Calculus II
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Calculus II" class="md-nav__button md-logo" aria-label="Calculus II" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Calculus II
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 6: Applications of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 6: Applications of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.1 Velocity and Net Change
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.1 Velocity and Net Change
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.2 Regions Between Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.2 Regions Between Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.3 Volume By Slicing
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.3 Volume By Slicing
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.4 Volume By Shells
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.4 Volume By Shells
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.5 Length of Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.5 Length of Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.6 Surface Area
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.6 Surface Area
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  6.7 Physical Applications
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  6.7 Physical Applications
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-assumed-and-what-is-proved" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What is assumed and what is proved
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slice-add-squeeze" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Slice, add, squeeze
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mass-of-a-thin-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mass of a thin bar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-mass" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: mass
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#work-and-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Work and springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lifting-chains-cables-and-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lifting: chains, cables and buckets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pumping-fluid-out-of-a-tank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pumping fluid out of a tank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-pumping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: pumping
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#force-and-pressure" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Force and pressure
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounds-and-consistency-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bounds and consistency checks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-mass" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Mass
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-lifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Lifting
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-pumping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Pumping
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Force
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-comparing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Comparing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 8: Integration Techniques
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 8: Integration Techniques
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.1 Basic Approaches
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.1 Basic Approaches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.2 Integration by Parts
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.2 Integration by Parts
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.3 Trigonometric Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.3 Trigonometric Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.4 Trigonometric Substitutions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.4 Trigonometric Substitutions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.5 Partial Fractions
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.5 Partial Fractions
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.6 Integration Strategies
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.6 Integration Strategies
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.7 Other Methods of Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.7 Other Methods of Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.8 Numerical Integration
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.8 Numerical Integration
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  8.9 Improper Integrals
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3_9">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  8.9 Improper Integrals
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../8.9/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 9: Differential Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 9: Differential Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  9.1 Basic Ideas
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  9.1 Basic Ideas
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 10: Sequences and Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 10: Sequences and Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.1 An Overview
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.1 An Overview
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.2 Sequences
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.2 Sequences
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.3 Infinite Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.3 Infinite Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.4 The Divergence and Integral Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.4 The Divergence and Integral Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.5 Comparison Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.5 Comparison Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.5/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.6 Alternating Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.6 Alternating Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.6/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.7 The Ratio and Root Tests
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.7 The Ratio and Root Tests
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.7/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  10.8 Choosing a Convergence Test
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  10.8 Choosing a Convergence Test
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.8/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 11: Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 11: Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.1 Approximating Functions with Polynomials
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.1 Approximating Functions with Polynomials
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.2 Properties of Power Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.2 Properties of Power Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.3 Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.3 Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  11.4 Working with Taylor Series
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  11.4 Working with Taylor Series
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Chapter 12: Parametric and Polar Curves
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Chapter 12: Parametric and Polar Curves
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.1 Parametric Equations
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.1 Parametric Equations
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.1/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.2 Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.2 Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.3 Calculus in Polar Coordinates
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.3 Calculus in Polar Coordinates
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.3/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  12.4 Conic Sections
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  12.4 Conic Sections
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.4/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../appendix/appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Appendix
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-assumed-and-what-is-proved" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        What is assumed and what is proved
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slice-add-squeeze" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Slice, add, squeeze
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mass-of-a-thin-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mass of a thin bar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-mass" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: mass
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#work-and-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Work and springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lifting-chains-cables-and-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lifting: chains, cables and buckets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pumping-fluid-out-of-a-tank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pumping fluid out of a tank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-check-pumping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Knowledge check: pumping
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#force-and-pressure" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Force and pressure
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounds-and-consistency-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bounds and consistency checks
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#looking-ahead" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Looking ahead
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Example bank
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-1-mass" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 1: Mass
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-2-springs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 2: Springs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-3-lifting" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 3: Lifting
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-4-pumping" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 4: Pumping
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-5-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 5: Force
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-6-comparing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 6: Comparing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-7-proofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Group 7: Proofs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#answers-and-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Answers and discussion
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="67-physical-applications">6.7 Physical Applications<a class="headerlink" href="#67-physical-applications" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Guiding question</p>
+<p>How much does a bar weigh if it gets denser toward one end? How much work does it take to stretch a spring, to wind in a chain, to pump a tank empty? What is the total force of the water on a dam or on a window of a pool? In every one of these problems something that is easy for a <em>small</em> piece (mass is density times length, work is force times distance, force is pressure times area) must be added over a <em>variable</em> situation. We do this once and for all with a single idea: cut into slices, bound each slice between its least and greatest value, add, and squeeze. We state plainly the few physical facts we assume (the mass of a uniform bar, work equals force times distance for a constant force, the pressure of water at depth <span class="arithmatex">\(d\)</span> is <span class="arithmatex">\(\rho g d\)</span>), prove that the formulas follow, and then solve the standard problems: mass of a thin bar, springs, chains, buckets, pumping tanks of every shape, and force on dams and windows. Each answer is checked against a case that can be done without calculus.</p>
+</div>
+<p><strong>By the end of this section you should be able to:</strong></p>
+<ul>
+<li>
+<p>say what physical facts are assumed (mass, work, pressure) and what is proved, and prove that mass is <span class="arithmatex">\(\int\rho\)</span>, that work is <span class="arithmatex">\(\int F\)</span>, that lifting work is <span class="arithmatex">\(g\int\lambda\,D\)</span> and that fluid force is <span class="arithmatex">\(\rho g\int(\text{depth})\,(\text{width})\)</span>;</p>
+</li>
+<li>
+<p>find the mass and the average density of a bar with a variable or piecewise density;</p>
+</li>
+<li>
+<p>find the work to stretch or compress a spring, also from a position that is not the equilibrium, and the work to lift a chain, a cable or a leaking bucket;</p>
+</li>
+<li>
+<p>set up and evaluate a pumping problem for a tank of any shape: choose the origin, find the cross-sectional area <span class="arithmatex">\(A(y)\)</span> and the distance <span class="arithmatex">\(D(y)\)</span> that each layer is lifted;</p>
+</li>
+<li>
+<p>find the force on a dam or a window from its width function, and explain how the orientation of a plate changes the force;</p>
+</li>
+<li>
+<p>check an answer against a bound (a bar between two constant densities; work between “all water lifted from the top” and “all water lifted from the bottom”; force between the pressures at the top and bottom of a plate) and against a case of “force <span class="arithmatex">\(=\)</span> pressure <span class="arithmatex">\(\times\)</span> area” or “work <span class="arithmatex">\(=\)</span> weight <span class="arithmatex">\(\times\)</span> height”.</p>
+</li>
+</ul>
+<h2 id="what-is-assumed-and-what-is-proved">What is assumed and what is proved<a class="headerlink" href="#what-is-assumed-and-what-is-proved" title="Permanent link">&para;</a></h2>
+<p>Sections 6.1 to 6.6 took the <em>meaning</em> of area, volume and length for granted at a few places and said so. We do the same for physics, and we say plainly what is assumed. Masses are in kilograms (kg), lengths in metres (m), forces in newtons (N, the force that gives <span class="arithmatex">\(1\,\text{kg}\)</span> an acceleration of <span class="arithmatex">\(1\,\text{m/s}^2\)</span>), work in joules (J, <span class="arithmatex">\(1\,\text{N}\cdot\text{m}\)</span>), and <span class="arithmatex">\(g=9.8\,\text{m/s}^2\)</span>, so a mass of <span class="arithmatex">\(\mu\)</span> kg weighs <span class="arithmatex">\(\mu g\)</span> newtons. Water has density <span class="arithmatex">\(\rho=1000\,\text{kg/m}^3\)</span>.</p>
+<div class="admonition definition">
+<p class="admonition-title">Definition 6.7.1: Physical assumptions</p>
+<p><span id="def-assume"></span></p>
+<p><strong>Mass.</strong> <strong>(M1)</strong> A straight bar of length <span class="arithmatex">\(\ell\)</span> and <em>uniform</em> linear density <span class="arithmatex">\(\sigma\)</span> (kg per metre) has mass <span class="arithmatex">\(\sigma\ell\)</span>. <strong>(M2)</strong> If a bar is cut into pieces, the masses of the pieces add up to the mass of the bar. <strong>(M3)</strong> The density <span class="arithmatex">\(\rho(x)\)</span> of a bar is its mass per unit length at <span class="arithmatex">\(x\)</span>: if on a piece <span class="arithmatex">\(I\)</span> of the bar the density is everywhere between <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(M\)</span>, then the mass of that piece is between <span class="arithmatex">\(m\,\abs I\)</span> and <span class="arithmatex">\(M\,\abs I\)</span>, where <span class="arithmatex">\(\abs I\)</span> is the length of <span class="arithmatex">\(I\)</span>.</p>
+<p><strong>Work.</strong> <strong>(W1)</strong> A constant force <span class="arithmatex">\(F\)</span> along the <span class="arithmatex">\(x\)</span>-axis (positive if it points in the positive direction) that moves an object from <span class="arithmatex">\(x=a\)</span> to <span class="arithmatex">\(x=b\)</span> does the work <span class="arithmatex">\(F\,(b-a)\)</span>. <strong>(W2)</strong> Work adds when a motion is cut into stages, and the work for the reversed motion has the opposite sign. <strong>(W3)</strong> If during a motion over a stretch <span class="arithmatex">\(I\)</span> in the positive direction the force is everywhere between <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(M\)</span>, then the work is between <span class="arithmatex">\(m\,\abs I\)</span> and <span class="arithmatex">\(M\,\abs I\)</span>. <strong>(W4)</strong> If a body of mass <span class="arithmatex">\(\mu\)</span> is lifted vertically and each of its points is lifted through a distance between <span class="arithmatex">\(d_1\)</span> and <span class="arithmatex">\(d_2\)</span>, the work is between <span class="arithmatex">\(\mu g\,d_1\)</span> and <span class="arithmatex">\(\mu g\,d_2\)</span>, and it is exactly <span class="arithmatex">\(\mu g\,d\)</span> if every point is lifted through the same distance <span class="arithmatex">\(d\)</span> (a rigid body).</p>
+<p><strong>Fluid.</strong> <strong>(P1)</strong> The force that a fluid of density <span class="arithmatex">\(\rho\)</span> exerts on a flat horizontal surface of area <span class="arithmatex">\(A\)</span> at depth <span class="arithmatex">\(d\)</span> is the weight <span class="arithmatex">\(\rho g\,d\,A\)</span> of the column of fluid above it; the <em>pressure</em> (force per unit area) is <span class="arithmatex">\(\rho g d\)</span> and it has the same magnitude in all directions, so the pressure on a vertical wall at depth <span class="arithmatex">\(d\)</span> is also <span class="arithmatex">\(\rho g d\)</span>. <strong>(P2)</strong> If the pressure on a flat piece of surface of area <span class="arithmatex">\(A\)</span> is everywhere between <span class="arithmatex">\(p_1\)</span> and <span class="arithmatex">\(p_2\)</span>, the force on it is between <span class="arithmatex">\(p_1A\)</span> and <span class="arithmatex">\(p_2A\)</span> (it is <span class="arithmatex">\(pA\)</span> if the pressure is the constant <span class="arithmatex">\(p\)</span>). <strong>(P3)</strong> Forces on pieces of a surface add.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">What is assumed and what is proved</p>
+<p><em>Assumed (the physics):</em> (M1) to (M3), (W1) to (W4), (P1) to (P3), and the meaning of area (A1) to (A3) of Section 6.2 and of volume (V1) to (V3) of Section 6.3. These say how mass, work and pressure behave for a uniform bar, a constant force and a flat surface; Pascal’s observation that the pressure at a point is the same in all directions is part of (P1) and is not proved here. <em>Proved below:</em> that mass is <span class="arithmatex">\(\int\rho\,dx\)</span> (Theorem <a href="#thm-mass">6.7.4</a>), work is <span class="arithmatex">\(\int F\,dx\)</span> (Theorem <a href="#thm-work">6.7.8</a>), the work to lift a body is <span class="arithmatex">\(g\int\lambda(y)D(y)\,dy\)</span> (Theorem <a href="#thm-lift">6.7.11</a>), the force on a vertical plate is <span class="arithmatex">\(\int p(y)\,w(y)\,dy\)</span> (Theorem <a href="#thm-force">6.7.21</a>), the bounds, and the consistency checks of Theorem <a href="#thm-checks">6.7.31</a>. <em>Calculus I facts used:</em> the Extreme Value Theorem, the Fundamental Theorem of Calculus, the substitution rule, that the integral is additive and preserves inequalities (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>), the area <span class="arithmatex">\(\pi r^2\)</span> of a disk, and (F4) of Section 6.5: for a continuous <span class="arithmatex">\(h\)</span>, every Riemann sum <span class="arithmatex">\(\sum h(\xi_k)\Delta x_k\)</span> (with <span class="arithmatex">\(\xi_k\)</span> in the <span class="arithmatex">\(k\)</span>th subinterval) is as close as we like to <span class="arithmatex">\(\int_a^bh\)</span> once every <span class="arithmatex">\(\Delta x_k\)</span> is small enough. Water is assumed to be at rest (hydrostatics) and incompressible, so <span class="arithmatex">\(\rho\)</span> is constant.</p>
+</div>
+<h2 id="slice-add-squeeze">Slice, add, squeeze<a class="headerlink" href="#slice-add-squeeze" title="Permanent link">&para;</a></h2>
+<p>All four formulas of this section come from one idea, which we prove twice (once for a density per unit length, once for a product of a density and a distance). A quantity <span class="arithmatex">\(Q(I)\)</span> belongs to every closed subinterval <span class="arithmatex">\(I=[u,v]\)</span> of <span class="arithmatex">\([a,b]\)</span> (the mass of a piece of bar, the work to lift a layer, the force on a strip). We say <span class="arithmatex">\(Q\)</span> is <em>additive</em> if <span class="arithmatex">\(Q([u,w])=Q([u,v])+Q([v,w])\)</span> whenever <span class="arithmatex">\(u&lt;v&lt;w\)</span>. We bound each <span class="arithmatex">\(Q(I)\)</span> between a lower and an upper value, cut <span class="arithmatex">\([a,b]\)</span> into <span class="arithmatex">\(n\)</span> pieces of equal length <span class="arithmatex">\(\Delta=(b-a)/n\)</span>, add the bounds, and let <span class="arithmatex">\(n\to\infty\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.2: Slice, add, squeeze: density form</p>
+<p><span id="thm-squeezeA"></span></p>
+<p>Let <span class="arithmatex">\(\rho\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> and let <span class="arithmatex">\(Q\)</span> be additive. Suppose that for every subinterval <span class="arithmatex">\(I\)</span> we have <span class="arithmatex">\(m_I\,\abs I\le Q(I)\le M_I\,\abs I\)</span>, where <span class="arithmatex">\(m_I\)</span> and <span class="arithmatex">\(M_I\)</span> are the least and the greatest value of <span class="arithmatex">\(\rho\)</span> on <span class="arithmatex">\(I\)</span>. Then</p>
+<div class="arithmatex">\[Q([a,b])=\int_a^b\rho(x)\,dx .\]</div>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(n\)</span> be a positive integer, <span class="arithmatex">\(\Delta=(b-a)/n\)</span>, and <span class="arithmatex">\(I_k=[a+(k-1)\Delta,\,a+k\Delta]\)</span> for <span class="arithmatex">\(k=1,\dots,n\)</span>. By the Extreme Value Theorem there are points <span class="arithmatex">\(s_k\)</span> and <span class="arithmatex">\(s_k'\)</span> in <span class="arithmatex">\(I_k\)</span> with <span class="arithmatex">\(\rho(s_k)=m_{I_k}\)</span> and <span class="arithmatex">\(\rho(s_k')=M_{I_k}\)</span>. Since <span class="arithmatex">\(Q\)</span> is additive, <span class="arithmatex">\(Q([a,b])=\sum_kQ(I_k)\)</span>, and the hypothesis gives</p>
+<div class="arithmatex">\[\sum_{k=1}^n\rho(s_k)\,\Delta\;\le\;Q([a,b])\;\le\;\sum_{k=1}^n\rho(s_k')\,\Delta .\]</div>
+<p>Both sums are Riemann sums of the continuous function <span class="arithmatex">\(\rho\)</span>. By (F4), given <span class="arithmatex">\(\varepsilon&gt;0\)</span> both are within <span class="arithmatex">\(\varepsilon\)</span> of <span class="arithmatex">\(\int_a^b\rho\)</span> once <span class="arithmatex">\(n\)</span> is large, so <span class="arithmatex">\(\int_a^b\rho-\varepsilon&lt;Q([a,b])&lt;\int_a^b\rho+\varepsilon\)</span>. As <span class="arithmatex">\(\varepsilon\)</span> is arbitrary, <span class="arithmatex">\(Q([a,b])=\int_a^b\rho\)</span>. (This is the squeeze used for arc length in Theorem <a href="../../6.5/notes/#thm-arclen">6.5.4</a> and for surface area in Theorem <a href="../../6.6/notes/#thm-surf">6.6.4</a>.) ◻ ∎</p>
+<p>The next form is for quantities in which a distance or a depth multiplies a mass or an area. A function <span class="arithmatex">\(D\)</span> is called <span class="arithmatex">\(K\)</span>-<em>Lipschitz</em> if <span class="arithmatex">\(\abs{D(y)-D(z)}\le K\,\abs{y-z}\)</span> for all <span class="arithmatex">\(y,z\)</span>; a linear function <span class="arithmatex">\(D(y)=\pm y+c\)</span> is <span class="arithmatex">\(1\)</span>-Lipschitz, and <span class="arithmatex">\(D(y)=\rho g\,(H-y)\)</span> is <span class="arithmatex">\(\rho g\)</span>-Lipschitz.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.3: Slice, add, squeeze: weighted form</p>
+<p><span id="thm-squeezeB"></span></p>
+<p>Let <span class="arithmatex">\(\lambda\ge0\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span>, let <span class="arithmatex">\(D\)</span> be <span class="arithmatex">\(K\)</span>-Lipschitz on <span class="arithmatex">\([a,b]\)</span>, and let <span class="arithmatex">\(Q\)</span> be additive. For a subinterval <span class="arithmatex">\(I\)</span> put <span class="arithmatex">\(\Lambda(I)=\int_I\lambda\)</span> and let <span class="arithmatex">\(D_{\min}(I)\)</span>, <span class="arithmatex">\(D_{\max}(I)\)</span> be the least and the greatest value of <span class="arithmatex">\(D\)</span> on <span class="arithmatex">\(I\)</span>. Suppose that for every subinterval <span class="arithmatex">\(I\)</span></p>
+<div class="arithmatex">\[D_{\min}(I)\,\Lambda(I)\;\le\;Q(I)\;\le\;D_{\max}(I)\,\Lambda(I).\]</div>
+<p>Then</p>
+<div class="arithmatex">\[Q([a,b])=\int_a^b\lambda(y)\,D(y)\,dy .\]</div>
+</div>
+<p><em>Proof.</em> Let <span class="arithmatex">\(n\)</span>, <span class="arithmatex">\(\Delta\)</span> and <span class="arithmatex">\(I_k\)</span> be as before. Two points of <span class="arithmatex">\(I_k\)</span> are at most <span class="arithmatex">\(\Delta\)</span> apart, so <span class="arithmatex">\(D_{\min}(I_k)\ge D(y)-K\Delta\)</span> and <span class="arithmatex">\(D_{\max}(I_k)\le D(y)+K\Delta\)</span> for every <span class="arithmatex">\(y\in I_k\)</span>. Because <span class="arithmatex">\(\lambda\ge0\)</span>, multiplying by <span class="arithmatex">\(\lambda(y)\)</span> and integrating over <span class="arithmatex">\(I_k\)</span> (the integral preserves inequalities) gives</p>
+<div class="arithmatex">\[\int_{I_k}D\lambda-K\Delta\,\Lambda(I_k)\le D_{\min}(I_k)\Lambda(I_k)\le Q(I_k)\le D_{\max}(I_k)\Lambda(I_k)\le\int_{I_k}D\lambda+K\Delta\,\Lambda(I_k).\]</div>
+<p>Add over <span class="arithmatex">\(k=1,\dots,n\)</span>, using that <span class="arithmatex">\(Q\)</span> is additive and that the integral is additive over adjacent intervals:</p>
+<div class="arithmatex">\[\int_a^bD\lambda-K\Delta\int_a^b\lambda\;\le\;Q([a,b])\;\le\;\int_a^bD\lambda+K\Delta\int_a^b\lambda .\]</div>
+<p>The number <span class="arithmatex">\(\int_a^b\lambda\)</span> does not depend on <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(\Delta\to0\)</span>, so <span class="arithmatex">\(Q([a,b])=\int_a^bD\lambda\)</span>. ◻ ∎</p>
+<p><img alt="Diagram: \(1\quad\ 2\quad\ 3\)" class="calc-figure" src="../figures/notes-fig1.svg" width="367" /></p>
+<p><em>Figure.</em> The idea of Theorem <a href="#thm-squeezeA">6.7.2</a> for <span class="arithmatex">\(\rho(x)=\dfrac4{(1+x)^2}\)</span> on <span class="arithmatex">\([0,3]\)</span> with three pieces. On each piece the mass lies between the lower rectangle (least density, shaded) and the upper rectangle (greatest density, dashed): <span class="arithmatex">\(1+\frac49+\frac14=\frac{61}{36}\)</span> and <span class="arithmatex">\(4+1+\frac49=\frac{49}9\)</span>. With more pieces the two sums squeeze together on the mass, <span class="arithmatex">\(3\)</span> (Example <a href="#ex-e1">6.7.6</a>).</p>
+<h2 id="mass-of-a-thin-bar">Mass of a thin bar<a class="headerlink" href="#mass-of-a-thin-bar" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.4: The mass of a thin bar</p>
+<p><span id="thm-mass"></span></p>
+<p>A thin bar or wire lies along the interval <span class="arithmatex">\(a\le x\le b\)</span> and has a continuous linear density <span class="arithmatex">\(\rho(x)\)</span> (in kilograms per metre). Then its mass is</p>
+<div class="arithmatex">\[m=\int_a^b\rho(x)\,dx .\]</div>
+<p>If the density is continuous on each of finitely many adjacent intervals but jumps at their end points, the mass is the sum of the integrals over the intervals.</p>
+</div>
+<p><em>Proof.</em> For a piece <span class="arithmatex">\(I=[u,v]\)</span> let <span class="arithmatex">\(Q(I)\)</span> be its mass. By (M2) <span class="arithmatex">\(Q\)</span> is additive, and by (M3) <span class="arithmatex">\(m_I\abs I\le Q(I)\le M_I\abs I\)</span>, where <span class="arithmatex">\(m_I\)</span> and <span class="arithmatex">\(M_I\)</span> are the least and the greatest value of <span class="arithmatex">\(\rho\)</span> on <span class="arithmatex">\(I\)</span>. By Theorem <a href="#thm-squeezeA">6.7.2</a>, <span class="arithmatex">\(Q([a,b])=\int_a^b\rho\)</span>. If the density is continuous on each of <span class="arithmatex">\([a,c]\)</span> and <span class="arithmatex">\([c,b]\)</span> but jumps at <span class="arithmatex">\(c\)</span>, apply this to each interval and add the masses by (M2). ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.5: Bounds and the average density</p>
+<p><span id="thm-massbounds"></span></p>
+<p>Let <span class="arithmatex">\(\rho\)</span> be continuous on <span class="arithmatex">\([a,b]\)</span> with <span class="arithmatex">\(\rho_1\le\rho(x)\le\rho_2\)</span> and let <span class="arithmatex">\(\ell=b-a\)</span>. The mass satisfies <span class="arithmatex">\(\rho_1\ell\le m\le\rho_2\ell\)</span>. The <em>average density</em> <span class="arithmatex">\(\bar\rho=m/\ell\)</span> lies between the least and the greatest density, and <span class="arithmatex">\(\bar\rho=\rho(\xi)\)</span> for some <span class="arithmatex">\(\xi\)</span> in <span class="arithmatex">\([a,b]\)</span>. A bar of constant density <span class="arithmatex">\(\sigma\)</span> has <span class="arithmatex">\(m=\sigma\ell\)</span>, as in (M1).</p>
+</div>
+<p><em>Proof.</em> The integral preserves inequalities (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>), so <span class="arithmatex">\(\rho_1\ell=\int_a^b\rho_1\,dx\le\int_a^b\rho\,dx\le\int_a^b\rho_2\,dx=\rho_2\ell\)</span>. Taking <span class="arithmatex">\(\rho_1\)</span> and <span class="arithmatex">\(\rho_2\)</span> to be the least and the greatest value of <span class="arithmatex">\(\rho\)</span> (they exist by the Extreme Value Theorem), <span class="arithmatex">\(\bar\rho=m/\ell\)</span> lies between them; by the Intermediate Value Theorem the continuous function <span class="arithmatex">\(\rho\)</span> takes the value <span class="arithmatex">\(\bar\rho\)</span> at some <span class="arithmatex">\(\xi\in[a,b]\)</span>. If <span class="arithmatex">\(\rho\equiv\sigma\)</span> then <span class="arithmatex">\(m=\int_a^b\sigma\,dx=\sigma\ell\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.6: A bar that thins out: a rational density</p>
+<p><span id="ex-e1"></span></p>
+<p>A bar occupies <span class="arithmatex">\(0\le x\le3\)</span> (metres) and has density <span class="arithmatex">\(\rho(x)=\dfrac4{(1+x)^2}\)</span> kg/m. Find its mass and its average density, and the point where the density equals the average.</p>
+<p><strong>Solution.</strong> <em>Mass.</em> By Theorem <a href="#thm-mass">6.7.4</a> (the density is continuous), <span class="arithmatex">\(m=\int_0^3\frac4{(1+x)^2}\,dx\)</span>. Substitute <span class="arithmatex">\(u=1+x\)</span>, <span class="arithmatex">\(du=dx\)</span>; the limits <span class="arithmatex">\(x=0,3\)</span> become <span class="arithmatex">\(u=1,4\)</span>:</p>
+<div class="arithmatex">\[m=\int_1^44u^{-2}\,du=4\Bigl[-\frac1u\Bigr]_1^4=4\Bigl(1-\frac14\Bigr)=3\ \text{kg}.\]</div>
+<p><em>Average density.</em> <span class="arithmatex">\(\bar\rho=\dfrac m\ell=\dfrac33=1\)</span> kg/m. The density at the ends is <span class="arithmatex">\(\rho(0)=4\)</span> and <span class="arithmatex">\(\rho(3)=\frac14\)</span>, so <span class="arithmatex">\(\frac14\le\bar\rho\le4\)</span>, as Theorem <a href="#thm-massbounds">6.7.5</a> requires. <em>Where is it average?</em> Solve <span class="arithmatex">\(\dfrac4{(1+\xi)^2}=1\)</span>: <span class="arithmatex">\((1+\xi)^2=4\)</span>, so <span class="arithmatex">\(1+\xi=2\)</span> (the root <span class="arithmatex">\(-2\)</span> is not on the bar) and <span class="arithmatex">\(\xi=1\)</span>.</p>
+<p><img alt="Diagram: area \(=m=3\)" class="calc-figure" src="../figures/notes-fig2.svg" width="417" /></p>
+<p><em>Figure.</em> The mass is the area under the density curve (shaded). The rectangle of height <span class="arithmatex">\(\bar\rho=1\)</span> and width <span class="arithmatex">\(3\)</span> has the same area.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(m=3\)</span> kg, <span class="arithmatex">\(\bar\rho=1\)</span> kg/m, attained at <span class="arithmatex">\(x=1\)</span>.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.7: A bar with an exponential density</p>
+<p><span id="ex-e2"></span></p>
+<p>A wire occupies <span class="arithmatex">\(0\le x\le4\)</span> with density <span class="arithmatex">\(\rho(x)=6e^{-x/2}\)</span> g/cm (lengths in cm). Find its mass, bound it, and find its average density.</p>
+<p><strong>Solution.</strong> <em>Mass.</em> Substitute <span class="arithmatex">\(u=-x/2\)</span>, <span class="arithmatex">\(du=-\frac12dx\)</span>, so <span class="arithmatex">\(dx=-2\,du\)</span>; the limits become <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(u=-2\)</span>:</p>
+<div class="arithmatex">\[m=\int_0^46e^{-x/2}\,dx=-12\int_0^{-2}e^u\,du=-12\bigl(e^{-2}-1\bigr)=12\bigl(1-e^{-2}\bigr)\approx10.38\ \text{g}.\]</div>
+<p><em>Bounds.</em> The density decreases from <span class="arithmatex">\(\rho(0)=6\)</span> to <span class="arithmatex">\(\rho(4)=6e^{-2}\approx0.81\)</span>, so <span class="arithmatex">\(0.81\cdot4\le m\le6\cdot4\)</span>, that is <span class="arithmatex">\(3.25\le m\le24\)</span>: true, but not sharp. <em>Average.</em> <span class="arithmatex">\(\bar\rho=m/4\approx2.59\)</span> g/cm, which lies between <span class="arithmatex">\(0.81\)</span> and <span class="arithmatex">\(6\)</span>.</p>
+<p><strong>A common mistake.</strong> Integrating <span class="arithmatex">\(e^{-x/2}\)</span> as <span class="arithmatex">\(e^{-x/2}/(-1)\)</span> and forgetting the factor <span class="arithmatex">\(2\)</span> from the inner function <span class="arithmatex">\(-x/2\)</span>: always differentiate your antiderivative to check it.</p>
+</div>
+<h2 id="knowledge-check-mass">Knowledge check: mass<a class="headerlink" href="#knowledge-check-mass" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.7.1: Mass of a bar</p>
+<p><span id="kc-k1"></span></p>
+<p>A bar lies on <span class="arithmatex">\(0\le x\le2\)</span> with density <span class="arithmatex">\(\rho(x)=3+x\)</span> kg/m. (a) Find its mass. (b) Find its average density and a point where the density equals it. (c) Give the lower and upper bound for the mass from the least and the greatest density.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.7.1: Why an integral and not a sum?</p>
+<p><span id="think-t1"></span></p>
+<p>For a bar of varying density, the sum <span class="arithmatex">\(\sum\rho(x_k)\Delta x\)</span> is only an approximation of the mass. Why does the squeeze of Theorem <a href="#thm-squeezeA">6.7.2</a> show that the integral is not an approximation but the mass itself? What would go wrong if the density jumped inside a piece?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>The squeeze shows that the lower and upper sums bracket the <em>exact</em> mass of every piece, and that the pieces add; as the pieces shrink, both bounds tend to the integral. If the density jumps inside a piece the bounds <span class="arithmatex">\(m_I,M_I\)</span> are still valid (use the integral of the piecewise function), but the extreme values are not attained by a continuous function, so the proof is done piece by piece.</p>
+</details>
+</div>
+<h2 id="work-and-springs">Work and springs<a class="headerlink" href="#work-and-springs" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.8: Work is the integral of the force</p>
+<p><span id="thm-work"></span></p>
+<p>A force <span class="arithmatex">\(F(x)\)</span> along the <span class="arithmatex">\(x\)</span>-axis, continuous on <span class="arithmatex">\([a,b]\)</span>, moves an object from <span class="arithmatex">\(x=a\)</span> to <span class="arithmatex">\(x=b\)</span>, where <span class="arithmatex">\(a&lt;b\)</span>. The work done by the force is</p>
+<div class="arithmatex">\[W=\int_a^bF(x)\,dx ,\]</div>
+<p>in joules if <span class="arithmatex">\(F\)</span> is in newtons and <span class="arithmatex">\(x\)</span> in metres. If the object moves from <span class="arithmatex">\(x=b\)</span> back to <span class="arithmatex">\(x=a\)</span> the work is <span class="arithmatex">\(-\int_a^bF\,dx\)</span>, that is, <span class="arithmatex">\(\int_b^aF(x)\,dx\)</span> with the usual convention for reversed limits. For a constant force <span class="arithmatex">\(F\)</span> this is <span class="arithmatex">\(F(b-a)\)</span>, as in (W1).</p>
+</div>
+<p><em>Proof.</em> For a stretch <span class="arithmatex">\(I=[u,v]\)</span> let <span class="arithmatex">\(Q(I)\)</span> be the work for the motion over <span class="arithmatex">\(I\)</span>. By (W2) <span class="arithmatex">\(Q\)</span> is additive, and by (W3) <span class="arithmatex">\(m_I\abs I\le Q(I)\le M_I\abs I\)</span> with <span class="arithmatex">\(m_I\)</span>, <span class="arithmatex">\(M_I\)</span> the least and the greatest value of <span class="arithmatex">\(F\)</span> on <span class="arithmatex">\(I\)</span>. Theorem <a href="#thm-squeezeA">6.7.2</a> gives <span class="arithmatex">\(Q([a,b])=\int_a^bF\)</span>. The reversed motion has the opposite sign by (W2). For <span class="arithmatex">\(F\equiv F_0\)</span> we get <span class="arithmatex">\(\int_a^bF_0\,dx=F_0(b-a)\)</span>. ◻ ∎</p>
+<p><em>Springs.</em> Attach an object to a spring on a frictionless surface and let <span class="arithmatex">\(x\)</span> be the position of the object, with <span class="arithmatex">\(x=0\)</span> at the <em>equilibrium</em> (the spring neither stretched nor compressed), <span class="arithmatex">\(x&gt;0\)</span> for a stretched and <span class="arithmatex">\(x&lt;0\)</span> for a compressed spring. <em>Hooke’s law</em> says that the force needed to hold the spring at position <span class="arithmatex">\(x\)</span> is <span class="arithmatex">\(F(x)=kx\)</span>, where the <em>spring constant</em> <span class="arithmatex">\(k&gt;0\)</span> (in N/m) measures its stiffness. This is a law of the material, valid for many springs when <span class="arithmatex">\(x\)</span> is not too large; it is an assumption, not a theorem. The force <span class="arithmatex">\(F\)</span> is the one that <em>you</em> apply, and it points the way the spring is displaced: positive for <span class="arithmatex">\(x&gt;0\)</span> and negative for <span class="arithmatex">\(x&lt;0\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.9: Work on a Hooke spring</p>
+<p><span id="thm-hooke"></span></p>
+<p>For a spring with constant <span class="arithmatex">\(k\)</span>, the work you do in moving the end from <span class="arithmatex">\(x=a\)</span> to <span class="arithmatex">\(x=b\)</span> (any real <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>) is</p>
+<div class="arithmatex">\[W=\int_a^bkx\,dx=\frac k2\,\bigl(b^2-a^2\bigr).\]</div>
+<p>In particular, to stretch the spring from equilibrium to <span class="arithmatex">\(x=s&gt;0\)</span>, or to compress it from equilibrium to <span class="arithmatex">\(x=-s\)</span>, takes the same work <span class="arithmatex">\(\frac k2s^2\)</span>. The work to go from <span class="arithmatex">\(a\)</span> to <span class="arithmatex">\(b\)</span> is the area of a trapezoid: <span class="arithmatex">\(W=\dfrac{F(a)+F(b)}2\,(b-a)\)</span> when <span class="arithmatex">\(0\le a&lt;b\)</span>.</p>
+</div>
+<p><em>Proof.</em> By Theorem <a href="#thm-work">6.7.8</a> (and, if <span class="arithmatex">\(b&lt;a\)</span>, its statement for the reversed motion) <span class="arithmatex">\(W=\int_a^bkx\,dx=\bigl[\frac k2x^2\bigr]_a^b=\frac k2(b^2-a^2)\)</span>. For <span class="arithmatex">\(a=0\)</span>, <span class="arithmatex">\(b=s\)</span> this is <span class="arithmatex">\(\frac k2s^2\)</span>, and for <span class="arithmatex">\(a=0\)</span>, <span class="arithmatex">\(b=-s\)</span> it is <span class="arithmatex">\(\frac k2s^2\)</span> as well, because <span class="arithmatex">\((-s)^2=s^2\)</span>. If <span class="arithmatex">\(0\le a&lt;b\)</span> then <span class="arithmatex">\(\frac k2(b^2-a^2)=\frac k2(b+a)(b-a)=\frac{ka+kb}2(b-a)=\frac{F(a)+F(b)}2(b-a)\)</span>, the area of the trapezoid under the graph of <span class="arithmatex">\(F\)</span> between <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span>. ◻ ∎</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.10: Springs: from equilibrium and from a stretched position</p>
+<p><span id="ex-e3"></span></p>
+<p>A force of <span class="arithmatex">\(15\)</span> N holds a spring stretched <span class="arithmatex">\(0.06\)</span> m beyond its equilibrium. Assume Hooke’s law. (a) Find <span class="arithmatex">\(k\)</span>. (b) How much work stretches it <span class="arithmatex">\(0.10\)</span> m from equilibrium? (c) How much additional work stretches it from <span class="arithmatex">\(0.06\)</span> m to <span class="arithmatex">\(0.12\)</span> m? (d) How much work compresses it <span class="arithmatex">\(0.05\)</span> m from equilibrium?</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(F(0.06)=k\cdot0.06=15\)</span>, so <span class="arithmatex">\(k=250\)</span> N/m and <span class="arithmatex">\(F(x)=250x\)</span>.</p>
+<p>(b) <span class="arithmatex">\(W=\int_0^{0.10}250x\,dx=125x^2\Big|_0^{0.10}=125\cdot0.01=1.25\)</span> J.</p>
+<p>(c) The spring already stretched to <span class="arithmatex">\(a=0.06\)</span> is taken to <span class="arithmatex">\(b=0.12\)</span>: <span class="arithmatex">\(W=\int_{0.06}^{0.12}250x\,dx=125\bigl(0.12^2-0.06^2\bigr)=125\,(0.0144-0.0036)=1.35\)</span> J. <em>Check:</em> the force rises from <span class="arithmatex">\(F(0.06)=15\)</span> N to <span class="arithmatex">\(F(0.12)=30\)</span> N, whose average is <span class="arithmatex">\(22.5\)</span> N, and <span class="arithmatex">\(22.5\cdot0.06=1.35\)</span> J.</p>
+<p>(d) Compressing from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(-0.05\)</span>: <span class="arithmatex">\(W=\int_0^{-0.05}250x\,dx=125x^2\Big|_0^{-0.05}=125\cdot0.0025=0.3125\)</span> J, the same as stretching <span class="arithmatex">\(0.05\)</span> m.</p>
+<p><img alt="Diagram: \(1.35\) J" class="calc-figure" src="../figures/notes-fig3.svg" width="279" /></p>
+<p><em>Figure.</em> The force graph <span class="arithmatex">\(F=250x\)</span>. The work from <span class="arithmatex">\(x=0.06\)</span> to <span class="arithmatex">\(x=0.12\)</span> is the shaded trapezoid, area <span class="arithmatex">\(\frac{15+30}2\cdot0.06=1.35\)</span> J.</p>
+<p><strong>Answer.</strong> (a) <span class="arithmatex">\(250\)</span> N/m; (b) <span class="arithmatex">\(1.25\)</span> J; (c) <span class="arithmatex">\(1.35\)</span> J; (d) <span class="arithmatex">\(0.3125\)</span> J. Part (c) costs more than stretching the spring <span class="arithmatex">\(0.06\)</span> m from equilibrium (<span class="arithmatex">\(\frac{250}2\cdot0.06^2=0.45\)</span> J) because the spring pulls back harder when it is already stretched.</p>
+</div>
+<h2 id="knowledge-check-springs">Knowledge check: springs<a class="headerlink" href="#knowledge-check-springs" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.7.2: A spring</p>
+<p><span id="kc-k2"></span></p>
+<p>A spring has <span class="arithmatex">\(k=200\)</span> N/m. (a) What is the work to stretch it from <span class="arithmatex">\(x=0.1\)</span> m to <span class="arithmatex">\(x=0.3\)</span> m? (b) To compress it from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(-0.2\)</span> m? (c) Is the work from <span class="arithmatex">\(0.1\)</span> to <span class="arithmatex">\(0.3\)</span> equal to the work from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(0.2\)</span>? Explain.</p>
+</div>
+<h2 id="lifting-chains-cables-and-buckets">Lifting: chains, cables and buckets<a class="headerlink" href="#lifting-chains-cables-and-buckets" title="Permanent link">&para;</a></h2>
+<p>A rigid body lifted a height <span class="arithmatex">\(h\)</span> needs the work <span class="arithmatex">\(\mu g h\)</span> (W4). A chain or a cable is not rigid: the top of a hanging chain is lifted far less than its bottom. Place a vertical <span class="arithmatex">\(y\)</span>-axis and let the part of the body between the heights <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> have mass <span class="arithmatex">\(\int_u^v\lambda(y)\,dy\)</span>, so <span class="arithmatex">\(\lambda(y)\)</span> is the mass per unit height. Every point of the body is raised to the same final level, and <span class="arithmatex">\(D(y)\)</span> is the distance through which the point at height <span class="arithmatex">\(y\)</span> is raised.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.11: Work to lift a body</p>
+<p><span id="thm-lift"></span></p>
+<p>A body occupies the heights <span class="arithmatex">\(a\le y\le b\)</span> on a vertical axis (up or down). The part between heights <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> has mass <span class="arithmatex">\(\int_u^v\lambda\)</span>, where <span class="arithmatex">\(\lambda\ge0\)</span> is continuous, and the point at height <span class="arithmatex">\(y\)</span> is lifted through the distance <span class="arithmatex">\(D(y)\ge0\)</span>, where <span class="arithmatex">\(D(y)=\abs{\text{(final level)}-y}\)</span> is a <span class="arithmatex">\(1\)</span>-Lipschitz function (for instance <span class="arithmatex">\(D(y)=h-y\)</span> when all points are lifted up to the level <span class="arithmatex">\(h\)</span>). The work to lift it is</p>
+<div class="arithmatex">\[W=g\int_a^b\lambda(y)\,D(y)\,dy .\]</div>
+</div>
+<p><em>Proof.</em> For <span class="arithmatex">\(I=[u,v]\)</span> let <span class="arithmatex">\(Q(I)\)</span> be the work for the part of the body between the heights <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span>. Work on separate parts adds by (W2), so <span class="arithmatex">\(Q\)</span> is additive. That part has mass <span class="arithmatex">\(\mu(I)=\Lambda(I)=\int_I\lambda\)</span> and each of its points is lifted through a distance between <span class="arithmatex">\(D_{\min}(I)\)</span> and <span class="arithmatex">\(D_{\max}(I)\)</span>, so by (W4) <span class="arithmatex">\(D_{\min}(I)\,g\Lambda(I)\le Q(I)\le D_{\max}(I)\,g\Lambda(I)\)</span>. Apply Theorem <a href="#thm-squeezeB">6.7.3</a> to the weight function <span class="arithmatex">\(g\lambda\)</span> and to <span class="arithmatex">\(D\)</span> (with <span class="arithmatex">\(K=1\)</span>). ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.7.12: Lifting problems</p>
+<p><span id="proc-lift"></span></p>
+<ol>
+<li>
+<p>Draw the body and a vertical axis (up or down); choose the origin where the numbers are simple. Write the interval <span class="arithmatex">\([a,b]\)</span> that the body occupies.</p>
+</li>
+<li>
+<p>Find the mass per unit height <span class="arithmatex">\(\lambda(y)\)</span> (kg per metre): for a chain or cable it is its density.</p>
+</li>
+<li>
+<p>Find the distance <span class="arithmatex">\(D(y)\ge0\)</span> through which the point at height <span class="arithmatex">\(y\)</span> is lifted: the <em>final level minus <span class="arithmatex">\(y\)</span></em> for an upward axis, <em><span class="arithmatex">\(y\)</span> minus the final level</em> for a downward axis.</p>
+</li>
+<li>
+<p>Evaluate <span class="arithmatex">\(W=g\int_a^b\lambda(y)D(y)\,dy\)</span> (in joules). Parts that are rigid (a load) are added separately by <span class="arithmatex">\(\mu g d\)</span>. Check the answer with a bracket <span class="arithmatex">\(\mu g D_{\min}\le W\le\mu g D_{\max}\)</span>, where <span class="arithmatex">\(\mu=\int\lambda\)</span>.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.13: A hanging chain with a load</p>
+<p><span id="ex-e4"></span></p>
+<p>A chain of length <span class="arithmatex">\(12\)</span> m and density <span class="arithmatex">\(1.8\)</span> kg/m hangs from a platform. A bucket of mass <span class="arithmatex">\(20\)</span> kg is attached to its lower end. Find the work to pull the chain and the bucket up to the platform, with two different origins.</p>
+<p><strong>Solution.</strong> <em>Origin at the bottom.</em> Let <span class="arithmatex">\(y=0\)</span> be the bottom end and <span class="arithmatex">\(y\)</span> point up, so the chain occupies <span class="arithmatex">\(0\le y\le12\)</span> and the platform is at <span class="arithmatex">\(y=12\)</span>. Here <span class="arithmatex">\(\lambda=1.8\)</span> and <span class="arithmatex">\(D(y)=12-y\)</span>. By Theorem <a href="#thm-lift">6.7.11</a>,</p>
+<div class="arithmatex">\[W_{\text{chain}}=9.8\int_0^{12}1.8\,(12-y)\,dy=9.8\cdot1.8\Bigl[12y-\frac{y^2}2\Bigr]_0^{12}=9.8\cdot1.8\cdot72=1270.08\ \text{J}.\]</div>
+<p>The bucket is rigid and every point is lifted <span class="arithmatex">\(12\)</span> m, so <span class="arithmatex">\(W_{\text{bucket}}=20\cdot9.8\cdot12=2352\)</span> J. The total is <span class="arithmatex">\(1270.08+2352=3622.08\)</span> J. <em>Origin at the platform, axis downward.</em> Let <span class="arithmatex">\(s=0\)</span> at the platform and <span class="arithmatex">\(s\)</span> increase downward: the chain occupies <span class="arithmatex">\(0\le s\le12\)</span> and the point at <span class="arithmatex">\(s\)</span> is lifted <span class="arithmatex">\(D(s)=s\)</span>. Then <span class="arithmatex">\(W_{\text{chain}}=9.8\int_0^{12}1.8\,s\,ds=9.8\cdot1.8\cdot\frac{144}2=1270.08\)</span> J, the same.</p>
+<p><img alt="Diagram: platform \(y=12\); bucket, \(20\) kg; \(D=12-y\)" class="calc-figure" src="../figures/notes-fig4.svg" width="285" /></p>
+<p><em>Figure.</em> The chain hangs from the platform. The point at height <span class="arithmatex">\(y\)</span> must rise <span class="arithmatex">\(D(y)=12-y\)</span>; the bottom rises <span class="arithmatex">\(12\)</span> m, the top not at all.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(3622.08\)</span> J (about <span class="arithmatex">\(3.6\)</span> kJ). <em>Check:</em> a chain of mass <span class="arithmatex">\(1.8\cdot12=21.6\)</span> kg, weight <span class="arithmatex">\(211.68\)</span> N, has its centre of mass <span class="arithmatex">\(6\)</span> m below the platform, and <span class="arithmatex">\(211.68\cdot6=1270.08\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.14: A leaking bucket</p>
+<p><span id="ex-e5"></span></p>
+<p>A bucket of mass <span class="arithmatex">\(2\)</span> kg holds <span class="arithmatex">\(10\)</span> kg of water. It is lifted straight up <span class="arithmatex">\(15\)</span> m by a rope of negligible weight while water leaks out at a constant rate of <span class="arithmatex">\(0.4\)</span> kg per metre of height. Find the work.</p>
+<p><strong>Solution.</strong> At height <span class="arithmatex">\(y\)</span> (metres above the start, <span class="arithmatex">\(0\le y\le15\)</span>) the bucket and water have mass <span class="arithmatex">\(12-0.4y\)</span> kg, so the force needed to lift it slowly is its weight <span class="arithmatex">\(F(y)=9.8\,(12-0.4y)\)</span> N, which is positive (at <span class="arithmatex">\(y=15\)</span> the mass is still <span class="arithmatex">\(6\)</span> kg). The force is continuous, so by Theorem <a href="#thm-work">6.7.8</a></p>
+<div class="arithmatex">\[W=\int_0^{15}9.8\,(12-0.4y)\,dy=9.8\Bigl[12y-0.2y^2\Bigr]_0^{15}=9.8\,(180-45)=1323\ \text{J}.\]</div>
+<p><em>Check.</em> If no water leaked, the work would be <span class="arithmatex">\(12\cdot9.8\cdot15=1764\)</span> J; if the bucket had its final mass of <span class="arithmatex">\(6\)</span> kg all the way, <span class="arithmatex">\(6\cdot9.8\cdot15=882\)</span> J. The answer <span class="arithmatex">\(1323\)</span> J lies between them, and it equals <span class="arithmatex">\(9\cdot9.8\cdot15\)</span>: the <em>average</em> mass <span class="arithmatex">\(\frac{12+6}2=9\)</span> kg times <span class="arithmatex">\(g\)</span> times the height, because the mass is a linear function of the height.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(1323\)</span> J.</p>
+</div>
+<h2 id="pumping-fluid-out-of-a-tank">Pumping fluid out of a tank<a class="headerlink" href="#pumping-fluid-out-of-a-tank" title="Permanent link">&para;</a></h2>
+<p>Water in a tank is a body whose mass per unit height is easy to find: a horizontal layer of the water at height <span class="arithmatex">\(y\)</span> has the shape of the tank there, and its volume is the area <span class="arithmatex">\(A(y)\)</span> of the horizontal cross section times the thickness. So a pumping problem is a lifting problem with <span class="arithmatex">\(\lambda(y)=\rho A(y)\)</span>.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.15: Work to pump a tank</p>
+<p><span id="thm-pump"></span></p>
+<p>A tank holds a fluid of density <span class="arithmatex">\(\rho\)</span> occupying the heights <span class="arithmatex">\(a\le y\le b\)</span> on an upward vertical axis, and <span class="arithmatex">\(A(y)\)</span> is the area of the horizontal cross section of the <em>fluid</em> at height <span class="arithmatex">\(y\)</span>, continuous on <span class="arithmatex">\([a,b]\)</span>. The work to pump all of the fluid up to the level <span class="arithmatex">\(y=h\)</span>, where <span class="arithmatex">\(h\ge b\)</span>, is</p>
+<div class="arithmatex">\[W=\rho g\int_a^bA(y)\,(h-y)\,dy .\]</div>
+</div>
+<p><em>Proof.</em> By Theorem <a href="../../6.3/notes/#thm-yslice">6.3.2</a> (slicing along the <span class="arithmatex">\(y\)</span>-axis) the fluid between the heights <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span> has volume <span class="arithmatex">\(\int_u^vA(y)\,dy\)</span>, so by (M1) (mass is density times volume) its mass is <span class="arithmatex">\(\int_u^v\rho A(y)\,dy\)</span>. Thus <span class="arithmatex">\(\lambda=\rho A\)</span> is continuous and <span class="arithmatex">\(\ge0\)</span>, and every point at height <span class="arithmatex">\(y\)</span> is lifted the distance <span class="arithmatex">\(D(y)=h-y\ge0\)</span>, which is <span class="arithmatex">\(1\)</span>-Lipschitz. Theorem <a href="#thm-lift">6.7.11</a> gives the formula. ◻ ∎</p>
+<p>The distance <span class="arithmatex">\(h-y\)</span> is the one that depends on <em>where the water goes</em>, not on the shape of the tank. If <span class="arithmatex">\(y\)</span> is measured downward from the outlet instead (so the outlet is at <span class="arithmatex">\(s=0\)</span> and the water at depths <span class="arithmatex">\(s\)</span>), the layer at <span class="arithmatex">\(s\)</span> is lifted <span class="arithmatex">\(D(s)=s\)</span> and the integral is <span class="arithmatex">\(\rho g\int A(s)\,s\,ds\)</span> over the depths that the water occupies. The two choices give the same work (Knowledge Check <a href="#kc-k3">6.7.3</a>).</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.7.16: Pumping problems</p>
+<p><span id="proc-pump"></span></p>
+<ol>
+<li>
+<p>Draw the tank, a vertical axis and the outlet level. Choose the origin where <span class="arithmatex">\(A(y)\)</span> is simple (the bottom, the apex of a cone, the centre of a sphere or of a circular cross section).</p>
+</li>
+<li>
+<p>Find the interval <span class="arithmatex">\([a,b]\)</span> occupied by the water (a half-full tank has <span class="arithmatex">\(b\)</span> below the top of the tank) and the outlet level <span class="arithmatex">\(h\)</span>.</p>
+</li>
+<li>
+<p>Find <span class="arithmatex">\(A(y)\)</span> from the shape: a rectangle (length <span class="arithmatex">\(\times\)</span> width of the chord), a disk <span class="arithmatex">\(\pi r(y)^2\)</span> (find <span class="arithmatex">\(r(y)\)</span> by similar triangles or from the equation of the circle).</p>
+</li>
+<li>
+<p>Find <span class="arithmatex">\(D(y)=h-y\)</span>.</p>
+</li>
+<li>
+<p>Compute <span class="arithmatex">\(W=\rho g\int_a^bA(y)D(y)\,dy\)</span> with <span class="arithmatex">\(\rho=1000\)</span> kg/m<span class="arithmatex">\(^3\)</span> and <span class="arithmatex">\(g=9.8\)</span> m/s<span class="arithmatex">\(^2\)</span> for water. Check with a bracket (Theorem <a href="#thm-bracket">6.7.30</a>): the mass <span class="arithmatex">\(M=\rho V\)</span> times <span class="arithmatex">\(g\)</span> times the smallest and the greatest lift.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.17: A cylinder with the outlet above the top</p>
+<p><span id="ex-e6"></span></p>
+<p>A cylindrical tank of radius <span class="arithmatex">\(3\)</span> m and height <span class="arithmatex">\(8\)</span> m stands on its end and is full of water. The water is pumped to an outlet <span class="arithmatex">\(2\)</span> m above the top of the tank. Find the work.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(y\)</span> be the height above the bottom, so the water occupies <span class="arithmatex">\(0\le y\le8\)</span> and the outlet is at <span class="arithmatex">\(h=10\)</span>. Every cross section is a disk of radius <span class="arithmatex">\(3\)</span>, so <span class="arithmatex">\(A(y)=9\pi\)</span>, and the layer at height <span class="arithmatex">\(y\)</span> is lifted <span class="arithmatex">\(D(y)=10-y\)</span> (from <span class="arithmatex">\(10\)</span> m for the bottom layer down to <span class="arithmatex">\(2\)</span> m for the top layer). Then</p>
+<div class="arithmatex">\[\begin{aligned}
+W&amp;=1000\cdot9.8\int_0^89\pi\,(10-y)\,dy=9800\cdot9\pi\Bigl[10y-\frac{y^2}2\Bigr]_0^8\\
+&amp;=9800\cdot9\pi\cdot48=4\,233\,600\,\pi\approx1.33\times10^{7}\ \text{J}.
+\end{aligned}\]</div>
+<p><em>Check.</em> The volume is <span class="arithmatex">\(9\pi\cdot8=72\pi\)</span> m<span class="arithmatex">\(^3\)</span>, the mass <span class="arithmatex">\(72\,000\pi\)</span> kg and the weight <span class="arithmatex">\(705\,600\pi\)</span> N. The layers are lifted between <span class="arithmatex">\(2\)</span> m and <span class="arithmatex">\(10\)</span> m, so <span class="arithmatex">\(705\,600\pi\cdot2\le W\le705\,600\pi\cdot10\)</span>. And <span class="arithmatex">\(W=705\,600\pi\cdot6\)</span>: the water behaves as if it were lifted <span class="arithmatex">\(6\)</span> m, the lift of its middle layer (<span class="arithmatex">\(y=4\)</span>).</p>
+<p><img alt="Diagram: \(D=10-y\); radius \(3\); \(A=9\pi\)" class="calc-figure" src="../figures/notes-fig5.svg" width="378" /></p>
+<p><em>Figure.</em> A layer at height <span class="arithmatex">\(y\)</span> is a disk of area <span class="arithmatex">\(9\pi\)</span>. It is lifted <span class="arithmatex">\(10-y\)</span> metres to the outlet.</p>
+<p><em>Half full.</em> If the tank is only half full (<span class="arithmatex">\(0\le y\le4\)</span>) the lift is still <span class="arithmatex">\(10-y\)</span>: <span class="arithmatex">\(W=9800\cdot9\pi\bigl[10y-\frac{y^2}2\bigr]_0^4=9800\cdot9\pi\cdot32=2\,822\,400\,\pi\)</span>, which is two thirds of the full work, not half. The top half of the water (<span class="arithmatex">\(4\le y\le8\)</span>) costs <span class="arithmatex">\(9800\cdot9\pi\cdot16=1\,411\,200\,\pi\)</span>, half of the bottom half.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(W=4\,233\,600\,\pi\approx1.33\times10^7\)</span> J (<span class="arithmatex">\(13.3\)</span> MJ).</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.18: A conical tank</p>
+<p><span id="ex-e7"></span></p>
+<p>A tank has the shape of an inverted cone (apex down) with height <span class="arithmatex">\(6\)</span> m and top radius <span class="arithmatex">\(1.5\)</span> m. It is full of water, which is pumped to the top of the tank. Find the work. How much work is needed when the water is only <span class="arithmatex">\(3\)</span> m deep?</p>
+<p><strong>Solution.</strong> <em>Cross section.</em> Put the origin at the apex, <span class="arithmatex">\(y\)</span> up. At height <span class="arithmatex">\(y\)</span> the cross section is a disk whose radius <span class="arithmatex">\(r(y)\)</span> is proportional to <span class="arithmatex">\(y\)</span> (similar triangles): <span class="arithmatex">\(\dfrac{r}{y}=\dfrac{1.5}6\)</span>, so <span class="arithmatex">\(r=\dfrac y4\)</span> and <span class="arithmatex">\(A(y)=\pi\dfrac{y^2}{16}\)</span>. The outlet is at the top, <span class="arithmatex">\(h=6\)</span>, so <span class="arithmatex">\(D(y)=6-y\)</span>.</p>
+<p><em>Full tank.</em> The water occupies <span class="arithmatex">\(0\le y\le6\)</span>:</p>
+<div class="arithmatex">\[W=9800\int_0^6\pi\frac{y^2}{16}(6-y)\,dy=\frac{9800\pi}{16}\Bigl[2y^3-\frac{y^4}4\Bigr]_0^6=\frac{9800\pi}{16}\,(432-324)=66\,150\,\pi\approx2.08\times10^5\ \text{J}.\]</div>
+<p><em>Check.</em> The volume is <span class="arithmatex">\(\frac13\pi\cdot1.5^2\cdot6=4.5\pi\)</span> m<span class="arithmatex">\(^3\)</span>, so the weight is <span class="arithmatex">\(44\,100\pi\)</span> N and <span class="arithmatex">\(W/(\text{weight})=1.5\)</span> m. This lies between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(6\)</span> and it is small because most of the water of a cone is near the wide top.</p>
+<p><em>Half the depth.</em> If the water is <span class="arithmatex">\(3\)</span> m deep it occupies <span class="arithmatex">\(0\le y\le3\)</span> and the same integrand (the outlet is still at <span class="arithmatex">\(6\)</span>) gives <span class="arithmatex">\(\frac{9800\pi}{16}\bigl[2y^3-\frac{y^4}4\bigr]_0^3=\frac{9800\pi}{16}\cdot33.75\)</span>. The ratio to the full tank is <span class="arithmatex">\(\dfrac{33.75}{108}=\dfrac5{16}\)</span>. Half the depth is <span class="arithmatex">\(\frac18\)</span> of the volume, and the water that remains is the lowest water, lifted farthest, so the work is <span class="arithmatex">\(\frac5{16}\)</span> of the full work.</p>
+<p><img alt="Diagram: \(r=y/4\); \(D=6-y\)" class="calc-figure" src="../figures/notes-fig6.svg" width="387" /></p>
+<p><em>Figure.</em> The cone, with the layer at height <span class="arithmatex">\(y\)</span> of radius <span class="arithmatex">\(y/4\)</span>. The layer at <span class="arithmatex">\(y=3\)</span> has radius <span class="arithmatex">\(\frac34\)</span> m and is lifted <span class="arithmatex">\(D=6-3=3\)</span> m to the outlet.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(66\,150\,\pi\approx2.08\times10^5\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.19: A hemispherical bowl</p>
+<p><span id="ex-e8"></span></p>
+<p>A bowl is a hemisphere of radius <span class="arithmatex">\(3\)</span> m, flat side up and full of water. Find the work to pump the water up to the rim.</p>
+<p><strong>Solution.</strong> Put the origin at the centre of the rim and <span class="arithmatex">\(y\)</span> up. The bowl is the part of the ball <span class="arithmatex">\(x^2+y^2\le9\)</span> with <span class="arithmatex">\(y\le0\)</span>; the water occupies <span class="arithmatex">\(-3\le y\le0\)</span> and the rim is at <span class="arithmatex">\(h=0\)</span>. The layer at height <span class="arithmatex">\(y\)</span> is a disk of radius <span class="arithmatex">\(\sqrt{9-y^2}\)</span>, so <span class="arithmatex">\(A(y)=\pi\,(9-y^2)\)</span>, and <span class="arithmatex">\(D(y)=0-y=-y\)</span> (<span class="arithmatex">\(\ge0\)</span> since <span class="arithmatex">\(y\le0\)</span>). Only powers of <span class="arithmatex">\(y\)</span> appear:</p>
+<div class="arithmatex">\[\begin{aligned}
+W&amp;=9800\pi\int_{-3}^0(9-y^2)(-y)\,dy=9800\pi\int_{-3}^0(y^3-9y)\,dy\\
+&amp;=9800\pi\Bigl[\frac{y^4}4-\frac{9y^2}2\Bigr]_{-3}^0=9800\pi\cdot\frac{81}4=198\,450\,\pi\approx6.23\times10^5\ \text{J}.
+\end{aligned}\]</div>
+<p><em>Check.</em> The volume is <span class="arithmatex">\(\frac23\pi\cdot27=18\pi\)</span> m<span class="arithmatex">\(^3\)</span>, the weight <span class="arithmatex">\(176\,400\pi\)</span> N, and <span class="arithmatex">\(W/\text{weight}=\frac{81/4}{18}=\frac98=1.125\)</span> m, between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(3\)</span>: the water is lifted on average <span class="arithmatex">\(1.125\)</span> m, because the bowl is widest near the rim.</p>
+<p><img alt="Diagram: \(D=-y\)" class="calc-figure" src="../figures/notes-fig7.svg" width="389" /></p>
+<p><em>Figure.</em> The bowl. At height <span class="arithmatex">\(y=-2\)</span> the layer has radius <span class="arithmatex">\(\sqrt{9-4}=\sqrt5\)</span> and is lifted <span class="arithmatex">\(2\)</span> m to the rim.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(W=198\,450\,\pi\approx6.23\times10^5\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.20: A tank on its side</p>
+<p><span id="ex-e9"></span></p>
+<p>A cylindrical tank of radius <span class="arithmatex">\(3\)</span> m and length <span class="arithmatex">\(6\)</span> m lies on its side and is half full of oil of density <span class="arithmatex">\(850\)</span> kg/m<span class="arithmatex">\(^3\)</span>. The oil is pumped out through a pipe at the top of the tank. Find the work.</p>
+<p><strong>Solution.</strong> <em>Set-up.</em> Put the origin on the axis of the cylinder, <span class="arithmatex">\(y\)</span> up. The end of the tank is the circle <span class="arithmatex">\(x^2+y^2=9\)</span>, the oil occupies <span class="arithmatex">\(-3\le y\le0\)</span> and the pipe is at the top, <span class="arithmatex">\(h=3\)</span>. The layer at height <span class="arithmatex">\(y\)</span> is a rectangle <span class="arithmatex">\(6\)</span> m long and <span class="arithmatex">\(2\sqrt{9-y^2}\)</span> m wide (the chord of the circle at height <span class="arithmatex">\(y\)</span>): <span class="arithmatex">\(A(y)=12\sqrt{9-y^2}\)</span>. The layer is lifted <span class="arithmatex">\(D(y)=3-y\)</span>, which runs from <span class="arithmatex">\(6\)</span> to <span class="arithmatex">\(3\)</span>. With <span class="arithmatex">\(\rho g=850\cdot9.8=8330\)</span>,</p>
+<div class="arithmatex">\[W=8330\int_{-3}^012\sqrt{9-y^2}\,(3-y)\,dy=99\,960\Bigl[3\int_{-3}^0\sqrt{9-y^2}\,dy-\int_{-3}^0y\sqrt{9-y^2}\,dy\Bigr].\]</div>
+<p><em>First integral (geometry).</em> The region <span class="arithmatex">\(0\le x\le\sqrt{9-y^2}\)</span>, <span class="arithmatex">\(-3\le y\le0\)</span> is a quarter of the disk of radius <span class="arithmatex">\(3\)</span>, with area <span class="arithmatex">\(\frac14\pi\cdot3^2=\frac{9\pi}4\)</span>, so <span class="arithmatex">\(\int_{-3}^0\sqrt{9-y^2}\,dy=\dfrac{9\pi}4\)</span>.</p>
+<p><em>Second integral (substitution).</em> Let <span class="arithmatex">\(u=9-y^2\)</span>, <span class="arithmatex">\(du=-2y\,dy\)</span>, so <span class="arithmatex">\(y\,dy=-\frac12du\)</span>; <span class="arithmatex">\(y=-3\)</span> gives <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(y=0\)</span> gives <span class="arithmatex">\(u=9\)</span>:</p>
+<div class="arithmatex">\[\int_{-3}^0y\sqrt{9-y^2}\,dy=-\frac12\int_0^9\sqrt u\,du=-\frac12\cdot\frac23u^{3/2}\Big|_0^9=-\frac13\cdot27=-9.\]</div>
+<p><em>Together.</em> <span class="arithmatex">\(W=99\,960\bigl(3\cdot\frac{9\pi}4+9\bigr)=99\,960\bigl(\frac{27\pi}4+9\bigr)=674\,730\pi+899\,640\approx3.02\times10^6\)</span> J. <em>Check.</em> The oil is half of the tank, volume <span class="arithmatex">\(\frac12\pi\cdot9\cdot6=27\pi\)</span> m<span class="arithmatex">\(^3\)</span>, mass <span class="arithmatex">\(22\,950\pi\)</span> kg and weight <span class="arithmatex">\(224\,910\pi\approx7.07\times10^5\)</span> N. Then <span class="arithmatex">\(W/\text{weight}\approx4.27\)</span> m, between the smallest lift <span class="arithmatex">\(3\)</span> m (oil at the top, <span class="arithmatex">\(y=0\)</span>) and the greatest lift <span class="arithmatex">\(6\)</span> m (oil at the bottom).</p>
+<p><img alt="Diagram: \(D=3-y\)" class="calc-figure" src="../figures/notes-fig8.svg" width="393" /></p>
+<p><em>Figure.</em> The circular end of the tank. At <span class="arithmatex">\(y=-1\)</span> the chord has half-width <span class="arithmatex">\(\sqrt{9-1}=2\sqrt2\)</span> and the layer is lifted <span class="arithmatex">\(3-(-1)=4\)</span> m.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(W=674\,730\pi+899\,640\approx3.02\times10^6\)</span> J.</p>
+</div>
+<h2 id="knowledge-check-pumping">Knowledge check: pumping<a class="headerlink" href="#knowledge-check-pumping" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">Knowledge Check 6.7.3: Which distance?</p>
+<p><span id="kc-k3"></span></p>
+<p>Water occupies <span class="arithmatex">\(0\le y\le5\)</span> in a tank (<span class="arithmatex">\(y\)</span> in metres, upward from the bottom), with cross-sectional area <span class="arithmatex">\(A(y)=2y+1\)</span> m<span class="arithmatex">\(^2\)</span>. It is pumped to an outlet at height <span class="arithmatex">\(8\)</span>. (a) Write the work integral with the upward axis. (b) Write it with a downward axis <span class="arithmatex">\(s\)</span> measured from the outlet (<span class="arithmatex">\(s=0\)</span> at the outlet). Do not evaluate.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.7.2: Half the water, half the work?</p>
+<p><span id="think-t2"></span></p>
+<p>A full cylinder is pumped out, and a second, identical cylinder is only half full. Does the half-full cylinder need half the work? Use Example <a href="#ex-e6">6.7.17</a> to decide, and say which half of the water is the more expensive to pump.</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>No. By Example <a href="#ex-e6">6.7.17</a>, the full cylinder costs <span class="arithmatex">\(4\,233\,600\pi\)</span> J and the half-full one <span class="arithmatex">\(2\,822\,400\pi\)</span> J, which is two thirds, not one half. The bottom half is more expensive: its water (at <span class="arithmatex">\(0\le y\le4\)</span>) is lifted <span class="arithmatex">\(10-y\)</span>, <span class="arithmatex">\(8\)</span> m on average, while the top half is lifted <span class="arithmatex">\(4\)</span> m on average, so the bottom half costs twice as much (<span class="arithmatex">\(2\,822\,400\pi\)</span> against <span class="arithmatex">\(1\,411\,200\pi\)</span>).</p>
+</details>
+</div>
+<h2 id="force-and-pressure">Force and pressure<a class="headerlink" href="#force-and-pressure" title="Permanent link">&para;</a></h2>
+<p>Fluid presses on everything it touches. A fluid of density <span class="arithmatex">\(\rho\)</span> at depth <span class="arithmatex">\(d\)</span> below its surface has <em>pressure</em> <span class="arithmatex">\(p=\rho g d\)</span> (newtons per square metre), the same in every direction (P1). A horizontal plate of area <span class="arithmatex">\(A\)</span> at depth <span class="arithmatex">\(d\)</span> carries the weight of the column above it, <span class="arithmatex">\(\rho g d\,A\)</span>. On a <em>vertical</em> plate the depth, hence the pressure, changes from point to point, so the plate has to be cut into horizontal strips.</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.21: Hydrostatic force on a vertical plate</p>
+<p><span id="thm-force"></span></p>
+<p>A flat plate lies in a vertical plane under fluid of density <span class="arithmatex">\(\rho\)</span>. Let <span class="arithmatex">\(d\)</span> be the depth below the surface. The plate occupies the depths <span class="arithmatex">\(c\le d\le e\)</span>, and the width of the plate at depth <span class="arithmatex">\(d\)</span> is <span class="arithmatex">\(w(d)\)</span>, continuous and <span class="arithmatex">\(\ge0\)</span>. The force of the fluid on one side of the plate is</p>
+<div class="arithmatex">\[F=\rho g\int_c^e d\;w(d)\,\mathrm dd ,\]</div>
+<p>in newtons for <span class="arithmatex">\(\rho\)</span> in kg/m<span class="arithmatex">\(^3\)</span>, <span class="arithmatex">\(g=9.8\)</span> m/s<span class="arithmatex">\(^2\)</span> and lengths in metres. (Equivalently, with an upward axis <span class="arithmatex">\(y\)</span> and the surface at <span class="arithmatex">\(y=H\)</span>, <span class="arithmatex">\(F=\rho g\int w(y)\,(H-y)\,dy\)</span>.)</p>
+</div>
+<p><em>Proof.</em> For <span class="arithmatex">\(I=[u,v]\subseteq[c,e]\)</span> let <span class="arithmatex">\(Q(I)\)</span> be the force on the part of the plate between the depths <span class="arithmatex">\(u\)</span> and <span class="arithmatex">\(v\)</span>; by (P3) <span class="arithmatex">\(Q\)</span> is additive. That part has area <span class="arithmatex">\(\Lambda(I)=\int_I w\)</span> (Theorem <a href="../../6.2/notes/#thm-yslice">6.2.12</a>, area by horizontal strips), and every point of it has pressure between <span class="arithmatex">\(\rho g u\)</span> and <span class="arithmatex">\(\rho g v\)</span>, so by (P2) <span class="arithmatex">\(\rho g\,u\,\Lambda(I)\le Q(I)\le\rho g\,v\,\Lambda(I)\)</span>. The depth function <span class="arithmatex">\(D(d)=d\)</span> is <span class="arithmatex">\(1\)</span>-Lipschitz and <span class="arithmatex">\(u,v\)</span> are its least and greatest values on <span class="arithmatex">\(I\)</span>, so Theorem <a href="#thm-squeezeB">6.7.3</a> (with the weight <span class="arithmatex">\(\rho g\,w\)</span>) gives <span class="arithmatex">\(Q([c,e])=\rho g\int_c^e d\,w(d)\,\mathrm dd\)</span>. The form with <span class="arithmatex">\(y\)</span> follows from <span class="arithmatex">\(d=H-y\)</span>. ◻ ∎</p>
+<div class="admonition procedure">
+<p class="admonition-title">Procedure 6.7.22: Force on a dam or window</p>
+<p><span id="proc-force"></span></p>
+<ol>
+<li>
+<p>Draw the plate and a depth axis pointing <em>down</em> from the surface (<span class="arithmatex">\(d=0\)</span> at the surface). Mark the depths of the top and the bottom edge.</p>
+</li>
+<li>
+<p>Find the width <span class="arithmatex">\(w(d)\)</span> of the plate at depth <span class="arithmatex">\(d\)</span> (a line, a circle or a parabola: write the edge as a function of <span class="arithmatex">\(d\)</span> and double it if the plate is symmetric).</p>
+</li>
+<li>
+<p>Evaluate <span class="arithmatex">\(F=\rho g\int d\,w(d)\,\mathrm dd\)</span> over the depths of the plate. The depth is measured from the <em>water surface</em>, not from the top of the plate.</p>
+</li>
+<li>
+<p>Check with Theorem <a href="#thm-bracket">6.7.30</a>: <span class="arithmatex">\(\rho g\,d_{\min}A\le F\le\rho g\,d_{\max}A\)</span>.</p>
+</li>
+</ol>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.23: A rectangular window</p>
+<p><span id="ex-e10"></span></p>
+<p>A rectangular window <span class="arithmatex">\(2\)</span> m wide and <span class="arithmatex">\(1.5\)</span> m tall lies in a vertical wall of an aquarium. Its top edge is <span class="arithmatex">\(1\)</span> m below the surface. Find the force of the water on it.</p>
+<p><strong>Solution.</strong> The depths run from <span class="arithmatex">\(1\)</span> to <span class="arithmatex">\(2.5\)</span> and <span class="arithmatex">\(w=2\)</span> for all <span class="arithmatex">\(d\)</span>:</p>
+<div class="arithmatex">\[F=9800\int_1^{2.5}2d\,\mathrm dd=9800\bigl[d^2\bigr]_1^{2.5}=9800\,(6.25-1)=51\,450\ \text{N}.\]</div>
+<p><em>Check.</em> The area is <span class="arithmatex">\(3\)</span> m<span class="arithmatex">\(^2\)</span> and the centre is at depth <span class="arithmatex">\(1.75\)</span> m, so <span class="arithmatex">\(\rho g\cdot1.75\cdot3=9800\cdot5.25=51\,450\)</span> N. This agrees with the average-depth rule of Theorem <a href="#thm-avgdepth">6.7.28</a>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(F=51\,450\)</span> N.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.24: A triangular plate: two orientations</p>
+<p><span id="ex-e11"></span></p>
+<p>A plate in the shape of an isosceles triangle with base <span class="arithmatex">\(2\)</span> m and height <span class="arithmatex">\(3\)</span> m is submerged vertically with its top at depth <span class="arithmatex">\(1\)</span> m. Find the force on it (a) when the base is on top and the apex points down, and (b) when the apex is on top and the base is below.</p>
+<p><strong>Solution.</strong> In both cases the plate occupies the depths <span class="arithmatex">\(1\le d\le4\)</span>. (a) The width is <span class="arithmatex">\(2\)</span> at <span class="arithmatex">\(d=1\)</span> and <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(d=4\)</span>, linear in <span class="arithmatex">\(d\)</span>: <span class="arithmatex">\(w(d)=\frac23\,(4-d)\)</span>. Then</p>
+<div class="arithmatex">\[F=9800\int_1^4\frac23\,(4-d)\,d\;\mathrm dd=9800\cdot\frac23\Bigl[2d^2-\frac{d^3}3\Bigr]_1^4=9800\cdot\frac23\Bigl(\frac{32}3-\frac53\Bigr)=9800\cdot6=58\,800\ \text{N}.\]</div>
+<p>(b) The width is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(d=1\)</span> and <span class="arithmatex">\(2\)</span> at <span class="arithmatex">\(d=4\)</span>: <span class="arithmatex">\(w(d)=\frac23\,(d-1)\)</span>.</p>
+<div class="arithmatex">\[F=9800\int_1^4\frac23\,(d-1)\,d\;\mathrm dd=9800\cdot\frac23\Bigl[\frac{d^3}3-\frac{d^2}2\Bigr]_1^4=9800\cdot\frac23\cdot\frac{27}2=88\,200\ \text{N}.\]</div>
+<p><em>Check.</em> The area is <span class="arithmatex">\(3\)</span> m<span class="arithmatex">\(^2\)</span>. The centre of a triangle is one third of the height from the base, so it is at depth <span class="arithmatex">\(2\)</span> in (a) and <span class="arithmatex">\(3\)</span> in (b): <span class="arithmatex">\(9800\cdot2\cdot3=58\,800\)</span> and <span class="arithmatex">\(9800\cdot3\cdot3=88\,200\)</span>.</p>
+<p><strong>Answer.</strong> (a) <span class="arithmatex">\(58\,800\)</span> N; (b) <span class="arithmatex">\(88\,200\)</span> N. The force is larger in (b) because more of the plate lies deeper.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.25: A trapezoidal dam</p>
+<p><span id="ex-e12"></span></p>
+<p>A dam is a vertical trapezoid <span class="arithmatex">\(20\)</span> m high, <span class="arithmatex">\(16\)</span> m wide at the bottom and <span class="arithmatex">\(36\)</span> m wide at the top. The water is level with the top of the dam. Find the force on the dam.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(y\)</span> be the height above the bottom. The width grows linearly from <span class="arithmatex">\(16\)</span> to <span class="arithmatex">\(36\)</span> over <span class="arithmatex">\(20\)</span> m, so <span class="arithmatex">\(w(y)=16+y\)</span>. The depth is <span class="arithmatex">\(H-y=20-y\)</span>. By Theorem <a href="#thm-force">6.7.21</a> (form with <span class="arithmatex">\(y\)</span>)</p>
+<div class="arithmatex">\[F=9800\int_0^{20}(16+y)(20-y)\,dy=9800\int_0^{20}\bigl(320+4y-y^2\bigr)\,dy=9800\Bigl[320y+2y^2-\frac{y^3}3\Bigr]_0^{20}.\]</div>
+<p>The bracket is <span class="arithmatex">\(6400+800-\frac{8000}3=\frac{13\,600}3\)</span>, so <span class="arithmatex">\(F=\dfrac{133\,280\,000}3\approx4.44\times10^7\)</span> N. <em>Check.</em> The area is <span class="arithmatex">\(\frac{16+36}2\cdot20=520\)</span> m<span class="arithmatex">\(^2\)</span> and the depths run from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(20\)</span>, so <span class="arithmatex">\(0\le F\le9800\cdot20\cdot520=1.02\times10^8\)</span>. The force is <span class="arithmatex">\(\rho g\bar dA\)</span> with <span class="arithmatex">\(\bar d=\frac{F}{\rho gA}=\frac{13\,600/3}{520}\approx8.72\)</span> m, below the middle depth of <span class="arithmatex">\(10\)</span> m because the dam is wider at the top.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(F=\dfrac{133\,280\,000}3\approx4.44\times10^7\)</span> N.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.26: A parabolic dam</p>
+<p><span id="ex-e13"></span></p>
+<p>A dam is <span class="arithmatex">\(10\)</span> m high and its face is bounded by the parabola with width <span class="arithmatex">\(w(y)=2\sqrt{10y}\)</span> at height <span class="arithmatex">\(y\)</span> above the bottom (so it is <span class="arithmatex">\(20\)</span> m wide at the top <span class="arithmatex">\(y=10\)</span>). The water is level with the top. Find the force.</p>
+<p><strong>Solution.</strong> The depth is <span class="arithmatex">\(10-y\)</span>, so</p>
+<div class="arithmatex">\[\begin{aligned}
+F&amp;=9800\int_0^{10}2\sqrt{10}\,\sqrt y\,(10-y)\,dy=9800\cdot2\sqrt{10}\int_0^{10}\bigl(10y^{1/2}-y^{3/2}\bigr)\,dy\\
+&amp;=9800\cdot2\sqrt{10}\Bigl[\frac{20}3y^{3/2}-\frac25y^{5/2}\Bigr]_0^{10}.
+\end{aligned}\]</div>
+<p>At <span class="arithmatex">\(y=10\)</span>: <span class="arithmatex">\(y^{3/2}=10\sqrt{10}\)</span> and <span class="arithmatex">\(y^{5/2}=100\sqrt{10}\)</span>, so the bracket is <span class="arithmatex">\(\sqrt{10}\,\bigl(\frac{200}3-40\bigr)=\frac{80\sqrt{10}}3\)</span> and</p>
+<div class="arithmatex">\[F=9800\cdot2\sqrt{10}\cdot\frac{80\sqrt{10}}3=9800\cdot\frac{1600}3=\frac{15\,680\,000}3\approx5.23\times10^6\ \text{N}.\]</div>
+<p><em>Check.</em> The area is <span class="arithmatex">\(\int_0^{10}2\sqrt{10y}\,dy=2\sqrt{10}\cdot\frac23\,10^{3/2}=\frac{400}3\)</span> m<span class="arithmatex">\(^2\)</span>, so <span class="arithmatex">\(\bar d=\frac{1600/3}{400/3}=4\)</span> m. This is the average depth, smaller than <span class="arithmatex">\(5\)</span>, because the face is wide near the top.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(F=\dfrac{15\,680\,000}3\approx5.23\times10^6\)</span> N.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.27: A half-disk window</p>
+<p><span id="ex-e14"></span></p>
+<p>A window is a half-disk of radius <span class="arithmatex">\(2\)</span> m, with its diameter horizontal at the top, <span class="arithmatex">\(1\)</span> m below the surface. Find the force of the water on it.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(t\)</span> be the depth below the diameter, <span class="arithmatex">\(0\le t\le2\)</span>. The depth below the surface is <span class="arithmatex">\(d=1+t\)</span> and the width of the half-disk at <span class="arithmatex">\(t\)</span> is the chord <span class="arithmatex">\(2\sqrt{4-t^2}\)</span>. Then</p>
+<div class="arithmatex">\[F=9800\int_0^22\sqrt{4-t^2}\,(1+t)\,dt=19\,600\Bigl[\int_0^2\sqrt{4-t^2}\,dt+\int_0^2t\sqrt{4-t^2}\,dt\Bigr].\]</div>
+<p>The first integral is a quarter of a disk of radius <span class="arithmatex">\(2\)</span> (geometry): <span class="arithmatex">\(\frac14\pi\cdot4=\pi\)</span>. For the second let <span class="arithmatex">\(u=4-t^2\)</span>, <span class="arithmatex">\(t\,dt=-\frac12du\)</span>; <span class="arithmatex">\(t=0\)</span> gives <span class="arithmatex">\(u=4\)</span> and <span class="arithmatex">\(t=2\)</span> gives <span class="arithmatex">\(u=0\)</span>:</p>
+<div class="arithmatex">\[\int_0^2t\sqrt{4-t^2}\,dt=\frac12\int_0^4\sqrt u\,du=\frac12\cdot\frac23\cdot8=\frac83 .\]</div>
+<p>Hence <span class="arithmatex">\(F=19\,600\,\bigl(\pi+\frac83\bigr)\approx113\,842\)</span> N. <em>Check.</em> The area is <span class="arithmatex">\(2\pi\)</span> and the depths lie between <span class="arithmatex">\(1\)</span> and <span class="arithmatex">\(3\)</span>, so <span class="arithmatex">\(9800\cdot2\pi\cdot1\approx61\,575\le F\le9800\cdot2\pi\cdot3\approx184\,726\)</span>. The result lies between them; the average depth is <span class="arithmatex">\(\bar d=\frac F{\rho gA}=1+\frac8{3\pi}\approx1.85\)</span> m.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig9.svg" width="456" /></p>
+<p><em>Figure.</em> The half-disk window. The diameter is at depth <span class="arithmatex">\(1\)</span>, the lowest point at depth <span class="arithmatex">\(3\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(F=19\,600\bigl(\pi+\tfrac83\bigr)\approx1.14\times10^5\)</span> N.</p>
+</div>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.28: Force equals pressure at the average depth</p>
+<p><span id="thm-avgdepth"></span></p>
+<p>Under the conditions of Theorem <a href="#thm-force">6.7.21</a> let <span class="arithmatex">\(A=\int_c^ew\)</span> be the area of the plate and <span class="arithmatex">\(\bar d=\frac1A\int_c^ed\,w(d)\,\mathrm dd\)</span> the <em>width-weighted average depth</em>. Then <span class="arithmatex">\(F=\rho g\,\bar d\,A\)</span>, and <span class="arithmatex">\(c\le\bar d\le e\)</span>. For a plate that is symmetric about a horizontal line at depth <span class="arithmatex">\(d_0\)</span> (a rectangle, a disk, an ellipse), <span class="arithmatex">\(\bar d=d_0\)</span>, so <span class="arithmatex">\(F=\rho g\,d_0\,A\)</span>: the force is the pressure at the centre times the area.</p>
+</div>
+<p><em>Proof.</em> The first statement is the definition of <span class="arithmatex">\(\bar d\)</span> in Theorem <a href="#thm-force">6.7.21</a>. Since <span class="arithmatex">\(c\le d\le e\)</span> and <span class="arithmatex">\(w\ge0\)</span>, <span class="arithmatex">\(c\,A\le\int d\,w\le e\,A\)</span> (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>), so <span class="arithmatex">\(c\le\bar d\le e\)</span>. If the plate is symmetric about the depth <span class="arithmatex">\(d_0\)</span>, write <span class="arithmatex">\(d=d_0+t\)</span> with <span class="arithmatex">\(-r\le t\le r\)</span> and <span class="arithmatex">\(w\)</span> even in <span class="arithmatex">\(t\)</span>. Then <span class="arithmatex">\(\int d\,w=d_0\int w+\int t\,w(t)\,dt=d_0A\)</span>, because <span class="arithmatex">\(t\,w(t)\)</span> is odd and its integral over <span class="arithmatex">\([-r,r]\)</span> is <span class="arithmatex">\(0\)</span>. ◻ ∎</p>
+<p><em>Warning.</em> For a circle of radius <span class="arithmatex">\(R\)</span> with centre at depth <span class="arithmatex">\(d_0\)</span> we get <span class="arithmatex">\(F=\rho g\,d_0\,\pi R^2\)</span>. This is <em>not</em> the force that you would get by treating the pressure as that of the lowest point or of the top: only the centre depth works, and only for symmetric plates.</p>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.29: A circular window</p>
+<p><span id="ex-e15"></span></p>
+<p>A round porthole of radius <span class="arithmatex">\(0.5\)</span> m has its centre <span class="arithmatex">\(4\)</span> m below the surface. Find the force of the water.</p>
+<p><strong>Solution.</strong> The plate is symmetric about its centre, so by Theorem <a href="#thm-avgdepth">6.7.28</a> <span class="arithmatex">\(F=9800\cdot4\cdot\pi\cdot0.5^2=9800\pi\approx30\,788\)</span> N. By hand: with <span class="arithmatex">\(d=4+t\)</span> and <span class="arithmatex">\(w=2\sqrt{\frac14-t^2}\)</span>, <span class="arithmatex">\(F=9800\bigl[4\int_{-1/2}^{1/2}w\,dt+\int_{-1/2}^{1/2}t\,w\,dt\bigr]\)</span>. The first integral is the area of the disk and the second is odd, so <span class="arithmatex">\(F=9800\,\bigl(4\cdot\frac\pi4+0\bigr)=9800\pi\approx30\,788\)</span> N. <strong>Answer.</strong> <span class="arithmatex">\(9800\pi\approx3.08\times10^4\)</span> N.</p>
+</div>
+<div class="admonition think">
+<p class="admonition-title">Pause and think 6.7.3: Why horizontal strips?</p>
+<p><span id="think-t3"></span></p>
+<p>Pressure depends only on depth, so on a horizontal strip it is (nearly) constant. What goes wrong if you cut a dam into <em>vertical</em> strips and give every strip the pressure at its middle?</p>
+<details class="success">
+<summary>Answer and discussion</summary>
+<p>On a vertical strip the depth changes from the top of the strip to the bottom, so the pressure is far from constant, and “the pressure at the middle” gives only a rough value for each strip; more fundamentally, the squeeze needs strips on which the pressure varies little, which is true only for horizontal strips.</p>
+</details>
+</div>
+<h2 id="bounds-and-consistency-checks">Bounds and consistency checks<a class="headerlink" href="#bounds-and-consistency-checks" title="Permanent link">&para;</a></h2>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.30: Bracketing the work and the force</p>
+<p><span id="thm-bracket"></span></p>
+<p>(a) In Theorem <a href="#thm-pump">6.7.15</a>, let <span class="arithmatex">\(V=\int_a^bA\)</span> be the volume of the fluid. Then <span class="arithmatex">\(\rho g V\,(h-b)\le W\le\rho g V\,(h-a)\)</span>: the work lies between lifting all the fluid from its top surface and lifting all of it from the bottom. (b) In Theorem <a href="#thm-force">6.7.21</a>, <span class="arithmatex">\(\rho g\,c\,A\le F\le\rho g\,e\,A\)</span>, where <span class="arithmatex">\(A\)</span> is the area of the plate.</p>
+</div>
+<p><em>Proof.</em> (a) For <span class="arithmatex">\(a\le y\le b\)</span> we have <span class="arithmatex">\(h-b\le h-y\le h-a\)</span> and <span class="arithmatex">\(\rho gA(y)\ge0\)</span>, so <span class="arithmatex">\(\rho gA(y)(h-b)\le\rho gA(y)(h-y)\le\rho gA(y)(h-a)\)</span>. Integrating (Theorem <a href="../../6.1/notes/#thm-ineq">6.1.6</a>) gives the bounds, since <span class="arithmatex">\(\int_a^b\rho gA\,dy=\rho gV\)</span>. (b) The same argument applies to <span class="arithmatex">\(d\,w(d)\)</span> with <span class="arithmatex">\(c\le d\le e\)</span>. ◻ ∎</p>
+<div class="admonition theorem">
+<p class="admonition-title">Theorem 6.7.31: Consistency checks</p>
+<p><span id="thm-checks"></span></p>
+<p>(a) A uniform bar of length <span class="arithmatex">\(\ell\)</span> and constant density <span class="arithmatex">\(\sigma\)</span> has mass <span class="arithmatex">\(\int_0^\ell\sigma=\sigma\ell\)</span>, as in (M1). (b) A rigid body of mass <span class="arithmatex">\(M\)</span> lifted through <span class="arithmatex">\(h\)</span> needs <span class="arithmatex">\(W=Mgh\)</span>. (c) A Hooke spring needs <span class="arithmatex">\(W=\frac k2s^2\)</span> to stretch it <span class="arithmatex">\(s\)</span>, and this equals the area of the triangle under the force line <span class="arithmatex">\(F=kx\)</span> between <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(s\)</span>. (d) A thin horizontal plate of area <span class="arithmatex">\(A\)</span> at depth <span class="arithmatex">\(H\)</span> has force <span class="arithmatex">\(F\approx\rho gHA\)</span>: for a vertical window of height <span class="arithmatex">\(\delta\)</span> whose bottom edge is at depth <span class="arithmatex">\(H\)</span> and which has constant width <span class="arithmatex">\(w\)</span>, <span class="arithmatex">\(F/(\text{area})\to\rho gH\)</span> as <span class="arithmatex">\(\delta\to0\)</span>.</p>
+</div>
+<p><em>Proof.</em> (a) is the integral of a constant. (b) With <span class="arithmatex">\(\lambda\)</span> the mass per unit height and <span class="arithmatex">\(D\equiv h\)</span>, Theorem <a href="#thm-lift">6.7.11</a> gives <span class="arithmatex">\(W=g\,h\int\lambda=g\,h\,M\)</span>. (c) The integral <span class="arithmatex">\(\int_0^skx\,dx=\frac k2s^2\)</span> is the area of the triangle with base <span class="arithmatex">\(s\)</span> and height <span class="arithmatex">\(ks\)</span> (Theorem <a href="#thm-hooke">6.7.9</a>). (d) The window occupies the depths <span class="arithmatex">\(H-\delta\le d\le H\)</span>, with area <span class="arithmatex">\(w\delta\)</span>; Theorem <a href="#thm-bracket">6.7.30</a>(b) gives <span class="arithmatex">\(\rho g(H-\delta)\le F/(w\delta)\le\rho gH\)</span>, and the left side tends to <span class="arithmatex">\(\rho gH\)</span> as <span class="arithmatex">\(\delta\to0\)</span> (squeeze). ◻ ∎</p>
+<p><em>Pascal’s principle</em> (in words): pressure applied to a confined fluid is passed on in all directions without loss; it is the reason why the pressure <span class="arithmatex">\(\rho gd\)</span> in (P1) does not depend on the direction of the plate.</p>
+<h2 id="looking-ahead">Looking ahead<a class="headerlink" href="#looking-ahead" title="Permanent link">&para;</a></h2>
+<p>Mass was found from a density on a line. For a flat plate or a solid body the density depends on two or three variables, and the mass and the <em>centre of mass</em> come from double and triple integrals, in a later chapter. Work done by a variable force is also the key to the work–energy theorem of physics: the net work on an object equals the change of its kinetic energy. The work to lift a satellite far above the Earth uses the force <span class="arithmatex">\(GMm/r^2\)</span> and leads to an improper integral and to the idea of an escape speed; the limit uses the methods for improper integrals in the chapter on techniques of integration (words only). The differential equations of a later chapter describe, for example, Newton’s law of cooling and the motion of a spring with friction.</p>
+<h2 id="example-bank">Example bank<a class="headerlink" href="#example-bank" title="Permanent link">&para;</a></h2>
+<p><strong>What’s in this bank.</strong> Fourteen further worked examples, grouped by problem type and ordered from easiest to hardest within each group.</p>
+<ol>
+<li>
+<p><em>Mass</em> (Examples <a href="#ex-b1">6.7.32</a>–<a href="#ex-b2">6.7.33</a>): a piecewise density; a rational density needing a substitution.</p>
+</li>
+<li>
+<p><em>Springs</em> (Examples <a href="#ex-b3">6.7.34</a>–<a href="#ex-b4">6.7.35</a>): finding <span class="arithmatex">\(k\)</span> from the work; a nonlinear spring.</p>
+</li>
+<li>
+<p><em>Lifting</em> (Examples <a href="#ex-b5">6.7.36</a>–<a href="#ex-b6">6.7.37</a>): a cable with variable density; winding up part of a chain.</p>
+</li>
+<li>
+<p><em>Pumping</em> (Examples <a href="#ex-b7">6.7.38</a>–<a href="#ex-b8">6.7.39</a>): a triangular trough; a full tank on its side with the outlet above it.</p>
+</li>
+<li>
+<p><em>Force</em> (Examples <a href="#ex-b9">6.7.40</a>–<a href="#ex-b10">6.7.41</a>): a wind load; a sloping pressure on a wall and a circular window by two methods.</p>
+</li>
+<li>
+<p><em>Comparing</em> (Examples <a href="#ex-b11">6.7.42</a>–<a href="#ex-b12">6.7.43</a>): top half and bottom half of a dam; buoyancy of a cube.</p>
+</li>
+<li>
+<p><em>Proofs</em> (Examples <a href="#ex-b13">6.7.44</a>–<a href="#ex-b14">6.7.45</a>): work to lift a chain; work of a linear force.</p>
+</li>
+</ol>
+<h2 id="group-1-mass">Group 1: Mass<a class="headerlink" href="#group-1-mass" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.32: A piecewise density</p>
+<p><span id="ex-b1"></span></p>
+<p>A rod <span class="arithmatex">\(5\)</span> m long has density <span class="arithmatex">\(3\)</span> kg/m on <span class="arithmatex">\(0\le x&lt;2\)</span> and <span class="arithmatex">\(1+x\)</span> kg/m on <span class="arithmatex">\(2\le x\le5\)</span>. Find its mass and its average density.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-mass">6.7.4</a> the mass is the sum of the integrals over the two pieces:</p>
+<div class="arithmatex">\[m=\int_0^23\,dx+\int_2^5(1+x)\,dx=6+\Bigl[x+\frac{x^2}2\Bigr]_2^5=6+\Bigl(5+\frac{25}2\Bigr)-(2+2)=6+13.5=19.5\ \text{kg}.\]</div>
+<p>The average density is <span class="arithmatex">\(19.5/5=3.9\)</span> kg/m, between the least density, <span class="arithmatex">\(3\)</span>, and the greatest, <span class="arithmatex">\(1+5=6\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(m=19.5\)</span> kg; <span class="arithmatex">\(\bar\rho=3.9\)</span> kg/m.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.33: A rational density</p>
+<p><span id="ex-b2"></span></p>
+<p>A rod on <span class="arithmatex">\(0\le x\le2\)</span> has density <span class="arithmatex">\(\rho(x)=\dfrac{12x}{(1+x^2)^2}\)</span> kg/m. Find its mass.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(u=1+x^2\)</span>, <span class="arithmatex">\(du=2x\,dx\)</span>, so <span class="arithmatex">\(12x\,dx=6\,du\)</span>; <span class="arithmatex">\(x=0\)</span> gives <span class="arithmatex">\(u=1\)</span> and <span class="arithmatex">\(x=2\)</span> gives <span class="arithmatex">\(u=5\)</span>:</p>
+<div class="arithmatex">\[m=\int_1^56u^{-2}\,du=6\Bigl[-\frac1u\Bigr]_1^5=6\Bigl(1-\frac15\Bigr)=\frac{24}5=4.8\ \text{kg}.\]</div>
+<p><em>Check.</em> The density is <span class="arithmatex">\(0\)</span> at <span class="arithmatex">\(x=0\)</span>, is largest at <span class="arithmatex">\(x=\frac1{\sqrt3}\)</span> (about <span class="arithmatex">\(3.9\)</span>), and is <span class="arithmatex">\(\frac{24}{25}\)</span> at <span class="arithmatex">\(x=2\)</span>; a mass of <span class="arithmatex">\(4.8\)</span> on a <span class="arithmatex">\(2\)</span> m rod means an average density of <span class="arithmatex">\(2.4\)</span>, which is plausible.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(m=\frac{24}5\)</span> kg.</p>
+</div>
+<h2 id="group-2-springs">Group 2: Springs<a class="headerlink" href="#group-2-springs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.34: Finding <span class="arithmatex">\(k\)</span> from the work</p>
+<p><span id="ex-b3"></span></p>
+<p>It takes <span class="arithmatex">\(18\)</span> J of work to stretch a spring <span class="arithmatex">\(0.3\)</span> m from equilibrium. Find <span class="arithmatex">\(k\)</span>, and the additional work to stretch it a further <span class="arithmatex">\(0.2\)</span> m.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-hooke">6.7.9</a> <span class="arithmatex">\(18=\frac k2\cdot0.3^2=0.045\,k\)</span>, so <span class="arithmatex">\(k=400\)</span> N/m. The further stretch is from <span class="arithmatex">\(0.3\)</span> to <span class="arithmatex">\(0.5\)</span>: <span class="arithmatex">\(W=\frac{400}2\,(0.5^2-0.3^2)=200\cdot0.16=32\)</span> J. <em>Check.</em> The force goes from <span class="arithmatex">\(120\)</span> N to <span class="arithmatex">\(200\)</span> N, average <span class="arithmatex">\(160\)</span> N, and <span class="arithmatex">\(160\cdot0.2=32\)</span> J.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(k=400\)</span> N/m; <span class="arithmatex">\(32\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.35: A nonlinear spring</p>
+<p><span id="ex-b4"></span></p>
+<p>A spring has restoring force <span class="arithmatex">\(F(x)=30x-5x^3\)</span> N for <span class="arithmatex">\(0\le x\le1.5\)</span> m. Find the work to stretch it from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(1.5\)</span> m and compare it with a Hooke spring with the same <span class="arithmatex">\(k=30\)</span>.</p>
+<p><strong>Solution.</strong> By Theorem <a href="#thm-work">6.7.8</a> <span class="arithmatex">\(W=\int_0^{1.5}(30x-5x^3)\,dx=\bigl[15x^2-\frac54x^4\bigr]_0^{1.5}=33.75-6.328125=27.421875=\frac{1755}{64}\)</span> J. The cubic term makes the spring softer, so it needs less work than the Hooke spring, which needs <span class="arithmatex">\(15\cdot2.25=33.75=\frac{135}4\)</span> J.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(\frac{1755}{64}\approx27.4\)</span> J, against <span class="arithmatex">\(33.75\)</span> J for the linear spring.</p>
+</div>
+<h2 id="group-3-lifting">Group 3: Lifting<a class="headerlink" href="#group-3-lifting" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.36: A cable with variable density</p>
+<p><span id="ex-b5"></span></p>
+<p>A <span class="arithmatex">\(20\)</span> m cable hangs from a crane. Its density increases with height: <span class="arithmatex">\(\lambda(y)=2+0.1y\)</span> kg/m at height <span class="arithmatex">\(y\)</span> above its lower end. Find the work to lift it until the lower end reaches the crane.</p>
+<p><strong>Solution.</strong> The point at height <span class="arithmatex">\(y\)</span> is lifted <span class="arithmatex">\(D(y)=20-y\)</span>. By Theorem <a href="#thm-lift">6.7.11</a>, <span class="arithmatex">\(W=9.8\int_0^{20}(2+0.1y)(20-y)\,dy\)</span>. The product is <span class="arithmatex">\(40-2y+2y-0.1y^2=40-0.1y^2\)</span>, so</p>
+<div class="arithmatex">\[W=9.8\Bigl[40y-\frac{y^3}{30}\Bigr]_0^{20}=9.8\Bigl(800-\frac{800}3\Bigr)=9.8\cdot\frac{1600}3\approx5226.7\ \text{J}.\]</div>
+<p><em>Check.</em> The mass is <span class="arithmatex">\(\int_0^{20}(2+0.1y)\,dy=40+20=60\)</span> kg. The bracket <span class="arithmatex">\(60\cdot9.8\cdot0\le W\le60\cdot9.8\cdot20\)</span> is <span class="arithmatex">\(0\le W\le11\,760\)</span>, and <span class="arithmatex">\(W/(60g)\approx8.9\)</span> m: the cable is heavier near the top, which is lifted less.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(W\approx5227\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.37: Winding up part of a chain</p>
+<p><span id="ex-b6"></span></p>
+<p>A chain of length <span class="arithmatex">\(10\)</span> m and density <span class="arithmatex">\(4\)</span> kg/m hangs from a platform. A winch pulls up <span class="arithmatex">\(6\)</span> m of it onto the platform (the lower <span class="arithmatex">\(4\)</span> m is still hanging at the end). Find the work.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(s\)</span> be the distance below the platform, <span class="arithmatex">\(0\le s\le10\)</span>. The point at <span class="arithmatex">\(s\le6\)</span> is lifted all the way, <span class="arithmatex">\(D=s\)</span>; the points at <span class="arithmatex">\(s&gt;6\)</span> are lifted only <span class="arithmatex">\(6\)</span> m. So <span class="arithmatex">\(D\)</span> is piecewise defined (and <span class="arithmatex">\(1\)</span>-Lipschitz), and</p>
+<div class="arithmatex">\[W=9.8\cdot4\Bigl[\int_0^6s\,ds+\int_6^{10}6\,ds\Bigr]=39.2\,(18+24)=1646.4\ \text{J}.\]</div>
+<p><em>Check.</em> The result is below the work for lifting the whole chain <span class="arithmatex">\(6\)</span> m, <span class="arithmatex">\(40\cdot9.8\cdot6=2352\)</span> J. By parts: the top <span class="arithmatex">\(6\)</span> m has mass <span class="arithmatex">\(24\)</span> kg and is lifted on average <span class="arithmatex">\(3\)</span> m, giving <span class="arithmatex">\(705.6\)</span> J, and the lower <span class="arithmatex">\(4\)</span> m has mass <span class="arithmatex">\(16\)</span> kg lifted <span class="arithmatex">\(6\)</span> m, giving <span class="arithmatex">\(940.8\)</span> J; <span class="arithmatex">\(705.6+940.8=1646.4\)</span> J.</p>
+<p><img alt="Diagram: platform, \(s=0\); \(s=10\)" class="calc-figure" src="../figures/notes-fig10.svg" width="400" /></p>
+<p><em>Figure.</em> The chain of length <span class="arithmatex">\(10\)</span> m. Points above <span class="arithmatex">\(s=6\)</span> are lifted <span class="arithmatex">\(s\)</span>; the lower <span class="arithmatex">\(4\)</span> m rise <span class="arithmatex">\(6\)</span> m.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(1646.4\)</span> J.</p>
+</div>
+<h2 id="group-4-pumping">Group 4: Pumping<a class="headerlink" href="#group-4-pumping" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.38: A triangular trough</p>
+<p><span id="ex-b7"></span></p>
+<p>A trough <span class="arithmatex">\(4\)</span> m long has a cross section that is an isosceles triangle, <span class="arithmatex">\(1.5\)</span> m wide at the top and <span class="arithmatex">\(2\)</span> m deep (apex down). It is full of water, which is pumped over the top edge. Find the work.</p>
+<p><strong>Solution.</strong> Let <span class="arithmatex">\(y\)</span> be the height above the apex. The cross-section width at <span class="arithmatex">\(y\)</span> is <span class="arithmatex">\(\frac{1.5}2y\)</span>, so the horizontal layer is a rectangle <span class="arithmatex">\(4\)</span> m by <span class="arithmatex">\(0.75y\)</span>: <span class="arithmatex">\(A(y)=3y\)</span>. The lift is <span class="arithmatex">\(D=2-y\)</span>:</p>
+<div class="arithmatex">\[W=9800\int_0^23y\,(2-y)\,dy=9800\cdot3\Bigl[y^2-\frac{y^3}3\Bigr]_0^2=9800\cdot3\cdot\frac43=39\,200\ \text{J}.\]</div>
+<p><em>Check.</em> The volume is <span class="arithmatex">\(\frac12\cdot1.5\cdot2\cdot4=6\)</span> m<span class="arithmatex">\(^3\)</span>, the weight <span class="arithmatex">\(58\,800\)</span> N, and <span class="arithmatex">\(W/\text{weight}=\frac23\)</span> m: the water is lifted on average <span class="arithmatex">\(\frac23\)</span> m, small because the trough is wide at the top.</p>
+<p><img alt="Diagram: \(w=0.75y\); layer \(y\); \(D=2-y\)" class="calc-figure" src="../figures/notes-fig11.svg" width="462" /></p>
+<p><em>Figure.</em> Cross section of the trough (length <span class="arithmatex">\(4\)</span> m). The layer at height <span class="arithmatex">\(y\)</span> is a rectangle <span class="arithmatex">\(4\)</span> m long and <span class="arithmatex">\(0.75y\)</span> m wide, so <span class="arithmatex">\(A=3y\)</span>, and it is lifted <span class="arithmatex">\(D=2-y\)</span> to the outlet at the top edge (<span class="arithmatex">\(y=2\)</span>).</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(39\,200\)</span> J.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.39: A horizontal tank with an outlet above it</p>
+<p><span id="ex-b8"></span></p>
+<p>A cylindrical tank of radius <span class="arithmatex">\(2\)</span> m and length <span class="arithmatex">\(5\)</span> m lies on its side and is full of water, which is pumped to a point <span class="arithmatex">\(1\)</span> m above the top of the tank. Find the work.</p>
+<p><strong>Solution.</strong> Put the origin on the axis, so the water occupies <span class="arithmatex">\(-2\le y\le2\)</span>, the outlet is at <span class="arithmatex">\(h=3\)</span> and <span class="arithmatex">\(A(y)=5\cdot2\sqrt{4-y^2}=10\sqrt{4-y^2}\)</span>, <span class="arithmatex">\(D=3-y\)</span>:</p>
+<div class="arithmatex">\[W=98\,000\int_{-2}^2\sqrt{4-y^2}\,(3-y)\,dy=98\,000\Bigl[3\int_{-2}^2\sqrt{4-y^2}\,dy-\int_{-2}^2y\sqrt{4-y^2}\,dy\Bigr].\]</div>
+<p>The first integral is the area of a half-disk of radius <span class="arithmatex">\(2\)</span>, which is <span class="arithmatex">\(2\pi\)</span>. The second is <span class="arithmatex">\(0\)</span>: with <span class="arithmatex">\(u=4-y^2\)</span> the limits become <span class="arithmatex">\(u=0\)</span> and <span class="arithmatex">\(u=0\)</span>. So <span class="arithmatex">\(W=98\,000\cdot3\cdot2\pi=588\,000\pi\approx1.85\times10^6\)</span> J. <em>Check.</em> The water has weight <span class="arithmatex">\(9800\cdot\pi\cdot4\cdot5=196\,000\pi\)</span> N and every point is lifted <span class="arithmatex">\(3\)</span> m on average (the water is symmetric about the axis, which is <span class="arithmatex">\(3\)</span> m below the outlet): <span class="arithmatex">\(196\,000\pi\cdot3=588\,000\pi\)</span> J.</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig12.svg" width="410" /></p>
+<p><em>Figure.</em> Circular end (radius <span class="arithmatex">\(2\)</span> m; the tank is <span class="arithmatex">\(5\)</span> m long). The layer at height <span class="arithmatex">\(y\)</span> has half-width <span class="arithmatex">\(\sqrt{4-y^2}\)</span> (at <span class="arithmatex">\(y=1\)</span>: <span class="arithmatex">\(\sqrt3\)</span>) and is lifted <span class="arithmatex">\(3-y\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(588\,000\pi\approx1.85\times10^6\)</span> J.</p>
+</div>
+<h2 id="group-5-force">Group 5: Force<a class="headerlink" href="#group-5-force" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.40: A wind load</p>
+<p><span id="ex-b9"></span></p>
+<p>Wind blows on a wall <span class="arithmatex">\(40\)</span> m wide and <span class="arithmatex">\(30\)</span> m high. The pressure at height <span class="arithmatex">\(y\)</span> above the ground is <span class="arithmatex">\(p(y)=100+3y\)</span> N/m<span class="arithmatex">\(^2\)</span>. Find the total force.</p>
+<p><strong>Solution.</strong> A horizontal strip at height <span class="arithmatex">\(y\)</span> has area <span class="arithmatex">\(40\,dy\)</span> and pressure <span class="arithmatex">\(p(y)\)</span>. The proof of Theorem <a href="#thm-force">6.7.21</a> uses only (P2), (P3) and the fact that the pressure is Lipschitz, so <span class="arithmatex">\(F=\int_0^{30}p(y)\cdot40\,dy=40\bigl[100y+\frac32y^2\bigr]_0^{30}=40\,(3000+1350)=174\,000\)</span> N. <em>Check.</em> The pressure runs from <span class="arithmatex">\(100\)</span> to <span class="arithmatex">\(190\)</span> N/m<span class="arithmatex">\(^2\)</span>; the average pressure is <span class="arithmatex">\(145\)</span> and the area is <span class="arithmatex">\(1200\)</span> m<span class="arithmatex">\(^2\)</span>: <span class="arithmatex">\(145\cdot1200=174\,000\)</span> N.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(174\,000\)</span> N.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.41: A round window by two methods</p>
+<p><span id="ex-b10"></span></p>
+<p>A circular window of radius <span class="arithmatex">\(1\)</span> m has its centre at depth <span class="arithmatex">\(5\)</span> m. Find the force of the water (a) with the formula of Theorem <a href="#thm-avgdepth">6.7.28</a>, (b) with a bracket.</p>
+<p><strong>Solution.</strong> (a) <span class="arithmatex">\(F=9800\cdot5\cdot\pi\cdot1^2=49\,000\pi\approx153\,938\)</span> N. (b) The depths run from <span class="arithmatex">\(4\)</span> to <span class="arithmatex">\(6\)</span> and the area is <span class="arithmatex">\(\pi\)</span>, so <span class="arithmatex">\(9800\cdot4\pi\le F\le9800\cdot6\pi\)</span>, so <span class="arithmatex">\(F\)</span> lies in the bracket and the bracket is centred on it: <span class="arithmatex">\(123\,150\le F\le184\,726\)</span> (rounded).</p>
+<p><img alt="Diagram: " class="calc-figure" src="../figures/notes-fig13.svg" width="295" /></p>
+<p><em>Figure.</em> The window: radius <span class="arithmatex">\(1\)</span> m, centre at depth <span class="arithmatex">\(5\)</span> m, so the depths run from <span class="arithmatex">\(4\)</span> to <span class="arithmatex">\(6\)</span>.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(49\,000\pi\approx1.54\times10^5\)</span> N.</p>
+</div>
+<h2 id="group-6-comparing">Group 6: Comparing<a class="headerlink" href="#group-6-comparing" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.42: Top half and bottom half of a dam</p>
+<p><span id="ex-b11"></span></p>
+<p>A rectangular dam <span class="arithmatex">\(10\)</span> m high and <span class="arithmatex">\(20\)</span> m wide holds water level with its top. Compare the force on its top half with the force on its bottom half.</p>
+<p><strong>Solution.</strong> With depth <span class="arithmatex">\(d\)</span>, <span class="arithmatex">\(w=20\)</span>: top half <span class="arithmatex">\(F_1=9800\cdot20\int_0^5d\,\mathrm dd=196\,000\cdot12.5=2\,450\,000\)</span> N; bottom half <span class="arithmatex">\(F_2=196\,000\int_5^{10}d\,\mathrm dd=196\,000\cdot37.5=7\,350\,000\)</span> N. The ratio is <span class="arithmatex">\(F_2/F_1=3\)</span>. <em>Discussion.</em> Both halves have the same area, but the average depth of the bottom half is <span class="arithmatex">\(7.5\)</span> m against <span class="arithmatex">\(2.5\)</span> m for the top, a ratio of <span class="arithmatex">\(3\)</span>.</p>
+<p><img alt="Diagram: top half: \(d\in[0,5]\); bottom half: \(d\in[5,10]\)" class="calc-figure" src="../figures/notes-fig14.svg" width="406" /></p>
+<p><em>Figure.</em> The dam (<span class="arithmatex">\(20\)</span> m wide, <span class="arithmatex">\(10\)</span> m high) cut at depth <span class="arithmatex">\(5\)</span> m.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(2.45\times10^6\)</span> N and <span class="arithmatex">\(7.35\times10^6\)</span> N.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.43: Buoyancy of a cube</p>
+<p><span id="ex-b12"></span></p>
+<p>A cube of side <span class="arithmatex">\(2\)</span> m is fully submerged in water with its top face horizontal at depth <span class="arithmatex">\(3\)</span> m. Find the net vertical force of the water on it.</p>
+<p><strong>Solution.</strong> The top face has area <span class="arithmatex">\(4\)</span> and depth <span class="arithmatex">\(3\)</span>: <span class="arithmatex">\(F_{\text{down}}=9800\cdot3\cdot4=117\,600\)</span> N. The bottom face is at depth <span class="arithmatex">\(5\)</span>: <span class="arithmatex">\(F_{\text{up}}=9800\cdot5\cdot4=196\,000\)</span> N. The forces on the side faces are horizontal and cancel in pairs. The net force is <span class="arithmatex">\(196\,000-117\,600=78\,400\)</span> N upward, which equals <span class="arithmatex">\(\rho gV=9800\cdot8\)</span>, the weight of the displaced water.</p>
+<p><img alt="Diagram: cube" class="calc-figure" src="../figures/notes-fig15.svg" width="384" /></p>
+<p><em>Figure.</em> The cube. The side forces cancel; the net force is <span class="arithmatex">\(196\,000-117\,600=78\,400\)</span> N up.</p>
+<p><strong>Answer.</strong> <span class="arithmatex">\(78\,400\)</span> N upward.</p>
+</div>
+<h2 id="group-7-proofs">Group 7: Proofs<a class="headerlink" href="#group-7-proofs" title="Permanent link">&para;</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.44: Work to lift a hanging chain</p>
+<p><span id="ex-b13"></span></p>
+<p>Prove that the work to pull a hanging uniform chain of length <span class="arithmatex">\(L\)</span> and mass <span class="arithmatex">\(M\)</span> up to its support is <span class="arithmatex">\(\frac12MgL\)</span>, that is, the work to lift the whole weight through half its length.</p>
+<p><strong>Proof.</strong> Let <span class="arithmatex">\(s\)</span> be the distance below the support, <span class="arithmatex">\(0\le s\le L\)</span>. The mass per unit length is <span class="arithmatex">\(\lambda=M/L\)</span> and the point at <span class="arithmatex">\(s\)</span> is lifted <span class="arithmatex">\(D=s\)</span>. By Theorem <a href="#thm-lift">6.7.11</a>, <span class="arithmatex">\(W=g\int_0^L\frac ML\,s\,ds=\frac{gM}{L}\cdot\frac{L^2}2=\frac12MgL\)</span>. 0◻</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example 6.7.45: Work of a linear force</p>
+<p><span id="ex-b14"></span></p>
+<p>Prove that if <span class="arithmatex">\(F(x)=p+qx\)</span> is the force on <span class="arithmatex">\(a\le x\le b\)</span>, the work is <span class="arithmatex">\(\frac{F(a)+F(b)}2\,(b-a)\)</span>: the average of the end forces times the distance.</p>
+<p><strong>Proof.</strong> <span class="arithmatex">\(W=\int_a^b(p+qx)\,dx=p(b-a)+\frac q2(b^2-a^2)=(b-a)\bigl[p+\frac q2(a+b)\bigr]\)</span>. And <span class="arithmatex">\(\frac{F(a)+F(b)}2=\frac{2p+q(a+b)}2=p+\frac q2(a+b)\)</span>. Thus <span class="arithmatex">\(W=\frac{F(a)+F(b)}2(b-a)\)</span>. 0◻</p>
+</div>
+<h2 id="answers-and-discussion">Answers and discussion<a class="headerlink" href="#answers-and-discussion" title="Permanent link">&para;</a></h2>
+<p><strong>Knowledge Check <a href="#kc-k1">6.7.1</a>.</strong> (a) <span class="arithmatex">\(m=\int_0^2(3+x)\,dx=6+2=8\)</span> kg. (b) <span class="arithmatex">\(\bar\rho=8/2=4\)</span> kg/m and <span class="arithmatex">\(3+x=4\)</span> at <span class="arithmatex">\(x=1\)</span>. (c) The density lies between <span class="arithmatex">\(3\)</span> and <span class="arithmatex">\(5\)</span>, so <span class="arithmatex">\(6\le m\le10\)</span>; <span class="arithmatex">\(m=8\)</span> is inside.</p>
+<p><strong>Knowledge Check <a href="#kc-k2">6.7.2</a>.</strong> (a) <span class="arithmatex">\(\frac{200}2(0.3^2-0.1^2)=100\cdot0.08=8\)</span> J. (b) <span class="arithmatex">\(100\cdot0.2^2=4\)</span> J. (c) No: the work from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(0.2\)</span> is <span class="arithmatex">\(4\)</span> J. The spring pulls back harder when already stretched, so the same extra length costs more.</p>
+<p><strong>Knowledge Check <a href="#kc-k3">6.7.3</a>.</strong> (a) <span class="arithmatex">\(W=9800\int_0^5(2y+1)(8-y)\,dy\)</span>. (b) With <span class="arithmatex">\(s=8-y\)</span> (so <span class="arithmatex">\(y=5\)</span> is <span class="arithmatex">\(s=3\)</span> and <span class="arithmatex">\(y=0\)</span> is <span class="arithmatex">\(s=8\)</span>) and <span class="arithmatex">\(A=2(8-s)+1=17-2s\)</span>, <span class="arithmatex">\(W=9800\int_3^8(17-2s)\,s\,ds\)</span>. Both give the same number.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.sections","navigation.top","toc.follow","content.code.copy"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9e76c64c.min.js"></script>
+      
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+    
+  </body>
+</html>
