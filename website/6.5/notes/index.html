@@ -2085,6 +2085,90 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  9.2 Direction Fields and Euler's Method
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  9.2 Direction Fields and Euler's Method
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../9.2/notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -3896,6 +3980,7 @@
 
 
 <h1 id="65-length-of-curves">6.5 Length of Curves<a class="headerlink" href="#65-length-of-curves" title="Permanent link">&para;</a></h1>
+<p><a href="../notes.pdf">Download the PDF version</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Guiding question</p>
 <p>How far do you walk if you follow a curved path? For a straight path the answer is the distance formula, which is Pythagoras’ theorem. For a curved path the idea of this section is to <em>approximate the curve by a polygon</em>, a chain of straight segments whose lengths we know, and to let the polygons follow the curve more and more closely. Each segment of the polygon is the hypotenuse of a small right triangle with legs <span class="arithmatex">\(\Delta x\)</span> and <span class="arithmatex">\(\Delta y\)</span>, the Mean Value Theorem turns <span class="arithmatex">\(\Delta y/\Delta x\)</span> into a slope <span class="arithmatex">\(f'\)</span>, and the sum of the segment lengths becomes a Riemann sum for <span class="arithmatex">\(\int_a^b\sqrt{1+f'(x)^2}\,dx\)</span>. We start by saying precisely what the <em>length of a curve</em> means (the least number that no inscribed polygon exceeds), prove the formula from that definition, and then use it. The formula has a catch: the square root rarely has an antiderivative that we can write down. So the examples fall into three kinds: curves for which <span class="arithmatex">\(1+f'^2\)</span> is a perfect square, curves that need only a substitution, and curves whose integral we can only set up and evaluate numerically. A curve may also be steeper than any slope at an endpoint (a vertical tangent); then we describe it as <span class="arithmatex">\(x=g(y)\)</span> instead.</p>
